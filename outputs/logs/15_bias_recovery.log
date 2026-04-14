@@ -1,0 +1,18 @@
+Trained MLP test accuracy: 97.7%
+
+=== Attack on bias-having MLP ===
+Precision p=256, gamma=0.0039, Delta=0.0020
+
+Layer fc1: shape (128, 784)
+  Bias nonzero: 123/128
+  sort(b) recovery error: 0.00e+00 (exact: True)
+  sort(W[:,i]+b) max error: 0.00e+00 (exact: True)
+  Columns where sort(W+b) != sort(W)+sort(b): 784/784
+
+Layer fc2: shape (64, 128)
+  Bias nonzero: 62/64
+  sort(b) recovery error: 0.00e+00 (exact: True)
+  sort(W[:,i]+b) max error: 0.00e+00 (exact: True)
+  Columns where sort(W+b) != sort(W)+sort(b): 128/128
+
+Done.

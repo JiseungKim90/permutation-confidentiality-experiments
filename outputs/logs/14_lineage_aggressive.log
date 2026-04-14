@@ -1,0 +1,71 @@
+=== Lineage Robustness Under Different Fine-Tuning Regimes ===
+Bases: 5 (selected), 20 (all), Layers: ['conv1', 'layer2.0.conv1', 'layer3.0.conv1']
+
+  mild child 1/15 done
+  mild child 2/15 done
+  mild child 3/15 done
+  mild child 4/15 done
+  mild child 5/15 done
+  mild child 6/15 done
+  mild child 7/15 done
+  mild child 8/15 done
+  mild child 9/15 done
+  mild child 10/15 done
+  mild child 11/15 done
+  mild child 12/15 done
+  mild child 13/15 done
+  mild child 14/15 done
+  mild child 15/15 done
+--- mild (epochs=2, lr=0.001, subset=5000 random examples (seed=20260409)) ---
+  Accuracy (vs 5 bases): 15/15
+  Within mean: 0.0227, max: 0.0247
+  Between mean (5): 1.0872, min: 0.6587
+  Separation ratio (5 bases): 26.7x
+
+  moderate child 1/15 done
+  moderate child 2/15 done
+  moderate child 3/15 done
+  moderate child 4/15 done
+  moderate child 5/15 done
+  moderate child 6/15 done
+  moderate child 7/15 done
+  moderate child 8/15 done
+  moderate child 9/15 done
+  moderate child 10/15 done
+  moderate child 11/15 done
+  moderate child 12/15 done
+  moderate child 13/15 done
+  moderate child 14/15 done
+  moderate child 15/15 done
+--- moderate (epochs=5, lr=0.005, subset=full) ---
+  Accuracy (vs 5 bases): 15/15
+  Within mean: 0.1001, max: 0.1103
+  Between mean (5): 1.0894, min: 0.6619
+  Separation ratio (5 bases): 6.0x
+
+  aggressive child 1/15 done
+  aggressive child 2/15 done
+  aggressive child 3/15 done
+  aggressive child 4/15 done
+  aggressive child 5/15 done
+  aggressive child 6/15 done
+  aggressive child 7/15 done
+  aggressive child 8/15 done
+  aggressive child 9/15 done
+  aggressive child 10/15 done
+  aggressive child 11/15 done
+  aggressive child 12/15 done
+  aggressive child 13/15 done
+  aggressive child 14/15 done
+  aggressive child 15/15 done
+--- aggressive (epochs=10, lr=0.01, subset=full) ---
+  Accuracy (vs 5 bases): 15/15
+  Within mean: 0.3412, max: 0.3770
+  Between mean (5): 1.1239, min: 0.6978
+  Separation ratio (5 bases): 1.9x
+  Accuracy (vs all 20): 15/15
+  Between min (all 20): 0.5995
+  Separation ratio (all 20): 1.59x
+  FPR: 0/285
+
+Done.

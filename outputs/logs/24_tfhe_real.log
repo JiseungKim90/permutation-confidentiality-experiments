@@ -1,0 +1,24 @@
+concrete-python version: 2.11.0
+
+=== Approach 1: TFHE encrypt-decrypt noise measurement ===
+Compile time: 0.3s
+KeySetCache: miss, regenerating /tmp/concrete_keys/11586738998047715390
+Keygen time: 0.0s
+Max noise across 20 trials: 0
+Mean noise: 0.0000
+TFHE operates on integers => noise is 0 for identity (exact)
+
+=== Approach 2: TFHE linear layer (matrix-vector multiply) ===
+Compile time: 0.4s
+KeySetCache: miss, regenerating /tmp/concrete_keys/13639371571389131191
+Exact columns: 8/8
+Max error: 0
+
+=== Approach 3: Quantized linear layer (Safhire-like) ===
+All 32 columns: exact recovery
+
+=== SUMMARY ===
+  identity_noise: {'max_noise': 0.0, 'mean_noise': 0.0, 'exact': True}
+  linear_layer: {'dimensions': '16x8', 'exact_columns': '8/8', 'max_error': 0.0, 'all_exact': True}
+  quantized_layer: {'dimensions': '64x32', 'all_exact': True}
+Done.

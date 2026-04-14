@@ -1,0 +1,12 @@
+Loaded resnet20_seed0.pt
+Clean test accuracy: 82.2%
+
+=== CIFAR-10 Privacy-Utility Tradeoff (8-bit, N_TRIALS=100) ===
+    Mult       Atk err  Pred. agr.   Test acc.
+      1x      0.00e+00      100.0%       82.3%
+     10x      1.36e-02       99.9%       82.2%
+    100x      1.11e-01       99.2%       82.2%
+   1000x      1.02e+00       92.7%       80.8%
+   5000x      6.34e+00       64.0%       60.4%
+
+Done.

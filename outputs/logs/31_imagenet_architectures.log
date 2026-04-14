@@ -1,0 +1,123 @@
+======================================================================
+Exp 31: Architecture-Agnostic Attack Verification
+======================================================================
+
+==================================================
+Loading VGG-16...
+Downloading: "https://download.pytorch.org/models/vgg16-397923af.pth" to /home/user/.cache/torch/hub/checkpoints/vgg16-397923af.pth
+  0%|          | 0.00/528M [00:00<?, ?B/s]  2%|▏         | 9.00M/528M [00:00<00:05, 93.5MB/s]  4%|▍         | 20.1M/528M [00:00<00:04, 107MB/s]   6%|▌         | 30.4M/528M [00:00<00:04, 105MB/s]  8%|▊         | 41.4M/528M [00:00<00:04, 109MB/s] 10%|▉         | 52.8M/528M [00:00<00:04, 111MB/s] 12%|█▏        | 64.4M/528M [00:00<00:04, 114MB/s] 14%|█▍        | 75.6M/528M [00:00<00:04, 114MB/s] 17%|█▋        | 87.2M/528M [00:00<00:03, 117MB/s] 19%|█▉        | 99.4M/528M [00:00<00:03, 120MB/s] 21%|██        | 111M/528M [00:01<00:03, 118MB/s]  23%|██▎       | 122M/528M [00:01<00:03, 116MB/s] 25%|██▌       | 133M/528M [00:01<00:03, 115MB/s] 27%|██▋       | 144M/528M [00:01<00:03, 114MB/s] 30%|██▉       | 156M/528M [00:01<00:03, 116MB/s] 32%|███▏      | 168M/528M [00:01<00:03, 119MB/s] 34%|███▍      | 179M/528M [00:01<00:03, 117MB/s] 36%|███▌      | 190M/528M [00:01<00:03, 117MB/s] 38%|███▊      | 202M/528M [00:01<00:02, 117MB/s] 40%|████      | 213M/528M [00:01<00:02, 117MB/s] 42%|████▏     | 224M/528M [00:02<00:02, 116MB/s] 45%|████▍     | 235M/528M [00:02<00:02, 112MB/s] 47%|████▋     | 247M/528M [00:02<00:02, 113MB/s] 49%|████▉     | 259M/528M [00:02<00:02, 119MB/s] 51%|█████▏    | 271M/528M [00:02<00:02, 117MB/s] 53%|█████▎    | 282M/528M [00:02<00:02, 116MB/s] 56%|█████▌    | 293M/528M [00:02<00:02, 110MB/s] 58%|█████▊    | 304M/528M [00:02<00:02, 110MB/s] 60%|█████▉    | 315M/528M [00:02<00:02, 111MB/s] 62%|██████▏   | 326M/528M [00:02<00:01, 113MB/s] 64%|██████▍   | 337M/528M [00:03<00:01, 114MB/s] 66%|██████▌   | 348M/528M [00:03<00:01, 111MB/s] 68%|██████▊   | 358M/528M [00:03<00:01, 106MB/s] 70%|███████   | 370M/528M [00:03<00:01, 109MB/s] 72%|███████▏  | 380M/528M [00:03<00:01, 108MB/s] 74%|███████▍  | 392M/528M [00:03<00:01, 112MB/s] 76%|███████▋  | 402M/528M [00:03<00:01, 112MB/s] 78%|███████▊  | 414M/528M [00:03<00:01, 115MB/s] 81%|████████  | 425M/528M [00:03<00:00, 113MB/s] 83%|████████▎ | 437M/528M [00:04<00:00, 116MB/s] 85%|████████▍ | 448M/528M [00:04<00:00, 116MB/s] 87%|████████▋ | 460M/528M [00:04<00:00, 117MB/s] 89%|████████▉ | 471M/528M [00:04<00:00, 116MB/s] 91%|█████████▏| 482M/528M [00:04<00:00, 116MB/s] 93%|█████████▎| 493M/528M [00:04<00:00, 116MB/s] 96%|█████████▌| 505M/528M [00:04<00:00, 118MB/s] 98%|█████████▊| 516M/528M [00:04<00:00, 116MB/s]100%|██████████| 528M/528M [00:04<00:00, 114MB/s]
+  Conv layers: 13, Total conv params: 14,710,464
+  Top-3 largest layers:
+    features.19                               512 x 4608  ( 2,359,296 params)
+    features.21                               512 x 4608  ( 2,359,296 params)
+    features.24                               512 x 4608  ( 2,359,296 params)
+  4-bit: ALL EXACT
+  8-bit: ALL EXACT
+  12-bit: ALL EXACT
+
+  Noise robustness (8-bit) on largest layer features.19 (512x4608):
+    Zero        : EXACT
+    Gaussian    : EXACT
+    Uniform     : EXACT
+    Triangular  : EXACT
+    Laplace     : EXACT
+    Worst-case  : EXACT
+
+==================================================
+Loading DenseNet-121...
+Downloading: "https://download.pytorch.org/models/densenet121-a639ec97.pth" to /home/user/.cache/torch/hub/checkpoints/densenet121-a639ec97.pth
+  0%|          | 0.00/30.8M [00:00<?, ?B/s] 30%|██▉       | 9.12M/30.8M [00:00<00:00, 95.3MB/s] 65%|██████▌   | 20.1M/30.8M [00:00<00:00, 107MB/s] 100%|██████████| 30.8M/30.8M [00:00<00:00, 109MB/s]100%|██████████| 30.8M/30.8M [00:00<00:00, 107MB/s]
+  Conv layers: 120, Total conv params: 6,870,208
+  Top-3 largest layers:
+    features.transition3.conv                 512 x 1024  (   524,288 params)
+    features.transition2.conv                 256 x 512   (   131,072 params)
+    features.denseblock3.denselayer24.conv1   128 x 992   (   126,976 params)
+  4-bit: ALL EXACT
+  8-bit: ALL EXACT
+  12-bit: ALL EXACT
+
+  Noise robustness (8-bit) on largest layer features.transition3.conv (512x1024):
+    Zero        : EXACT
+    Gaussian    : EXACT
+    Uniform     : EXACT
+    Triangular  : EXACT
+    Laplace     : EXACT
+    Worst-case  : EXACT
+
+==================================================
+Loading MobileNet-V2...
+Downloading: "https://download.pytorch.org/models/mobilenet_v2-b0353104.pth" to /home/user/.cache/torch/hub/checkpoints/mobilenet_v2-b0353104.pth
+  0%|          | 0.00/13.6M [00:00<?, ?B/s] 45%|████▌     | 6.12M/13.6M [00:00<00:00, 63.6MB/s]100%|██████████| 13.6M/13.6M [00:00<00:00, 78.0MB/s]
+  Conv layers: 52, Total conv params: 2,189,760
+  Top-3 largest layers:
+    features.18.0                            1280 x 320   (   409,600 params)
+    features.17.conv.2                        320 x 960   (   307,200 params)
+    features.15.conv.0.0                      960 x 160   (   153,600 params)
+  4-bit: ALL EXACT
+  8-bit: ALL EXACT
+  12-bit: ALL EXACT
+
+  Noise robustness (8-bit) on largest layer features.18.0 (1280x320):
+    Zero        : EXACT
+    Gaussian    : EXACT
+    Uniform     : EXACT
+    Triangular  : EXACT
+    Laplace     : EXACT
+    Worst-case  : EXACT
+
+==================================================
+Loading EfficientNet-B0...
+Downloading: "https://download.pytorch.org/models/efficientnet_b0_rwightman-7f5810bc.pth" to /home/user/.cache/torch/hub/checkpoints/efficientnet_b0_rwightman-7f5810bc.pth
+  0%|          | 0.00/20.5M [00:00<?, ?B/s] 45%|████▌     | 9.25M/20.5M [00:00<00:00, 96.1MB/s]100%|█████████▉| 20.4M/20.5M [00:00<00:00, 108MB/s] 100%|██████████| 20.5M/20.5M [00:00<00:00, 106MB/s]
+  Conv layers: 81, Total conv params: 3,956,192
+  Top-3 largest layers:
+    features.8.0                             1280 x 320   (   409,600 params)
+    features.7.0.block.3.0                    320 x 1152  (   368,640 params)
+    features.6.1.block.0.0                   1152 x 192   (   221,184 params)
+  4-bit: ALL EXACT
+  8-bit: ALL EXACT
+  12-bit: ALL EXACT
+
+  Noise robustness (8-bit) on largest layer features.8.0 (1280x320):
+    Zero        : EXACT
+    Gaussian    : EXACT
+    Uniform     : EXACT
+    Triangular  : EXACT
+    Laplace     : EXACT
+    Worst-case  : EXACT
+
+==================================================
+Loading ConvNeXt-Tiny...
+Downloading: "https://download.pytorch.org/models/convnext_tiny-983f1562.pth" to /home/user/.cache/torch/hub/checkpoints/convnext_tiny-983f1562.pth
+  0%|          | 0.00/109M [00:00<?, ?B/s]  5%|▌         | 5.88M/109M [00:00<00:01, 61.4MB/s] 14%|█▍        | 15.1M/109M [00:00<00:01, 81.9MB/s] 24%|██▍       | 26.2M/109M [00:00<00:00, 97.4MB/s] 33%|███▎      | 36.2M/109M [00:00<00:00, 100MB/s]  42%|████▏     | 46.1M/109M [00:00<00:00, 101MB/s] 52%|█████▏    | 56.5M/109M [00:00<00:00, 103MB/s] 61%|██████    | 66.8M/109M [00:00<00:00, 105MB/s] 71%|███████▏  | 77.8M/109M [00:00<00:00, 108MB/s] 81%|████████▏ | 88.8M/109M [00:00<00:00, 110MB/s] 91%|█████████▏| 99.6M/109M [00:01<00:00, 111MB/s]100%|██████████| 109M/109M [00:01<00:00, 105MB/s] 
+  Conv layers: 22, Total conv params: 1,877,472
+  Top-3 largest layers:
+    features.6.1                              768 x 1536  ( 1,179,648 params)
+    features.4.1                              384 x 768   (   294,912 params)
+    features.2.1                              192 x 384   (    73,728 params)
+  4-bit: ALL EXACT
+  8-bit: ALL EXACT
+  12-bit: ALL EXACT
+
+  Noise robustness (8-bit) on largest layer features.6.1 (768x1536):
+    Zero        : EXACT
+    Gaussian    : EXACT
+    Uniform     : EXACT
+    Triangular  : EXACT
+    Laplace     : EXACT
+    Worst-case  : EXACT
+
+======================================================================
+SUMMARY TABLE
+======================================================================
+Architecture        Conv Params      4-bit      8-bit     12-bit
+-----------------------------------------------------------------
+VGG-16             14,710,464      13/13     13/13     13/13
+DenseNet-121        6,870,208    120/120   120/120   120/120
+MobileNet-V2        2,189,760      52/52     52/52     52/52
+EfficientNet-B0     3,956,192      81/81     81/81     81/81
+ConvNeXt-Tiny       1,877,472      22/22     22/22     22/22
+
+======================================================================
+ALL ARCHITECTURE EXPERIMENTS COMPLETE
+======================================================================
