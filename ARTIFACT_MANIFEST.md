@@ -18,6 +18,7 @@ Model Confidentiality”.
 
 ## Canonical outputs
 
+- `outputs/logs/00_train_cifar.log`
 - `outputs/logs/02_dp_analysis.log`
 - `outputs/logs/08_cifar_trained.log`
 - `outputs/logs/11_tradeoff_cifar.log`
@@ -30,6 +31,10 @@ Model Confidentiality”.
 - `outputs/logs/25_tfhe_resnet_transcript.json`
 - `outputs/logs/25_tfhe_resnet_transcript_doublecheck.log`
 - `outputs/logs/25_tfhe_resnet_transcript_doublecheck.json`
+- `outputs/logs/30_imagenet_pretrained.log`
+- `outputs/logs/31_imagenet_architectures.log`
+- `outputs/logs/32_imagenet_lineage.log`
+- `outputs/logs/33_imagenet_tradeoff.log`
 - `outputs/logs/cifar_kd_q2000_e10_s10_quantized_random.log`
 - `outputs/logs/cifar_kd_q5000_e10_s10_quantized_random.log`
 - `outputs/cifar_kd_q2000_e10_s10_quantized_random.json`
@@ -49,6 +54,10 @@ Model Confidentiality”.
 - `scripts/22_tfhe_validate.py`
 - `scripts/24_tfhe_real.py`
 - `scripts/25_tfhe_resnet_transcript.py`
+- `scripts/30_imagenet_pretrained.py`
+- `scripts/31_imagenet_architectures.py`
+- `scripts/32_imagenet_lineage.py`
+- `scripts/33_imagenet_tradeoff.py`
 
 ## Canonical KD setting
 

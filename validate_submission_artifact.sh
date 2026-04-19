@@ -27,14 +27,23 @@ required_files=(
   "scripts/22_tfhe_validate.py"
   "scripts/24_tfhe_real.py"
   "scripts/25_tfhe_resnet_transcript.py"
+  "scripts/30_imagenet_pretrained.py"
+  "scripts/31_imagenet_architectures.py"
+  "scripts/32_imagenet_lineage.py"
+  "scripts/33_imagenet_tradeoff.py"
   "outputs/cifar_kd_q2000_e10_s10_quantized_random.json"
   "outputs/cifar_kd_q5000_e10_s10_quantized_random.json"
+  "outputs/logs/00_train_cifar.log"
   "outputs/logs/cifar_kd_q2000_e10_s10_quantized_random.log"
   "outputs/logs/cifar_kd_q5000_e10_s10_quantized_random.log"
   "outputs/logs/25_tfhe_resnet_transcript.log"
   "outputs/logs/25_tfhe_resnet_transcript.json"
   "outputs/logs/25_tfhe_resnet_transcript_doublecheck.log"
   "outputs/logs/25_tfhe_resnet_transcript_doublecheck.json"
+  "outputs/logs/30_imagenet_pretrained.log"
+  "outputs/logs/31_imagenet_architectures.log"
+  "outputs/logs/32_imagenet_lineage.log"
+  "outputs/logs/33_imagenet_tradeoff.log"
 )
 
 for path in "${required_files[@]}"; do

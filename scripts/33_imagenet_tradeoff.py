@@ -1,15 +1,6 @@
 """
-Exp 33: Privacy-utility tradeoff on ImageNet-scale ResNet-50.
-Measures attack error vs. prediction agreement/accuracy under
-output noise of increasing magnitude.
-
-Uses ImageNette (10-class ImageNet subset, 320px) for evaluation.
-The pretrained ResNet-50 achieves genuine high accuracy on these classes.
-
-Reproducibility: all random seeds are fixed.
-  - np.random.seed(42) for attack error measurement
-  - torch.manual_seed(trial) for noise trials
-  - Pretrained weights: ResNet50_Weights.IMAGENET1K_V1
+Exp 33: Imagenette ResNet-50 proxy tradeoff (final-output noise).
+Seeds: np=42 (attack error), torch=trial (noise trials).
 """
 import sys, os
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
@@ -26,20 +17,22 @@ DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data')
 IMAGENETTE_DIR = os.path.join(DATA_DIR, 'imagenette2-320', 'val')
 
-# ImageNette class folders -> ImageNet class indices
-# ImageNette uses 10 classes from ImageNet-1K.
+# ImageNette class folders -> ImageNet-1K class indices.
+# PyTorch ImageFolder sorts class folders alphabetically, so valset.classes[i]
+# corresponds to IMAGENETTE_WNIDS[i] / IMAGENETTE_TO_IMAGENET[i].
 IMAGENETTE_WNIDS = [
-    'n01440764',  # tench         -> ImageNet idx 0
-    'n02102040',  # English springer -> 217
-    'n02979186',  # cassette player -> 482
-    'n03000684',  # chain saw     -> 491
-    'n03028079',  # church        -> 497
-    'n03394916',  # French horn   -> 566
-    'n03417042',  # garbage truck -> 569
-    'n03425413',  # gas pump      -> 571
-    'n03445777',  # golf ball     -> 574
-    'n03888257',  # parachute     -> 701
+    'n01440764',  # tench
+    'n02102040',  # English springer
+    'n02979186',  # cassette player
+    'n03000684',  # chain saw
+    'n03028079',  # church
+    'n03394916',  # French horn
+    'n03417042',  # garbage truck
+    'n03425413',  # gas pump
+    'n03445777',  # golf ball
+    'n03888257',  # parachute
 ]
+IMAGENETTE_TO_IMAGENET = [0, 217, 482, 491, 497, 566, 569, 571, 574, 701]
 
 N_TRIALS = 100
 
@@ -80,43 +73,22 @@ with torch.no_grad():
 all_outs = torch.cat(all_outs)
 all_labels_folder = torch.cat(all_labels)
 
-# Map folder indices to ImageNet indices for top-1 accuracy
-folder_to_wnid = valset.classes
-imagenet_class_map = {}
-# Load ImageNet class index mapping
-import json
-try:
-    # torchvision provides class-to-idx via the weights meta
-    meta = models.ResNet50_Weights.IMAGENET1K_V1.meta
-    categories = meta.get("categories", None)
-except Exception:
-    categories = None
+# Map folder indices to the true ImageNet-1K class indices using the fixed
+# WNID->ImageNet mapping. PyTorch ImageFolder sorts class folders by WNID,
+# matching the order of IMAGENETTE_WNIDS / IMAGENETTE_TO_IMAGENET above.
+assert valset.classes == IMAGENETTE_WNIDS, (
+    "Imagenette folder order does not match the expected WNID list; "
+    f"got {valset.classes}")
+folder_to_imagenet = {
+    i: IMAGENETTE_TO_IMAGENET[i] for i in range(len(valset.classes))
+}
+all_labels_imagenet = torch.tensor(
+    [folder_to_imagenet[l.item()] for l in all_labels_folder])
 
-# Build mapping: folder_idx -> list of ImageNet indices for that wnid
-# We match by checking which ImageNet top-1 prediction is most common per folder class
-# Simpler: just use the model's predictions to evaluate accuracy directly
-# Since ImageNette classes ARE ImageNet classes, the model's argmax over 1000 classes
-# should match the correct ImageNet index.
-
-# For accuracy, we need the true ImageNet class index for each folder class.
-# We'll compute this by finding the mode of model predictions per class.
 clean_preds_1000 = all_outs.argmax(1)
-
-# Build ground truth: for each folder class, find the corresponding ImageNet index
-folder_to_imagenet = {}
-for folder_idx in range(len(valset.classes)):
-    mask = (all_labels_folder == folder_idx)
-    if mask.sum() > 0:
-        preds_for_class = clean_preds_1000[mask]
-        # Mode of predictions = most likely ImageNet index
-        mode_val = int(torch.mode(preds_for_class).values.item())
-        folder_to_imagenet[folder_idx] = mode_val
-
-# Map all labels to ImageNet indices
-all_labels_imagenet = torch.tensor([folder_to_imagenet[l.item()] for l in all_labels_folder])
-
 clean_acc = (clean_preds_1000 == all_labels_imagenet).float().mean().item()
-print("Clean top-1 accuracy: %.1f%%" % (100 * clean_acc))
+print("Clean top-1 accuracy (real Imagenette->ImageNet labels): %.1f%%"
+      % (100 * clean_acc))
 
 # Attack error measurement on representative layers
 layers = get_conv_layers(model)

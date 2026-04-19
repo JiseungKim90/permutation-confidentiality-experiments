@@ -5,7 +5,7 @@ Device: cpu
 ======================================================================
 Validation set: 3925 images, 10 classes
 Computing clean outputs...
-Clean top-1 accuracy: 84.5%
+Clean top-1 accuracy (real Imagenette->ImageNet labels): 84.5%
 
 ======================================================================
 Attack Error by Layer and Noise Multiplier (8-bit)

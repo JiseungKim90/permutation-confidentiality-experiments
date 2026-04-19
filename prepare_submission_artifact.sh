@@ -45,7 +45,11 @@ for script in \
     18_kd_spectral_priors_cifar.py \
     22_tfhe_validate.py \
     24_tfhe_real.py \
-    25_tfhe_resnet_transcript.py
+    25_tfhe_resnet_transcript.py \
+    30_imagenet_pretrained.py \
+    31_imagenet_architectures.py \
+    32_imagenet_lineage.py \
+    33_imagenet_tradeoff.py
 do
     copy_file "scripts/$script" "$OUT_DIR/scripts/$script"
 done
@@ -55,6 +59,7 @@ copy_file "outputs/figures/fig_dp_vacuousness.png" \
           "$OUT_DIR/outputs/figures/fig_dp_vacuousness.png"
 
 for log in \
+    00_train_cifar.log \
     02_dp_analysis.log \
     08_cifar_trained.log \
     11_tradeoff_cifar.log \
@@ -67,6 +72,10 @@ for log in \
     25_tfhe_resnet_transcript.json \
     25_tfhe_resnet_transcript_doublecheck.log \
     25_tfhe_resnet_transcript_doublecheck.json \
+    30_imagenet_pretrained.log \
+    31_imagenet_architectures.log \
+    32_imagenet_lineage.log \
+    33_imagenet_tradeoff.log \
     cifar_kd_q2000_e10_s10_quantized_random.log \
     cifar_kd_q5000_e10_s10_quantized_random.log
 do
