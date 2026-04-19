@@ -153,9 +153,9 @@ except Exception as e:
 # ---- Approach 3: Simulate larger Safhire-like quantized computation ----
 print("\n=== Approach 3: simulated larger quantized layer ===")
 
-# This final experiment is a simulation, not a real Concrete TFHE run.
-# We use a larger quantized layer and inject a conservative small-noise model,
-# then apply round-then-sort to the simulated client-side observation.
+# Simulation (not a real Concrete TFHE run): larger quantized layer,
+# conservative small-noise injection, round-then-sort on the simulated
+# client-side observation.
 
 from lib.attack import round_then_sort
 
