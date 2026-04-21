@@ -46,6 +46,10 @@ Model Confidentiality”.
 - `outputs/cifar_kd_q2000_e10_s10_quantized_random.json`
 - `outputs/cifar_kd_q5000_e10_s10_quantized_random.json`
 - `outputs/figures/fig_dp_vacuousness.png`
+- `outputs/logs/19_fresh_perm_r20_n30.log` (R20 fresh-perm coupon-collector, 30 trials/layer; canonical source for Prop 5 T_emp/T_theory interval)
+- `outputs/fresh_perm_r20_n30.json` (R20 fresh-perm N=30 full results)
+- `outputs/logs/19_fresh_perm_r56_n30.log` (R56 fresh-perm coupon-collector, 30 trials/layer)
+- `outputs/fresh_perm_r56_n30.json` (R56 fresh-perm N=30 full results)
 
 ## Canonical included scripts
 
@@ -64,6 +68,7 @@ Model Confidentiality”.
 - `scripts/31_imagenet_architectures.py`
 - `scripts/32_imagenet_lineage.py`
 - `scripts/33_imagenet_tradeoff.py`
+- `scripts/19_fresh_perm_empirical.py`
 
 ## Canonical KD setting
 

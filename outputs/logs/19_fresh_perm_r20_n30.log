@@ -1,0 +1,35 @@
+======================================================================
+JOTA: resnet20 fresh-permutation N=30 trials/layer
+OUTPUT_DIR=/output
+======================================================================
+[preflight] all required files present
+[run] /opt/conda/bin/python -u /workspace/scripts/19_fresh_perm_empirical.py --teacher-path /workspace/models/resnet20_seed0.pt --architecture resnet20 --output-path /output/fresh_perm_r20_n30.json --precision 256 --n-trials 30
+[model] resnet20 loaded from /workspace/models/resnet20_seed0.pt
+[layers] 21 Conv2d layers, n_trials=30
+Layer                                         d     d*      T_emp   T_theory    ratio
+conv1                                        27     27      104.5      170.0    0.61x
+layer1.0.conv1                              144    144      782.8     1147.7    0.68x
+layer1.0.conv2                              144    144      797.0     1147.7    0.69x
+layer1.1.conv1                              144    144      781.4     1147.7    0.68x
+layer1.1.conv2                              144    144      762.7     1147.7    0.66x
+layer1.2.conv1                              144    144      841.6     1147.7    0.73x
+layer1.2.conv2                              144    144      857.1     1147.7    0.75x
+layer2.0.conv1                              144    144      736.1     1147.7    0.64x
+layer2.0.conv2                              288    288     1785.7     2494.9    0.72x
+layer2.0.shortcut.0                          16     16       49.0       92.4    0.53x
+layer2.1.conv1                              288    288     1721.6     2494.9    0.69x
+layer2.1.conv2                              288    288     1832.6     2494.9    0.73x
+layer2.2.conv1                              288    288     1709.6     2494.9    0.69x
+layer2.2.conv2                              288    288     1786.1     2494.9    0.72x
+layer3.0.conv1                              288    288     1707.9     2494.9    0.68x
+layer3.0.conv2                              576    576     4354.3     5389.1    0.81x
+layer3.0.shortcut.0                          32     32      140.7      206.9    0.68x
+layer3.1.conv1                              576    576     3965.2     5389.1    0.74x
+layer3.1.conv2                              576    576     3735.3     5389.1    0.69x
+layer3.2.conv1                              576    576     3864.3     5389.1    0.72x
+layer3.2.conv2                              576    576     4026.1     5389.1    0.75x
+
+[summary] ratio range [0.53, 0.81] across 21 layers
+[done] wall=64.8s  wrote /output/fresh_perm_r20_n30.json
+[done] wall=69.6s rc=0
+RESULT: /output/fresh_perm_r20_n30.json  (14005 bytes)

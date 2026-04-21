@@ -1,0 +1,71 @@
+======================================================================
+JOTA: resnet56 fresh-permutation N=30 trials/layer
+OUTPUT_DIR=/output
+======================================================================
+[preflight] all required files present
+[run] /opt/conda/bin/python -u /workspace/scripts/19_fresh_perm_empirical.py --teacher-path /workspace/models/resnet56_seed0.pt --architecture resnet56 --output-path /output/fresh_perm_r56_n30.json --precision 256 --n-trials 30
+[model] resnet56 loaded from /workspace/models/resnet56_seed0.pt
+[layers] 57 Conv2d layers, n_trials=30
+Layer                                         d     d*      T_emp   T_theory    ratio
+conv1                                        27     27       97.7      170.0    0.57x
+layer1.0.conv1                              144    144      803.2     1147.7    0.70x
+layer1.0.conv2                              144    144      797.0     1147.7    0.69x
+layer1.1.conv1                              144    144      796.5     1147.7    0.69x
+layer1.1.conv2                              144    144      737.8     1147.7    0.64x
+layer1.2.conv1                              144    144      815.1     1147.7    0.71x
+layer1.2.conv2                              144    144      787.6     1147.7    0.69x
+layer1.3.conv1                              144    144      756.9     1147.7    0.66x
+layer1.3.conv2                              144    144      817.3     1147.7    0.71x
+layer1.4.conv1                              144    144      843.5     1147.7    0.74x
+layer1.4.conv2                              144    144      768.2     1147.7    0.67x
+layer1.5.conv1                              144    144      879.9     1147.7    0.77x
+layer1.5.conv2                              144    144      740.0     1147.7    0.64x
+layer1.6.conv1                              144    144      751.3     1147.7    0.65x
+layer1.6.conv2                              144    144      856.5     1147.7    0.75x
+layer1.7.conv1                              144    144      801.9     1147.7    0.70x
+layer1.7.conv2                              144    144      793.3     1147.7    0.69x
+layer1.8.conv1                              144    144      779.2     1147.7    0.68x
+layer1.8.conv2                              144    144      745.8     1147.7    0.65x
+layer2.0.conv1                              144    144      798.3     1147.7    0.70x
+layer2.0.conv2                              288    288     1891.0     2494.9    0.76x
+layer2.0.shortcut.0                          16     16       54.9       92.4    0.59x
+layer2.1.conv1                              288    288     1755.0     2494.9    0.70x
+layer2.1.conv2                              288    288     1742.3     2494.9    0.70x
+layer2.2.conv1                              288    288     1917.0     2494.9    0.77x
+layer2.2.conv2                              288    288     1813.6     2494.9    0.73x
+layer2.3.conv1                              288    288     1707.6     2494.9    0.68x
+layer2.3.conv2                              288    288     1763.9     2494.9    0.71x
+layer2.4.conv1                              288    288     1857.2     2494.9    0.74x
+layer2.4.conv2                              288    288     1856.5     2494.9    0.74x
+layer2.5.conv1                              288    288     1864.8     2494.9    0.75x
+layer2.5.conv2                              288    288     1665.5     2494.9    0.67x
+layer2.6.conv1                              288    288     1852.6     2494.9    0.74x
+layer2.6.conv2                              288    288     2061.7     2494.9    0.83x
+layer2.7.conv1                              288    288     1747.2     2494.9    0.70x
+layer2.7.conv2                              288    288     1864.6     2494.9    0.75x
+layer2.8.conv1                              288    288     1798.0     2494.9    0.72x
+layer2.8.conv2                              288    288     1751.9     2494.9    0.70x
+layer3.0.conv1                              288    288     1782.3     2494.9    0.71x
+layer3.0.conv2                              576    576     4113.3     5389.1    0.76x
+layer3.0.shortcut.0                          32     32      129.2      206.9    0.62x
+layer3.1.conv1                              576    576     4186.3     5389.1    0.78x
+layer3.1.conv2                              576    576     3716.7     5389.1    0.69x
+layer3.2.conv1                              576    576     3935.6     5389.1    0.73x
+layer3.2.conv2                              576    576     4032.4     5389.1    0.75x
+layer3.3.conv1                              576    576     3885.6     5389.1    0.72x
+layer3.3.conv2                              576    576     4040.3     5389.1    0.75x
+layer3.4.conv1                              576    576     4067.1     5389.1    0.75x
+layer3.4.conv2                              576    576     3926.6     5389.1    0.73x
+layer3.5.conv1                              576    576     4081.5     5389.1    0.76x
+layer3.5.conv2                              576    576     4110.5     5389.1    0.76x
+layer3.6.conv1                              576    576     3934.0     5389.1    0.73x
+layer3.6.conv2                              576    576     3845.4     5389.1    0.71x
+layer3.7.conv1                              576    576     3794.7     5389.1    0.70x
+layer3.7.conv2                              576    576     4060.6     5389.1    0.75x
+layer3.8.conv1                              576    576     4014.4     5389.1    0.74x
+layer3.8.conv2                              576    576     4034.4     5389.1    0.75x
+
+[summary] ratio range [0.57, 0.83] across 57 layers
+[done] wall=199.7s  wrote /output/fresh_perm_r56_n30.json
+[done] wall=205.0s rc=0
+RESULT: /output/fresh_perm_r56_n30.json  (37973 bytes)
