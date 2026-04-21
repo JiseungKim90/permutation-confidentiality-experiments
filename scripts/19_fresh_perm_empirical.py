@@ -53,11 +53,6 @@ def count_queries_to_cover(W_q, b_q, gamma, d_star):
     B = Delta - 1e-12
 
     true_cols = W_q + b_q[:, None]
-    sorted_spectra = set()
-    for i in range(d):
-        key = tuple(np.round(np.sort(true_cols[:, i]) / gamma).astype(int))
-        sorted_spectra.add(key)
-
     seen = set()
     queries = 0
     while len(seen) < d_star:
