@@ -1,0 +1,410 @@
+{
+  "architecture": "resnet56",
+  "precision": 256,
+  "threat_model": "server_plaintext_permuted (STIP/Centaur)",
+  "seed": 0,
+  "wall_seconds": 0.46125149726867676,
+  "layers": [
+    {
+      "name": "conv1",
+      "C_out": 16,
+      "d": 27,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer1.0.conv1",
+      "C_out": 16,
+      "d": 144,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer1.0.conv2",
+      "C_out": 16,
+      "d": 144,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer1.1.conv1",
+      "C_out": 16,
+      "d": 144,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer1.1.conv2",
+      "C_out": 16,
+      "d": 144,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer1.2.conv1",
+      "C_out": 16,
+      "d": 144,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer1.2.conv2",
+      "C_out": 16,
+      "d": 144,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer1.3.conv1",
+      "C_out": 16,
+      "d": 144,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer1.3.conv2",
+      "C_out": 16,
+      "d": 144,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer1.4.conv1",
+      "C_out": 16,
+      "d": 144,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer1.4.conv2",
+      "C_out": 16,
+      "d": 144,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer1.5.conv1",
+      "C_out": 16,
+      "d": 144,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer1.5.conv2",
+      "C_out": 16,
+      "d": 144,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer1.6.conv1",
+      "C_out": 16,
+      "d": 144,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer1.6.conv2",
+      "C_out": 16,
+      "d": 144,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer1.7.conv1",
+      "C_out": 16,
+      "d": 144,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer1.7.conv2",
+      "C_out": 16,
+      "d": 144,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer1.8.conv1",
+      "C_out": 16,
+      "d": 144,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer1.8.conv2",
+      "C_out": 16,
+      "d": 144,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer2.0.conv1",
+      "C_out": 32,
+      "d": 144,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer2.0.conv2",
+      "C_out": 32,
+      "d": 288,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer2.0.shortcut.0",
+      "C_out": 32,
+      "d": 16,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer2.1.conv1",
+      "C_out": 32,
+      "d": 288,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer2.1.conv2",
+      "C_out": 32,
+      "d": 288,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer2.2.conv1",
+      "C_out": 32,
+      "d": 288,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer2.2.conv2",
+      "C_out": 32,
+      "d": 288,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer2.3.conv1",
+      "C_out": 32,
+      "d": 288,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer2.3.conv2",
+      "C_out": 32,
+      "d": 288,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer2.4.conv1",
+      "C_out": 32,
+      "d": 288,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer2.4.conv2",
+      "C_out": 32,
+      "d": 288,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer2.5.conv1",
+      "C_out": 32,
+      "d": 288,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer2.5.conv2",
+      "C_out": 32,
+      "d": 288,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer2.6.conv1",
+      "C_out": 32,
+      "d": 288,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer2.6.conv2",
+      "C_out": 32,
+      "d": 288,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer2.7.conv1",
+      "C_out": 32,
+      "d": 288,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer2.7.conv2",
+      "C_out": 32,
+      "d": 288,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer2.8.conv1",
+      "C_out": 32,
+      "d": 288,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer2.8.conv2",
+      "C_out": 32,
+      "d": 288,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer3.0.conv1",
+      "C_out": 64,
+      "d": 288,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer3.0.conv2",
+      "C_out": 64,
+      "d": 576,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer3.0.shortcut.0",
+      "C_out": 64,
+      "d": 32,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer3.1.conv1",
+      "C_out": 64,
+      "d": 576,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer3.1.conv2",
+      "C_out": 64,
+      "d": 576,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer3.2.conv1",
+      "C_out": 64,
+      "d": 576,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer3.2.conv2",
+      "C_out": 64,
+      "d": 576,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer3.3.conv1",
+      "C_out": 64,
+      "d": 576,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer3.3.conv2",
+      "C_out": 64,
+      "d": 576,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer3.4.conv1",
+      "C_out": 64,
+      "d": 576,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer3.4.conv2",
+      "C_out": 64,
+      "d": 576,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer3.5.conv1",
+      "C_out": 64,
+      "d": 576,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer3.5.conv2",
+      "C_out": 64,
+      "d": 576,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer3.6.conv1",
+      "C_out": 64,
+      "d": 576,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer3.6.conv2",
+      "C_out": 64,
+      "d": 576,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer3.7.conv1",
+      "C_out": 64,
+      "d": 576,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer3.7.conv2",
+      "C_out": 64,
+      "d": 576,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer3.8.conv1",
+      "C_out": 64,
+      "d": 576,
+      "max_error": 0.0,
+      "queries_used": 0
+    },
+    {
+      "name": "layer3.8.conv2",
+      "C_out": 64,
+      "d": 576,
+      "max_error": 0.0,
+      "queries_used": 0
+    }
+  ],
+  "total_queries": 0,
+  "global_max_error": 0.0
+}

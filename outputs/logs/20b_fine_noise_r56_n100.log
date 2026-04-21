@@ -1,0 +1,24 @@
+======================================================================
+JOTA: R56 fine-grained noise sweep N=100 trials
+OUTPUT_DIR=/output
+======================================================================
+[preflight] OK
+[init] device=cuda
+[model] loaded ResNet-56 from /workspace/models/resnet56_seed0.pt
+[data] test tensor shape=(10000, 3, 32, 32) batch=500
+[baseline] clean test accuracy: 82.22%
+[hooks] 57 Conv2d layers targeted
+[sweep] noise_mults=[1, 10, 100, 200, 300, 500, 700, 1000, 5000] n_trials=100
+    Mult        AtkErr           PredAgr           TestAcc
+      1x      0.00e+00     99.98±0.01%     82.22±0.01%
+     10x      1.33e-02     99.84±0.03%     82.20±0.03%
+    100x      1.06e-01     98.17±0.10%     82.18±0.10%
+    200x      1.82e-01     95.95±0.17%     81.76±0.13%
+    300x      2.67e-01     93.31±0.16%     80.83±0.15%
+    500x      4.52e-01     86.69±0.24%     77.41±0.24%
+    700x      6.54e-01     76.90±0.25%     70.49±0.27%
+   1000x      1.01e+00     51.84±0.30%     48.97±0.33%
+   5000x      6.34e+00      9.64±0.00%     10.00±0.00%
+[done] wrote /output/cifar_per_layer_r56_fine_n100.json wall=484.3s
+[done] wall=499.6s rc=0
+RESULT: /output/cifar_per_layer_r56_fine_n100.json  (53892 bytes)

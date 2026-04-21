@@ -1,0 +1,24 @@
+======================================================================
+JOTA: R20 fine-grained noise sweep N=100 trials
+OUTPUT_DIR=/output
+======================================================================
+[preflight] OK
+[init] device=cuda
+[model] loaded ResNet-20 from /workspace/models/resnet20_seed0.pt
+[data] test tensor shape=(10000, 3, 32, 32) batch=500
+[hooks] 21 Conv2d layers targeted
+[baseline] clean test accuracy: 82.26%
+[sweep] noise_mults=[1, 10, 100, 200, 300, 500, 700, 1000, 5000] n_trials=100
+    Mult        AtkErr           PredAgr           TestAcc
+      1x      0.00e+00     99.95±0.02%     82.25±0.02%
+     10x      1.36e-02     99.79±0.04%     82.23±0.03%
+    100x      1.11e-01     98.36±0.11%     82.22±0.09%
+    200x      2.07e-01     96.61±0.15%     82.04±0.12%
+    300x      2.90e-01     94.56±0.18%     81.46±0.14%
+    500x      4.82e-01     89.36±0.21%     78.94±0.22%
+    700x      6.87e-01     82.02±0.31%     74.04±0.27%
+   1000x      1.02e+00     63.77±0.32%     58.99±0.29%
+   5000x      6.34e+00     10.55±0.27%     10.12±0.25%
+[done] wrote /output/cifar_per_layer_r20_fine_n100.json
+[done] wall=417.3s rc=0
+RESULT: /output/cifar_per_layer_r20_fine_n100.json  (2347 bytes)

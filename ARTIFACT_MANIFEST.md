@@ -50,6 +50,13 @@ Model Confidentiality”.
 - `outputs/fresh_perm_r20_n30.json` (R20 fresh-perm N=30 full results)
 - `outputs/logs/19_fresh_perm_r56_n30.log` (R56 fresh-perm coupon-collector, 30 trials/layer)
 - `outputs/fresh_perm_r56_n30.json` (R56 fresh-perm N=30 full results)
+- `outputs/logs/20b_fine_noise_r20_n100.log` (R20 fine-grained sweep {1,10,100,200,300,500,700,1000,5000}× N=100)
+- `outputs/cifar_per_layer_r20_fine_n100.json` (R20 fine sweep full results)
+- `outputs/logs/20b_fine_noise_r56_n100.log` (R56 fine-grained sweep N=100; JSON stores fractions, use log for percentages)
+- `outputs/cifar_per_layer_r56_fine_n100.json` (R56 fine sweep full results)
+- `outputs/logs/20_stip_centaur.log` (STIP/Centaur zero-query recovery demo; R20+R56)
+- `outputs/stip_centaur_r20.json` (R20: total_queries=0, global_max_error=0)
+- `outputs/stip_centaur_r56.json` (R56: total_queries=0, global_max_error=0)
 
 ## Canonical included scripts
 
@@ -69,6 +76,7 @@ Model Confidentiality”.
 - `scripts/32_imagenet_lineage.py`
 - `scripts/33_imagenet_tradeoff.py`
 - `scripts/19_fresh_perm_empirical.py`
+- `scripts/20_stip_centaur_trivial.py`
 
 ## Canonical KD setting
 

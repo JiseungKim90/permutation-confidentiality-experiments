@@ -1,0 +1,80 @@
+{
+  "architecture": "ResNet-20",
+  "n_trials": 100,
+  "precision": 256,
+  "clean_acc": 82.260000705719,
+  "results": [
+    {
+      "noise_mult": 1,
+      "attack_error": 0.0,
+      "pred_agr_mean": 99.94939774274826,
+      "pred_agr_std": 0.016359331067275707,
+      "test_acc_mean": 82.24689841270447,
+      "test_acc_std": 0.015146226367286235
+    },
+    {
+      "noise_mult": 10,
+      "attack_error": 0.013599537037037037,
+      "pred_agr_mean": 99.7859976887703,
+      "pred_agr_std": 0.040472298420534854,
+      "test_acc_mean": 82.23389786481857,
+      "test_acc_std": 0.03152479276198906
+    },
+    {
+      "noise_mult": 100,
+      "attack_error": 0.11125578703703703,
+      "pred_agr_mean": 98.36009740829468,
+      "pred_agr_std": 0.1082175761594689,
+      "test_acc_mean": 82.21949803829193,
+      "test_acc_std": 0.09338502782584278
+    },
+    {
+      "noise_mult": 200,
+      "attack_error": 0.20732060185185186,
+      "pred_agr_mean": 96.60969787836075,
+      "pred_agr_std": 0.1462906091049382,
+      "test_acc_mean": 82.03839784860611,
+      "test_acc_std": 0.12366688359603485
+    },
+    {
+      "noise_mult": 300,
+      "attack_error": 0.29007523148148145,
+      "pred_agr_mean": 94.55749744176865,
+      "pred_agr_std": 0.17899946949007378,
+      "test_acc_mean": 81.45989805459976,
+      "test_acc_std": 0.1375607075736087
+    },
+    {
+      "noise_mult": 500,
+      "attack_error": 0.48234953703703703,
+      "pred_agr_mean": 89.36059790849686,
+      "pred_agr_std": 0.21092563968853634,
+      "test_acc_mean": 78.94119817018509,
+      "test_acc_std": 0.2168005892012144
+    },
+    {
+      "noise_mult": 700,
+      "attack_error": 0.6870659722222222,
+      "pred_agr_mean": 82.01749759912491,
+      "pred_agr_std": 0.30854903508008186,
+      "test_acc_mean": 74.04019832611084,
+      "test_acc_std": 0.26900566410337
+    },
+    {
+      "noise_mult": 1000,
+      "attack_error": 1.0199652777777777,
+      "pred_agr_mean": 63.771898210048676,
+      "pred_agr_std": 0.3222070334754639,
+      "test_acc_mean": 58.99389827251434,
+      "test_acc_std": 0.29497451432815625
+    },
+    {
+      "noise_mult": 5000,
+      "attack_error": 6.344618055555555,
+      "pred_agr_mean": 10.546399712562561,
+      "pred_agr_std": 0.2723068734201357,
+      "test_acc_mean": 10.11539974808693,
+      "test_acc_std": 0.2457210327792545
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+======================================================================
+JOTA: STIP/Centaur zero-query recovery (R20 + R56)
+OUTPUT_DIR=/output
+======================================================================
+[preflight] OK
+[run] resnet20
+[model] resnet20 loaded from /workspace/models/resnet20_seed0.pt
+[layers] 21 Conv2d layers
+[threat model] server-side plaintext permuted weights (STIP/Centaur)
+
+Layer                                         d       MaxErr   Queries
+conv1                                        27     0.00e+00         0
+layer1.0.conv1                              144     0.00e+00         0
+layer1.0.conv2                              144     0.00e+00         0
+layer1.1.conv1                              144     0.00e+00         0
+layer1.1.conv2                              144     0.00e+00         0
+layer1.2.conv1                              144     0.00e+00         0
+layer1.2.conv2                              144     0.00e+00         0
+layer2.0.conv1                              144     0.00e+00         0
+layer2.0.conv2                              288     0.00e+00         0
+layer2.0.shortcut.0                          16     0.00e+00         0
+layer2.1.conv1                              288     0.00e+00         0
+layer2.1.conv2                              288     0.00e+00         0
+layer2.2.conv1                              288     0.00e+00         0
+layer2.2.conv2                              288     0.00e+00         0
+layer3.0.conv1                              288     0.00e+00         0
+layer3.0.conv2                              576     0.00e+00         0
+layer3.0.shortcut.0                          32     0.00e+00         0
+layer3.1.conv1                              576     0.00e+00         0
+layer3.1.conv2                              576     0.00e+00         0
+layer3.2.conv1                              576     0.00e+00         0
+layer3.2.conv2                              576     0.00e+00         0
+
+[summary] global_max_error=0.00e+00  total_queries=0  layers=21
+[done] wall=0.2s  wrote /output/stip_centaur_r20.json
+RESULT: /output/stip_centaur_r20.json  (2919 bytes)
+[run] resnet56
+[model] resnet56 loaded from /workspace/models/resnet56_seed0.pt
+[layers] 57 Conv2d layers
+[threat model] server-side plaintext permuted weights (STIP/Centaur)
+
+Layer                                         d       MaxErr   Queries
+conv1                                        27     0.00e+00         0
+layer1.0.conv1                              144     0.00e+00         0
+layer1.0.conv2                              144     0.00e+00         0
+layer1.1.conv1                              144     0.00e+00         0
+layer1.1.conv2                              144     0.00e+00         0
+layer1.2.conv1                              144     0.00e+00         0
+layer1.2.conv2                              144     0.00e+00         0
+layer1.3.conv1                              144     0.00e+00         0
+layer1.3.conv2                              144     0.00e+00         0
+layer1.4.conv1                              144     0.00e+00         0
+layer1.4.conv2                              144     0.00e+00         0
+layer1.5.conv1                              144     0.00e+00         0
+layer1.5.conv2                              144     0.00e+00         0
+layer1.6.conv1                              144     0.00e+00         0
+layer1.6.conv2                              144     0.00e+00         0
+layer1.7.conv1                              144     0.00e+00         0
+layer1.7.conv2                              144     0.00e+00         0
+layer1.8.conv1                              144     0.00e+00         0
+layer1.8.conv2                              144     0.00e+00         0
+layer2.0.conv1                              144     0.00e+00         0
+layer2.0.conv2                              288     0.00e+00         0
+layer2.0.shortcut.0                          16     0.00e+00         0
+layer2.1.conv1                              288     0.00e+00         0
+layer2.1.conv2                              288     0.00e+00         0
+layer2.2.conv1                              288     0.00e+00         0
+layer2.2.conv2                              288     0.00e+00         0
+layer2.3.conv1                              288     0.00e+00         0
+layer2.3.conv2                              288     0.00e+00         0
+layer2.4.conv1                              288     0.00e+00         0
+layer2.4.conv2                              288     0.00e+00         0
+layer2.5.conv1                              288     0.00e+00         0
+layer2.5.conv2                              288     0.00e+00         0
+layer2.6.conv1                              288     0.00e+00         0
+layer2.6.conv2                              288     0.00e+00         0
+layer2.7.conv1                              288     0.00e+00         0
+layer2.7.conv2                              288     0.00e+00         0
+layer2.8.conv1                              288     0.00e+00         0
+layer2.8.conv2                              288     0.00e+00         0
+layer3.0.conv1                              288     0.00e+00         0
+layer3.0.conv2                              576     0.00e+00         0
+layer3.0.shortcut.0                          32     0.00e+00         0
+layer3.1.conv1                              576     0.00e+00         0
+layer3.1.conv2                              576     0.00e+00         0
+layer3.2.conv1                              576     0.00e+00         0
+layer3.2.conv2                              576     0.00e+00         0
+layer3.3.conv1                              576     0.00e+00         0
+layer3.3.conv2                              576     0.00e+00         0
+layer3.4.conv1                              576     0.00e+00         0
+layer3.4.conv2                              576     0.00e+00         0
+layer3.5.conv1                              576     0.00e+00         0
+layer3.5.conv2                              576     0.00e+00         0
+layer3.6.conv1                              576     0.00e+00         0
+layer3.6.conv2                              576     0.00e+00         0
+layer3.7.conv1                              576     0.00e+00         0
+layer3.7.conv2                              576     0.00e+00         0
+layer3.8.conv1                              576     0.00e+00         0
+layer3.8.conv2                              576     0.00e+00         0
+
+[summary] global_max_error=0.00e+00  total_queries=0  layers=57
+[done] wall=0.5s  wrote /output/stip_centaur_r56.json
+RESULT: /output/stip_centaur_r56.json  (7527 bytes)
+[done] wall=8.1s
