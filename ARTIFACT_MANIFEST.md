@@ -62,6 +62,8 @@ Model Confidentiality”.
 - `outputs/logs/22b_property_inference.log` (quantization fingerprinting + 50% sparsity R20+R56)
 - `outputs/property_inference_r20.json` (R20: p=4->7 unique vals, p=256->217 unique vals)
 - `outputs/property_inference_r56.json` (R56 same)
+- `outputs/logs/r50_imagenette_per_layer_diag_intermediate_mults_lab614.log` (R50 Imagenette intermediate sweep mult∈{1,10,30,50,70,100}, N=3 trials; supports §5.4 phase-transition claim)
+- `outputs/r50_imagenette_per_layer_diag_intermediate_mults.json` (full results: collapse confirmed 30×→70×, pred_agreement 85.9%→0.67%)
 
 ## Canonical included scripts
 
@@ -80,6 +82,7 @@ Model Confidentiality”.
 - `scripts/31_imagenet_architectures.py`
 - `scripts/32_imagenet_lineage.py`
 - `scripts/33_imagenet_tradeoff.py`
+- `scripts/33b_imagenet_tradeoff_per_layer.py`
 - `scripts/19_fresh_perm_empirical.py`
 - `scripts/20_stip_centaur_trivial.py`
 - `scripts/21_multi_query_averaging.py`

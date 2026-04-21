@@ -78,12 +78,14 @@ cited by the current paper.
 - `imagenette_per_layer_r50_n20_jota.log` + sibling JSON
   `../imagenette_per_layer_r50_n20_jota.json` — JOTA GPU run of the
   same package (wall 71.3s, 019d8f9e). Reproduces the smoke-test clean
-  top-1 (82.20%) and attack-error numbers. **Open investigation:**
-  mult=100 onward collapses to exactly 0.00 ± 0.00 for both pred
-  agreement and top-1 accuracy across all 20 trials. This is sharper
-  than the R56 CIFAR collapse (50% at mult=1,000, 10% at mult=5,000)
-  and warrants an intermediate-multiplier rerun before it can be
-  quoted as a paper-ready phase-transition datapoint.
+  top-1 (82.20%) and attack-error numbers.
+- `r50_imagenette_per_layer_diag_intermediate_mults_lab614.log` + sibling JSON
+  `../r50_imagenette_per_layer_diag_intermediate_mults.json` — **resolves
+  the above**: intermediate sweep at mult∈{1,10,30,50,70,100}, N=3 trials
+  (lab614 CPU, `scripts/33b_imagenet_tradeoff_per_layer.py`). Collapse
+  confirmed between 30× (pred_agreement=85.9%, top1=77.2%) and 70×
+  (pred_agreement=0.67%, top1=0.4%); supports the paper's "30×–70×"
+  phase-transition claim in §5.4 / Fig. 3.
 
 ## JOTA artifact run ids
 
