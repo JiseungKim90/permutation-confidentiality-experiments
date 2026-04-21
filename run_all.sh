@@ -31,12 +31,13 @@ cd "$SCRIPT_DIR"
 
 LOG_DIR="outputs/logs"
 mkdir -p "$LOG_DIR" models data
+PYTHON_BIN="${PYTHON:-python3}"
 
 run() {
     local script="$1"
     local name=$(basename "$script" .py)
     echo "===== Running $name ====="
-    python3 -u "scripts/$script" 2>&1 | tee "$LOG_DIR/${name}.log"
+    "$PYTHON_BIN" -u "scripts/$script" 2>&1 | tee "$LOG_DIR/${name}.log"
     echo "===== Done: $name ======"
     echo ""
 }
@@ -70,7 +71,7 @@ run 16_noise_fingerprinting.py
 # ---- Step 6: FHE validation ----
 run 22_tfhe_validate.py
 
-if python3 -c "import concrete" 2>/dev/null; then
+if "$PYTHON_BIN" -c "import concrete" 2>/dev/null; then
     run 24_tfhe_real.py
     run 25_tfhe_resnet_transcript.py
 else

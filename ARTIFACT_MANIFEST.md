@@ -8,9 +8,11 @@ Model Confidentiality”.
 
 - `run_all.sh`
   Reproduces the core theorem-supporting experiments and appendix checks.
+- `run_gpu_submission.sh`
+  GPU entrypoint for ImageNet experiments and the full KD sweep.
 - `run_kd_submission.sh`
   Reproduces the main-text KD table under the canonical submission setting
-  (quantized teacher logits, fixed random subset, 10 epochs, 10 seeds).
+  (quantized teacher logits, fixed random subset, 100 epochs, 10 seeds).
 - `run_submission_artifact.sh`
   Runs the two scripts above in sequence.
 - `prepare_submission_artifact.sh`
@@ -35,10 +37,23 @@ Model Confidentiality”.
 - `outputs/logs/31_imagenet_architectures.log`
 - `outputs/logs/32_imagenet_lineage.log`
 - `outputs/logs/33_imagenet_tradeoff.log`
-- `outputs/logs/cifar_kd_q2000_e10_s10_quantized_random.log`
-- `outputs/logs/cifar_kd_q5000_e10_s10_quantized_random.log`
-- `outputs/cifar_kd_q2000_e10_s10_quantized_random.json`
-- `outputs/cifar_kd_q5000_e10_s10_quantized_random.json`
+- `outputs/logs/kd_r20_q250_e100_s10.log`
+- `outputs/logs/kd_r20_q500_e100_s10.log`
+- `outputs/logs/kd_r20_q1000_e100_s10.log`
+- `outputs/logs/kd_r20_q2000_e100_s10.log`
+- `outputs/logs/kd_r20_q5000_e100_s10.log`
+- `outputs/logs/kd_r56_q2000_e100_s10.log`
+- `outputs/logs/kd_r56_q5000_e100_s10.log`
+- `outputs/kd_r20_q250_e100_s10.json`
+- `outputs/kd_r20_q500_e100_s10.json`
+- `outputs/kd_r20_q1000_e100_s10.json`
+- `outputs/kd_r20_q2000_e100_s10.json`
+- `outputs/kd_r20_q5000_e100_s10.json`
+- `outputs/kd_r56_q2000_e100_s10.json`
+- `outputs/kd_r56_q5000_e100_s10.json`
+- `outputs/kd_scrambled_r20_q2000_e100_s10.json`
+- `outputs/kd_scrambled_r20_q5000_e100_s10.json`
+- `outputs/imagenet_lineage_r50.json`
 - `outputs/figures/fig_dp_vacuousness.png`
 
 ## Canonical included scripts
@@ -64,12 +79,12 @@ Model Confidentiality”.
 - Teacher checkpoint: `models/resnet20_seed0.pt`
 - Teacher logits: quantized checkpoint forward pass (`p = 256`)
 - Query subsets: fixed random subsets with `subset_seed = 20260409`
-- Query budgets: `2,000` and `5,000`
-- Student architecture: `ResNet20`
-- Distillation epochs: `10`
+- Query budgets: `250`, `500`, `1,000`, `2,000`, `5,000` (R20); `2,000`, `5,000` (R56)
+- Student architectures: `ResNet20` (R20), `ResNet56` (R56)
+- Distillation epochs: `100`
 - Seeds: `10`
 - Optimizer: SGD (`lr = 0.05`, `momentum = 0.9`, `weight_decay = 1e-4`)
-- Scheduler: CosineAnnealingLR with `T_max = 10`
+- Scheduler: CosineAnnealingLR with `T_max = 100`
 - Temperature: `4.0`
 - Spectral prior weight: `5.0`
 - Spectral scope: all `21` convolutional layers

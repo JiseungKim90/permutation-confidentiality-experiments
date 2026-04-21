@@ -1,5 +1,6 @@
 """Shared attack functions: round-then-sort recovery and helpers."""
 import numpy as np
+import torch
 import torch.nn as nn
 
 
@@ -72,17 +73,64 @@ def get_linear_layers(model):
     return layers
 
 
-def get_conv_layers(model):
-    """Extract all Conv2d layers as (name, W_mat, b_vec, has_bias, C_out, d)."""
+def _get_parent_module(model, module_name):
+    modules = dict(model.named_modules())
+    parent_name = module_name.rsplit(".", 1)[0] if "." in module_name else ""
+    return modules[parent_name]
+
+
+def _following_batchnorm2d(model, conv_name):
+    """Return the immediate sibling BatchNorm2d after conv_name, if present."""
+    parent = _get_parent_module(model, conv_name)
+    child_name = conv_name.rsplit(".", 1)[-1]
+    children = list(parent.named_children())
+    for idx, (name, _child) in enumerate(children[:-1]):
+        if name == child_name and isinstance(children[idx + 1][1], nn.BatchNorm2d):
+            return children[idx + 1][1]
+    return None
+
+
+def _fold_conv_batchnorm(conv, bn):
+    """Fold an eval-mode BatchNorm2d into a Conv2d weight/bias pair."""
+    W = conv.weight.detach().cpu()
+    if conv.bias is None:
+        b = torch.zeros(W.shape[0], dtype=W.dtype)
+    else:
+        b = conv.bias.detach().cpu()
+
+    scale = bn.weight.detach().cpu() / torch.sqrt(
+        bn.running_var.detach().cpu() + bn.eps
+    )
+    folded_W = W * scale.reshape(-1, 1, 1, 1)
+    folded_b = (b - bn.running_mean.detach().cpu()) * scale + bn.bias.detach().cpu()
+    return folded_W.numpy(), folded_b.numpy()
+
+
+def get_conv_layers(model, fold_batchnorm=True):
+    """Extract all Conv2d layers as (name, W_mat, b_vec, has_bias, C_out, d).
+
+    When fold_batchnorm is true, an immediate following BatchNorm2d sibling is
+    folded into the convolution, matching the affine layer exposed at inference.
+    """
     layers = []
     for name, mod in model.named_modules():
         if isinstance(mod, nn.Conv2d):
-            W = mod.weight.detach().numpy()
+            bn = _following_batchnorm2d(model, name) if fold_batchnorm else None
+            if bn is not None:
+                W, b = _fold_conv_batchnorm(mod, bn)
+                has_bias = True
+            else:
+                W = mod.weight.detach().cpu().numpy()
+                b = (
+                    mod.bias.detach().cpu().numpy()
+                    if mod.bias is not None
+                    else np.zeros(W.shape[0])
+                )
+                has_bias = mod.bias is not None
             C_out = W.shape[0]
             d = int(np.prod(W.shape[1:]))
             W_mat = W.reshape(C_out, d)
-            b = mod.bias.detach().numpy() if mod.bias is not None else np.zeros(C_out)
-            layers.append((name, W_mat, b, mod.bias is not None, C_out, d))
+            layers.append((name, W_mat, b, has_bias, C_out, d))
     return layers
 
 

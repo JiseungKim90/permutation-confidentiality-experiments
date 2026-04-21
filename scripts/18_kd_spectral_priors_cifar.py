@@ -470,7 +470,7 @@ def main():
             "teacher_checkpoint_acc": teacher_checkpoint_acc,
             "teacher_used_acc": teacher_used_acc,
             "teacher_checkpoint_sha256": file_sha256(args.teacher_path),
-            "student_architecture": "ResNet20",
+            "student_architecture": args.architecture,
             "dataset": "CIFAR-10",
             "query_budget": int(query_budget),
             "subset_mode": args.subset_mode,

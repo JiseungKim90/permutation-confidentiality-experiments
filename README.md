@@ -85,9 +85,11 @@ The canonical file set is described in
 
 ## Submission KD Table
 
-The submission additionally reports the CIFAR-10 / ResNet-20
+The submission additionally reports the CIFAR-10 / ResNet-20 and ResNet-56
 logit-distillation experiment with spectral priors
-(`2,000` and `5,000` queries; `10` distillation epochs; `10` seeds).
+(`250`, `500`, `1,000`, `2,000`, and `5,000` queries for R20;
+`2,000` and `5,000` queries for R56;
+`100` distillation epochs; `10` seeds).
 After generating the CIFAR checkpoints via `run_all.sh`, reproduce
 that table with:
 
@@ -99,28 +101,41 @@ bash run_kd_submission.sh
 This produces:
 
 ```
-outputs/cifar_kd_q2000_e10_s10_quantized_random.json
-outputs/cifar_kd_q5000_e10_s10_quantized_random.json
-outputs/logs/cifar_kd_q2000_e10_s10_quantized_random.log
-outputs/logs/cifar_kd_q5000_e10_s10_quantized_random.log
+outputs/kd_r20_q250_e100_s10.json
+outputs/kd_r20_q500_e100_s10.json
+outputs/kd_r20_q1000_e100_s10.json
+outputs/kd_r20_q2000_e100_s10.json
+outputs/kd_r20_q5000_e100_s10.json
+outputs/kd_r56_q2000_e100_s10.json
+outputs/kd_r56_q5000_e100_s10.json
+outputs/kd_scrambled_r20_q2000_e100_s10.json
+outputs/kd_scrambled_r20_q5000_e100_s10.json
+outputs/imagenet_lineage_r50.json
+outputs/logs/kd_r20_q250_e100_s10.log
+outputs/logs/kd_r20_q500_e100_s10.log
+outputs/logs/kd_r20_q1000_e100_s10.log
+outputs/logs/kd_r20_q2000_e100_s10.log
+outputs/logs/kd_r20_q5000_e100_s10.log
+outputs/logs/kd_r56_q2000_e100_s10.log
+outputs/logs/kd_r56_q5000_e100_s10.log
 ```
 
 The exact KD hyperparameters used in the submission are:
 
 | Parameter | Value |
 |---|---|
-| Teacher | `models/resnet20_seed0.pt` |
+| Teacher | `models/resnet20_seed0.pt` (R20), `models/resnet56_seed0.pt` (R56) |
 | Teacher logits | quantized checkpoint forward (`p = 256`) |
-| Student | same-architecture `ResNet20` |
-| Query budgets | `2,000`, `5,000` |
+| Student | same-architecture `ResNet20` / `ResNet56` |
+| Query budgets | `250`, `500`, `1,000`, `2,000`, `5,000` (R20); `2,000`, `5,000` (R56) |
 | Query subset | fixed random subset (`subset_seed = 20260409`) |
-| Distillation epochs | `10` |
+| Distillation epochs | `100` |
 | Seeds | `10` |
 | Optimizer | SGD |
 | Learning rate | `0.05` |
 | Momentum | `0.9` |
 | Weight decay | `1e-4` |
-| Scheduler | CosineAnnealingLR (`T_max=10`) |
+| Scheduler | CosineAnnealingLR (`T_max=100`) |
 | Temperature | `4.0` |
 | Spectral prior weight | `5.0` |
 | Spectral scope | all `21` convolutional layers |
@@ -146,6 +161,7 @@ records `lr_train` (the learning rate used during that epoch),
 | `22_tfhe_validate.py` | Appendix A | CKKS check, concrete-python identity proxy, and simulated TFHE noise validation |
 | `24_tfhe_real.py` | Appendix A | Small synthetic Concrete sanity check plus larger simulated quantized layer |
 | `25_tfhe_resnet_transcript.py` | Appendix A | Trained-layer TFHE single-round transcript check under fixed/fresh permutations |
+| `32_imagenet_lineage.py` | Sec 5.3 | Lineage detection on ImageNet-scale models; real Imagenette fine-tuning (2 epochs) producing ratio ~800× at 8-bit |
 
 ## Pre-computed Logs
 
@@ -160,8 +176,13 @@ that produced the paper's numbers. Each log corresponds to one script:
 | `14_lineage_aggressive.log` | Sec. 5.3: lineage accuracy, sep. ratios (3 regimes) |
 | `15_bias_recovery.log` | Appendix A: bias-having MLP exact recovery |
 | `16_noise_fingerprinting.log` | Tab. 4 FP acc. column: fingerprinting under noise |
-| `cifar_kd_q2000_e10_s10_quantized_random.log` | KD table: 2,000-query run (`10` epochs, `10` seeds; quantized logits, random subset) |
-| `cifar_kd_q5000_e10_s10_quantized_random.log` | KD table: 5,000-query run (`10` epochs, `10` seeds; quantized logits, random subset) |
+| `kd_r20_q250_e100_s10.log` | KD table: R20 250-query run (`100` epochs, `10` seeds; quantized logits, random subset) |
+| `kd_r20_q500_e100_s10.log` | KD table: R20 500-query run (`100` epochs, `10` seeds; quantized logits, random subset) |
+| `kd_r20_q1000_e100_s10.log` | KD table: R20 1,000-query run (`100` epochs, `10` seeds; quantized logits, random subset) |
+| `kd_r20_q2000_e100_s10.log` | KD table: R20 2,000-query run (`100` epochs, `10` seeds; quantized logits, random subset) |
+| `kd_r20_q5000_e100_s10.log` | KD table: R20 5,000-query run (`100` epochs, `10` seeds; quantized logits, random subset) |
+| `kd_r56_q2000_e100_s10.log` | KD table: R56 2,000-query run (`100` epochs, `10` seeds; quantized logits, random subset) |
+| `kd_r56_q5000_e100_s10.log` | KD table: R56 5,000-query run (`100` epochs, `10` seeds; quantized logits, random subset) |
 | `22_tfhe_validate.log` | Appendix A: CKKS check, TFHE identity proxy, and simulated post-bootstrapping noise validation |
 | `24_tfhe_real.log` | Appendix A: small synthetic Concrete sanity check plus larger simulated quantized layer |
 | `25_tfhe_resnet_transcript.log` | Appendix A: trained-layer TFHE single-round transcript check |
@@ -171,8 +192,16 @@ The corresponding machine-readable summaries are included in:
 
 | JSON | Key outputs |
 |---|---|
-| `cifar_kd_q2000_e10_s10_quantized_random.json` | Config, query indices, per-seed histories, and epoch-wise summaries for the 2,000-query KD run |
-| `cifar_kd_q5000_e10_s10_quantized_random.json` | Config, query indices, per-seed histories, and epoch-wise summaries for the 5,000-query KD run |
+| `kd_r20_q250_e100_s10.json` | Config, query indices, per-seed histories, and epoch-wise summaries for the R20 250-query KD run |
+| `kd_r20_q500_e100_s10.json` | Config, query indices, per-seed histories, and epoch-wise summaries for the R20 500-query KD run |
+| `kd_r20_q1000_e100_s10.json` | Config, query indices, per-seed histories, and epoch-wise summaries for the R20 1,000-query KD run |
+| `kd_r20_q2000_e100_s10.json` | Config, query indices, per-seed histories, and epoch-wise summaries for the R20 2,000-query KD run |
+| `kd_r20_q5000_e100_s10.json` | Config, query indices, per-seed histories, and epoch-wise summaries for the R20 5,000-query KD run |
+| `kd_r56_q2000_e100_s10.json` | Config, query indices, per-seed histories, and epoch-wise summaries for the R56 2,000-query KD run |
+| `kd_r56_q5000_e100_s10.json` | Config, query indices, per-seed histories, and epoch-wise summaries for the R56 5,000-query KD run |
+| `kd_scrambled_r20_q2000_e100_s10.json` | Config, query indices, per-seed histories, and epoch-wise summaries for the scrambled R20 2,000-query KD run |
+| `kd_scrambled_r20_q5000_e100_s10.json` | Config, query indices, per-seed histories, and epoch-wise summaries for the scrambled R20 5,000-query KD run |
+| `imagenet_lineage_r50.json` | ImageNet lineage detection results for ResNet-50 (real Imagenette fine-tuning, 2 epochs) |
 
 Older exploratory KD runs are retained under `outputs/legacy/` for record
 keeping, but they are not part of the submission artifact.
@@ -187,6 +216,7 @@ experiments/
   lib/             Shared library (attack.py, models.py)
   scripts/         Numbered experiment scripts
   prepare_submission_artifact.sh
+  run_gpu_submission.sh
   run_kd_submission.sh
   run_submission_artifact.sh
   models/          Trained checkpoints (generated by 00_train_cifar.py)
@@ -214,7 +244,8 @@ experiments/
   children) under 3 regimes; the aggressive regime takes ~1.5 hours.
 - The KD submission sweep is intentionally separated from `run_all.sh`
   because it is much slower than the original artifact path
-  (`10` distillation epochs, `10` seeds, two query budgets).
+  (`100` distillation epochs, `10` seeds, five R20 query budgets plus two R56 query budgets).
+- `run_gpu_submission.sh` is the GPU entrypoint for ImageNet experiments and the full KD sweep.
 - `run_submission_artifact.sh` is the top-level entrypoint for
   full-paper reproduction; it runs `run_all.sh` first and then
   `run_kd_submission.sh`.
