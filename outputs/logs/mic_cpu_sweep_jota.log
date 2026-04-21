@@ -1,0 +1,643 @@
+============================================================
+MIC combined CPU sweep (C1+C2) — diagnostic phase
+============================================================
+$ cat /etc/os-release 2>/dev/null | head -6
+PRETTY_NAME="Ubuntu 22.04.5 LTS"
+NAME="Ubuntu"
+VERSION_ID="22.04"
+VERSION="22.04.5 LTS (Jammy Jellyfish)"
+VERSION_CODENAME=jammy
+ID=ubuntu
+$ uname -a
+Linux jpu-3080ti6 6.8.0-107-generic #107-Ubuntu SMP PREEMPT_DYNAMIC Fri Mar 13 19:51:50 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+$ nproc
+16
+$ free -m | head -3
+               total        used        free      shared  buff/cache   available
+Mem:           96546        5129       37441         939       53976       89505
+Swap:              0           0           0
+$ ls -la . 2>&1 | head
+total 1748
+drwxrwxr-x 5 jskim_prof jskim_prof   4096 Apr 15 22:12 .
+drwxr-xr-x 1 jskim_prof jskim_prof    180 Apr 15 22:12 ..
+-rwxr-xr-x 1 jskim_prof jskim_prof 880440 Apr 15 21:54 bench_resnet20_mic
+drwxr-xr-x 2 jskim_prof jskim_prof   4096 Apr 15 21:51 data
+drwxr-xr-x 2 jskim_prof jskim_prof   4096 Apr 15 21:51 libs
+-rw-r--r-- 1 jskim_prof jskim_prof   3078 Apr 15 21:52 main.py
+-rw-r--r-- 1 jskim_prof jskim_prof   7492 Apr 15 21:52 run.sh
+-rwxr-xr-x 1 jskim_prof jskim_prof 880480 Apr 15 21:54 test_resnet20_mic
+drwxr-xr-x 4 jskim_prof jskim_prof   4096 Apr 15 21:51 weights
+$ ls -la libs/ 2>&1 | head
+total 16448
+drwxr-xr-x 2 jskim_prof jskim_prof    4096 Apr 15 21:51 .
+drwxrwxr-x 5 jskim_prof jskim_prof    4096 Apr 15 22:12 ..
+-rwxr-xr-x 1 jskim_prof jskim_prof  542568 Apr 15 21:51 libOPENFHEbinfhe.so.1
+-rwxr-xr-x 1 jskim_prof jskim_prof 2362448 Apr 15 21:51 libOPENFHEcore.so.1
+-rwxr-xr-x 1 jskim_prof jskim_prof 3781144 Apr 15 21:51 libOPENFHEpke.so.1
+-rw-r--r-- 1 jskim_prof jskim_prof 4455728 Apr 15 21:51 libcrypto.so.3
+-rw-r--r-- 1 jskim_prof jskim_prof 2009544 Apr 15 21:51 libemp-tool.so
+-rw-r--r-- 1 jskim_prof jskim_prof  146000 Apr 15 21:51 libgcc_s.so.1
+-rw-r--r-- 1 jskim_prof jskim_prof  327592 Apr 15 21:51 libgomp.so.1
+$ chmod +x test_resnet20_mic bench_resnet20_mic run.sh 2>&1 || true
+
+[main] random-input bins: 100
+
+============================================================
+ldd test_resnet20_mic:
+============================================================
+$ ldd ./test_resnet20_mic 2>&1
+	linux-vdso.so.1 (0x00007ffc68717000)
+	libOPENFHEpke.so.1 => /workspace/libs/libOPENFHEpke.so.1 (0x00007ef4f5800000)
+	libOPENFHEcore.so.1 => /workspace/libs/libOPENFHEcore.so.1 (0x00007ef4f5627000)
+	libemp-tool.so => /workspace/libs/libemp-tool.so (0x00007ef4f543c000)
+	libcrypto.so.3 => /workspace/libs/libcrypto.so.3 (0x00007ef4f4e00000)
+	libgomp.so.1 => /workspace/libs/libgomp.so.1 (0x00007ef4f5c16000)
+	libstdc++.so.6 => /workspace/libs/libstdc++.so.6 (0x00007ef4f4a00000)
+	libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007ef4f5b2c000)
+	libgcc_s.so.1 => /workspace/libs/libgcc_s.so.1 (0x00007ef4f5417000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007ef4f47d7000)
+	libOPENFHEbinfhe.so.1 => /workspace/libs/libOPENFHEbinfhe.so.1 (0x00007ef4f53a6000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007ef4f5d20000)
+	libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007ef4f5b25000)
+	libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007ef4f5b20000)
+
+============================================================
+env-var probe (MIC_SIGMA_FLOOD_LOG2 patched into binary?):
+============================================================
+$ strings ./test_resnet20_mic 2>/dev/null | grep -E 'MIC_SIGMA_FLOOD_LOG2|MIC_NO_FLOOD' || true
+
+
+============================================================
+Smoke run (default σ_flood) on airplane_857_confident:
+============================================================
+[mic] keygen start
+[mic] keygen done (2.82 s)
+[mic] conv1
+[dbg] conv1 pre-relu max_diff=0.0055  post-relu max_diff=0.0055
+[mic] layer1 block0 H=32
+[dbg] layer1 block0 mode=channel conv1_pre=0.0066 relu1=0.0062 conv2_pre=0.0151 shortcut=0.0055 add=0.0186 relu2=0.0186
+[mic] layer1 block1 H=32
+[dbg] layer1 block1 mode=channel conv1_pre=0.0129 relu1=0.0129 conv2_pre=0.0311 shortcut=0.0186 add=0.0498 relu2=0.0498
+[mic] layer1 block2 H=32
+[dbg] layer1 block2 mode=channel conv1_pre=0.0372 relu1=0.0338 conv2_pre=0.0793 shortcut=0.0498 add=0.0528 relu2=0.0528
+[mic] layer2 block0 H=32
+[dbg] layer2 block0 mode=channel conv1_pre=0.0232 relu1=0.0200 conv2_pre=0.0270 shortcut=0.0163 add=0.0360 relu2=0.0359
+[mic] layer2 block1 H=16
+[dbg] layer2 block1 mode=diag conv1_pre=0.0217 relu1=0.0206 conv2_pre=0.0238 shortcut=0.0359 add=0.0373 relu2=0.0373
+[mic] layer2 block2 H=16
+[dbg] layer2 block2 mode=diag conv1_pre=0.0243 relu1=0.0197 conv2_pre=0.0318 shortcut=0.0373 add=0.0499 relu2=0.0499
+[mic] layer3 block0 H=16
+[dbg] layer3 block0 mode=channel conv1_pre=0.0215 relu1=0.0215 conv2_pre=0.2234 shortcut=0.0163 add=0.2231 relu2=0.2231
+[mic] layer3 block1 H=8
+[dbg] layer3 block1 mode=diag conv1_pre=0.2696 relu1=0.2193 conv2_pre=0.3339 shortcut=0.2231 add=0.3775 relu2=0.3775
+[mic] layer3 block2 H=8
+[dbg] layer3 block2 mode=diag conv1_pre=0.2984 relu1=0.2390 conv2_pre=1.6269 shortcut=0.3775 add=1.6274 relu2=1.3263
+[dbg] fc logits max_diff=0.8420
+[phase] wall=169.10 s  keygen=2.82  conv_he=76.16 (n=11)  conv_diag=75.24 (n=10)  gc_relu=12.43 (n=19)  gc_argmax=0.11  misc=2.35
+Fused weights loaded from weights/resnet20_fused
+Image loaded from data/airplane_857_confident.bin
+Running MIC-ResNet20 inference...
+connected
+Label:   0
+Time:    169.103 s
+C→S:     287039488 bytes
+S→C:     446128128 bytes
+Rounds:  84
+Logits: [8.441, -2.583, 0.871, 1.732, -0.892, -2.824, -1.375, -1.031, -0.156, -2.182]
+PASS
+
+[main] smoke OK
+
+============================================================
+Sweep via run.sh (Stage A: σ_flood, Stage B: random-input):
+============================================================
+================================================================
+Stage A: σ_flood ablation
+================================================================
+Label:   0
+Time:    169.011 s
+PASS
+[stage A] smoke OK
+=== sigma_log2=default seed=1 ===
+Label:   0
+Time:    169.846 s
+=== sigma_log2=default seed=2 ===
+Label:   0
+Time:    171.593 s
+=== sigma_log2=default seed=3 ===
+Label:   0
+Time:    170.707 s
+=== sigma_log2=default seed=4 ===
+Label:   0
+Time:    171.541 s
+=== sigma_log2=default seed=5 ===
+Label:   0
+Time:    171.498 s
+=== sigma_log2=55 seed=1 ===
+Label:   0
+Time:    171.255 s
+=== sigma_log2=55 seed=2 ===
+Label:   0
+Time:    170.322 s
+=== sigma_log2=55 seed=3 ===
+Label:   0
+Time:    167.271 s
+=== sigma_log2=55 seed=4 ===
+Label:   0
+Time:    166.420 s
+=== sigma_log2=55 seed=5 ===
+Label:   0
+Time:    168.815 s
+=== sigma_log2=56 seed=1 ===
+Label:   0
+Time:    169.091 s
+=== sigma_log2=56 seed=2 ===
+Label:   0
+Time:    168.845 s
+=== sigma_log2=56 seed=3 ===
+Label:   0
+Time:    168.637 s
+=== sigma_log2=56 seed=4 ===
+Label:   0
+Time:    170.332 s
+=== sigma_log2=56 seed=5 ===
+Label:   0
+Time:    168.576 s
+=== sigma_log2=57 seed=1 ===
+Label:   0
+Time:    170.028 s
+=== sigma_log2=57 seed=2 ===
+Label:   0
+Time:    172.539 s
+=== sigma_log2=57 seed=3 ===
+Label:   0
+Time:    169.937 s
+=== sigma_log2=57 seed=4 ===
+Label:   0
+Time:    168.969 s
+=== sigma_log2=57 seed=5 ===
+Label:   0
+Time:    169.727 s
+=== sigma_log2=58 seed=1 ===
+FAIL sigma=58 seed=1 rc=1
+=== sigma_log2=58 seed=2 ===
+Label:   0
+Time:    169.021 s
+=== sigma_log2=58 seed=3 ===
+FAIL sigma=58 seed=3 rc=1
+=== sigma_log2=58 seed=4 ===
+FAIL sigma=58 seed=4 rc=1
+=== sigma_log2=58 seed=5 ===
+Label:   0
+Time:    170.491 s
+=== sigma_log2=59 seed=1 ===
+FAIL sigma=59 seed=1 rc=1
+=== sigma_log2=59 seed=2 ===
+FAIL sigma=59 seed=2 rc=1
+=== sigma_log2=59 seed=3 ===
+FAIL sigma=59 seed=3 rc=1
+=== sigma_log2=59 seed=4 ===
+FAIL sigma=59 seed=4 rc=1
+=== sigma_log2=59 seed=5 ===
+Label:   0
+Time:    170.669 s
+=== sigma_log2=60 seed=1 ===
+FAIL sigma=60 seed=1 rc=1
+=== sigma_log2=60 seed=2 ===
+FAIL sigma=60 seed=2 rc=1
+=== sigma_log2=60 seed=3 ===
+Label:   0
+Time:    171.741 s
+=== sigma_log2=60 seed=4 ===
+FAIL sigma=60 seed=4 rc=1
+=== sigma_log2=60 seed=5 ===
+FAIL sigma=60 seed=5 rc=1
+================================================================
+Stage B: random-input variance (100 images)
+================================================================
+[stage B] 100 random test images
+[stage B] smoke OK
+=== [1/100] cifar_0005_lbl6 ===
+Label:   6
+Expect:  6  Match: YES
+Time:    171.987 s
+=== [2/100] cifar_0165_lbl4 ===
+Label:   4
+Expect:  4  Match: YES
+Time:    169.947 s
+=== [3/100] cifar_0258_lbl0 ===
+Label:   0
+Expect:  0  Match: YES
+Time:    170.715 s
+=== [4/100] cifar_0293_lbl9 ===
+Label:   1
+Expect:  9  Match: NO
+Time:    172.110 s
+=== [5/100] cifar_0322_lbl2 ===
+Label:   2
+Expect:  2  Match: YES
+Time:    171.858 s
+=== [6/100] cifar_0383_lbl9 ===
+Label:   9
+Expect:  9  Match: YES
+Time:    173.550 s
+=== [7/100] cifar_0561_lbl7 ===
+Label:   7
+Expect:  7  Match: YES
+Time:    170.033 s
+=== [8/100] cifar_0610_lbl6 ===
+Label:   6
+Expect:  6  Match: YES
+Time:    171.364 s
+=== [9/100] cifar_0700_lbl7 ===
+Label:   7
+Expect:  7  Match: YES
+Time:    172.558 s
+=== [10/100] cifar_0790_lbl3 ===
+Label:   3
+Expect:  3  Match: YES
+Time:    169.642 s
+=== [11/100] cifar_0839_lbl2 ===
+Label:   2
+Expect:  2  Match: YES
+Time:    169.454 s
+=== [12/100] cifar_0857_lbl0 ===
+Label:   0
+Expect:  0  Match: YES
+Time:    172.230 s
+=== [13/100] cifar_0880_lbl8 ===
+Label:   8
+Expect:  8  Match: YES
+Time:    171.403 s
+=== [14/100] cifar_0980_lbl2 ===
+Label:   2
+Expect:  2  Match: YES
+Time:    171.858 s
+=== [15/100] cifar_1084_lbl5 ===
+Label:   5
+Expect:  5  Match: YES
+Time:    171.765 s
+=== [16/100] cifar_1211_lbl6 ===
+Label:   6
+Expect:  6  Match: YES
+Time:    175.914 s
+=== [17/100] cifar_1271_lbl8 ===
+Label:   8
+Expect:  8  Match: YES
+Time:    171.786 s
+=== [18/100] cifar_1434_lbl0 ===
+Label:   0
+Expect:  0  Match: YES
+Time:    171.521 s
+=== [19/100] cifar_1439_lbl9 ===
+Label:   1
+Expect:  9  Match: NO
+Time:    172.589 s
+=== [20/100] cifar_1506_lbl5 ===
+Label:   7
+Expect:  5  Match: NO
+Time:    171.473 s
+=== [21/100] cifar_1667_lbl6 ===
+Label:   6
+Expect:  6  Match: YES
+Time:    171.741 s
+=== [22/100] cifar_1799_lbl4 ===
+Label:   4
+Expect:  4  Match: YES
+Time:    173.520 s
+=== [23/100] cifar_2203_lbl6 ===
+Label:   6
+Expect:  6  Match: YES
+Time:    171.722 s
+=== [24/100] cifar_2316_lbl5 ===
+Label:   5
+Expect:  5  Match: YES
+Time:    172.047 s
+=== [25/100] cifar_2325_lbl7 ===
+Label:   7
+Expect:  7  Match: YES
+Time:    173.073 s
+=== [26/100] cifar_2542_lbl2 ===
+Label:   0
+Expect:  2  Match: NO
+Time:    171.351 s
+=== [27/100] cifar_2570_lbl0 ===
+Label:   0
+Expect:  0  Match: YES
+Time:    171.634 s
+=== [28/100] cifar_2724_lbl0 ===
+Label:   0
+Expect:  0  Match: YES
+Time:    172.513 s
+=== [29/100] cifar_3144_lbl1 ===
+Label:   1
+Expect:  1  Match: YES
+Time:    173.527 s
+=== [30/100] cifar_3176_lbl7 ===
+Label:   7
+Expect:  7  Match: YES
+Time:    177.770 s
+=== [31/100] cifar_3241_lbl7 ===
+Label:   7
+Expect:  7  Match: YES
+Time:    173.629 s
+=== [32/100] cifar_3378_lbl4 ===
+Label:   4
+Expect:  4  Match: YES
+Time:    173.634 s
+=== [33/100] cifar_3405_lbl7 ===
+Label:   7
+Expect:  7  Match: YES
+Time:    172.022 s
+=== [34/100] cifar_3430_lbl8 ===
+Label:   8
+Expect:  8  Match: YES
+Time:    172.848 s
+=== [35/100] cifar_3554_lbl1 ===
+Label:   1
+Expect:  1  Match: YES
+Time:    174.414 s
+=== [36/100] cifar_3569_lbl9 ===
+Label:   9
+Expect:  9  Match: YES
+Time:    172.479 s
+=== [37/100] cifar_3645_lbl1 ===
+Label:   9
+Expect:  1  Match: NO
+Time:    173.216 s
+=== [38/100] cifar_3660_lbl0 ===
+Label:   0
+Expect:  0  Match: YES
+Time:    175.459 s
+=== [39/100] cifar_3679_lbl0 ===
+Label:   0
+Expect:  0  Match: YES
+Time:    173.352 s
+=== [40/100] cifar_3757_lbl4 ===
+Label:   4
+Expect:  4  Match: YES
+Time:    171.078 s
+=== [41/100] cifar_3776_lbl9 ===
+Label:   9
+Expect:  9  Match: YES
+Time:    171.821 s
+=== [42/100] cifar_3816_lbl2 ===
+Label:   2
+Expect:  2  Match: YES
+Time:    173.374 s
+=== [43/100] cifar_3964_lbl9 ===
+Label:   9
+Expect:  9  Match: YES
+Time:    170.105 s
+=== [44/100] cifar_4110_lbl2 ===
+Label:   2
+Expect:  2  Match: YES
+Time:    172.529 s
+=== [45/100] cifar_4133_lbl2 ===
+Label:   2
+Expect:  2  Match: YES
+Time:    174.665 s
+=== [46/100] cifar_4295_lbl0 ===
+Label:   0
+Expect:  0  Match: YES
+Time:    172.377 s
+=== [47/100] cifar_4326_lbl7 ===
+Label:   7
+Expect:  7  Match: YES
+Time:    172.697 s
+=== [48/100] cifar_4385_lbl8 ===
+Label:   8
+Expect:  8  Match: YES
+Time:    172.701 s
+=== [49/100] cifar_4679_lbl4 ===
+Label:   4
+Expect:  4  Match: YES
+Time:    170.887 s
+=== [50/100] cifar_4830_lbl3 ===
+Label:   3
+Expect:  3  Match: YES
+Time:    171.069 s
+=== [51/100] cifar_4918_lbl3 ===
+Label:   3
+Expect:  3  Match: YES
+Time:    170.405 s
+=== [52/100] cifar_5062_lbl5 ===
+Label:   5
+Expect:  5  Match: YES
+Time:    170.296 s
+=== [53/100] cifar_5246_lbl7 ===
+Label:   7
+Expect:  7  Match: YES
+Time:    173.270 s
+=== [54/100] cifar_5312_lbl5 ===
+Label:   5
+Expect:  5  Match: YES
+Time:    171.820 s
+=== [55/100] cifar_5315_lbl9 ===
+Label:   9
+Expect:  9  Match: YES
+Time:    173.285 s
+=== [56/100] cifar_5320_lbl7 ===
+Label:   7
+Expect:  7  Match: YES
+Time:    173.111 s
+=== [57/100] cifar_5382_lbl0 ===
+Label:   0
+Expect:  0  Match: YES
+Time:    174.725 s
+=== [58/100] cifar_5467_lbl5 ===
+Label:   5
+Expect:  5  Match: YES
+Time:    168.894 s
+=== [59/100] cifar_5649_lbl0 ===
+Label:   0
+Expect:  0  Match: YES
+Time:    171.034 s
+=== [60/100] cifar_6905_lbl2 ===
+Label:   2
+Expect:  2  Match: YES
+Time:    172.651 s
+=== [61/100] cifar_6962_lbl7 ===
+Label:   4
+Expect:  7  Match: NO
+Time:    173.925 s
+=== [62/100] cifar_7074_lbl3 ===
+Label:   3
+Expect:  3  Match: YES
+Time:    173.570 s
+=== [63/100] cifar_7088_lbl8 ===
+Label:   8
+Expect:  8  Match: YES
+Time:    173.096 s
+=== [64/100] cifar_7146_lbl0 ===
+Label:   0
+Expect:  0  Match: YES
+Time:    171.760 s
+=== [65/100] cifar_7150_lbl3 ===
+Label:   3
+Expect:  3  Match: YES
+Time:    171.106 s
+=== [66/100] cifar_7206_lbl2 ===
+Label:   2
+Expect:  2  Match: YES
+Time:    170.565 s
+=== [67/100] cifar_7216_lbl2 ===
+Label:   2
+Expect:  2  Match: YES
+Time:    170.133 s
+=== [68/100] cifar_7239_lbl4 ===
+Label:   4
+Expect:  4  Match: YES
+Time:    170.724 s
+=== [69/100] cifar_7243_lbl1 ===
+Label:   1
+Expect:  1  Match: YES
+Time:    169.819 s
+=== [70/100] cifar_7268_lbl3 ===
+Label:   3
+Expect:  3  Match: YES
+Time:    174.342 s
+=== [71/100] cifar_7518_lbl3 ===
+Label:   3
+Expect:  3  Match: YES
+Time:    176.072 s
+=== [72/100] cifar_7535_lbl1 ===
+Label:   1
+Expect:  1  Match: YES
+Time:    178.722 s
+=== [73/100] cifar_7553_lbl9 ===
+Label:   9
+Expect:  9  Match: YES
+Time:    171.318 s
+=== [74/100] cifar_7662_lbl5 ===
+Label:   5
+Expect:  5  Match: YES
+Time:    172.893 s
+=== [75/100] cifar_7772_lbl3 ===
+Label:   3
+Expect:  3  Match: YES
+Time:    174.924 s
+=== [76/100] cifar_7820_lbl5 ===
+Label:   5
+Expect:  5  Match: YES
+Time:    175.356 s
+=== [77/100] cifar_7837_lbl7 ===
+Label:   7
+Expect:  7  Match: YES
+Time:    177.355 s
+=== [78/100] cifar_7889_lbl1 ===
+Label:   1
+Expect:  1  Match: YES
+Time:    177.123 s
+=== [79/100] cifar_7895_lbl4 ===
+Label:   4
+Expect:  4  Match: YES
+Time:    172.814 s
+=== [80/100] cifar_7955_lbl9 ===
+Label:   9
+Expect:  9  Match: YES
+Time:    172.344 s
+=== [81/100] cifar_7982_lbl9 ===
+Label:   9
+Expect:  9  Match: YES
+Time:    174.440 s
+=== [82/100] cifar_8040_lbl2 ===
+Label:   2
+Expect:  2  Match: YES
+Time:    171.089 s
+=== [83/100] cifar_8280_lbl4 ===
+Label:   4
+Expect:  4  Match: YES
+Time:    170.563 s
+=== [84/100] cifar_8600_lbl3 ===
+Label:   3
+Expect:  3  Match: YES
+Time:    170.953 s
+=== [85/100] cifar_8697_lbl5 ===
+Label:   5
+Expect:  5  Match: YES
+Time:    171.991 s
+=== [86/100] cifar_8712_lbl1 ===
+Label:   1
+Expect:  1  Match: YES
+Time:    172.700 s
+=== [87/100] cifar_8828_lbl0 ===
+Label:   0
+Expect:  0  Match: YES
+Time:    173.015 s
+=== [88/100] cifar_8944_lbl4 ===
+Label:   4
+Expect:  4  Match: YES
+Time:    175.022 s
+=== [89/100] cifar_9417_lbl4 ===
+Label:   4
+Expect:  4  Match: YES
+Time:    174.264 s
+=== [90/100] cifar_9427_lbl1 ===
+Label:   1
+Expect:  1  Match: YES
+Time:    172.221 s
+=== [91/100] cifar_9467_lbl2 ===
+Label:   4
+Expect:  2  Match: NO
+Time:    173.376 s
+=== [92/100] cifar_9474_lbl8 ===
+Label:   8
+Expect:  8  Match: YES
+Time:    173.093 s
+=== [93/100] cifar_9517_lbl9 ===
+Label:   9
+Expect:  9  Match: YES
+Time:    172.119 s
+=== [94/100] cifar_9670_lbl1 ===
+Label:   1
+Expect:  1  Match: YES
+Time:    173.301 s
+=== [95/100] cifar_9797_lbl1 ===
+Label:   1
+Expect:  1  Match: YES
+Time:    172.119 s
+=== [96/100] cifar_9820_lbl0 ===
+Label:   9
+Expect:  0  Match: NO
+Time:    172.672 s
+=== [97/100] cifar_9915_lbl2 ===
+Label:   2
+Expect:  2  Match: YES
+Time:    172.862 s
+=== [98/100] cifar_9920_lbl6 ===
+Label:   6
+Expect:  6  Match: YES
+Time:    174.223 s
+=== [99/100] cifar_9950_lbl3 ===
+Label:   3
+Expect:  3  Match: YES
+Time:    172.568 s
+=== [100/100] cifar_9973_lbl0 ===
+Label:   0
+Expect:  0  Match: YES
+Time:    173.689 s
+======================================================================
+Stage A: σ_flood ablation (T2.1)
+======================================================================
+sigma_lg       n    wall_s     std_s    rel%   lbl=0   flip%   rc!=0
+----------------------------------------------------------------------
+default        5   171.037     0.759    0.44       5     0.0       0
+55             5   168.817     2.021    1.20       5     0.0       0
+56             5   169.096     0.720    0.43       5     0.0       0
+57             5   170.240     1.351    0.79       5     0.0       0
+58             5   169.295     0.914    0.54       2    60.0       3
+59             5   170.373     1.290    0.76       1    80.0       4
+60             5   171.761     0.223    0.13       1    80.0       4
+
+======================================================================
+Stage B: random-input variance (T2.3)
+======================================================================
+  n          : 100
+  mean wall  : 172.607 s
+  std  wall  : 1.802 s  (1.04%)
+  min / max  : 168.894 / 178.722 s
+  median wall: 172.521 s
+  label-match: 92/100  (92.0%)
+ALL_DONE
+[main] run.sh completed OK

@@ -1,0 +1,30 @@
+======================================================================
+JOTA: ResNet-56 per-layer noise tradeoff (CIFAR-10)
+HERE=/workspace
+OUTPUT_DIR=/output
+SCRIPT=/workspace/scripts/11b_per_layer_resnet56.py
+TEACHER=/workspace/models/resnet56_seed0.pt
+DATA_ROOT=/workspace/data
+======================================================================
+[preflight] all required files present; runtime is offline-safe
+======================================================================
+[run] per-layer sweep
+      /opt/conda/bin/python -u /workspace/scripts/11b_per_layer_resnet56.py --teacher-path /workspace/models/resnet56_seed0.pt --data-root /workspace/data --output-path /output/cifar_per_layer_r56_n20_quantized.json --precision 256 --n-trials 20 --noise-mults 1,10,100,1000,5000 --batch-size 500
+[init] device=cuda
+[model] loaded ResNet-56 from /workspace/models/resnet56_seed0.pt
+[data] test tensor shape=(10000, 3, 32, 32) batch=500
+[baseline] clean test accuracy: 82.22%
+[hooks] 57 Conv2d layers targeted
+[sweep] noise_mults=[1, 10, 100, 1000, 5000] n_trials=20
+    Mult        AtkErr           PredAgr           TestAcc
+      1x      0.00e+00     99.97±0.01%     82.22±0.01%
+     10x      1.33e-02     99.84±0.03%     82.19±0.03%
+    100x      1.06e-01     98.20±0.11%     82.19±0.06%
+   1000x      1.01e+00     51.85±0.31%     49.02±0.37%
+   5000x      6.34e+00      9.64±0.00%     10.00±0.00%
+[done] wrote /output/cifar_per_layer_r56_n20_quantized.json wall=35.5s
+[done] per-layer wall=50.4s rc=0
+======================================================================
+RESULTS WRITTEN:
+  /output/cifar_per_layer_r56_n20_quantized.json  (7671 bytes)
+======================================================================

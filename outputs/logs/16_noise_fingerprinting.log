@@ -1,0 +1,12 @@
+=== Fingerprinting Separability Under Noise ===
+Models: 20, Layer: conv1
+
+Noise       Sep pairs     Within max    Between min   Sep ratio  FP acc    
+---------------------------------------------------------------------------
+1x          190/190       0.0000        0.9710        inf       20/20     
+10x         190/190       0.0463        0.9660        20.8x     20/20     
+100x        190/190       0.4415        0.9107        2.1x      20/20     
+1000x       13/190        2.2610        1.2542        0.6x      1/20      
+5000x       6/190         11.0239       5.6827        0.5x      1/20      
+
+Done.

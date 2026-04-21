@@ -1,0 +1,29 @@
+concrete-python not available, skipping.
+
+=== TFHE post-bootstrapping noise simulation ===
+Simulating TFHE noise characteristics from published parameters.
+
+  TFHE-conservative: sigma=3.05e-05, sigma/Delta=1.56e-02
+    Max recovery error across 10 trials: 0.00e+00
+    All exact: True
+
+  TFHE-standard: sigma=9.54e-07, sigma/Delta=4.88e-04
+    Max recovery error across 10 trials: 0.00e+00
+    All exact: True
+
+  TFHE-optimistic: sigma=2.98e-08, sigma/Delta=1.53e-05
+    Max recovery error across 10 trials: 0.00e+00
+    All exact: True
+
+TenSEAL not available, skipping CKKS.
+
+=== SUMMARY ===
+The correctness bound Delta = 1/(2p) is a hard constraint in ALL
+lattice-based HE schemes (TFHE, BFV, CKKS). The actual noise is
+orders of magnitude below this bound, so round-then-sort recovery
+is exact regardless of the specific HE scheme.
+  TFHE-conservative: exact=True
+  TFHE-standard: exact=True
+  TFHE-optimistic: exact=True
+
+Done.

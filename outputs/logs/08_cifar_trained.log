@@ -1,0 +1,198 @@
+Found 20 trained models
+
+============================================================
+Appendix A - Exact Recovery (tab:cifar_spec)
+============================================================
+
+--- 4-bit (p=16) ---
+  seed=0: all_exact=True (21 layers)
+  seed=1: all_exact=True (21 layers)
+  seed=10: all_exact=True (21 layers)
+  seed=11: all_exact=True (21 layers)
+  seed=12: all_exact=True (21 layers)
+  seed=13: all_exact=True (21 layers)
+  seed=14: all_exact=True (21 layers)
+  seed=15: all_exact=True (21 layers)
+  seed=16: all_exact=True (21 layers)
+  seed=17: all_exact=True (21 layers)
+  seed=18: all_exact=True (21 layers)
+  seed=19: all_exact=True (21 layers)
+  seed=2: all_exact=True (21 layers)
+  seed=3: all_exact=True (21 layers)
+  seed=4: all_exact=True (21 layers)
+  seed=5: all_exact=True (21 layers)
+  seed=6: all_exact=True (21 layers)
+  seed=7: all_exact=True (21 layers)
+  seed=8: all_exact=True (21 layers)
+  seed=9: all_exact=True (21 layers)
+
+  Summary: 20/20 models all-exact at 4-bit
+  Layers: 21
+    conv1                      16x27   bias=False
+    layer1.0.conv1             16x144  bias=False
+    layer1.0.conv2             16x144  bias=False
+    layer1.1.conv1             16x144  bias=False
+    layer1.1.conv2             16x144  bias=False
+    layer1.2.conv1             16x144  bias=False
+    layer1.2.conv2             16x144  bias=False
+    layer2.0.conv1             32x144  bias=False
+    layer2.0.conv2             32x288  bias=False
+    layer2.0.shortcut.0        32x16   bias=False
+    layer2.1.conv1             32x288  bias=False
+    layer2.1.conv2             32x288  bias=False
+    layer2.2.conv1             32x288  bias=False
+    layer2.2.conv2             32x288  bias=False
+    layer3.0.conv1             64x288  bias=False
+    layer3.0.conv2             64x576  bias=False
+    layer3.0.shortcut.0        64x32   bias=False
+    layer3.1.conv1             64x576  bias=False
+    layer3.1.conv2             64x576  bias=False
+    layer3.2.conv1             64x576  bias=False
+    layer3.2.conv2             64x576  bias=False
+
+--- 8-bit (p=256) ---
+  seed=0: all_exact=True (21 layers)
+  seed=1: all_exact=True (21 layers)
+  seed=10: all_exact=True (21 layers)
+  seed=11: all_exact=True (21 layers)
+  seed=12: all_exact=True (21 layers)
+  seed=13: all_exact=True (21 layers)
+  seed=14: all_exact=True (21 layers)
+  seed=15: all_exact=True (21 layers)
+  seed=16: all_exact=True (21 layers)
+  seed=17: all_exact=True (21 layers)
+  seed=18: all_exact=True (21 layers)
+  seed=19: all_exact=True (21 layers)
+  seed=2: all_exact=True (21 layers)
+  seed=3: all_exact=True (21 layers)
+  seed=4: all_exact=True (21 layers)
+  seed=5: all_exact=True (21 layers)
+  seed=6: all_exact=True (21 layers)
+  seed=7: all_exact=True (21 layers)
+  seed=8: all_exact=True (21 layers)
+  seed=9: all_exact=True (21 layers)
+
+  Summary: 20/20 models all-exact at 8-bit
+  Layers: 21
+    conv1                      16x27   bias=False
+    layer1.0.conv1             16x144  bias=False
+    layer1.0.conv2             16x144  bias=False
+    layer1.1.conv1             16x144  bias=False
+    layer1.1.conv2             16x144  bias=False
+    layer1.2.conv1             16x144  bias=False
+    layer1.2.conv2             16x144  bias=False
+    layer2.0.conv1             32x144  bias=False
+    layer2.0.conv2             32x288  bias=False
+    layer2.0.shortcut.0        32x16   bias=False
+    layer2.1.conv1             32x288  bias=False
+    layer2.1.conv2             32x288  bias=False
+    layer2.2.conv1             32x288  bias=False
+    layer2.2.conv2             32x288  bias=False
+    layer3.0.conv1             64x288  bias=False
+    layer3.0.conv2             64x576  bias=False
+    layer3.0.shortcut.0        64x32   bias=False
+    layer3.1.conv1             64x576  bias=False
+    layer3.1.conv2             64x576  bias=False
+    layer3.2.conv1             64x576  bias=False
+    layer3.2.conv2             64x576  bias=False
+
+--- 12-bit (p=4096) ---
+  seed=0: all_exact=True (21 layers)
+  seed=1: all_exact=True (21 layers)
+  seed=10: all_exact=True (21 layers)
+  seed=11: all_exact=True (21 layers)
+  seed=12: all_exact=True (21 layers)
+  seed=13: all_exact=True (21 layers)
+  seed=14: all_exact=True (21 layers)
+  seed=15: all_exact=True (21 layers)
+  seed=16: all_exact=True (21 layers)
+  seed=17: all_exact=True (21 layers)
+  seed=18: all_exact=True (21 layers)
+  seed=19: all_exact=True (21 layers)
+  seed=2: all_exact=True (21 layers)
+  seed=3: all_exact=True (21 layers)
+  seed=4: all_exact=True (21 layers)
+  seed=5: all_exact=True (21 layers)
+  seed=6: all_exact=True (21 layers)
+  seed=7: all_exact=True (21 layers)
+  seed=8: all_exact=True (21 layers)
+  seed=9: all_exact=True (21 layers)
+
+  Summary: 20/20 models all-exact at 12-bit
+  Layers: 21
+    conv1                      16x27   bias=False
+    layer1.0.conv1             16x144  bias=False
+    layer1.0.conv2             16x144  bias=False
+    layer1.1.conv1             16x144  bias=False
+    layer1.1.conv2             16x144  bias=False
+    layer1.2.conv1             16x144  bias=False
+    layer1.2.conv2             16x144  bias=False
+    layer2.0.conv1             32x144  bias=False
+    layer2.0.conv2             32x288  bias=False
+    layer2.0.shortcut.0        32x16   bias=False
+    layer2.1.conv1             32x288  bias=False
+    layer2.1.conv2             32x288  bias=False
+    layer2.2.conv1             32x288  bias=False
+    layer2.2.conv2             32x288  bias=False
+    layer3.0.conv1             64x288  bias=False
+    layer3.0.conv2             64x576  bias=False
+    layer3.0.shortcut.0        64x32   bias=False
+    layer3.1.conv1             64x576  bias=False
+    layer3.1.conv2             64x576  bias=False
+    layer3.2.conv1             64x576  bias=False
+    layer3.2.conv2             64x576  bias=False
+
+============================================================
+Appendix A - Same-Architecture Fingerprinting
+============================================================
+
+--- Layer: conv1 ---
+  Models: 20
+  Within max:  0.000000
+  Between min: 0.297868
+  Separable:   True
+  Ratio:       inf
+
+--- Layer: layer2.0.conv1 ---
+  Models: 20
+  Within max:  0.000000
+  Between min: 0.159600
+  Separable:   True
+  Ratio:       inf
+
+--- Layer: layer3.0.conv1 ---
+  Models: 20
+  Within max:  0.000000
+  Between min: 0.107622
+  Separable:   True
+  Ratio:       inf
+
+============================================================
+Appendix A - Noise Distribution Robustness
+============================================================
+
+--- 4-bit (p=16) ---
+  Zero        : 10/10 exact
+  Gaussian    : 10/10 exact
+  Uniform     : 10/10 exact
+  Triangular  : 10/10 exact
+  Laplace     : 10/10 exact
+  Worst-case  : 10/10 exact
+
+--- 8-bit (p=256) ---
+  Zero        : 10/10 exact
+  Gaussian    : 10/10 exact
+  Uniform     : 10/10 exact
+  Triangular  : 10/10 exact
+  Laplace     : 10/10 exact
+  Worst-case  : 10/10 exact
+
+--- 12-bit (p=4096) ---
+  Zero        : 10/10 exact
+  Gaussian    : 10/10 exact
+  Uniform     : 10/10 exact
+  Triangular  : 10/10 exact
+  Laplace     : 10/10 exact
+  Worst-case  : 10/10 exact
+
+All Appendix A experiments complete.

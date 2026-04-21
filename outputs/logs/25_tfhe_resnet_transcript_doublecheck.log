@@ -1,0 +1,38 @@
+concrete-python version: 2.11.0
+=== TFHE transcript check on trained ResNet-20 layers ===
+teacher_path=models/resnet20_seed1.pt
+precision p=256
+layers=['conv1', 'layer1.0.conv1']
+
+=== Layer conv1 (16x27) ===
+KeySetCache: miss, regenerating /tmp/concrete_keys/12793056128380417133
+  [fixed] Queries: 28
+  [fixed] Compile+keygen time: 0.15s
+  [fixed] Query time: 0.42s
+  [fixed] Max recovery error: 0.00e+00
+  [fixed] All exact: True
+KeySetCache: miss, regenerating /tmp/concrete_keys/415885927482430942
+  [fresh] Queries: 28
+  [fresh] Compile+keygen time: 0.00s
+  [fresh] Query time: 6.01s
+  [fresh] Max recovery error: 0.00e+00
+  [fresh] All exact: True
+
+=== Layer layer1.0.conv1 (16x144) ===
+KeySetCache: miss, regenerating /tmp/concrete_keys/12461814845756423182
+  [fixed] Queries: 145
+  [fixed] Compile+keygen time: 0.21s
+  [fixed] Query time: 5.49s
+  [fixed] Max recovery error: 0.00e+00
+  [fixed] All exact: True
+KeySetCache: miss, regenerating /tmp/concrete_keys/14119382480302785905
+  [fresh] Queries: 145
+  [fresh] Compile+keygen time: 0.00s
+  [fresh] Query time: 34.11s
+  [fresh] Max recovery error: 0.00e+00
+  [fresh] All exact: True
+
+=== SUMMARY ===
+  conv1: {'fixed': {'dimensions': '16x27', 'queries': 28, 'compile_and_keygen_time_sec': 0.1539163589477539, 'query_time_sec': 0.41927170753479004, 'max_recovery_error': 0.0, 'all_exact': True, 'perm': [2, 0, 9, 4, 15, 8, 13, 11, 5, 14, 10, 1, 7, 6, 3, 12], 'transcript_sample': [{'query': 'zero', 'perm_mode': 'fixed', 'max_error': 0.0, 'observed_first4': [0.0, 0.0, 0.0, 0.0]}, {'query': 'e_0', 'perm_mode': 'fixed', 'max_error': 0.0, 'observed_first4': [0.64453125, 0.1015625, -0.0703125, -0.14453125]}, {'query': 'e_1', 'perm_mode': 'fixed', 'max_error': 0.0, 'observed_first4': [1.078125, 0.01171875, -0.171875, -0.48828125]}]}, 'fresh': {'dimensions': '16x27', 'queries': 28, 'compile_and_keygen_time_sec': 0.0, 'query_time_sec': 6.012055158615112, 'max_recovery_error': 0.0, 'all_exact': True, 'perm': 'fresh-per-query', 'transcript_sample': [{'query': 'zero', 'perm_mode': 'fresh', 'max_error': 0.0, 'observed_first4': [0.0, 0.0, 0.0, 0.0]}, {'query': 'e_0', 'perm_mode': 'fresh', 'max_error': 0.0, 'observed_first4': [0.09375, -0.31640625, -0.4140625, 0.1015625]}, {'query': 'e_1', 'perm_mode': 'fresh', 'max_error': 0.0, 'observed_first4': [-0.32421875, 0.01171875, -0.203125, 0.31640625]}]}}
+  layer1.0.conv1: {'fixed': {'dimensions': '16x144', 'queries': 145, 'compile_and_keygen_time_sec': 0.20727229118347168, 'query_time_sec': 5.490321397781372, 'max_recovery_error': 0.0, 'all_exact': True, 'perm': [10, 9, 6, 3, 4, 0, 7, 12, 15, 1, 14, 11, 5, 8, 13, 2], 'transcript_sample': [{'query': 'zero', 'perm_mode': 'fixed', 'max_error': 0.0, 'observed_first4': [0.0, 0.0, 0.0, 0.0]}, {'query': 'e_0', 'perm_mode': 'fixed', 'max_error': 0.0, 'observed_first4': [-0.1328125, 0.03125, 0.0703125, -0.00390625]}, {'query': 'e_1', 'perm_mode': 'fixed', 'max_error': 0.0, 'observed_first4': [-0.05859375, -0.07421875, 0.03515625, 0.078125]}]}, 'fresh': {'dimensions': '16x144', 'queries': 145, 'compile_and_keygen_time_sec': 0.0, 'query_time_sec': 34.11060404777527, 'max_recovery_error': 0.0, 'all_exact': True, 'perm': 'fresh-per-query', 'transcript_sample': [{'query': 'zero', 'perm_mode': 'fresh', 'max_error': 0.0, 'observed_first4': [0.0, 0.0, 0.0, 0.0]}, {'query': 'e_0', 'perm_mode': 'fresh', 'max_error': 0.0, 'observed_first4': [-0.03125, 0.03125, -0.00390625, 0.140625]}, {'query': 'e_1', 'perm_mode': 'fresh', 'max_error': 0.0, 'observed_first4': [-0.1171875, 0.03515625, -0.05078125, -0.05078125]}]}}
+Saved outputs/logs/25_tfhe_resnet_transcript_doublecheck.json

@@ -1,0 +1,113 @@
+======================================================================
+Exp 31: Architecture-Agnostic Attack Verification
+======================================================================
+
+==================================================
+Loading VGG-16...
+  Conv layers: 13, Total conv params: 14,710,464
+  Top-3 largest layers:
+    features.19                               512 x 4608  ( 2,359,296 params)
+    features.21                               512 x 4608  ( 2,359,296 params)
+    features.24                               512 x 4608  ( 2,359,296 params)
+  4-bit: ALL EXACT
+  8-bit: ALL EXACT
+  12-bit: ALL EXACT
+
+  Noise robustness (8-bit) on largest layer features.19 (512x4608):
+    Zero        : EXACT
+    Gaussian    : EXACT
+    Uniform     : EXACT
+    Triangular  : EXACT
+    Laplace     : EXACT
+    Worst-case  : EXACT
+
+==================================================
+Loading DenseNet-121...
+  Conv layers: 120, Total conv params: 6,870,208
+  Top-3 largest layers:
+    features.transition3.conv                 512 x 1024  (   524,288 params)
+    features.transition2.conv                 256 x 512   (   131,072 params)
+    features.denseblock3.denselayer24.conv1   128 x 992   (   126,976 params)
+  4-bit: ALL EXACT
+  8-bit: ALL EXACT
+  12-bit: ALL EXACT
+
+  Noise robustness (8-bit) on largest layer features.transition3.conv (512x1024):
+    Zero        : EXACT
+    Gaussian    : EXACT
+    Uniform     : EXACT
+    Triangular  : EXACT
+    Laplace     : EXACT
+    Worst-case  : EXACT
+
+==================================================
+Loading MobileNet-V2...
+  Conv layers: 52, Total conv params: 2,189,760
+  Top-3 largest layers:
+    features.18.0                            1280 x 320   (   409,600 params)
+    features.17.conv.2                        320 x 960   (   307,200 params)
+    features.15.conv.0.0                      960 x 160   (   153,600 params)
+  4-bit: ALL EXACT
+  8-bit: ALL EXACT
+  12-bit: ALL EXACT
+
+  Noise robustness (8-bit) on largest layer features.18.0 (1280x320):
+    Zero        : EXACT
+    Gaussian    : EXACT
+    Uniform     : EXACT
+    Triangular  : EXACT
+    Laplace     : EXACT
+    Worst-case  : EXACT
+
+==================================================
+Loading EfficientNet-B0...
+  Conv layers: 81, Total conv params: 3,956,192
+  Top-3 largest layers:
+    features.8.0                             1280 x 320   (   409,600 params)
+    features.7.0.block.3.0                    320 x 1152  (   368,640 params)
+    features.6.1.block.0.0                   1152 x 192   (   221,184 params)
+  4-bit: ALL EXACT
+  8-bit: ALL EXACT
+  12-bit: ALL EXACT
+
+  Noise robustness (8-bit) on largest layer features.8.0 (1280x320):
+    Zero        : EXACT
+    Gaussian    : EXACT
+    Uniform     : EXACT
+    Triangular  : EXACT
+    Laplace     : EXACT
+    Worst-case  : EXACT
+
+==================================================
+Loading ConvNeXt-Tiny...
+  Conv layers: 22, Total conv params: 1,877,472
+  Top-3 largest layers:
+    features.6.1                              768 x 1536  ( 1,179,648 params)
+    features.4.1                              384 x 768   (   294,912 params)
+    features.2.1                              192 x 384   (    73,728 params)
+  4-bit: ALL EXACT
+  8-bit: ALL EXACT
+  12-bit: ALL EXACT
+
+  Noise robustness (8-bit) on largest layer features.6.1 (768x1536):
+    Zero        : EXACT
+    Gaussian    : EXACT
+    Uniform     : EXACT
+    Triangular  : EXACT
+    Laplace     : EXACT
+    Worst-case  : EXACT
+
+======================================================================
+SUMMARY TABLE
+======================================================================
+Architecture        Conv Params      4-bit      8-bit     12-bit
+-----------------------------------------------------------------
+VGG-16             14,710,464      13/13     13/13     13/13
+DenseNet-121        6,870,208    120/120   120/120   120/120
+MobileNet-V2        2,189,760      52/52     52/52     52/52
+EfficientNet-B0     3,956,192      81/81     81/81     81/81
+ConvNeXt-Tiny       1,877,472      22/22     22/22     22/22
+
+======================================================================
+ALL ARCHITECTURE EXPERIMENTS COMPLETE
+======================================================================

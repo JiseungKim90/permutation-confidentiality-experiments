@@ -1,0 +1,594 @@
+======================================================================
+JOTA: ResNet-56 KD ablation (CIFAR-10)
+HERE=/workspace
+OUTPUT_DIR=/output
+SCRIPT=/workspace/scripts/18_kd_spectral_priors_cifar.py
+TEACHER=/workspace/models/resnet56_seed0.pt
+DATA_ROOT=/workspace/data
+======================================================================
+[preflight] all required files present; runtime is offline-safe
+======================================================================
+[run] query_budget=2000
+      /opt/conda/bin/python -u /workspace/scripts/18_kd_spectral_priors_cifar.py --query-budget 2000 --output-path /output/cifar_kd_r56_q2000_e10_s5_quantized_random_rerun.json --architecture resnet56 --teacher-path /workspace/models/resnet56_seed0.pt --teacher-logits-source quantized --data-root /workspace/data --subset-mode random --subset-seed 0 --batch-size 128 --student-epochs 10 --student-lr 0.05 --momentum 0.9 --weight-decay 1e-4 --temperature 4.0 --reg-lambda 5.0 --distill-seeds 5 --precision 256 --prior-scope all --ablation-modes baseline,first,colnorm,full
+=== CIFAR-10 logit stealing with spectral priors ===
+device=cuda
+{
+  "teacher_path": "resnet56_seed0.pt",
+  "teacher_logits_source": "quantized",
+  "data_root": "data",
+  "query_budget": 2000,
+  "subset_mode": "random",
+  "subset_seed": 0,
+  "batch_size": 128,
+  "student_epochs": 10,
+  "student_lr": 0.05,
+  "momentum": 0.9,
+  "weight_decay": 0.0001,
+  "temperature": 4.0,
+  "reg_lambda": 5.0,
+  "distill_seeds": 5,
+  "precision": 256,
+  "prior_scope": "all",
+  "ablation_modes": "baseline,first,colnorm,full",
+  "architecture": "resnet56",
+  "output_path": "cifar_kd_r56_q2000_e10_s5_quantized_random_rerun.json"
+}
+[data] using pre-permuted CIFAR subset at /workspace/data/cifar_subset.npz.xz (train=5000, test=10000)
+[teacher] loaded resnet56_seed0.pt (logits=quantized): test_acc=82.47%
+[queries] cached exact teacher logits for 2000 unlabeled images
+[ablation] modes=['baseline', 'first', 'colnorm', 'full']
+[attack_layer] verified on conv1: max_err=0, shortcut valid
+[spectra/all] using 57 conv layers
+  conv1                shape=(16, 27) std=0.3646 mean_col_norm=1.3822
+  layer1.0.conv1       shape=(16, 144) std=0.1726 mean_col_norm=0.6784
+  layer1.0.conv2       shape=(16, 144) std=0.1381 mean_col_norm=0.5346
+[attack_layer] verified on conv1: max_err=0, shortcut valid
+[spectra/first] using 1 conv layers
+  conv1                shape=(16, 27) std=0.3646 mean_col_norm=1.3822
+[baseline] seed=0 epoch 01/10: kd=9.0783, reg=0.000000, test_acc=10.00%
+[baseline] seed=0 epoch 02/10: kd=7.6303, reg=0.000000, test_acc=11.54%
+[baseline] seed=0 epoch 03/10: kd=7.4030, reg=0.000000, test_acc=14.71%
+[baseline] seed=0 epoch 04/10: kd=7.0239, reg=0.000000, test_acc=19.59%
+[baseline] seed=0 epoch 05/10: kd=6.7594, reg=0.000000, test_acc=19.38%
+[baseline] seed=0 epoch 06/10: kd=6.4632, reg=0.000000, test_acc=27.16%
+[baseline] seed=0 epoch 07/10: kd=6.0506, reg=0.000000, test_acc=29.09%
+[baseline] seed=0 epoch 08/10: kd=5.7128, reg=0.000000, test_acc=30.28%
+[baseline] seed=0 epoch 09/10: kd=5.5285, reg=0.000000, test_acc=30.64%
+[baseline] seed=0 epoch 10/10: kd=5.4620, reg=0.000000, test_acc=30.84%
+[baseline] seed=1 epoch 01/10: kd=9.4684, reg=0.000000, test_acc=10.00%
+[baseline] seed=1 epoch 02/10: kd=7.7087, reg=0.000000, test_acc=11.43%
+[baseline] seed=1 epoch 03/10: kd=7.3438, reg=0.000000, test_acc=20.07%
+[baseline] seed=1 epoch 04/10: kd=6.8887, reg=0.000000, test_acc=24.63%
+[baseline] seed=1 epoch 05/10: kd=6.6287, reg=0.000000, test_acc=25.74%
+[baseline] seed=1 epoch 06/10: kd=6.1180, reg=0.000000, test_acc=25.37%
+[baseline] seed=1 epoch 07/10: kd=5.8416, reg=0.000000, test_acc=30.33%
+[baseline] seed=1 epoch 08/10: kd=5.6637, reg=0.000000, test_acc=30.23%
+[baseline] seed=1 epoch 09/10: kd=5.2806, reg=0.000000, test_acc=32.69%
+[baseline] seed=1 epoch 10/10: kd=5.1875, reg=0.000000, test_acc=34.14%
+[baseline] seed=2 epoch 01/10: kd=9.8163, reg=0.000000, test_acc=10.03%
+[baseline] seed=2 epoch 02/10: kd=7.8675, reg=0.000000, test_acc=19.76%
+[baseline] seed=2 epoch 03/10: kd=7.0588, reg=0.000000, test_acc=22.74%
+[baseline] seed=2 epoch 04/10: kd=6.8953, reg=0.000000, test_acc=23.51%
+[baseline] seed=2 epoch 05/10: kd=6.6555, reg=0.000000, test_acc=27.04%
+[baseline] seed=2 epoch 06/10: kd=6.0909, reg=0.000000, test_acc=28.05%
+[baseline] seed=2 epoch 07/10: kd=5.7349, reg=0.000000, test_acc=33.65%
+[baseline] seed=2 epoch 08/10: kd=5.4209, reg=0.000000, test_acc=32.34%
+[baseline] seed=2 epoch 09/10: kd=5.1503, reg=0.000000, test_acc=34.55%
+[baseline] seed=2 epoch 10/10: kd=4.9598, reg=0.000000, test_acc=34.93%
+[baseline] seed=3 epoch 01/10: kd=9.3508, reg=0.000000, test_acc=10.02%
+[baseline] seed=3 epoch 02/10: kd=7.8262, reg=0.000000, test_acc=17.47%
+[baseline] seed=3 epoch 03/10: kd=6.8668, reg=0.000000, test_acc=23.61%
+[baseline] seed=3 epoch 04/10: kd=6.5232, reg=0.000000, test_acc=24.69%
+[baseline] seed=3 epoch 05/10: kd=6.2726, reg=0.000000, test_acc=29.29%
+[baseline] seed=3 epoch 06/10: kd=5.6830, reg=0.000000, test_acc=28.17%
+[baseline] seed=3 epoch 07/10: kd=5.3150, reg=0.000000, test_acc=31.90%
+[baseline] seed=3 epoch 08/10: kd=5.0490, reg=0.000000, test_acc=33.00%
+[baseline] seed=3 epoch 09/10: kd=4.8630, reg=0.000000, test_acc=34.33%
+[baseline] seed=3 epoch 10/10: kd=4.7718, reg=0.000000, test_acc=35.60%
+[baseline] seed=4 epoch 01/10: kd=9.9917, reg=0.000000, test_acc=10.01%
+[baseline] seed=4 epoch 02/10: kd=7.7422, reg=0.000000, test_acc=9.45%
+[baseline] seed=4 epoch 03/10: kd=7.0217, reg=0.000000, test_acc=20.75%
+[baseline] seed=4 epoch 04/10: kd=6.5093, reg=0.000000, test_acc=24.26%
+[baseline] seed=4 epoch 05/10: kd=6.2538, reg=0.000000, test_acc=29.05%
+[baseline] seed=4 epoch 06/10: kd=5.9939, reg=0.000000, test_acc=29.63%
+[baseline] seed=4 epoch 07/10: kd=5.6550, reg=0.000000, test_acc=32.45%
+[baseline] seed=4 epoch 08/10: kd=5.4221, reg=0.000000, test_acc=32.09%
+[baseline] seed=4 epoch 09/10: kd=5.2372, reg=0.000000, test_acc=32.67%
+[baseline] seed=4 epoch 10/10: kd=5.0809, reg=0.000000, test_acc=33.49%
+[first] seed=0 epoch 01/10: kd=10.5804, reg=0.001061, test_acc=10.02%
+[first] seed=0 epoch 02/10: kd=8.0823, reg=0.002238, test_acc=7.59%
+[first] seed=0 epoch 03/10: kd=7.5683, reg=0.001081, test_acc=14.72%
+[first] seed=0 epoch 04/10: kd=7.0980, reg=0.000497, test_acc=19.06%
+[first] seed=0 epoch 05/10: kd=7.0544, reg=0.000600, test_acc=21.36%
+[first] seed=0 epoch 06/10: kd=6.5246, reg=0.000586, test_acc=28.35%
+[first] seed=0 epoch 07/10: kd=6.1799, reg=0.000299, test_acc=26.97%
+[first] seed=0 epoch 08/10: kd=5.9158, reg=0.000195, test_acc=31.50%
+[first] seed=0 epoch 09/10: kd=5.7111, reg=0.000175, test_acc=32.09%
+[first] seed=0 epoch 10/10: kd=5.6063, reg=0.000159, test_acc=32.85%
+[first] seed=1 epoch 01/10: kd=9.3700, reg=0.000696, test_acc=9.33%
+[first] seed=1 epoch 02/10: kd=7.7444, reg=0.002619, test_acc=12.65%
+[first] seed=1 epoch 03/10: kd=7.0996, reg=0.000772, test_acc=24.93%
+[first] seed=1 epoch 04/10: kd=6.7104, reg=0.000250, test_acc=24.86%
+[first] seed=1 epoch 05/10: kd=6.4087, reg=0.000247, test_acc=24.29%
+[first] seed=1 epoch 06/10: kd=6.0614, reg=0.000402, test_acc=29.61%
+[first] seed=1 epoch 07/10: kd=5.9010, reg=0.000265, test_acc=31.80%
+[first] seed=1 epoch 08/10: kd=5.7647, reg=0.000235, test_acc=32.67%
+[first] seed=1 epoch 09/10: kd=5.4427, reg=0.000202, test_acc=33.88%
+[first] seed=1 epoch 10/10: kd=5.3416, reg=0.000211, test_acc=34.20%
+[first] seed=2 epoch 01/10: kd=9.6802, reg=0.001081, test_acc=11.28%
+[first] seed=2 epoch 02/10: kd=7.9729, reg=0.002201, test_acc=15.71%
+[first] seed=2 epoch 03/10: kd=7.1557, reg=0.000866, test_acc=22.14%
+[first] seed=2 epoch 04/10: kd=6.7961, reg=0.000445, test_acc=22.88%
+[first] seed=2 epoch 05/10: kd=6.3618, reg=0.000264, test_acc=27.73%
+[first] seed=2 epoch 06/10: kd=5.7602, reg=0.000237, test_acc=28.64%
+[first] seed=2 epoch 07/10: kd=5.4044, reg=0.000124, test_acc=33.01%
+[first] seed=2 epoch 08/10: kd=5.2045, reg=0.000100, test_acc=33.42%
+[first] seed=2 epoch 09/10: kd=4.9190, reg=0.000137, test_acc=35.22%
+[first] seed=2 epoch 10/10: kd=4.7351, reg=0.000096, test_acc=35.76%
+[first] seed=3 epoch 01/10: kd=9.6839, reg=0.002161, test_acc=10.00%
+[first] seed=3 epoch 02/10: kd=7.9375, reg=0.005031, test_acc=11.87%
+[first] seed=3 epoch 03/10: kd=6.9572, reg=0.002847, test_acc=22.34%
+[first] seed=3 epoch 04/10: kd=6.7069, reg=0.000500, test_acc=22.91%
+[first] seed=3 epoch 05/10: kd=6.2584, reg=0.000192, test_acc=28.02%
+[first] seed=3 epoch 06/10: kd=5.9229, reg=0.000210, test_acc=29.41%
+[first] seed=3 epoch 07/10: kd=5.5724, reg=0.000160, test_acc=31.71%
+[first] seed=3 epoch 08/10: kd=5.2923, reg=0.000246, test_acc=32.53%
+[first] seed=3 epoch 09/10: kd=5.1536, reg=0.000145, test_acc=34.42%
+[first] seed=3 epoch 10/10: kd=5.0678, reg=0.000118, test_acc=35.07%
+[first] seed=4 epoch 01/10: kd=10.1345, reg=0.002395, test_acc=10.00%
+[first] seed=4 epoch 02/10: kd=8.2194, reg=0.002789, test_acc=17.14%
+[first] seed=4 epoch 03/10: kd=7.1451, reg=0.000569, test_acc=23.05%
+[first] seed=4 epoch 04/10: kd=6.3249, reg=0.000666, test_acc=24.79%
+[first] seed=4 epoch 05/10: kd=6.0257, reg=0.000500, test_acc=30.49%
+[first] seed=4 epoch 06/10: kd=5.6539, reg=0.000556, test_acc=34.10%
+[first] seed=4 epoch 07/10: kd=5.2559, reg=0.000274, test_acc=35.16%
+[first] seed=4 epoch 08/10: kd=5.0212, reg=0.000240, test_acc=34.71%
+[first] seed=4 epoch 09/10: kd=4.7887, reg=0.000145, test_acc=36.66%
+[first] seed=4 epoch 10/10: kd=4.6281, reg=0.000118, test_acc=37.00%
+[colnorm] seed=0 epoch 01/10: kd=9.5175, reg=0.000107, test_acc=10.08%
+[colnorm] seed=0 epoch 02/10: kd=7.6280, reg=0.000772, test_acc=13.03%
+[colnorm] seed=0 epoch 03/10: kd=7.0962, reg=0.001316, test_acc=21.15%
+[colnorm] seed=0 epoch 04/10: kd=6.3393, reg=0.001534, test_acc=21.91%
+[colnorm] seed=0 epoch 05/10: kd=5.8508, reg=0.001672, test_acc=27.92%
+[colnorm] seed=0 epoch 06/10: kd=5.4490, reg=0.001792, test_acc=31.60%
+[colnorm] seed=0 epoch 07/10: kd=5.0454, reg=0.001842, test_acc=32.81%
+[colnorm] seed=0 epoch 08/10: kd=4.6959, reg=0.001846, test_acc=33.50%
+[colnorm] seed=0 epoch 09/10: kd=4.4764, reg=0.001847, test_acc=36.08%
+[colnorm] seed=0 epoch 10/10: kd=4.3164, reg=0.001844, test_acc=37.22%
+[colnorm] seed=1 epoch 01/10: kd=9.1212, reg=0.000113, test_acc=10.01%
+[colnorm] seed=1 epoch 02/10: kd=7.3785, reg=0.000953, test_acc=10.01%
+[colnorm] seed=1 epoch 03/10: kd=6.6249, reg=0.001695, test_acc=21.23%
+[colnorm] seed=1 epoch 04/10: kd=6.0132, reg=0.001961, test_acc=29.74%
+[colnorm] seed=1 epoch 05/10: kd=5.6985, reg=0.002025, test_acc=29.85%
+[colnorm] seed=1 epoch 06/10: kd=5.4016, reg=0.002056, test_acc=31.67%
+[colnorm] seed=1 epoch 07/10: kd=5.1639, reg=0.002083, test_acc=33.64%
+[colnorm] seed=1 epoch 08/10: kd=4.9612, reg=0.002090, test_acc=34.70%
+[colnorm] seed=1 epoch 09/10: kd=4.6093, reg=0.002092, test_acc=35.79%
+[colnorm] seed=1 epoch 10/10: kd=4.5107, reg=0.002087, test_acc=36.53%
+[colnorm] seed=2 epoch 01/10: kd=9.2650, reg=0.000235, test_acc=10.00%
+[colnorm] seed=2 epoch 02/10: kd=7.6420, reg=0.001585, test_acc=12.68%
+[colnorm] seed=2 epoch 03/10: kd=6.5208, reg=0.002497, test_acc=18.09%
+[colnorm] seed=2 epoch 04/10: kd=6.1576, reg=0.002802, test_acc=27.91%
+[colnorm] seed=2 epoch 05/10: kd=5.9279, reg=0.003044, test_acc=32.14%
+[colnorm] seed=2 epoch 06/10: kd=5.2935, reg=0.003211, test_acc=33.87%
+[colnorm] seed=2 epoch 07/10: kd=4.8191, reg=0.003234, test_acc=34.03%
+[colnorm] seed=2 epoch 08/10: kd=4.4972, reg=0.003218, test_acc=36.60%
+[colnorm] seed=2 epoch 09/10: kd=4.2168, reg=0.003202, test_acc=38.33%
+[colnorm] seed=2 epoch 10/10: kd=3.9895, reg=0.003193, test_acc=39.99%
+[colnorm] seed=3 epoch 01/10: kd=8.8485, reg=0.000342, test_acc=10.23%
+[colnorm] seed=3 epoch 02/10: kd=7.6943, reg=0.002448, test_acc=15.91%
+[colnorm] seed=3 epoch 03/10: kd=6.4044, reg=0.003809, test_acc=21.09%
+[colnorm] seed=3 epoch 04/10: kd=6.3761, reg=0.004233, test_acc=22.63%
+[colnorm] seed=3 epoch 05/10: kd=6.1072, reg=0.004437, test_acc=27.93%
+[colnorm] seed=3 epoch 06/10: kd=5.5859, reg=0.004500, test_acc=29.80%
+[colnorm] seed=3 epoch 07/10: kd=5.2010, reg=0.004487, test_acc=31.27%
+[colnorm] seed=3 epoch 08/10: kd=4.9312, reg=0.004459, test_acc=34.25%
+[colnorm] seed=3 epoch 09/10: kd=4.7516, reg=0.004441, test_acc=36.39%
+[colnorm] seed=3 epoch 10/10: kd=4.5901, reg=0.004435, test_acc=37.65%
+[colnorm] seed=4 epoch 01/10: kd=9.0993, reg=0.000246, test_acc=10.01%
+[colnorm] seed=4 epoch 02/10: kd=7.8479, reg=0.001692, test_acc=11.32%
+[colnorm] seed=4 epoch 03/10: kd=6.7492, reg=0.002629, test_acc=20.98%
+[colnorm] seed=4 epoch 04/10: kd=6.2136, reg=0.002849, test_acc=25.53%
+[colnorm] seed=4 epoch 05/10: kd=5.9129, reg=0.002942, test_acc=29.75%
+[colnorm] seed=4 epoch 06/10: kd=5.4882, reg=0.002971, test_acc=32.32%
+[colnorm] seed=4 epoch 07/10: kd=5.0898, reg=0.002966, test_acc=32.50%
+[colnorm] seed=4 epoch 08/10: kd=4.9114, reg=0.002955, test_acc=34.68%
+[colnorm] seed=4 epoch 09/10: kd=4.6435, reg=0.002946, test_acc=34.45%
+[colnorm] seed=4 epoch 10/10: kd=4.4405, reg=0.002938, test_acc=37.32%
+[full] seed=0 epoch 01/10: kd=9.5082, reg=0.000169, test_acc=9.99%
+[full] seed=0 epoch 02/10: kd=7.4247, reg=0.001437, test_acc=16.04%
+[full] seed=0 epoch 03/10: kd=6.5291, reg=0.002444, test_acc=22.52%
+[full] seed=0 epoch 04/10: kd=6.0396, reg=0.002782, test_acc=25.64%
+[full] seed=0 epoch 05/10: kd=5.7312, reg=0.002897, test_acc=30.26%
+[full] seed=0 epoch 06/10: kd=5.4967, reg=0.002952, test_acc=30.63%
+[full] seed=0 epoch 07/10: kd=5.1900, reg=0.002965, test_acc=33.50%
+[full] seed=0 epoch 08/10: kd=4.9289, reg=0.002966, test_acc=32.77%
+[full] seed=0 epoch 09/10: kd=4.7723, reg=0.002959, test_acc=35.04%
+[full] seed=0 epoch 10/10: kd=4.5955, reg=0.002958, test_acc=35.53%
+[full] seed=1 epoch 01/10: kd=9.3499, reg=0.000158, test_acc=10.00%
+[full] seed=1 epoch 02/10: kd=7.6318, reg=0.001313, test_acc=12.46%
+[full] seed=1 epoch 03/10: kd=6.7691, reg=0.002181, test_acc=26.04%
+[full] seed=1 epoch 04/10: kd=6.0547, reg=0.002469, test_acc=28.75%
+[full] seed=1 epoch 05/10: kd=5.8151, reg=0.002584, test_acc=29.72%
+[full] seed=1 epoch 06/10: kd=5.3809, reg=0.002676, test_acc=32.04%
+[full] seed=1 epoch 07/10: kd=4.9947, reg=0.002709, test_acc=34.16%
+[full] seed=1 epoch 08/10: kd=4.7460, reg=0.002723, test_acc=37.14%
+[full] seed=1 epoch 09/10: kd=4.4010, reg=0.002725, test_acc=38.37%
+[full] seed=1 epoch 10/10: kd=4.2191, reg=0.002724, test_acc=38.54%
+[full] seed=2 epoch 01/10: kd=10.0443, reg=0.000189, test_acc=9.35%
+[full] seed=2 epoch 02/10: kd=8.1710, reg=0.001536, test_acc=10.03%
+[full] seed=2 epoch 03/10: kd=7.0877, reg=0.002495, test_acc=22.56%
+[full] seed=2 epoch 04/10: kd=6.9909, reg=0.002905, test_acc=24.63%
+[full] seed=2 epoch 05/10: kd=6.3207, reg=0.003134, test_acc=28.80%
+[full] seed=2 epoch 06/10: kd=5.5511, reg=0.003266, test_acc=31.38%
+[full] seed=2 epoch 07/10: kd=5.1567, reg=0.003301, test_acc=36.28%
+[full] seed=2 epoch 08/10: kd=4.8092, reg=0.003324, test_acc=39.20%
+[full] seed=2 epoch 09/10: kd=4.4861, reg=0.003322, test_acc=40.84%
+[full] seed=2 epoch 10/10: kd=4.3006, reg=0.003315, test_acc=40.98%
+[full] seed=3 epoch 01/10: kd=9.3172, reg=0.000176, test_acc=10.00%
+[full] seed=3 epoch 02/10: kd=7.7062, reg=0.001312, test_acc=11.29%
+[full] seed=3 epoch 03/10: kd=6.1902, reg=0.002174, test_acc=28.18%
+[full] seed=3 epoch 04/10: kd=6.0424, reg=0.002471, test_acc=25.17%
+[full] seed=3 epoch 05/10: kd=5.7624, reg=0.002602, test_acc=32.40%
+[full] seed=3 epoch 06/10: kd=5.2243, reg=0.002662, test_acc=32.81%
+[full] seed=3 epoch 07/10: kd=4.8842, reg=0.002698, test_acc=36.66%
+[full] seed=3 epoch 08/10: kd=4.4737, reg=0.002713, test_acc=36.71%
+[full] seed=3 epoch 09/10: kd=4.3046, reg=0.002708, test_acc=39.19%
+[full] seed=3 epoch 10/10: kd=4.1793, reg=0.002703, test_acc=39.75%
+[full] seed=4 epoch 01/10: kd=9.6779, reg=0.000133, test_acc=10.00%
+[full] seed=4 epoch 02/10: kd=7.2648, reg=0.001037, test_acc=14.04%
+[full] seed=4 epoch 03/10: kd=6.2639, reg=0.001771, test_acc=24.49%
+[full] seed=4 epoch 04/10: kd=5.9985, reg=0.002085, test_acc=28.66%
+[full] seed=4 epoch 05/10: kd=5.7144, reg=0.002233, test_acc=32.63%
+[full] seed=4 epoch 06/10: kd=5.2076, reg=0.002297, test_acc=33.59%
+[full] seed=4 epoch 07/10: kd=4.8048, reg=0.002310, test_acc=32.74%
+[full] seed=4 epoch 08/10: kd=4.5384, reg=0.002316, test_acc=36.57%
+[full] seed=4 epoch 09/10: kd=4.2438, reg=0.002307, test_acc=36.38%
+[full] seed=4 epoch 10/10: kd=4.0355, reg=0.002309, test_acc=38.82%
+
+=== Summary ===
+Teacher test accuracy: 82.47%
+baseline  final: 33.80% +- 1.64 (seeds=[30.84, 34.14, 34.93, 35.6, 33.49])
+  epoch 1: 10.01% +- 0.01
+  epoch 2: 13.93% +- 3.96
+  epoch 3: 20.38% +- 3.11
+  epoch 4: 23.34% +- 1.92
+  epoch 5: 26.10% +- 3.61
+  epoch 6: 27.68% +- 1.40
+  epoch 7: 31.48% +- 1.60
+  epoch 8: 31.59% +- 1.13
+  epoch 9: 32.98% +- 1.41
+  epoch 10: 33.80% +- 1.64
+first     final: 34.98% +- 1.40 (seeds=[32.85, 34.2, 35.76, 35.07, 37.0])
+  epoch 1: 10.13% +- 0.63
+  epoch 2: 12.99% +- 3.32
+  epoch 3: 21.44% +- 3.50
+  epoch 4: 22.90% +- 2.11
+  epoch 5: 26.38% +- 3.19
+  epoch 6: 30.02% +- 2.09
+  epoch 7: 31.73% +- 2.69
+  epoch 8: 32.97% +- 1.07
+  epoch 9: 34.45% +- 1.51
+  epoch 10: 34.98% +- 1.40
+colnorm   final: 37.74% +- 1.18 (seeds=[37.22, 36.53, 39.99, 37.65, 37.32])
+  epoch 1: 10.07% +- 0.09
+  epoch 2: 12.59% +- 1.97
+  epoch 3: 20.51% +- 1.21
+  epoch 4: 25.54% +- 3.00
+  epoch 5: 29.52% +- 1.56
+  epoch 6: 31.85% +- 1.31
+  epoch 7: 32.85% +- 0.96
+  epoch 8: 34.75% +- 1.02
+  epoch 9: 36.21% +- 1.25
+  epoch 10: 37.74% +- 1.18
+full      final: 38.72% +- 1.81 (seeds=[35.53, 38.54, 40.98, 39.75, 38.82])
+  epoch 1: 9.87% +- 0.26
+  epoch 2: 12.77% +- 2.10
+  epoch 3: 24.76% +- 2.16
+  epoch 4: 26.57% +- 1.77
+  epoch 5: 30.76% +- 1.51
+  epoch 6: 32.09% +- 1.04
+  epoch 7: 34.67% +- 1.54
+  epoch 8: 36.48% +- 2.08
+  epoch 9: 37.96% +- 2.05
+  epoch 10: 38.72% +- 1.81
+Gain (first - baseline): +1.18 pts
+Gain (colnorm - baseline): +3.94 pts
+Gain (full - baseline): +4.92 pts
+Saved JSON summary to /output/cifar_kd_r56_q2000_e10_s5_quantized_random_rerun.json
+[done] query_budget=2000 wall=684.0s rc=0
+======================================================================
+[run] query_budget=5000
+      /opt/conda/bin/python -u /workspace/scripts/18_kd_spectral_priors_cifar.py --query-budget 5000 --output-path /output/cifar_kd_r56_q5000_e10_s5_quantized_random_rerun.json --architecture resnet56 --teacher-path /workspace/models/resnet56_seed0.pt --teacher-logits-source quantized --data-root /workspace/data --subset-mode random --subset-seed 0 --batch-size 128 --student-epochs 10 --student-lr 0.05 --momentum 0.9 --weight-decay 1e-4 --temperature 4.0 --reg-lambda 5.0 --distill-seeds 5 --precision 256 --prior-scope all --ablation-modes baseline,first,colnorm,full
+=== CIFAR-10 logit stealing with spectral priors ===
+device=cuda
+{
+  "teacher_path": "resnet56_seed0.pt",
+  "teacher_logits_source": "quantized",
+  "data_root": "data",
+  "query_budget": 5000,
+  "subset_mode": "random",
+  "subset_seed": 0,
+  "batch_size": 128,
+  "student_epochs": 10,
+  "student_lr": 0.05,
+  "momentum": 0.9,
+  "weight_decay": 0.0001,
+  "temperature": 4.0,
+  "reg_lambda": 5.0,
+  "distill_seeds": 5,
+  "precision": 256,
+  "prior_scope": "all",
+  "ablation_modes": "baseline,first,colnorm,full",
+  "architecture": "resnet56",
+  "output_path": "cifar_kd_r56_q5000_e10_s5_quantized_random_rerun.json"
+}
+[data] using pre-permuted CIFAR subset at /workspace/data/cifar_subset.npz.xz (train=5000, test=10000)
+[teacher] loaded resnet56_seed0.pt (logits=quantized): test_acc=82.47%
+[queries] cached exact teacher logits for 5000 unlabeled images
+[ablation] modes=['baseline', 'first', 'colnorm', 'full']
+[attack_layer] verified on conv1: max_err=0, shortcut valid
+[spectra/all] using 57 conv layers
+  conv1                shape=(16, 27) std=0.3646 mean_col_norm=1.3822
+  layer1.0.conv1       shape=(16, 144) std=0.1726 mean_col_norm=0.6784
+  layer1.0.conv2       shape=(16, 144) std=0.1381 mean_col_norm=0.5346
+[attack_layer] verified on conv1: max_err=0, shortcut valid
+[spectra/first] using 1 conv layers
+  conv1                shape=(16, 27) std=0.3646 mean_col_norm=1.3822
+[baseline] seed=0 epoch 01/10: kd=8.9920, reg=0.000000, test_acc=19.70%
+[baseline] seed=0 epoch 02/10: kd=7.4609, reg=0.000000, test_acc=25.05%
+[baseline] seed=0 epoch 03/10: kd=7.0961, reg=0.000000, test_acc=31.84%
+[baseline] seed=0 epoch 04/10: kd=6.2085, reg=0.000000, test_acc=30.70%
+[baseline] seed=0 epoch 05/10: kd=5.7703, reg=0.000000, test_acc=33.05%
+[baseline] seed=0 epoch 06/10: kd=5.3017, reg=0.000000, test_acc=37.04%
+[baseline] seed=0 epoch 07/10: kd=4.8564, reg=0.000000, test_acc=41.09%
+[baseline] seed=0 epoch 08/10: kd=4.6184, reg=0.000000, test_acc=41.43%
+[baseline] seed=0 epoch 09/10: kd=4.4891, reg=0.000000, test_acc=41.33%
+[baseline] seed=0 epoch 10/10: kd=4.2249, reg=0.000000, test_acc=44.43%
+[baseline] seed=1 epoch 01/10: kd=9.3039, reg=0.000000, test_acc=20.04%
+[baseline] seed=1 epoch 02/10: kd=7.2969, reg=0.000000, test_acc=19.89%
+[baseline] seed=1 epoch 03/10: kd=6.5378, reg=0.000000, test_acc=33.50%
+[baseline] seed=1 epoch 04/10: kd=6.5132, reg=0.000000, test_acc=31.55%
+[baseline] seed=1 epoch 05/10: kd=5.8568, reg=0.000000, test_acc=31.00%
+[baseline] seed=1 epoch 06/10: kd=5.4967, reg=0.000000, test_acc=35.89%
+[baseline] seed=1 epoch 07/10: kd=4.9762, reg=0.000000, test_acc=38.82%
+[baseline] seed=1 epoch 08/10: kd=4.7046, reg=0.000000, test_acc=40.36%
+[baseline] seed=1 epoch 09/10: kd=4.5502, reg=0.000000, test_acc=40.85%
+[baseline] seed=1 epoch 10/10: kd=4.4203, reg=0.000000, test_acc=42.64%
+[baseline] seed=2 epoch 01/10: kd=8.4921, reg=0.000000, test_acc=15.21%
+[baseline] seed=2 epoch 02/10: kd=7.2316, reg=0.000000, test_acc=20.24%
+[baseline] seed=2 epoch 03/10: kd=6.4272, reg=0.000000, test_acc=20.63%
+[baseline] seed=2 epoch 04/10: kd=6.0420, reg=0.000000, test_acc=25.77%
+[baseline] seed=2 epoch 05/10: kd=5.6287, reg=0.000000, test_acc=32.63%
+[baseline] seed=2 epoch 06/10: kd=5.0142, reg=0.000000, test_acc=30.50%
+[baseline] seed=2 epoch 07/10: kd=4.7587, reg=0.000000, test_acc=40.10%
+[baseline] seed=2 epoch 08/10: kd=4.3566, reg=0.000000, test_acc=42.55%
+[baseline] seed=2 epoch 09/10: kd=4.1590, reg=0.000000, test_acc=43.09%
+[baseline] seed=2 epoch 10/10: kd=3.9745, reg=0.000000, test_acc=44.67%
+[baseline] seed=3 epoch 01/10: kd=8.4391, reg=0.000000, test_acc=13.59%
+[baseline] seed=3 epoch 02/10: kd=7.1010, reg=0.000000, test_acc=22.72%
+[baseline] seed=3 epoch 03/10: kd=6.4718, reg=0.000000, test_acc=27.31%
+[baseline] seed=3 epoch 04/10: kd=6.2929, reg=0.000000, test_acc=32.06%
+[baseline] seed=3 epoch 05/10: kd=5.8318, reg=0.000000, test_acc=33.08%
+[baseline] seed=3 epoch 06/10: kd=5.3987, reg=0.000000, test_acc=34.91%
+[baseline] seed=3 epoch 07/10: kd=5.0402, reg=0.000000, test_acc=39.89%
+[baseline] seed=3 epoch 08/10: kd=4.6974, reg=0.000000, test_acc=41.58%
+[baseline] seed=3 epoch 09/10: kd=4.4350, reg=0.000000, test_acc=42.81%
+[baseline] seed=3 epoch 10/10: kd=4.3226, reg=0.000000, test_acc=44.80%
+[baseline] seed=4 epoch 01/10: kd=8.1731, reg=0.000000, test_acc=14.34%
+[baseline] seed=4 epoch 02/10: kd=6.4906, reg=0.000000, test_acc=24.95%
+[baseline] seed=4 epoch 03/10: kd=6.0344, reg=0.000000, test_acc=26.31%
+[baseline] seed=4 epoch 04/10: kd=5.6842, reg=0.000000, test_acc=32.46%
+[baseline] seed=4 epoch 05/10: kd=5.3655, reg=0.000000, test_acc=33.84%
+[baseline] seed=4 epoch 06/10: kd=4.8832, reg=0.000000, test_acc=37.11%
+[baseline] seed=4 epoch 07/10: kd=4.5954, reg=0.000000, test_acc=39.55%
+[baseline] seed=4 epoch 08/10: kd=4.2603, reg=0.000000, test_acc=42.56%
+[baseline] seed=4 epoch 09/10: kd=3.9300, reg=0.000000, test_acc=42.29%
+[baseline] seed=4 epoch 10/10: kd=3.8527, reg=0.000000, test_acc=45.30%
+[first] seed=0 epoch 01/10: kd=8.7562, reg=0.000817, test_acc=18.71%
+[first] seed=0 epoch 02/10: kd=7.4503, reg=0.000969, test_acc=21.44%
+[first] seed=0 epoch 03/10: kd=6.5889, reg=0.000685, test_acc=31.61%
+[first] seed=0 epoch 04/10: kd=5.4894, reg=0.000353, test_acc=32.37%
+[first] seed=0 epoch 05/10: kd=5.0946, reg=0.001079, test_acc=37.46%
+[first] seed=0 epoch 06/10: kd=4.6236, reg=0.000279, test_acc=40.24%
+[first] seed=0 epoch 07/10: kd=4.1842, reg=0.000356, test_acc=43.24%
+[first] seed=0 epoch 08/10: kd=3.7166, reg=0.000142, test_acc=47.10%
+[first] seed=0 epoch 09/10: kd=3.6164, reg=0.000060, test_acc=47.49%
+[first] seed=0 epoch 10/10: kd=3.3726, reg=0.000039, test_acc=49.18%
+[first] seed=1 epoch 01/10: kd=8.6893, reg=0.001844, test_acc=8.69%
+[first] seed=1 epoch 02/10: kd=6.6712, reg=0.000725, test_acc=24.05%
+[first] seed=1 epoch 03/10: kd=5.9713, reg=0.000782, test_acc=31.84%
+[first] seed=1 epoch 04/10: kd=5.5201, reg=0.001162, test_acc=25.94%
+[first] seed=1 epoch 05/10: kd=5.1847, reg=0.000826, test_acc=36.61%
+[first] seed=1 epoch 06/10: kd=4.8758, reg=0.000523, test_acc=42.72%
+[first] seed=1 epoch 07/10: kd=4.2908, reg=0.000182, test_acc=42.48%
+[first] seed=1 epoch 08/10: kd=4.0167, reg=0.000085, test_acc=44.68%
+[first] seed=1 epoch 09/10: kd=3.8321, reg=0.000076, test_acc=45.76%
+[first] seed=1 epoch 10/10: kd=3.7172, reg=0.000094, test_acc=47.07%
+[first] seed=2 epoch 01/10: kd=8.2988, reg=0.001667, test_acc=17.53%
+[first] seed=2 epoch 02/10: kd=7.9976, reg=0.003838, test_acc=25.41%
+[first] seed=2 epoch 03/10: kd=6.6180, reg=0.000427, test_acc=26.45%
+[first] seed=2 epoch 04/10: kd=6.2771, reg=0.000737, test_acc=27.09%
+[first] seed=2 epoch 05/10: kd=5.6501, reg=0.000414, test_acc=29.98%
+[first] seed=2 epoch 06/10: kd=5.3248, reg=0.000163, test_acc=35.49%
+[first] seed=2 epoch 07/10: kd=5.0787, reg=0.000457, test_acc=38.30%
+[first] seed=2 epoch 08/10: kd=4.5821, reg=0.000146, test_acc=41.06%
+[first] seed=2 epoch 09/10: kd=4.4389, reg=0.000082, test_acc=42.96%
+[first] seed=2 epoch 10/10: kd=4.2975, reg=0.000061, test_acc=43.02%
+[first] seed=3 epoch 01/10: kd=8.5419, reg=0.003273, test_acc=15.12%
+[first] seed=3 epoch 02/10: kd=7.3637, reg=0.001308, test_acc=19.04%
+[first] seed=3 epoch 03/10: kd=6.7325, reg=0.000919, test_acc=26.15%
+[first] seed=3 epoch 04/10: kd=6.2754, reg=0.001045, test_acc=28.91%
+[first] seed=3 epoch 05/10: kd=5.7256, reg=0.000419, test_acc=26.11%
+[first] seed=3 epoch 06/10: kd=5.5284, reg=0.001814, test_acc=36.12%
+[first] seed=3 epoch 07/10: kd=4.9611, reg=0.000121, test_acc=38.44%
+[first] seed=3 epoch 08/10: kd=4.6039, reg=0.000100, test_acc=41.55%
+[first] seed=3 epoch 09/10: kd=4.3107, reg=0.000059, test_acc=41.18%
+[first] seed=3 epoch 10/10: kd=4.1702, reg=0.000038, test_acc=44.11%
+[first] seed=4 epoch 01/10: kd=8.1142, reg=0.000837, test_acc=12.42%
+[first] seed=4 epoch 02/10: kd=6.4937, reg=0.000380, test_acc=24.95%
+[first] seed=4 epoch 03/10: kd=6.0825, reg=0.000332, test_acc=22.77%
+[first] seed=4 epoch 04/10: kd=5.6179, reg=0.000361, test_acc=32.98%
+[first] seed=4 epoch 05/10: kd=5.2474, reg=0.000247, test_acc=35.09%
+[first] seed=4 epoch 06/10: kd=5.1533, reg=0.001394, test_acc=29.80%
+[first] seed=4 epoch 07/10: kd=4.4767, reg=0.000277, test_acc=35.30%
+[first] seed=4 epoch 08/10: kd=4.0671, reg=0.000091, test_acc=45.99%
+[first] seed=4 epoch 09/10: kd=3.6755, reg=0.000076, test_acc=46.81%
+[first] seed=4 epoch 10/10: kd=3.5806, reg=0.000057, test_acc=47.56%
+[colnorm] seed=0 epoch 01/10: kd=8.0540, reg=0.000762, test_acc=17.31%
+[colnorm] seed=0 epoch 02/10: kd=6.4563, reg=0.002029, test_acc=16.76%
+[colnorm] seed=0 epoch 03/10: kd=6.3383, reg=0.003106, test_acc=27.41%
+[colnorm] seed=0 epoch 04/10: kd=5.2655, reg=0.003836, test_acc=38.18%
+[colnorm] seed=0 epoch 05/10: kd=4.6280, reg=0.003993, test_acc=41.95%
+[colnorm] seed=0 epoch 06/10: kd=4.1955, reg=0.004057, test_acc=44.94%
+[colnorm] seed=0 epoch 07/10: kd=3.8311, reg=0.004072, test_acc=46.93%
+[colnorm] seed=0 epoch 08/10: kd=3.4380, reg=0.004041, test_acc=48.72%
+[colnorm] seed=0 epoch 09/10: kd=3.2743, reg=0.004003, test_acc=50.53%
+[colnorm] seed=0 epoch 10/10: kd=3.0648, reg=0.003985, test_acc=50.88%
+[colnorm] seed=1 epoch 01/10: kd=8.8332, reg=0.001161, test_acc=21.15%
+[colnorm] seed=1 epoch 02/10: kd=6.9860, reg=0.003453, test_acc=24.17%
+[colnorm] seed=1 epoch 03/10: kd=6.3292, reg=0.004063, test_acc=29.95%
+[colnorm] seed=1 epoch 04/10: kd=6.2172, reg=0.004723, test_acc=34.89%
+[colnorm] seed=1 epoch 05/10: kd=5.6963, reg=0.005045, test_acc=34.05%
+[colnorm] seed=1 epoch 06/10: kd=5.4934, reg=0.005055, test_acc=37.79%
+[colnorm] seed=1 epoch 07/10: kd=4.8699, reg=0.005012, test_acc=38.27%
+[colnorm] seed=1 epoch 08/10: kd=4.5472, reg=0.004905, test_acc=40.81%
+[colnorm] seed=1 epoch 09/10: kd=4.3610, reg=0.004845, test_acc=42.39%
+[colnorm] seed=1 epoch 10/10: kd=4.1991, reg=0.004815, test_acc=44.78%
+[colnorm] seed=2 epoch 01/10: kd=8.3838, reg=0.002163, test_acc=13.31%
+[colnorm] seed=2 epoch 02/10: kd=6.5247, reg=0.005202, test_acc=23.40%
+[colnorm] seed=2 epoch 03/10: kd=5.8764, reg=0.005657, test_acc=30.75%
+[colnorm] seed=2 epoch 04/10: kd=5.2847, reg=0.005935, test_acc=36.07%
+[colnorm] seed=2 epoch 05/10: kd=4.8994, reg=0.006303, test_acc=39.35%
+[colnorm] seed=2 epoch 06/10: kd=4.3468, reg=0.006427, test_acc=42.40%
+[colnorm] seed=2 epoch 07/10: kd=4.0562, reg=0.006427, test_acc=43.85%
+[colnorm] seed=2 epoch 08/10: kd=3.6669, reg=0.006331, test_acc=47.94%
+[colnorm] seed=2 epoch 09/10: kd=3.4377, reg=0.006247, test_acc=48.88%
+[colnorm] seed=2 epoch 10/10: kd=3.2291, reg=0.006207, test_acc=49.40%
+[colnorm] seed=3 epoch 01/10: kd=8.0912, reg=0.002385, test_acc=10.75%
+[colnorm] seed=3 epoch 02/10: kd=6.7908, reg=0.005408, test_acc=24.32%
+[colnorm] seed=3 epoch 03/10: kd=6.5252, reg=0.006213, test_acc=28.22%
+[colnorm] seed=3 epoch 04/10: kd=5.9401, reg=0.006404, test_acc=30.70%
+[colnorm] seed=3 epoch 05/10: kd=5.5345, reg=0.006210, test_acc=30.78%
+[colnorm] seed=3 epoch 06/10: kd=5.2139, reg=0.006119, test_acc=33.74%
+[colnorm] seed=3 epoch 07/10: kd=4.6289, reg=0.006052, test_acc=37.45%
+[colnorm] seed=3 epoch 08/10: kd=4.2537, reg=0.005975, test_acc=40.08%
+[colnorm] seed=3 epoch 09/10: kd=3.8548, reg=0.005922, test_acc=45.68%
+[colnorm] seed=3 epoch 10/10: kd=3.6107, reg=0.005891, test_acc=46.87%
+[colnorm] seed=4 epoch 01/10: kd=7.5885, reg=0.000670, test_acc=16.33%
+[colnorm] seed=4 epoch 02/10: kd=6.6641, reg=0.002023, test_acc=26.74%
+[colnorm] seed=4 epoch 03/10: kd=5.8460, reg=0.002429, test_acc=29.89%
+[colnorm] seed=4 epoch 04/10: kd=5.3133, reg=0.002705, test_acc=35.37%
+[colnorm] seed=4 epoch 05/10: kd=5.0037, reg=0.002999, test_acc=39.20%
+[colnorm] seed=4 epoch 06/10: kd=4.3667, reg=0.003199, test_acc=40.44%
+[colnorm] seed=4 epoch 07/10: kd=3.9633, reg=0.003287, test_acc=45.00%
+[colnorm] seed=4 epoch 08/10: kd=3.5669, reg=0.003290, test_acc=48.96%
+[colnorm] seed=4 epoch 09/10: kd=3.1957, reg=0.003271, test_acc=50.31%
+[colnorm] seed=4 epoch 10/10: kd=3.1199, reg=0.003251, test_acc=51.49%
+[full] seed=0 epoch 01/10: kd=8.2413, reg=0.000867, test_acc=10.12%
+[full] seed=0 epoch 02/10: kd=6.7730, reg=0.002937, test_acc=23.24%
+[full] seed=0 epoch 03/10: kd=5.9869, reg=0.003446, test_acc=32.64%
+[full] seed=0 epoch 04/10: kd=5.2737, reg=0.003584, test_acc=36.13%
+[full] seed=0 epoch 05/10: kd=4.9277, reg=0.003657, test_acc=38.82%
+[full] seed=0 epoch 06/10: kd=4.5851, reg=0.003689, test_acc=42.43%
+[full] seed=0 epoch 07/10: kd=4.1950, reg=0.003671, test_acc=43.91%
+[full] seed=0 epoch 08/10: kd=3.8987, reg=0.003632, test_acc=43.87%
+[full] seed=0 epoch 09/10: kd=4.0734, reg=0.003642, test_acc=44.86%
+[full] seed=0 epoch 10/10: kd=3.6131, reg=0.003639, test_acc=47.67%
+[full] seed=1 epoch 01/10: kd=8.8544, reg=0.001902, test_acc=18.30%
+[full] seed=1 epoch 02/10: kd=6.9565, reg=0.005383, test_acc=23.12%
+[full] seed=1 epoch 03/10: kd=6.3870, reg=0.006200, test_acc=23.27%
+[full] seed=1 epoch 04/10: kd=5.9037, reg=0.006371, test_acc=27.29%
+[full] seed=1 epoch 05/10: kd=5.5459, reg=0.006317, test_acc=29.98%
+[full] seed=1 epoch 06/10: kd=5.2534, reg=0.006438, test_acc=35.53%
+[full] seed=1 epoch 07/10: kd=4.6951, reg=0.006464, test_acc=35.28%
+[full] seed=1 epoch 08/10: kd=4.4326, reg=0.006404, test_acc=41.11%
+[full] seed=1 epoch 09/10: kd=4.2323, reg=0.006374, test_acc=42.12%
+[full] seed=1 epoch 10/10: kd=4.0486, reg=0.006346, test_acc=43.32%
+[full] seed=2 epoch 01/10: kd=8.6529, reg=0.001223, test_acc=15.80%
+[full] seed=2 epoch 02/10: kd=6.6454, reg=0.003568, test_acc=28.41%
+[full] seed=2 epoch 03/10: kd=5.8742, reg=0.003900, test_acc=33.62%
+[full] seed=2 epoch 04/10: kd=5.4723, reg=0.003845, test_acc=31.88%
+[full] seed=2 epoch 05/10: kd=5.0929, reg=0.003854, test_acc=32.08%
+[full] seed=2 epoch 06/10: kd=4.6594, reg=0.003846, test_acc=37.88%
+[full] seed=2 epoch 07/10: kd=4.3547, reg=0.003837, test_acc=37.68%
+[full] seed=2 epoch 08/10: kd=3.9742, reg=0.003841, test_acc=46.26%
+[full] seed=2 epoch 09/10: kd=3.7194, reg=0.003814, test_acc=47.31%
+[full] seed=2 epoch 10/10: kd=3.4042, reg=0.003797, test_acc=48.75%
+[full] seed=3 epoch 01/10: kd=8.4845, reg=0.002834, test_acc=18.25%
+[full] seed=3 epoch 02/10: kd=6.8859, reg=0.007226, test_acc=24.90%
+[full] seed=3 epoch 03/10: kd=5.8557, reg=0.007718, test_acc=34.96%
+[full] seed=3 epoch 04/10: kd=5.2689, reg=0.007985, test_acc=37.99%
+[full] seed=3 epoch 05/10: kd=4.7979, reg=0.008105, test_acc=40.87%
+[full] seed=3 epoch 06/10: kd=4.3836, reg=0.008208, test_acc=43.15%
+[full] seed=3 epoch 07/10: kd=4.0823, reg=0.008181, test_acc=46.84%
+[full] seed=3 epoch 08/10: kd=3.5631, reg=0.008084, test_acc=48.81%
+[full] seed=3 epoch 09/10: kd=3.3138, reg=0.008005, test_acc=49.08%
+[full] seed=3 epoch 10/10: kd=3.1956, reg=0.007967, test_acc=50.84%
+[full] seed=4 epoch 01/10: kd=8.5227, reg=0.001417, test_acc=17.76%
+[full] seed=4 epoch 02/10: kd=6.4557, reg=0.003871, test_acc=27.42%
+[full] seed=4 epoch 03/10: kd=6.0781, reg=0.004409, test_acc=31.13%
+[full] seed=4 epoch 04/10: kd=5.4823, reg=0.004768, test_acc=30.50%
+[full] seed=4 epoch 05/10: kd=5.3542, reg=0.005124, test_acc=37.91%
+[full] seed=4 epoch 06/10: kd=4.6431, reg=0.005486, test_acc=39.19%
+[full] seed=4 epoch 07/10: kd=4.0925, reg=0.005544, test_acc=43.98%
+[full] seed=4 epoch 08/10: kd=3.7550, reg=0.005557, test_acc=47.80%
+[full] seed=4 epoch 09/10: kd=3.3635, reg=0.005526, test_acc=48.86%
+[full] seed=4 epoch 10/10: kd=3.3004, reg=0.005498, test_acc=50.84%
+
+=== Summary ===
+Teacher test accuracy: 82.47%
+baseline  final: 44.37% +- 0.91 (seeds=[44.43, 42.64, 44.67, 44.8, 45.3])
+  epoch 1: 16.58% +- 2.74
+  epoch 2: 22.57% +- 2.21
+  epoch 3: 27.92% +- 4.53
+  epoch 4: 30.51% +- 2.44
+  epoch 5: 32.72% +- 0.94
+  epoch 6: 35.09% +- 2.43
+  epoch 7: 39.89% +- 0.74
+  epoch 8: 41.70% +- 0.82
+  epoch 9: 42.07% +- 0.86
+  epoch 10: 44.37% +- 0.91
+first     final: 46.19% +- 2.28 (seeds=[49.18, 47.07, 43.02, 44.11, 47.56])
+  epoch 1: 14.49% +- 3.62
+  epoch 2: 22.98% +- 2.40
+  epoch 3: 27.76% +- 3.48
+  epoch 4: 29.46% +- 2.80
+  epoch 5: 33.05% +- 4.33
+  epoch 6: 36.87% +- 4.43
+  epoch 7: 39.55% +- 2.93
+  epoch 8: 44.08% +- 2.39
+  epoch 9: 44.84% +- 2.39
+  epoch 10: 46.19% +- 2.28
+colnorm   final: 48.68% +- 2.52 (seeds=[50.88, 44.78, 49.4, 46.87, 51.49])
+  epoch 1: 15.77% +- 3.55
+  epoch 2: 23.08% +- 3.35
+  epoch 3: 29.24% +- 1.23
+  epoch 4: 35.04% +- 2.44
+  epoch 5: 37.07% +- 4.06
+  epoch 6: 39.86% +- 3.86
+  epoch 7: 42.30% +- 3.77
+  epoch 8: 45.30% +- 3.99
+  epoch 9: 47.56% +- 3.11
+  epoch 10: 48.68% +- 2.52
+full      final: 48.28% +- 2.77 (seeds=[47.67, 43.32, 48.75, 50.84, 50.84])
+  epoch 1: 16.05% +- 3.10
+  epoch 2: 25.42% +- 2.16
+  epoch 3: 31.12% +- 4.12
+  epoch 4: 32.76% +- 3.86
+  epoch 5: 35.93% +- 4.17
+  epoch 6: 39.64% +- 2.84
+  epoch 7: 41.54% +- 4.33
+  epoch 8: 45.57% +- 2.78
+  epoch 9: 46.45% +- 2.64
+  epoch 10: 48.28% +- 2.77
+Gain (first - baseline): +1.82 pts
+Gain (colnorm - baseline): +4.32 pts
+Gain (full - baseline): +3.92 pts
+Saved JSON summary to /output/cifar_kd_r56_q5000_e10_s5_quantized_random_rerun.json
+[done] query_budget=5000 wall=949.0s rc=0
+======================================================================
+RESULTS WRITTEN:
+  /output/cifar_kd_r56_q2000_e10_s5_quantized_random_rerun.json  (77314 bytes)
+  /output/cifar_kd_r56_q5000_e10_s5_quantized_random_rerun.json  (113304 bytes)
+======================================================================

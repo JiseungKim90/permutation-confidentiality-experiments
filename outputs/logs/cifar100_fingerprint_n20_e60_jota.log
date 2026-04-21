@@ -1,0 +1,32 @@
+======================================================================
+JOTA: CIFAR-100 fingerprinting (20 ResNet-20)
+HERE=/workspace
+OUTPUT_DIR=/output
+======================================================================
+[preflight] all required files present
+[run] /opt/conda/bin/python -u /workspace/scripts/train_and_fingerprint.py --data-root /workspace/data --output-path /output/cifar100_fingerprint_n20.json --n-models 20 --epochs 60 --batch-size 128 --lr 0.1 --precision 256
+[init] device=cuda
+[data] train=20000 test=2000
+[train] seed=0 acc=55.20% wall=602.2s
+[train] seed=1 acc=54.80% wall=598.6s
+[train] seed=2 acc=54.65% wall=591.2s
+[train] seed=3 acc=54.75% wall=626.2s
+[train] seed=4 acc=55.40% wall=601.2s
+[train] seed=5 acc=55.35% wall=613.3s
+[train] seed=6 acc=54.40% wall=604.9s
+[train] seed=7 acc=53.50% wall=598.5s
+[train] seed=8 acc=55.05% wall=597.0s
+[train] seed=9 acc=54.20% wall=590.7s
+[train] seed=10 acc=55.75% wall=600.0s
+[train] seed=11 acc=56.50% wall=595.8s
+[train] seed=12 acc=54.50% wall=587.0s
+[train] seed=13 acc=55.40% wall=594.2s
+[train] seed=14 acc=55.20% wall=583.5s
+[train] seed=15 acc=55.60% wall=587.7s
+[train] seed=16 acc=53.50% wall=594.4s
+[train] seed=17 acc=54.90% wall=588.5s
+[train] seed=18 acc=53.15% wall=594.5s
+[train] seed=19 acc=54.20% wall=590.7s
+[done] n=20 pairs=190 min=0.4875 max=1.8464 mean=0.9966
+[done] all_pairs_separable=True mean_test_acc=54.80% wall=11940.1s
+[done] wall=11953.0s rc=0

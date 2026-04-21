@@ -1,0 +1,12 @@
+Loaded resnet20_seed0.pt
+Preloaded test tensor shape (10000, 3, 32, 32) batch 500
+Clean test accuracy: 82.2%
+Found 21 Conv2d layers for per-layer injection
+
+=== CIFAR-10 Per-Layer Noise Tradeoff (8-bit, N_TRIALS=20) ===
+    Mult       Atk err    Pred. agr.     Test acc.
+      1x      0.00e+00     100.0±0.01%      82.2±0.01%
+     10x      1.36e-02      99.8±0.04%      82.2±0.03%
+    100x      1.11e-01      98.3±0.09%      82.2±0.10%
+   1000x      1.02e+00      63.8±0.26%      59.1±0.36%
+   5000x      6.34e+00      10.5±0.29%      10.1±0.26%

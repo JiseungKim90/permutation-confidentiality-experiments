@@ -1,0 +1,16 @@
+=== ViT-B/16 Linear-layer recovery (IMAGENET1K_V1) ===
+Downloading: "https://download.pytorch.org/models/vit_b_16-c867db91.pth" to /home/user/.cache/torch/hub/checkpoints/vit_b_16-c867db91.pth
+  0%|          | 0.00/330M [00:00<?, ?B/s]  3%|▎         | 8.88M/330M [00:00<00:03, 92.3MB/s]  6%|▌         | 20.2M/330M [00:00<00:03, 107MB/s]   9%|▉         | 31.4M/330M [00:00<00:02, 111MB/s] 13%|█▎        | 42.4M/330M [00:00<00:02, 113MB/s] 16%|█▌        | 53.4M/330M [00:00<00:02, 114MB/s] 19%|█▉        | 64.4M/330M [00:00<00:02, 114MB/s] 23%|██▎       | 75.4M/330M [00:00<00:02, 114MB/s] 26%|██▌       | 86.4M/330M [00:00<00:02, 114MB/s] 29%|██▉       | 97.4M/330M [00:00<00:02, 115MB/s] 33%|███▎      | 108M/330M [00:01<00:02, 114MB/s]  36%|███▌      | 120M/330M [00:01<00:01, 114MB/s] 40%|███▉      | 130M/330M [00:01<00:01, 114MB/s] 43%|████▎     | 142M/330M [00:01<00:01, 114MB/s] 46%|████▌     | 153M/330M [00:01<00:01, 115MB/s] 50%|████▉     | 164M/330M [00:01<00:01, 115MB/s] 53%|█████▎    | 175M/330M [00:01<00:01, 114MB/s] 56%|█████▌    | 186M/330M [00:01<00:01, 114MB/s] 59%|█████▉    | 196M/330M [00:01<00:01, 114MB/s] 63%|██████▎   | 207M/330M [00:01<00:01, 110MB/s] 66%|██████▌   | 218M/330M [00:02<00:01, 106MB/s] 69%|██████▉   | 228M/330M [00:02<00:01, 102MB/s] 72%|███████▏  | 238M/330M [00:02<00:00, 104MB/s] 75%|███████▌  | 249M/330M [00:02<00:00, 105MB/s] 79%|███████▊  | 260M/330M [00:02<00:00, 108MB/s] 82%|████████▏ | 270M/330M [00:02<00:00, 108MB/s] 85%|████████▌ | 281M/330M [00:02<00:00, 110MB/s] 88%|████████▊ | 292M/330M [00:02<00:00, 110MB/s] 92%|█████████▏| 302M/330M [00:02<00:00, 109MB/s] 95%|█████████▍| 314M/330M [00:02<00:00, 111MB/s] 98%|█████████▊| 324M/330M [00:03<00:00, 112MB/s]100%|██████████| 330M/330M [00:03<00:00, 111MB/s]
+[load] wall=4.7s
+[layers] 37 nn.Linear modules found
+  encoder.layers.encoder_layer_0.self_attention.out_proj       W.shape=(768, 768)  has_bias=True
+  encoder.layers.encoder_layer_0.mlp.0                         W.shape=(3072, 768)  has_bias=True
+  encoder.layers.encoder_layer_0.mlp.3                         W.shape=(768, 3072)  has_bias=True
+  ...
+  encoder.layers.encoder_layer_11.mlp.0                        W.shape=(3072, 768)  has_bias=True
+  encoder.layers.encoder_layer_11.mlp.3                        W.shape=(768, 3072)  has_bias=True
+  heads.head                                                   W.shape=(1000, 768)  has_bias=True
+[attack] running round-then-sort on every Linear layer @ p=256
+[summary] 37 Linear layers, all with max_err=0.00e+00
+[total wall] 17.2s
+=== DONE ===

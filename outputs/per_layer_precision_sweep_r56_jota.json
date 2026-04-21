@@ -1,0 +1,354 @@
+{
+  "experiment": "precision_sweep",
+  "architecture": "resnet56",
+  "precision": 256,
+  "n_trials": 200,
+  "clean_test_acc": 0.8222000002861023,
+  "n_conv_layers": 57,
+  "teacher_path": "/workspace/models/resnet56_seed0.pt",
+  "grid": [
+    {
+      "label": "precision_sweep",
+      "multiplier": 1,
+      "distribution": "gaussian",
+      "precision": 128
+    },
+    {
+      "label": "precision_sweep",
+      "multiplier": 10,
+      "distribution": "gaussian",
+      "precision": 128
+    },
+    {
+      "label": "precision_sweep",
+      "multiplier": 100,
+      "distribution": "gaussian",
+      "precision": 128
+    },
+    {
+      "label": "precision_sweep",
+      "multiplier": 1000,
+      "distribution": "gaussian",
+      "precision": 128
+    },
+    {
+      "label": "precision_sweep",
+      "multiplier": 5000,
+      "distribution": "gaussian",
+      "precision": 128
+    },
+    {
+      "label": "precision_sweep",
+      "multiplier": 1,
+      "distribution": "gaussian",
+      "precision": 256
+    },
+    {
+      "label": "precision_sweep",
+      "multiplier": 10,
+      "distribution": "gaussian",
+      "precision": 256
+    },
+    {
+      "label": "precision_sweep",
+      "multiplier": 100,
+      "distribution": "gaussian",
+      "precision": 256
+    },
+    {
+      "label": "precision_sweep",
+      "multiplier": 1000,
+      "distribution": "gaussian",
+      "precision": 256
+    },
+    {
+      "label": "precision_sweep",
+      "multiplier": 5000,
+      "distribution": "gaussian",
+      "precision": 256
+    },
+    {
+      "label": "precision_sweep",
+      "multiplier": 1,
+      "distribution": "gaussian",
+      "precision": 512
+    },
+    {
+      "label": "precision_sweep",
+      "multiplier": 10,
+      "distribution": "gaussian",
+      "precision": 512
+    },
+    {
+      "label": "precision_sweep",
+      "multiplier": 100,
+      "distribution": "gaussian",
+      "precision": 512
+    },
+    {
+      "label": "precision_sweep",
+      "multiplier": 1000,
+      "distribution": "gaussian",
+      "precision": 512
+    },
+    {
+      "label": "precision_sweep",
+      "multiplier": 5000,
+      "distribution": "gaussian",
+      "precision": 512
+    },
+    {
+      "label": "precision_sweep",
+      "multiplier": 1,
+      "distribution": "gaussian",
+      "precision": 1024
+    },
+    {
+      "label": "precision_sweep",
+      "multiplier": 10,
+      "distribution": "gaussian",
+      "precision": 1024
+    },
+    {
+      "label": "precision_sweep",
+      "multiplier": 100,
+      "distribution": "gaussian",
+      "precision": 1024
+    },
+    {
+      "label": "precision_sweep",
+      "multiplier": 1000,
+      "distribution": "gaussian",
+      "precision": 1024
+    },
+    {
+      "label": "precision_sweep",
+      "multiplier": 5000,
+      "distribution": "gaussian",
+      "precision": 1024
+    }
+  ],
+  "results": [
+    {
+      "label": "precision_sweep",
+      "multiplier": 1,
+      "distribution": "gaussian",
+      "precision": 128,
+      "attack_error_mean": 0.0,
+      "pred_agreement_mean": 0.9993519786000252,
+      "pred_agreement_std": 0.00019440966088517063,
+      "test_acc_mean": 0.8222024771571159,
+      "test_acc_std": 0.00018505351109889597
+    },
+    {
+      "label": "precision_sweep",
+      "multiplier": 10,
+      "distribution": "gaussian",
+      "precision": 128,
+      "attack_error_mean": 0.025752314814814815,
+      "pred_agreement_mean": 0.996730974316597,
+      "pred_agreement_std": 0.0004833628222536225,
+      "test_acc_mean": 0.8219339799880981,
+      "test_acc_std": 0.00040932289601524144
+    },
+    {
+      "label": "precision_sweep",
+      "multiplier": 100,
+      "distribution": "gaussian",
+      "precision": 128,
+      "attack_error_mean": 0.18200231481481483,
+      "pred_agreement_mean": 0.9595069751143456,
+      "pred_agreement_std": 0.0016226364610280766,
+      "test_acc_mean": 0.8176819804310799,
+      "test_acc_std": 0.0014018490517552459
+    },
+    {
+      "label": "precision_sweep",
+      "multiplier": 1000,
+      "distribution": "gaussian",
+      "precision": 128,
+      "attack_error_mean": 2.2887731481481484,
+      "pred_agreement_mean": 0.12062249679118395,
+      "pred_agreement_std": 0.0016276190307568145,
+      "test_acc_mean": 0.11528749704360962,
+      "test_acc_std": 0.0015452487492286086
+    },
+    {
+      "label": "precision_sweep",
+      "multiplier": 5000,
+      "distribution": "gaussian",
+      "precision": 128,
+      "attack_error_mean": 13.27517361111111,
+      "pred_agreement_mean": 0.09640000015497208,
+      "pred_agreement_std": 0.0,
+      "test_acc_mean": 0.09999999403953552,
+      "test_acc_std": 0.0
+    },
+    {
+      "label": "precision_sweep",
+      "multiplier": 1,
+      "distribution": "gaussian",
+      "precision": 256,
+      "attack_error_mean": 0.0,
+      "pred_agreement_mean": 0.9997334709763527,
+      "pred_agreement_std": 0.00013685028345418785,
+      "test_acc_mean": 0.8221624794602395,
+      "test_acc_std": 0.00012467414070529908
+    },
+    {
+      "label": "precision_sweep",
+      "multiplier": 10,
+      "distribution": "gaussian",
+      "precision": 256,
+      "attack_error_mean": 0.013310185185185185,
+      "pred_agreement_mean": 0.9984389734268189,
+      "pred_agreement_std": 0.00032446495927084695,
+      "test_acc_mean": 0.8219404768943787,
+      "test_acc_std": 0.0002973377248406124
+    },
+    {
+      "label": "precision_sweep",
+      "multiplier": 100,
+      "distribution": "gaussian",
+      "precision": 256,
+      "attack_error_mean": 0.10575810185185185,
+      "pred_agreement_mean": 0.9817084735631942,
+      "pred_agreement_std": 0.0010719964306297534,
+      "test_acc_mean": 0.8218099781870842,
+      "test_acc_std": 0.0009528367059480136
+    },
+    {
+      "label": "precision_sweep",
+      "multiplier": 1000,
+      "distribution": "gaussian",
+      "precision": 256,
+      "attack_error_mean": 1.0085358796296295,
+      "pred_agreement_mean": 0.5180124863982201,
+      "pred_agreement_std": 0.0033211288770547158,
+      "test_acc_mean": 0.4892514880001545,
+      "test_acc_std": 0.003309169275995356
+    },
+    {
+      "label": "precision_sweep",
+      "multiplier": 5000,
+      "distribution": "gaussian",
+      "precision": 256,
+      "attack_error_mean": 6.341869212962963,
+      "pred_agreement_mean": 0.09640000015497208,
+      "pred_agreement_std": 0.0,
+      "test_acc_mean": 0.09999999403953552,
+      "test_acc_std": 0.0
+    },
+    {
+      "label": "precision_sweep",
+      "multiplier": 1,
+      "distribution": "gaussian",
+      "precision": 512,
+      "attack_error_mean": 0.0,
+      "pred_agreement_mean": 0.9999054846167564,
+      "pred_agreement_std": 8.137422829939909e-05,
+      "test_acc_mean": 0.8222104889154435,
+      "test_acc_std": 6.35492356300028e-05
+    },
+    {
+      "label": "precision_sweep",
+      "multiplier": 10,
+      "distribution": "gaussian",
+      "precision": 512,
+      "attack_error_mean": 0.006944444444444444,
+      "pred_agreement_mean": 0.9992384767532348,
+      "pred_agreement_std": 0.00022420532848470021,
+      "test_acc_mean": 0.8220889788866043,
+      "test_acc_std": 0.0001964180637002927
+    },
+    {
+      "label": "precision_sweep",
+      "multiplier": 100,
+      "distribution": "gaussian",
+      "precision": 512,
+      "attack_error_mean": 0.059895833333333336,
+      "pred_agreement_mean": 0.9913989755511284,
+      "pred_agreement_std": 0.0007682443075404583,
+      "test_acc_mean": 0.822224480509758,
+      "test_acc_std": 0.0006742024529671972
+    },
+    {
+      "label": "precision_sweep",
+      "multiplier": 1000,
+      "distribution": "gaussian",
+      "precision": 512,
+      "attack_error_mean": 0.4523292824074074,
+      "pred_agreement_mean": 0.8663129779696465,
+      "pred_agreement_std": 0.002428175717091971,
+      "test_acc_mean": 0.7738259801268578,
+      "test_acc_std": 0.0024659320625438613
+    },
+    {
+      "label": "precision_sweep",
+      "multiplier": 5000,
+      "distribution": "gaussian",
+      "precision": 512,
+      "attack_error_mean": 2.9485677083333335,
+      "pred_agreement_mean": 0.10878349728882312,
+      "pred_agreement_std": 0.0018481820874302883,
+      "test_acc_mean": 0.1043709971755743,
+      "test_acc_std": 0.001744379199791423
+    },
+    {
+      "label": "precision_sweep",
+      "multiplier": 1,
+      "distribution": "gaussian",
+      "precision": 1024,
+      "attack_error_mean": 0.0,
+      "pred_agreement_mean": 0.9999709951877594,
+      "pred_agreement_std": 4.857759737493213e-05,
+      "test_acc_mean": 0.8221994978189469,
+      "test_acc_std": 2.9147090298180155e-05
+    },
+    {
+      "label": "precision_sweep",
+      "multiplier": 10,
+      "distribution": "gaussian",
+      "precision": 1024,
+      "attack_error_mean": 0.003472222222222222,
+      "pred_agreement_mean": 0.9996344757080078,
+      "pred_agreement_std": 0.000158930079436227,
+      "test_acc_mean": 0.8221909809112549,
+      "test_acc_std": 0.00014042401736067444
+    },
+    {
+      "label": "precision_sweep",
+      "multiplier": 100,
+      "distribution": "gaussian",
+      "precision": 1024,
+      "attack_error_mean": 0.032660590277777776,
+      "pred_agreement_mean": 0.9959309712052345,
+      "pred_agreement_std": 0.0005248235233880358,
+      "test_acc_mean": 0.8219889774918556,
+      "test_acc_std": 0.0004951559928984911
+    },
+    {
+      "label": "precision_sweep",
+      "multiplier": 1000,
+      "distribution": "gaussian",
+      "precision": 1024,
+      "attack_error_mean": 0.2241753472222222,
+      "pred_agreement_mean": 0.9468474751710891,
+      "pred_agreement_std": 0.0016759467696650448,
+      "test_acc_mean": 0.8138674780726433,
+      "test_acc_std": 0.001519634720450829
+    },
+    {
+      "label": "precision_sweep",
+      "multiplier": 5000,
+      "distribution": "gaussian",
+      "precision": 1024,
+      "attack_error_mean": 1.310619212962963,
+      "pred_agreement_mean": 0.3023469929397106,
+      "pred_agreement_std": 0.0031565943345590215,
+      "test_acc_mean": 0.2878259938955307,
+      "test_acc_std": 0.003089308739864594
+    }
+  ],
+  "wall_seconds": 1356.6402218341827
+}

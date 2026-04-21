@@ -1,0 +1,524 @@
+{
+  "experiment": "distributions",
+  "architecture": "resnet20",
+  "precision": 256,
+  "n_trials": 200,
+  "clean_test_acc": 0.8224999904632568,
+  "n_conv_layers": 21,
+  "teacher_path": "/workspace/models/resnet20_seed0.pt",
+  "grid": [
+    {
+      "label": "distributions",
+      "multiplier": 1,
+      "distribution": "gaussian",
+      "precision": 256
+    },
+    {
+      "label": "distributions",
+      "multiplier": 10,
+      "distribution": "gaussian",
+      "precision": 256
+    },
+    {
+      "label": "distributions",
+      "multiplier": 100,
+      "distribution": "gaussian",
+      "precision": 256
+    },
+    {
+      "label": "distributions",
+      "multiplier": 1000,
+      "distribution": "gaussian",
+      "precision": 256
+    },
+    {
+      "label": "distributions",
+      "multiplier": 5000,
+      "distribution": "gaussian",
+      "precision": 256
+    },
+    {
+      "label": "distributions",
+      "multiplier": 1,
+      "distribution": "uniform",
+      "precision": 256
+    },
+    {
+      "label": "distributions",
+      "multiplier": 10,
+      "distribution": "uniform",
+      "precision": 256
+    },
+    {
+      "label": "distributions",
+      "multiplier": 100,
+      "distribution": "uniform",
+      "precision": 256
+    },
+    {
+      "label": "distributions",
+      "multiplier": 1000,
+      "distribution": "uniform",
+      "precision": 256
+    },
+    {
+      "label": "distributions",
+      "multiplier": 5000,
+      "distribution": "uniform",
+      "precision": 256
+    },
+    {
+      "label": "distributions",
+      "multiplier": 1,
+      "distribution": "laplace",
+      "precision": 256
+    },
+    {
+      "label": "distributions",
+      "multiplier": 10,
+      "distribution": "laplace",
+      "precision": 256
+    },
+    {
+      "label": "distributions",
+      "multiplier": 100,
+      "distribution": "laplace",
+      "precision": 256
+    },
+    {
+      "label": "distributions",
+      "multiplier": 1000,
+      "distribution": "laplace",
+      "precision": 256
+    },
+    {
+      "label": "distributions",
+      "multiplier": 5000,
+      "distribution": "laplace",
+      "precision": 256
+    },
+    {
+      "label": "distributions",
+      "multiplier": 1,
+      "distribution": "triangular",
+      "precision": 256
+    },
+    {
+      "label": "distributions",
+      "multiplier": 10,
+      "distribution": "triangular",
+      "precision": 256
+    },
+    {
+      "label": "distributions",
+      "multiplier": 100,
+      "distribution": "triangular",
+      "precision": 256
+    },
+    {
+      "label": "distributions",
+      "multiplier": 1000,
+      "distribution": "triangular",
+      "precision": 256
+    },
+    {
+      "label": "distributions",
+      "multiplier": 5000,
+      "distribution": "triangular",
+      "precision": 256
+    },
+    {
+      "label": "distributions",
+      "multiplier": 1,
+      "distribution": "worst_case",
+      "precision": 256
+    },
+    {
+      "label": "distributions",
+      "multiplier": 10,
+      "distribution": "worst_case",
+      "precision": 256
+    },
+    {
+      "label": "distributions",
+      "multiplier": 100,
+      "distribution": "worst_case",
+      "precision": 256
+    },
+    {
+      "label": "distributions",
+      "multiplier": 1000,
+      "distribution": "worst_case",
+      "precision": 256
+    },
+    {
+      "label": "distributions",
+      "multiplier": 5000,
+      "distribution": "worst_case",
+      "precision": 256
+    },
+    {
+      "label": "distributions",
+      "multiplier": 1,
+      "distribution": "zero",
+      "precision": 256
+    },
+    {
+      "label": "distributions",
+      "multiplier": 10,
+      "distribution": "zero",
+      "precision": 256
+    },
+    {
+      "label": "distributions",
+      "multiplier": 100,
+      "distribution": "zero",
+      "precision": 256
+    },
+    {
+      "label": "distributions",
+      "multiplier": 1000,
+      "distribution": "zero",
+      "precision": 256
+    },
+    {
+      "label": "distributions",
+      "multiplier": 5000,
+      "distribution": "zero",
+      "precision": 256
+    }
+  ],
+  "results": [
+    {
+      "label": "distributions",
+      "multiplier": 1,
+      "distribution": "gaussian",
+      "precision": 256,
+      "attack_error_mean": 0.0,
+      "pred_agreement_mean": 0.9996199744939804,
+      "pred_agreement_std": 0.00016582817073677763,
+      "test_acc_mean": 0.8224414831399918,
+      "test_acc_std": 0.00013390311853402116
+    },
+    {
+      "label": "distributions",
+      "multiplier": 10,
+      "distribution": "gaussian",
+      "precision": 256,
+      "attack_error_mean": 0.013599537037037037,
+      "pred_agreement_mean": 0.9978624737262726,
+      "pred_agreement_std": 0.000348341893720753,
+      "test_acc_mean": 0.8223149791359902,
+      "test_acc_std": 0.000367936821720026
+    },
+    {
+      "label": "distributions",
+      "multiplier": 100,
+      "distribution": "gaussian",
+      "precision": 256,
+      "attack_error_mean": 0.11125578703703703,
+      "pred_agreement_mean": 0.9833084753155709,
+      "pred_agreement_std": 0.0010291632568234902,
+      "test_acc_mean": 0.8219679787755012,
+      "test_acc_std": 0.000823999341135793
+    },
+    {
+      "label": "distributions",
+      "multiplier": 1000,
+      "distribution": "gaussian",
+      "precision": 256,
+      "attack_error_mean": 1.0199652777777777,
+      "pred_agreement_mean": 0.6372189855575562,
+      "pred_agreement_std": 0.003406368664772984,
+      "test_acc_mean": 0.5896334847807885,
+      "test_acc_std": 0.0032461571384747524
+    },
+    {
+      "label": "distributions",
+      "multiplier": 5000,
+      "distribution": "gaussian",
+      "precision": 256,
+      "attack_error_mean": 6.344618055555555,
+      "pred_agreement_mean": 0.10555149722844362,
+      "pred_agreement_std": 0.0024297318807680636,
+      "test_acc_mean": 0.10140899732708931,
+      "test_acc_std": 0.0024438121274671914
+    },
+    {
+      "label": "distributions",
+      "multiplier": 1,
+      "distribution": "uniform",
+      "precision": 256,
+      "attack_error_mean": 0.0,
+      "pred_agreement_mean": 0.9995064768195152,
+      "pred_agreement_std": 0.000172645960302218,
+      "test_acc_mean": 0.8224379822611809,
+      "test_acc_std": 0.00016600426856416356
+    },
+    {
+      "label": "distributions",
+      "multiplier": 10,
+      "distribution": "uniform",
+      "precision": 256,
+      "attack_error_mean": 0.01880787037037037,
+      "pred_agreement_mean": 0.9965899738669396,
+      "pred_agreement_std": 0.0004955783392789827,
+      "test_acc_mean": 0.8221779787540435,
+      "test_acc_std": 0.00046023616006974683
+    },
+    {
+      "label": "distributions",
+      "multiplier": 100,
+      "distribution": "uniform",
+      "precision": 256,
+      "attack_error_mean": 0.1607349537037037,
+      "pred_agreement_mean": 0.9709609764814376,
+      "pred_agreement_std": 0.0012699543808718631,
+      "test_acc_mean": 0.8207224798202515,
+      "test_acc_std": 0.0012918361426117618
+    },
+    {
+      "label": "distributions",
+      "multiplier": 1000,
+      "distribution": "uniform",
+      "precision": 256,
+      "attack_error_mean": 1.5256076388888888,
+      "pred_agreement_mean": 0.1991414947807789,
+      "pred_agreement_std": 0.002538844147244723,
+      "test_acc_mean": 0.18661299534142017,
+      "test_acc_std": 0.0026415587872189302
+    },
+    {
+      "label": "distributions",
+      "multiplier": 5000,
+      "distribution": "uniform",
+      "precision": 256,
+      "attack_error_mean": 8.691695601851851,
+      "pred_agreement_mean": 0.10537849694490432,
+      "pred_agreement_std": 0.0025119090753088482,
+      "test_acc_mean": 0.09985449772328138,
+      "test_acc_std": 0.002350037808648352
+    },
+    {
+      "label": "distributions",
+      "multiplier": 1,
+      "distribution": "laplace",
+      "precision": 256,
+      "attack_error_mean": 0.0,
+      "pred_agreement_mean": 0.9995159777998924,
+      "pred_agreement_std": 0.0001828711445248464,
+      "test_acc_mean": 0.8224334818124771,
+      "test_acc_std": 0.00015109415775476425
+    },
+    {
+      "label": "distributions",
+      "multiplier": 10,
+      "distribution": "laplace",
+      "precision": 256,
+      "attack_error_mean": 0.018952546296296297,
+      "pred_agreement_mean": 0.9967314717173577,
+      "pred_agreement_std": 0.0004831757386673352,
+      "test_acc_mean": 0.8221949774026871,
+      "test_acc_std": 0.0004484155255959431
+    },
+    {
+      "label": "distributions",
+      "multiplier": 100,
+      "distribution": "laplace",
+      "precision": 256,
+      "attack_error_mean": 0.16608796296296297,
+      "pred_agreement_mean": 0.972724976837635,
+      "pred_agreement_std": 0.001300105219512714,
+      "test_acc_mean": 0.8209324783086777,
+      "test_acc_std": 0.0012674357548630958
+    },
+    {
+      "label": "distributions",
+      "multiplier": 1000,
+      "distribution": "laplace",
+      "precision": 256,
+      "attack_error_mean": 1.5993923611111112,
+      "pred_agreement_mean": 0.23073249392211437,
+      "pred_agreement_std": 0.002754649318895115,
+      "test_acc_mean": 0.21592799432575702,
+      "test_acc_std": 0.0027591696308176925
+    },
+    {
+      "label": "distributions",
+      "multiplier": 5000,
+      "distribution": "laplace",
+      "precision": 256,
+      "attack_error_mean": 9.225260416666666,
+      "pred_agreement_mean": 0.10521899715065956,
+      "pred_agreement_std": 0.0024516603864118886,
+      "test_acc_mean": 0.10007499720901251,
+      "test_acc_std": 0.002417948404515916
+    },
+    {
+      "label": "distributions",
+      "multiplier": 1,
+      "distribution": "triangular",
+      "precision": 256,
+      "attack_error_mean": 0.0,
+      "pred_agreement_mean": 0.9995699751377106,
+      "pred_agreement_std": 0.00016940574855517048,
+      "test_acc_mean": 0.8224539822340011,
+      "test_acc_std": 0.00014725909494583668
+    },
+    {
+      "label": "distributions",
+      "multiplier": 10,
+      "distribution": "triangular",
+      "precision": 256,
+      "attack_error_mean": 0.01490162037037037,
+      "pred_agreement_mean": 0.9974049738049507,
+      "pred_agreement_std": 0.0004284575269367961,
+      "test_acc_mean": 0.8222034779191018,
+      "test_acc_std": 0.0003324748840476412
+    },
+    {
+      "label": "distributions",
+      "multiplier": 100,
+      "distribution": "triangular",
+      "precision": 256,
+      "attack_error_mean": 0.1316550925925926,
+      "pred_agreement_mean": 0.9797614741325379,
+      "pred_agreement_std": 0.001155971418523025,
+      "test_acc_mean": 0.8216689783334732,
+      "test_acc_std": 0.0009414555331072953
+    },
+    {
+      "label": "distributions",
+      "multiplier": 1000,
+      "distribution": "triangular",
+      "precision": 256,
+      "attack_error_mean": 1.1371527777777777,
+      "pred_agreement_mean": 0.44212848752737044,
+      "pred_agreement_std": 0.003169611716654269,
+      "test_acc_mean": 0.41316948845982554,
+      "test_acc_std": 0.0032734870684970048
+    },
+    {
+      "label": "distributions",
+      "multiplier": 5000,
+      "distribution": "triangular",
+      "precision": 256,
+      "attack_error_mean": 7.012008101851852,
+      "pred_agreement_mean": 0.10508649736642837,
+      "pred_agreement_std": 0.0026382507174347964,
+      "test_acc_mean": 0.10031199753284455,
+      "test_acc_std": 0.002538238855131551
+    },
+    {
+      "label": "distributions",
+      "multiplier": 1,
+      "distribution": "worst_case",
+      "precision": 256,
+      "attack_error_mean": 0.0,
+      "pred_agreement_mean": 0.9989999532699585,
+      "pred_agreement_std": 0.0,
+      "test_acc_mean": 0.8224999904632568,
+      "test_acc_std": 0.0
+    },
+    {
+      "label": "distributions",
+      "multiplier": 10,
+      "distribution": "worst_case",
+      "precision": 256,
+      "attack_error_mean": 0.01953125,
+      "pred_agreement_mean": 0.990399956703186,
+      "pred_agreement_std": 0.0,
+      "test_acc_mean": 0.8220999836921692,
+      "test_acc_std": 0.0
+    },
+    {
+      "label": "distributions",
+      "multiplier": 100,
+      "distribution": "worst_case",
+      "precision": 256,
+      "attack_error_mean": 0.1919849537037037,
+      "pred_agreement_mean": 0.847000002861023,
+      "pred_agreement_std": 0.0,
+      "test_acc_mean": 0.767799973487854,
+      "test_acc_std": 0.0
+    },
+    {
+      "label": "distributions",
+      "multiplier": 1000,
+      "distribution": "worst_case",
+      "precision": 256,
+      "attack_error_mean": 1.9493634259259258,
+      "pred_agreement_mean": 0.10099999606609344,
+      "pred_agreement_std": 0.0,
+      "test_acc_mean": 0.09999999403953552,
+      "test_acc_std": 0.0
+    },
+    {
+      "label": "distributions",
+      "multiplier": 5000,
+      "distribution": "worst_case",
+      "precision": 256,
+      "attack_error_mean": 9.761863425925926,
+      "pred_agreement_mean": 0.10099999606609344,
+      "pred_agreement_std": 0.0,
+      "test_acc_mean": 0.09999999403953552,
+      "test_acc_std": 0.0
+    },
+    {
+      "label": "distributions",
+      "multiplier": 1,
+      "distribution": "zero",
+      "precision": 256,
+      "attack_error_mean": 0.0,
+      "pred_agreement_mean": 0.9996999502182007,
+      "pred_agreement_std": 0.0,
+      "test_acc_mean": 0.8226000070571899,
+      "test_acc_std": 0.0
+    },
+    {
+      "label": "distributions",
+      "multiplier": 10,
+      "distribution": "zero",
+      "precision": 256,
+      "attack_error_mean": 0.0,
+      "pred_agreement_mean": 0.9996999502182007,
+      "pred_agreement_std": 0.0,
+      "test_acc_mean": 0.8226000070571899,
+      "test_acc_std": 0.0
+    },
+    {
+      "label": "distributions",
+      "multiplier": 100,
+      "distribution": "zero",
+      "precision": 256,
+      "attack_error_mean": 0.0,
+      "pred_agreement_mean": 0.9996999502182007,
+      "pred_agreement_std": 0.0,
+      "test_acc_mean": 0.8226000070571899,
+      "test_acc_std": 0.0
+    },
+    {
+      "label": "distributions",
+      "multiplier": 1000,
+      "distribution": "zero",
+      "precision": 256,
+      "attack_error_mean": 0.0,
+      "pred_agreement_mean": 0.9996999502182007,
+      "pred_agreement_std": 0.0,
+      "test_acc_mean": 0.8226000070571899,
+      "test_acc_std": 0.0
+    },
+    {
+      "label": "distributions",
+      "multiplier": 5000,
+      "distribution": "zero",
+      "precision": 256,
+      "attack_error_mean": 0.0,
+      "pred_agreement_mean": 0.9996999502182007,
+      "pred_agreement_std": 0.0,
+      "test_acc_mean": 0.8226000070571899,
+      "test_acc_std": 0.0
+    }
+  ],
+  "wall_seconds": 878.5596103668213
+}

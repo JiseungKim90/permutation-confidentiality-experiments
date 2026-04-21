@@ -1,0 +1,18 @@
+# Data (download instructions in README.md)
+data/
+
+# Trained model checkpoints
+models/*.pt
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Submission packaging
+submission_artifact/
+submission_artifact.tar.gz
+
+# Jota runner artifacts (not for public repo)
+jota_artifacts/
+*.jota_version

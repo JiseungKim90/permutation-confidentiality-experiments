@@ -1,0 +1,66 @@
+======================================================================
+Exp 32: Lineage Detection on ImageNet-Scale Models
+Precision: 256 (8-bit), Layers: ['conv1', 'layer2.0.conv1', 'layer3.0.conv1', 'layer4.0.conv1']
+Random seed: 20260414
+======================================================================
+
+Loaded 5 base models:
+  V1
+  V2
+  V1+0.002
+  V1+0.005
+  V1+0.01
+Fingerprint dimension: 1939
+
+Base model pairwise L2 distances:
+          V1 vs V2        : 24.7469
+          V1 vs V1+0.002  : 0.0155
+          V1 vs V1+0.005  : 0.0254
+          V1 vs V1+0.01   : 0.0318
+          V2 vs V1+0.002  : 24.7463
+          V2 vs V1+0.005  : 24.7449
+          V2 vs V1+0.01   : 24.7463
+    V1+0.002 vs V1+0.005  : 0.0262
+    V1+0.002 vs V1+0.01   : 0.0319
+    V1+0.005 vs V1+0.01   : 0.0340
+
+============================================================
+Regime: mild (noise_scale=0.001)
+============================================================
+  Children: 15 (3 per base x 5 bases)
+  Accuracy: 15/15 (100%)
+  Within  dist -- mean: 0.0136, max: 0.0195
+  Between dist -- mean: 9.9150, min: 0.0159
+  Separation ratio: 0.8x
+  Separable: False
+
+============================================================
+Regime: moderate (noise_scale=0.005)
+============================================================
+  Children: 15 (3 per base x 5 bases)
+  Accuracy: 15/15 (100%)
+  Within  dist -- mean: 0.0275, max: 0.0397
+  Between dist -- mean: 9.9168, min: 0.0239
+  Separation ratio: 0.6x
+  Separable: False
+
+============================================================
+Regime: aggressive (noise_scale=0.02)
+============================================================
+  Children: 15 (3 per base x 5 bases)
+  Accuracy: 10/15 (67%)
+  Within  dist -- mean: 0.0532, max: 0.0870
+  Between dist -- mean: 9.9273, min: 0.0440
+  Separation ratio: 0.5x
+  Separable: False
+
+============================================================
+Cross-Precision Lineage (aggressive regime)
+============================================================
+  4-bit: 8/15 (53%)
+  8-bit: 10/15 (67%)
+  12-bit: 14/15 (93%)
+
+======================================================================
+ALL LINEAGE EXPERIMENTS COMPLETE
+======================================================================

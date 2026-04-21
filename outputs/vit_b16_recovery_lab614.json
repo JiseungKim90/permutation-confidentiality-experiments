@@ -1,0 +1,343 @@
+{
+  "architecture": "ViT-B/16",
+  "weights": "IMAGENET1K_V1",
+  "n_linear": 37,
+  "precision": 256,
+  "max_err_overall": 0.0,
+  "per_layer": [
+    {
+      "name": "encoder.layers.encoder_layer_0.self_attention.out_proj",
+      "shape": [
+        768,
+        768
+      ],
+      "has_bias": true,
+      "max_err": 0.0
+    },
+    {
+      "name": "encoder.layers.encoder_layer_0.mlp.0",
+      "shape": [
+        3072,
+        768
+      ],
+      "has_bias": true,
+      "max_err": 0.0
+    },
+    {
+      "name": "encoder.layers.encoder_layer_0.mlp.3",
+      "shape": [
+        768,
+        3072
+      ],
+      "has_bias": true,
+      "max_err": 0.0
+    },
+    {
+      "name": "encoder.layers.encoder_layer_1.self_attention.out_proj",
+      "shape": [
+        768,
+        768
+      ],
+      "has_bias": true,
+      "max_err": 0.0
+    },
+    {
+      "name": "encoder.layers.encoder_layer_1.mlp.0",
+      "shape": [
+        3072,
+        768
+      ],
+      "has_bias": true,
+      "max_err": 0.0
+    },
+    {
+      "name": "encoder.layers.encoder_layer_1.mlp.3",
+      "shape": [
+        768,
+        3072
+      ],
+      "has_bias": true,
+      "max_err": 0.0
+    },
+    {
+      "name": "encoder.layers.encoder_layer_2.self_attention.out_proj",
+      "shape": [
+        768,
+        768
+      ],
+      "has_bias": true,
+      "max_err": 0.0
+    },
+    {
+      "name": "encoder.layers.encoder_layer_2.mlp.0",
+      "shape": [
+        3072,
+        768
+      ],
+      "has_bias": true,
+      "max_err": 0.0
+    },
+    {
+      "name": "encoder.layers.encoder_layer_2.mlp.3",
+      "shape": [
+        768,
+        3072
+      ],
+      "has_bias": true,
+      "max_err": 0.0
+    },
+    {
+      "name": "encoder.layers.encoder_layer_3.self_attention.out_proj",
+      "shape": [
+        768,
+        768
+      ],
+      "has_bias": true,
+      "max_err": 0.0
+    },
+    {
+      "name": "encoder.layers.encoder_layer_3.mlp.0",
+      "shape": [
+        3072,
+        768
+      ],
+      "has_bias": true,
+      "max_err": 0.0
+    },
+    {
+      "name": "encoder.layers.encoder_layer_3.mlp.3",
+      "shape": [
+        768,
+        3072
+      ],
+      "has_bias": true,
+      "max_err": 0.0
+    },
+    {
+      "name": "encoder.layers.encoder_layer_4.self_attention.out_proj",
+      "shape": [
+        768,
+        768
+      ],
+      "has_bias": true,
+      "max_err": 0.0
+    },
+    {
+      "name": "encoder.layers.encoder_layer_4.mlp.0",
+      "shape": [
+        3072,
+        768
+      ],
+      "has_bias": true,
+      "max_err": 0.0
+    },
+    {
+      "name": "encoder.layers.encoder_layer_4.mlp.3",
+      "shape": [
+        768,
+        3072
+      ],
+      "has_bias": true,
+      "max_err": 0.0
+    },
+    {
+      "name": "encoder.layers.encoder_layer_5.self_attention.out_proj",
+      "shape": [
+        768,
+        768
+      ],
+      "has_bias": true,
+      "max_err": 0.0
+    },
+    {
+      "name": "encoder.layers.encoder_layer_5.mlp.0",
+      "shape": [
+        3072,
+        768
+      ],
+      "has_bias": true,
+      "max_err": 0.0
+    },
+    {
+      "name": "encoder.layers.encoder_layer_5.mlp.3",
+      "shape": [
+        768,
+        3072
+      ],
+      "has_bias": true,
+      "max_err": 0.0
+    },
+    {
+      "name": "encoder.layers.encoder_layer_6.self_attention.out_proj",
+      "shape": [
+        768,
+        768
+      ],
+      "has_bias": true,
+      "max_err": 0.0
+    },
+    {
+      "name": "encoder.layers.encoder_layer_6.mlp.0",
+      "shape": [
+        3072,
+        768
+      ],
+      "has_bias": true,
+      "max_err": 0.0
+    },
+    {
+      "name": "encoder.layers.encoder_layer_6.mlp.3",
+      "shape": [
+        768,
+        3072
+      ],
+      "has_bias": true,
+      "max_err": 0.0
+    },
+    {
+      "name": "encoder.layers.encoder_layer_7.self_attention.out_proj",
+      "shape": [
+        768,
+        768
+      ],
+      "has_bias": true,
+      "max_err": 0.0
+    },
+    {
+      "name": "encoder.layers.encoder_layer_7.mlp.0",
+      "shape": [
+        3072,
+        768
+      ],
+      "has_bias": true,
+      "max_err": 0.0
+    },
+    {
+      "name": "encoder.layers.encoder_layer_7.mlp.3",
+      "shape": [
+        768,
+        3072
+      ],
+      "has_bias": true,
+      "max_err": 0.0
+    },
+    {
+      "name": "encoder.layers.encoder_layer_8.self_attention.out_proj",
+      "shape": [
+        768,
+        768
+      ],
+      "has_bias": true,
+      "max_err": 0.0
+    },
+    {
+      "name": "encoder.layers.encoder_layer_8.mlp.0",
+      "shape": [
+        3072,
+        768
+      ],
+      "has_bias": true,
+      "max_err": 0.0
+    },
+    {
+      "name": "encoder.layers.encoder_layer_8.mlp.3",
+      "shape": [
+        768,
+        3072
+      ],
+      "has_bias": true,
+      "max_err": 0.0
+    },
+    {
+      "name": "encoder.layers.encoder_layer_9.self_attention.out_proj",
+      "shape": [
+        768,
+        768
+      ],
+      "has_bias": true,
+      "max_err": 0.0
+    },
+    {
+      "name": "encoder.layers.encoder_layer_9.mlp.0",
+      "shape": [
+        3072,
+        768
+      ],
+      "has_bias": true,
+      "max_err": 0.0
+    },
+    {
+      "name": "encoder.layers.encoder_layer_9.mlp.3",
+      "shape": [
+        768,
+        3072
+      ],
+      "has_bias": true,
+      "max_err": 0.0
+    },
+    {
+      "name": "encoder.layers.encoder_layer_10.self_attention.out_proj",
+      "shape": [
+        768,
+        768
+      ],
+      "has_bias": true,
+      "max_err": 0.0
+    },
+    {
+      "name": "encoder.layers.encoder_layer_10.mlp.0",
+      "shape": [
+        3072,
+        768
+      ],
+      "has_bias": true,
+      "max_err": 0.0
+    },
+    {
+      "name": "encoder.layers.encoder_layer_10.mlp.3",
+      "shape": [
+        768,
+        3072
+      ],
+      "has_bias": true,
+      "max_err": 0.0
+    },
+    {
+      "name": "encoder.layers.encoder_layer_11.self_attention.out_proj",
+      "shape": [
+        768,
+        768
+      ],
+      "has_bias": true,
+      "max_err": 0.0
+    },
+    {
+      "name": "encoder.layers.encoder_layer_11.mlp.0",
+      "shape": [
+        3072,
+        768
+      ],
+      "has_bias": true,
+      "max_err": 0.0
+    },
+    {
+      "name": "encoder.layers.encoder_layer_11.mlp.3",
+      "shape": [
+        768,
+        3072
+      ],
+      "has_bias": true,
+      "max_err": 0.0
+    },
+    {
+      "name": "heads.head",
+      "shape": [
+        1000,
+        768
+      ],
+      "has_bias": true,
+      "max_err": 0.0
+    }
+  ],
+  "total_linear_params": 64468992
+}

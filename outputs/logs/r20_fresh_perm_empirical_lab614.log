@@ -1,0 +1,10 @@
+=== Multi-round fresh-permutation empirical (Prop 2) ===
+[load] wall=0.0s
+[layers] 21 Conv2d layers
+layer                                              d     d*      T_emp   T_theory  ratio
+conv1                                             27     27       98.2      170.0   0.58x
+layer1.0.conv1                                   144    144      814.6     1147.7   0.71x
+layer2.0.conv1                                   144    144      777.4     1147.7   0.68x
+layer3.0.conv1                                   288    288     2177.6     2494.9   0.87x
+layer3.2.conv2                                   576    576     3780.4     5389.1   0.70x
+=== DONE wall=4.3s ===

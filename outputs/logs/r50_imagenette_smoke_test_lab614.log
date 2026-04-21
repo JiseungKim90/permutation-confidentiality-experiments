@@ -1,0 +1,41 @@
+=== Smoke test: jota_r50_imagenette_per_layer.zip validation on lab614 ===
+Run: 2026-04-15 14:27 KST, Python 3, lab614 (CPU)
+Script: inline Python driver extracting the zip, loading fp16 -> fp32
+        state dict, loading the 500-image pickle subset, running a single
+        clean forward pass on all 500 images, and measuring round-then-sort
+        attack error on conv1 at multiplier 100.
+
+[1] Loading fp16 weights ->  fp32 model...
+    fp16 state_dict keys: 320
+    first key dtype: torch.float16
+    loaded OK
+[2] Conv2d layers: 53
+    first 3: ['conv1', 'layer1.0.conv1', 'layer1.0.conv2']
+    conv1 present: True
+[3] Loading Imagenette subset...
+    size: 500, labels[:5]=[0, 0, 0, 0, 0]
+    wnids match: [0, 0, 0, 0, 0] -> imagenet [0, 0, 0, 0, 0]
+[4] Forward pass (batch=64)...
+    clean top-1 accuracy: 82.20% (411/500) wall=45.5s
+[5] conv1 shape: (64, 147)
+    mean conv1 attack error @ mult=100: 9.43e-02
+=== Smoke test PASSED ===
+
+Interpretation:
+- 82.20% clean top-1 on the 500-image Imagenette subset using the REAL
+  ImageNet-1K labels (via IMAGENETTE_TO_IMAGENET = [0, 217, 482, 491, 497,
+  566, 569, 571, 574, 701]), not the fabricated mode-of-predictions
+  heuristic that produced 84.5% in the pre-audit 33_imagenet_tradeoff.log.
+- The 2.3 pp gap between 84.5% (fake) and 82.20% (real) is small because
+  ResNet-50 V1 correctly classifies most Imagenette images to the correct
+  ImageNet index, so the mode-of-predictions heuristic happened to coincide
+  with the real label on most classes; however, the fake label was still
+  wrong in principle and on the images where the mode diverged from
+  ground truth, so the corrected 82.20% is what enters Table 5.
+- conv1 attack error 9.43e-02 at multiplier 100 matches the old log's
+  9.44e-02 (within LSB rounding), confirming the attack-side measurement
+  is unchanged across the refactor. The clean-accuracy label fix did not
+  touch the attack pipeline.
+- 53 Conv2d layers found, matching the canonical torchvision ResNet-50
+  architecture (1 stem conv + 16 bottleneck blocks × 3 convs + 4 shortcut
+  convs).

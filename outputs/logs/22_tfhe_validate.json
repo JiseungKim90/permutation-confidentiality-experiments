@@ -1,0 +1,22 @@
+{
+  "concrete_python": "not_installed",
+  "TFHE-conservative": {
+    "noise_std": 3.0517578125e-05,
+    "noise_to_bound_ratio": 0.015625,
+    "max_error": 0.0,
+    "all_exact": true
+  },
+  "TFHE-standard": {
+    "noise_std": 9.5367431640625e-07,
+    "noise_to_bound_ratio": 0.00048828125,
+    "max_error": 0.0,
+    "all_exact": true
+  },
+  "TFHE-optimistic": {
+    "noise_std": 2.9802322387695312e-08,
+    "noise_to_bound_ratio": 1.52587890625e-05,
+    "max_error": 0.0,
+    "all_exact": true
+  },
+  "CKKS": "not_installed"
+}

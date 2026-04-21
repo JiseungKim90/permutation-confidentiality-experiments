@@ -1,0 +1,167 @@
+{
+  "experiment": "fine_grid",
+  "architecture": "resnet56",
+  "precision": 256,
+  "n_trials": 300,
+  "clean_test_acc": 0.8222000002861023,
+  "n_conv_layers": 57,
+  "teacher_path": "/workspace/models/resnet56_seed0.pt",
+  "grid": [
+    {
+      "label": "fine_grid",
+      "multiplier": 50,
+      "distribution": "gaussian",
+      "precision": 256
+    },
+    {
+      "label": "fine_grid",
+      "multiplier": 100,
+      "distribution": "gaussian",
+      "precision": 256
+    },
+    {
+      "label": "fine_grid",
+      "multiplier": 200,
+      "distribution": "gaussian",
+      "precision": 256
+    },
+    {
+      "label": "fine_grid",
+      "multiplier": 300,
+      "distribution": "gaussian",
+      "precision": 256
+    },
+    {
+      "label": "fine_grid",
+      "multiplier": 500,
+      "distribution": "gaussian",
+      "precision": 256
+    },
+    {
+      "label": "fine_grid",
+      "multiplier": 700,
+      "distribution": "gaussian",
+      "precision": 256
+    },
+    {
+      "label": "fine_grid",
+      "multiplier": 1000,
+      "distribution": "gaussian",
+      "precision": 256
+    },
+    {
+      "label": "fine_grid",
+      "multiplier": 1500,
+      "distribution": "gaussian",
+      "precision": 256
+    },
+    {
+      "label": "fine_grid",
+      "multiplier": 2000,
+      "distribution": "gaussian",
+      "precision": 256
+    }
+  ],
+  "results": [
+    {
+      "label": "fine_grid",
+      "multiplier": 50,
+      "distribution": "gaussian",
+      "precision": 256,
+      "attack_error_mean": 0.06032986111111111,
+      "pred_agreement_mean": 0.9913976434866587,
+      "pred_agreement_std": 0.000761989254466883,
+      "test_acc_mean": 0.8222309788068135,
+      "test_acc_std": 0.0006680862914757938
+    },
+    {
+      "label": "fine_grid",
+      "multiplier": 100,
+      "distribution": "gaussian",
+      "precision": 256,
+      "attack_error_mean": 0.10575810185185185,
+      "pred_agreement_mean": 0.9817163070042928,
+      "pred_agreement_std": 0.0010921680807417361,
+      "test_acc_mean": 0.8218216449022293,
+      "test_acc_std": 0.0009822238149188001
+    },
+    {
+      "label": "fine_grid",
+      "multiplier": 200,
+      "distribution": "gaussian",
+      "precision": 256,
+      "attack_error_mean": 0.1824363425925926,
+      "pred_agreement_mean": 0.9595183082421621,
+      "pred_agreement_std": 0.001601425702340843,
+      "test_acc_mean": 0.8176963138580322,
+      "test_acc_std": 0.001392318769662898
+    },
+    {
+      "label": "fine_grid",
+      "multiplier": 300,
+      "distribution": "gaussian",
+      "precision": 256,
+      "attack_error_mean": 0.2667824074074074,
+      "pred_agreement_mean": 0.9330019744237265,
+      "pred_agreement_std": 0.001734896663918808,
+      "test_acc_mean": 0.8085276472568512,
+      "test_acc_std": 0.001652695689570981
+    },
+    {
+      "label": "fine_grid",
+      "multiplier": 500,
+      "distribution": "gaussian",
+      "precision": 256,
+      "attack_error_mean": 0.45240162037037035,
+      "pred_agreement_mean": 0.866251646677653,
+      "pred_agreement_std": 0.002343765366579967,
+      "test_acc_mean": 0.7738776481151581,
+      "test_acc_std": 0.002340869779713398
+    },
+    {
+      "label": "fine_grid",
+      "multiplier": 700,
+      "distribution": "gaussian",
+      "precision": 256,
+      "attack_error_mean": 0.6539351851851852,
+      "pred_agreement_mean": 0.7682369814316432,
+      "pred_agreement_std": 0.0025447577388378767,
+      "test_acc_mean": 0.704551315108935,
+      "test_acc_std": 0.002631076398806706
+    },
+    {
+      "label": "fine_grid",
+      "multiplier": 1000,
+      "distribution": "gaussian",
+      "precision": 256,
+      "attack_error_mean": 1.0085358796296295,
+      "pred_agreement_mean": 0.5178176532189052,
+      "pred_agreement_std": 0.003312037682567137,
+      "test_acc_mean": 0.4891973212361336,
+      "test_acc_std": 0.0032300769968894288
+    },
+    {
+      "label": "fine_grid",
+      "multiplier": 1500,
+      "distribution": "gaussian",
+      "precision": 256,
+      "attack_error_mean": 1.6306423611111112,
+      "pred_agreement_mean": 0.17113932872811954,
+      "pred_agreement_std": 0.0021658983123329194,
+      "test_acc_mean": 0.16313466265797616,
+      "test_acc_std": 0.0020813452838369063
+    },
+    {
+      "label": "fine_grid",
+      "multiplier": 2000,
+      "distribution": "gaussian",
+      "precision": 256,
+      "attack_error_mean": 2.2886284722222223,
+      "pred_agreement_mean": 0.12057733009258906,
+      "pred_agreement_std": 0.0016004435858545444,
+      "test_acc_mean": 0.11521233042081197,
+      "test_acc_std": 0.001569866702466617
+    }
+  ],
+  "wall_seconds": 969.2298464775085
+}

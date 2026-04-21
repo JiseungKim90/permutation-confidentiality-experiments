@@ -1,0 +1,16 @@
+{
+  "distances": {
+    "V1_V2": 25.543136596679688,
+    "V1_V1ft": 0.028258925303816795,
+    "V2_V1ft": 25.54141616821289,
+    "ratio_V2ft_over_V1ft": 903.8353685999211
+  },
+  "fingerprint_layers": [
+    "conv1",
+    "layer1.0.conv1",
+    "layer2.0.conv1",
+    "layer3.0.conv1",
+    "layer4.0.conv1"
+  ],
+  "wall_seconds": 221.32561945915222
+}

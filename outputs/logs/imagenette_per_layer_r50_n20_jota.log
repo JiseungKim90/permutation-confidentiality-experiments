@@ -1,0 +1,30 @@
+======================================================================
+JOTA: ResNet-50 per-layer noise tradeoff (Imagenette)
+HERE=/workspace
+OUTPUT_DIR=/output
+SCRIPT=/workspace/scripts/33b_r50_imagenette_per_layer.py
+WEIGHTS=/workspace/models/resnet50_fp16.pt
+DATA_ROOT=/workspace/data
+======================================================================
+[preflight] all required files present; runtime is offline-safe
+======================================================================
+[run] per-layer sweep
+      /opt/conda/bin/python -u /workspace/scripts/33b_r50_imagenette_per_layer.py --weights-path /workspace/models/resnet50_fp16.pt --data-root /workspace/data --output-path /output/imagenette_per_layer_r50_n20.json --precision 256 --n-trials 20 --noise-mults 1,10,100,1000,5000 --batch-size 64
+[init] device=cuda
+[model] loaded ResNet-50 from /workspace/models/resnet50_fp16.pt
+[data] test tensor shape=(500, 3, 224, 224) batch=64
+[baseline] clean top-1 accuracy (real Imagenette→ImageNet labels): 82.20%
+[hooks] 53 Conv2d layers targeted
+[sweep] noise_mults=[1, 10, 100, 1000, 5000] n_trials=20
+    Mult        AtkErr           PredAgr           Top1Acc
+      1x      0.00e+00     99.64±0.23%     82.14±0.19%
+     10x      1.29e-02     97.47±0.55%     81.97±0.60%
+    100x      9.43e-02      0.00±0.00%      0.00±0.00%
+   1000x      1.45e+00      0.00±0.00%      0.00±0.00%
+   5000x      8.12e+00      0.00±0.00%      0.00±0.00%
+[done] wrote /output/imagenette_per_layer_r50_n20.json wall=71.3s
+[done] per-layer wall=83.2s rc=0
+======================================================================
+RESULTS WRITTEN:
+  /output/imagenette_per_layer_r50_n20.json  (5689 bytes)
+======================================================================

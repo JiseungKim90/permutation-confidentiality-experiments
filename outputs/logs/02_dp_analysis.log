@@ -1,0 +1,10 @@
+=== Table 1 (tab:eps0) ===
+ Precision        p    noise_std        eps_0
+     8-bit      256     6.50e-04       10,491
+    12-bit     4096     4.10e-05      166,316
+    16-bit    65536     2.50e-06    2,727,577
+
+Threshold (n=512, delta=1e-05): eps_0 <= 0.96
+Bounded-support lower bound: eps_0 >= 2
+
+Saved outputs/figures/fig_dp_vacuousness.png

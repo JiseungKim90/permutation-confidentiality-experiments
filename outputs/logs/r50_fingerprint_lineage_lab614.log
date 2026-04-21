@@ -1,0 +1,20 @@
+=== R50 ImageNet fingerprinting ===
+[1] Loading R50 V1 + V2 pretrained
+  load wall=1.1s
+[2] Computing fingerprints (sorted col norms across 5 conv layers)
+  ||phi(V1) - phi(V2)||_2 = 25.5431
+[3] Building V1 -> Imagenette-finetuned variant (V1_ft)
+  epoch=0 batch=0 loss=1.3682
+  epoch=0 batch=5 loss=1.1181
+  epoch=0 batch=10 loss=0.4075
+  epoch=0 batch=15 loss=0.6192
+  epoch=1 batch=0 loss=0.1264
+  epoch=1 batch=5 loss=0.1295
+  epoch=1 batch=10 loss=0.0510
+  epoch=1 batch=15 loss=0.1642
+  fine-tuned V1 wall=221.3s
+[4] Fingerprint of V1_ft and distance matrix
+  ||phi(V1) - phi(V1_ft)||_2 = 0.0283  (lineage — small expected)
+  ||phi(V2) - phi(V1_ft)||_2 = 25.5414  (non-lineage — large expected)
+  ratio V2/V1 = 903.84x
+=== DONE ===
