@@ -28,7 +28,7 @@ fi
 COMMON_ARGS="--teacher-logits-source quantized \
     --data-root data \
     --subset-mode random \
-    --subset-seed 20260409 \
+    --subset-seed 0 \
     --student-epochs 10 \
     --batch-size 128 \
     --student-lr 0.05 \
@@ -41,9 +41,9 @@ run_kd() {
     local arch="$1"
     local budget="$2"
     local seeds="$3"
-    local stem="cifar_kd_${arch}_q${budget}_e10_s${seeds}_quantized_random"
-    if [ "$arch" = "resnet20" ]; then
-        stem="cifar_kd_q${budget}_e10_s${seeds}_quantized_random"
+    local stem="cifar_kd_q${budget}_e10_s${seeds}_quantized_random"
+    if [ "$arch" = "resnet56" ]; then
+        stem="cifar_kd_r56_q${budget}_e10_s${seeds}_quantized_random"
     fi
     echo "===== Running ${stem} ====="
     python3 -u scripts/18_kd_spectral_priors_cifar.py \

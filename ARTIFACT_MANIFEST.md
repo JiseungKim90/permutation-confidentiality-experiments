@@ -65,8 +65,7 @@ Model Confidentiality”.
 
 - Teacher checkpoint: `models/resnet20_seed0.pt`
 - Teacher logits: quantized checkpoint forward pass (`p = 256`)
-- Query subsets: fixed random subsets with `subset_seed = 20260409` (ResNet-20 canonical KD)
-- ResNet-56 KD ablation (Appendix) uses `random.seed(0)` per `cifar_kd_r56_*` JSONs; matches paper §A description
+- Query subsets: fixed random subsets with `subset_seed = 0`
 - Query budgets: `2,000` and `5,000`
 - Student architecture: `ResNet20`
 - Distillation epochs: `10`
