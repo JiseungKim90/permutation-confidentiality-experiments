@@ -37,6 +37,7 @@ Model Confidentiality”.
 - `outputs/logs/32_imagenet_lineage.log`
 - `outputs/logs/33_imagenet_tradeoff.log`
 - `outputs/logs/11b_per_layer_resnet56_jota.log` (R56 per-layer tradeoff; canonical source for tab:tradeoff R56 rows)
+- `outputs/logs/11b_tradeoff_per_layer_r20_local.log` (R20 per-layer tradeoff; canonical source for tab:tradeoff R20 Pred.agr and Per-layer columns)
 - `outputs/logs/cifar_kd_q2000_e10_s10_quantized_random.log`
 - `outputs/logs/cifar_kd_q5000_e10_s10_quantized_random.log`
 - `outputs/cifar_kd_q2000_e10_s10_quantized_random.json`
