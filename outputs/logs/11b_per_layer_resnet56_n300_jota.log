@@ -1,0 +1,21 @@
+======================================================================
+JOTA: ResNet-20 per-layer N=200
+OUTPUT_DIR=/output
+======================================================================
+[preflight] all required files present
+[run] /opt/conda/bin/python -u /workspace/scripts/11b_per_layer_resnet20.py --teacher-path /workspace/models/resnet20_seed0.pt --data-root /workspace/data --output-path /output/cifar_per_layer_r20_n200_quantized.json --precision 256 --n-trials 200 --noise-mults 1,10,100,1000,5000 --batch-size 500
+[init] device=cuda
+[model] loaded ResNet-20 from /workspace/models/resnet20_seed0.pt
+[data] test tensor shape=(10000, 3, 32, 32) batch=500
+[hooks] 21 Conv2d layers targeted
+[baseline] clean test accuracy: 82.26%
+[sweep] noise_mults=[1, 10, 100, 1000, 5000] n_trials=200
+    Mult        AtkErr           PredAgr           TestAcc
+      1x      0.00e+00     99.95±0.02%     82.25±0.01%
+     10x      1.36e-02     99.78±0.04%     82.23±0.03%
+    100x      1.11e-01     98.35±0.11%     82.21±0.09%
+   1000x      1.02e+00     63.74±0.34%     58.98±0.32%
+   5000x      6.34e+00     10.54±0.27%     10.12±0.23%
+[done] wrote /output/cifar_per_layer_r20_n200_quantized.json
+[done] wall=463.7s rc=0
+RESULT: /output/cifar_per_layer_r20_n200_quantized.json  (1356 bytes)

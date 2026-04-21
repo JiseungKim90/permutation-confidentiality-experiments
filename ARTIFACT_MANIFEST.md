@@ -36,8 +36,11 @@ Model Confidentiality”.
 - `outputs/logs/31_imagenet_architectures.log`
 - `outputs/logs/32_imagenet_lineage.log`
 - `outputs/logs/33_imagenet_tradeoff.log`
-- `outputs/logs/11b_per_layer_resnet56_jota.log` (R56 per-layer tradeoff; canonical source for tab:tradeoff R56 rows)
-- `outputs/logs/11b_tradeoff_per_layer_r20_local.log` (R20 per-layer tradeoff; canonical source for tab:tradeoff R20 Pred.agr and Per-layer columns)
+- `outputs/logs/11b_per_layer_resnet56_n300_jota.log` (R56 per-layer tradeoff N=300; canonical source for tab:tradeoff R56 rows)
+- `outputs/cifar_per_layer_r56_n300_quantized.json` (R56 per-layer N=300 full results)
+- `outputs/logs/11b_per_layer_resnet20_n200_jota.log` (R20 per-layer tradeoff N=200; canonical source for tab:tradeoff R20 Pred.agr and Per-layer columns)
+- `outputs/cifar_per_layer_r20_n200_quantized.json` (R20 per-layer N=200 full results)
+- `outputs/logs/11b_tradeoff_per_layer_r20_local.log` (R20 per-layer N=20 local CPU run; superseded by N=200 above)
 - `outputs/logs/cifar_kd_q2000_e10_s10_quantized_random.log`
 - `outputs/logs/cifar_kd_q5000_e10_s10_quantized_random.log`
 - `outputs/cifar_kd_q2000_e10_s10_quantized_random.json`

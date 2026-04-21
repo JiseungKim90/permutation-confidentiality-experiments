@@ -1,0 +1,48 @@
+{
+  "architecture": "ResNet-20",
+  "n_trials": 200,
+  "precision": 256,
+  "clean_acc": 82.260000705719,
+  "results": [
+    {
+      "noise_mult": 1,
+      "attack_error": 0.0,
+      "pred_agr_mean": 99.94894769787788,
+      "pred_agr_std": 0.0162598087463306,
+      "test_acc_mean": 82.24564835429192,
+      "test_acc_std": 0.013949868350124434
+    },
+    {
+      "noise_mult": 10,
+      "attack_error": 0.013599537037037037,
+      "pred_agr_mean": 99.78399777412415,
+      "pred_agr_std": 0.038948573009254944,
+      "test_acc_mean": 82.23299780488014,
+      "test_acc_std": 0.030951830422719373
+    },
+    {
+      "noise_mult": 100,
+      "attack_error": 0.11125578703703703,
+      "pred_agr_mean": 98.34894743561745,
+      "pred_agr_std": 0.10987910714760071,
+      "test_acc_mean": 82.21184787154198,
+      "test_acc_std": 0.09247204353299153
+    },
+    {
+      "noise_mult": 1000,
+      "attack_error": 1.0199652777777777,
+      "pred_agr_mean": 63.74499845504761,
+      "pred_agr_std": 0.33988538581682665,
+      "test_acc_mean": 58.976498395204544,
+      "test_acc_std": 0.31955113099132054
+    },
+    {
+      "noise_mult": 5000,
+      "attack_error": 6.344618055555555,
+      "pred_agr_mean": 10.537699714303017,
+      "pred_agr_std": 0.2653558136795149,
+      "test_acc_mean": 10.115599729120731,
+      "test_acc_std": 0.234980064963431
+    }
+  ]
+}
