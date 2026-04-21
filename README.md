@@ -52,6 +52,17 @@ data/
 ImageNet-scale scripts (30, 31, 32) use **pretrained torchvision weights**
 downloaded automatically at runtime; no manual data download is needed.
 
+**ResNet-56 checkpoint** (required for R56 experiments in
+`run_gpu_submission.sh`): download `resnet56_seed0.pt` from the
+[GitHub Releases page](https://github.com/JiseungKim90/permutation-confidentiality-experiments/releases/tag/v1.0)
+and place it in the `models/` directory.
+
+```bash
+mkdir -p models
+wget -O models/resnet56_seed0.pt \
+  https://github.com/JiseungKim90/permutation-confidentiality-experiments/releases/download/v1.0/resnet56_seed0.pt
+```
+
 ## Reproduction
 
 ```
