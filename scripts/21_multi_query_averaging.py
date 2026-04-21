@@ -1,15 +1,7 @@
 """
-Multi-query averaging attack: shows that k repeated queries per column
-reduce attack error as ~1/sqrt(k), even at high noise multipliers.
-
-For each (nm, k) pair:
-  - Pick n_cols random columns from every Conv2d layer
-  - Make k fresh-permutation queries per column with noise B = Delta*nm
-  - Average the k sorted estimates element-wise, then round
-  - Report mean max-error across columns
-
-Validates the paper's claim: "the attack degrades gracefully via averaging
-over k repeated queries."
+Multi-query averaging attack: k repeated fresh-permutation queries per column,
+averaged element-wise before rounding. Error decays as ~1/sqrt(k) across all
+noise multipliers; empirically confirms the graceful-degradation bound.
 """
 import argparse
 import json

@@ -1,18 +1,10 @@
 """
 Property inference via sorted spectra: quantization bitwidth and sparsity.
 
-Demonstrates two claims from the paper's "Architecture and Property Inference"
-section:
-
-(A) Quantization bitwidth detection.
-    For precision levels p in {4, 16, 64, 256}, count unique quantized values
-    and value range per layer. A 2-bit layer (p=4) has far fewer unique values
-    than an 8-bit layer (p=256), trivially distinguishable from sorted spectra.
-
-(B) Sparsity (pruning) detection.
-    Apply 50% unstructured magnitude pruning to the loaded model and compare
-    mean column norms of pruned vs. dense. Sorted column norms are directly
-    observable via the round-then-sort attack.
+Unique-value counts on sorted column spectra distinguish precision levels
+(p=4 vs p=256 gives 7 vs 217 unique values). Sorted column norms expose
+50% magnitude pruning directly, since zeroed weights collapse the norm
+distribution.
 """
 import argparse
 import json

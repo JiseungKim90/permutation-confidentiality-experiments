@@ -1,17 +1,10 @@
 """
-Deployment-faithful single-round TFHE transcript checks on actual
-quantized layers extracted from a trained ResNet-20 checkpoint.
+Single-round TFHE transcript check on actual quantized ResNet-20 layers.
 
-For each selected layer and permutation regime:
-  1. load the trained checkpoint;
-  2. quantize the layer to 1/p integers;
-  3. compile a Concrete TFHE circuit that applies the linear map and a
-     server-side output permutation under encryption; and
-  4. run zero/basis queries, decrypt the permuted transcript, and apply
-     round-then-sort on the client-observed values.
-
-This is still a one-round check, not full end-to-end encrypted inference,
-but it uses actual trained layers rather than synthetic matrices.
+Verifies that round-then-sort recovers the sorted spectrum from TFHE-encrypted
+transcripts, using real trained weights rather than synthetic matrices.
+Not full end-to-end encrypted inference; server-side permutation is applied
+after each layer's linear map under encryption.
 """
 import argparse
 import sys

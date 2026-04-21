@@ -11,7 +11,11 @@
 #   15_bias_recovery.py      Appendix A            Bias-having MLP attack
 #   16_noise_fingerprinting.py Sec 5.4, Tab 4      Fingerprinting under noise
 #   18_kd_spectral_priors_cifar.py Sec 5           Logit distillation + spectral priors
+#   19_fresh_perm_empirical.py   Prop 5            Fresh-perm T_emp/T_theory validation
+#   20_stip_centaur_trivial.py   Sec 4             STIP/Centaur zero-query demo
+#   21_multi_query_averaging.py  Sec 5             Multi-query averaging degradation
 #   22_tfhe_validate.py      Appendix A            CKKS check + TFHE proxy/simulation
+#   22b_property_inference.py    Sec 5             Quantization/sparsity inference
 #   24_tfhe_real.py          Appendix A            Small real TFHE check + larger simulation
 #   25_tfhe_resnet_transcript.py Appendix A        Trained-layer TFHE transcript check
 #   30_imagenet_pretrained.py    Sec 4, Tab 3       ImageNet-scale exact recovery
@@ -67,7 +71,36 @@ run 15_bias_recovery.py
 # ---- Step 5: Fingerprinting under noise ----
 run 16_noise_fingerprinting.py
 
-# ---- Step 6: FHE validation ----
+# ---- Step 6: Fresh permutation / supplementary experiments ----
+# These need the trained R20 checkpoint (models/resnet20_seed0.pt).
+TEACHER="models/resnet20_seed0.pt"
+
+echo "===== Running 19_fresh_perm_empirical (R20) ====="
+python3 -u scripts/19_fresh_perm_empirical.py \
+    --teacher-path "$TEACHER" --architecture resnet20 \
+    --output-path outputs/fresh_perm_r20_n30.json \
+    2>&1 | tee "$LOG_DIR/19_fresh_perm_r20_n30.log"
+
+echo "===== Running 20_stip_centaur_trivial (R20) ====="
+python3 -u scripts/20_stip_centaur_trivial.py \
+    --teacher-path "$TEACHER" --architecture resnet20 \
+    --output-path outputs/stip_centaur_r20.json \
+    2>&1 | tee "$LOG_DIR/20_stip_centaur.log"
+
+echo "===== Running 21_multi_query_averaging (R20) ====="
+python3 -u scripts/21_multi_query_averaging.py \
+    --teacher-path "$TEACHER" --architecture resnet20 \
+    --output-path outputs/multi_query_avg_r20.json \
+    2>&1 | tee "$LOG_DIR/21_multi_query_avg_r20.log"
+
+echo "===== Running 22b_property_inference (R20) ====="
+python3 -u scripts/22b_property_inference.py \
+    --teacher-path "$TEACHER" --architecture resnet20 \
+    --output-path outputs/property_inference_r20.json \
+    2>&1 | tee "$LOG_DIR/22b_property_inference.log"
+echo ""
+
+# ---- Step 7: FHE validation ----
 run 22_tfhe_validate.py
 
 if python3 -c "import concrete" 2>/dev/null; then

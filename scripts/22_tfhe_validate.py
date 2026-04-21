@@ -1,10 +1,7 @@
 """
-Sanity checks across HE schemes.
-This script combines:
-  (1) a concrete-python identity-circuit proxy for TFHE noise,
-  (2) simulated TFHE post-bootstrapping noise regimes, and
-  (3) an optional CKKS check via TenSEAL.
-It is not a single end-to-end deployed-layer experiment.
+Cross-scheme HE sanity checks: concrete-python TFHE identity-circuit proxy,
+simulated post-bootstrapping noise, and optional TenSEAL CKKS verification.
+Not an end-to-end deployed-layer experiment.
 """
 import sys, os, json
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
