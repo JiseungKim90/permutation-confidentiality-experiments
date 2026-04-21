@@ -57,6 +57,11 @@ Model Confidentiality”.
 - `outputs/logs/20_stip_centaur.log` (STIP/Centaur zero-query recovery demo; R20+R56)
 - `outputs/stip_centaur_r20.json` (R20: total_queries=0, global_max_error=0)
 - `outputs/stip_centaur_r56.json` (R56: total_queries=0, global_max_error=0)
+- `outputs/logs/21_multi_query_avg_r20.log` (R20 k-query averaging, k in {1,3,5,10,20}, nm in {100,300,700,1000})
+- `outputs/multi_query_avg_r20.json` (full results; nm=700x k=1->0.627, k=20->0.155)
+- `outputs/logs/22b_property_inference.log` (quantization fingerprinting + 50% sparsity R20+R56)
+- `outputs/property_inference_r20.json` (R20: p=4->7 unique vals, p=256->217 unique vals)
+- `outputs/property_inference_r56.json` (R56 same)
 
 ## Canonical included scripts
 
@@ -77,6 +82,8 @@ Model Confidentiality”.
 - `scripts/33_imagenet_tradeoff.py`
 - `scripts/19_fresh_perm_empirical.py`
 - `scripts/20_stip_centaur_trivial.py`
+- `scripts/21_multi_query_averaging.py`
+- `scripts/22b_property_inference.py`
 
 ## Canonical KD setting
 

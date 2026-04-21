@@ -1,0 +1,186 @@
+======================================================================
+JOTA: property inference (quantization + sparsity) R20 + R56
+OUTPUT_DIR=/output
+======================================================================
+[preflight] OK
+[run] resnet20
+[model] resnet20 loaded
+
+=== (A) Quantization bitwidth fingerprinting ===
+Layer                                 p=   4  p=  16  p=  64  p= 256
+conv1                                    13      38     108     252
+layer1.0.conv1                            9      27      75     218
+layer1.0.conv2                            7      22      69     217
+layer1.1.conv1                            6      21      66     200
+layer1.1.conv2                            6      18      55     175
+layer1.2.conv1                            5      14      48     168
+layer1.2.conv2                            5      13      45     155
+layer2.0.conv1                            5      14      53     184
+layer2.0.conv2                            4      12      45     162
+layer2.0.shortcut.0                       7      24      77     205
+layer2.1.conv1                            3      11      41     148
+layer2.1.conv2                            3      12      40     136
+layer2.2.conv1                            3      10      37     130
+layer2.2.conv2                            3       9      34     120
+layer3.0.conv1                            4      11      38     137
+layer3.0.conv2                            3      12      38     128
+layer3.0.shortcut.0                       5      17      59     200
+layer3.1.conv1                            3      10      33     116
+layer3.1.conv2                            3       7      27      98
+layer3.2.conv1                            3       8      26      88
+layer3.2.conv2                            3       6      22      79
+
+=== (B) Sparsity detection (prune_amount=0.5) ===
+Layer                                 Dense norm  Pruned norm  Zero frac
+conv1                                      1.512        1.461     50.0%
+layer1.0.conv1                             0.562        0.540     50.0%
+layer1.0.conv2                             0.544        0.524     50.0%
+layer1.1.conv1                             0.480        0.463     50.0%
+layer1.1.conv2                             0.452        0.434     50.0%
+layer1.2.conv1                             0.425        0.408     50.0%
+layer1.2.conv2                             0.410        0.393     50.0%
+layer2.0.conv1                             0.603        0.580     50.0%
+layer2.0.conv2                             0.502        0.483     50.0%
+layer2.0.shortcut.0                        1.292        1.246     50.0%
+layer2.1.conv1                             0.451        0.434     50.0%
+layer2.1.conv2                             0.417        0.401     50.0%
+layer2.2.conv1                             0.375        0.361     50.0%
+layer2.2.conv2                             0.357        0.343     50.0%
+layer3.0.conv1                             0.547        0.526     50.0%
+layer3.0.conv2                             0.444        0.428     50.0%
+layer3.0.shortcut.0                        1.194        1.145     50.0%
+layer3.1.conv1                             0.407        0.392     50.0%
+layer3.1.conv2                             0.358        0.345     50.0%
+layer3.2.conv1                             0.298        0.287     50.0%
+layer3.2.conv2                             0.282        0.271     50.0%
+
+[summary] all-layer mean norm: dense=0.6  pruned=0.5
+[done] wall=0.2s  wrote /output/property_inference_r20.json
+RESULT: /output/property_inference_r20.json  (15829 bytes)
+[run] resnet56
+[model] resnet56 loaded
+
+=== (A) Quantization bitwidth fingerprinting ===
+Layer                                 p=   4  p=  16  p=  64  p= 256
+conv1                                    12      36      94     228
+layer1.0.conv1                            7      22      78     245
+layer1.0.conv2                            6      18      61     195
+layer1.1.conv1                            5      17      59     182
+layer1.1.conv2                            5      16      54     170
+layer1.2.conv1                            6      18      59     173
+layer1.2.conv2                            5      17      51     156
+layer1.3.conv1                            5      14      45     147
+layer1.3.conv2                            3      13      43     143
+layer1.4.conv1                            4      13      41     124
+layer1.4.conv2                            5      14      41     114
+layer1.5.conv1                            3       9      31     109
+layer1.5.conv2                            3       8      30     100
+layer1.6.conv1                            3      12      35     115
+layer1.6.conv2                            3       9      33     109
+layer1.7.conv1                            7      19      55     154
+layer1.7.conv2                            5      14      49     145
+layer1.8.conv1                            5      14      48     147
+layer1.8.conv2                            4      14      41     135
+layer2.0.conv1                            5      17      56     176
+layer2.0.conv2                            4      15      52     163
+layer2.0.shortcut.0                       8      24      76     203
+layer2.1.conv1                            3      11      38     131
+layer2.1.conv2                            3      11      39     128
+layer2.2.conv1                            3      12      41     137
+layer2.2.conv2                            4      11      36     124
+layer2.3.conv1                            3       7      25      87
+layer2.3.conv2                            3       6      21      76
+layer2.4.conv1                            3       7      23      78
+layer2.4.conv2                            3       6      22      81
+layer2.5.conv1                            3       7      27      92
+layer2.5.conv2                            3       7      23      84
+layer2.6.conv1                            3       9      27      89
+layer2.6.conv2                            3       7      23      82
+layer2.7.conv1                            3       6      21      72
+layer2.7.conv2                            3       7      21      70
+layer2.8.conv1                            3       8      25      85
+layer2.8.conv2                            3       6      21      75
+layer3.0.conv1                            3      10      34     119
+layer3.0.conv2                            3       9      34     113
+layer3.0.shortcut.0                       7      22      67     211
+layer3.1.conv1                            3      10      36     126
+layer3.1.conv2                            3       9      32     115
+layer3.2.conv1                            3       6      20      73
+layer3.2.conv2                            3       6      22      75
+layer3.3.conv1                            3       6      20      69
+layer3.3.conv2                            3       5      19      67
+layer3.4.conv1                            2       5      16      61
+layer3.4.conv2                            1       5      15      59
+layer3.5.conv1                            2       6      17      58
+layer3.5.conv2                            3       5      18      64
+layer3.6.conv1                            1       5      14      51
+layer3.6.conv2                            1       5      15      53
+layer3.7.conv1                            3       6      21      70
+layer3.7.conv2                            3       7      22      70
+layer3.8.conv1                            3       9      35     114
+layer3.8.conv2                            3       8      28      96
+
+=== (B) Sparsity detection (prune_amount=0.5) ===
+Layer                                 Dense norm  Pruned norm  Zero frac
+conv1                                      1.382        1.334     50.0%
+layer1.0.conv1                             0.678        0.655     50.0%
+layer1.0.conv2                             0.535        0.513     50.0%
+layer1.1.conv1                             0.467        0.448     50.0%
+layer1.1.conv2                             0.456        0.440     50.0%
+layer1.2.conv1                             0.420        0.404     50.0%
+layer1.2.conv2                             0.375        0.359     50.0%
+layer1.3.conv1                             0.346        0.333     50.0%
+layer1.3.conv2                             0.349        0.336     50.0%
+layer1.4.conv1                             0.301        0.289     50.0%
+layer1.4.conv2                             0.288        0.276     50.0%
+layer1.5.conv1                             0.266        0.255     50.0%
+layer1.5.conv2                             0.263        0.252     50.0%
+layer1.6.conv1                             0.291        0.280     50.0%
+layer1.6.conv2                             0.286        0.274     50.0%
+layer1.7.conv1                             0.367        0.353     50.0%
+layer1.7.conv2                             0.341        0.327     50.0%
+layer1.8.conv1                             0.331        0.319     50.0%
+layer1.8.conv2                             0.314        0.301     50.0%
+layer2.0.conv1                             0.517        0.498     50.0%
+layer2.0.conv2                             0.420        0.407     50.0%
+layer2.0.shortcut.0                        1.255        1.206     50.0%
+layer2.1.conv1                             0.373        0.359     50.0%
+layer2.1.conv2                             0.343        0.331     50.0%
+layer2.2.conv1                             0.366        0.352     50.0%
+layer2.2.conv2                             0.341        0.328     50.0%
+layer2.3.conv1                             0.248        0.238     50.0%
+layer2.3.conv2                             0.241        0.231     50.0%
+layer2.4.conv1                             0.242        0.233     50.0%
+layer2.4.conv2                             0.231        0.221     50.0%
+layer2.5.conv1                             0.248        0.238     50.0%
+layer2.5.conv2                             0.235        0.225     50.0%
+layer2.6.conv1                             0.240        0.231     50.0%
+layer2.6.conv2                             0.232        0.223     50.0%
+layer2.7.conv1                             0.219        0.210     50.0%
+layer2.7.conv2                             0.212        0.203     50.0%
+layer2.8.conv1                             0.235        0.225     50.0%
+layer2.8.conv2                             0.224        0.214     50.0%
+layer3.0.conv1                             0.432        0.416     50.0%
+layer3.0.conv2                             0.353        0.341     50.0%
+layer3.0.shortcut.0                        1.197        1.151     50.0%
+layer3.1.conv1                             0.385        0.371     50.0%
+layer3.1.conv2                             0.380        0.368     50.0%
+layer3.2.conv1                             0.237        0.227     50.0%
+layer3.2.conv2                             0.240        0.230     50.0%
+layer3.3.conv1                             0.217        0.208     50.0%
+layer3.3.conv2                             0.220        0.210     50.0%
+layer3.4.conv1                             0.210        0.200     50.0%
+layer3.4.conv2                             0.211        0.201     50.0%
+layer3.5.conv1                             0.203        0.194     50.0%
+layer3.5.conv2                             0.214        0.204     50.0%
+layer3.6.conv1                             0.201        0.192     50.0%
+layer3.6.conv2                             0.205        0.196     50.0%
+layer3.7.conv1                             0.221        0.212     50.0%
+layer3.7.conv2                             0.231        0.221     50.0%
+layer3.8.conv1                             0.294        0.283     50.0%
+layer3.8.conv2                             0.289        0.278     50.0%
+
+[summary] all-layer mean norm: dense=0.4  pruned=0.3
+[done] wall=0.2s  wrote /output/property_inference_r56.json
+RESULT: /output/property_inference_r56.json  (42462 bytes)
+[done] wall=7.5s
