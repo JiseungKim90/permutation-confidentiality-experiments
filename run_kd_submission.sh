@@ -28,7 +28,7 @@ fi
 COMMON_ARGS="--teacher-logits-source quantized \
     --data-root data \
     --subset-mode random \
-    --subset-seed 0 \
+    --subset-seed 20260409 \
     --student-epochs 10 \
     --batch-size 128 \
     --student-lr 0.05 \

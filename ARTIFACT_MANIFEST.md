@@ -46,6 +46,7 @@ Model Confidentiality”.
 - `outputs/cifar_kd_q2000_e10_s10_quantized_random.json`
 - `outputs/cifar_kd_q5000_e10_s10_quantized_random.json`
 - `outputs/figures/fig_dp_vacuousness.png`
+- `outputs/figures/fig_phase_transition.pdf` (R56 CIFAR-10 + R50 Imagenette phase-transition plot; fine-grained 9-point sweep)
 - `outputs/logs/19_fresh_perm_r20_n30.log` (R20 fresh-perm coupon-collector, 30 trials/layer; canonical source for Prop 5 T_emp/T_theory interval)
 - `outputs/fresh_perm_r20_n30.json` (R20 fresh-perm N=30 full results)
 - `outputs/logs/19_fresh_perm_r56_n30.log` (R56 fresh-perm coupon-collector, 30 trials/layer)
@@ -59,9 +60,7 @@ Model Confidentiality”.
 - `outputs/stip_centaur_r56.json` (R56: total_queries=0, global_max_error=0)
 - `outputs/logs/21_multi_query_avg_r20.log` (R20 k-query averaging, k in {1,3,5,10,20}, nm in {100,300,700,1000})
 - `outputs/multi_query_avg_r20.json` (full results; nm=700x k=1->0.627, k=20->0.155)
-- `outputs/logs/22b_property_inference.log` (quantization fingerprinting + 50% sparsity R20+R56)
-- `outputs/property_inference_r20.json` (R20: p=4->7 unique vals, p=256->217 unique vals)
-- `outputs/property_inference_r56.json` (R56 same)
+
 
 ## Canonical included scripts
 
@@ -83,13 +82,14 @@ Model Confidentiality”.
 - `scripts/19_fresh_perm_empirical.py`
 - `scripts/20_stip_centaur_trivial.py`
 - `scripts/21_multi_query_averaging.py`
-- `scripts/22b_property_inference.py`
+
+- `scripts/plot_phase_transition.py`
 
 ## Canonical KD setting
 
 - Teacher checkpoint: `models/resnet20_seed0.pt`
 - Teacher logits: quantized checkpoint forward pass (`p = 256`)
-- Query subsets: fixed random subsets with `subset_seed = 0`
+- Query subsets: fixed random subsets with `subset_seed = 20260409`
 - Query budgets: `2,000` and `5,000`
 - Student architecture: `ResNet20`
 - Distillation epochs: `10`

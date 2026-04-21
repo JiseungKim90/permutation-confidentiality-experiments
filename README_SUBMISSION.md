@@ -39,7 +39,7 @@ bash run_submission_artifact.sh
 - Teacher checkpoint: `models/resnet20_seed0.pt`
 - Teacher logits: quantized checkpoint forward pass (`p = 256`)
 - Student: same-architecture `ResNet20`
-- Query subsets: fixed random subsets with `subset_seed = 0`
+- Query subsets: fixed random subsets with `subset_seed = 20260409`
 - Query budgets: `2,000`, `5,000`
 - Distillation epochs: `10`
 - Seeds: `10`

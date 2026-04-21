@@ -113,7 +113,7 @@ The exact KD hyperparameters used in the submission are:
 | Teacher logits | quantized checkpoint forward (`p = 256`) |
 | Student | same-architecture `ResNet20` |
 | Query budgets | `2,000`, `5,000` |
-| Query subset | fixed random subset (`subset_seed = 0`) |
+| Query subset | fixed random subset (`subset_seed = 20260409`) |
 | Distillation epochs | `10` |
 | Seeds | `10` |
 | Optimizer | SGD |

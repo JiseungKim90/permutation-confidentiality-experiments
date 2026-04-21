@@ -16,3 +16,9 @@ submission_artifact.tar.gz
 # Jota runner artifacts (not for public repo)
 jota_artifacts/
 *.jota_version
+
+# property inference — local only, not part of submission artifact
+scripts/22b_property_inference.py
+outputs/property_inference_r20.json
+outputs/property_inference_r56.json
+outputs/logs/22b_property_inference.log
