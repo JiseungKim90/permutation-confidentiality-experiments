@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "/home/user/research-vault/projects/P050/experiments/scripts/58_tfhe_fresh_session_orbit_recovery.py", line 254, in <module>
+    main()
+  File "/home/user/research-vault/projects/P050/experiments/scripts/58_tfhe_fresh_session_orbit_recovery.py", line 178, in main
+    observed_anchor = np.sort(query(constant))
+  File "/home/user/research-vault/projects/P050/experiments/scripts/58_tfhe_fresh_session_orbit_recovery.py", line 168, in query
+    circuit.encrypt_run_decrypt(semantic_server_input), dtype=np.int64
+  File "/home/user/.local/lib/python3.10/site-packages/concrete/fhe/compilation/circuit.py", line 224, in encrypt_run_decrypt
+    return self._function.encrypt_run_decrypt(*args)
+  File "/home/user/.local/lib/python3.10/site-packages/concrete/fhe/compilation/module.py", line 370, in encrypt_run_decrypt
+    return self.decrypt(self.run(self.encrypt(*args)))
+  File "/home/user/.local/lib/python3.10/site-packages/concrete/fhe/compilation/module.py", line 210, in encrypt
+    return self.execution_runtime.val.client.encrypt(*args, function_name=self.name)
+  File "/home/user/.local/lib/python3.10/site-packages/concrete/fhe/compilation/client.py", line 196, in encrypt
+    exported = [
+  File "/home/user/.local/lib/python3.10/site-packages/concrete/fhe/compilation/client.py", line 202, in <listcomp>
+    Value_(arg.astype(np.int64) if isinstance(arg, np.ndarray) else arg),
+RuntimeError: Values can only be constructed from arrays of signed and unsigned integers.

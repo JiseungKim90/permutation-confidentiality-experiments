@@ -1,0 +1,130 @@
+{
+  "experiment": "trained ResNet-20 permutation-equivalent clone",
+  "checkpoint": "/home/user/research-vault/projects/CS615/models/resnet20_seed0.pt",
+  "checkpoint_test_accuracy": 82.84,
+  "seed": 20260801,
+  "permutation_sites": [
+    {
+      "site": "stem_output",
+      "width": 16,
+      "digest": "45db41af3e8f91e7"
+    },
+    {
+      "site": "layer1.0.middle",
+      "width": 16,
+      "digest": "39bedb7b26af62a4"
+    },
+    {
+      "site": "layer1.0.output",
+      "width": 16,
+      "digest": "45db41af3e8f91e7",
+      "constrained_by_identity_shortcut": true
+    },
+    {
+      "site": "layer1.1.middle",
+      "width": 16,
+      "digest": "41d555aae2d85257"
+    },
+    {
+      "site": "layer1.1.output",
+      "width": 16,
+      "digest": "45db41af3e8f91e7",
+      "constrained_by_identity_shortcut": true
+    },
+    {
+      "site": "layer1.2.middle",
+      "width": 16,
+      "digest": "6f48c1a44147402f"
+    },
+    {
+      "site": "layer1.2.output",
+      "width": 16,
+      "digest": "45db41af3e8f91e7",
+      "constrained_by_identity_shortcut": true
+    },
+    {
+      "site": "layer2.0.middle",
+      "width": 32,
+      "digest": "8fef01fa63e3728f"
+    },
+    {
+      "site": "layer2.0.output",
+      "width": 32,
+      "digest": "3028eae234aeac82",
+      "constrained_by_identity_shortcut": false
+    },
+    {
+      "site": "layer2.1.middle",
+      "width": 32,
+      "digest": "0f60e1f5b0801f36"
+    },
+    {
+      "site": "layer2.1.output",
+      "width": 32,
+      "digest": "3028eae234aeac82",
+      "constrained_by_identity_shortcut": true
+    },
+    {
+      "site": "layer2.2.middle",
+      "width": 32,
+      "digest": "777a7ae165e6ad49"
+    },
+    {
+      "site": "layer2.2.output",
+      "width": 32,
+      "digest": "3028eae234aeac82",
+      "constrained_by_identity_shortcut": true
+    },
+    {
+      "site": "layer3.0.middle",
+      "width": 64,
+      "digest": "17b32a2636d9e15a"
+    },
+    {
+      "site": "layer3.0.output",
+      "width": 64,
+      "digest": "1d8a81ae355938b2",
+      "constrained_by_identity_shortcut": false
+    },
+    {
+      "site": "layer3.1.middle",
+      "width": 64,
+      "digest": "7cb20662ae22a714"
+    },
+    {
+      "site": "layer3.1.output",
+      "width": 64,
+      "digest": "1d8a81ae355938b2",
+      "constrained_by_identity_shortcut": true
+    },
+    {
+      "site": "layer3.2.middle",
+      "width": 64,
+      "digest": "7190bb9d43181f64"
+    },
+    {
+      "site": "layer3.2.output",
+      "width": 64,
+      "digest": "1d8a81ae355938b2",
+      "constrained_by_identity_shortcut": true
+    }
+  ],
+  "independent_permutation_sites": 12,
+  "log2_consistent_parameterizations": 1831.6341922558681,
+  "parameter_difference": {
+    "changed_coordinates": 273894,
+    "floating_coordinates": 274042,
+    "changed_fraction": 0.999459936798009,
+    "max_parameter_difference": 72.2680435180664
+  },
+  "functional_equivalence": {
+    "examples": 10000,
+    "original_accuracy_percent": 82.84,
+    "equivalent_accuracy_percent": 82.84,
+    "prediction_agreement_percent": 100.0,
+    "max_absolute_logit_error": 1.1444091796875e-05,
+    "mean_absolute_logit_error": 5.969558097422123e-07
+  },
+  "interpretation": "The hidden channel ordering selects a parameterization, not a different network function.  Guessing that ordering is unnecessary when the security goal excludes functionally equivalent extraction.",
+  "wall_seconds": 17.60621738433838
+}

@@ -1,0 +1,216 @@
+{
+  "experiment": "finite activation-mask classification sanity check",
+  "dimension": 2,
+  "grid": [
+    -2,
+    -1,
+    0,
+    1,
+    2
+  ],
+  "proof_status": "sanity check only; analytic proofs are in the manuscript",
+  "relu": {
+    "invertible_matrices": 190,
+    "grid_compatible": 8,
+    "classified_family": 8,
+    "sets_equal": true,
+    "compatible_matrices": [
+      [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          2
+        ]
+      ]
+    ]
+  },
+  "gelu": {
+    "invertible_matrices": 48,
+    "grid_compatible": 2,
+    "classified_family": 2,
+    "sets_equal": true,
+    "compatible_matrices": [
+      [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    ]
+  },
+  "tanh": {
+    "invertible_matrices": 48,
+    "grid_compatible": 8,
+    "classified_family": 8,
+    "sets_equal": true,
+    "compatible_matrices": [
+      [
+        [
+          -1,
+          0
+        ],
+        [
+          0,
+          -1
+        ]
+      ],
+      [
+        [
+          -1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      [
+        [
+          0,
+          -1
+        ],
+        [
+          -1,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          -1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          1
+        ],
+        [
+          -1,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          -1
+        ]
+      ],
+      [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    ]
+  }
+}

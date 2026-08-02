@@ -105,10 +105,14 @@ Model Confidentiality”.
 
 ## Notes
 
-- Absolute machine-local paths are intentionally excluded from the canonical
-  output files included in the submission artifact.
+- Absolute machine-local paths are intentionally excluded from the preliminary
+  canonical output files included in the ESORICS/JOTA artifact.
 - This manifest describes only the reviewer-facing bundle produced by
   `prepare_submission_artifact.sh`.
 - The reviewer-facing bundle intentionally excludes exploratory material such as
   `outputs/legacy/`, `scripts/17_kd_spectral_priors_mnist.py`, and the negative
   CKKS transcript prototype `scripts/26_ckks_resnet_transcript.py`.
+
+## TDSC extended-version additions
+
+The `extended-version` branch preserves the reviewer-facing ESORICS/JOTA artifact above and adds the journal-only files enumerated in `README_JOURNAL.md`. Canonical journal claim artifacts are checked by `scripts/56_artifact_consistency_audit.py`; `outputs/JOURNAL_SHA256SUMS.txt` binds the copied JSON, stdout logs, and final summary figure. Full per-token arrays, model caches, and third-party repositories remain at the server paths recorded in `README_JOURNAL.md` and are not represented as Git-resident evidence. Several journal JSON files intentionally retain the canonical checkpoint path or a Concrete compiler source location as provenance; these paths are not runtime prerequisites and can be overridden through the documented command-line arguments.

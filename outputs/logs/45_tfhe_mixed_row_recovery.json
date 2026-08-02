@@ -1,0 +1,32 @@
+{
+  "experiment": "Concrete-TFHE fresh-shuffle mixed-query row recovery",
+  "concrete_version": "2.11.0",
+  "checkpoint": "/home/user/research-vault/projects/CS615/models/resnet20_seed0.pt",
+  "precision": 256,
+  "coefficients": [
+    1,
+    2,
+    3
+  ],
+  "shape": [
+    16,
+    27
+  ],
+  "fresh_output_permutation_per_query": true,
+  "raw_bias_free": {
+    "status": "exact",
+    "queries": 105,
+    "theoretical_queries": 105,
+    "compile_and_keygen_seconds": 20.524183988571167,
+    "encrypted_evaluation_seconds": 1.3010201454162598,
+    "anchor_coordinate": 1
+  },
+  "folded_bias_anchored": {
+    "status": "exact",
+    "queries": 82,
+    "theoretical_queries": 82,
+    "compile_and_keygen_seconds": 17.068357229232788,
+    "encrypted_evaluation_seconds": 0.8866829872131348
+  },
+  "wall_seconds": 40.01386523246765
+}

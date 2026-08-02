@@ -1,0 +1,49 @@
+{
+  "experiment": "Concrete-TFHE state-machine-compliant orbit recovery",
+  "concrete_version": "2.11.0",
+  "checkpoint": "/home/user/research-vault/projects/CS615/models/resnet20_seed0.pt",
+  "layer": "layer2.0.shortcut.0",
+  "shape": [
+    32,
+    16
+  ],
+  "precision": 256,
+  "input_range": [
+    0,
+    255
+  ],
+  "alpha": 254,
+  "beta": 1,
+  "target_round": 5,
+  "unique_session_id_each_query": true,
+  "monotonic_round_counter_enforced": true,
+  "stale_and_duplicate_requests_rejected": true,
+  "fresh_hidden_input_permutation_each_query": true,
+  "fresh_hidden_output_permutation_each_query": true,
+  "same_round_replay": false,
+  "minimum_anchor_gap": 254,
+  "perturbation_bound": 203,
+  "certified_interval_separation": false,
+  "all_columns_preserve_order": true,
+  "failure_probability_bound": 1e-06,
+  "queries": 267,
+  "sampled_latent_column_count": 16,
+  "recovered_distinct_column_count": 16,
+  "attack_declared_complete": true,
+  "all_true_columns_seen": true,
+  "no_false_columns": true,
+  "bias_recovered_exactly": true,
+  "status": "exact_orbit",
+  "state_machine": {
+    "unique_sessions_opened": 267,
+    "accepted_target_requests": 267,
+    "unique_session_round_pairs": 267,
+    "rejected_stale_or_duplicate_requests": 267,
+    "all_target_rounds_used_once": true
+  },
+  "compile_and_keygen_seconds": 0.15973639488220215,
+  "encrypted_evaluation_seconds": 4.0380542278289795,
+  "seconds_per_encrypted_query": 0.015123798606101047,
+  "scope": "The target affine circuit is Concrete-TFHE.  An executable wrapper enforces unique sessions and monotonic rounds and derives fresh secret permutations per session/round.  Earlier rounds are validated control transitions, not a complete encrypted network.",
+  "wall_seconds": 4.309600830078125
+}

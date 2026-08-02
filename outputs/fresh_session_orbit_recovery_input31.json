@@ -1,0 +1,1356 @@
+{
+  "experiment": "fresh-session orbit recovery",
+  "checkpoint": "/home/user/research-vault/projects/CS615/models/resnet20_seed0.pt",
+  "checkpoint_test_accuracy": 82.84,
+  "precision": 256,
+  "input_range": [
+    0,
+    31
+  ],
+  "beta": 1,
+  "seed": 20260801,
+  "trials_per_layer": 3,
+  "failure_probability_per_trial": 1e-06,
+  "theorem_conditions": {
+    "fresh_hidden_input_permutation_each_query": true,
+    "fresh_hidden_output_permutation_each_query": true,
+    "constant_anchor_is_permutation_invariant": true,
+    "sufficient_row_condition": "minimum anchor gap > 2*|beta|*max|W_ij|",
+    "completion_condition": "pairwise-distinct columns",
+    "query_bound": "1 + ceil(d*(ln d + ln(1/delta)))",
+    "recovery_scope": "W up to column permutation and b in anchor row order"
+  },
+  "layers": [
+    {
+      "layer": "conv1",
+      "shape": [
+        16,
+        27
+      ],
+      "alpha": 30,
+      "beta": 1,
+      "minimum_anchor_gap": 90,
+      "perturbation_bound": 512,
+      "certified_interval_separation": false,
+      "all_columns_preserve_order": false,
+      "trials": [
+        {
+          "queries": 464,
+          "coupon_queries": 463,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 27,
+          "true_distinct_column_count": 27,
+          "recovered_distinct_column_count": 27,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        },
+        {
+          "queries": 464,
+          "coupon_queries": 463,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 27,
+          "true_distinct_column_count": 27,
+          "recovered_distinct_column_count": 27,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        },
+        {
+          "queries": 464,
+          "coupon_queries": 463,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 27,
+          "true_distinct_column_count": 27,
+          "recovered_distinct_column_count": 27,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        }
+      ]
+    },
+    {
+      "layer": "layer1.0.conv1",
+      "shape": [
+        16,
+        144
+      ],
+      "alpha": 30,
+      "beta": 1,
+      "minimum_anchor_gap": 60,
+      "perturbation_bound": 383,
+      "certified_interval_separation": false,
+      "all_columns_preserve_order": false,
+      "trials": [
+        {
+          "queries": 2707,
+          "coupon_queries": 2706,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 144,
+          "true_distinct_column_count": 144,
+          "recovered_distinct_column_count": 144,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        },
+        {
+          "queries": 2707,
+          "coupon_queries": 2706,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 144,
+          "true_distinct_column_count": 144,
+          "recovered_distinct_column_count": 144,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        },
+        {
+          "queries": 2707,
+          "coupon_queries": 2706,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 144,
+          "true_distinct_column_count": 144,
+          "recovered_distinct_column_count": 144,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        }
+      ]
+    },
+    {
+      "layer": "layer1.0.conv2",
+      "shape": [
+        16,
+        144
+      ],
+      "alpha": 30,
+      "beta": 1,
+      "minimum_anchor_gap": 120,
+      "perturbation_bound": 197,
+      "certified_interval_separation": false,
+      "all_columns_preserve_order": false,
+      "trials": [
+        {
+          "queries": 2707,
+          "coupon_queries": 2706,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 144,
+          "true_distinct_column_count": 144,
+          "recovered_distinct_column_count": 144,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        },
+        {
+          "queries": 2707,
+          "coupon_queries": 2706,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 144,
+          "true_distinct_column_count": 144,
+          "recovered_distinct_column_count": 144,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        },
+        {
+          "queries": 2707,
+          "coupon_queries": 2706,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 144,
+          "true_distinct_column_count": 144,
+          "recovered_distinct_column_count": 144,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        }
+      ]
+    },
+    {
+      "layer": "layer1.1.conv1",
+      "shape": [
+        16,
+        144
+      ],
+      "alpha": 30,
+      "beta": 1,
+      "minimum_anchor_gap": 630,
+      "perturbation_bound": 177,
+      "certified_interval_separation": true,
+      "all_columns_preserve_order": true,
+      "trials": [
+        {
+          "queries": 2707,
+          "coupon_queries": 2706,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 144,
+          "true_distinct_column_count": 144,
+          "recovered_distinct_column_count": 144,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": true,
+          "no_false_columns": true,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": true,
+          "status": "exact_orbit"
+        },
+        {
+          "queries": 2707,
+          "coupon_queries": 2706,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 144,
+          "true_distinct_column_count": 144,
+          "recovered_distinct_column_count": 144,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": true,
+          "no_false_columns": true,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": true,
+          "status": "exact_orbit"
+        },
+        {
+          "queries": 2707,
+          "coupon_queries": 2706,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 144,
+          "true_distinct_column_count": 144,
+          "recovered_distinct_column_count": 144,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": true,
+          "no_false_columns": true,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": true,
+          "status": "exact_orbit"
+        }
+      ]
+    },
+    {
+      "layer": "layer1.1.conv2",
+      "shape": [
+        16,
+        144
+      ],
+      "alpha": 30,
+      "beta": 1,
+      "minimum_anchor_gap": 1260,
+      "perturbation_bound": 204,
+      "certified_interval_separation": true,
+      "all_columns_preserve_order": true,
+      "trials": [
+        {
+          "queries": 2707,
+          "coupon_queries": 2706,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 144,
+          "true_distinct_column_count": 144,
+          "recovered_distinct_column_count": 144,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": true,
+          "no_false_columns": true,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": true,
+          "status": "exact_orbit"
+        },
+        {
+          "queries": 2707,
+          "coupon_queries": 2706,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 144,
+          "true_distinct_column_count": 144,
+          "recovered_distinct_column_count": 144,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": true,
+          "no_false_columns": true,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": true,
+          "status": "exact_orbit"
+        },
+        {
+          "queries": 2707,
+          "coupon_queries": 2706,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 144,
+          "true_distinct_column_count": 144,
+          "recovered_distinct_column_count": 144,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": true,
+          "no_false_columns": true,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": true,
+          "status": "exact_orbit"
+        }
+      ]
+    },
+    {
+      "layer": "layer1.2.conv1",
+      "shape": [
+        16,
+        144
+      ],
+      "alpha": 30,
+      "beta": 1,
+      "minimum_anchor_gap": 60,
+      "perturbation_bound": 118,
+      "certified_interval_separation": false,
+      "all_columns_preserve_order": false,
+      "trials": [
+        {
+          "queries": 2707,
+          "coupon_queries": 2706,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 144,
+          "true_distinct_column_count": 144,
+          "recovered_distinct_column_count": 144,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        },
+        {
+          "queries": 2707,
+          "coupon_queries": 2706,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 144,
+          "true_distinct_column_count": 144,
+          "recovered_distinct_column_count": 144,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        },
+        {
+          "queries": 2707,
+          "coupon_queries": 2706,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 144,
+          "true_distinct_column_count": 144,
+          "recovered_distinct_column_count": 144,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        }
+      ]
+    },
+    {
+      "layer": "layer1.2.conv2",
+      "shape": [
+        16,
+        144
+      ],
+      "alpha": 30,
+      "beta": 1,
+      "minimum_anchor_gap": 30,
+      "perturbation_bound": 109,
+      "certified_interval_separation": false,
+      "all_columns_preserve_order": false,
+      "trials": [
+        {
+          "queries": 2707,
+          "coupon_queries": 2706,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 144,
+          "true_distinct_column_count": 144,
+          "recovered_distinct_column_count": 144,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        },
+        {
+          "queries": 2707,
+          "coupon_queries": 2706,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 144,
+          "true_distinct_column_count": 144,
+          "recovered_distinct_column_count": 144,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        },
+        {
+          "queries": 2707,
+          "coupon_queries": 2706,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 144,
+          "true_distinct_column_count": 144,
+          "recovered_distinct_column_count": 144,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        }
+      ]
+    },
+    {
+      "layer": "layer2.0.conv1",
+      "shape": [
+        32,
+        144
+      ],
+      "alpha": 30,
+      "beta": 1,
+      "minimum_anchor_gap": 240,
+      "perturbation_bound": 112,
+      "certified_interval_separation": true,
+      "all_columns_preserve_order": true,
+      "trials": [
+        {
+          "queries": 2707,
+          "coupon_queries": 2706,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 144,
+          "true_distinct_column_count": 144,
+          "recovered_distinct_column_count": 144,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": true,
+          "no_false_columns": true,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": true,
+          "status": "exact_orbit"
+        },
+        {
+          "queries": 2707,
+          "coupon_queries": 2706,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 144,
+          "true_distinct_column_count": 144,
+          "recovered_distinct_column_count": 144,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": true,
+          "no_false_columns": true,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": true,
+          "status": "exact_orbit"
+        },
+        {
+          "queries": 2707,
+          "coupon_queries": 2706,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 144,
+          "true_distinct_column_count": 144,
+          "recovered_distinct_column_count": 144,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": true,
+          "no_false_columns": true,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": true,
+          "status": "exact_orbit"
+        }
+      ]
+    },
+    {
+      "layer": "layer2.0.conv2",
+      "shape": [
+        32,
+        288
+      ],
+      "alpha": 30,
+      "beta": 1,
+      "minimum_anchor_gap": 0,
+      "perturbation_bound": 124,
+      "certified_interval_separation": false,
+      "all_columns_preserve_order": false,
+      "trials": [
+        {
+          "queries": 5611,
+          "coupon_queries": 5610,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 288,
+          "true_distinct_column_count": 288,
+          "recovered_distinct_column_count": 288,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        },
+        {
+          "queries": 5611,
+          "coupon_queries": 5610,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 288,
+          "true_distinct_column_count": 288,
+          "recovered_distinct_column_count": 288,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        },
+        {
+          "queries": 5611,
+          "coupon_queries": 5610,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 288,
+          "true_distinct_column_count": 288,
+          "recovered_distinct_column_count": 288,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        }
+      ]
+    },
+    {
+      "layer": "layer2.0.shortcut.0",
+      "shape": [
+        32,
+        16
+      ],
+      "alpha": 30,
+      "beta": 1,
+      "minimum_anchor_gap": 30,
+      "perturbation_bound": 203,
+      "certified_interval_separation": false,
+      "all_columns_preserve_order": false,
+      "trials": [
+        {
+          "queries": 267,
+          "coupon_queries": 266,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 16,
+          "true_distinct_column_count": 16,
+          "recovered_distinct_column_count": 16,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        },
+        {
+          "queries": 267,
+          "coupon_queries": 266,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 16,
+          "true_distinct_column_count": 16,
+          "recovered_distinct_column_count": 16,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        },
+        {
+          "queries": 267,
+          "coupon_queries": 266,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 16,
+          "true_distinct_column_count": 16,
+          "recovered_distinct_column_count": 16,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        }
+      ]
+    },
+    {
+      "layer": "layer2.1.conv1",
+      "shape": [
+        32,
+        288
+      ],
+      "alpha": 30,
+      "beta": 1,
+      "minimum_anchor_gap": 0,
+      "perturbation_bound": 84,
+      "certified_interval_separation": false,
+      "all_columns_preserve_order": false,
+      "trials": [
+        {
+          "queries": 5611,
+          "coupon_queries": 5610,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 288,
+          "true_distinct_column_count": 288,
+          "recovered_distinct_column_count": 288,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        },
+        {
+          "queries": 5611,
+          "coupon_queries": 5610,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 288,
+          "true_distinct_column_count": 288,
+          "recovered_distinct_column_count": 288,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        },
+        {
+          "queries": 5611,
+          "coupon_queries": 5610,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 288,
+          "true_distinct_column_count": 288,
+          "recovered_distinct_column_count": 288,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        }
+      ]
+    },
+    {
+      "layer": "layer2.1.conv2",
+      "shape": [
+        32,
+        288
+      ],
+      "alpha": 30,
+      "beta": 1,
+      "minimum_anchor_gap": 30,
+      "perturbation_bound": 93,
+      "certified_interval_separation": false,
+      "all_columns_preserve_order": false,
+      "trials": [
+        {
+          "queries": 5611,
+          "coupon_queries": 5610,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 288,
+          "true_distinct_column_count": 288,
+          "recovered_distinct_column_count": 288,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        },
+        {
+          "queries": 5611,
+          "coupon_queries": 5610,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 288,
+          "true_distinct_column_count": 288,
+          "recovered_distinct_column_count": 288,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        },
+        {
+          "queries": 5611,
+          "coupon_queries": 5610,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 288,
+          "true_distinct_column_count": 288,
+          "recovered_distinct_column_count": 288,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        }
+      ]
+    },
+    {
+      "layer": "layer2.2.conv1",
+      "shape": [
+        32,
+        288
+      ],
+      "alpha": 30,
+      "beta": 1,
+      "minimum_anchor_gap": 120,
+      "perturbation_bound": 78,
+      "certified_interval_separation": false,
+      "all_columns_preserve_order": true,
+      "trials": [
+        {
+          "queries": 5611,
+          "coupon_queries": 5610,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 288,
+          "true_distinct_column_count": 288,
+          "recovered_distinct_column_count": 288,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": true,
+          "no_false_columns": true,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": true,
+          "status": "exact_orbit"
+        },
+        {
+          "queries": 5611,
+          "coupon_queries": 5610,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 288,
+          "true_distinct_column_count": 288,
+          "recovered_distinct_column_count": 288,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": true,
+          "no_false_columns": true,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": true,
+          "status": "exact_orbit"
+        },
+        {
+          "queries": 5611,
+          "coupon_queries": 5610,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 288,
+          "true_distinct_column_count": 288,
+          "recovered_distinct_column_count": 288,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": true,
+          "no_false_columns": true,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": true,
+          "status": "exact_orbit"
+        }
+      ]
+    },
+    {
+      "layer": "layer2.2.conv2",
+      "shape": [
+        32,
+        288
+      ],
+      "alpha": 30,
+      "beta": 1,
+      "minimum_anchor_gap": 240,
+      "perturbation_bound": 67,
+      "certified_interval_separation": true,
+      "all_columns_preserve_order": true,
+      "trials": [
+        {
+          "queries": 5611,
+          "coupon_queries": 5610,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 288,
+          "true_distinct_column_count": 288,
+          "recovered_distinct_column_count": 288,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": true,
+          "no_false_columns": true,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": true,
+          "status": "exact_orbit"
+        },
+        {
+          "queries": 5611,
+          "coupon_queries": 5610,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 288,
+          "true_distinct_column_count": 288,
+          "recovered_distinct_column_count": 288,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": true,
+          "no_false_columns": true,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": true,
+          "status": "exact_orbit"
+        },
+        {
+          "queries": 5611,
+          "coupon_queries": 5610,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 288,
+          "true_distinct_column_count": 288,
+          "recovered_distinct_column_count": 288,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": true,
+          "no_false_columns": true,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": true,
+          "status": "exact_orbit"
+        }
+      ]
+    },
+    {
+      "layer": "layer3.0.conv1",
+      "shape": [
+        64,
+        288
+      ],
+      "alpha": 30,
+      "beta": 1,
+      "minimum_anchor_gap": 30,
+      "perturbation_bound": 103,
+      "certified_interval_separation": false,
+      "all_columns_preserve_order": false,
+      "trials": [
+        {
+          "queries": 5611,
+          "coupon_queries": 5610,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 288,
+          "true_distinct_column_count": 288,
+          "recovered_distinct_column_count": 288,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        },
+        {
+          "queries": 5611,
+          "coupon_queries": 5610,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 288,
+          "true_distinct_column_count": 288,
+          "recovered_distinct_column_count": 288,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        },
+        {
+          "queries": 5611,
+          "coupon_queries": 5610,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 288,
+          "true_distinct_column_count": 288,
+          "recovered_distinct_column_count": 288,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        }
+      ]
+    },
+    {
+      "layer": "layer3.0.conv2",
+      "shape": [
+        64,
+        576
+      ],
+      "alpha": 30,
+      "beta": 1,
+      "minimum_anchor_gap": 30,
+      "perturbation_bound": 95,
+      "certified_interval_separation": false,
+      "all_columns_preserve_order": false,
+      "trials": [
+        {
+          "queries": 11620,
+          "coupon_queries": 11619,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 576,
+          "true_distinct_column_count": 576,
+          "recovered_distinct_column_count": 576,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        },
+        {
+          "queries": 11620,
+          "coupon_queries": 11619,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 576,
+          "true_distinct_column_count": 576,
+          "recovered_distinct_column_count": 576,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        },
+        {
+          "queries": 11620,
+          "coupon_queries": 11619,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 576,
+          "true_distinct_column_count": 576,
+          "recovered_distinct_column_count": 576,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        }
+      ]
+    },
+    {
+      "layer": "layer3.0.shortcut.0",
+      "shape": [
+        64,
+        32
+      ],
+      "alpha": 30,
+      "beta": 1,
+      "minimum_anchor_gap": 0,
+      "perturbation_bound": 131,
+      "certified_interval_separation": false,
+      "all_columns_preserve_order": false,
+      "trials": [
+        {
+          "queries": 554,
+          "coupon_queries": 553,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 32,
+          "true_distinct_column_count": 32,
+          "recovered_distinct_column_count": 32,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        },
+        {
+          "queries": 554,
+          "coupon_queries": 553,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 32,
+          "true_distinct_column_count": 32,
+          "recovered_distinct_column_count": 32,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        },
+        {
+          "queries": 554,
+          "coupon_queries": 553,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 32,
+          "true_distinct_column_count": 32,
+          "recovered_distinct_column_count": 32,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        }
+      ]
+    },
+    {
+      "layer": "layer3.1.conv1",
+      "shape": [
+        64,
+        576
+      ],
+      "alpha": 30,
+      "beta": 1,
+      "minimum_anchor_gap": 0,
+      "perturbation_bound": 73,
+      "certified_interval_separation": false,
+      "all_columns_preserve_order": false,
+      "trials": [
+        {
+          "queries": 11620,
+          "coupon_queries": 11619,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 576,
+          "true_distinct_column_count": 576,
+          "recovered_distinct_column_count": 576,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        },
+        {
+          "queries": 11620,
+          "coupon_queries": 11619,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 576,
+          "true_distinct_column_count": 576,
+          "recovered_distinct_column_count": 576,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        },
+        {
+          "queries": 11620,
+          "coupon_queries": 11619,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 576,
+          "true_distinct_column_count": 576,
+          "recovered_distinct_column_count": 576,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        }
+      ]
+    },
+    {
+      "layer": "layer3.1.conv2",
+      "shape": [
+        64,
+        576
+      ],
+      "alpha": 30,
+      "beta": 1,
+      "minimum_anchor_gap": 0,
+      "perturbation_bound": 54,
+      "certified_interval_separation": false,
+      "all_columns_preserve_order": false,
+      "trials": [
+        {
+          "queries": 11620,
+          "coupon_queries": 11619,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 576,
+          "true_distinct_column_count": 576,
+          "recovered_distinct_column_count": 576,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        },
+        {
+          "queries": 11620,
+          "coupon_queries": 11619,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 576,
+          "true_distinct_column_count": 576,
+          "recovered_distinct_column_count": 576,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        },
+        {
+          "queries": 11620,
+          "coupon_queries": 11619,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 576,
+          "true_distinct_column_count": 576,
+          "recovered_distinct_column_count": 576,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        }
+      ]
+    },
+    {
+      "layer": "layer3.2.conv1",
+      "shape": [
+        64,
+        576
+      ],
+      "alpha": 30,
+      "beta": 1,
+      "minimum_anchor_gap": 0,
+      "perturbation_bound": 57,
+      "certified_interval_separation": false,
+      "all_columns_preserve_order": false,
+      "trials": [
+        {
+          "queries": 11620,
+          "coupon_queries": 11619,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 576,
+          "true_distinct_column_count": 576,
+          "recovered_distinct_column_count": 576,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        },
+        {
+          "queries": 11620,
+          "coupon_queries": 11619,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 576,
+          "true_distinct_column_count": 576,
+          "recovered_distinct_column_count": 576,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        },
+        {
+          "queries": 11620,
+          "coupon_queries": 11619,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 576,
+          "true_distinct_column_count": 576,
+          "recovered_distinct_column_count": 576,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        }
+      ]
+    },
+    {
+      "layer": "layer3.2.conv2",
+      "shape": [
+        64,
+        576
+      ],
+      "alpha": 30,
+      "beta": 1,
+      "minimum_anchor_gap": 30,
+      "perturbation_bound": 50,
+      "certified_interval_separation": false,
+      "all_columns_preserve_order": false,
+      "trials": [
+        {
+          "queries": 11620,
+          "coupon_queries": 11619,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 576,
+          "true_distinct_column_count": 576,
+          "recovered_distinct_column_count": 576,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        },
+        {
+          "queries": 11620,
+          "coupon_queries": 11619,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 576,
+          "true_distinct_column_count": 576,
+          "recovered_distinct_column_count": 576,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        },
+        {
+          "queries": 11620,
+          "coupon_queries": 11619,
+          "failure_probability_bound": 1e-06,
+          "sampled_latent_column_count": 576,
+          "true_distinct_column_count": 576,
+          "recovered_distinct_column_count": 576,
+          "pairwise_distinct_columns": true,
+          "all_latent_columns_sampled": true,
+          "all_true_columns_seen": false,
+          "no_false_columns": false,
+          "nonintegral_recoveries": 0,
+          "bias_recovered_exactly": false,
+          "status": "not_exact"
+        }
+      ]
+    }
+  ],
+  "final_classifier": {
+    "layer": "fc",
+    "shape": [
+      10,
+      64
+    ],
+    "alpha": 30,
+    "beta": 1,
+    "minimum_anchor_gap": 317,
+    "perturbation_bound": 341,
+    "certified_interval_separation": false,
+    "all_columns_preserve_order": false,
+    "trials": [
+      {
+        "queries": 1152,
+        "coupon_queries": 1151,
+        "failure_probability_bound": 1e-06,
+        "sampled_latent_column_count": 64,
+        "true_distinct_column_count": 64,
+        "recovered_distinct_column_count": 64,
+        "pairwise_distinct_columns": true,
+        "all_latent_columns_sampled": true,
+        "all_true_columns_seen": false,
+        "no_false_columns": false,
+        "nonintegral_recoveries": 0,
+        "bias_recovered_exactly": false,
+        "status": "not_exact"
+      },
+      {
+        "queries": 1152,
+        "coupon_queries": 1151,
+        "failure_probability_bound": 1e-06,
+        "sampled_latent_column_count": 64,
+        "true_distinct_column_count": 64,
+        "recovered_distinct_column_count": 64,
+        "pairwise_distinct_columns": true,
+        "all_latent_columns_sampled": true,
+        "all_true_columns_seen": false,
+        "no_false_columns": false,
+        "nonintegral_recoveries": 0,
+        "bias_recovered_exactly": false,
+        "status": "not_exact"
+      },
+      {
+        "queries": 1152,
+        "coupon_queries": 1151,
+        "failure_probability_bound": 1e-06,
+        "sampled_latent_column_count": 64,
+        "true_distinct_column_count": 64,
+        "recovered_distinct_column_count": 64,
+        "pairwise_distinct_columns": true,
+        "all_latent_columns_sampled": true,
+        "all_true_columns_seen": false,
+        "no_false_columns": false,
+        "nonintegral_recoveries": 0,
+        "bias_recovered_exactly": false,
+        "status": "not_exact"
+      }
+    ]
+  },
+  "summary": {
+    "layer_count": 21,
+    "certified_layer_count": 4,
+    "order_preserving_layer_count": 5,
+    "all_trials_exact_layer_count": 5,
+    "total_exact_trials": 15,
+    "total_trials": 63,
+    "classifier_exact_trials": 0,
+    "classifier_total_trials": 3
+  },
+  "wall_seconds": 66.72080993652344
+}

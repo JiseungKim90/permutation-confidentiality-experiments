@@ -1,0 +1,281 @@
+{
+  "experiment": "permutation session-lifecycle audit",
+  "checkpoint": "/home/user/research-vault/projects/CS615/models/resnet20_seed0.pt",
+  "checkpoint_test_accuracy": 82.84,
+  "precision": 256,
+  "seed": 20260801,
+  "fixed_session_repeated_layer_queries": {
+    "layers": [
+      {
+        "layer": "conv1",
+        "shape": [
+          16,
+          27
+        ],
+        "queries": 28,
+        "max_lattice_error": 0,
+        "exact": true
+      },
+      {
+        "layer": "layer1.0.conv1",
+        "shape": [
+          16,
+          144
+        ],
+        "queries": 145,
+        "max_lattice_error": 0,
+        "exact": true
+      },
+      {
+        "layer": "layer1.0.conv2",
+        "shape": [
+          16,
+          144
+        ],
+        "queries": 145,
+        "max_lattice_error": 0,
+        "exact": true
+      },
+      {
+        "layer": "layer1.1.conv1",
+        "shape": [
+          16,
+          144
+        ],
+        "queries": 145,
+        "max_lattice_error": 0,
+        "exact": true
+      },
+      {
+        "layer": "layer1.1.conv2",
+        "shape": [
+          16,
+          144
+        ],
+        "queries": 145,
+        "max_lattice_error": 0,
+        "exact": true
+      },
+      {
+        "layer": "layer1.2.conv1",
+        "shape": [
+          16,
+          144
+        ],
+        "queries": 145,
+        "max_lattice_error": 0,
+        "exact": true
+      },
+      {
+        "layer": "layer1.2.conv2",
+        "shape": [
+          16,
+          144
+        ],
+        "queries": 145,
+        "max_lattice_error": 0,
+        "exact": true
+      },
+      {
+        "layer": "layer2.0.conv1",
+        "shape": [
+          32,
+          144
+        ],
+        "queries": 145,
+        "max_lattice_error": 0,
+        "exact": true
+      },
+      {
+        "layer": "layer2.0.conv2",
+        "shape": [
+          32,
+          288
+        ],
+        "queries": 289,
+        "max_lattice_error": 0,
+        "exact": true
+      },
+      {
+        "layer": "layer2.0.shortcut.0",
+        "shape": [
+          32,
+          16
+        ],
+        "queries": 17,
+        "max_lattice_error": 0,
+        "exact": true
+      },
+      {
+        "layer": "layer2.1.conv1",
+        "shape": [
+          32,
+          288
+        ],
+        "queries": 289,
+        "max_lattice_error": 0,
+        "exact": true
+      },
+      {
+        "layer": "layer2.1.conv2",
+        "shape": [
+          32,
+          288
+        ],
+        "queries": 289,
+        "max_lattice_error": 0,
+        "exact": true
+      },
+      {
+        "layer": "layer2.2.conv1",
+        "shape": [
+          32,
+          288
+        ],
+        "queries": 289,
+        "max_lattice_error": 0,
+        "exact": true
+      },
+      {
+        "layer": "layer2.2.conv2",
+        "shape": [
+          32,
+          288
+        ],
+        "queries": 289,
+        "max_lattice_error": 0,
+        "exact": true
+      },
+      {
+        "layer": "layer3.0.conv1",
+        "shape": [
+          64,
+          288
+        ],
+        "queries": 289,
+        "max_lattice_error": 0,
+        "exact": true
+      },
+      {
+        "layer": "layer3.0.conv2",
+        "shape": [
+          64,
+          576
+        ],
+        "queries": 577,
+        "max_lattice_error": 0,
+        "exact": true
+      },
+      {
+        "layer": "layer3.0.shortcut.0",
+        "shape": [
+          64,
+          32
+        ],
+        "queries": 33,
+        "max_lattice_error": 0,
+        "exact": true
+      },
+      {
+        "layer": "layer3.1.conv1",
+        "shape": [
+          64,
+          576
+        ],
+        "queries": 577,
+        "max_lattice_error": 0,
+        "exact": true
+      },
+      {
+        "layer": "layer3.1.conv2",
+        "shape": [
+          64,
+          576
+        ],
+        "queries": 577,
+        "max_lattice_error": 0,
+        "exact": true
+      },
+      {
+        "layer": "layer3.2.conv1",
+        "shape": [
+          64,
+          576
+        ],
+        "queries": 577,
+        "max_lattice_error": 0,
+        "exact": true
+      },
+      {
+        "layer": "layer3.2.conv2",
+        "shape": [
+          64,
+          576
+        ],
+        "queries": 577,
+        "max_lattice_error": 0,
+        "exact": true
+      }
+    ],
+    "layer_count": 21,
+    "total_queries": 5712,
+    "global_max_lattice_error": 0,
+    "all_exact": true
+  },
+  "fresh_input_per_request": {
+    "shape": [
+      3,
+      3
+    ],
+    "column_relabeling": [
+      2,
+      0,
+      1
+    ],
+    "queries_checked": [
+      {
+        "query": [
+          1,
+          0,
+          0
+        ],
+        "support_size": 3,
+        "distributions_equal": true
+      },
+      {
+        "query": [
+          1,
+          2,
+          0
+        ],
+        "support_size": 6,
+        "distributions_equal": true
+      },
+      {
+        "query": [
+          1,
+          -1,
+          3
+        ],
+        "support_size": 6,
+        "distributions_equal": true
+      },
+      {
+        "query": [
+          2,
+          4,
+          -3
+        ],
+        "support_size": 6,
+        "distributions_equal": true
+      }
+    ],
+    "all_equal": true,
+    "interpretation": "With an independent uniform hidden input permutation per request, W and every column relabeling WQ induce the same transcript law."
+  },
+  "scope": {
+    "fixed_session_result_requires": "the service accepts repeated chosen inputs to the same round while retaining its round permutations",
+    "implementation_status": "not verified: no public Safhire source/state-machine artifact was located as of 2026-08-01"
+  },
+  "wall_seconds": 0.23708295822143555
+}

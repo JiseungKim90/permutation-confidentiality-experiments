@@ -1,0 +1,42 @@
+{
+  "audit": "manuscript-to-artifact consistency",
+  "status": "pass",
+  "checks": [
+    "collision recovery",
+    "trained first layer",
+    "permutation lifetime",
+    "fresh-session orbit recovery",
+    "full final-classifier orbit recovery",
+    "state-machine-compliant fresh-session TFHE",
+    "functional equivalence",
+    "audit bypass",
+    "later-layer TFHE",
+    "protected-activation feasibility",
+    "protected-activation reduced-range cost",
+    "private embedding orbit recovery",
+    "STIP margin and alignment boundary",
+    "GELO candidate presence",
+    "official GELO wrapper replay",
+    "manuscript claims and scope"
+  ],
+  "canonical_inputs": [
+    "interpolation_recovery.json",
+    "session_lifecycle_recovery.json",
+    "resnet_permutation_equivalence.json",
+    "offset_query_audit.json",
+    "logs/49_tfhe_fixed_session_later_layer.json",
+    "fresh_session_orbit_recovery_input15.json",
+    "fresh_session_orbit_recovery_input31.json",
+    "fresh_session_orbit_recovery_input255.json",
+    "logs/58_tfhe_state_machine_fresh_session_orbit_recovery.json",
+    "logs/54_tfhe_protected_activation_input255.json",
+    "logs/54_tfhe_protected_activation_input31.json",
+    "data_side/private_embedding_orbits_exact_fullvocab_20260802.json",
+    "data_side/stip_margin_phase_exact_rows_20260802.json",
+    "data_side/gelo_rowspace_gpt2_20260802.json",
+    "data_side/gelo_rowspace_gpt2_512x32_20260802.json",
+    "data_side/gelo_rowspace_gpt2medium_20260802.json",
+    "data_side/gelo_official_transcript_gpt2_20260802.json",
+    "tdsc_main.tex"
+  ]
+}

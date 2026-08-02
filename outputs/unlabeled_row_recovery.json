@@ -1,0 +1,375 @@
+{
+  "experiment": "fresh-output-permutation full row recovery",
+  "scope": "affine layers whose input coordinates are attacker-controlled; does not cover an independently hidden input permutation",
+  "seed": 20260801,
+  "coefficients": [
+    1,
+    2,
+    3
+  ],
+  "noise_bound_lattice_units": 0.499,
+  "random_trials": [
+    {
+      "trial": 0,
+      "biased_exact": true,
+      "bias_free_exact": true,
+      "biased_queries": 82,
+      "bias_free_queries": 105
+    },
+    {
+      "trial": 1,
+      "biased_exact": true,
+      "bias_free_exact": true,
+      "biased_queries": 82,
+      "bias_free_queries": 105
+    },
+    {
+      "trial": 2,
+      "biased_exact": true,
+      "bias_free_exact": true,
+      "biased_queries": 82,
+      "bias_free_queries": 105
+    },
+    {
+      "trial": 3,
+      "biased_exact": true,
+      "bias_free_exact": true,
+      "biased_queries": 82,
+      "bias_free_queries": 105
+    },
+    {
+      "trial": 4,
+      "biased_exact": true,
+      "bias_free_exact": true,
+      "biased_queries": 82,
+      "bias_free_queries": 105
+    },
+    {
+      "trial": 5,
+      "biased_exact": true,
+      "bias_free_exact": true,
+      "biased_queries": 82,
+      "bias_free_queries": 105
+    },
+    {
+      "trial": 6,
+      "biased_exact": true,
+      "bias_free_exact": true,
+      "biased_queries": 82,
+      "bias_free_queries": 105
+    },
+    {
+      "trial": 7,
+      "biased_exact": true,
+      "bias_free_exact": true,
+      "biased_queries": 82,
+      "bias_free_queries": 105
+    },
+    {
+      "trial": 8,
+      "biased_exact": true,
+      "bias_free_exact": true,
+      "biased_queries": 82,
+      "bias_free_queries": 105
+    },
+    {
+      "trial": 9,
+      "biased_exact": true,
+      "bias_free_exact": true,
+      "biased_queries": 82,
+      "bias_free_queries": 105
+    },
+    {
+      "trial": 10,
+      "biased_exact": true,
+      "bias_free_exact": true,
+      "biased_queries": 82,
+      "bias_free_queries": 105
+    },
+    {
+      "trial": 11,
+      "biased_exact": true,
+      "bias_free_exact": true,
+      "biased_queries": 82,
+      "bias_free_queries": 105
+    },
+    {
+      "trial": 12,
+      "biased_exact": true,
+      "bias_free_exact": true,
+      "biased_queries": 82,
+      "bias_free_queries": 105
+    },
+    {
+      "trial": 13,
+      "biased_exact": true,
+      "bias_free_exact": true,
+      "biased_queries": 82,
+      "bias_free_queries": 105
+    },
+    {
+      "trial": 14,
+      "biased_exact": true,
+      "bias_free_exact": true,
+      "biased_queries": 82,
+      "bias_free_queries": 105
+    },
+    {
+      "trial": 15,
+      "biased_exact": true,
+      "bias_free_exact": true,
+      "biased_queries": 82,
+      "bias_free_queries": 105
+    },
+    {
+      "trial": 16,
+      "biased_exact": true,
+      "bias_free_exact": true,
+      "biased_queries": 82,
+      "bias_free_queries": 105
+    },
+    {
+      "trial": 17,
+      "biased_exact": true,
+      "bias_free_exact": true,
+      "biased_queries": 82,
+      "bias_free_queries": 105
+    },
+    {
+      "trial": 18,
+      "biased_exact": true,
+      "bias_free_exact": true,
+      "biased_queries": 82,
+      "bias_free_queries": 105
+    },
+    {
+      "trial": 19,
+      "biased_exact": true,
+      "bias_free_exact": true,
+      "biased_queries": 82,
+      "bias_free_queries": 105
+    },
+    {
+      "trial": 20,
+      "biased_exact": true,
+      "bias_free_exact": true,
+      "biased_queries": 82,
+      "bias_free_queries": 105
+    },
+    {
+      "trial": 21,
+      "biased_exact": true,
+      "bias_free_exact": true,
+      "biased_queries": 82,
+      "bias_free_queries": 105
+    },
+    {
+      "trial": 22,
+      "biased_exact": true,
+      "bias_free_exact": true,
+      "biased_queries": 82,
+      "bias_free_queries": 105
+    },
+    {
+      "trial": 23,
+      "biased_exact": true,
+      "bias_free_exact": true,
+      "biased_queries": 82,
+      "bias_free_queries": 105
+    },
+    {
+      "trial": 24,
+      "biased_exact": true,
+      "bias_free_exact": true,
+      "biased_queries": 82,
+      "bias_free_queries": 105
+    },
+    {
+      "trial": 25,
+      "biased_exact": true,
+      "bias_free_exact": true,
+      "biased_queries": 82,
+      "bias_free_queries": 105
+    },
+    {
+      "trial": 26,
+      "biased_exact": true,
+      "bias_free_exact": true,
+      "biased_queries": 82,
+      "bias_free_queries": 105
+    },
+    {
+      "trial": 27,
+      "biased_exact": true,
+      "bias_free_exact": true,
+      "biased_queries": 82,
+      "bias_free_queries": 105
+    },
+    {
+      "trial": 28,
+      "biased_exact": true,
+      "bias_free_exact": true,
+      "biased_queries": 82,
+      "bias_free_queries": 105
+    },
+    {
+      "trial": 29,
+      "biased_exact": true,
+      "bias_free_exact": true,
+      "biased_queries": 82,
+      "bias_free_queries": 105
+    }
+  ],
+  "random_summary": {
+    "trials": 30,
+    "biased_exact": 30,
+    "bias_free_exact": 30
+  },
+  "collision_stress": [
+    {
+      "trial": 0,
+      "status": "exact"
+    },
+    {
+      "trial": 1,
+      "status": "exact"
+    },
+    {
+      "trial": 2,
+      "status": "exact"
+    },
+    {
+      "trial": 3,
+      "status": "exact"
+    },
+    {
+      "trial": 4,
+      "status": "exact"
+    },
+    {
+      "trial": 5,
+      "status": "exact"
+    },
+    {
+      "trial": 6,
+      "status": "exact"
+    },
+    {
+      "trial": 7,
+      "status": "exact"
+    },
+    {
+      "trial": 8,
+      "status": "exact"
+    },
+    {
+      "trial": 9,
+      "status": "exact"
+    },
+    {
+      "trial": 10,
+      "status": "exact"
+    },
+    {
+      "trial": 11,
+      "status": "exact"
+    },
+    {
+      "trial": 12,
+      "status": "exact"
+    },
+    {
+      "trial": 13,
+      "status": "exact"
+    },
+    {
+      "trial": 14,
+      "status": "exact"
+    },
+    {
+      "trial": 15,
+      "status": "exact"
+    },
+    {
+      "trial": 16,
+      "status": "exact"
+    },
+    {
+      "trial": 17,
+      "status": "exact"
+    },
+    {
+      "trial": 18,
+      "status": "exact"
+    },
+    {
+      "trial": 19,
+      "status": "exact"
+    },
+    {
+      "trial": 20,
+      "status": "exact"
+    },
+    {
+      "trial": 21,
+      "status": "exact"
+    },
+    {
+      "trial": 22,
+      "status": "exact"
+    },
+    {
+      "trial": 23,
+      "status": "exact"
+    },
+    {
+      "trial": 24,
+      "status": "exact"
+    },
+    {
+      "trial": 25,
+      "status": "exact"
+    },
+    {
+      "trial": 26,
+      "status": "exact"
+    },
+    {
+      "trial": 27,
+      "status": "exact"
+    },
+    {
+      "trial": 28,
+      "status": "exact"
+    },
+    {
+      "trial": 29,
+      "status": "exact"
+    }
+  ],
+  "collision_summary": {
+    "exact": 30,
+    "ambiguous": 0,
+    "wrong": 0
+  },
+  "trained_resnet20_first_conv_bn": {
+    "shape": [
+      16,
+      27
+    ],
+    "precision": 256,
+    "distinct_folded_biases": 16,
+    "bias_anchored": {
+      "status": "exact",
+      "queries": 82,
+      "theoretical_queries": 82
+    },
+    "bias_free": {
+      "status": "exact",
+      "queries": 105,
+      "theoretical_queries": 105
+    },
+    "bias_free_anchor_coordinate": 1
+  },
+  "wall_seconds": 2.293795108795166
+}

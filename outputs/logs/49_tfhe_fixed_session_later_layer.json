@@ -1,0 +1,21 @@
+{
+  "experiment": "Concrete-TFHE fixed-session later-layer recovery",
+  "concrete_version": "2.11.0",
+  "checkpoint": "/home/user/research-vault/projects/CS615/models/resnet20_seed0.pt",
+  "layer": "layer2.0.shortcut.0",
+  "shape": [
+    32,
+    16
+  ],
+  "precision": 256,
+  "fixed_hidden_input_permutation": true,
+  "fixed_hidden_output_permutation": true,
+  "queries": 17,
+  "max_weight_lattice_error": 0,
+  "max_bias_lattice_error": 0,
+  "status": "exact",
+  "compile_and_keygen_seconds": 0.16474390029907227,
+  "encrypted_evaluation_seconds": 0.28923916816711426,
+  "scope": "Requires repeated access to the same layer while its session permutations are retained.",
+  "wall_seconds": 0.4748237133026123
+}

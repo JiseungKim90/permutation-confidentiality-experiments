@@ -229,3 +229,7 @@ experiments/
 - `run_submission_artifact.sh` is the top-level entrypoint for
   full-paper reproduction; it runs `run_all.sh` first and then
   `run_kd_submission.sh`.
+
+## TDSC extended version
+
+The `extended-version` branch adds exact affine-orbit reconstruction under fresh output and fresh valid sessions, private-embedding orbit leakage, GELO row-space candidate presence, and state-machine-compliant Concrete-TFHE evidence. See [`README_JOURNAL.md`](README_JOURNAL.md) for the threat-model boundaries, canonical commands, server provenance, and log policy.

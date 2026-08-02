@@ -1,0 +1,28 @@
+{
+  "experiment": "Concrete-TFHE protected first activation boundary",
+  "concrete_version": "2.11.0",
+  "checkpoint": "/home/user/research-vault/projects/CS615/models/resnet20_seed0.pt",
+  "layer": "folded conv1+bn followed by relu",
+  "shape": [
+    16,
+    27
+  ],
+  "precision": 256,
+  "input_range": [
+    0,
+    255
+  ],
+  "evaluations": 10,
+  "baseline_affine": {
+    "compile_and_keygen_seconds": 0.16402983665466309,
+    "total_encrypt_run_decrypt_seconds": 0.17192482948303223,
+    "seconds_per_evaluation": 0.017192482948303223,
+    "exact": true
+  },
+  "scope": "Single folded first-layer vector microbenchmark; excludes network, ciphertext traffic, and end-to-end model latency.",
+  "protected_affine_relu": {
+    "status": "compile_unsupported",
+    "error": "Function you are trying to compile cannot be compiled\n\n%0 = x                                # EncryptedTensor<uint8, shape=(27,)>         \u2208 [0, 255]\n%1 = [[  -2   - ...  14   20]]        # ClearTensor<int10, shape=(16, 27)>          \u2208 [-294, 157]\n%2 = matmul(%1, %0)                   # EncryptedTensor<int18, shape=(16,)>         \u2208 [-91868, 106766]\n%3 = [  42  114 ...   87   77]        # ClearTensor<int10, shape=(16,)>             \u2208 [-137, 437]\n%4 = add(%2, %3)                      # EncryptedTensor<int18, shape=(16,)>         \u2208 [-91724, 107203]\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ this 18-bit value is used as an input to a table lookup\n                                                                                                       /home/user/research-vault/projects/P050/experiments/scripts/54_tfhe_protected_activation_boundary.py:88\n%5 = 0                                # ClearScalar<uint1>                          \u2208 [0, 0]\n%6 = maximum(%4, %5)                  # EncryptedTensor<uint17, shape=(16,)>        \u2208 [0, 107203]\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ but only up to 16-bit table lookups are supported\n                                                                                                  /home/user/research-vault/projects/P050/experiments/scripts/54_tfhe_protected_activation_boundary.py:89\nreturn %6"
+  },
+  "wall_seconds": 0.9789495468139648
+}

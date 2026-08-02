@@ -1,0 +1,49 @@
+{
+  "experiment": "mixed-query separation stress test",
+  "matrix_shape": [
+    8,
+    8
+  ],
+  "weight_lattice_range": [
+    -2,
+    2
+  ],
+  "biases": "consecutive integers 0,...,7",
+  "trials": 100,
+  "seed": 20260801,
+  "settings": [
+    {
+      "coefficients": [
+        1
+      ],
+      "queries": 9,
+      "exact": 0,
+      "ambiguous": 100,
+      "inconsistent": 0,
+      "wrong": 0
+    },
+    {
+      "coefficients": [
+        1,
+        2
+      ],
+      "queries": 17,
+      "exact": 4,
+      "ambiguous": 96,
+      "inconsistent": 0,
+      "wrong": 0
+    },
+    {
+      "coefficients": [
+        1,
+        2,
+        3
+      ],
+      "queries": 25,
+      "exact": 100,
+      "ambiguous": 0,
+      "inconsistent": 0,
+      "wrong": 0
+    }
+  ]
+}

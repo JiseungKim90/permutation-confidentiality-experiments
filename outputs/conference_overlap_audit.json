@@ -1,0 +1,13 @@
+{
+  "audit": "preliminary normalized LaTeX overlap",
+  "not_crossref_similarity_check": true,
+  "shingle_width_words": 8,
+  "conference_tokens": 8574,
+  "journal_tokens": 11771,
+  "conference_unique_shingles": 8504,
+  "journal_unique_shingles": 11753,
+  "common_unique_shingles": 506,
+  "journal_shingle_containment_percent": 4.305283757338552,
+  "conference_shingle_containment_percent": 5.950141110065851,
+  "interpretation": "A diagnostic for verbatim-style reuse after rough LaTeX normalization; publisher similarity tools use different corpora and rules."
+}

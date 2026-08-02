@@ -1,0 +1,57 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 3253.32it/s]
+Loading weights:   0%|          | 0/149 [00:00<?, ?it/s]Loading weights: 100%|██████████| 149/149 [00:00<00:00, 8594.65it/s]
+{"ann_missed_known_target": 0, "base": "gpt2", "base_revision": "607a30d783dfa663caf39e06633721c8d4cfcd7e", "certified_errors": 354, "certified_top1": 0.9646, "elapsed_seconds": 25.608986854553223, "exact_equal_rows": 0, "index_kind": "flat", "max_abs_weight_delta": 0.08007441461086273, "max_top1_minus_target": 0.0052100419998168945, "mean_abs_weight_delta": 0.0038757426664233208, "median_target_cosine": 0.9999340176582336, "median_top1_minus_target": 0.0, "n": 10000, "p01_target_cosine": 0.9982550144195557, "random_label_baseline": 1.9897725689953638e-05, "shape": [50257, 768], "top5_or_ann_target": 0.9737, "variant": "gpt2-wte", "victim": "lvwerra/gpt2-imdb", "victim_revision": "f1bfd819c6bee6c18fa5f95bfe88d9198839a435", "wrong_candidate_strictly_better": 353}
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 2437.87it/s]
+Loading weights:   0%|          | 0/149 [00:00<?, ?it/s]Loading weights: 100%|██████████| 149/149 [00:00<00:00, 5505.74it/s]
+{"ann_missed_known_target": 0, "base": "gpt2", "base_revision": "607a30d783dfa663caf39e06633721c8d4cfcd7e", "certified_errors": 0, "certified_top1": 1.0, "elapsed_seconds": 22.949140071868896, "exact_equal_rows": 0, "index_kind": "flat", "max_abs_weight_delta": 0.0789836049079895, "max_top1_minus_target": 7.152557373046875e-07, "mean_abs_weight_delta": 0.0047324956394732, "median_target_cosine": 0.99997878074646, "median_top1_minus_target": 0.0, "n": 10000, "p01_target_cosine": 0.999860942363739, "random_label_baseline": 1.9897725689953638e-05, "shape": [50257, 768], "top5_or_ann_target": 1.0, "variant": "gpt2-pos0", "victim": "lvwerra/gpt2-imdb", "victim_revision": "f1bfd819c6bee6c18fa5f95bfe88d9198839a435", "wrong_candidate_strictly_better": 0}
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 3828.90it/s]
+[1mBertModel LOAD REPORT[0m from: bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 4136.62it/s]
+[1mBertModel LOAD REPORT[0m from: textattack/bert-base-uncased-SST-2
+Key               | Status     |  | 
+------------------+------------+--+-
+classifier.weight | UNEXPECTED |  | 
+classifier.bias   | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+{"ann_missed_known_target": 0, "base": "bert-base-uncased", "base_revision": "86b5e0934494bd15c9632b12f734a8a67f723594", "certified_errors": 6, "certified_top1": 0.9994, "elapsed_seconds": 13.851773023605347, "exact_equal_rows": 18950, "index_kind": "flat", "max_abs_weight_delta": 0.004811083432286978, "max_top1_minus_target": 0.5551086068153381, "mean_abs_weight_delta": 0.0002041471452685073, "median_target_cosine": 0.9999998807907104, "median_top1_minus_target": 0.0, "n": 10000, "p01_target_cosine": 0.9999499320983887, "random_label_baseline": 3.2763252735731606e-05, "shape": [30522, 768], "top5_or_ann_target": 0.9994, "variant": "bert-wte", "victim": "textattack/bert-base-uncased-SST-2", "victim_revision": "95f0f6f859b35c8ff0863ae3cd4e2dbc702c0ae2", "wrong_candidate_strictly_better": 6}
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights:  76%|███████▋  | 152/199 [00:00<00:00, 1498.56it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 1773.46it/s]
+[1mBertModel LOAD REPORT[0m from: bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 6629.07it/s]
+[1mBertModel LOAD REPORT[0m from: textattack/bert-base-uncased-SST-2
+Key               | Status     |  | 
+------------------+------------+--+-
+classifier.weight | UNEXPECTED |  | 
+classifier.bias   | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+{"ann_missed_known_target": 0, "base": "bert-base-uncased", "base_revision": "86b5e0934494bd15c9632b12f734a8a67f723594", "certified_errors": 0, "certified_top1": 1.0, "elapsed_seconds": 14.27753496170044, "exact_equal_rows": 0, "index_kind": "flat", "max_abs_weight_delta": 0.06750939786434174, "max_top1_minus_target": 1.2516975402832031e-06, "mean_abs_weight_delta": 0.007668973412364721, "median_target_cosine": 0.9999731779098511, "median_top1_minus_target": 0.0, "n": 10000, "p01_target_cosine": 0.9999531507492065, "random_label_baseline": 3.2763252735731606e-05, "shape": [30522, 768], "top5_or_ann_target": 1.0, "variant": "bert-pos0", "victim": "textattack/bert-base-uncased-SST-2", "victim_revision": "95f0f6f859b35c8ff0863ae3cd4e2dbc702c0ae2", "wrong_candidate_strictly_better": 0}
+{"adapter": "palsp/gpt2-lora", "base_model_name_or_path": "gpt2", "embedding_frozen_by_artifact": true, "embedding_state_keys": [], "modules_to_save": null, "peft_type": "LORA", "revision": "4235d59235a7269b34119195e63e1424d2a530e1", "state_key_count": 96, "target_modules": ["c_attn", "c_proj", "c_fc"], "trainable_token_indices": null, "weight_file": "adapter_model.safetensors"}
+{"adapter": "nutrientartcd/recipe-gpt2-lora", "base_model_name_or_path": "gpt2", "embedding_frozen_by_artifact": true, "embedding_state_keys": [], "modules_to_save": null, "peft_type": "LORA", "revision": "33687194b334665c4dff8d49e91c2cdb6d055697", "state_key_count": 96, "target_modules": ["c_fc", "c_proj", "c_attn"], "trainable_token_indices": null, "weight_file": "adapter_model.safetensors"}

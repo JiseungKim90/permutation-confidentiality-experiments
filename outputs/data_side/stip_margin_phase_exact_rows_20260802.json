@@ -1,0 +1,871 @@
+{
+  "batch_size": 512,
+  "definition": "unit-L2 normalized, lexicographic sign-canonicalized sort(row / Linf(row))",
+  "elapsed_seconds": 222.04219770431519,
+  "faiss_version": "1.14.3",
+  "fractions": [
+    0.0,
+    0.01,
+    0.05,
+    0.1,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "host": "user-PowerEdge-T440",
+  "pairs": [
+    {
+      "base": "gpt2",
+      "base_revision": "607a30d783dfa663caf39e06633721c8d4cfcd7e",
+      "certificate": {
+        "base_unique_fraction": 1.0,
+        "base_zero_margin_rows": 0,
+        "certified_fraction": 0.7355393278548262,
+        "certified_rows": 36966,
+        "condition": "L2(private_signature, public_signature) < public_nearest_neighbor_L2 / 2",
+        "drift_to_half_margin_ratio": {
+          "count": 50257,
+          "max": 8.365790367126465,
+          "median": 0.713646650314331,
+          "min": 0.10757376253604889,
+          "p01": 0.34357699751853943,
+          "p10": 0.47642984986305237,
+          "p90": 1.553076148033142,
+          "p99": 3.817025899887085
+        },
+        "public_separation_l2": {
+          "count": 50257,
+          "max": 0.1363564133644104,
+          "median": 0.032278306782245636,
+          "min": 0.0144352987408638,
+          "p01": 0.025248343124985695,
+          "p10": 0.02801985666155815,
+          "p90": 0.03883601352572441,
+          "p99": 0.04837653040885925
+        },
+        "signature_drift_l2": {
+          "count": 50257,
+          "max": 0.15815187990665436,
+          "median": 0.011383342556655407,
+          "min": 0.0032754901330918074,
+          "p01": 0.006291063968092203,
+          "p10": 0.008155904710292816,
+          "p90": 0.025139130651950836,
+          "p99": 0.05979833006858826
+        },
+        "uncertified_rows": 13291
+      },
+      "controlled_partial_row_update": {
+        "interpretation": "Selected rows use the measured full-fine-tune outcome; unselected rows remain at the public base. This is a controlled row-update ablation, not an independently trained checkpoint.",
+        "phase": [
+          {
+            "max_semantic_top1": 1.0,
+            "mean_semantic_top1": 1.0,
+            "min_semantic_top1": 1.0,
+            "std_semantic_top1": 0.0,
+            "updated_fraction": 0.0,
+            "updated_rows": 0
+          },
+          {
+            "max_semantic_top1": 0.9997214318403407,
+            "mean_semantic_top1": 0.9996149790078995,
+            "min_semantic_top1": 0.9994826591320612,
+            "std_semantic_top1": 5.602367123108278e-05,
+            "updated_fraction": 0.01,
+            "updated_rows": 503
+          },
+          {
+            "max_semantic_top1": 0.9985275682989434,
+            "mean_semantic_top1": 0.9982410410490079,
+            "min_semantic_top1": 0.9977515569970352,
+            "std_semantic_top1": 0.0001972184840856294,
+            "updated_fraction": 0.05,
+            "updated_rows": 2513
+          },
+          {
+            "max_semantic_top1": 0.9969357502437471,
+            "mean_semantic_top1": 0.9964263684660845,
+            "min_semantic_top1": 0.9959209662335595,
+            "std_semantic_top1": 0.00023045311903083782,
+            "updated_fraction": 0.1,
+            "updated_rows": 5026
+          },
+          {
+            "max_semantic_top1": 0.9916031597588396,
+            "mean_semantic_top1": 0.9911892870644886,
+            "min_semantic_top1": 0.9903496030403725,
+            "std_semantic_top1": 0.00035564088561233293,
+            "updated_fraction": 0.25,
+            "updated_rows": 12564
+          },
+          {
+            "max_semantic_top1": 0.9828481604552599,
+            "mean_semantic_top1": 0.9820781184710589,
+            "min_semantic_top1": 0.9812762401257537,
+            "std_semantic_top1": 0.0004293069772177781,
+            "updated_fraction": 0.5,
+            "updated_rows": 25128
+          },
+          {
+            "max_semantic_top1": 0.973834490717711,
+            "mean_semantic_top1": 0.9732962572377977,
+            "min_semantic_top1": 0.9724615476451042,
+            "std_semantic_top1": 0.0003521658553894874,
+            "updated_fraction": 0.75,
+            "updated_rows": 37693
+          },
+          {
+            "max_semantic_top1": 0.9643233778379131,
+            "mean_semantic_top1": 0.9643233778379132,
+            "min_semantic_top1": 0.9643233778379131,
+            "std_semantic_top1": 1.1102230246251565e-16,
+            "updated_fraction": 1.0,
+            "updated_rows": 50257
+          }
+        ]
+      },
+      "controlled_vocabulary_overlap": {
+        "interpretation": "Only aligned rows can receive a public semantic label. Unaligned rows count as semantic failures, while their repeated signatures remain pseudotoken-linkable.",
+        "phase": [
+          {
+            "aligned_rows": 0,
+            "aligned_vocabulary_fraction": 0.0,
+            "mean_conditional_aligned_top1": 0.0,
+            "mean_overall_semantic_top1": 0.0,
+            "std_conditional_aligned_top1": 0.0,
+            "std_overall_semantic_top1": 0.0
+          },
+          {
+            "aligned_rows": 503,
+            "aligned_vocabulary_fraction": 0.01,
+            "mean_conditional_aligned_top1": 0.9619284294234592,
+            "mean_overall_semantic_top1": 0.009627514575084066,
+            "std_conditional_aligned_top1": 0.008155335171359326,
+            "std_overall_semantic_top1": 8.162312894111739e-05
+          },
+          {
+            "aligned_rows": 2513,
+            "aligned_vocabulary_fraction": 0.05,
+            "mean_conditional_aligned_top1": 0.9650815758058098,
+            "mean_overall_semantic_top1": 0.04825695922956007,
+            "std_conditional_aligned_top1": 0.002547611650223996,
+            "std_overall_semantic_top1": 0.0001273881862628673
+          },
+          {
+            "aligned_rows": 5026,
+            "aligned_vocabulary_fraction": 0.1,
+            "mean_conditional_aligned_top1": 0.9636689216076402,
+            "mean_overall_semantic_top1": 0.09637264460672144,
+            "std_conditional_aligned_top1": 0.0024200276215291024,
+            "std_overall_semantic_top1": 0.00024201720806664312
+          },
+          {
+            "aligned_rows": 12564,
+            "aligned_vocabulary_fraction": 0.25,
+            "mean_conditional_aligned_top1": 0.9648877745940784,
+            "mean_overall_semantic_top1": 0.2412171438804545,
+            "std_conditional_aligned_top1": 0.0011234318051657052,
+            "std_overall_semantic_top1": 0.00028085236285694816
+          },
+          {
+            "aligned_rows": 25128,
+            "aligned_vocabulary_fraction": 0.5,
+            "mean_conditional_aligned_top1": 0.9638471028334925,
+            "mean_overall_semantic_top1": 0.4819139622341167,
+            "std_conditional_aligned_top1": 0.0007928820977347309,
+            "std_overall_semantic_top1": 0.0003964331605921228
+          },
+          {
+            "aligned_rows": 37693,
+            "aligned_vocabulary_fraction": 0.75,
+            "mean_conditional_aligned_top1": 0.9643289204892154,
+            "mean_overall_semantic_top1": 0.7232514873549954,
+            "std_conditional_aligned_top1": 0.0004641236656404098,
+            "std_overall_semantic_top1": 0.0003480950579816632
+          },
+          {
+            "aligned_rows": 50257,
+            "aligned_vocabulary_fraction": 1.0,
+            "mean_conditional_aligned_top1": 0.9643233778379132,
+            "mean_overall_semantic_top1": 0.9643233778379132,
+            "std_conditional_aligned_top1": 1.1102230246251565e-16,
+            "std_overall_semantic_top1": 1.1102230246251565e-16
+          }
+        ]
+      },
+      "controls": {
+        "private_signature_exact_collision_rows": 0,
+        "private_signature_unique_rows": 50257,
+        "pseudotoken_repeat_linkage": "exact for equal scale-permutation signatures; distinct semantic labels are not identifiable without public alignment or anchors",
+        "token_id_reindexing_changed_result": false,
+        "token_id_reindexing_top1": 0.9643233778379131
+      },
+      "elapsed_seconds": 86.00358438491821,
+      "empirical": {
+        "errors": 1793,
+        "observed_top1": 0.9643233778379131,
+        "score_gap": {
+          "count": 50257,
+          "max": 0.009401082992553711,
+          "median": 0.0004317164421081543,
+          "min": -0.01182711124420166,
+          "p01": -0.0012490940280258656,
+          "p10": 0.00021049976930953562,
+          "p90": 0.0006794929504394531,
+          "p99": 0.001116311177611351
+        },
+        "strict_margin_failures": 1801,
+        "strict_margin_top1": 0.9641641960323935
+      },
+      "index_kind": "faiss.IndexFlatIP",
+      "shape": [
+        50257,
+        768
+      ],
+      "variant": "gpt2-wte",
+      "victim": "lvwerra/gpt2-imdb",
+      "victim_revision": "f1bfd819c6bee6c18fa5f95bfe88d9198839a435"
+    },
+    {
+      "base": "gpt2",
+      "base_revision": "607a30d783dfa663caf39e06633721c8d4cfcd7e",
+      "certificate": {
+        "base_unique_fraction": 1.0,
+        "base_zero_margin_rows": 0,
+        "certified_fraction": 0.9749686610820383,
+        "certified_rows": 48999,
+        "condition": "L2(private_signature, public_signature) < public_nearest_neighbor_L2 / 2",
+        "drift_to_half_margin_ratio": {
+          "count": 50257,
+          "max": 1.9619107246398926,
+          "median": 0.4238344430923462,
+          "min": 0.055915724486112595,
+          "p01": 0.2827358841896057,
+          "p10": 0.3349887430667877,
+          "p90": 0.7634990215301514,
+          "p99": 1.133847713470459
+        },
+        "public_separation_l2": {
+          "count": 50257,
+          "max": 0.2362607717514038,
+          "median": 0.03149319440126419,
+          "min": 0.006137600168585777,
+          "p01": 0.02152160368859768,
+          "p10": 0.027321942150592804,
+          "p90": 0.03689093142747879,
+          "p99": 0.04423251748085022
+        },
+        "signature_drift_l2": {
+          "count": 50257,
+          "max": 0.026616927236318588,
+          "median": 0.0064869774505496025,
+          "min": 0.00461935717612505,
+          "p01": 0.005144362337887287,
+          "p10": 0.005524271633476019,
+          "p90": 0.01194044854491949,
+          "p99": 0.01656562089920044
+        },
+        "uncertified_rows": 1258
+      },
+      "controlled_partial_row_update": {
+        "interpretation": "Selected rows use the measured full-fine-tune outcome; unselected rows remain at the public base. This is a controlled row-update ablation, not an independently trained checkpoint.",
+        "phase": [
+          {
+            "max_semantic_top1": 1.0,
+            "mean_semantic_top1": 1.0,
+            "min_semantic_top1": 1.0,
+            "std_semantic_top1": 0.0,
+            "updated_fraction": 0.0,
+            "updated_rows": 0
+          },
+          {
+            "max_semantic_top1": 1.0,
+            "mean_semantic_top1": 1.0,
+            "min_semantic_top1": 1.0,
+            "std_semantic_top1": 0.0,
+            "updated_fraction": 0.01,
+            "updated_rows": 503
+          },
+          {
+            "max_semantic_top1": 1.0,
+            "mean_semantic_top1": 1.0,
+            "min_semantic_top1": 1.0,
+            "std_semantic_top1": 0.0,
+            "updated_fraction": 0.05,
+            "updated_rows": 2513
+          },
+          {
+            "max_semantic_top1": 1.0,
+            "mean_semantic_top1": 1.0,
+            "min_semantic_top1": 1.0,
+            "std_semantic_top1": 0.0,
+            "updated_fraction": 0.1,
+            "updated_rows": 5026
+          },
+          {
+            "max_semantic_top1": 1.0,
+            "mean_semantic_top1": 1.0,
+            "min_semantic_top1": 1.0,
+            "std_semantic_top1": 0.0,
+            "updated_fraction": 0.25,
+            "updated_rows": 12564
+          },
+          {
+            "max_semantic_top1": 1.0,
+            "mean_semantic_top1": 1.0,
+            "min_semantic_top1": 1.0,
+            "std_semantic_top1": 0.0,
+            "updated_fraction": 0.5,
+            "updated_rows": 25128
+          },
+          {
+            "max_semantic_top1": 1.0,
+            "mean_semantic_top1": 1.0,
+            "min_semantic_top1": 1.0,
+            "std_semantic_top1": 0.0,
+            "updated_fraction": 0.75,
+            "updated_rows": 37693
+          },
+          {
+            "max_semantic_top1": 1.0,
+            "mean_semantic_top1": 1.0,
+            "min_semantic_top1": 1.0,
+            "std_semantic_top1": 0.0,
+            "updated_fraction": 1.0,
+            "updated_rows": 50257
+          }
+        ]
+      },
+      "controlled_vocabulary_overlap": {
+        "interpretation": "Only aligned rows can receive a public semantic label. Unaligned rows count as semantic failures, while their repeated signatures remain pseudotoken-linkable.",
+        "phase": [
+          {
+            "aligned_rows": 0,
+            "aligned_vocabulary_fraction": 0.0,
+            "mean_conditional_aligned_top1": 0.0,
+            "mean_overall_semantic_top1": 0.0,
+            "std_conditional_aligned_top1": 0.0,
+            "std_overall_semantic_top1": 0.0
+          },
+          {
+            "aligned_rows": 503,
+            "aligned_vocabulary_fraction": 0.01,
+            "mean_conditional_aligned_top1": 1.0,
+            "mean_overall_semantic_top1": 0.010008556022046679,
+            "std_conditional_aligned_top1": 0.0,
+            "std_overall_semantic_top1": 1.734723475976807e-18
+          },
+          {
+            "aligned_rows": 2513,
+            "aligned_vocabulary_fraction": 0.05,
+            "mean_conditional_aligned_top1": 1.0,
+            "mean_overall_semantic_top1": 0.050002984658853486,
+            "std_conditional_aligned_top1": 0.0,
+            "std_overall_semantic_top1": 6.938893903907228e-18
+          },
+          {
+            "aligned_rows": 5026,
+            "aligned_vocabulary_fraction": 0.1,
+            "mean_conditional_aligned_top1": 1.0,
+            "mean_overall_semantic_top1": 0.10000596931770697,
+            "std_conditional_aligned_top1": 0.0,
+            "std_overall_semantic_top1": 1.3877787807814457e-17
+          },
+          {
+            "aligned_rows": 12564,
+            "aligned_vocabulary_fraction": 0.25,
+            "mean_conditional_aligned_top1": 1.0,
+            "mean_overall_semantic_top1": 0.24999502556857753,
+            "std_conditional_aligned_top1": 0.0,
+            "std_overall_semantic_top1": 2.7755575615628914e-17
+          },
+          {
+            "aligned_rows": 25128,
+            "aligned_vocabulary_fraction": 0.5,
+            "mean_conditional_aligned_top1": 1.0,
+            "mean_overall_semantic_top1": 0.49999005113715506,
+            "std_conditional_aligned_top1": 0.0,
+            "std_overall_semantic_top1": 5.551115123125783e-17
+          },
+          {
+            "aligned_rows": 37693,
+            "aligned_vocabulary_fraction": 0.75,
+            "mean_conditional_aligned_top1": 1.0,
+            "mean_overall_semantic_top1": 0.7500049744314226,
+            "std_conditional_aligned_top1": 0.0,
+            "std_overall_semantic_top1": 1.1102230246251565e-16
+          },
+          {
+            "aligned_rows": 50257,
+            "aligned_vocabulary_fraction": 1.0,
+            "mean_conditional_aligned_top1": 1.0,
+            "mean_overall_semantic_top1": 1.0,
+            "std_conditional_aligned_top1": 0.0,
+            "std_overall_semantic_top1": 0.0
+          }
+        ]
+      },
+      "controls": {
+        "private_signature_exact_collision_rows": 0,
+        "private_signature_unique_rows": 50257,
+        "pseudotoken_repeat_linkage": "exact for equal scale-permutation signatures; distinct semantic labels are not identifiable without public alignment or anchors",
+        "token_id_reindexing_changed_result": false,
+        "token_id_reindexing_top1": 1.0
+      },
+      "elapsed_seconds": 77.68371558189392,
+      "empirical": {
+        "errors": 0,
+        "observed_top1": 1.0,
+        "score_gap": {
+          "count": 50257,
+          "max": 0.02793741226196289,
+          "median": 0.0004622340202331543,
+          "min": 1.0728836059570312e-05,
+          "p01": 0.00019925832748413086,
+          "p10": 0.0003408193588256836,
+          "p90": 0.0006445646286010742,
+          "p99": 0.0009432032238692045
+        },
+        "strict_margin_failures": 0,
+        "strict_margin_top1": 1.0
+      },
+      "index_kind": "faiss.IndexFlatIP",
+      "shape": [
+        50257,
+        768
+      ],
+      "variant": "gpt2-pos0",
+      "victim": "lvwerra/gpt2-imdb",
+      "victim_revision": "f1bfd819c6bee6c18fa5f95bfe88d9198839a435"
+    },
+    {
+      "base": "bert-base-uncased",
+      "base_revision": "86b5e0934494bd15c9632b12f734a8a67f723594",
+      "certificate": {
+        "base_unique_fraction": 1.0,
+        "base_zero_margin_rows": 0,
+        "certified_fraction": 0.9991153921761352,
+        "certified_rows": 30495,
+        "condition": "L2(private_signature, public_signature) < public_nearest_neighbor_L2 / 2",
+        "drift_to_half_margin_ratio": {
+          "count": 30522,
+          "max": 68.82597351074219,
+          "median": 0.0253438800573349,
+          "min": 0.0,
+          "p01": 0.0,
+          "p10": 0.0,
+          "p90": 0.48888662457466125,
+          "p99": 0.6643869876861572
+        },
+        "public_separation_l2": {
+          "count": 30522,
+          "max": 0.40846967697143555,
+          "median": 0.0318806916475296,
+          "min": 0.01696733385324478,
+          "p01": 0.020601214841008186,
+          "p10": 0.0264709684997797,
+          "p90": 0.040987856686115265,
+          "p99": 0.05250601842999458
+        },
+        "signature_drift_l2": {
+          "count": 30522,
+          "max": 1.1785632371902466,
+          "median": 0.00048828125,
+          "min": 0.0,
+          "p01": 0.0,
+          "p10": 0.0,
+          "p90": 0.0077589103020727634,
+          "p99": 0.010024641640484333
+        },
+        "uncertified_rows": 27
+      },
+      "controlled_partial_row_update": {
+        "interpretation": "Selected rows use the measured full-fine-tune outcome; unselected rows remain at the public base. This is a controlled row-update ablation, not an independently trained checkpoint.",
+        "phase": [
+          {
+            "max_semantic_top1": 1.0,
+            "mean_semantic_top1": 1.0,
+            "min_semantic_top1": 1.0,
+            "std_semantic_top1": 0.0,
+            "updated_fraction": 0.0,
+            "updated_rows": 0
+          },
+          {
+            "max_semantic_top1": 1.0,
+            "mean_semantic_top1": 0.9999967236747264,
+            "min_semantic_top1": 0.9999672367472643,
+            "std_semantic_top1": 9.828975820713738e-06,
+            "updated_fraction": 0.01,
+            "updated_rows": 305
+          },
+          {
+            "max_semantic_top1": 1.0,
+            "mean_semantic_top1": 0.9999557696088068,
+            "min_semantic_top1": 0.999868946989057,
+            "std_semantic_top1": 3.321069217729884e-05,
+            "updated_fraction": 0.05,
+            "updated_rows": 1526
+          },
+          {
+            "max_semantic_top1": 0.9999672367472643,
+            "mean_semantic_top1": 0.9999148155428872,
+            "min_semantic_top1": 0.9998034204835856,
+            "std_semantic_top1": 4.679528489971611e-05,
+            "updated_fraction": 0.1,
+            "updated_rows": 3052
+          },
+          {
+            "max_semantic_top1": 0.9999344734945286,
+            "mean_semantic_top1": 0.9997854006945808,
+            "min_semantic_top1": 0.9996723674726427,
+            "std_semantic_top1": 6.672371356534005e-05,
+            "updated_fraction": 0.25,
+            "updated_rows": 7630
+          },
+          {
+            "max_semantic_top1": 0.9997051307253784,
+            "mean_semantic_top1": 0.9995544197627939,
+            "min_semantic_top1": 0.9994430247034926,
+            "std_semantic_top1": 8.249576247961126e-05,
+            "updated_fraction": 0.5,
+            "updated_rows": 15261
+          },
+          {
+            "max_semantic_top1": 0.999508551208964,
+            "mean_semantic_top1": 0.9993791363606578,
+            "min_semantic_top1": 0.9992136819343425,
+            "std_semantic_top1": 8.18917485744658e-05,
+            "updated_fraction": 0.75,
+            "updated_rows": 22892
+          },
+          {
+            "max_semantic_top1": 0.999148155428871,
+            "mean_semantic_top1": 0.9991481554288708,
+            "min_semantic_top1": 0.999148155428871,
+            "std_semantic_top1": 2.220446049250313e-16,
+            "updated_fraction": 1.0,
+            "updated_rows": 30522
+          }
+        ]
+      },
+      "controlled_vocabulary_overlap": {
+        "interpretation": "Only aligned rows can receive a public semantic label. Unaligned rows count as semantic failures, while their repeated signatures remain pseudotoken-linkable.",
+        "phase": [
+          {
+            "aligned_rows": 0,
+            "aligned_vocabulary_fraction": 0.0,
+            "mean_conditional_aligned_top1": 0.0,
+            "mean_overall_semantic_top1": 0.0,
+            "std_conditional_aligned_top1": 0.0,
+            "std_overall_semantic_top1": 0.0
+          },
+          {
+            "aligned_rows": 305,
+            "aligned_vocabulary_fraction": 0.01,
+            "mean_conditional_aligned_top1": 0.9995081967213114,
+            "mean_overall_semantic_top1": 0.009987877596487778,
+            "std_conditional_aligned_top1": 0.0011707259718922562,
+            "std_overall_semantic_top1": 1.1698821224924996e-05
+          },
+          {
+            "aligned_rows": 1526,
+            "aligned_vocabulary_fraction": 0.05,
+            "mean_conditional_aligned_top1": 0.9991808650065531,
+            "mean_overall_semantic_top1": 0.049955769608806766,
+            "std_conditional_aligned_top1": 0.0006173474338603248,
+            "std_overall_semantic_top1": 3.0865349062015834e-05
+          },
+          {
+            "aligned_rows": 3052,
+            "aligned_vocabulary_fraction": 0.1,
+            "mean_conditional_aligned_top1": 0.9991153342070772,
+            "mean_overall_semantic_top1": 0.09990498656706638,
+            "std_conditional_aligned_top1": 0.0004026279727209938,
+            "std_overall_semantic_top1": 4.0260158991693716e-05
+          },
+          {
+            "aligned_rows": 7630,
+            "aligned_vocabulary_fraction": 0.25,
+            "mean_conditional_aligned_top1": 0.9992660550458716,
+            "mean_overall_semantic_top1": 0.24980014415831198,
+            "std_conditional_aligned_top1": 0.0002465909268967957,
+            "std_overall_semantic_top1": 6.164369216377498e-05
+          },
+          {
+            "aligned_rows": 15261,
+            "aligned_vocabulary_fraction": 0.5,
+            "mean_conditional_aligned_top1": 0.9991186685014087,
+            "mean_overall_semantic_top1": 0.49955933425070437,
+            "std_conditional_aligned_top1": 0.00020458021447807996,
+            "std_overall_semantic_top1": 0.00010229010723903998
+          },
+          {
+            "aligned_rows": 22892,
+            "aligned_vocabulary_fraction": 0.75,
+            "mean_conditional_aligned_top1": 0.9991547265420235,
+            "mean_overall_semantic_top1": 0.7493824126859315,
+            "std_conditional_aligned_top1": 0.00010362725986613873,
+            "std_overall_semantic_top1": 7.772214248265085e-05
+          },
+          {
+            "aligned_rows": 30522,
+            "aligned_vocabulary_fraction": 1.0,
+            "mean_conditional_aligned_top1": 0.9991481554288708,
+            "mean_overall_semantic_top1": 0.9991481554288708,
+            "std_conditional_aligned_top1": 2.220446049250313e-16,
+            "std_overall_semantic_top1": 2.220446049250313e-16
+          }
+        ]
+      },
+      "controls": {
+        "private_signature_exact_collision_rows": 0,
+        "private_signature_unique_rows": 30522,
+        "pseudotoken_repeat_linkage": "exact for equal scale-permutation signatures; distinct semantic labels are not identifiable without public alignment or anchors",
+        "token_id_reindexing_changed_result": false,
+        "token_id_reindexing_top1": 0.999148155428871
+      },
+      "elapsed_seconds": 28.980988264083862,
+      "empirical": {
+        "errors": 26,
+        "observed_top1": 0.999148155428871,
+        "score_gap": {
+          "count": 30522,
+          "max": 0.08353286981582642,
+          "median": 0.0004981756210327148,
+          "min": -0.6939472556114197,
+          "p01": 0.00020995258819311857,
+          "p10": 0.00034052133560180664,
+          "p90": 0.000831889919936657,
+          "p99": 0.001365358242765069
+        },
+        "strict_margin_failures": 26,
+        "strict_margin_top1": 0.999148155428871
+      },
+      "index_kind": "faiss.IndexFlatIP",
+      "shape": [
+        30522,
+        768
+      ],
+      "variant": "bert-wte",
+      "victim": "textattack/bert-base-uncased-SST-2",
+      "victim_revision": "95f0f6f859b35c8ff0863ae3cd4e2dbc702c0ae2"
+    },
+    {
+      "base": "bert-base-uncased",
+      "base_revision": "86b5e0934494bd15c9632b12f734a8a67f723594",
+      "certificate": {
+        "base_unique_fraction": 1.0,
+        "base_zero_margin_rows": 0,
+        "certified_fraction": 0.999868946989057,
+        "certified_rows": 30518,
+        "condition": "L2(private_signature, public_signature) < public_nearest_neighbor_L2 / 2",
+        "drift_to_half_margin_ratio": {
+          "count": 30522,
+          "max": 1.0496466159820557,
+          "median": 0.42984539270401,
+          "min": 0.061360858380794525,
+          "p01": 0.3065214157104492,
+          "p10": 0.358340322971344,
+          "p90": 0.5302843451499939,
+          "p99": 0.8642172813415527
+        },
+        "public_separation_l2": {
+          "count": 30522,
+          "max": 0.16269220411777496,
+          "median": 0.03461979329586029,
+          "min": 0.014664704911410809,
+          "p01": 0.0168941430747509,
+          "p10": 0.029936857521533966,
+          "p90": 0.040285274386405945,
+          "p99": 0.046592868864536285
+        },
+        "signature_drift_l2": {
+          "count": 30522,
+          "max": 0.012629411183297634,
+          "median": 0.00732421875,
+          "min": 0.004991466645151377,
+          "p01": 0.00645935395732522,
+          "p10": 0.006800970993936062,
+          "p90": 0.008485423400998116,
+          "p99": 0.009667475707828999
+        },
+        "uncertified_rows": 4
+      },
+      "controlled_partial_row_update": {
+        "interpretation": "Selected rows use the measured full-fine-tune outcome; unselected rows remain at the public base. This is a controlled row-update ablation, not an independently trained checkpoint.",
+        "phase": [
+          {
+            "max_semantic_top1": 1.0,
+            "mean_semantic_top1": 1.0,
+            "min_semantic_top1": 1.0,
+            "std_semantic_top1": 0.0,
+            "updated_fraction": 0.0,
+            "updated_rows": 0
+          },
+          {
+            "max_semantic_top1": 1.0,
+            "mean_semantic_top1": 1.0,
+            "min_semantic_top1": 1.0,
+            "std_semantic_top1": 0.0,
+            "updated_fraction": 0.01,
+            "updated_rows": 305
+          },
+          {
+            "max_semantic_top1": 1.0,
+            "mean_semantic_top1": 1.0,
+            "min_semantic_top1": 1.0,
+            "std_semantic_top1": 0.0,
+            "updated_fraction": 0.05,
+            "updated_rows": 1526
+          },
+          {
+            "max_semantic_top1": 1.0,
+            "mean_semantic_top1": 1.0,
+            "min_semantic_top1": 1.0,
+            "std_semantic_top1": 0.0,
+            "updated_fraction": 0.1,
+            "updated_rows": 3052
+          },
+          {
+            "max_semantic_top1": 1.0,
+            "mean_semantic_top1": 1.0,
+            "min_semantic_top1": 1.0,
+            "std_semantic_top1": 0.0,
+            "updated_fraction": 0.25,
+            "updated_rows": 7630
+          },
+          {
+            "max_semantic_top1": 1.0,
+            "mean_semantic_top1": 1.0,
+            "min_semantic_top1": 1.0,
+            "std_semantic_top1": 0.0,
+            "updated_fraction": 0.5,
+            "updated_rows": 15261
+          },
+          {
+            "max_semantic_top1": 1.0,
+            "mean_semantic_top1": 1.0,
+            "min_semantic_top1": 1.0,
+            "std_semantic_top1": 0.0,
+            "updated_fraction": 0.75,
+            "updated_rows": 22892
+          },
+          {
+            "max_semantic_top1": 1.0,
+            "mean_semantic_top1": 1.0,
+            "min_semantic_top1": 1.0,
+            "std_semantic_top1": 0.0,
+            "updated_fraction": 1.0,
+            "updated_rows": 30522
+          }
+        ]
+      },
+      "controlled_vocabulary_overlap": {
+        "interpretation": "Only aligned rows can receive a public semantic label. Unaligned rows count as semantic failures, while their repeated signatures remain pseudotoken-linkable.",
+        "phase": [
+          {
+            "aligned_rows": 0,
+            "aligned_vocabulary_fraction": 0.0,
+            "mean_conditional_aligned_top1": 0.0,
+            "mean_overall_semantic_top1": 0.0,
+            "std_conditional_aligned_top1": 0.0,
+            "std_overall_semantic_top1": 0.0
+          },
+          {
+            "aligned_rows": 305,
+            "aligned_vocabulary_fraction": 0.01,
+            "mean_conditional_aligned_top1": 1.0,
+            "mean_overall_semantic_top1": 0.009992792084398138,
+            "std_conditional_aligned_top1": 0.0,
+            "std_overall_semantic_top1": 1.734723475976807e-18
+          },
+          {
+            "aligned_rows": 1526,
+            "aligned_vocabulary_fraction": 0.05,
+            "mean_conditional_aligned_top1": 1.0,
+            "mean_overall_semantic_top1": 0.04999672367472642,
+            "std_conditional_aligned_top1": 0.0,
+            "std_overall_semantic_top1": 6.938893903907228e-18
+          },
+          {
+            "aligned_rows": 3052,
+            "aligned_vocabulary_fraction": 0.1,
+            "mean_conditional_aligned_top1": 1.0,
+            "mean_overall_semantic_top1": 0.09999344734945284,
+            "std_conditional_aligned_top1": 0.0,
+            "std_overall_semantic_top1": 1.3877787807814457e-17
+          },
+          {
+            "aligned_rows": 7630,
+            "aligned_vocabulary_fraction": 0.25,
+            "mean_conditional_aligned_top1": 1.0,
+            "mean_overall_semantic_top1": 0.24998361837363206,
+            "std_conditional_aligned_top1": 0.0,
+            "std_overall_semantic_top1": 8.326672684688674e-17
+          },
+          {
+            "aligned_rows": 15261,
+            "aligned_vocabulary_fraction": 0.5,
+            "mean_conditional_aligned_top1": 1.0,
+            "mean_overall_semantic_top1": 0.5,
+            "std_conditional_aligned_top1": 0.0,
+            "std_overall_semantic_top1": 0.0
+          },
+          {
+            "aligned_rows": 22892,
+            "aligned_vocabulary_fraction": 0.75,
+            "mean_conditional_aligned_top1": 1.0,
+            "mean_overall_semantic_top1": 0.750016381626368,
+            "std_conditional_aligned_top1": 0.0,
+            "std_overall_semantic_top1": 1.1102230246251565e-16
+          },
+          {
+            "aligned_rows": 30522,
+            "aligned_vocabulary_fraction": 1.0,
+            "mean_conditional_aligned_top1": 1.0,
+            "mean_overall_semantic_top1": 1.0,
+            "std_conditional_aligned_top1": 0.0,
+            "std_overall_semantic_top1": 0.0
+          }
+        ]
+      },
+      "controls": {
+        "private_signature_exact_collision_rows": 0,
+        "private_signature_unique_rows": 30522,
+        "pseudotoken_repeat_linkage": "exact for equal scale-permutation signatures; distinct semantic labels are not identifiable without public alignment or anchors",
+        "token_id_reindexing_changed_result": false,
+        "token_id_reindexing_top1": 1.0
+      },
+      "elapsed_seconds": 29.32981586456299,
+      "empirical": {
+        "errors": 0,
+        "observed_top1": 1.0,
+        "score_gap": {
+          "count": 30522,
+          "max": 0.013255894184112549,
+          "median": 0.0005708932876586914,
+          "min": 7.778406143188477e-05,
+          "p01": 0.00011874496703967452,
+          "p10": 0.00041819215402938426,
+          "p90": 0.0007843971252441406,
+          "p99": 0.001056671142578125
+        },
+        "strict_margin_failures": 0,
+        "strict_margin_top1": 1.0
+      },
+      "index_kind": "faiss.IndexFlatIP",
+      "shape": [
+        30522,
+        768
+      ],
+      "variant": "bert-pos0",
+      "victim": "textattack/bert-base-uncased-SST-2",
+      "victim_revision": "95f0f6f859b35c8ff0863ae3cd4e2dbc702c0ae2"
+    }
+  ],
+  "repeats": 20,
+  "seed": 20260802,
+  "threads": 16,
+  "torch_version": "2.7.1+cu126"
+}

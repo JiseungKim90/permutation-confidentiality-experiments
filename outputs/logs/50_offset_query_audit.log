@@ -1,0 +1,42 @@
+{
+  "experiment": "dense offset-query audit bypass",
+  "checkpoint": "/home/user/research-vault/projects/CS615/models/resnet20_seed0.pt",
+  "precision": 256,
+  "seed": 20260801,
+  "fresh_output_permutation_per_query": true,
+  "attack": {
+    "shape": [
+      16,
+      27
+    ],
+    "anchor_search_attempts": 1,
+    "queries": 433,
+    "theoretical_queries": 433,
+    "weight_status": "exact",
+    "bias_status": "exact",
+    "max_weight_lattice_error": 0,
+    "max_bias_lattice_error": 0,
+    "input_range": [
+      0,
+      255
+    ],
+    "attack_query_minimum": 22,
+    "attack_query_maximum": 250,
+    "range_audit_accept_percent": 100.0,
+    "sparsity_audit_accept_percent": 100.0,
+    "minimum_nonzero_fraction": 1.0,
+    "baseline_sparse_probe_accept_percent": 0.0
+  },
+  "audit_cost": {
+    "checks": 10000,
+    "accepted": 10000,
+    "total_seconds": 0.10571899899514392,
+    "microseconds_per_query": 10.571899899514392
+  },
+  "conclusion": {
+    "range_check": "does not stop the dense offset attack",
+    "sparsity_check": "does not stop the dense offset attack",
+    "required_break": "cryptographic provenance/well-formedness of each layer input, or hiding the first activation inside the protected domain"
+  },
+  "wall_seconds": 0.1984114646911621
+}

@@ -1,0 +1,32 @@
+{
+  "experiment": "Concrete-TFHE protected first activation boundary",
+  "concrete_version": "2.11.0",
+  "checkpoint": "/home/user/research-vault/projects/CS615/models/resnet20_seed0.pt",
+  "layer": "folded conv1+bn followed by relu",
+  "shape": [
+    16,
+    27
+  ],
+  "precision": 256,
+  "input_range": [
+    0,
+    31
+  ],
+  "evaluations": 10,
+  "baseline_affine": {
+    "compile_and_keygen_seconds": 0.19360780715942383,
+    "total_encrypt_run_decrypt_seconds": 0.18822383880615234,
+    "seconds_per_evaluation": 0.018822383880615235,
+    "exact": true
+  },
+  "scope": "Single folded first-layer vector microbenchmark; excludes network, ciphertext traffic, and end-to-end model latency.",
+  "protected_affine_relu": {
+    "status": "exact",
+    "compile_and_keygen_seconds": 10.807036399841309,
+    "total_encrypt_run_decrypt_seconds": 587.6553823947906,
+    "seconds_per_evaluation": 58.76553823947906,
+    "exact": true
+  },
+  "online_latency_ratio": 3122.109219119711,
+  "wall_seconds": 598.8772149085999
+}

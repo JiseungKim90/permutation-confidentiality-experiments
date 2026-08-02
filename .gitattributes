@@ -1,0 +1,26 @@
+.gitattributes text eol=lf
+README_JOURNAL.md text eol=lf
+lib/interpolation_recovery.py text eol=lf
+lib/unlabeled_recovery.py text eol=lf
+scripts/4*.py text eol=lf
+scripts/5*.py text eol=lf
+outputs/JOURNAL_SHA256SUMS.txt text eol=lf
+outputs/activation_mask_classification.json text eol=lf
+outputs/artifact_consistency_audit.json text eol=lf
+outputs/conference_overlap_audit.json text eol=lf
+outputs/fresh_session_orbit_recovery_*.json text eol=lf
+outputs/imagenet_first_layer_row_recovery.json text eol=lf
+outputs/interpolation_recovery.json text eol=lf
+outputs/mixed_query_collision_stress.json text eol=lf
+outputs/offset_query_audit.json text eol=lf
+outputs/resnet_permutation_equivalence.json text eol=lf
+outputs/session_lifecycle_recovery.json text eol=lf
+outputs/unlabeled_row_recovery.json text eol=lf
+outputs/data_side/** text eol=lf
+outputs/data_side/**/*.log whitespace=-trailing-space
+outputs/logs/4*.json text eol=lf
+outputs/logs/4*.log text eol=lf whitespace=-trailing-space
+outputs/logs/5*.json text eol=lf
+outputs/logs/5*.log text eol=lf whitespace=-trailing-space
+outputs/figures/fig_journal_extension_v2.pdf binary
+outputs/figures/fig_journal_extension_v2.png binary

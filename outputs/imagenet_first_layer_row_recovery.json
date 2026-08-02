@@ -1,0 +1,228 @@
+{
+  "experiment": "pretrained ImageNet first-layer row recovery",
+  "coefficients": [
+    1,
+    2,
+    3
+  ],
+  "noise_bound_lattice_units": 0.499,
+  "seed": 20260801,
+  "rows": [
+    {
+      "model": "resnet50_v1",
+      "precision": 256,
+      "shape": [
+        64,
+        147
+      ],
+      "distinct_biases": 51,
+      "bias_anchored": {
+        "status": "not_applicable",
+        "reason": "quantized bias collision"
+      },
+      "bias_free": {
+        "status": "not_applicable",
+        "reason": "no pairwise-distinct quantized weight column"
+      }
+    },
+    {
+      "model": "resnet50_v1",
+      "precision": 4096,
+      "shape": [
+        64,
+        147
+      ],
+      "distinct_biases": 63,
+      "bias_anchored": {
+        "status": "not_applicable",
+        "reason": "quantized bias collision"
+      },
+      "bias_free": {
+        "status": "not_applicable",
+        "reason": "no pairwise-distinct quantized weight column"
+      }
+    },
+    {
+      "model": "resnet50_v1",
+      "precision": 65536,
+      "shape": [
+        64,
+        147
+      ],
+      "distinct_biases": 64,
+      "bias_anchored": {
+        "status": "exact",
+        "queries": 442
+      },
+      "bias_free": {
+        "status": "exact",
+        "queries": 585,
+        "anchor_coordinate": 1
+      }
+    },
+    {
+      "model": "densenet121_v1",
+      "precision": 256,
+      "shape": [
+        64,
+        147
+      ],
+      "distinct_biases": 29,
+      "bias_anchored": {
+        "status": "not_applicable",
+        "reason": "quantized bias collision"
+      },
+      "bias_free": {
+        "status": "not_applicable",
+        "reason": "no pairwise-distinct quantized weight column"
+      }
+    },
+    {
+      "model": "densenet121_v1",
+      "precision": 4096,
+      "shape": [
+        64,
+        147
+      ],
+      "distinct_biases": 56,
+      "bias_anchored": {
+        "status": "not_applicable",
+        "reason": "quantized bias collision"
+      },
+      "bias_free": {
+        "status": "not_applicable",
+        "reason": "no pairwise-distinct quantized weight column"
+      }
+    },
+    {
+      "model": "densenet121_v1",
+      "precision": 65536,
+      "shape": [
+        64,
+        147
+      ],
+      "distinct_biases": 63,
+      "bias_anchored": {
+        "status": "not_applicable",
+        "reason": "quantized bias collision"
+      },
+      "bias_free": {
+        "status": "not_applicable",
+        "reason": "no pairwise-distinct quantized weight column"
+      }
+    },
+    {
+      "model": "mobilenet_v2_v1",
+      "precision": 256,
+      "shape": [
+        32,
+        27
+      ],
+      "distinct_biases": 30,
+      "bias_anchored": {
+        "status": "not_applicable",
+        "reason": "quantized bias collision"
+      },
+      "bias_free": {
+        "status": "not_applicable",
+        "reason": "no pairwise-distinct quantized weight column"
+      }
+    },
+    {
+      "model": "mobilenet_v2_v1",
+      "precision": 4096,
+      "shape": [
+        32,
+        27
+      ],
+      "distinct_biases": 32,
+      "bias_anchored": {
+        "status": "exact",
+        "queries": 82
+      },
+      "bias_free": {
+        "status": "not_applicable",
+        "reason": "no pairwise-distinct quantized weight column"
+      }
+    },
+    {
+      "model": "mobilenet_v2_v1",
+      "precision": 65536,
+      "shape": [
+        32,
+        27
+      ],
+      "distinct_biases": 32,
+      "bias_anchored": {
+        "status": "exact",
+        "queries": 82
+      },
+      "bias_free": {
+        "status": "exact",
+        "queries": 105,
+        "anchor_coordinate": 0
+      }
+    },
+    {
+      "model": "efficientnet_b0_v1",
+      "precision": 256,
+      "shape": [
+        32,
+        27
+      ],
+      "distinct_biases": 30,
+      "bias_anchored": {
+        "status": "not_applicable",
+        "reason": "quantized bias collision"
+      },
+      "bias_free": {
+        "status": "exact",
+        "queries": 105,
+        "anchor_coordinate": 4
+      }
+    },
+    {
+      "model": "efficientnet_b0_v1",
+      "precision": 4096,
+      "shape": [
+        32,
+        27
+      ],
+      "distinct_biases": 32,
+      "bias_anchored": {
+        "status": "exact",
+        "queries": 82
+      },
+      "bias_free": {
+        "status": "exact",
+        "queries": 105,
+        "anchor_coordinate": 0
+      }
+    },
+    {
+      "model": "efficientnet_b0_v1",
+      "precision": 65536,
+      "shape": [
+        32,
+        27
+      ],
+      "distinct_biases": 32,
+      "bias_anchored": {
+        "status": "exact",
+        "queries": 82
+      },
+      "bias_free": {
+        "status": "exact",
+        "queries": 105,
+        "anchor_coordinate": 0
+      }
+    }
+  ],
+  "summary": {
+    "settings": 12,
+    "bias_anchored_exact": 5,
+    "bias_free_exact": 5,
+    "wrong": 0
+  },
+  "wall_seconds": 5.552914619445801
+}
