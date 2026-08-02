@@ -36,7 +36,7 @@ All model, cryptographic, lifecycle, equivalence, audit-bypass, and figure compu
 | 51 | final journal figure | `fig_journal_extension_v2.pdf/.png` |
 | 54 | protected first-activation boundary | `outputs/logs/54_tfhe_protected_activation_input255.json`, `...input31.json` |
 | 55 | preliminary conference overlap audit | `outputs/conference_overlap_audit.json` |
-| 56 | manuscript-to-JSON consistency audit | `outputs/artifact_consistency_audit.json` |
+| 56 | manuscript-to-JSON and journal-only red-marking consistency audit | `outputs/artifact_consistency_audit.json` |
 | 57 | fresh-session layer-orbit recovery at 4/5/8 bits | `outputs/fresh_session_orbit_recovery_input15.json`, `...input31.json`, `...input255.json` |
 | 58 | state-machine-compliant fresh-session later-layer Concrete-TFHE | `outputs/logs/58_tfhe_state_machine_fresh_session_orbit_recovery.json` |
 | 59 | verify journal and data-side SHA-256 manifests | `outputs/JOURNAL_SHA256SUMS.txt`, `outputs/data_side/SHA256SUMS.txt` |

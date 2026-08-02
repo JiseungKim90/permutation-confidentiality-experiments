@@ -52,6 +52,9 @@ def main() -> None:
     gelo_medium = load("data_side/gelo_rowspace_gpt2medium_20260802.json")
     gelo_official = load("data_side/gelo_official_transcript_gpt2_20260802.json")
     tex = (PAPER_ROOT / "tdsc_main.tex").read_text(encoding="utf-8")
+    marked_tex = (PAPER_ROOT / "tdsc_main_marked.tex").read_text(
+        encoding="utf-8"
+    )
     checks: list[str] = []
 
     stress_8 = next(
@@ -330,6 +333,44 @@ def main() -> None:
             min(row["min_gap"] for row in gelo_official["results"]) > 0,
             "official GELO replay separation changed")
     checks.append("official GELO wrapper replay")
+
+    require("\\def\\JOURNALMARKS{1}" in marked_tex,
+            "marked manuscript does not enable journal marks")
+    require(tex.count("\\begin{jnewblock}") ==
+            tex.count("\\end{jnewblock}") == 10,
+            "journal-only block coverage changed")
+    require(tex.count("\\jfloatcolor") == 10,
+            "journal-only float-color count changed")
+    journal_float_captions = [
+        "Target-specific transcript map",
+        "Fresh-output-permutation row recovery",
+        "Pretrained ImageNet first-layer recovery",
+        "Collision stress test over",
+        "Fresh-session orbit recovery on 21",
+        "Deterministic and fresh-session recovery",
+        "Private embedding recovery against",
+        "GELO candidate-presence recovery",
+        "Safhire defense boundary",
+    ]
+    for caption in journal_float_captions:
+        pattern = (
+            r"\\begin\{(?:table|table\*|figure\*)\}\[t\]"
+            r"\s*\\jfloatcolor(?:(?!\\end\{(?:table|table\*|figure\*)\}).)*?"
+            r"\\caption\{" + re.escape(caption)
+        )
+        require(re.search(pattern, tex, flags=re.DOTALL) is not None,
+                f"journal-only float is not explicitly marked: {caption}")
+    inherited_table = re.search(
+        r"\\begin\{table\}\[t\](.*?)"
+        r"\\caption\{Sorted-spectrum evidence inherited",
+        tex,
+        flags=re.DOTALL,
+    )
+    require(inherited_table is not None and
+            "\\jfloatcolor" not in inherited_table.group(1),
+            "preliminary-version table was incorrectly marked as new")
+    checks.append("journal-only red marking coverage")
+
     normalized_tex = re.sub(r"\s+", " ", tex)
     required_snippets = [
         "433 bias-anchored or 417 bias-free queries",
@@ -402,6 +443,7 @@ def main() -> None:
             "data_side/gelo_rowspace_gpt2medium_20260802.json",
             "data_side/gelo_official_transcript_gpt2_20260802.json",
             "tdsc_main.tex",
+            "tdsc_main_marked.tex",
         ],
     }
     destination = OUT / "artifact_consistency_audit.json"
