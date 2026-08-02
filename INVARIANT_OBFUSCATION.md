@@ -34,8 +34,9 @@ Run from the artifact root:
     PYTHONPATH=. python3 -m pytest -q \
       tests/test_stip_orbit.py \
       tests/test_ndss_results.py \
-      tests/test_maximal_invariants.py
+      tests/test_maximal_invariants.py \
+      tests/test_gelo_results.py
 
-The retained 2026-08-02 log reports 10 passed tests. The attack and tests are
+The retained 2026-08-02 log reports 13 passed tests. The attack and tests are
 CPU-compatible. A GPU only accelerates public hidden-state extraction.
 
