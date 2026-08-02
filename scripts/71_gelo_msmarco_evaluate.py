@@ -273,6 +273,15 @@ def make_observation(
     return basis, known, sorted(set(known + shield_ids)), diagnostics
 
 
+def calibration_order_index(sample_count: int, alpha: float) -> int:
+    if sample_count <= 0:
+        raise ValueError("calibration sample count must be positive")
+    if not 0.0 < alpha < 1.0:
+        raise ValueError("calibration alpha must lie strictly between zero and one")
+    one_based_order = max(1, int(math.floor(alpha * (sample_count + 1))))
+    return min(sample_count - 1, one_based_order - 1)
+
+
 def average_precision(scores: np.ndarray, true_ids: Sequence[int]) -> Optional[float]:
     if not true_ids:
         return None
@@ -408,6 +417,16 @@ def main() -> None:
     parser.add_argument("--sampled-rows", type=int, default=16)
     parser.add_argument("--calibration-trials", type=int, default=20)
     parser.add_argument("--evaluation-trials", type=int, default=50)
+    parser.add_argument("--closed-trials", type=int)
+    parser.add_argument("--partial-trials", type=int)
+    parser.add_argument("--open-trials", type=int)
+    parser.add_argument(
+        "--evaluation-splits",
+        nargs="+",
+        choices=["closed", "partial", "open"],
+        default=["closed", "partial", "open"],
+    )
+    parser.add_argument("--calibration-alpha", type=float, default=0.05)
     parser.add_argument("--chunk-size", type=int, default=128)
     parser.add_argument("--score-dtype", choices=["float32", "float32_stable", "float64"], default="float64")
     parser.add_argument("--score-backend", choices=["numpy", "torch"], default="numpy")
@@ -418,6 +437,16 @@ def main() -> None:
 
     torch.set_num_threads(args.threads)
     torch.set_num_interop_threads(1)
+    if not 0.0 < args.calibration_alpha < 1.0:
+        raise ValueError("calibration-alpha must lie strictly between zero and one")
+    split_trials = {
+        "closed": args.closed_trials if args.closed_trials is not None else args.evaluation_trials,
+        "partial": args.partial_trials if args.partial_trials is not None else args.evaluation_trials,
+        "open": args.open_trials if args.open_trials is not None else args.evaluation_trials,
+    }
+    for split, count in split_trials.items():
+        if count < 0:
+            raise ValueError("{}-trials must be nonnegative".format(split))
     scorer = score_bank_torch if args.score_backend == "torch" else score_bank
     trial_manifest = json.loads(Path(args.trials).read_text(encoding="utf-8"))
     public_store = HiddenStore(args.public_cache)
@@ -464,6 +493,9 @@ def main() -> None:
         "chunk_size": args.chunk_size,
         "calibration_trials": args.calibration_trials,
         "evaluation_trials": args.evaluation_trials,
+        "split_trials": split_trials,
+        "evaluation_splits": args.evaluation_splits,
+        "calibration_alpha": args.calibration_alpha,
         "control_trials": args.control_trials,
         "seed": args.seed,
         "hostname": socket.gethostname(),
@@ -522,11 +554,11 @@ def main() -> None:
                         values = sorted(calibration_min[size])
                         if len(values) < args.calibration_trials:
                             raise RuntimeError("incomplete calibration records")
-                        index = max(0, int(math.floor(0.05 * len(values))) - 1)
+                        index = calibration_order_index(len(values), args.calibration_alpha)
                         thresholds[size] = float(values[index])
 
-                    for split in ["closed", "partial", "open"]:
-                        for record in trial_manifest["records"][split][: args.evaluation_trials]:
+                    for split in args.evaluation_splits:
+                        for record in trial_manifest["records"][split][: split_trials[split]]:
                             key = (source_model, layer, condition_name, split, int(record["trial"]))
                             if key in completed:
                                 continue

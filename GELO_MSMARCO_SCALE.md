@@ -99,6 +99,28 @@ trials have no positive class and are instead summarized by candidate- and
 trial-level false-positive rates. The completion manifest binds raw inputs,
 summaries, provenance manifests, and derived tables by SHA-256.
 
+## Private-drift and strict open-set follow-up
+
+The `p050_gelo_followup` session waits for the full matrix above and then runs
+a paired public-to-private boundary study. It trains checkpoints at steps
+0/100/400/1600/3200 along one deterministic early-prefix fine-tuning
+trajectory. At every checkpoint it records relative parameter drift,
+row-level hidden-state cosine and L2 drift, bidirectional rowspace residuals,
+and held-out MS MARCO loss/perplexity on candidate, calibration-open, and
+evaluation-open pools.
+
+Every checkpoint is attacked with the same layer-8 trials and public 100K
+candidate bank. The threshold uses 100 disjoint calibration trials and the
+first order statistic, corresponding to a nominal 1% trial-wise false-positive
+level under exchangeability. Evaluation uses 100 closed, 50 partial, and 300
+held-out open-set trials. The finalizer requires exactly 550 unique records
+per checkpoint and emits Wilson intervals for trial-wise false positives.
+
+This experiment isolates public-bank mismatch; it does not repeat transforms
+that the rowspace theorem predicts to be irrelevant. Its conclusion is scoped
+to the measured fine-tuning trajectory and is not generalized to arbitrary
+proprietary model prefixes.
+
 ## Interpretation guardrails
 
 Candidate-ID misses caused by identical 32-token inputs are evaluation errors,
