@@ -9,6 +9,16 @@ __pycache__/
 *.pyc
 *.pyo
 
+# Large GELO MS MARCO caches and resumable logs
+outputs/gelo_msmarco_100k_20260802/
+outputs/gelo_msmarco_100k_dedup_20260802/cache/*.f16
+outputs/gelo_msmarco_100k_dedup_20260802/cache/*_state.json
+outputs/gelo_msmarco_100k_dedup_20260802/data/tokens.npy
+outputs/gelo_msmarco_100k_dedup_20260802/data/source_indices.npy
+outputs/gelo_msmarco_100k_dedup_20260802/data/passages.tsv
+outputs/gelo_msmarco_100k_dedup_20260802/private_prefix/*.safetensors
+outputs/gelo_msmarco_100k_dedup_20260802/logs/
+
 # Submission packaging
 submission_artifact/
 submission_artifact.tar.gz

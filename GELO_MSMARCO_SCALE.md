@@ -1,0 +1,94 @@
+# GELO MS MARCO 100K scale and open-set study
+
+## Status and canonical location
+
+This run is executed on `ubuntu02` under
+`/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact`.
+The canonical retained run is
+`outputs/gelo_msmarco_100k_dedup_20260802`.
+The non-deduplicated sibling directory is exploratory evidence only: it exposed
+an item-identity error caused by two MS MARCO passages with identical 32-token
+GPT-2 prefixes.
+
+## Pinned inputs
+
+- MS MARCO archive SHA-256:
+  `70667529e474322327d6441c8f7b621f2a805a7f6220897d9f80e5a8294bd62e`.
+- GPT-2 snapshot:
+  `openai-community/gpt2@607a30d783dfa663caf39e06633721c8d4cfcd7e`.
+- GELO commit:
+  `786668f20936ae794d4e39483f401492e82d257e`.
+- Artifact branch:
+  `ndss-2027-invariant-obfuscation`.
+
+## Data design
+
+The preparation script scans all 8,841,823 MS MARCO passages and retains the
+lowest keyed BLAKE2b-64 priorities. A passage is usable only when GPT-2 yields
+at least 32 tokens. Exact 32-token prefixes are deduplicated before splitting.
+The retained 120K prefixes are partitioned as follows:
+
+- indices [0,100K): public candidate bank;
+- indices [100K,110K): threshold-calibration open set;
+- indices [110K,120K): held-out evaluation open set.
+
+Closed-set sources are sampled from the first 10K candidates. This makes the
+10K, 50K, and 100K bank results paired: only distractors are added. Each split
+contains 50 deterministic four-source trials. Partial trials contain two
+in-bank and two held-out sources.
+
+## Model conditions
+
+The attacker always builds the candidate bank from public GPT-2 hidden states.
+The public victim uses the same checkpoint. The private victim fine-tunes all
+parameters in transformer blocks [0,8) for 100 steps at learning rate 1e-5 on
+indices [90K,98K), with held-out validation on [98K,100K). These ranges are
+disjoint from source, calibration, and open-set pools. The private manifest
+records parameter drift and held-out perplexity.
+
+Hidden states at layers 4, 8, and 12 are retained as resumable FP16 memmaps.
+Scoring converts one candidate chunk at a time and uses float64 residuals.
+The candidate cache remains public in both victim conditions.
+
+## Observation conditions
+
+The evaluator includes ideal orthogonal mixing, GELO Gaussian shielding,
+condition-50 non-orthogonal mixing, BF16 quantized stress conditions, and
+manifold shielding. Orthogonal and non-orthogonal mixing matrices are sampled
+by functions imported from the pinned official GELO source. The evaluator
+records that source file's SHA-256.
+
+## Metrics and calibration
+
+For every bank size, trial, layer, victim model, and condition, the artifact
+records recall at the source count, average precision, exact positive ranks,
+the top 20 candidates, candidate and semantic-union metrics, calibrated
+threshold precision/recall, candidate false-positive rate, trial-wise false
+positive, runtime, row-space rank, condition number, and peak RSS.
+
+A threshold is calibrated independently for every layer, victim model,
+condition, and bank size from 20 disjoint calibration trials. The threshold is
+the conservative empirical 5% family-wise false-positive quantile of the
+minimum candidate score. It is then frozen for closed, partial, and held-out
+open-set evaluation.
+
+## Campaigns
+
+The core campaign evaluates layers 4/8/12, public/private victims, and
+`ideal`, `gelo_nonorth`, and `manifold_stress`. The robustness campaign
+evaluates layer 8, both victims, and `gelo_gaussian`,
+`quantized_gaussian`, `quantized_nonorth`, and `manifold`. Together they
+cover every declared condition while reserving the full layer sweep for the
+three conditions that define the central boundary.
+
+## Interpretation guardrails
+
+Candidate-ID misses caused by identical 32-token inputs are evaluation errors,
+not attack failures; exact-prefix deduplication removes them. Private-prefix
+degradation is evidence about public-bank mismatch, not an impossibility
+result for an attacker who knows the private checkpoint. Open-set performance
+must be reported with calibrated trial-wise and candidate-level false-positive
+rates, not recall alone. Manifold shield candidates are reported both as
+semantic-source false positives and as members of the full observed candidate
+union.
+
