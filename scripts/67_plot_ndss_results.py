@@ -31,6 +31,28 @@ def aggregate(values: list[float]) -> dict[str, float]:
     return {"mean": mean(values), "min": min(values), "max": max(values)}
 
 
+def public_model_summary(result_dir: Path) -> list[dict]:
+    paths = sorted(
+        glob.glob(str(result_dir / "stip_final_full_prompt_public*128x32_3trial*.json"))
+    )
+    if len(paths) < 2:
+        raise RuntimeError(f"expected at least two public-model runs, found {len(paths)}")
+    output = []
+    for path in paths:
+        payload = load(path)
+        output.append(
+            {
+                "model": payload["model"],
+                "prompt_count": payload["prompt_count"],
+                "prompt_length": payload["prompt_length"],
+                "trials": payload["trials"],
+                "elapsed_seconds": payload["elapsed_seconds"],
+                "aggregate": payload["aggregate"],
+            }
+        )
+    return output
+
+
 def query_budget_summary(result_dir: Path, figure_dir: Path) -> dict:
     paths = sorted(
         glob.glob(
@@ -172,6 +194,7 @@ def main() -> None:
     result_dir = Path(args.result_dir)
     figure_dir = Path(args.figure_dir)
     summary = {
+        "public_models": public_model_summary(result_dir),
         "private_codebook": query_budget_summary(result_dir, figure_dir),
         "noise_defense": defense_summary(result_dir, figure_dir),
         "private_tokenizer": tokenizer_summary(result_dir),

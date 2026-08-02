@@ -30,7 +30,7 @@ The validated unit-test result is 2 passed.
 
 ## Claim hierarchy
 
-1. Main C0: known public/frozen GPT-2 embedding, one cloud transcript, no chosen query, 100% exact 32-token prompts.
+1. Main C0: known public/frozen GPT-2 124M and 355M embeddings, one cloud transcript, no chosen query, 100% exact 32-token prompts at both sizes.
 2. Conditional C1: privately fine-tuned embedding, known tokenizer and authorized labeled input/output samples, 77.1% exact 32-token prompts at 4,096 queries.
 3. Boundary C2: a completely unaligned tokenizer blocks plaintext labels; independent-BPE transcripts retain 97.1% unique pseudotoken signatures at 1e-6 quantization.
 

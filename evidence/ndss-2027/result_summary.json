@@ -439,5 +439,89 @@
       "pseudotoken_linkage_repeat_stable": true,
       "runs": 3
     }
-  }
+  },
+  "public_models": [
+    {
+      "aggregate": {
+        "all_invariance_checks_pass": true,
+        "all_replays_exact": true,
+        "decoded_character_similarity_mean": {
+          "max": 1.0,
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "decoded_text_exact": {
+          "max": 1.0,
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "full_prompt_exact": {
+          "max": 1.0,
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "raw_permuted_token_top1_control": {
+          "max": 0.000244140625,
+          "mean": 8.138020833333333e-05,
+          "min": 0.0
+        },
+        "token_top1": {
+          "max": 1.0,
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "top5": {
+          "max": 1.0,
+          "mean": 1.0,
+          "min": 1.0
+        }
+      },
+      "elapsed_seconds": 68.98518109321594,
+      "model": "gpt2",
+      "prompt_count": 128,
+      "prompt_length": 32,
+      "trials": 3
+    },
+    {
+      "aggregate": {
+        "all_invariance_checks_pass": true,
+        "all_replays_exact": true,
+        "decoded_character_similarity_mean": {
+          "max": 1.0,
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "decoded_text_exact": {
+          "max": 1.0,
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "full_prompt_exact": {
+          "max": 1.0,
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "raw_permuted_token_top1_control": {
+          "max": 0.000244140625,
+          "mean": 8.138020833333333e-05,
+          "min": 0.0
+        },
+        "token_top1": {
+          "max": 1.0,
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "top5": {
+          "max": 1.0,
+          "mean": 1.0,
+          "min": 1.0
+        }
+      },
+      "elapsed_seconds": 93.81197595596313,
+      "model": "gpt2-medium",
+      "prompt_count": 128,
+      "prompt_length": 32,
+      "trials": 3
+    }
+  ]
 }

@@ -19,15 +19,19 @@ def load(name: str):
 
 
 def test_public_main_claim():
-    data = load("stip_final_full_prompt_public_128x32_3trial_20260802.json")
-    aggregate = data["aggregate"]
-    assert aggregate["token_top1"]["mean"] == 1.0
-    assert aggregate["full_prompt_exact"]["mean"] == 1.0
-    assert aggregate["raw_permuted_token_top1_control"]["mean"] == pytest.approx(
-        8.138020833333333e-05
-    )
-    assert aggregate["all_invariance_checks_pass"]
-    assert aggregate["all_replays_exact"]
+    names = [
+        "stip_final_full_prompt_public_128x32_3trial_20260802.json",
+        "stip_final_full_prompt_public_gpt2-medium_128x32_3trial_20260802.json",
+    ]
+    for name in names:
+        aggregate = load(name)["aggregate"]
+        assert aggregate["token_top1"]["mean"] == 1.0
+        assert aggregate["full_prompt_exact"]["mean"] == 1.0
+        assert aggregate["raw_permuted_token_top1_control"]["mean"] == pytest.approx(
+            8.138020833333333e-05
+        )
+        assert aggregate["all_invariance_checks_pass"]
+        assert aggregate["all_replays_exact"]
 
 
 def test_private_codebook_claims():
