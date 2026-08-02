@@ -48,6 +48,8 @@ records parameter drift and held-out perplexity.
 
 Hidden states at layers 4, 8, and 12 are retained as resumable FP16 memmaps.
 Scoring converts one candidate chunk at a time and uses float64 residuals.
+The production evaluator uses the PyTorch/MKL CPU backend after a regression
+test establishes numerical agreement with the NumPy reference to `1e-12`.
 The candidate cache remains public in both victim conditions.
 
 ## Observation conditions
@@ -80,6 +82,22 @@ evaluates layer 8, both victims, and `gelo_gaussian`,
 `quantized_gaussian`, `quantized_nonorth`, and `manifold`. Together they
 cover every declared condition while reserving the full layer sweep for the
 three conditions that define the central boundary.
+
+## Completion and derived artifacts
+
+The detached `p050_gelo_full` tmux session runs the core and robustness
+campaigns. A separate `p050_gelo_finalize` session waits for it to terminate
+and invokes `scripts/74_finalize_gelo_msmarco_campaign.py`. The finalizer only
+emits `final/campaign_complete.json` when the core contains exactly 3,060
+unique records and robustness contains exactly 1,360 unique records, with the
+declared 20 calibration and 50 evaluation trials in every group.
+
+The final directory contains JSON and CSV versions of the 100K performance
+table and rank-based precision--recall points. Positive ranks are sufficient
+to reconstruct the exact per-trial PR curve at every recall event; open-set
+trials have no positive class and are instead summarized by candidate- and
+trial-level false-positive rates. The completion manifest binds raw inputs,
+summaries, provenance manifests, and derived tables by SHA-256.
 
 ## Interpretation guardrails
 
