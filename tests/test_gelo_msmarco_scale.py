@@ -56,6 +56,10 @@ def test_chunked_float64_scores_match_reference(tmp_path):
     )
     expected = np.mean(np.partition(residual, 2, axis=1)[:, :3], axis=1)
     np.testing.assert_allclose(actual, expected, rtol=1e-12, atol=1e-12)
+    torch_actual, _, _ = evaluate.score_bank_torch(
+        mapping, 9, basis, 3, 2, "float64"
+    )
+    np.testing.assert_allclose(torch_actual, expected, rtol=1e-12, atol=1e-12)
 
 
 def test_open_set_threshold_metrics_count_false_positives():

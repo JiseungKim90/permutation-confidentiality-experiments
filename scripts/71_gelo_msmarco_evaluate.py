@@ -162,6 +162,46 @@ def score_bank(
     return scores, time.time() - started, peak
 
 
+def score_bank_torch(
+    bank: np.memmap,
+    bank_size: int,
+    basis: np.ndarray,
+    sampled_rows: int,
+    chunk_size: int,
+    score_dtype: str,
+) -> Tuple[np.ndarray, float, int]:
+    if score_dtype != "float64":
+        raise ValueError("torch backend currently requires float64 scoring")
+    space = torch.from_numpy(np.asarray(basis, dtype=np.float64))
+    scores = np.empty(bank_size, dtype=np.float64)
+    process = psutil.Process()
+    peak = process.memory_info().rss
+    started = time.time()
+    with torch.inference_mode():
+        for start in range(0, bank_size, chunk_size):
+            stop = min(start + chunk_size, bank_size)
+            rows_np = np.asarray(bank[start:stop], dtype=np.float64)
+            rows = torch.from_numpy(rows_np)
+            norms_sq = torch.sum(rows * rows, dim=-1)
+            flat_coordinates = rows.reshape(-1, rows.shape[-1]) @ space.T
+            coordinates = flat_coordinates.reshape(
+                rows.shape[0], rows.shape[1], space.shape[0]
+            )
+            projected_sq = torch.sum(coordinates * coordinates, dim=-1)
+            residual_sq = torch.clamp_min(norms_sq - projected_sq, 0.0)
+            denominator = torch.clamp_min(
+                norms_sq, torch.finfo(torch.float64).tiny
+            )
+            residual = torch.sqrt(residual_sq / denominator)
+            smallest = torch.topk(
+                residual, k=sampled_rows, dim=1, largest=False, sorted=False
+            ).values
+            scores[start:stop] = torch.mean(smallest, dim=1).cpu().numpy()
+            peak = max(peak, process.memory_info().rss)
+    return scores, time.time() - started, peak
+
+
+
 def make_observation(
     record: Dict,
     source_store: HiddenStore,
@@ -370,6 +410,7 @@ def main() -> None:
     parser.add_argument("--evaluation-trials", type=int, default=50)
     parser.add_argument("--chunk-size", type=int, default=128)
     parser.add_argument("--score-dtype", choices=["float32", "float32_stable", "float64"], default="float64")
+    parser.add_argument("--score-backend", choices=["numpy", "torch"], default="numpy")
     parser.add_argument("--control-trials", type=int, default=5)
     parser.add_argument("--threads", type=int, default=20)
     parser.add_argument("--seed", type=int, default=20260805)
@@ -377,6 +418,7 @@ def main() -> None:
 
     torch.set_num_threads(args.threads)
     torch.set_num_interop_threads(1)
+    scorer = score_bank_torch if args.score_backend == "torch" else score_bank
     trial_manifest = json.loads(Path(args.trials).read_text(encoding="utf-8"))
     public_store = HiddenStore(args.public_cache)
     stores = {"public": public_store}
@@ -418,6 +460,7 @@ def main() -> None:
         "sampled_rows": args.sampled_rows,
         "source_count": source_count,
         "score_dtype": args.score_dtype,
+        "score_backend": args.score_backend,
         "chunk_size": args.chunk_size,
         "calibration_trials": args.calibration_trials,
         "evaluation_trials": args.evaluation_trials,
@@ -455,7 +498,7 @@ def main() -> None:
                             record, source_store, public_store, layer, condition,
                             args.sampled_rows, max_bank, seed, official,
                         )
-                        scores, scoring_seconds, peak_rss = score_bank(
+                        scores, scoring_seconds, peak_rss = scorer(
                             candidate_bank, max_bank, basis, args.sampled_rows,
                             args.chunk_size, args.score_dtype,
                         )
@@ -493,7 +536,7 @@ def main() -> None:
                                 record, source_store, public_store, layer, condition,
                                 args.sampled_rows, max_bank, seed, official,
                             )
-                            scores, scoring_seconds, peak_rss = score_bank(
+                            scores, scoring_seconds, peak_rss = scorer(
                                 candidate_bank, max_bank, basis, args.sampled_rows,
                                 args.chunk_size, args.score_dtype,
                             )
@@ -507,7 +550,7 @@ def main() -> None:
                             if split == "closed" and int(record["trial"]) < args.control_trials:
                                 rng = np.random.default_rng(seed + 7919)
                                 control_space = random_basis(basis.shape[0], basis.shape[1], rng)
-                                control_scores, control_seconds, _ = score_bank(
+                                control_scores, control_seconds, _ = scorer(
                                     candidate_bank, max_bank, control_space, args.sampled_rows,
                                     args.chunk_size, args.score_dtype,
                                 )

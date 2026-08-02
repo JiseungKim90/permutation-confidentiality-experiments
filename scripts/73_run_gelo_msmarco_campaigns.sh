@@ -8,7 +8,7 @@ python_bin="/home/ubuntu/research-vault/venvs/p050-ndss-gelo-v1/bin/python"
 run_root="$root/outputs/gelo_msmarco_100k_dedup_20260802"
 official="/home/ubuntu/research-vault/projects/P050/ndss-2027/third_party/gelo"
 
-export OPENBLAS_NUM_THREADS="$threads"
+export OPENBLAS_NUM_THREADS=1
 export OMP_NUM_THREADS="$threads"
 export MKL_NUM_THREADS="$threads"
 
@@ -25,6 +25,7 @@ common=(
   --evaluation-trials 50
   --chunk-size 128
   --score-dtype float64
+  --score-backend torch
   --control-trials 5
   --threads "$threads"
   --seed 20260805
@@ -33,13 +34,13 @@ common=(
 case "$campaign" in
   core)
     exec "${common[@]}" \
-      --output-dir "$run_root/evaluation_core" \
+      --output-dir "$run_root/evaluation_core_torch" \
       --layers 4 8 12 \
       --conditions ideal gelo_nonorth manifold_stress
     ;;
   robustness)
     exec "${common[@]}" \
-      --output-dir "$run_root/evaluation_robustness" \
+      --output-dir "$run_root/evaluation_robustness_torch" \
       --layers 8 \
       --conditions gelo_gaussian quantized_gaussian quantized_nonorth manifold
     ;;
