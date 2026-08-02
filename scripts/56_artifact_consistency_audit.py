@@ -44,6 +44,9 @@ def main() -> None:
     stip_trained = load(
         "data_side/stip_independent_embedding_frequency_f025_3seed_20260802.json"
     )
+    stip_fraction_sweep = load(
+        "data_side/stip_independent_embedding_frequency_phase_sweep_20260802.json"
+    )
     gelo_base = load("data_side/gelo_rowspace_gpt2_20260802.json")
     gelo_large = load("data_side/gelo_rowspace_gpt2_512x32_20260802.json")
     gelo_medium = load("data_side/gelo_rowspace_gpt2medium_20260802.json")
@@ -277,6 +280,20 @@ def main() -> None:
             "trained STIP validation loss did not improve")
     checks.append("independently trained partial-embedding recovery")
 
+    require(stip_fraction_sweep["fractions"] == [0.5, 0.75, 1.0] and
+            stip_fraction_sweep["runs"] == 3,
+            "trained STIP fraction sweep changed")
+    require(stip_fraction_sweep["all_selected_rows_changed"] and
+            stip_fraction_sweep["all_unselected_rows_unchanged"],
+            "trained STIP fraction row isolation changed")
+    require(abs(stip_fraction_sweep["selected_top1_min"] -
+                0.9670642958961663) < 1e-12 and
+            abs(stip_fraction_sweep["selected_top1_max"] -
+                0.9682646860229575) < 1e-12 and
+            stip_fraction_sweep["no_failure_transition_above_95_percent"],
+            "trained STIP fraction boundary changed")
+    checks.append("trained partial-embedding fraction boundary")
+
     gelo_expected = [
         (gelo_base, "gpt2", 128, 16),
         (gelo_large, "gpt2", 512, 32),
@@ -342,6 +359,9 @@ def main() -> None:
         "96.85\\% mean Top-1 recovery",
         "96.75\\% worst",
         "32.21\\% sufficient certificate",
+        "one-seed boundary sweep at 50\\%, 75\\%, and 100\\%",
+        "8,886--17,772 rows",
+        "96.71--96.83\\% Top-1",
         "Margin-certified private recovery",
         "Unaligned-dictionary nonidentifiability",
         "The three attacks follow one proof pattern, but not one universal security game.",
@@ -376,6 +396,7 @@ def main() -> None:
             "data_side/private_embedding_orbits_exact_fullvocab_20260802.json",
             "data_side/stip_margin_phase_exact_rows_20260802.json",
             "data_side/stip_independent_embedding_frequency_f025_3seed_20260802.json",
+            "data_side/stip_independent_embedding_frequency_phase_sweep_20260802.json",
             "data_side/gelo_rowspace_gpt2_20260802.json",
             "data_side/gelo_rowspace_gpt2_512x32_20260802.json",
             "data_side/gelo_rowspace_gpt2medium_20260802.json",

@@ -1,0 +1,61 @@
+{
+  "experiment": "independently trained GPT-2 embedding fraction sweep",
+  "interpretation": "One seed locates a possible training-fraction boundary. The separate 25%-fraction three-seed campaign remains the primary repeated result.",
+  "model": "gpt2",
+  "seed": 20260802,
+  "selection": "frequency",
+  "steps": 200,
+  "runs": 3,
+  "fractions": [
+    0.5,
+    0.75,
+    1.0
+  ],
+  "results": [
+    {
+      "fraction_of_active": 0.5,
+      "active_rows": 17772,
+      "selected_rows": 8886,
+      "changed_rows": 8886,
+      "changed_unselected_rows": 0,
+      "selected_top1": 0.9682646860229575,
+      "selected_top5": 0.9706279540850776,
+      "selected_certificate": 0.27593968039612876,
+      "validation_loss_before": 10.231216716766358,
+      "validation_loss_after": 9.247753524780274,
+      "checkpoint_sha256": "447397172392254012a42ceb412b1a57c5330ffc782da5ac9f502b0df72dbf24"
+    },
+    {
+      "fraction_of_active": 0.75,
+      "active_rows": 17772,
+      "selected_rows": 13329,
+      "changed_rows": 13329,
+      "changed_unselected_rows": 0,
+      "selected_top1": 0.9670642958961663,
+      "selected_top5": 0.9695401005326731,
+      "selected_certificate": 0.26333558406482105,
+      "validation_loss_before": 10.231216716766358,
+      "validation_loss_after": 9.304293823242187,
+      "checkpoint_sha256": "7a2199f085f024def42b2bebaeb141e932abc1e38e9dd634abff44410952d5db"
+    },
+    {
+      "fraction_of_active": 1.0,
+      "active_rows": 17772,
+      "selected_rows": 17772,
+      "changed_rows": 17772,
+      "changed_unselected_rows": 0,
+      "selected_top1": 0.9678708080126041,
+      "selected_top5": 0.9698964663515642,
+      "selected_certificate": 0.2764460949808688,
+      "validation_loss_before": 10.231216716766358,
+      "validation_loss_after": 9.302402019500732,
+      "checkpoint_sha256": "b87b252305a4393189f609494ade93d4a0d5bf22a6a2daac26db01c17d96e7ef"
+    }
+  ],
+  "selected_top1_min": 0.9670642958961663,
+  "selected_top1_max": 0.9682646860229575,
+  "selected_top1_range": 0.0012003901267911843,
+  "all_selected_rows_changed": true,
+  "all_unselected_rows_unchanged": true,
+  "no_failure_transition_above_95_percent": true
+}

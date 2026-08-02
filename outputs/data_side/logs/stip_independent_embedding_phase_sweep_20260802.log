@@ -1,0 +1,7 @@
+START stip_independent_embedding_frequency_f050_seed20260802 2026-08-02T12:35:15+09:00
+DONE /home/user/p050_journal_targets/results/stip_independent_embedding_frequency_f050_seed20260802.json selected_top1= 0.9682646860229575 certificate= 0.27593968039612876 loss= 10.231216716766358 -> 9.247753524780274
+START stip_independent_embedding_frequency_f075_seed20260802 2026-08-02T12:39:41+09:00
+DONE /home/user/p050_journal_targets/results/stip_independent_embedding_frequency_f075_seed20260802.json selected_top1= 0.9670642958961663 certificate= 0.26333558406482105 loss= 10.231216716766358 -> 9.304293823242187
+START stip_independent_embedding_frequency_f10_seed20260802 2026-08-02T12:44:04+09:00
+DONE /home/user/p050_journal_targets/results/stip_independent_embedding_frequency_f10_seed20260802.json selected_top1= 0.9678708080126041 certificate= 0.2764460949808688 loss= 10.231216716766358 -> 9.302402019500732
+GRID_COMPLETE 2026-08-02T12:48:30+09:00

@@ -3,11 +3,11 @@
   "not_crossref_similarity_check": true,
   "shingle_width_words": 8,
   "conference_tokens": 8574,
-  "journal_tokens": 11876,
+  "journal_tokens": 11905,
   "conference_unique_shingles": 8504,
-  "journal_unique_shingles": 11858,
+  "journal_unique_shingles": 11887,
   "common_unique_shingles": 506,
-  "journal_shingle_containment_percent": 4.267161410018553,
+  "journal_shingle_containment_percent": 4.25675107260032,
   "conference_shingle_containment_percent": 5.950141110065851,
   "interpretation": "A diagnostic for verbatim-style reuse after rough LaTeX normalization; publisher similarity tools use different corpora and rules."
 }
