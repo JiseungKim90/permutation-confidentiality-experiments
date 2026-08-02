@@ -436,7 +436,7 @@ def main() -> None:
         "Margin-certified private recovery",
         "Unaligned-dictionary nonidentifiability",
         "The three attacks follow one proof pattern, but not one universal security game.",
-        "GELO also evaluates a learned text-presence retriever",
+        "GELO explicitly evaluates text-presence detection as a privacy goal",
         "A preliminary version appeared at ESORICS 2026",
         "all 1,680 trials are exact",
         "All 240 source sets are recovered",
