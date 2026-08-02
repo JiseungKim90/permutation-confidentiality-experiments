@@ -1,0 +1,138 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights:   0%|          | 1/291 [00:00<03:26,  1.40it/s]Loading weights:   5%|▍         | 14/291 [00:01<00:16, 16.56it/s]Loading weights:  13%|█▎        | 38/291 [00:01<00:05, 47.73it/s]Loading weights:  20%|█▉        | 58/291 [00:01<00:03, 72.21it/s]Loading weights:  26%|██▌       | 76/291 [00:01<00:02, 88.65it/s]Loading weights:  32%|███▏      | 94/291 [00:01<00:02, 87.27it/s]Loading weights:  36%|███▋      | 106/291 [00:01<00:02, 67.17it/s]Loading weights:  44%|████▍     | 128/291 [00:02<00:02, 76.19it/s]Loading weights:  47%|████▋     | 138/291 [00:02<00:02, 61.98it/s]Loading weights:  53%|█████▎    | 155/291 [00:02<00:01, 77.94it/s]Loading weights:  60%|██████    | 175/291 [00:02<00:01, 96.96it/s]Loading weights:  67%|██████▋   | 194/291 [00:02<00:00, 115.16it/s]Loading weights:  73%|███████▎  | 211/291 [00:02<00:00, 126.71it/s]Loading weights:  79%|███████▊  | 229/291 [00:02<00:00, 138.79it/s]Loading weights:  84%|████████▍ | 245/291 [00:03<00:00, 137.86it/s]Loading weights:  90%|████████▉ | 261/291 [00:04<00:00, 40.64it/s] Loading weights:  94%|█████████▍| 273/291 [00:05<00:00, 25.62it/s]Loading weights:  97%|█████████▋| 282/291 [00:06<00:00, 19.91it/s]Loading weights:  99%|█████████▉| 288/291 [00:06<00:00, 16.66it/s]Loading weights: 100%|██████████| 291/291 [00:06<00:00, 43.18it/s]
+hidden extraction 1/128
+hidden extraction 2/128
+hidden extraction 3/128
+hidden extraction 4/128
+hidden extraction 5/128
+hidden extraction 6/128
+hidden extraction 7/128
+hidden extraction 8/128
+hidden extraction 9/128
+hidden extraction 10/128
+hidden extraction 11/128
+hidden extraction 12/128
+hidden extraction 13/128
+hidden extraction 14/128
+hidden extraction 15/128
+hidden extraction 16/128
+hidden extraction 17/128
+hidden extraction 18/128
+hidden extraction 19/128
+hidden extraction 20/128
+hidden extraction 21/128
+hidden extraction 22/128
+hidden extraction 23/128
+hidden extraction 24/128
+hidden extraction 25/128
+hidden extraction 26/128
+hidden extraction 27/128
+hidden extraction 28/128
+hidden extraction 29/128
+hidden extraction 30/128
+hidden extraction 31/128
+hidden extraction 32/128
+hidden extraction 33/128
+hidden extraction 34/128
+hidden extraction 35/128
+hidden extraction 36/128
+hidden extraction 37/128
+hidden extraction 38/128
+hidden extraction 39/128
+hidden extraction 40/128
+hidden extraction 41/128
+hidden extraction 42/128
+hidden extraction 43/128
+hidden extraction 44/128
+hidden extraction 45/128
+hidden extraction 46/128
+hidden extraction 47/128
+hidden extraction 48/128
+hidden extraction 49/128
+hidden extraction 50/128
+hidden extraction 51/128
+hidden extraction 52/128
+hidden extraction 53/128
+hidden extraction 54/128
+hidden extraction 55/128
+hidden extraction 56/128
+hidden extraction 57/128
+hidden extraction 58/128
+hidden extraction 59/128
+hidden extraction 60/128
+hidden extraction 61/128
+hidden extraction 62/128
+hidden extraction 63/128
+hidden extraction 64/128
+hidden extraction 65/128
+hidden extraction 66/128
+hidden extraction 67/128
+hidden extraction 68/128
+hidden extraction 69/128
+hidden extraction 70/128
+hidden extraction 71/128
+hidden extraction 72/128
+hidden extraction 73/128
+hidden extraction 74/128
+hidden extraction 75/128
+hidden extraction 76/128
+hidden extraction 77/128
+hidden extraction 78/128
+hidden extraction 79/128
+hidden extraction 80/128
+hidden extraction 81/128
+hidden extraction 82/128
+hidden extraction 83/128
+hidden extraction 84/128
+hidden extraction 85/128
+hidden extraction 86/128
+hidden extraction 87/128
+hidden extraction 88/128
+hidden extraction 89/128
+hidden extraction 90/128
+hidden extraction 91/128
+hidden extraction 92/128
+hidden extraction 93/128
+hidden extraction 94/128
+hidden extraction 95/128
+hidden extraction 96/128
+hidden extraction 97/128
+hidden extraction 98/128
+hidden extraction 99/128
+hidden extraction 100/128
+hidden extraction 101/128
+hidden extraction 102/128
+hidden extraction 103/128
+hidden extraction 104/128
+hidden extraction 105/128
+hidden extraction 106/128
+hidden extraction 107/128
+hidden extraction 108/128
+hidden extraction 109/128
+hidden extraction 110/128
+hidden extraction 111/128
+hidden extraction 112/128
+hidden extraction 113/128
+hidden extraction 114/128
+hidden extraction 115/128
+hidden extraction 116/128
+hidden extraction 117/128
+hidden extraction 118/128
+hidden extraction 119/128
+hidden extraction 120/128
+hidden extraction 121/128
+hidden extraction 122/128
+hidden extraction 123/128
+hidden extraction 124/128
+hidden extraction 125/128
+hidden extraction 126/128
+hidden extraction 127/128
+hidden extraction 128/128
+{"elapsed_seconds": 2.373242139816284, "exact_candidate_unions": 10, "exact_sets": 10, "layer": 10, "max_observed_condition": 417498905.82106185, "max_true_score": 2.439882089739972e-06, "mean_candidate_union_excess": 0.0, "mean_candidate_union_recall": 1.0, "mean_candidate_union_size": 4.0, "mean_control_recall": 0.025, "mean_recall": 1.0, "min_false_score": 0.19941004022088055, "min_gap": 0.19940936697087963, "mix_condition": 1.0, "mixing": "orthogonal", "precision": "float32", "rank_max": 33, "rank_min": 33, "row_max": 33, "row_min": 33, "shield_fraction": 0.05, "shield_kind": "gaussian", "shield_scale": 10.0}
+{"elapsed_seconds": 2.7489724159240723, "exact_candidate_unions": 10, "exact_sets": 10, "layer": 10, "max_observed_condition": 428106916.2383838, "max_true_score": 9.790108167480115e-06, "mean_candidate_union_excess": 0.0, "mean_candidate_union_recall": 1.0, "mean_candidate_union_size": 4.0, "mean_control_recall": 0.025, "mean_recall": 1.0, "min_false_score": 0.1833055869399166, "min_gap": 0.18330176564832695, "mix_condition": 50.0, "mixing": "non_orthogonal", "precision": "float32", "rank_max": 33, "rank_min": 33, "row_max": 33, "row_min": 33, "shield_fraction": 0.05, "shield_kind": "gaussian", "shield_scale": 10.0}
+{"elapsed_seconds": 3.4407899379730225, "exact_candidate_unions": 10, "exact_sets": 10, "layer": 10, "max_observed_condition": 2656.682410855595, "max_true_score": 0.20996285950069773, "mean_candidate_union_excess": 0.0, "mean_candidate_union_recall": 1.0, "mean_candidate_union_size": 4.0, "mean_control_recall": 0.0, "mean_recall": 1.0, "min_false_score": 0.10999633058654601, "min_gap": 0.05927824231800527, "mix_condition": 1.0, "mixing": "orthogonal", "precision": "bfloat16", "rank_max": 35, "rank_min": 35, "row_max": 35, "row_min": 35, "shield_fraction": 0.12, "shield_kind": "gaussian", "shield_scale": 25.0}
+{"elapsed_seconds": 3.4215922355651855, "exact_candidate_unions": 10, "exact_sets": 10, "layer": 10, "max_observed_condition": 5752.931873981847, "max_true_score": 0.4398743145253853, "mean_candidate_union_excess": 0.0, "mean_candidate_union_recall": 1.0, "mean_candidate_union_size": 4.0, "mean_control_recall": 0.075, "mean_recall": 1.0, "min_false_score": 0.2642523509406216, "min_gap": 0.022726259677285365, "mix_condition": 50.0, "mixing": "non_orthogonal", "precision": "bfloat16", "rank_max": 35, "rank_min": 35, "row_max": 35, "row_min": 35, "shield_fraction": 0.12, "shield_kind": "gaussian", "shield_scale": 25.0}
+{"elapsed_seconds": 2.5731201171875, "exact_candidate_unions": 0, "exact_sets": 10, "layer": 10, "max_observed_condition": 379093366.70937395, "max_true_score": 1.1001548304551897e-06, "mean_candidate_union_excess": 1.0, "mean_candidate_union_recall": 0.8, "mean_candidate_union_size": 5.0, "mean_control_recall": 0.075, "mean_recall": 1.0, "min_false_score": 0.16592336632231475, "min_gap": 0.16592285084393887, "mix_condition": 1.0, "mixing": "orthogonal", "precision": "float32", "rank_max": 33, "rank_min": 33, "row_max": 33, "row_min": 33, "shield_fraction": 0.05, "shield_kind": "manifold", "shield_scale": 10.0}
+{"elapsed_seconds": 3.436492681503296, "exact_candidate_unions": 8, "exact_sets": 2, "layer": 10, "max_observed_condition": 57809.688581002105, "max_true_score": 0.4380553341206611, "mean_candidate_union_excess": 1.0, "mean_candidate_union_recall": 0.9400000000000001, "mean_candidate_union_size": 5.0, "mean_control_recall": 0.025, "mean_recall": 0.75, "min_false_score": 0.1734267919066316, "min_gap": -0.25640866443519594, "mix_condition": 50.0, "mixing": "non_orthogonal", "precision": "bfloat16", "rank_max": 36, "rank_min": 36, "row_max": 36, "row_min": 36, "shield_fraction": 0.14, "shield_kind": "manifold", "shield_scale": 30.0}
+wrote outputs/invariant_obfuscation/gelo_official_dataset_codellama7b_128x16_10trial_20260802.json
