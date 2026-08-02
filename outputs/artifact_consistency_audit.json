@@ -20,6 +20,7 @@
     "GELO candidate presence",
     "official GELO wrapper replay",
     "journal-only red marking coverage",
+    "primary-system citations and preprint status",
     "manuscript claims and scope"
   ],
   "canonical_inputs": [
@@ -43,6 +44,8 @@
     "data_side/gelo_rowspace_gpt2medium_20260802.json",
     "data_side/gelo_official_transcript_gpt2_20260802.json",
     "tdsc_main.tex",
-    "tdsc_main_marked.tex"
+    "tdsc_main_marked.tex",
+    "ref.bib",
+    "journal_ref.bib"
   ]
 }

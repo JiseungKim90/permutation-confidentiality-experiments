@@ -55,6 +55,10 @@ def main() -> None:
     marked_tex = (PAPER_ROOT / "tdsc_main_marked.tex").read_text(
         encoding="utf-8"
     )
+    ref_bib = (PAPER_ROOT / "ref.bib").read_text(encoding="utf-8")
+    journal_ref_bib = (PAPER_ROOT / "journal_ref.bib").read_text(
+        encoding="utf-8"
+    )
     checks: list[str] = []
 
     stress_8 = next(
@@ -371,6 +375,32 @@ def main() -> None:
             "preliminary-version table was incorrectly marked as new")
     checks.append("journal-only red marking coverage")
 
+    primary_citations = {
+        "Safhire": "BCD+25",
+        "STIP": "YZL24",
+        "GELO": "BelikovFedotovGELO26",
+    }
+    for system, key in primary_citations.items():
+        require(f"\\cite{{{key}}}" in tex,
+                f"primary citation missing for {system}: {key}")
+    require(tex.count("\\cite{BelikovFedotovGELO26}") >= 5,
+            "GELO primary citation is not visible across framing and analysis")
+    require("\\cite{BelikovFedotovGELOArtifact26}" in tex,
+            "GELO official code artifact citation missing")
+    require("Safhire preprint" in tex and "GELO preprint" in tex,
+            "preprint status missing from abstract")
+    require("Version 1, 1 September 2025" in ref_bib and
+            "https://arxiv.org/abs/2509.01253" in ref_bib,
+            "Safhire preprint metadata changed")
+    require("Version 3, 19 June 2026" in journal_ref_bib and
+            "https://arxiv.org/abs/2603.05035" in journal_ref_bib,
+            "GELO preprint metadata changed")
+    require("@misc{BelikovFedotovGELOArtifact26" in journal_ref_bib and
+            "786668f20936ae794d4e39483f401492e82d257e" in journal_ref_bib and
+            "https://github.com/noskill/gelo" in journal_ref_bib,
+            "GELO official artifact metadata changed")
+    checks.append("primary-system citations and preprint status")
+
     normalized_tex = re.sub(r"\s+", " ", tex)
     required_snippets = [
         "433 bias-anchored or 417 bias-free queries",
@@ -410,7 +440,7 @@ def main() -> None:
         "A preliminary version appeared at ESORICS 2026",
         "all 1,680 trials are exact",
         "All 240 source sets are recovered",
-        "official repository commit",
+        "authors' public code artifact",
     ]
     missing = [
         snippet for snippet in required_snippets if snippet not in normalized_tex
@@ -444,6 +474,8 @@ def main() -> None:
             "data_side/gelo_official_transcript_gpt2_20260802.json",
             "tdsc_main.tex",
             "tdsc_main_marked.tex",
+            "ref.bib",
+            "journal_ref.bib",
         ],
     }
     destination = OUT / "artifact_consistency_audit.json"
