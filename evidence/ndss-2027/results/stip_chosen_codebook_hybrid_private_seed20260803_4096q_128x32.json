@@ -1,0 +1,556 @@
+{
+  "attack_scope": "known tokenizer and chosen-prompt transcript access; victim embedding weights are not read by the attacker",
+  "corpus_arrow_files": [
+    "/home/user/.cache/huggingface/datasets/BeIR___scifact/corpus/0.0.0/b3b5335604bf5ee3c4447671af975ea25143d4f5/scifact-corpus.arrow",
+    "/home/user/.cache/huggingface/datasets/BeIR___nfcorpus/corpus/0.0.0/b5026a0e96e8a7ac4f95f482a596389289d46269/nfcorpus-corpus.arrow"
+  ],
+  "document_split": {
+    "exact_prompt_overlap": 0,
+    "known_documents": 6171,
+    "target_documents": 2645
+  },
+  "experiment": "chosen-prompt orbit codebook attack on STIP final TEE boundary",
+  "invariance_audit": {
+    "duplicate_observations": 70238,
+    "known_max_abs_error": 8.940696716308594e-08,
+    "repeat_max_abs_error": 8.940696716308594e-08,
+    "target_max_abs_error": 5.960464477539063e-08
+  },
+  "known_budgets": [
+    16,
+    64,
+    256,
+    1024,
+    4096
+  ],
+  "membership_threshold": 0.99999,
+  "model": "gpt2",
+  "non_claim": "does not assign plaintext labels for a completely private, unaligned tokenizer",
+  "paper_boundary_formula": "f(A) = alpha Emb(A) pi",
+  "private_embedding": {
+    "checkpoint": "/home/user/research-vault/projects/P050/ndss-2027/checkpoints/stip_independent_embedding_frequency_f025_seed20260803.pt",
+    "checkpoint_sha256": "42258d52ca08bdd300be149a8b416d887cc2b6198d222319d25dfc60b14ede62",
+    "kind": "unknown_to_attacker_partial_private_embedding",
+    "seed": 20260803,
+    "selected_rows": 4380,
+    "selection": "frequency",
+    "train_fraction_of_active": 0.25
+  },
+  "prompt_length": 32,
+  "results": [
+    {
+      "codebook_full_prompt_exact": 0.0,
+      "codebook_token_top1": 0.08056640625,
+      "conditional_accuracy_given_coverage": 1.0,
+      "dictionary_entries_by_position": [
+        16,
+        15,
+        16,
+        16,
+        16,
+        16,
+        15,
+        15,
+        16,
+        15,
+        15,
+        14,
+        16,
+        15,
+        16,
+        15,
+        16,
+        16,
+        16,
+        16,
+        16,
+        16,
+        16,
+        16,
+        15,
+        16,
+        15,
+        16,
+        16,
+        15,
+        16,
+        16
+      ],
+      "dictionary_entries_mean": 15.625,
+      "exact_membership_rate": 0.08056640625,
+      "examples": [
+        {
+          "covered_tokens": 3,
+          "prediction": "<contains-unmapped-token>",
+          "target": " of the molecule (residues 11-23) contains an epitope for plaque cores and vascular amyloid. The non-protein component of the am",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 2,
+          "prediction": "<contains-unmapped-token>",
+          "target": " countries\nExperience gained from the Global Malaria Eradication Program (1955-72) identified a set of shared technical and operational factors that enabled some countries",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 2,
+          "prediction": "<contains-unmapped-token>",
+          "target": ".\nA need for better clinical outcomes has heightened interest in the use of physiologically relevant human cells in the drug discovery process. Patient-specific human induced plur",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 1,
+          "prediction": "<contains-unmapped-token>",
+          "target": "iologic risk factors with growth and rupture by using computed tomographic (CT) angiography. MATERIALS AND METHODS In this HIPAA",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 1,
+          "prediction": "<contains-unmapped-token>",
+          "target": "sis, characterized by high glucose uptake, low oxygen consumption and elevated production of lactate, is associated with a survival advantage as well as the generation of substrates",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 2,
+          "prediction": "<contains-unmapped-token>",
+          "target": " can dominantly inhibit the replication of some endogenous and exogenous retroviruses. The prospects of purposefully harnessing such an anti-viral defense are under investigation",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 3,
+          "prediction": "<contains-unmapped-token>",
+          "target": " 31% (P<.001), while CP prevalence per 1000 live births increased monotonically from 0 to 110 until the years 1992-1994 (P<",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 6,
+          "prediction": "<contains-unmapped-token>",
+          "target": " sampling. In the fourth stage, clustering, cross-validation, and other methods are used to estimate the precision and accuracy of the models and information.",
+          "tokens": 32
+        }
+      ],
+      "fallback_full_prompt_exact": 0.03125,
+      "fallback_token_top1": 0.900390625,
+      "full_prompt_covered": 0.0,
+      "hybrid_full_prompt_exact": 0.0625,
+      "hybrid_token_top1": 0.9189453125,
+      "known_prompt_queries": 16,
+      "membership_coverage_agreement": 1.0,
+      "prompts": 128,
+      "token_coverage": 0.08056640625,
+      "tokens": 4096
+    },
+    {
+      "codebook_full_prompt_exact": 0.0,
+      "codebook_token_top1": 0.21044921875,
+      "conditional_accuracy_given_coverage": 1.0,
+      "dictionary_entries_by_position": [
+        62,
+        59,
+        55,
+        56,
+        57,
+        54,
+        60,
+        55,
+        58,
+        56,
+        55,
+        54,
+        55,
+        54,
+        59,
+        53,
+        56,
+        58,
+        56,
+        55,
+        57,
+        57,
+        58,
+        58,
+        51,
+        56,
+        58,
+        57,
+        57,
+        54,
+        54,
+        56
+      ],
+      "dictionary_entries_mean": 56.25,
+      "exact_membership_rate": 0.21044921875,
+      "examples": [
+        {
+          "covered_tokens": 7,
+          "prediction": "<contains-unmapped-token>",
+          "target": " of the molecule (residues 11-23) contains an epitope for plaque cores and vascular amyloid. The non-protein component of the am",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 8,
+          "prediction": "<contains-unmapped-token>",
+          "target": ".\nA need for better clinical outcomes has heightened interest in the use of physiologically relevant human cells in the drug discovery process. Patient-specific human induced plur",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 8,
+          "prediction": "<contains-unmapped-token>",
+          "target": "sis, characterized by high glucose uptake, low oxygen consumption and elevated production of lactate, is associated with a survival advantage as well as the generation of substrates",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 6,
+          "prediction": "<contains-unmapped-token>",
+          "target": " can dominantly inhibit the replication of some endogenous and exogenous retroviruses. The prospects of purposefully harnessing such an anti-viral defense are under investigation",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 12,
+          "prediction": "<contains-unmapped-token>",
+          "target": " sampling. In the fourth stage, clustering, cross-validation, and other methods are used to estimate the precision and accuracy of the models and information.",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 11,
+          "prediction": "<contains-unmapped-token>",
+          "target": " mean supine blood pressure was 7.1 mm Hg (6.1%) lower in the fourth week of placebo than that in the fourth week of slow",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 9,
+          "prediction": "<contains-unmapped-token>",
+          "target": " decreased progressively as the number of healthy behaviors increased. Adjusted hazard ratios and 95% confidence interval were 0.60 (0.38, 0.95), 0",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 9,
+          "prediction": "<contains-unmapped-token>",
+          "target": "-mRNA, leading to synthesis of a truncated lamin A protein and concomitant reduction in wild-type lamin A. Fibroblasts",
+          "tokens": 32
+        }
+      ],
+      "fallback_full_prompt_exact": 0.03125,
+      "fallback_token_top1": 0.900390625,
+      "full_prompt_covered": 0.0,
+      "hybrid_full_prompt_exact": 0.2265625,
+      "hybrid_token_top1": 0.9501953125,
+      "known_prompt_queries": 64,
+      "membership_coverage_agreement": 1.0,
+      "prompts": 128,
+      "token_coverage": 0.21044921875,
+      "tokens": 4096
+    },
+    {
+      "codebook_full_prompt_exact": 0.0,
+      "codebook_token_top1": 0.346435546875,
+      "conditional_accuracy_given_coverage": 1.0,
+      "dictionary_entries_by_position": [
+        203,
+        181,
+        195,
+        202,
+        196,
+        183,
+        195,
+        183,
+        196,
+        196,
+        175,
+        193,
+        196,
+        197,
+        193,
+        199,
+        187,
+        206,
+        188,
+        194,
+        188,
+        198,
+        191,
+        202,
+        198,
+        200,
+        191,
+        193,
+        204,
+        195,
+        180,
+        188
+      ],
+      "dictionary_entries_mean": 193.3125,
+      "exact_membership_rate": 0.346435546875,
+      "examples": [
+        {
+          "covered_tokens": 12,
+          "prediction": "<contains-unmapped-token>",
+          "target": ".\nA need for better clinical outcomes has heightened interest in the use of physiologically relevant human cells in the drug discovery process. Patient-specific human induced plur",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 10,
+          "prediction": "<contains-unmapped-token>",
+          "target": " can dominantly inhibit the replication of some endogenous and exogenous retroviruses. The prospects of purposefully harnessing such an anti-viral defense are under investigation",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 15,
+          "prediction": "<contains-unmapped-token>",
+          "target": " sampling. In the fourth stage, clustering, cross-validation, and other methods are used to estimate the precision and accuracy of the models and information.",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 13,
+          "prediction": "<contains-unmapped-token>",
+          "target": " mean supine blood pressure was 7.1 mm Hg (6.1%) lower in the fourth week of placebo than that in the fourth week of slow",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 16,
+          "prediction": "<contains-unmapped-token>",
+          "target": " decreased progressively as the number of healthy behaviors increased. Adjusted hazard ratios and 95% confidence interval were 0.60 (0.38, 0.95), 0",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 12,
+          "prediction": "<contains-unmapped-token>",
+          "target": "-mRNA, leading to synthesis of a truncated lamin A protein and concomitant reduction in wild-type lamin A. Fibroblasts",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 12,
+          "prediction": "<contains-unmapped-token>",
+          "target": " reduction of the total irritable bowel syndrome symptoms score was found (T(0): 2.19+/-0.13, T(4): 1.",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 10,
+          "prediction": "<contains-unmapped-token>",
+          "target": " been compared to other treatments. These network meta-analysis techniques allow estimation of both heterogeneity in the effect of any given treatment and inconsistency ('incoherence') in",
+          "tokens": 32
+        }
+      ],
+      "fallback_full_prompt_exact": 0.03125,
+      "fallback_token_top1": 0.900390625,
+      "full_prompt_covered": 0.0,
+      "hybrid_full_prompt_exact": 0.4765625,
+      "hybrid_token_top1": 0.9794921875,
+      "known_prompt_queries": 256,
+      "membership_coverage_agreement": 1.0,
+      "prompts": 128,
+      "token_coverage": 0.346435546875,
+      "tokens": 4096
+    },
+    {
+      "codebook_full_prompt_exact": 0.0,
+      "codebook_token_top1": 0.475341796875,
+      "conditional_accuracy_given_coverage": 1.0,
+      "dictionary_entries_by_position": [
+        668,
+        643,
+        611,
+        659,
+        675,
+        620,
+        644,
+        638,
+        662,
+        618,
+        627,
+        643,
+        639,
+        635,
+        643,
+        647,
+        624,
+        656,
+        632,
+        626,
+        629,
+        655,
+        650,
+        636,
+        634,
+        645,
+        634,
+        653,
+        657,
+        648,
+        635,
+        621
+      ],
+      "dictionary_entries_mean": 640.84375,
+      "exact_membership_rate": 0.475341796875,
+      "examples": [
+        {
+          "covered_tokens": 17,
+          "prediction": "<contains-unmapped-token>",
+          "target": ".\nA need for better clinical outcomes has heightened interest in the use of physiologically relevant human cells in the drug discovery process. Patient-specific human induced plur",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 15,
+          "prediction": "<contains-unmapped-token>",
+          "target": " can dominantly inhibit the replication of some endogenous and exogenous retroviruses. The prospects of purposefully harnessing such an anti-viral defense are under investigation",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 18,
+          "prediction": "<contains-unmapped-token>",
+          "target": " sampling. In the fourth stage, clustering, cross-validation, and other methods are used to estimate the precision and accuracy of the models and information.",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 20,
+          "prediction": "<contains-unmapped-token>",
+          "target": " decreased progressively as the number of healthy behaviors increased. Adjusted hazard ratios and 95% confidence interval were 0.60 (0.38, 0.95), 0",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 15,
+          "prediction": "<contains-unmapped-token>",
+          "target": " been compared to other treatments. These network meta-analysis techniques allow estimation of both heterogeneity in the effect of any given treatment and inconsistency ('incoherence') in",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 15,
+          "prediction": "<contains-unmapped-token>",
+          "target": "ic forms of the disease. We are likely to identify specific alteration of gut pathophysiology in postinfectious FGDs and to then classify them not as a",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 12,
+          "prediction": "<contains-unmapped-token>",
+          "target": " arterioles (75-250 \u03bcm) isolated from different fat compartments. Endothelium-dependent, acetylcholine-mediated vasod",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 16,
+          "prediction": "<contains-unmapped-token>",
+          "target": " role of the IL-12/IFN-gamma axis in the development of autoimmune myocarditis: induction by IL-12 and protection by IFN",
+          "tokens": 32
+        }
+      ],
+      "fallback_full_prompt_exact": 0.03125,
+      "fallback_token_top1": 0.900390625,
+      "full_prompt_covered": 0.0,
+      "hybrid_full_prompt_exact": 0.6015625,
+      "hybrid_token_top1": 0.98486328125,
+      "known_prompt_queries": 1024,
+      "membership_coverage_agreement": 1.0,
+      "prompts": 128,
+      "token_coverage": 0.475341796875,
+      "tokens": 4096
+    },
+    {
+      "codebook_full_prompt_exact": 0.0,
+      "codebook_token_top1": 0.652587890625,
+      "conditional_accuracy_given_coverage": 1.0,
+      "dictionary_entries_by_position": [
+        1935,
+        1899,
+        1887,
+        1922,
+        1929,
+        1850,
+        1912,
+        1904,
+        1914,
+        1855,
+        1895,
+        1906,
+        1911,
+        1907,
+        1901,
+        1922,
+        1885,
+        1951,
+        1932,
+        1874,
+        1904,
+        1898,
+        1912,
+        1879,
+        1852,
+        1921,
+        1897,
+        1868,
+        1913,
+        1931,
+        1912,
+        1856
+      ],
+      "dictionary_entries_mean": 1901.0625,
+      "exact_membership_rate": 0.652587890625,
+      "examples": [
+        {
+          "covered_tokens": 23,
+          "prediction": "<contains-unmapped-token>",
+          "target": ".\nA need for better clinical outcomes has heightened interest in the use of physiologically relevant human cells in the drug discovery process. Patient-specific human induced plur",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 18,
+          "prediction": "<contains-unmapped-token>",
+          "target": " can dominantly inhibit the replication of some endogenous and exogenous retroviruses. The prospects of purposefully harnessing such an anti-viral defense are under investigation",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 26,
+          "prediction": "<contains-unmapped-token>",
+          "target": " decreased progressively as the number of healthy behaviors increased. Adjusted hazard ratios and 95% confidence interval were 0.60 (0.38, 0.95), 0",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 17,
+          "prediction": "<contains-unmapped-token>",
+          "target": " been compared to other treatments. These network meta-analysis techniques allow estimation of both heterogeneity in the effect of any given treatment and inconsistency ('incoherence') in",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 22,
+          "prediction": "<contains-unmapped-token>",
+          "target": " role of the IL-12/IFN-gamma axis in the development of autoimmune myocarditis: induction by IL-12 and protection by IFN",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 20,
+          "prediction": "<contains-unmapped-token>",
+          "target": " to investigate the acyl-acceptor side of the tunnel, yielding mutants with a marked increase in preference for hydrolysis over transamidation. By providing",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 19,
+          "prediction": "<contains-unmapped-token>",
+          "target": " industries, but processes used to raise pH often incur significant emissions and nonrenewable resource use. Alternatively, waste brine from desalination can be used",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 24,
+          "prediction": "<contains-unmapped-token>",
+          "target": " observed for sugars (OR=0.52; 95% CI: 0.31-0.86; p for trend=0.003). Non-",
+          "tokens": 32
+        }
+      ],
+      "fallback_full_prompt_exact": 0.03125,
+      "fallback_token_top1": 0.900390625,
+      "full_prompt_covered": 0.0,
+      "hybrid_full_prompt_exact": 0.796875,
+      "hybrid_token_top1": 0.992919921875,
+      "known_prompt_queries": 4096,
+      "membership_coverage_agreement": 1.0,
+      "prompts": 128,
+      "token_coverage": 0.652587890625,
+      "tokens": 4096
+    }
+  ],
+  "runtime": {
+    "elapsed_seconds": 32.821083307266235,
+    "host": "user-PowerEdge-T440",
+    "python": "3.10.12",
+    "threads": 16,
+    "torch": "2.7.1+cu126"
+  },
+  "seed": 20260803,
+  "target_prompts": 128
+}

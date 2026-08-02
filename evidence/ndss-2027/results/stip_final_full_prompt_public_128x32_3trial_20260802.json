@@ -1,0 +1,355 @@
+{
+  "aggregate": {
+    "all_invariance_checks_pass": true,
+    "all_replays_exact": true,
+    "decoded_character_similarity_mean": {
+      "max": 1.0,
+      "mean": 1.0,
+      "min": 1.0
+    },
+    "decoded_text_exact": {
+      "max": 1.0,
+      "mean": 1.0,
+      "min": 1.0
+    },
+    "full_prompt_exact": {
+      "max": 1.0,
+      "mean": 1.0,
+      "min": 1.0
+    },
+    "raw_permuted_token_top1_control": {
+      "max": 0.000244140625,
+      "mean": 8.138020833333333e-05,
+      "min": 0.0
+    },
+    "token_top1": {
+      "max": 1.0,
+      "mean": 1.0,
+      "min": 1.0
+    },
+    "top5": {
+      "max": 1.0,
+      "mean": 1.0,
+      "min": 1.0
+    }
+  },
+  "arrow_files": [
+    "/home/user/.cache/huggingface/datasets/BeIR___scifact/corpus/0.0.0/b3b5335604bf5ee3c4447671af975ea25143d4f5/scifact-corpus.arrow"
+  ],
+  "elapsed_seconds": 68.98518109321594,
+  "experiment": "STIP NDSS 2026 final-paper embedding boundary full-prompt recovery",
+  "implementation_scope": "paper-specification boundary replay; not a claim that the public repository contains the final TEE path",
+  "model": "gpt2",
+  "negative_scale_probability": 0.0,
+  "official_repository": {
+    "commit": "d8e8b876280979efd996ace5d9ed4b3a50bb271f",
+    "expected_commit": "d8e8b876280979efd996ace5d9ed4b3a50bb271f",
+    "files_containing_final_boundary_terms": [],
+    "final_tee_path_present_in_public_repository": false,
+    "matches_expected_commit": true,
+    "path": "/home/user/research-vault/projects/P050/ndss-2027/secure-transformer-inference"
+  },
+  "paper_boundary_formula": "f(A) = alpha Emb(A) pi",
+  "paper_section": "IV-E, TEE Integration for Enhanced Protection",
+  "paper_sha256": "8e7ac8f1e6e728de8328abad35e66c012dff82a7d059cf8456e73aa65a6c0a77",
+  "private_embedding": {
+    "checkpoint": null,
+    "kind": "public_frozen"
+  },
+  "prompt_count": 128,
+  "prompt_length": 32,
+  "prompt_text_sha256": "1f0fcf66195204b24aecd1e9862bcfb8e99f9e559d9957faafd2bd4223f65f01",
+  "representation": "token_position",
+  "scale_log_range": [
+    -8.0,
+    8.0
+  ],
+  "seed": 20260802,
+  "single_transcript_per_prompt_per_trial": true,
+  "torch_version": "2.7.1+cu126",
+  "trials": 3,
+  "trials_detail": [
+    {
+      "canonical_invariance_max_abs_error": 5.960464477539063e-08,
+      "decoded_character_similarity_mean": 1.0,
+      "decoded_character_similarity_min": 1.0,
+      "decoded_text_exact": 1.0,
+      "examples": [
+        {
+          "character_similarity": 1.0,
+          "prediction": "down sensitized GSCs to TNFalpha-mediated apoptosis. The decreased survival of GSCs upon A20 knockdown contributed to the reduced ability",
+          "target": "down sensitized GSCs to TNFalpha-mediated apoptosis. The decreased survival of GSCs upon A20 knockdown contributed to the reduced ability",
+          "token_exact": true
+        },
+        {
+          "character_similarity": 1.0,
+          "prediction": " IV (Pol IVa and Pol IVb), RNA-DEPENDENT RNA POLYMERASE 2 (RDR2), DICER-LIKE",
+          "target": " IV (Pol IVa and Pol IVb), RNA-DEPENDENT RNA POLYMERASE 2 (RDR2), DICER-LIKE",
+          "token_exact": true
+        },
+        {
+          "character_similarity": 1.0,
+          "prediction": " tumors acquire a phenotype radically different from that of their originating primary tumors. This phenotype allows them to evade a host-derived innate immune response elicited by the progression",
+          "target": " tumors acquire a phenotype radically different from that of their originating primary tumors. This phenotype allows them to evade a host-derived innate immune response elicited by the progression",
+          "token_exact": true
+        },
+        {
+          "character_similarity": 1.0,
+          "prediction": " gate that prevents entry of seven-residue peptides but allows entry of tetrapeptides. Upon association with the 20S particle, PAN stimulates gate",
+          "target": " gate that prevents entry of seven-residue peptides but allows entry of tetrapeptides. Upon association with the 20S particle, PAN stimulates gate",
+          "token_exact": true
+        },
+        {
+          "character_similarity": 1.0,
+          "prediction": " cellular microRNAs were cloned and identified, not a single HPV31-specific microRNA was obtained. We therefore concluded that HPV31, and possibly human",
+          "target": " cellular microRNAs were cloned and identified, not a single HPV31-specific microRNA was obtained. We therefore concluded that HPV31, and possibly human",
+          "token_exact": true
+        },
+        {
+          "character_similarity": 1.0,
+          "prediction": " patients with breast cancer in the least compared with most deprived fifth of deprivation was 0.63 (95% confidence interval 0.60 to 0.66) and",
+          "target": " patients with breast cancer in the least compared with most deprived fifth of deprivation was 0.63 (95% confidence interval 0.60 to 0.66) and",
+          "token_exact": true
+        },
+        {
+          "character_similarity": 1.0,
+          "prediction": ". We characterized their proteome and found that they contain a large toolbox of proteins dedicated to RNA metabolism. Investigation of four uncharacterized putative RNA-",
+          "target": ". We characterized their proteome and found that they contain a large toolbox of proteins dedicated to RNA metabolism. Investigation of four uncharacterized putative RNA-",
+          "token_exact": true
+        },
+        {
+          "character_similarity": 1.0,
+          "prediction": " Here, we addressed this question by employing a clonal analysis of CD4 \u2212 CD8 \u2212 (DN) progenitor potential to position the divergence of \u03b1",
+          "target": " Here, we addressed this question by employing a clonal analysis of CD4 \u2212 CD8 \u2212 (DN) progenitor potential to position the divergence of \u03b1",
+          "token_exact": true
+        },
+        {
+          "character_similarity": 1.0,
+          "prediction": " obtained on the dynamic processes at work in membrane structure and assembly. We will focus in particular on findings made using fluorescent labeling and imaging procedures to record these dynamic processes",
+          "target": " obtained on the dynamic processes at work in membrane structure and assembly. We will focus in particular on findings made using fluorescent labeling and imaging procedures to record these dynamic processes",
+          "token_exact": true
+        },
+        {
+          "character_similarity": 1.0,
+          "prediction": "een elderly depressed subjects were compared with 16 elderly subjects who were not depressed. Diffusion tensor imaging was used to measure the fractional anisotropy of",
+          "target": "een elderly depressed subjects were compared with 16 elderly subjects who were not depressed. Diffusion tensor imaging was used to measure the fractional anisotropy of",
+          "token_exact": true
+        },
+        {
+          "character_similarity": 1.0,
+          "prediction": " that mSOD1 inhibits secretory protein transport from the ER to Golgi apparatus. ER-Golgi transport is linked to ER stress, Golgi",
+          "target": " that mSOD1 inhibits secretory protein transport from the ER to Golgi apparatus. ER-Golgi transport is linked to ER stress, Golgi",
+          "token_exact": true
+        },
+        {
+          "character_similarity": 1.0,
+          "prediction": " and results We assessed the correlation between carotid-femoral pulse wave velocity (PWV), a measure of arterial stiffness, and gut microbiome",
+          "target": " and results We assessed the correlation between carotid-femoral pulse wave velocity (PWV), a measure of arterial stiffness, and gut microbiome",
+          "token_exact": true
+        }
+      ],
+      "feature_permutation_sha256": "89f06af9618f576510b50e607ceb6e2b14c90005ff6fecbd76fb18f8fb735ce9",
+      "full_prompt_errors": 0,
+      "full_prompt_exact": 1.0,
+      "position_seconds_total": 22.650729179382324,
+      "prompts": 128,
+      "raw_permuted_token_top1_control": 0.0,
+      "row_scale_abs_max": 2979.9716796875,
+      "row_scale_abs_min": 0.00033864937722682953,
+      "token_errors": 0,
+      "token_top1": 1.0,
+      "tokens": 4096,
+      "top5": 1.0,
+      "trial": 0,
+      "trusted_inverse_max_abs_error": 4.76837158203125e-07
+    },
+    {
+      "canonical_invariance_max_abs_error": 5.960464477539063e-08,
+      "decoded_character_similarity_mean": 1.0,
+      "decoded_character_similarity_min": 1.0,
+      "decoded_text_exact": 1.0,
+      "examples": [
+        {
+          "character_similarity": 1.0,
+          "prediction": "down sensitized GSCs to TNFalpha-mediated apoptosis. The decreased survival of GSCs upon A20 knockdown contributed to the reduced ability",
+          "target": "down sensitized GSCs to TNFalpha-mediated apoptosis. The decreased survival of GSCs upon A20 knockdown contributed to the reduced ability",
+          "token_exact": true
+        },
+        {
+          "character_similarity": 1.0,
+          "prediction": " IV (Pol IVa and Pol IVb), RNA-DEPENDENT RNA POLYMERASE 2 (RDR2), DICER-LIKE",
+          "target": " IV (Pol IVa and Pol IVb), RNA-DEPENDENT RNA POLYMERASE 2 (RDR2), DICER-LIKE",
+          "token_exact": true
+        },
+        {
+          "character_similarity": 1.0,
+          "prediction": " tumors acquire a phenotype radically different from that of their originating primary tumors. This phenotype allows them to evade a host-derived innate immune response elicited by the progression",
+          "target": " tumors acquire a phenotype radically different from that of their originating primary tumors. This phenotype allows them to evade a host-derived innate immune response elicited by the progression",
+          "token_exact": true
+        },
+        {
+          "character_similarity": 1.0,
+          "prediction": " gate that prevents entry of seven-residue peptides but allows entry of tetrapeptides. Upon association with the 20S particle, PAN stimulates gate",
+          "target": " gate that prevents entry of seven-residue peptides but allows entry of tetrapeptides. Upon association with the 20S particle, PAN stimulates gate",
+          "token_exact": true
+        },
+        {
+          "character_similarity": 1.0,
+          "prediction": " cellular microRNAs were cloned and identified, not a single HPV31-specific microRNA was obtained. We therefore concluded that HPV31, and possibly human",
+          "target": " cellular microRNAs were cloned and identified, not a single HPV31-specific microRNA was obtained. We therefore concluded that HPV31, and possibly human",
+          "token_exact": true
+        },
+        {
+          "character_similarity": 1.0,
+          "prediction": " patients with breast cancer in the least compared with most deprived fifth of deprivation was 0.63 (95% confidence interval 0.60 to 0.66) and",
+          "target": " patients with breast cancer in the least compared with most deprived fifth of deprivation was 0.63 (95% confidence interval 0.60 to 0.66) and",
+          "token_exact": true
+        },
+        {
+          "character_similarity": 1.0,
+          "prediction": ". We characterized their proteome and found that they contain a large toolbox of proteins dedicated to RNA metabolism. Investigation of four uncharacterized putative RNA-",
+          "target": ". We characterized their proteome and found that they contain a large toolbox of proteins dedicated to RNA metabolism. Investigation of four uncharacterized putative RNA-",
+          "token_exact": true
+        },
+        {
+          "character_similarity": 1.0,
+          "prediction": " Here, we addressed this question by employing a clonal analysis of CD4 \u2212 CD8 \u2212 (DN) progenitor potential to position the divergence of \u03b1",
+          "target": " Here, we addressed this question by employing a clonal analysis of CD4 \u2212 CD8 \u2212 (DN) progenitor potential to position the divergence of \u03b1",
+          "token_exact": true
+        },
+        {
+          "character_similarity": 1.0,
+          "prediction": " obtained on the dynamic processes at work in membrane structure and assembly. We will focus in particular on findings made using fluorescent labeling and imaging procedures to record these dynamic processes",
+          "target": " obtained on the dynamic processes at work in membrane structure and assembly. We will focus in particular on findings made using fluorescent labeling and imaging procedures to record these dynamic processes",
+          "token_exact": true
+        },
+        {
+          "character_similarity": 1.0,
+          "prediction": "een elderly depressed subjects were compared with 16 elderly subjects who were not depressed. Diffusion tensor imaging was used to measure the fractional anisotropy of",
+          "target": "een elderly depressed subjects were compared with 16 elderly subjects who were not depressed. Diffusion tensor imaging was used to measure the fractional anisotropy of",
+          "token_exact": true
+        },
+        {
+          "character_similarity": 1.0,
+          "prediction": " that mSOD1 inhibits secretory protein transport from the ER to Golgi apparatus. ER-Golgi transport is linked to ER stress, Golgi",
+          "target": " that mSOD1 inhibits secretory protein transport from the ER to Golgi apparatus. ER-Golgi transport is linked to ER stress, Golgi",
+          "token_exact": true
+        },
+        {
+          "character_similarity": 1.0,
+          "prediction": " and results We assessed the correlation between carotid-femoral pulse wave velocity (PWV), a measure of arterial stiffness, and gut microbiome",
+          "target": " and results We assessed the correlation between carotid-femoral pulse wave velocity (PWV), a measure of arterial stiffness, and gut microbiome",
+          "token_exact": true
+        }
+      ],
+      "feature_permutation_sha256": "6c4d7a75279c8a1b3564c8a4ea15c4f67a9ad709cb9224cfe5e10713d2d8f7b5",
+      "full_prompt_errors": 0,
+      "full_prompt_exact": 1.0,
+      "position_seconds_total": 22.43683958053589,
+      "prompts": 128,
+      "raw_permuted_token_top1_control": 0.0,
+      "row_scale_abs_max": 2972.702392578125,
+      "row_scale_abs_min": 0.0003363490104675293,
+      "token_errors": 0,
+      "token_top1": 1.0,
+      "tokens": 4096,
+      "top5": 1.0,
+      "trial": 1,
+      "trusted_inverse_max_abs_error": 4.76837158203125e-07
+    },
+    {
+      "canonical_invariance_max_abs_error": 8.940696716308594e-08,
+      "decoded_character_similarity_mean": 1.0,
+      "decoded_character_similarity_min": 1.0,
+      "decoded_text_exact": 1.0,
+      "examples": [
+        {
+          "character_similarity": 1.0,
+          "prediction": "down sensitized GSCs to TNFalpha-mediated apoptosis. The decreased survival of GSCs upon A20 knockdown contributed to the reduced ability",
+          "target": "down sensitized GSCs to TNFalpha-mediated apoptosis. The decreased survival of GSCs upon A20 knockdown contributed to the reduced ability",
+          "token_exact": true
+        },
+        {
+          "character_similarity": 1.0,
+          "prediction": " IV (Pol IVa and Pol IVb), RNA-DEPENDENT RNA POLYMERASE 2 (RDR2), DICER-LIKE",
+          "target": " IV (Pol IVa and Pol IVb), RNA-DEPENDENT RNA POLYMERASE 2 (RDR2), DICER-LIKE",
+          "token_exact": true
+        },
+        {
+          "character_similarity": 1.0,
+          "prediction": " tumors acquire a phenotype radically different from that of their originating primary tumors. This phenotype allows them to evade a host-derived innate immune response elicited by the progression",
+          "target": " tumors acquire a phenotype radically different from that of their originating primary tumors. This phenotype allows them to evade a host-derived innate immune response elicited by the progression",
+          "token_exact": true
+        },
+        {
+          "character_similarity": 1.0,
+          "prediction": " gate that prevents entry of seven-residue peptides but allows entry of tetrapeptides. Upon association with the 20S particle, PAN stimulates gate",
+          "target": " gate that prevents entry of seven-residue peptides but allows entry of tetrapeptides. Upon association with the 20S particle, PAN stimulates gate",
+          "token_exact": true
+        },
+        {
+          "character_similarity": 1.0,
+          "prediction": " cellular microRNAs were cloned and identified, not a single HPV31-specific microRNA was obtained. We therefore concluded that HPV31, and possibly human",
+          "target": " cellular microRNAs were cloned and identified, not a single HPV31-specific microRNA was obtained. We therefore concluded that HPV31, and possibly human",
+          "token_exact": true
+        },
+        {
+          "character_similarity": 1.0,
+          "prediction": " patients with breast cancer in the least compared with most deprived fifth of deprivation was 0.63 (95% confidence interval 0.60 to 0.66) and",
+          "target": " patients with breast cancer in the least compared with most deprived fifth of deprivation was 0.63 (95% confidence interval 0.60 to 0.66) and",
+          "token_exact": true
+        },
+        {
+          "character_similarity": 1.0,
+          "prediction": ". We characterized their proteome and found that they contain a large toolbox of proteins dedicated to RNA metabolism. Investigation of four uncharacterized putative RNA-",
+          "target": ". We characterized their proteome and found that they contain a large toolbox of proteins dedicated to RNA metabolism. Investigation of four uncharacterized putative RNA-",
+          "token_exact": true
+        },
+        {
+          "character_similarity": 1.0,
+          "prediction": " Here, we addressed this question by employing a clonal analysis of CD4 \u2212 CD8 \u2212 (DN) progenitor potential to position the divergence of \u03b1",
+          "target": " Here, we addressed this question by employing a clonal analysis of CD4 \u2212 CD8 \u2212 (DN) progenitor potential to position the divergence of \u03b1",
+          "token_exact": true
+        },
+        {
+          "character_similarity": 1.0,
+          "prediction": " obtained on the dynamic processes at work in membrane structure and assembly. We will focus in particular on findings made using fluorescent labeling and imaging procedures to record these dynamic processes",
+          "target": " obtained on the dynamic processes at work in membrane structure and assembly. We will focus in particular on findings made using fluorescent labeling and imaging procedures to record these dynamic processes",
+          "token_exact": true
+        },
+        {
+          "character_similarity": 1.0,
+          "prediction": "een elderly depressed subjects were compared with 16 elderly subjects who were not depressed. Diffusion tensor imaging was used to measure the fractional anisotropy of",
+          "target": "een elderly depressed subjects were compared with 16 elderly subjects who were not depressed. Diffusion tensor imaging was used to measure the fractional anisotropy of",
+          "token_exact": true
+        },
+        {
+          "character_similarity": 1.0,
+          "prediction": " that mSOD1 inhibits secretory protein transport from the ER to Golgi apparatus. ER-Golgi transport is linked to ER stress, Golgi",
+          "target": " that mSOD1 inhibits secretory protein transport from the ER to Golgi apparatus. ER-Golgi transport is linked to ER stress, Golgi",
+          "token_exact": true
+        },
+        {
+          "character_similarity": 1.0,
+          "prediction": " and results We assessed the correlation between carotid-femoral pulse wave velocity (PWV), a measure of arterial stiffness, and gut microbiome",
+          "target": " and results We assessed the correlation between carotid-femoral pulse wave velocity (PWV), a measure of arterial stiffness, and gut microbiome",
+          "token_exact": true
+        }
+      ],
+      "feature_permutation_sha256": "df19c0e9583945dbe2705aa5123ca86459b7fb8acc98f442cc1cd9607c579ca0",
+      "full_prompt_errors": 0,
+      "full_prompt_exact": 1.0,
+      "position_seconds_total": 23.31348419189453,
+      "prompts": 128,
+      "raw_permuted_token_top1_control": 0.000244140625,
+      "row_scale_abs_max": 2980.565673828125,
+      "row_scale_abs_min": 0.00033785260166041553,
+      "token_errors": 0,
+      "token_top1": 1.0,
+      "tokens": 4096,
+      "top5": 1.0,
+      "trial": 2,
+      "trusted_inverse_max_abs_error": 4.76837158203125e-07
+    }
+  ]
+}

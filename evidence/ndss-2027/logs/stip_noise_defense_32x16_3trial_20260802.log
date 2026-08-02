@@ -1,0 +1,41 @@
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 3082.91it/s]
+{"embedding_std": 0.14369554817676544, "event": "inputs_ready", "length": 16, "prompts": 32}
+`loss_type=None` was set in the config but it is unrecognized. Using the default loss: `ForCausalLMLoss`.
+{"agreement": 1.0, "event": "utility_complete", "loss": 4.474823, "sigma": 0.0, "trial": 0}
+{"agreement": 1.0, "event": "utility_complete", "loss": 4.474823, "sigma": 0.0, "trial": 1}
+{"agreement": 1.0, "event": "utility_complete", "loss": 4.474823, "sigma": 0.0, "trial": 2}
+{"agreement": 0.983333, "event": "utility_complete", "loss": 4.474398, "sigma": 0.001, "trial": 0}
+{"agreement": 0.989583, "event": "utility_complete", "loss": 4.475179, "sigma": 0.001, "trial": 1}
+{"agreement": 0.989583, "event": "utility_complete", "loss": 4.474425, "sigma": 0.001, "trial": 2}
+{"agreement": 0.9875, "event": "utility_complete", "loss": 4.474715, "sigma": 0.0025, "trial": 0}
+{"agreement": 0.99375, "event": "utility_complete", "loss": 4.475522, "sigma": 0.0025, "trial": 1}
+{"agreement": 0.985417, "event": "utility_complete", "loss": 4.474729, "sigma": 0.0025, "trial": 2}
+{"agreement": 0.9875, "event": "utility_complete", "loss": 4.474479, "sigma": 0.005, "trial": 0}
+{"agreement": 0.975, "event": "utility_complete", "loss": 4.473721, "sigma": 0.005, "trial": 1}
+{"agreement": 0.985417, "event": "utility_complete", "loss": 4.47435, "sigma": 0.005, "trial": 2}
+{"agreement": 0.972917, "event": "utility_complete", "loss": 4.478319, "sigma": 0.01, "trial": 0}
+{"agreement": 0.970833, "event": "utility_complete", "loss": 4.47253, "sigma": 0.01, "trial": 1}
+{"agreement": 0.9625, "event": "utility_complete", "loss": 4.478824, "sigma": 0.01, "trial": 2}
+{"agreement": 0.94375, "event": "utility_complete", "loss": 4.484836, "sigma": 0.02, "trial": 0}
+{"agreement": 0.9625, "event": "utility_complete", "loss": 4.478526, "sigma": 0.02, "trial": 1}
+{"agreement": 0.95625, "event": "utility_complete", "loss": 4.483228, "sigma": 0.02, "trial": 2}
+{"agreement": 0.895833, "event": "utility_complete", "loss": 4.485565, "sigma": 0.05, "trial": 0}
+{"agreement": 0.9, "event": "utility_complete", "loss": 4.500748, "sigma": 0.05, "trial": 1}
+{"agreement": 0.86875, "event": "utility_complete", "loss": 4.525778, "sigma": 0.05, "trial": 2}
+{"elapsed": 3.614, "event": "attack_position_complete", "position": 0, "positions": 16}
+{"elapsed": 7.029, "event": "attack_position_complete", "position": 1, "positions": 16}
+{"elapsed": 10.446, "event": "attack_position_complete", "position": 2, "positions": 16}
+{"elapsed": 13.648, "event": "attack_position_complete", "position": 3, "positions": 16}
+{"elapsed": 17.234, "event": "attack_position_complete", "position": 4, "positions": 16}
+{"elapsed": 20.61, "event": "attack_position_complete", "position": 5, "positions": 16}
+{"elapsed": 24.171, "event": "attack_position_complete", "position": 6, "positions": 16}
+{"elapsed": 27.571, "event": "attack_position_complete", "position": 7, "positions": 16}
+{"elapsed": 30.915, "event": "attack_position_complete", "position": 8, "positions": 16}
+{"elapsed": 34.274, "event": "attack_position_complete", "position": 9, "positions": 16}
+{"elapsed": 37.733, "event": "attack_position_complete", "position": 10, "positions": 16}
+{"elapsed": 41.457, "event": "attack_position_complete", "position": 11, "positions": 16}
+{"elapsed": 45.005, "event": "attack_position_complete", "position": 12, "positions": 16}
+{"elapsed": 48.404, "event": "attack_position_complete", "position": 13, "positions": 16}
+{"elapsed": 52.04, "event": "attack_position_complete", "position": 14, "positions": 16}
+{"elapsed": 55.777, "event": "attack_position_complete", "position": 15, "positions": 16}
+{"event": "complete", "output": "/home/user/research-vault/projects/P050/ndss-2027/results/stip_noise_defense_32x16_3trial_20260802.json"}

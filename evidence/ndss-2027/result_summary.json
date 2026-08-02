@@ -1,0 +1,443 @@
+{
+  "noise_defense": {
+    "attack_repeat_1": [
+      {
+        "full_prompt_exact_mean": 1.0,
+        "repeat_queries": 1,
+        "sigma": 0.0,
+        "token_top1_mean": 1.0,
+        "token_top1_min": 1.0
+      },
+      {
+        "full_prompt_exact_mean": 0.9479166666666666,
+        "repeat_queries": 1,
+        "sigma": 0.001,
+        "token_top1_mean": 0.9967447916666666,
+        "token_top1_min": 0.99609375
+      },
+      {
+        "full_prompt_exact_mean": 0.8958333333333334,
+        "repeat_queries": 1,
+        "sigma": 0.0025,
+        "token_top1_mean": 0.9934895833333334,
+        "token_top1_min": 0.990234375
+      },
+      {
+        "full_prompt_exact_mean": 0.6770833333333334,
+        "repeat_queries": 1,
+        "sigma": 0.005,
+        "token_top1_mean": 0.9765625,
+        "token_top1_min": 0.97265625
+      },
+      {
+        "full_prompt_exact_mean": 0.5416666666666666,
+        "repeat_queries": 1,
+        "sigma": 0.01,
+        "token_top1_mean": 0.9615885416666666,
+        "token_top1_min": 0.95703125
+      },
+      {
+        "full_prompt_exact_mean": 0.13541666666666666,
+        "repeat_queries": 1,
+        "sigma": 0.02,
+        "token_top1_mean": 0.9036458333333334,
+        "token_top1_min": 0.8984375
+      },
+      {
+        "full_prompt_exact_mean": 0.0,
+        "repeat_queries": 1,
+        "sigma": 0.05,
+        "token_top1_mean": 0.076171875,
+        "token_top1_min": 0.068359375
+      }
+    ],
+    "attack_repeat_16": [
+      {
+        "full_prompt_exact_mean": 1.0,
+        "repeat_queries": 16,
+        "sigma": 0.0,
+        "token_top1_mean": 1.0,
+        "token_top1_min": 1.0
+      },
+      {
+        "full_prompt_exact_mean": 0.96875,
+        "repeat_queries": 16,
+        "sigma": 0.001,
+        "token_top1_mean": 0.998046875,
+        "token_top1_min": 0.998046875
+      },
+      {
+        "full_prompt_exact_mean": 0.9479166666666666,
+        "repeat_queries": 16,
+        "sigma": 0.0025,
+        "token_top1_mean": 0.9967447916666666,
+        "token_top1_min": 0.99609375
+      },
+      {
+        "full_prompt_exact_mean": 0.7708333333333334,
+        "repeat_queries": 16,
+        "sigma": 0.005,
+        "token_top1_mean": 0.984375,
+        "token_top1_min": 0.984375
+      },
+      {
+        "full_prompt_exact_mean": 0.5208333333333334,
+        "repeat_queries": 16,
+        "sigma": 0.01,
+        "token_top1_mean": 0.96484375,
+        "token_top1_min": 0.962890625
+      },
+      {
+        "full_prompt_exact_mean": 0.20833333333333334,
+        "repeat_queries": 16,
+        "sigma": 0.02,
+        "token_top1_mean": 0.90625,
+        "token_top1_min": 0.89453125
+      },
+      {
+        "full_prompt_exact_mean": 0.0,
+        "repeat_queries": 16,
+        "sigma": 0.05,
+        "token_top1_mean": 0.10286458333333333,
+        "token_top1_min": 0.099609375
+      }
+    ],
+    "sigma_to_embedding_std": [
+      0.0,
+      0.006959157835355215,
+      0.017397894588388037,
+      0.034795789176776074,
+      0.06959157835355215,
+      0.1391831567071043,
+      0.34795789176776076
+    ],
+    "utility": [
+      {
+        "clean_to_noisy_kl_mean": 0.0,
+        "clean_top1_agreement_mean": 1.0,
+        "clean_top1_agreement_min": 1.0,
+        "cross_entropy_mean": 4.474823355674744,
+        "perplexity_mean": 87.77909336146064,
+        "sigma": 0.0
+      },
+      {
+        "clean_to_noisy_kl_mean": 0.0002731615483450393,
+        "clean_top1_agreement_mean": 0.987499992052714,
+        "clean_top1_agreement_min": 0.9833333492279053,
+        "cross_entropy_mean": 4.474667469660441,
+        "perplexity_mean": 87.76541663503112,
+        "sigma": 0.001
+      },
+      {
+        "clean_to_noisy_kl_mean": 0.00034990130613247555,
+        "clean_top1_agreement_mean": 0.9888888796170553,
+        "clean_top1_agreement_min": 0.9854166507720947,
+        "cross_entropy_mean": 4.474988689025243,
+        "perplexity_mean": 87.79361361773601,
+        "sigma": 0.0025
+      },
+      {
+        "clean_to_noisy_kl_mean": 0.0005428578200129172,
+        "clean_top1_agreement_mean": 0.9826388955116272,
+        "clean_top1_agreement_min": 0.9750000238418579,
+        "cross_entropy_mean": 4.474183450142543,
+        "perplexity_mean": 87.72294581709959,
+        "sigma": 0.005
+      },
+      {
+        "clean_to_noisy_kl_mean": 0.001463510872175296,
+        "clean_top1_agreement_mean": 0.96875,
+        "clean_top1_agreement_min": 0.9624999761581421,
+        "cross_entropy_mean": 4.476557691891988,
+        "perplexity_mean": 87.93182222430853,
+        "sigma": 0.01
+      },
+      {
+        "clean_to_noisy_kl_mean": 0.00478765865166982,
+        "clean_top1_agreement_mean": 0.9541666706403097,
+        "clean_top1_agreement_min": 0.9437500238418579,
+        "cross_entropy_mean": 4.482196847597758,
+        "perplexity_mean": 88.42904066497756,
+        "sigma": 0.02
+      },
+      {
+        "clean_to_noisy_kl_mean": 0.030140239745378494,
+        "clean_top1_agreement_mean": 0.8881944219271342,
+        "clean_top1_agreement_min": 0.8687499761581421,
+        "cross_entropy_mean": 4.504030227661133,
+        "perplexity_mean": 90.3930961246242,
+        "sigma": 0.05
+      }
+    ]
+  },
+  "private_codebook": {
+    "budgets": [
+      16,
+      64,
+      256,
+      1024,
+      4096
+    ],
+    "fallback_full_prompt_mean": 0.049479166666666664,
+    "fallback_token_mean": 0.896484375,
+    "hybrid_full_prompt": [
+      {
+        "max": 0.109375,
+        "mean": 0.09114583333333333,
+        "min": 0.0625
+      },
+      {
+        "max": 0.2265625,
+        "mean": 0.21614583333333334,
+        "min": 0.203125
+      },
+      {
+        "max": 0.4765625,
+        "mean": 0.4453125,
+        "min": 0.390625
+      },
+      {
+        "max": 0.6015625,
+        "mean": 0.5807291666666666,
+        "min": 0.5625
+      },
+      {
+        "max": 0.796875,
+        "mean": 0.7708333333333334,
+        "min": 0.75
+      }
+    ],
+    "hybrid_token": [
+      {
+        "max": 0.926025390625,
+        "mean": 0.9191080729166666,
+        "min": 0.912353515625
+      },
+      {
+        "max": 0.950439453125,
+        "mean": 0.9488932291666666,
+        "min": 0.946044921875
+      },
+      {
+        "max": 0.9794921875,
+        "mean": 0.9754231770833334,
+        "min": 0.969970703125
+      },
+      {
+        "max": 0.98486328125,
+        "mean": 0.9833984375,
+        "min": 0.98193359375
+      },
+      {
+        "max": 0.992919921875,
+        "mean": 0.9921061197916666,
+        "min": 0.9912109375
+      }
+    ],
+    "runs": 3
+  },
+  "private_tokenizer": {
+    "bpe_4096": {
+      "collision_rows_at_1e-6": [
+        112,
+        119,
+        120
+      ],
+      "coverage": [
+        {
+          "full_prompt_exact": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0
+          },
+          "known_token_top1": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0
+          },
+          "private_vocabulary_coverage": 0.0,
+          "token_top1": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0
+          }
+        },
+        {
+          "full_prompt_exact": {
+            "max": 0.015625,
+            "mean": 0.005208333333333333,
+            "min": 0.0
+          },
+          "known_token_top1": {
+            "max": 0.9501915574073792,
+            "mean": 0.9419331749280294,
+            "min": 0.9360613822937012
+          },
+          "private_vocabulary_coverage": 0.25,
+          "token_top1": {
+            "max": 0.728515625,
+            "mean": 0.7233072916666666,
+            "min": 0.71484375
+          }
+        },
+        {
+          "full_prompt_exact": {
+            "max": 0.09375,
+            "mean": 0.078125,
+            "min": 0.046875
+          },
+          "known_token_top1": {
+            "max": 0.9524336457252502,
+            "mean": 0.9431423942248026,
+            "min": 0.9365962147712708
+          },
+          "private_vocabulary_coverage": 0.5,
+          "token_top1": {
+            "max": 0.8408203125,
+            "mean": 0.8317057291666666,
+            "min": 0.822265625
+          }
+        },
+        {
+          "full_prompt_exact": {
+            "max": 0.296875,
+            "mean": 0.2604166666666667,
+            "min": 0.234375
+          },
+          "known_token_top1": {
+            "max": 0.9542682766914368,
+            "mean": 0.9459241827329,
+            "min": 0.9387755393981934
+          },
+          "private_vocabulary_coverage": 0.75,
+          "token_top1": {
+            "max": 0.9169921875,
+            "mean": 0.9055989583333334,
+            "min": 0.8984375
+          }
+        },
+        {
+          "full_prompt_exact": {
+            "max": 0.515625,
+            "mean": 0.46875,
+            "min": 0.4375
+          },
+          "known_token_top1": {
+            "max": 0.955078125,
+            "mean": 0.9449869791666666,
+            "min": 0.93359375
+          },
+          "private_vocabulary_coverage": 1.0,
+          "token_top1": {
+            "max": 0.955078125,
+            "mean": 0.9449869791666666,
+            "min": 0.93359375
+          }
+        }
+      ],
+      "pseudotoken_linkage_repeat_stable": true,
+      "runs": 3
+    },
+    "extension_256": {
+      "collision_rows_at_1e-6": [
+        0,
+        0,
+        0
+      ],
+      "coverage": [
+        {
+          "full_prompt_exact": {
+            "max": 0.5,
+            "mean": 0.5,
+            "min": 0.5
+          },
+          "known_token_top1": {
+            "max": 1.0,
+            "mean": 1.0,
+            "min": 1.0
+          },
+          "private_vocabulary_coverage": 0.0,
+          "token_top1": {
+            "max": 0.9638671875,
+            "mean": 0.9615885416666666,
+            "min": 0.9599609375
+          }
+        },
+        {
+          "full_prompt_exact": {
+            "max": 0.71875,
+            "mean": 0.6875,
+            "min": 0.671875
+          },
+          "known_token_top1": {
+            "max": 1.0,
+            "mean": 0.999334990978241,
+            "min": 0.9990000128746033
+          },
+          "private_vocabulary_coverage": 0.25,
+          "token_top1": {
+            "max": 0.98046875,
+            "mean": 0.9772135416666666,
+            "min": 0.9755859375
+          }
+        },
+        {
+          "full_prompt_exact": {
+            "max": 0.875,
+            "mean": 0.8333333333333334,
+            "min": 0.796875
+          },
+          "known_token_top1": {
+            "max": 0.9990167021751404,
+            "mean": 0.9990141193072001,
+            "min": 0.9990118741989136
+          },
+          "private_vocabulary_coverage": 0.5,
+          "token_top1": {
+            "max": 0.9921875,
+            "mean": 0.9895833333333334,
+            "min": 0.9873046875
+          }
+        },
+        {
+          "full_prompt_exact": {
+            "max": 0.953125,
+            "mean": 0.921875,
+            "min": 0.890625
+          },
+          "known_token_top1": {
+            "max": 0.9990215301513672,
+            "mean": 0.9990196029345194,
+            "min": 0.9990176558494568
+          },
+          "private_vocabulary_coverage": 0.75,
+          "token_top1": {
+            "max": 0.9970703125,
+            "mean": 0.9951171875,
+            "min": 0.9931640625
+          }
+        },
+        {
+          "full_prompt_exact": {
+            "max": 0.984375,
+            "mean": 0.984375,
+            "min": 0.984375
+          },
+          "known_token_top1": {
+            "max": 0.9990234375,
+            "mean": 0.9990234375,
+            "min": 0.9990234375
+          },
+          "private_vocabulary_coverage": 1.0,
+          "token_top1": {
+            "max": 0.9990234375,
+            "mean": 0.9990234375,
+            "min": 0.9990234375
+          }
+        }
+      ],
+      "pseudotoken_linkage_repeat_stable": true,
+      "runs": 3
+    }
+  }
+}

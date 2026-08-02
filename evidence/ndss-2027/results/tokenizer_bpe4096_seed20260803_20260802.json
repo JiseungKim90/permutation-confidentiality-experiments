@@ -1,0 +1,92 @@
+{
+  "attack": {
+    "coverage": [
+      {
+        "additional_rows_revealed": 0,
+        "full_prompt_exact": 0.0,
+        "known_prompt_tokens": 0,
+        "known_rows": 0,
+        "known_token_top1": 0.0,
+        "private_vocabulary_coverage": 0.0,
+        "token_top1": 0.0
+      },
+      {
+        "additional_rows_revealed": 1024,
+        "full_prompt_exact": 0.0,
+        "known_prompt_tokens": 782,
+        "known_rows": 1024,
+        "known_token_top1": 0.9360613822937012,
+        "private_vocabulary_coverage": 0.25,
+        "token_errors": 292,
+        "token_top1": 0.71484375
+      },
+      {
+        "additional_rows_revealed": 2048,
+        "full_prompt_exact": 0.09375,
+        "known_prompt_tokens": 899,
+        "known_rows": 2048,
+        "known_token_top1": 0.9365962147712708,
+        "private_vocabulary_coverage": 0.5,
+        "token_errors": 182,
+        "token_top1": 0.822265625
+      },
+      {
+        "additional_rows_revealed": 3072,
+        "full_prompt_exact": 0.25,
+        "known_prompt_tokens": 980,
+        "known_rows": 3072,
+        "known_token_top1": 0.9387755393981934,
+        "private_vocabulary_coverage": 0.75,
+        "token_errors": 104,
+        "token_top1": 0.8984375
+      },
+      {
+        "additional_rows_revealed": 4096,
+        "full_prompt_exact": 0.4375,
+        "known_prompt_tokens": 1024,
+        "known_rows": 4096,
+        "known_token_top1": 0.93359375,
+        "private_vocabulary_coverage": 1.0,
+        "token_errors": 68,
+        "token_top1": 0.93359375
+      }
+    ],
+    "private_signature_collision_rows_at_1e-6": 119,
+    "private_signature_unique_rows_at_1e-6": 3977,
+    "pseudotoken_linkage_exact_within_tolerance": true,
+    "pseudotoken_linkage_max_abs_error": 5.960464477539063e-08,
+    "single_transcript_per_prompt": true
+  },
+  "checkpoint_dir": "/home/user/research-vault/projects/P050/ndss-2027/checkpoints/tokenizer_bpe4096_seed20260803_20260802",
+  "experiment": "STIP private-tokenizer semantic-to-pseudotoken boundary",
+  "mode": "bpe",
+  "model": "gpt2",
+  "private_vocabulary": 4096,
+  "prompt_count": 64,
+  "prompt_length": 16,
+  "prompt_text_sha256": "756891fe5955dfda6061190024d8fa8915faa0e5b1118fccb5fef618b5948d73",
+  "prompts_with_private_changed_rows": 64,
+  "scope": {
+    "bpe_is_frozen_transformer_adaptation_not_production_retraining": true,
+    "semantic_recovery_requires_candidate_strings_or_alignment": true,
+    "zero_coverage_claim": "pseudotoken linkage only"
+  },
+  "secret_id_reindex_fixed_point_fraction": 0.000732421875,
+  "seed": 20260803,
+  "tokenizer": {
+    "requested_bpe_vocabulary": 4096
+  },
+  "torch_version": "2.7.1+cu126",
+  "training": {
+    "changed_selected_rows": 4096,
+    "changed_unselected_rows": 0,
+    "elapsed_seconds": 91.68246293067932,
+    "selected_delta_linf_median": 0.020780473947525024,
+    "selected_rows": 4096,
+    "training_loss_first": 8.678186416625977,
+    "training_loss_last": 8.738526344299316,
+    "validation_loss_after": 8.764372730255127,
+    "validation_loss_before": 9.515602684020996
+  },
+  "vocabulary_sha256": "b01838213cb82713b8014793648e964254c623dfd3520358db59c913aaa5b11e"
+}

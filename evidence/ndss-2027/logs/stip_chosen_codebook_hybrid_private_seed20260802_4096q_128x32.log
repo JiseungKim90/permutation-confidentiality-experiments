@@ -1,0 +1,104 @@
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 3173.02it/s]
+{"event": "public_fallback_progress", "position": 0, "positions": 32}
+{"event": "public_fallback_progress", "position": 1, "positions": 32}
+{"event": "public_fallback_progress", "position": 2, "positions": 32}
+{"event": "public_fallback_progress", "position": 3, "positions": 32}
+{"event": "public_fallback_progress", "position": 4, "positions": 32}
+{"event": "public_fallback_progress", "position": 5, "positions": 32}
+{"event": "public_fallback_progress", "position": 6, "positions": 32}
+{"event": "public_fallback_progress", "position": 7, "positions": 32}
+{"event": "public_fallback_progress", "position": 8, "positions": 32}
+{"event": "public_fallback_progress", "position": 9, "positions": 32}
+{"event": "public_fallback_progress", "position": 10, "positions": 32}
+{"event": "public_fallback_progress", "position": 11, "positions": 32}
+{"event": "public_fallback_progress", "position": 12, "positions": 32}
+{"event": "public_fallback_progress", "position": 13, "positions": 32}
+{"event": "public_fallback_progress", "position": 14, "positions": 32}
+{"event": "public_fallback_progress", "position": 15, "positions": 32}
+{"event": "public_fallback_progress", "position": 16, "positions": 32}
+{"event": "public_fallback_progress", "position": 17, "positions": 32}
+{"event": "public_fallback_progress", "position": 18, "positions": 32}
+{"event": "public_fallback_progress", "position": 19, "positions": 32}
+{"event": "public_fallback_progress", "position": 20, "positions": 32}
+{"event": "public_fallback_progress", "position": 21, "positions": 32}
+{"event": "public_fallback_progress", "position": 22, "positions": 32}
+{"event": "public_fallback_progress", "position": 23, "positions": 32}
+{"event": "public_fallback_progress", "position": 24, "positions": 32}
+{"event": "public_fallback_progress", "position": 25, "positions": 32}
+{"event": "public_fallback_progress", "position": 26, "positions": 32}
+{"event": "public_fallback_progress", "position": 27, "positions": 32}
+{"event": "public_fallback_progress", "position": 28, "positions": 32}
+{"event": "public_fallback_progress", "position": 29, "positions": 32}
+{"event": "public_fallback_progress", "position": 30, "positions": 32}
+{"event": "public_fallback_progress", "position": 31, "positions": 32}
+{"codebook_entries": 494, "completed": 16, "event": "known_prompt_progress", "total": 16}
+{"event": "budget_complete", "fallback_token_top1": 0.90283203125, "hybrid_full_prompt_exact": 0.109375, "hybrid_token_top1": 0.926025390625, "known_prompt_queries": 16, "token_coverage": 0.081298828125}
+{"codebook_entries": 1805, "completed": 64, "event": "known_prompt_progress", "total": 64}
+{"event": "budget_complete", "fallback_token_top1": 0.90283203125, "hybrid_full_prompt_exact": 0.203125, "hybrid_token_top1": 0.950439453125, "known_prompt_queries": 64, "token_coverage": 0.200927734375}
+{"codebook_entries": 3351, "completed": 128, "event": "known_prompt_progress", "total": 256}
+{"codebook_entries": 4806, "completed": 192, "event": "known_prompt_progress", "total": 256}
+{"codebook_entries": 6177, "completed": 256, "event": "known_prompt_progress", "total": 256}
+{"event": "budget_complete", "fallback_token_top1": 0.90283203125, "hybrid_full_prompt_exact": 0.46875, "hybrid_token_top1": 0.976806640625, "known_prompt_queries": 256, "token_coverage": 0.329345703125}
+{"codebook_entries": 7505, "completed": 320, "event": "known_prompt_progress", "total": 1024}
+{"codebook_entries": 8848, "completed": 384, "event": "known_prompt_progress", "total": 1024}
+{"codebook_entries": 10123, "completed": 448, "event": "known_prompt_progress", "total": 1024}
+{"codebook_entries": 11339, "completed": 512, "event": "known_prompt_progress", "total": 1024}
+{"codebook_entries": 12564, "completed": 576, "event": "known_prompt_progress", "total": 1024}
+{"codebook_entries": 13748, "completed": 640, "event": "known_prompt_progress", "total": 1024}
+{"codebook_entries": 14925, "completed": 704, "event": "known_prompt_progress", "total": 1024}
+{"codebook_entries": 16078, "completed": 768, "event": "known_prompt_progress", "total": 1024}
+{"codebook_entries": 17217, "completed": 832, "event": "known_prompt_progress", "total": 1024}
+{"codebook_entries": 18340, "completed": 896, "event": "known_prompt_progress", "total": 1024}
+{"codebook_entries": 19427, "completed": 960, "event": "known_prompt_progress", "total": 1024}
+{"codebook_entries": 20463, "completed": 1024, "event": "known_prompt_progress", "total": 1024}
+{"event": "budget_complete", "fallback_token_top1": 0.90283203125, "hybrid_full_prompt_exact": 0.578125, "hybrid_token_top1": 0.9833984375, "known_prompt_queries": 1024, "token_coverage": 0.483154296875}
+{"codebook_entries": 21518, "completed": 1088, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 22543, "completed": 1152, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 23606, "completed": 1216, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 24643, "completed": 1280, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 25646, "completed": 1344, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 26656, "completed": 1408, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 27661, "completed": 1472, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 28679, "completed": 1536, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 29643, "completed": 1600, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 30584, "completed": 1664, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 31480, "completed": 1728, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 32438, "completed": 1792, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 33381, "completed": 1856, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 34275, "completed": 1920, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 35182, "completed": 1984, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 36121, "completed": 2048, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 36942, "completed": 2112, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 37807, "completed": 2176, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 38666, "completed": 2240, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 39562, "completed": 2304, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 40437, "completed": 2368, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 41285, "completed": 2432, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 42138, "completed": 2496, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 42941, "completed": 2560, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 43752, "completed": 2624, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 44553, "completed": 2688, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 45357, "completed": 2752, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 46148, "completed": 2816, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 46917, "completed": 2880, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 47675, "completed": 2944, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 48443, "completed": 3008, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 49227, "completed": 3072, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 50013, "completed": 3136, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 50757, "completed": 3200, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 51493, "completed": 3264, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 52229, "completed": 3328, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 52964, "completed": 3392, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 53720, "completed": 3456, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 54446, "completed": 3520, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 55204, "completed": 3584, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 55937, "completed": 3648, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 56696, "completed": 3712, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 57480, "completed": 3776, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 58145, "completed": 3840, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 58816, "completed": 3904, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 59534, "completed": 3968, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 60231, "completed": 4032, "event": "known_prompt_progress", "total": 4096}
+{"codebook_entries": 60889, "completed": 4096, "event": "known_prompt_progress", "total": 4096}
+{"event": "budget_complete", "fallback_token_top1": 0.90283203125, "hybrid_full_prompt_exact": 0.75, "hybrid_token_top1": 0.9912109375, "known_prompt_queries": 4096, "token_coverage": 0.669677734375}
+{"event": "complete", "output": "/home/user/research-vault/projects/P050/ndss-2027/results/stip_chosen_codebook_hybrid_private_seed20260802_4096q_128x32.json"}

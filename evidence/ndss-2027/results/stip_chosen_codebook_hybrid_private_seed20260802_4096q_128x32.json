@@ -1,0 +1,556 @@
+{
+  "attack_scope": "known tokenizer and chosen-prompt transcript access; victim embedding weights are not read by the attacker",
+  "corpus_arrow_files": [
+    "/home/user/.cache/huggingface/datasets/BeIR___scifact/corpus/0.0.0/b3b5335604bf5ee3c4447671af975ea25143d4f5/scifact-corpus.arrow",
+    "/home/user/.cache/huggingface/datasets/BeIR___nfcorpus/corpus/0.0.0/b5026a0e96e8a7ac4f95f482a596389289d46269/nfcorpus-corpus.arrow"
+  ],
+  "document_split": {
+    "exact_prompt_overlap": 0,
+    "known_documents": 6171,
+    "target_documents": 2645
+  },
+  "experiment": "chosen-prompt orbit codebook attack on STIP final TEE boundary",
+  "invariance_audit": {
+    "duplicate_observations": 70183,
+    "known_max_abs_error": 8.940696716308594e-08,
+    "repeat_max_abs_error": 8.940696716308594e-08,
+    "target_max_abs_error": 5.960464477539063e-08
+  },
+  "known_budgets": [
+    16,
+    64,
+    256,
+    1024,
+    4096
+  ],
+  "membership_threshold": 0.99999,
+  "model": "gpt2",
+  "non_claim": "does not assign plaintext labels for a completely private, unaligned tokenizer",
+  "paper_boundary_formula": "f(A) = alpha Emb(A) pi",
+  "private_embedding": {
+    "checkpoint": "/home/user/research-vault/projects/P050/ndss-2027/checkpoints/stip_independent_embedding_freq_f025_seed20260802.pt",
+    "checkpoint_sha256": "f6b8ed7832bc194f6bea67918ec105f9708920d2352fa636213dd37c0544a8ee",
+    "kind": "unknown_to_attacker_partial_private_embedding",
+    "seed": 20260802,
+    "selected_rows": 4443,
+    "selection": "frequency",
+    "train_fraction_of_active": 0.25
+  },
+  "prompt_length": 32,
+  "results": [
+    {
+      "codebook_full_prompt_exact": 0.0,
+      "codebook_token_top1": 0.081298828125,
+      "conditional_accuracy_given_coverage": 1.0,
+      "dictionary_entries_by_position": [
+        14,
+        16,
+        16,
+        15,
+        16,
+        15,
+        16,
+        14,
+        16,
+        15,
+        15,
+        15,
+        16,
+        15,
+        15,
+        16,
+        16,
+        16,
+        15,
+        16,
+        14,
+        16,
+        16,
+        16,
+        16,
+        16,
+        14,
+        16,
+        15,
+        16,
+        15,
+        16
+      ],
+      "dictionary_entries_mean": 15.4375,
+      "exact_membership_rate": 0.081298828125,
+      "examples": [
+        {
+          "covered_tokens": 1,
+          "prediction": "<contains-unmapped-token>",
+          "target": "ine cortex and demonstrate that Snail regulates their survival, self-renewal, and differentiation into intermediate progenitors and neurons via two distinct and separable",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 3,
+          "prediction": "<contains-unmapped-token>",
+          "target": "array Analysis (fRMA)--has recently been developed. This algorithm allows the user to preprocess arrays individually while retaining the advantages of multi-array preprocessing",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 1,
+          "prediction": "<contains-unmapped-token>",
+          "target": " to accurately measure Lp(a) concentrations in plasma. The large intermethod variation in Lp(a) values has made it difficult to compare data from",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 2,
+          "prediction": "<contains-unmapped-token>",
+          "target": "eno hypothesis and advances our hypothesis that development of endothelial cell dysfunction represents a common pathophysiological pathway of diabetic complications. Specifically, the ability of glucose to scaven",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 5,
+          "prediction": "<contains-unmapped-token>",
+          "target": "3.3%; P-value <0.001) for a median daily dose of 500 mL of tea (2\u20133 cups). This is a relative",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 1,
+          "prediction": "<contains-unmapped-token>",
+          "target": " by medical records and pathology reports. RESULTS During 2.3 million person-years of follow-up, we identified 6,220 women with type 2 diabetes",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 4,
+          "prediction": "<contains-unmapped-token>",
+          "target": " vary and are frequently dependent on an accurate diagnosis of the problem by a physician. These differences in the definition of COPD can have large effects on the estimates of",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 3,
+          "prediction": "<contains-unmapped-token>",
+          "target": " by the Institutional Review Board after a total of 13 individuals had completed the study because of the severity of reactions within the group of patients with a history of depression",
+          "tokens": 32
+        }
+      ],
+      "fallback_full_prompt_exact": 0.0546875,
+      "fallback_token_top1": 0.90283203125,
+      "full_prompt_covered": 0.0,
+      "hybrid_full_prompt_exact": 0.109375,
+      "hybrid_token_top1": 0.926025390625,
+      "known_prompt_queries": 16,
+      "membership_coverage_agreement": 1.0,
+      "prompts": 128,
+      "token_coverage": 0.081298828125,
+      "tokens": 4096
+    },
+    {
+      "codebook_full_prompt_exact": 0.0,
+      "codebook_token_top1": 0.200927734375,
+      "conditional_accuracy_given_coverage": 1.0,
+      "dictionary_entries_by_position": [
+        57,
+        59,
+        56,
+        51,
+        58,
+        59,
+        57,
+        53,
+        59,
+        52,
+        56,
+        59,
+        51,
+        54,
+        53,
+        56,
+        60,
+        59,
+        60,
+        53,
+        55,
+        55,
+        55,
+        56,
+        61,
+        57,
+        54,
+        59,
+        59,
+        57,
+        56,
+        59
+      ],
+      "dictionary_entries_mean": 56.40625,
+      "exact_membership_rate": 0.200927734375,
+      "examples": [
+        {
+          "covered_tokens": 8,
+          "prediction": "<contains-unmapped-token>",
+          "target": "ine cortex and demonstrate that Snail regulates their survival, self-renewal, and differentiation into intermediate progenitors and neurons via two distinct and separable",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 4,
+          "prediction": "<contains-unmapped-token>",
+          "target": "array Analysis (fRMA)--has recently been developed. This algorithm allows the user to preprocess arrays individually while retaining the advantages of multi-array preprocessing",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 5,
+          "prediction": "<contains-unmapped-token>",
+          "target": " to accurately measure Lp(a) concentrations in plasma. The large intermethod variation in Lp(a) values has made it difficult to compare data from",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 8,
+          "prediction": "<contains-unmapped-token>",
+          "target": "eno hypothesis and advances our hypothesis that development of endothelial cell dysfunction represents a common pathophysiological pathway of diabetic complications. Specifically, the ability of glucose to scaven",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 8,
+          "prediction": "<contains-unmapped-token>",
+          "target": "3.3%; P-value <0.001) for a median daily dose of 500 mL of tea (2\u20133 cups). This is a relative",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 8,
+          "prediction": "<contains-unmapped-token>",
+          "target": " by medical records and pathology reports. RESULTS During 2.3 million person-years of follow-up, we identified 6,220 women with type 2 diabetes",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 11,
+          "prediction": "<contains-unmapped-token>",
+          "target": " vary and are frequently dependent on an accurate diagnosis of the problem by a physician. These differences in the definition of COPD can have large effects on the estimates of",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 8,
+          "prediction": "<contains-unmapped-token>",
+          "target": " by the Institutional Review Board after a total of 13 individuals had completed the study because of the severity of reactions within the group of patients with a history of depression",
+          "tokens": 32
+        }
+      ],
+      "fallback_full_prompt_exact": 0.0546875,
+      "fallback_token_top1": 0.90283203125,
+      "full_prompt_covered": 0.0,
+      "hybrid_full_prompt_exact": 0.203125,
+      "hybrid_token_top1": 0.950439453125,
+      "known_prompt_queries": 64,
+      "membership_coverage_agreement": 1.0,
+      "prompts": 128,
+      "token_coverage": 0.200927734375,
+      "tokens": 4096
+    },
+    {
+      "codebook_full_prompt_exact": 0.0,
+      "codebook_token_top1": 0.329345703125,
+      "conditional_accuracy_given_coverage": 1.0,
+      "dictionary_entries_by_position": [
+        192,
+        198,
+        196,
+        188,
+        199,
+        191,
+        201,
+        184,
+        200,
+        188,
+        198,
+        190,
+        176,
+        193,
+        195,
+        193,
+        186,
+        194,
+        206,
+        188,
+        198,
+        200,
+        188,
+        190,
+        193,
+        190,
+        195,
+        194,
+        191,
+        196,
+        186,
+        200
+      ],
+      "dictionary_entries_mean": 193.03125,
+      "exact_membership_rate": 0.329345703125,
+      "examples": [
+        {
+          "covered_tokens": 13,
+          "prediction": "<contains-unmapped-token>",
+          "target": "3.3%; P-value <0.001) for a median daily dose of 500 mL of tea (2\u20133 cups). This is a relative",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 13,
+          "prediction": "<contains-unmapped-token>",
+          "target": " by medical records and pathology reports. RESULTS During 2.3 million person-years of follow-up, we identified 6,220 women with type 2 diabetes",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 14,
+          "prediction": "<contains-unmapped-token>",
+          "target": " vary and are frequently dependent on an accurate diagnosis of the problem by a physician. These differences in the definition of COPD can have large effects on the estimates of",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 14,
+          "prediction": "<contains-unmapped-token>",
+          "target": " by the Institutional Review Board after a total of 13 individuals had completed the study because of the severity of reactions within the group of patients with a history of depression",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 11,
+          "prediction": "<contains-unmapped-token>",
+          "target": "atic cells to induced pluripotent stem cells (iPSCs) resets their identity back to an embryonic age and, thus, presents a significant hurdle for",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 9,
+          "prediction": "<contains-unmapped-token>",
+          "target": " lymphocytes resulted in a lethal autoimmune syndrome with excessive serum proinflammatory cytokines but also impaired antigen receptor-induced proliferation of B and T cells. Egr2",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 11,
+          "prediction": "<contains-unmapped-token>",
+          "target": "iglyceridemia is now accepted as a risk factor for coronary heart disease, although the mechanism behind the increased risk is not well understood. The present study was",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 6,
+          "prediction": "<contains-unmapped-token>",
+          "target": "010 (cyclophosphamide, doxorubicin, vincristine, and prednisone [CHOP] v CHOP-rit",
+          "tokens": 32
+        }
+      ],
+      "fallback_full_prompt_exact": 0.0546875,
+      "fallback_token_top1": 0.90283203125,
+      "full_prompt_covered": 0.0,
+      "hybrid_full_prompt_exact": 0.46875,
+      "hybrid_token_top1": 0.976806640625,
+      "known_prompt_queries": 256,
+      "membership_coverage_agreement": 1.0,
+      "prompts": 128,
+      "token_coverage": 0.329345703125,
+      "tokens": 4096
+    },
+    {
+      "codebook_full_prompt_exact": 0.0,
+      "codebook_token_top1": 0.483154296875,
+      "conditional_accuracy_given_coverage": 1.0,
+      "dictionary_entries_by_position": [
+        624,
+        645,
+        636,
+        642,
+        657,
+        643,
+        642,
+        658,
+        617,
+        642,
+        626,
+        636,
+        617,
+        639,
+        654,
+        635,
+        646,
+        645,
+        656,
+        633,
+        655,
+        680,
+        629,
+        625,
+        630,
+        642,
+        621,
+        633,
+        627,
+        644,
+        640,
+        644
+      ],
+      "dictionary_entries_mean": 639.46875,
+      "exact_membership_rate": 0.483154296875,
+      "examples": [
+        {
+          "covered_tokens": 21,
+          "prediction": "<contains-unmapped-token>",
+          "target": "3.3%; P-value <0.001) for a median daily dose of 500 mL of tea (2\u20133 cups). This is a relative",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 17,
+          "prediction": "<contains-unmapped-token>",
+          "target": " by medical records and pathology reports. RESULTS During 2.3 million person-years of follow-up, we identified 6,220 women with type 2 diabetes",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 20,
+          "prediction": "<contains-unmapped-token>",
+          "target": " vary and are frequently dependent on an accurate diagnosis of the problem by a physician. These differences in the definition of COPD can have large effects on the estimates of",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 20,
+          "prediction": "<contains-unmapped-token>",
+          "target": " by the Institutional Review Board after a total of 13 individuals had completed the study because of the severity of reactions within the group of patients with a history of depression",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 15,
+          "prediction": "<contains-unmapped-token>",
+          "target": "atic cells to induced pluripotent stem cells (iPSCs) resets their identity back to an embryonic age and, thus, presents a significant hurdle for",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 16,
+          "prediction": "<contains-unmapped-token>",
+          "target": " lymphocytes resulted in a lethal autoimmune syndrome with excessive serum proinflammatory cytokines but also impaired antigen receptor-induced proliferation of B and T cells. Egr2",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 17,
+          "prediction": "<contains-unmapped-token>",
+          "target": "iglyceridemia is now accepted as a risk factor for coronary heart disease, although the mechanism behind the increased risk is not well understood. The present study was",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 14,
+          "prediction": "<contains-unmapped-token>",
+          "target": "010 (cyclophosphamide, doxorubicin, vincristine, and prednisone [CHOP] v CHOP-rit",
+          "tokens": 32
+        }
+      ],
+      "fallback_full_prompt_exact": 0.0546875,
+      "fallback_token_top1": 0.90283203125,
+      "full_prompt_covered": 0.0,
+      "hybrid_full_prompt_exact": 0.578125,
+      "hybrid_token_top1": 0.9833984375,
+      "known_prompt_queries": 1024,
+      "membership_coverage_agreement": 1.0,
+      "prompts": 128,
+      "token_coverage": 0.483154296875,
+      "tokens": 4096
+    },
+    {
+      "codebook_full_prompt_exact": 0.0,
+      "codebook_token_top1": 0.669677734375,
+      "conditional_accuracy_given_coverage": 1.0,
+      "dictionary_entries_by_position": [
+        1929,
+        1919,
+        1924,
+        1927,
+        1884,
+        1914,
+        1909,
+        1941,
+        1883,
+        1883,
+        1879,
+        1904,
+        1846,
+        1915,
+        1948,
+        1924,
+        1901,
+        1901,
+        1940,
+        1930,
+        1901,
+        1905,
+        1875,
+        1865,
+        1901,
+        1919,
+        1906,
+        1872,
+        1883,
+        1895,
+        1868,
+        1898
+      ],
+      "dictionary_entries_mean": 1902.78125,
+      "exact_membership_rate": 0.669677734375,
+      "examples": [
+        {
+          "covered_tokens": 24,
+          "prediction": "<contains-unmapped-token>",
+          "target": " by medical records and pathology reports. RESULTS During 2.3 million person-years of follow-up, we identified 6,220 women with type 2 diabetes",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 23,
+          "prediction": "<contains-unmapped-token>",
+          "target": " vary and are frequently dependent on an accurate diagnosis of the problem by a physician. These differences in the definition of COPD can have large effects on the estimates of",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 21,
+          "prediction": "<contains-unmapped-token>",
+          "target": " by the Institutional Review Board after a total of 13 individuals had completed the study because of the severity of reactions within the group of patients with a history of depression",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 25,
+          "prediction": "<contains-unmapped-token>",
+          "target": "iglyceridemia is now accepted as a risk factor for coronary heart disease, although the mechanism behind the increased risk is not well understood. The present study was",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 21,
+          "prediction": "<contains-unmapped-token>",
+          "target": " carried out in 94 72-h samples. The highest mean excretion of the most abundant compound, enterolactone, was found in the macrobiotic",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 12,
+          "prediction": "<contains-unmapped-token>",
+          "target": "ICIPANTS Adults presenting with acute cough. MAIN OUTCOME MEASURES Pneumonia as determined by radiologists, who were blind to all",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 23,
+          "prediction": "<contains-unmapped-token>",
+          "target": " (Nlrp12) are associated with periodic fever syndromes and atopic dermatitis in humans. Here, we have demonstrated a crucial role for NL",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 19,
+          "prediction": "<contains-unmapped-token>",
+          "target": " (27%, vs 12%, p = 0.009), and had undergone adenoidectomy and or tympanostomy compared with the controls (48",
+          "tokens": 32
+        }
+      ],
+      "fallback_full_prompt_exact": 0.0546875,
+      "fallback_token_top1": 0.90283203125,
+      "full_prompt_covered": 0.0,
+      "hybrid_full_prompt_exact": 0.75,
+      "hybrid_token_top1": 0.9912109375,
+      "known_prompt_queries": 4096,
+      "membership_coverage_agreement": 1.0,
+      "prompts": 128,
+      "token_coverage": 0.669677734375,
+      "tokens": 4096
+    }
+  ],
+  "runtime": {
+    "elapsed_seconds": 34.36407017707825,
+    "host": "user-PowerEdge-T440",
+    "python": "3.10.12",
+    "threads": 16,
+    "torch": "2.7.1+cu126"
+  },
+  "seed": 20260802,
+  "target_prompts": 128
+}

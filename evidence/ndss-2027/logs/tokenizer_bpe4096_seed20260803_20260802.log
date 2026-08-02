@@ -1,0 +1,18 @@
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 3149.23it/s]
+
+
+
+{"event": "tokenizer_ready", "mode": "bpe", "selected_rows": 4096, "tokens": 300000, "vocabulary": 4096}
+`loss_type=None` was set in the config but it is unrecognized. Using the default loss: `ForCausalLMLoss`.
+{"elapsed": 0.407, "event": "train_progress", "loss": 8.678186416625977, "recent": 8.678186416625977, "step": 1}
+{"elapsed": 8.371, "event": "train_progress", "loss": 9.76486873626709, "recent": 9.123375797271729, "step": 10}
+{"elapsed": 16.833, "event": "train_progress", "loss": 9.326663970947266, "recent": 9.328936958312989, "step": 20}
+{"elapsed": 25.324, "event": "train_progress", "loss": 8.545682907104492, "recent": 9.17251672744751, "step": 30}
+{"elapsed": 33.677, "event": "train_progress", "loss": 8.293784141540527, "recent": 9.080189228057861, "step": 40}
+{"elapsed": 42.091, "event": "train_progress", "loss": 8.97467041015625, "recent": 9.12011661529541, "step": 50}
+{"elapsed": 51.39, "event": "train_progress", "loss": 8.659957885742188, "recent": 8.810406684875488, "step": 60}
+{"elapsed": 60.973, "event": "train_progress", "loss": 8.6727933883667, "recent": 8.624113607406617, "step": 70}
+{"elapsed": 69.532, "event": "train_progress", "loss": 8.41046142578125, "recent": 8.779487705230713, "step": 80}
+{"elapsed": 78.153, "event": "train_progress", "loss": 8.245420455932617, "recent": 8.458372545242309, "step": 90}
+{"elapsed": 88.728, "event": "train_progress", "loss": 8.738526344299316, "recent": 8.65293025970459, "step": 100}
+{"coverage": [{"additional_rows_revealed": 0, "full_prompt_exact": 0.0, "known_prompt_tokens": 0, "known_rows": 0, "known_token_top1": 0.0, "private_vocabulary_coverage": 0.0, "token_top1": 0.0}, {"additional_rows_revealed": 1024, "full_prompt_exact": 0.0, "known_prompt_tokens": 782, "known_rows": 1024, "known_token_top1": 0.9360613822937012, "private_vocabulary_coverage": 0.25, "token_errors": 292, "token_top1": 0.71484375}, {"additional_rows_revealed": 2048, "full_prompt_exact": 0.09375, "known_prompt_tokens": 899, "known_rows": 2048, "known_token_top1": 0.9365962147712708, "private_vocabulary_coverage": 0.5, "token_errors": 182, "token_top1": 0.822265625}, {"additional_rows_revealed": 3072, "full_prompt_exact": 0.25, "known_prompt_tokens": 980, "known_rows": 3072, "known_token_top1": 0.9387755393981934, "private_vocabulary_coverage": 0.75, "token_errors": 104, "token_top1": 0.8984375}, {"additional_rows_revealed": 4096, "full_prompt_exact": 0.4375, "known_prompt_tokens": 1024, "known_rows": 4096, "known_token_top1": 0.93359375, "private_vocabulary_coverage": 1.0, "token_errors": 68, "token_top1": 0.93359375}], "event": "complete", "output": "/home/user/research-vault/projects/P050/ndss-2027/results/tokenizer_bpe4096_seed20260803_20260802.json"}

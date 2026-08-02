@@ -1,0 +1,556 @@
+{
+  "attack_scope": "known tokenizer and chosen-prompt transcript access; victim embedding weights are not read by the attacker",
+  "corpus_arrow_files": [
+    "/home/user/.cache/huggingface/datasets/BeIR___scifact/corpus/0.0.0/b3b5335604bf5ee3c4447671af975ea25143d4f5/scifact-corpus.arrow",
+    "/home/user/.cache/huggingface/datasets/BeIR___nfcorpus/corpus/0.0.0/b5026a0e96e8a7ac4f95f482a596389289d46269/nfcorpus-corpus.arrow"
+  ],
+  "document_split": {
+    "exact_prompt_overlap": 0,
+    "known_documents": 6171,
+    "target_documents": 2645
+  },
+  "experiment": "chosen-prompt orbit codebook attack on STIP final TEE boundary",
+  "invariance_audit": {
+    "duplicate_observations": 70103,
+    "known_max_abs_error": 8.940696716308594e-08,
+    "repeat_max_abs_error": 8.940696716308594e-08,
+    "target_max_abs_error": 8.940696716308594e-08
+  },
+  "known_budgets": [
+    16,
+    64,
+    256,
+    1024,
+    4096
+  ],
+  "membership_threshold": 0.99999,
+  "model": "gpt2",
+  "non_claim": "does not assign plaintext labels for a completely private, unaligned tokenizer",
+  "paper_boundary_formula": "f(A) = alpha Emb(A) pi",
+  "private_embedding": {
+    "checkpoint": "/home/user/research-vault/projects/P050/ndss-2027/checkpoints/stip_independent_embedding_frequency_f025_seed20260804.pt",
+    "checkpoint_sha256": "78cd2fb61e8aa5ecab05ed35ab0646a2106e625ba58b4ba38d6ba3a378a1a613",
+    "kind": "unknown_to_attacker_partial_private_embedding",
+    "seed": 20260804,
+    "selected_rows": 4462,
+    "selection": "frequency",
+    "train_fraction_of_active": 0.25
+  },
+  "prompt_length": 32,
+  "results": [
+    {
+      "codebook_full_prompt_exact": 0.0,
+      "codebook_token_top1": 0.080078125,
+      "conditional_accuracy_given_coverage": 1.0,
+      "dictionary_entries_by_position": [
+        16,
+        16,
+        15,
+        14,
+        16,
+        16,
+        15,
+        15,
+        16,
+        15,
+        16,
+        15,
+        15,
+        15,
+        16,
+        14,
+        16,
+        16,
+        15,
+        16,
+        14,
+        15,
+        16,
+        15,
+        15,
+        16,
+        16,
+        16,
+        16,
+        15,
+        15,
+        16
+      ],
+      "dictionary_entries_mean": 15.40625,
+      "exact_membership_rate": 0.080078125,
+      "examples": [
+        {
+          "covered_tokens": 4,
+          "prediction": "<contains-unmapped-token>",
+          "target": " use further increased the risk. Eight studies investigated the association between migraine and myocardial infarction (1.12, 0.95 to 1.32",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 4,
+          "prediction": "<contains-unmapped-token>",
+          "target": "last differentiation of bone marrow-derived monocytes with an EC(50) of 7.5 nM. PC-3 cells, a human prostate cancer cell",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 0,
+          "prediction": "<contains-unmapped-token>",
+          "target": "-relay system for eukaryotic 2-thiouridine biogenesis at tRNA wobble positions\nThe wobble modification in tRNAs,",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 5,
+          "prediction": "<contains-unmapped-token>",
+          "target": "\u22129). Notably, all of the identified PPM1D PTVs were mosaic in lymphocyte DNA and clustered within a 370-base-pair region",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 2,
+          "prediction": "<contains-unmapped-token>",
+          "target": "permatogenesis-specific proteins vital for DNA compaction, chromosome segregation, and fertility. Unexpected roles in spermatogenesis were also detected for factors involved",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 1,
+          "prediction": "<contains-unmapped-token>",
+          "target": " epigenetic events can drive reprogramming to naive pluripotency or if distinct chromatin states are instead simply a reflection of discrete pluripotent states.",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 1,
+          "prediction": "<contains-unmapped-token>",
+          "target": " for CD that will probably evolve through methodical steps towards integrating research on all the components involved in the pathogenesis of CD. This holistic and global approach may aid",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 3,
+          "prediction": "<contains-unmapped-token>",
+          "target": " from 35- and 75-year-old males. Our study therefore demonstrates the applicability of SCNT for adult human cells and supports further investigation of SCNT",
+          "tokens": 32
+        }
+      ],
+      "fallback_full_prompt_exact": 0.0625,
+      "fallback_token_top1": 0.88623046875,
+      "full_prompt_covered": 0.0,
+      "hybrid_full_prompt_exact": 0.1015625,
+      "hybrid_token_top1": 0.912353515625,
+      "known_prompt_queries": 16,
+      "membership_coverage_agreement": 1.0,
+      "prompts": 128,
+      "token_coverage": 0.080078125,
+      "tokens": 4096
+    },
+    {
+      "codebook_full_prompt_exact": 0.0,
+      "codebook_token_top1": 0.205322265625,
+      "conditional_accuracy_given_coverage": 1.0,
+      "dictionary_entries_by_position": [
+        60,
+        56,
+        52,
+        58,
+        59,
+        51,
+        55,
+        56,
+        56,
+        54,
+        62,
+        59,
+        56,
+        55,
+        58,
+        51,
+        59,
+        55,
+        58,
+        55,
+        53,
+        55,
+        55,
+        55,
+        56,
+        61,
+        62,
+        49,
+        61,
+        58,
+        57,
+        60
+      ],
+      "dictionary_entries_mean": 56.46875,
+      "exact_membership_rate": 0.205322265625,
+      "examples": [
+        {
+          "covered_tokens": 10,
+          "prediction": "<contains-unmapped-token>",
+          "target": " use further increased the risk. Eight studies investigated the association between migraine and myocardial infarction (1.12, 0.95 to 1.32",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 6,
+          "prediction": "<contains-unmapped-token>",
+          "target": "last differentiation of bone marrow-derived monocytes with an EC(50) of 7.5 nM. PC-3 cells, a human prostate cancer cell",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 2,
+          "prediction": "<contains-unmapped-token>",
+          "target": "-relay system for eukaryotic 2-thiouridine biogenesis at tRNA wobble positions\nThe wobble modification in tRNAs,",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 8,
+          "prediction": "<contains-unmapped-token>",
+          "target": "\u22129). Notably, all of the identified PPM1D PTVs were mosaic in lymphocyte DNA and clustered within a 370-base-pair region",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 5,
+          "prediction": "<contains-unmapped-token>",
+          "target": "permatogenesis-specific proteins vital for DNA compaction, chromosome segregation, and fertility. Unexpected roles in spermatogenesis were also detected for factors involved",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 3,
+          "prediction": "<contains-unmapped-token>",
+          "target": " epigenetic events can drive reprogramming to naive pluripotency or if distinct chromatin states are instead simply a reflection of discrete pluripotent states.",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 4,
+          "prediction": "<contains-unmapped-token>",
+          "target": " for CD that will probably evolve through methodical steps towards integrating research on all the components involved in the pathogenesis of CD. This holistic and global approach may aid",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 2,
+          "prediction": "<contains-unmapped-token>",
+          "target": " obstruction and on day 15. Rats were sacrificed on day 15 and histopathological examinations were done. We biochemically assessed oxidative stress markers (myeloper",
+          "tokens": 32
+        }
+      ],
+      "fallback_full_prompt_exact": 0.0625,
+      "fallback_token_top1": 0.88623046875,
+      "full_prompt_covered": 0.0,
+      "hybrid_full_prompt_exact": 0.21875,
+      "hybrid_token_top1": 0.946044921875,
+      "known_prompt_queries": 64,
+      "membership_coverage_agreement": 1.0,
+      "prompts": 128,
+      "token_coverage": 0.205322265625,
+      "tokens": 4096
+    },
+    {
+      "codebook_full_prompt_exact": 0.0,
+      "codebook_token_top1": 0.336181640625,
+      "conditional_accuracy_given_coverage": 1.0,
+      "dictionary_entries_by_position": [
+        202,
+        198,
+        191,
+        193,
+        201,
+        190,
+        203,
+        189,
+        189,
+        198,
+        201,
+        198,
+        180,
+        199,
+        198,
+        185,
+        201,
+        194,
+        199,
+        190,
+        184,
+        190,
+        177,
+        190,
+        181,
+        194,
+        195,
+        186,
+        191,
+        197,
+        203,
+        191
+      ],
+      "dictionary_entries_mean": 193.0625,
+      "exact_membership_rate": 0.336181640625,
+      "examples": [
+        {
+          "covered_tokens": 14,
+          "prediction": "<contains-unmapped-token>",
+          "target": " use further increased the risk. Eight studies investigated the association between migraine and myocardial infarction (1.12, 0.95 to 1.32",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 13,
+          "prediction": "<contains-unmapped-token>",
+          "target": "last differentiation of bone marrow-derived monocytes with an EC(50) of 7.5 nM. PC-3 cells, a human prostate cancer cell",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 3,
+          "prediction": "<contains-unmapped-token>",
+          "target": "-relay system for eukaryotic 2-thiouridine biogenesis at tRNA wobble positions\nThe wobble modification in tRNAs,",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 11,
+          "prediction": "<contains-unmapped-token>",
+          "target": "\u22129). Notably, all of the identified PPM1D PTVs were mosaic in lymphocyte DNA and clustered within a 370-base-pair region",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 10,
+          "prediction": "<contains-unmapped-token>",
+          "target": "permatogenesis-specific proteins vital for DNA compaction, chromosome segregation, and fertility. Unexpected roles in spermatogenesis were also detected for factors involved",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 5,
+          "prediction": "<contains-unmapped-token>",
+          "target": " epigenetic events can drive reprogramming to naive pluripotency or if distinct chromatin states are instead simply a reflection of discrete pluripotent states.",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 9,
+          "prediction": "<contains-unmapped-token>",
+          "target": " obstruction and on day 15. Rats were sacrificed on day 15 and histopathological examinations were done. We biochemically assessed oxidative stress markers (myeloper",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 11,
+          "prediction": "<contains-unmapped-token>",
+          "target": " RNA polymerase II binding to both promoter and distal sequences.\nCyclin D1 expression is deregulated by chromosome translocation in mantle cell lymphoma",
+          "tokens": 32
+        }
+      ],
+      "fallback_full_prompt_exact": 0.0625,
+      "fallback_token_top1": 0.88623046875,
+      "full_prompt_covered": 0.0,
+      "hybrid_full_prompt_exact": 0.390625,
+      "hybrid_token_top1": 0.969970703125,
+      "known_prompt_queries": 256,
+      "membership_coverage_agreement": 1.0,
+      "prompts": 128,
+      "token_coverage": 0.336181640625,
+      "tokens": 4096
+    },
+    {
+      "codebook_full_prompt_exact": 0.0,
+      "codebook_token_top1": 0.4794921875,
+      "conditional_accuracy_given_coverage": 1.0,
+      "dictionary_entries_by_position": [
+        644,
+        648,
+        651,
+        619,
+        647,
+        670,
+        656,
+        648,
+        640,
+        655,
+        654,
+        628,
+        627,
+        654,
+        625,
+        646,
+        645,
+        651,
+        662,
+        622,
+        640,
+        646,
+        626,
+        634,
+        617,
+        639,
+        647,
+        644,
+        633,
+        664,
+        647,
+        652
+      ],
+      "dictionary_entries_mean": 643.15625,
+      "exact_membership_rate": 0.4794921875,
+      "examples": [
+        {
+          "covered_tokens": 18,
+          "prediction": "<contains-unmapped-token>",
+          "target": "last differentiation of bone marrow-derived monocytes with an EC(50) of 7.5 nM. PC-3 cells, a human prostate cancer cell",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 15,
+          "prediction": "<contains-unmapped-token>",
+          "target": "\u22129). Notably, all of the identified PPM1D PTVs were mosaic in lymphocyte DNA and clustered within a 370-base-pair region",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 13,
+          "prediction": "<contains-unmapped-token>",
+          "target": "permatogenesis-specific proteins vital for DNA compaction, chromosome segregation, and fertility. Unexpected roles in spermatogenesis were also detected for factors involved",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 16,
+          "prediction": "<contains-unmapped-token>",
+          "target": " obstruction and on day 15. Rats were sacrificed on day 15 and histopathological examinations were done. We biochemically assessed oxidative stress markers (myeloper",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 16,
+          "prediction": "<contains-unmapped-token>",
+          "target": " used in addition, a significant reduction in the number of contaminated sites was observed. The study suggests that there is a need to better understand and promote effective hygiene procedures",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 16,
+          "prediction": "<contains-unmapped-token>",
+          "target": " occurs 3 to 6 hours after eating beef, pork, or lamb. We sought to determine whether IgE antibody to \u03b1-Gal was present in sera of",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 14,
+          "prediction": "<contains-unmapped-token>",
+          "target": " prospectively evaluated the dietary intake of nuts and subsequent weight changes from 1991 to 1999. Results: Women who reported eating nuts \u22652 times/wk had slightly less",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 14,
+          "prediction": "<contains-unmapped-token>",
+          "target": ", we engineered a system that allowed us to dissect the classic wound healing assay. We studied Madin-Darby canine kidney sheet migration under three different conditions:",
+          "tokens": 32
+        }
+      ],
+      "fallback_full_prompt_exact": 0.0625,
+      "fallback_token_top1": 0.88623046875,
+      "full_prompt_covered": 0.0,
+      "hybrid_full_prompt_exact": 0.5625,
+      "hybrid_token_top1": 0.98193359375,
+      "known_prompt_queries": 1024,
+      "membership_coverage_agreement": 1.0,
+      "prompts": 128,
+      "token_coverage": 0.4794921875,
+      "tokens": 4096
+    },
+    {
+      "codebook_full_prompt_exact": 0.0,
+      "codebook_token_top1": 0.66064453125,
+      "conditional_accuracy_given_coverage": 1.0,
+      "dictionary_entries_by_position": [
+        1947,
+        1951,
+        1923,
+        1867,
+        1950,
+        1905,
+        1933,
+        1970,
+        1850,
+        1898,
+        1919,
+        1842,
+        1911,
+        1924,
+        1862,
+        1871,
+        1868,
+        1948,
+        1909,
+        1896,
+        1941,
+        1892,
+        1852,
+        1918,
+        1877,
+        1895,
+        1921,
+        1889,
+        1869,
+        1951,
+        1922,
+        1898
+      ],
+      "dictionary_entries_mean": 1905.28125,
+      "exact_membership_rate": 0.66064453125,
+      "examples": [
+        {
+          "covered_tokens": 22,
+          "prediction": "<contains-unmapped-token>",
+          "target": "last differentiation of bone marrow-derived monocytes with an EC(50) of 7.5 nM. PC-3 cells, a human prostate cancer cell",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 22,
+          "prediction": "<contains-unmapped-token>",
+          "target": "\u22129). Notably, all of the identified PPM1D PTVs were mosaic in lymphocyte DNA and clustered within a 370-base-pair region",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 19,
+          "prediction": "<contains-unmapped-token>",
+          "target": " obstruction and on day 15. Rats were sacrificed on day 15 and histopathological examinations were done. We biochemically assessed oxidative stress markers (myeloper",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 23,
+          "prediction": "<contains-unmapped-token>",
+          "target": " role of enzymes involved in controlling both histone and non-histone proteins acetylation levels in the cell, with particular emphasis on their effects on cancer.",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 19,
+          "prediction": "<contains-unmapped-token>",
+          "target": " methodology for predicting quality characteristics of beef patties added with flaxseed and tomato paste.\nResponse surface methodology was used to study the effect of flax",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 23,
+          "prediction": "<contains-unmapped-token>",
+          "target": "idogrel (2.7% vs. 3.3%, adjusted hazard ratio 0.96, 95% confidence interval 0.64-1.42",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 19,
+          "prediction": "<contains-unmapped-token>",
+          "target": "ophila retina in vivo. We demonstrate that E- and N-cadherins mediate apical adhesion between retina epithelial cells. Differential",
+          "tokens": 32
+        },
+        {
+          "covered_tokens": 18,
+          "prediction": "<contains-unmapped-token>",
+          "target": " formed from the reaction of reducing sugars (e.g., glucose or fructose) with the amino acid asparagine via the Maillard reaction, which occurs during",
+          "tokens": 32
+        }
+      ],
+      "fallback_full_prompt_exact": 0.0625,
+      "fallback_token_top1": 0.88623046875,
+      "full_prompt_covered": 0.0,
+      "hybrid_full_prompt_exact": 0.765625,
+      "hybrid_token_top1": 0.9921875,
+      "known_prompt_queries": 4096,
+      "membership_coverage_agreement": 1.0,
+      "prompts": 128,
+      "token_coverage": 0.66064453125,
+      "tokens": 4096
+    }
+  ],
+  "runtime": {
+    "elapsed_seconds": 32.83179688453674,
+    "host": "user-PowerEdge-T440",
+    "python": "3.10.12",
+    "threads": 16,
+    "torch": "2.7.1+cu126"
+  },
+  "seed": 20260804,
+  "target_prompts": 128
+}
