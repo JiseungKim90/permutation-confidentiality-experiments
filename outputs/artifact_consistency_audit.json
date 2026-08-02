@@ -15,6 +15,7 @@
     "protected-activation reduced-range cost",
     "private embedding orbit recovery",
     "STIP margin and alignment boundary",
+    "independently trained partial-embedding recovery",
     "GELO candidate presence",
     "official GELO wrapper replay",
     "manuscript claims and scope"
@@ -33,6 +34,7 @@
     "logs/54_tfhe_protected_activation_input31.json",
     "data_side/private_embedding_orbits_exact_fullvocab_20260802.json",
     "data_side/stip_margin_phase_exact_rows_20260802.json",
+    "data_side/stip_independent_embedding_frequency_f025_3seed_20260802.json",
     "data_side/gelo_rowspace_gpt2_20260802.json",
     "data_side/gelo_rowspace_gpt2_512x32_20260802.json",
     "data_side/gelo_rowspace_gpt2medium_20260802.json",

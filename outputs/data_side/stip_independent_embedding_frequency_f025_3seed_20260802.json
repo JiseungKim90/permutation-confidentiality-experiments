@@ -1,0 +1,104 @@
+{
+  "experiment": "aggregate independently trained partial GPT-2 embedding rows",
+  "interpretation": "Mean, standard deviation, minimum, and maximum are reported across seeds. Pooled rates are supplementary because selected-row counts vary with the seeded corpus order.",
+  "learning_rate": 0.0005,
+  "model": "gpt2",
+  "pooled_changed_rows": 13285,
+  "pooled_selected_certificate": 0.32209258562288295,
+  "pooled_selected_top1": 0.9685359427926232,
+  "pooled_selected_top5": 0.9718479488144524,
+  "runs": 3,
+  "seed_results": [
+    {
+      "active_rows": 17772,
+      "changed_rows": 4443,
+      "changed_unselected_rows": 0,
+      "checkpoint_sha256": "f6b8ed7832bc194f6bea67918ec105f9708920d2352fa636213dd37c0544a8ee",
+      "seed": 20260802,
+      "selected_certificate": 0.3277065046139995,
+      "selected_certificate_successes": 1456,
+      "selected_rows": 4443,
+      "selected_top1": 0.9696151249155975,
+      "selected_top1_successes": 4308,
+      "selected_top5": 0.9723160027008778,
+      "selected_top5_successes": 4320,
+      "validation_loss_after": 9.079056644439698,
+      "validation_loss_before": 10.231216716766358
+    },
+    {
+      "active_rows": 17520,
+      "changed_rows": 4380,
+      "changed_unselected_rows": 0,
+      "checkpoint_sha256": "42258d52ca08bdd300be149a8b416d887cc2b6198d222319d25dfc60b14ede62",
+      "seed": 20260803,
+      "selected_certificate": 0.3184931506849315,
+      "selected_certificate_successes": 1395,
+      "selected_rows": 4380,
+      "selected_top1": 0.9684931506849315,
+      "selected_top1_successes": 4242,
+      "selected_top5": 0.9723744292237443,
+      "selected_top5_successes": 4259,
+      "validation_loss_after": 9.286898231506347,
+      "validation_loss_before": 10.404405879974366
+    },
+    {
+      "active_rows": 17847,
+      "changed_rows": 4462,
+      "changed_unselected_rows": 0,
+      "checkpoint_sha256": "78cd2fb61e8aa5ecab05ed35ab0646a2106e625ba58b4ba38d6ba3a378a1a613",
+      "seed": 20260804,
+      "selected_certificate": 0.32003585835948006,
+      "selected_certificate_successes": 1428,
+      "selected_rows": 4462,
+      "selected_top1": 0.9675033617212012,
+      "selected_top1_successes": 4317,
+      "selected_top5": 0.9708650829224563,
+      "selected_top5_successes": 4332,
+      "validation_loss_after": 9.104558086395263,
+      "validation_loss_before": 10.206942367553712
+    }
+  ],
+  "seeds": [
+    20260802,
+    20260803,
+    20260804
+  ],
+  "selected_certificate": {
+    "max": 0.3277065046139995,
+    "mean": 0.3220785045528037,
+    "min": 0.3184931506849315,
+    "std": 0.004029125236648186
+  },
+  "selected_rows": {
+    "max": 4462,
+    "mean": 4428.333333333333,
+    "min": 4380
+  },
+  "selected_top1": {
+    "max": 0.9696151249155975,
+    "mean": 0.9685372124405767,
+    "min": 0.9675033617212012,
+    "std": 0.0008626865116346904
+  },
+  "selected_top5": {
+    "max": 0.9723744292237443,
+    "mean": 0.9718518382823594,
+    "min": 0.9708650829224563,
+    "std": 0.0006981489907208266
+  },
+  "selection": "frequency",
+  "steps": 200,
+  "train_fraction_of_active": 0.25,
+  "validation_loss_after": {
+    "max": 9.286898231506347,
+    "mean": 9.15683765411377,
+    "min": 9.079056644439698,
+    "std": 0.09255411472654372
+  },
+  "validation_loss_before": {
+    "max": 10.404405879974366,
+    "mean": 10.280854988098145,
+    "min": 10.206942367553712,
+    "std": 0.08792393746863085
+  }
+}

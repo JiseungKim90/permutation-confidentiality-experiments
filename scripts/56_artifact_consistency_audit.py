@@ -41,6 +41,9 @@ def main() -> None:
     stip_margin = load(
         "data_side/stip_margin_phase_exact_rows_20260802.json"
     )
+    stip_trained = load(
+        "data_side/stip_independent_embedding_frequency_f025_3seed_20260802.json"
+    )
     gelo_base = load("data_side/gelo_rowspace_gpt2_20260802.json")
     gelo_large = load("data_side/gelo_rowspace_gpt2_512x32_20260802.json")
     gelo_medium = load("data_side/gelo_rowspace_gpt2medium_20260802.json")
@@ -247,6 +250,33 @@ def main() -> None:
                 f"{variant} private signature collision changed")
     checks.append("STIP margin and alignment boundary")
 
+    require(stip_trained["runs"] == 3 and
+            stip_trained["seeds"] == [20260802, 20260803, 20260804],
+            "trained STIP seed campaign changed")
+    require(stip_trained["train_fraction_of_active"] == 0.25 and
+            stip_trained["steps"] == 200 and
+            stip_trained["selection"] == "frequency",
+            "trained STIP protocol changed")
+    require(stip_trained["pooled_changed_rows"] == 13285 and
+            all(row["changed_rows"] == row["selected_rows"] and
+                row["changed_unselected_rows"] == 0
+                for row in stip_trained["seed_results"]),
+            "trained STIP row-isolation evidence changed")
+    require(abs(stip_trained["selected_top1"]["mean"] -
+                0.9685372124405767) < 1e-12 and
+            abs(stip_trained["selected_top1"]["min"] -
+                0.9675033617212012) < 1e-12,
+            "trained STIP Top-1 result changed")
+    require(abs(stip_trained["selected_top5"]["mean"] -
+                0.9718518382823594) < 1e-12 and
+            abs(stip_trained["selected_certificate"]["mean"] -
+                0.3220785045528037) < 1e-12,
+            "trained STIP Top-5/certificate result changed")
+    require(stip_trained["validation_loss_after"]["mean"] <
+            stip_trained["validation_loss_before"]["mean"],
+            "trained STIP validation loss did not improve")
+    checks.append("independently trained partial-embedding recovery")
+
     gelo_expected = [
         (gelo_base, "gpt2", 128, 16),
         (gelo_large, "gpt2", 512, 32),
@@ -307,8 +337,11 @@ def main() -> None:
         "complete public-base vocabulary by exhaustive inner-product search",
         "36,966 of 50,257",
         "30,495 of 30,522",
-        "75\\% of rows updated",
-        "97.33\\% for GPT-2 and 99.94\\% for",
+        "three separate partial-embedding checkpoints",
+        "all 13,285 selected rows change",
+        "96.85\\% mean Top-1 recovery",
+        "96.75\\% worst",
+        "32.21\\% sufficient certificate",
         "Margin-certified private recovery",
         "Unaligned-dictionary nonidentifiability",
         "The three attacks follow one proof pattern, but not one universal security game.",
@@ -342,6 +375,7 @@ def main() -> None:
             "logs/54_tfhe_protected_activation_input31.json",
             "data_side/private_embedding_orbits_exact_fullvocab_20260802.json",
             "data_side/stip_margin_phase_exact_rows_20260802.json",
+            "data_side/stip_independent_embedding_frequency_f025_3seed_20260802.json",
             "data_side/gelo_rowspace_gpt2_20260802.json",
             "data_side/gelo_rowspace_gpt2_512x32_20260802.json",
             "data_side/gelo_rowspace_gpt2medium_20260802.json",

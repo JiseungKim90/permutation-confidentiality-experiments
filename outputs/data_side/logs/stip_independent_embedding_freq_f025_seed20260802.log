@@ -1,0 +1,238 @@
+Token indices sequence length is longer than the specified maximum sequence length for this model (1907 > 1024). Running this sequence through the model will result in indexing errors
+{"documents": 1000, "event": "tokenize_progress", "tokens": 331853}
+{"active_rows": 17772, "documents": 8816, "event": "corpus_ready", "selected_rows": 4443, "selection": "frequency", "tokens": 500000, "train_tokens": 450000, "validation_tokens": 50000}
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 4188.02it/s]
+`loss_type=None` was set in the config but it is unrecognized. Using the default loss: `ForCausalLMLoss`.
+{"elapsed_seconds": 0.792, "event": "train_progress", "loss": 9.707953453063965, "mean_recent": 9.707953453063965, "step": 1, "steps": 200}
+{"elapsed_seconds": 28.34, "event": "train_progress", "loss": 9.651792526245117, "mean_recent": 9.824302339553833, "step": 20, "steps": 200}
+{"elapsed_seconds": 55.741, "event": "train_progress", "loss": 10.528813362121582, "mean_recent": 10.091625452041626, "step": 40, "steps": 200}
+{"elapsed_seconds": 81.179, "event": "train_progress", "loss": 10.281634330749512, "mean_recent": 9.979950952529908, "step": 60, "steps": 200}
+{"elapsed_seconds": 107.208, "event": "train_progress", "loss": 9.753191947937012, "mean_recent": 9.583788967132568, "step": 80, "steps": 200}
+{"elapsed_seconds": 130.054, "event": "train_progress", "loss": 9.569173812866211, "mean_recent": 9.68509225845337, "step": 100, "steps": 200}
+{"elapsed_seconds": 152.755, "event": "train_progress", "loss": 9.154837608337402, "mean_recent": 9.32526125907898, "step": 120, "steps": 200}
+{"elapsed_seconds": 174.715, "event": "train_progress", "loss": 9.91755485534668, "mean_recent": 9.248831415176392, "step": 140, "steps": 200}
+{"elapsed_seconds": 194.72, "event": "train_progress", "loss": 8.916061401367188, "mean_recent": 9.10447163581848, "step": 160, "steps": 200}
+{"elapsed_seconds": 214.68, "event": "train_progress", "loss": 8.241464614868164, "mean_recent": 9.01096053123474, "step": 180, "steps": 200}
+{"elapsed_seconds": 237.114, "event": "train_progress", "loss": 9.059281349182129, "mean_recent": 8.825598645210267, "step": 200, "steps": 200}
+{"completed": 512, "elapsed_seconds": 0.992, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 1024, "elapsed_seconds": 1.188, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 1536, "elapsed_seconds": 1.318, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 2048, "elapsed_seconds": 1.453, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 2560, "elapsed_seconds": 1.582, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 3072, "elapsed_seconds": 1.711, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 3584, "elapsed_seconds": 1.84, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 4096, "elapsed_seconds": 1.982, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 4608, "elapsed_seconds": 2.114, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 5120, "elapsed_seconds": 2.243, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 5632, "elapsed_seconds": 2.371, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 6144, "elapsed_seconds": 2.5, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 6656, "elapsed_seconds": 2.629, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 7168, "elapsed_seconds": 3.181, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 7680, "elapsed_seconds": 3.982, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 8192, "elapsed_seconds": 4.114, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 8704, "elapsed_seconds": 4.244, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 9216, "elapsed_seconds": 4.373, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 9728, "elapsed_seconds": 4.501, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 10240, "elapsed_seconds": 4.63, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 10752, "elapsed_seconds": 4.761, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 11264, "elapsed_seconds": 4.89, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 11776, "elapsed_seconds": 5.032, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 12288, "elapsed_seconds": 5.161, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 12800, "elapsed_seconds": 5.289, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 13312, "elapsed_seconds": 5.418, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 13824, "elapsed_seconds": 5.565, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 14336, "elapsed_seconds": 6.474, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 14848, "elapsed_seconds": 6.857, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 15360, "elapsed_seconds": 7.028, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 15872, "elapsed_seconds": 7.157, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 16384, "elapsed_seconds": 7.286, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 16896, "elapsed_seconds": 7.415, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 17408, "elapsed_seconds": 7.544, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 17920, "elapsed_seconds": 7.672, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 18432, "elapsed_seconds": 7.802, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 18944, "elapsed_seconds": 7.943, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 19456, "elapsed_seconds": 8.076, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 19968, "elapsed_seconds": 8.205, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 20480, "elapsed_seconds": 8.335, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 20992, "elapsed_seconds": 8.543, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 21504, "elapsed_seconds": 9.483, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 22016, "elapsed_seconds": 9.787, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 22528, "elapsed_seconds": 9.929, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 23040, "elapsed_seconds": 10.061, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 23552, "elapsed_seconds": 10.191, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 24064, "elapsed_seconds": 10.32, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 24576, "elapsed_seconds": 10.448, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 25088, "elapsed_seconds": 10.576, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 25600, "elapsed_seconds": 10.709, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 26112, "elapsed_seconds": 10.84, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 26624, "elapsed_seconds": 10.981, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 27136, "elapsed_seconds": 11.109, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 27648, "elapsed_seconds": 11.241, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 28160, "elapsed_seconds": 11.369, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 28672, "elapsed_seconds": 12.123, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 29184, "elapsed_seconds": 12.644, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 29696, "elapsed_seconds": 12.775, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 30208, "elapsed_seconds": 12.998, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 30720, "elapsed_seconds": 13.127, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 31232, "elapsed_seconds": 13.255, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 31744, "elapsed_seconds": 13.384, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 32256, "elapsed_seconds": 13.512, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 32768, "elapsed_seconds": 13.641, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 33280, "elapsed_seconds": 13.77, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 33792, "elapsed_seconds": 13.898, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 34304, "elapsed_seconds": 14.041, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 34816, "elapsed_seconds": 14.173, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 35328, "elapsed_seconds": 14.402, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 35840, "elapsed_seconds": 15.435, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 36352, "elapsed_seconds": 15.6, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 36864, "elapsed_seconds": 15.729, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 37376, "elapsed_seconds": 15.858, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 37888, "elapsed_seconds": 15.999, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 38400, "elapsed_seconds": 16.133, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 38912, "elapsed_seconds": 16.265, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 39424, "elapsed_seconds": 16.394, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 39936, "elapsed_seconds": 16.522, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 40448, "elapsed_seconds": 16.653, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 40960, "elapsed_seconds": 16.788, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 41472, "elapsed_seconds": 16.96, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 41984, "elapsed_seconds": 17.088, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 42496, "elapsed_seconds": 17.469, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 43008, "elapsed_seconds": 18.365, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 43520, "elapsed_seconds": 18.495, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 44032, "elapsed_seconds": 18.624, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 44544, "elapsed_seconds": 18.758, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 45056, "elapsed_seconds": 18.886, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 45568, "elapsed_seconds": 19.028, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 46080, "elapsed_seconds": 19.157, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 46592, "elapsed_seconds": 19.287, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 47104, "elapsed_seconds": 19.416, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 47616, "elapsed_seconds": 19.545, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 48128, "elapsed_seconds": 19.674, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 48640, "elapsed_seconds": 19.803, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 49152, "elapsed_seconds": 19.944, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 49664, "elapsed_seconds": 20.127, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 50176, "elapsed_seconds": 21.071, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 50257, "elapsed_seconds": 21.284, "event": "orbit_search_progress", "label": "trained-to-public", "total": 50257}
+{"completed": 512, "elapsed_seconds": 0.155, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 1024, "elapsed_seconds": 0.283, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 1536, "elapsed_seconds": 0.411, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 2048, "elapsed_seconds": 0.54, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 2560, "elapsed_seconds": 0.68, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 3072, "elapsed_seconds": 0.813, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 3584, "elapsed_seconds": 0.942, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 4096, "elapsed_seconds": 1.072, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 4608, "elapsed_seconds": 1.2, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 5120, "elapsed_seconds": 1.329, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 5632, "elapsed_seconds": 1.461, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 6144, "elapsed_seconds": 1.59, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 6656, "elapsed_seconds": 2.094, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 7168, "elapsed_seconds": 2.987, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 7680, "elapsed_seconds": 3.116, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 8192, "elapsed_seconds": 3.244, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 8704, "elapsed_seconds": 3.373, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 9216, "elapsed_seconds": 3.505, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 9728, "elapsed_seconds": 3.646, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 10240, "elapsed_seconds": 3.774, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 10752, "elapsed_seconds": 3.902, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 11264, "elapsed_seconds": 4.03, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 11776, "elapsed_seconds": 4.159, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 12288, "elapsed_seconds": 4.287, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 12800, "elapsed_seconds": 4.415, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 13312, "elapsed_seconds": 4.544, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 13824, "elapsed_seconds": 5.049, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 14336, "elapsed_seconds": 5.897, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 14848, "elapsed_seconds": 6.026, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 15360, "elapsed_seconds": 6.154, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 15872, "elapsed_seconds": 6.282, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 16384, "elapsed_seconds": 6.41, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 16896, "elapsed_seconds": 6.539, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 17408, "elapsed_seconds": 6.679, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 17920, "elapsed_seconds": 6.812, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 18432, "elapsed_seconds": 6.942, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 18944, "elapsed_seconds": 7.071, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 19456, "elapsed_seconds": 7.2, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 19968, "elapsed_seconds": 7.329, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 20480, "elapsed_seconds": 7.461, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 20992, "elapsed_seconds": 8.11, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 21504, "elapsed_seconds": 8.785, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 22016, "elapsed_seconds": 8.915, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 22528, "elapsed_seconds": 9.044, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 23040, "elapsed_seconds": 9.173, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 23552, "elapsed_seconds": 9.301, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 24064, "elapsed_seconds": 9.434, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 24576, "elapsed_seconds": 9.563, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 25088, "elapsed_seconds": 9.704, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 25600, "elapsed_seconds": 9.833, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 26112, "elapsed_seconds": 9.963, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 26624, "elapsed_seconds": 10.091, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 27136, "elapsed_seconds": 10.221, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 27648, "elapsed_seconds": 10.349, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 28160, "elapsed_seconds": 10.988, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 28672, "elapsed_seconds": 11.67, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 29184, "elapsed_seconds": 11.798, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 29696, "elapsed_seconds": 11.927, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 30208, "elapsed_seconds": 12.056, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 30720, "elapsed_seconds": 12.184, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 31232, "elapsed_seconds": 12.313, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 31744, "elapsed_seconds": 12.443, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 32256, "elapsed_seconds": 12.571, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 32768, "elapsed_seconds": 12.713, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 33280, "elapsed_seconds": 12.846, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 33792, "elapsed_seconds": 12.974, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 34304, "elapsed_seconds": 13.103, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 34816, "elapsed_seconds": 13.232, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 35328, "elapsed_seconds": 13.773, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 35840, "elapsed_seconds": 14.551, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 36352, "elapsed_seconds": 14.692, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 36864, "elapsed_seconds": 14.825, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 37376, "elapsed_seconds": 14.956, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 37888, "elapsed_seconds": 15.084, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 38400, "elapsed_seconds": 15.212, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 38912, "elapsed_seconds": 15.343, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 39424, "elapsed_seconds": 15.478, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 39936, "elapsed_seconds": 15.606, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 40448, "elapsed_seconds": 15.77, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 40960, "elapsed_seconds": 15.899, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 41472, "elapsed_seconds": 16.028, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 41984, "elapsed_seconds": 16.175, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 42496, "elapsed_seconds": 17.002, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 43008, "elapsed_seconds": 17.494, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 43520, "elapsed_seconds": 17.635, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 44032, "elapsed_seconds": 17.764, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 44544, "elapsed_seconds": 17.893, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 45056, "elapsed_seconds": 18.022, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 45568, "elapsed_seconds": 18.151, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 46080, "elapsed_seconds": 18.28, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 46592, "elapsed_seconds": 18.409, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 47104, "elapsed_seconds": 18.538, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 47616, "elapsed_seconds": 18.679, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 48128, "elapsed_seconds": 18.812, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 48640, "elapsed_seconds": 18.942, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 49152, "elapsed_seconds": 19.085, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 49664, "elapsed_seconds": 19.791, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 50176, "elapsed_seconds": 20.419, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"completed": 50257, "elapsed_seconds": 20.531, "event": "orbit_search_progress", "label": "public-margin", "total": 50257}
+{"changed_rows": 4443, "checkpoint": "checkpoints/stip_independent_embedding_freq_f025_seed20260802.pt", "event": "complete", "output": "results/stip_independent_embedding_freq_f025_seed20260802.json", "selected_rows": 4443, "validation_loss_after": 9.079056644439698, "validation_loss_before": 10.231216716766358}
+	Command being timed: "python3 experiments/60_stip_independent_embedding_training.py --model gpt2 --cache-dir /home/user/p050_journal_targets/models --arrow /home/user/.cache/huggingface/datasets/BeIR___scifact/corpus/0.0.0/b3b5335604bf5ee3c4447671af975ea25143d4f5/scifact-corpus.arrow --arrow /home/user/.cache/huggingface/datasets/BeIR___nfcorpus/corpus/0.0.0/b5026a0e96e8a7ac4f95f482a596389289d46269/nfcorpus-corpus.arrow --output results/stip_independent_embedding_freq_f025_seed20260802.json --checkpoint checkpoints/stip_independent_embedding_freq_f025_seed20260802.pt --selection frequency --train-fraction 0.25 --steps 200 --batch-size 2 --sequence-length 64 --learning-rate 0.0005 --eval-batches 10 --max-tokens 500000 --orbit-batch-size 512 --threads 16 --log-every 20 --seed 20260802 --device cpu"
+	User time (seconds): 3818.81
+	System time (seconds): 315.52
+	Percent of CPU this job got: 1402%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 4:54.73
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3544168
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 5
+	Minor (reclaiming a frame) page faults: 53517531
+	Voluntary context switches: 40205
+	Involuntary context switches: 3371217
+	Swaps: 0
+	File system inputs: 11472
+	File system outputs: 27016
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

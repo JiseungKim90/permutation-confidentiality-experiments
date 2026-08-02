@@ -1,0 +1,3 @@
+START stip_independent_embedding_frequency_f025_seed20260804 2026-08-02T12:14:05+09:00
+DONE /home/user/p050_journal_targets/results/stip_independent_embedding_frequency_f025_seed20260804.json selected_top1= 0.9675033617212012 certificate= 0.32003585835948006 loss= 10.206942367553712 -> 9.104558086395263
+GRID_COMPLETE 2026-08-02T12:18:45+09:00
