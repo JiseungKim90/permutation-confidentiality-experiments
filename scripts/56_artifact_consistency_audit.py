@@ -350,7 +350,7 @@ def main() -> None:
         ],
     }
     destination = OUT / "artifact_consistency_audit.json"
-    destination.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+    destination.write_bytes((json.dumps(result, indent=2) + "\n").encode("utf-8"))
     print(json.dumps(result, indent=2))
 
 
