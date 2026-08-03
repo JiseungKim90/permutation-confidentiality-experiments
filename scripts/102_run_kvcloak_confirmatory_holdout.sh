@@ -22,6 +22,7 @@ gpt2_tokens="$("$python" -c 'import json,sys; print(json.load(open(sys.argv[1]))
 "$python" scripts/101_prepare_kvcloak_confirmatory_trials.py \
   --tokens "$qwen_tokens" \
   --exclude-trials "$qwen/data/b128_boundary/trials.json" "$qwen/data/b64_head1/trials.json" \
+  --allowed-indices "$qwen/data/cache_indices.npy" \
   --output-dir "$root/data/qwen_b128" --block-size 128 --seed 20261428 \
   > "$root/logs/qwen_trials.log" 2>&1
 
@@ -45,4 +46,3 @@ gpt2_tokens="$("$python" -c 'import json,sys; print(json.load(open(sys.argv[1]))
   --head-position 0 --precision bfloat16 --evaluation-seed 20261064 \
   --conditions official_reuse refresh_left --pair-count 512 --threads "$threads" \
   > "$root/logs/gpt2_b64.log" 2>&1
-

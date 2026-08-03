@@ -42,6 +42,8 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--tokens", required=True)
     parser.add_argument("--exclude-trials", required=True, nargs="+")
+    parser.add_argument("--allowed-indices",
+                        help="optional cache-backed source-index array")
     parser.add_argument("--output-dir", required=True)
     parser.add_argument("--block-size", type=int, required=True)
     parser.add_argument("--bank-size", type=int, default=10_000)
@@ -59,10 +61,17 @@ def main() -> None:
     excluded = set()
     for path in excluded_paths:
         excluded.update(trial_sources(path))
+    allowed = None
+    allowed_path = None
+    if args.allowed_indices:
+        allowed_path = Path(args.allowed_indices).resolve()
+        allowed = set(int(value) for value in np.load(allowed_path, allow_pickle=False))
 
     unique = []
     seen = set()
     for index in range(tokens.shape[0]):
+        if allowed is not None and index not in allowed:
+            continue
         if index in excluded:
             continue
         key = np.asarray(tokens[index, : args.block_size], dtype="<i4").tobytes()
@@ -143,6 +152,8 @@ def main() -> None:
         "excluded_trial_manifests": {
             str(path): sha256(path) for path in excluded_paths
         },
+        "allowed_indices": str(allowed_path) if allowed_path else None,
+        "allowed_indices_sha256": sha256(allowed_path) if allowed_path else None,
         "disjoint_from_metric_development": True,
         "seed": args.seed,
         "records": records,
@@ -160,4 +171,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
