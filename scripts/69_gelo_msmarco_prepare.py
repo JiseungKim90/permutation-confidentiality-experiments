@@ -193,7 +193,7 @@ def main() -> None:
             "collection": str(Path(args.collection).resolve()),
             "collection_sha256": "70667529e474322327d6441c8f7b621f2a805a7f6220897d9f80e5a8294bd62e",
             "tokenizer": args.tokenizer,
-            "selection": "lowest keyed BLAKE2b-64 priority, unique 32-token prefixes",
+            "selection": "lowest keyed BLAKE2b-64 priority, unique {}-token prefixes".format(args.seq_len),
             "seed": args.seed,
             "scanned_passages": scanned,
             "reservoir_size": args.reservoir_size,
