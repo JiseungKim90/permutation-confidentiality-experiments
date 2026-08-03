@@ -1,0 +1,284 @@
+{
+  "additional_evaluation_count": 13,
+  "all_prespecified_gates_pass": false,
+  "artifact_sha256": {
+    "kvcloak_results.json": "5e66379d292c4e14d1ec846ed5795774a18f286bbdc3e4c8f595b210316c291b"
+  },
+  "codebook": {
+    "basis_shape": [
+      100000,
+      64,
+      16
+    ],
+    "block_size": 16,
+    "candidate_count": 100000,
+    "dimension": 64,
+    "elapsed_current_run_seconds": 12.120442390441895,
+    "feature_dimension": 576,
+    "feature_shape": [
+      100000,
+      576
+    ],
+    "head_position": 0,
+    "pairs_sha256": "06313406afe60cbc521cbc2230cdaf1e8a096254e55982901eca888bba3edaa7",
+    "paths": {
+      "key_basis": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/evaluation_main/codebook/key_basis.f32",
+      "key_features": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/evaluation_main/codebook/key_features.f32",
+      "value_basis": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/evaluation_main/codebook/value_basis.f32",
+      "value_features": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/evaluation_main/codebook/value_features.f32"
+    },
+    "peak_rss_bytes": 4520341504,
+    "precision": "bfloat16",
+    "sha256": {
+      "key_basis": "e46c7d2e122aa2981f2da8e06df0099411e258ebb6683c29c61b796a5fb1c4c2",
+      "key_features": "8a96184862f60d6b1ec66217220b2a9121ae7ba5f3aceb208bf37f63e4b7d4c5",
+      "value_basis": "883d8d0917c5e15c5a1bc70fea67acd52723ce526ea579ff7365aa03c38361db",
+      "value_features": "1c6270276c3f2aec6fb79acc2dac62e176f0367a6e46e4a1dd6cd28b8389f75c"
+    },
+    "status": "complete"
+  },
+  "decision_surface": "STIP + KV-Cloak + GELO independent NDSS evidence",
+  "headline": {
+    "block_size": 16,
+    "candidate_banks": [
+      10000,
+      50000,
+      100000
+    ],
+    "dataset": "MS MARCO Passage Ranking collection",
+    "expected_records": 1400,
+    "model": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/cache/gpt2_layer8_heads0_5_11_manifest.json",
+    "positive_placement_covers_all_deciles": true,
+    "precision": "bfloat16",
+    "records": 1400,
+    "results": [
+      {
+        "bank_size": 10000,
+        "closed_trials": 100,
+        "kv_type": "key",
+        "open_trial_false_positive_count": 10,
+        "open_trial_false_positive_rate": 0.03333333333333333,
+        "open_trial_false_positive_wilson95": [
+          0.01820494733885481,
+          0.06026182580405482
+        ],
+        "open_trials": 300,
+        "peak_rss_bytes": 3999842304,
+        "random_label_top1_recall": 0.0,
+        "search_seconds": {
+          "max": 0.009163379669189453,
+          "mean": 0.003963723182678223
+        },
+        "threshold_recall": 1.0,
+        "top1_recall": 1.0
+      },
+      {
+        "bank_size": 50000,
+        "closed_trials": 100,
+        "kv_type": "key",
+        "open_trial_false_positive_count": 1,
+        "open_trial_false_positive_rate": 0.0033333333333333335,
+        "open_trial_false_positive_wilson95": [
+          0.0005886577218511581,
+          0.018636693694531237
+        ],
+        "open_trials": 300,
+        "peak_rss_bytes": 4023480320,
+        "random_label_top1_recall": 0.0,
+        "search_seconds": {
+          "max": 0.008861780166625977,
+          "mean": 0.005030982494354248
+        },
+        "threshold_recall": 1.0,
+        "top1_recall": 1.0
+      },
+      {
+        "bank_size": 100000,
+        "closed_trials": 100,
+        "kv_type": "key",
+        "open_trial_false_positive_count": 1,
+        "open_trial_false_positive_rate": 0.0033333333333333335,
+        "open_trial_false_positive_wilson95": [
+          0.0005886577218511581,
+          0.018636693694531237
+        ],
+        "open_trials": 300,
+        "peak_rss_bytes": 4065656832,
+        "random_label_top1_recall": 0.0,
+        "search_seconds": {
+          "max": 0.010192155838012695,
+          "mean": 0.006713783740997315
+        },
+        "threshold_recall": 1.0,
+        "top1_recall": 1.0
+      },
+      {
+        "bank_size": 10000,
+        "closed_trials": 100,
+        "kv_type": "value",
+        "open_trial_false_positive_count": 12,
+        "open_trial_false_positive_rate": 0.04,
+        "open_trial_false_positive_wilson95": [
+          0.023027321487942308,
+          0.06860421203864003
+        ],
+        "open_trials": 300,
+        "peak_rss_bytes": 4408524800,
+        "random_label_top1_recall": 0.0,
+        "search_seconds": {
+          "max": 0.008168220520019531,
+          "mean": 0.003717942237854004
+        },
+        "threshold_recall": 1.0,
+        "top1_recall": 1.0
+      },
+      {
+        "bank_size": 50000,
+        "closed_trials": 100,
+        "kv_type": "value",
+        "open_trial_false_positive_count": 1,
+        "open_trial_false_positive_rate": 0.0033333333333333335,
+        "open_trial_false_positive_wilson95": [
+          0.0005886577218511581,
+          0.018636693694531237
+        ],
+        "open_trials": 300,
+        "peak_rss_bytes": 4429598720,
+        "random_label_top1_recall": 0.0,
+        "search_seconds": {
+          "max": 0.010221481323242188,
+          "mean": 0.005227589607238769
+        },
+        "threshold_recall": 1.0,
+        "top1_recall": 1.0
+      },
+      {
+        "bank_size": 100000,
+        "closed_trials": 100,
+        "kv_type": "value",
+        "open_trial_false_positive_count": 1,
+        "open_trial_false_positive_rate": 0.0033333333333333335,
+        "open_trial_false_positive_wilson95": [
+          0.0005886577218511581,
+          0.018636693694531237
+        ],
+        "open_trials": 300,
+        "peak_rss_bytes": 4476547072,
+        "random_label_top1_recall": 0.0,
+        "search_seconds": {
+          "max": 0.00939488410949707,
+          "mean": 0.006788284778594971
+        },
+        "threshold_recall": 1.0,
+        "top1_recall": 1.0
+      }
+    ]
+  },
+  "input_sha256": {
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/data/b16_full/trials.json": "33b8f27ea3122f9297d81de81417084cf91e9ae948ca57c4a017a1d74759879a",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/evaluation_main/codebook/manifest.json": "25da35783c1a860018d8fead7b6c51f478643751616c81263b57487723515599",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/evaluation_main/summary.json": "6cb9c486d28782702111c44907e2b21dba79d7fde1e92cd5921adc8a3a5baff7",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/evaluation_main/trial_records.jsonl": "0634be5403ba63d615930675e0c53ee1531e8ccda97d0ec9a3151da2b425d44a",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/key_refresh_boundary/codebook/manifest.json": "9414bd9182c90c2d8e5453176b325d269cb07ef34c10af9d348df6974e136a04",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/key_refresh_boundary/summary.json": "90287ec3a1048d7a715ea37ed389e6bc77f84441854da76c65706831b86170ce",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/key_refresh_boundary/trial_records.jsonl": "12e50adc58958e5754fb6377dcb4777bcea819bbac183a32b8cfbb00ee2dd9f3",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer0_head0_b64_bfloat16/codebook/manifest.json": "9b64c2d96317313c855aa67cb74a8cec519f34ae23d4bb2a11b4e97b6291f575",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer0_head0_b64_bfloat16/summary.json": "fa44da9663c6fb30ea7480a8d08c46fcba27148e494aa096a16cf74ef4e5f0d9",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer0_head0_b64_bfloat16/trial_records.jsonl": "221338f10216fdcfd69d5f1c46f3ebb2f1f0b624136616f80ce6d305468193a6",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer4_headpos0_b16_bf16/codebook/manifest.json": "09ae55c536b760f7e702eea65bbe4557f56f0fceb8b8c69f2e1e68945eed666c",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer4_headpos0_b16_bf16/summary.json": "c19bb070b0fcbbab4bfcc540becc2f56979d8f80777b7b250e1f0af3780be503",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer4_headpos0_b16_bf16/trial_records.jsonl": "db4c10b426a5e8e4c622970d0ccc9a6df60fa525f13b165f6ce49c18278796d6",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer4_headpos1_b16_bf16/codebook/manifest.json": "b5d88134c483be9618b343ac98e48546c6ecab7a067397590e1668c039e93128",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer4_headpos1_b16_bf16/summary.json": "75678809c5006941b023f63b61d24a6bc55e94de561f90b6cf4dfc85ac4279e1",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer4_headpos1_b16_bf16/trial_records.jsonl": "df24178946e41ad8b3974fbc4709f3ea31630f5b44ffb29b44e85437eda69446",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer4_headpos2_b16_bf16/codebook/manifest.json": "c7293e5b6928908ec45798b0e1f077503a24d4e3e4da14cdf43728bccd8883af",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer4_headpos2_b16_bf16/summary.json": "2387af26606f4281f4e552efa9b9f8bb7011f1a28d841770bef38566a9128032",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer4_headpos2_b16_bf16/trial_records.jsonl": "c03a51bfd05302af8304f870c0340d52f0d06a319584e465c9b686ef5b683d00",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer8_head0_b32_bfloat16/codebook/manifest.json": "cb484aabf2a5e3a19523b180ca3a8dbf7bee3b26eec1c366fe5ada6ca7a88f28",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer8_head0_b32_bfloat16/summary.json": "21463c4f7c2bb35d28fc28ddf07c7e94ec299be6190cda0cee79d9d9ba821127",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer8_head0_b32_bfloat16/trial_records.jsonl": "445b261fd5ea3d68b3db02b5973109be65cd02696caad4f96b62bfb783d199db",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer8_head0_b32_float16/codebook/manifest.json": "e53d4447dc3bb4deef0ea6d5771f222cb79fd02a78ce802812ac4612292ee2c2",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer8_head0_b32_float16/summary.json": "abc445a29bf1865acfe24864713e052dc091c7be191335377d5eed9042d75fe9",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer8_head0_b32_float16/trial_records.jsonl": "6e8aaffb3bd1ef40dd4dee2aef2c7ee0d5a386e5a050d62efcc26d3783de159d",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer8_head0_b32_float32/codebook/manifest.json": "1a16695bf0db8885b9bd3480275747d36c375d2cb2425adb58c21a87be31bde3",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer8_head0_b32_float32/summary.json": "45b8bda2b8ed7c604d3a6d4dd5af760196769773f816a9d6f39e30e4d335f3de",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer8_head0_b32_float32/trial_records.jsonl": "75b51d36e3bc6b8a4d9cb9768f07dc0ae7eb0bd4fd80509a81c5f487166a2827",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer8_head0_b8_bfloat16/codebook/manifest.json": "552d74894afd08b32ce85df5c0ed8b9dc9e50d0e11365b78a86b68e102424aaf",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer8_head0_b8_bfloat16/summary.json": "a496091986d3d362dee602a192883bc2bd8bba2c58af0d8af81cec401a9e49d6",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer8_head0_b8_bfloat16/trial_records.jsonl": "b772d6c17523dc7c2744bee1dd1a80feb70bf23b05e44bf6a2ca4493899602c7",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer8_head0_b8_float16/codebook/manifest.json": "b49a6456e50721ceb698a6e7976ac0cddb2b909412c904bb92ab8b0b3153fc8c",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer8_head0_b8_float16/summary.json": "d033bb2e6a948660fed7b9a963855e75b00a9df0e111bd0cf687a9fb8ea7416e",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer8_head0_b8_float16/trial_records.jsonl": "fe6f96a4bc84fa02ebd0d04774fe8b6542d24da15fc18b8523d83a2da1c3cd71",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer8_head0_b8_float32/codebook/manifest.json": "3e28395e92642ed8008d043414bcfe4d301563afd8aeef8a4dfe084dd2358f5a",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer8_head0_b8_float32/summary.json": "4ba36950e8a3bc1d9b34fe66f3c43c20f11573089e5840a657cecdb4e9c54092",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer8_head0_b8_float32/trial_records.jsonl": "18de66eb1b3b2bfb67dc3386c86c62744b21be8507b99f5c757893f72ebb2dda",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer8_headpos1_b16_bf16/codebook/manifest.json": "aebc13e5e71810d498507d0911cf7474db34039cd78081fb36595c96ef6b5dde",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer8_headpos1_b16_bf16/summary.json": "74f85ad3f950707d8619b97cdbade0aad5213f330db0c7b26008f81b6ab65f46",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer8_headpos1_b16_bf16/trial_records.jsonl": "dca2db7629d131762f9644cfcd3ba06a9e525c5fed16033d798564a7cc6c27eb",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer8_headpos2_b16_bf16/codebook/manifest.json": "ca1b44661b7ad26fe1e3c42d073e311e9fca95005481574c0771762c11ad44b2",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer8_headpos2_b16_bf16/summary.json": "b1e971ce1cd335abe2375c1f7cc0479edccde2ff6f217facac6af3e7949d17c9",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer8_headpos2_b16_bf16/trial_records.jsonl": "d8bcb1905fdd4a124c185f431f3b664978a106e2c666e93b4ac69ab14ec55eaf",
+    "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/smoke/campaign_complete.json": "7e9666661c83c7c71ac4ce95501fcac0b61a52e5ab07dec0b4f6799013495e4d"
+  },
+  "official_code_smoke_all_gates_pass": true,
+  "official_commit": "6b40f36edb2f337557543e7e60b10022308883d4",
+  "official_repository": "https://github.com/SiO-2/kvcloak",
+  "prespecified_gates": [
+    {
+      "bank_size": 10000,
+      "closed_top1_recall_at_least_0_95": true,
+      "kv_type": "key",
+      "open_trial_fpr_wilson_upper_at_most_0_05": false,
+      "pass": false,
+      "random_label_recall_at_most_0_05": true,
+      "threshold_recall_at_least_0_90": true
+    },
+    {
+      "bank_size": 50000,
+      "closed_top1_recall_at_least_0_95": true,
+      "kv_type": "key",
+      "open_trial_fpr_wilson_upper_at_most_0_05": true,
+      "pass": true,
+      "random_label_recall_at_most_0_05": true,
+      "threshold_recall_at_least_0_90": true
+    },
+    {
+      "bank_size": 100000,
+      "closed_top1_recall_at_least_0_95": true,
+      "kv_type": "key",
+      "open_trial_fpr_wilson_upper_at_most_0_05": true,
+      "pass": true,
+      "random_label_recall_at_most_0_05": true,
+      "threshold_recall_at_least_0_90": true
+    },
+    {
+      "bank_size": 10000,
+      "closed_top1_recall_at_least_0_95": true,
+      "kv_type": "value",
+      "open_trial_fpr_wilson_upper_at_most_0_05": false,
+      "pass": false,
+      "random_label_recall_at_most_0_05": true,
+      "threshold_recall_at_least_0_90": true
+    },
+    {
+      "bank_size": 50000,
+      "closed_top1_recall_at_least_0_95": true,
+      "kv_type": "value",
+      "open_trial_fpr_wilson_upper_at_most_0_05": true,
+      "pass": true,
+      "random_label_recall_at_most_0_05": true,
+      "threshold_recall_at_least_0_90": true
+    },
+    {
+      "bank_size": 100000,
+      "closed_top1_recall_at_least_0_95": true,
+      "kv_type": "value",
+      "open_trial_fpr_wilson_upper_at_most_0_05": true,
+      "pass": true,
+      "random_label_recall_at_most_0_05": true,
+      "threshold_recall_at_least_0_90": true
+    }
+  ],
+  "repo_revision": "85fa2bc8e4ea83e8057129c7c459c534a0605ab8",
+  "status": "complete"
+}

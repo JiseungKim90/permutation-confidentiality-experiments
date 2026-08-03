@@ -1,0 +1,1485 @@
+{
+  "bank_size": 100000,
+  "checkpoints": [
+    {
+      "parameter_drift": {
+        "maximum_absolute_parameter_drift": 0.0,
+        "relative_parameter_l2_drift": 0.0
+      },
+      "representation_drift": {
+        "mean_private_to_public_rowspace_residual": 1.408802974986844e-08,
+        "mean_public_to_private_rowspace_residual": 1.408802974986844e-08,
+        "mean_row_cosine": 1.0,
+        "minimum_row_cosine": 0.9999999999999998,
+        "p05_row_cosine": 0.9999999999999998,
+        "p95_private_to_public_rowspace_residual": 3.3485217209066463e-08,
+        "p95_public_to_private_rowspace_residual": 3.3485217209066463e-08,
+        "probe_rows": 4096,
+        "probe_sequences": 128,
+        "relative_hidden_l2_drift": 0.0
+      },
+      "splits": {
+        "closed": {
+          "accepted_count": {
+            "max": 4.0,
+            "mean": 0.49,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 4.0
+          },
+          "candidate_false_positive_rate": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "exact_source_set_rate": {
+            "max": 1.0,
+            "mean": 1.0,
+            "median": 1.0,
+            "min": 1.0,
+            "p05": 1.0,
+            "p95": 1.0
+          },
+          "mean_average_precision": {
+            "max": 1.0,
+            "mean": 1.0,
+            "median": 1.0,
+            "min": 1.0,
+            "p05": 1.0,
+            "p95": 1.0
+          },
+          "mean_recall_at_source_count": {
+            "max": 1.0,
+            "mean": 1.0,
+            "median": 1.0,
+            "min": 1.0,
+            "p05": 1.0,
+            "p95": 1.0
+          },
+          "peak_rss_bytes": {
+            "max": 5325438976.0,
+            "mean": 5302809395.2,
+            "median": 5302890496.0,
+            "min": 5280088064.0,
+            "p05": 5282710732.8,
+            "p95": 5323206656.0
+          },
+          "scoring_seconds": {
+            "max": 15.936474323272705,
+            "mean": 9.843813488483429,
+            "median": 9.672905683517456,
+            "min": 9.114533185958862,
+            "p05": 9.251270639896394,
+            "p95": 11.342781794071197
+          },
+          "split": "closed",
+          "threshold_precision": {
+            "max": 1.0,
+            "mean": 0.16,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 1.0
+          },
+          "threshold_recall": {
+            "max": 1.0,
+            "mean": 0.1225,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 1.0
+          },
+          "trial_false_positive_count": 0,
+          "trial_false_positive_rate": 0.0,
+          "trial_false_positive_wilson95": [
+            0.0,
+            0.03699349820698568
+          ],
+          "trials": 100
+        },
+        "open": {
+          "accepted_count": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "candidate_false_positive_rate": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "exact_source_set_rate": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "mean_average_precision": {
+            "max": null,
+            "mean": null,
+            "median": null,
+            "min": null,
+            "p05": null,
+            "p95": null
+          },
+          "mean_recall_at_source_count": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "peak_rss_bytes": {
+            "max": 5470720000.0,
+            "mean": 5411785400.32,
+            "median": 5413048320.0,
+            "min": 5348560896.0,
+            "p05": 5354721280.0,
+            "p95": 5465673728.0
+          },
+          "scoring_seconds": {
+            "max": 15.862537384033203,
+            "mean": 9.510880014896394,
+            "median": 9.529260993003845,
+            "min": 9.060884475708008,
+            "p05": 9.163251078128814,
+            "p95": 9.660165786743164
+          },
+          "split": "open",
+          "threshold_precision": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "threshold_recall": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "trial_false_positive_count": 0,
+          "trial_false_positive_rate": 0.0,
+          "trial_false_positive_wilson95": [
+            0.0,
+            0.012642971224546034
+          ],
+          "trials": 300
+        },
+        "partial": {
+          "accepted_count": {
+            "max": 2.0,
+            "mean": 0.16,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 1.5499999999999972
+          },
+          "candidate_false_positive_rate": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "exact_source_set_rate": {
+            "max": 1.0,
+            "mean": 1.0,
+            "median": 1.0,
+            "min": 1.0,
+            "p05": 1.0,
+            "p95": 1.0
+          },
+          "mean_average_precision": {
+            "max": 1.0,
+            "mean": 1.0,
+            "median": 1.0,
+            "min": 1.0,
+            "p05": 1.0,
+            "p95": 1.0
+          },
+          "mean_recall_at_source_count": {
+            "max": 1.0,
+            "mean": 1.0,
+            "median": 1.0,
+            "min": 1.0,
+            "p05": 1.0,
+            "p95": 1.0
+          },
+          "peak_rss_bytes": {
+            "max": 5348167680.0,
+            "mean": 5336238407.68,
+            "median": 5334937600.0,
+            "min": 5325438976.0,
+            "p05": 5326380851.200001,
+            "p95": 5345742848.0
+          },
+          "scoring_seconds": {
+            "max": 14.263050079345703,
+            "mean": 9.96896544933319,
+            "median": 9.617282271385193,
+            "min": 9.112421751022339,
+            "p05": 9.22477822303772,
+            "p95": 12.771128582954406
+          },
+          "split": "partial",
+          "threshold_precision": {
+            "max": 1.0,
+            "mean": 0.1,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 1.0
+          },
+          "threshold_recall": {
+            "max": 1.0,
+            "mean": 0.08,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.7749999999999986
+          },
+          "trial_false_positive_count": 0,
+          "trial_false_positive_rate": 0.0,
+          "trial_false_positive_wilson95": [
+            0.0,
+            0.07134759913335872
+          ],
+          "trials": 50
+        }
+      },
+      "step": 0,
+      "utility": {
+        "calibration_open": {
+          "index_range": [
+            100000,
+            100320
+          ],
+          "loss": 3.990308153629303,
+          "perplexity": 54.071549140419016,
+          "sequences": 320
+        },
+        "evaluation_open": {
+          "index_range": [
+            110000,
+            110320
+          ],
+          "loss": 4.0792577266693115,
+          "perplexity": 59.10158403463176,
+          "sequences": 320
+        },
+        "heldout_candidate": {
+          "index_range": [
+            98000,
+            98320
+          ],
+          "loss": 4.014163100719452,
+          "perplexity": 55.376931090281836,
+          "sequences": 320
+        }
+      }
+    },
+    {
+      "parameter_drift": {
+        "maximum_absolute_parameter_drift": 0.0007381833856925368,
+        "relative_parameter_l2_drift": 0.0010285122242782677
+      },
+      "representation_drift": {
+        "mean_private_to_public_rowspace_residual": 0.09643517596243607,
+        "mean_public_to_private_rowspace_residual": 0.09608941908861063,
+        "mean_row_cosine": 0.9938574337759756,
+        "minimum_row_cosine": 0.8750671914276115,
+        "p05_row_cosine": 0.9856168865172293,
+        "p95_private_to_public_rowspace_residual": 0.15689443642909062,
+        "p95_public_to_private_rowspace_residual": 0.15829362882146714,
+        "probe_rows": 4096,
+        "probe_sequences": 128,
+        "relative_hidden_l2_drift": 0.02358970499624929
+      },
+      "splits": {
+        "closed": {
+          "accepted_count": {
+            "max": 3.0,
+            "mean": 1.03,
+            "median": 1.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 2.0
+          },
+          "candidate_false_positive_rate": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "exact_source_set_rate": {
+            "max": 1.0,
+            "mean": 1.0,
+            "median": 1.0,
+            "min": 1.0,
+            "p05": 1.0,
+            "p95": 1.0
+          },
+          "mean_average_precision": {
+            "max": 1.0,
+            "mean": 1.0,
+            "median": 1.0,
+            "min": 1.0,
+            "p05": 1.0,
+            "p95": 1.0
+          },
+          "mean_recall_at_source_count": {
+            "max": 1.0,
+            "mean": 1.0,
+            "median": 1.0,
+            "min": 1.0,
+            "p05": 1.0,
+            "p95": 1.0
+          },
+          "peak_rss_bytes": {
+            "max": 5337550848.0,
+            "mean": 5318332743.68,
+            "median": 5319929856.0,
+            "min": 5275811840.0,
+            "p05": 5299737395.2,
+            "p95": 5336260403.2
+          },
+          "scoring_seconds": {
+            "max": 11.508966207504272,
+            "mean": 10.01178142786026,
+            "median": 9.624643445014954,
+            "min": 9.078810930252075,
+            "p05": 9.175365471839905,
+            "p95": 11.47396000623703
+          },
+          "split": "closed",
+          "threshold_precision": {
+            "max": 1.0,
+            "mean": 0.72,
+            "median": 1.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 1.0
+          },
+          "threshold_recall": {
+            "max": 0.75,
+            "mean": 0.2575,
+            "median": 0.25,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.5
+          },
+          "trial_false_positive_count": 0,
+          "trial_false_positive_rate": 0.0,
+          "trial_false_positive_wilson95": [
+            0.0,
+            0.03699349820698568
+          ],
+          "trials": 100
+        },
+        "open": {
+          "accepted_count": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "candidate_false_positive_rate": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "exact_source_set_rate": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "mean_average_precision": {
+            "max": null,
+            "mean": null,
+            "median": null,
+            "min": null,
+            "p05": null,
+            "p95": null
+          },
+          "mean_recall_at_source_count": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "peak_rss_bytes": {
+            "max": 5429006336.0,
+            "mean": 5401438358.1866665,
+            "median": 5405556736.0,
+            "min": 5356937216.0,
+            "p05": 5363188940.799999,
+            "p95": 5427300352.0
+          },
+          "scoring_seconds": {
+            "max": 11.495733976364136,
+            "mean": 9.79657651901245,
+            "median": 9.58722198009491,
+            "min": 9.068856000900269,
+            "p05": 9.18233448266983,
+            "p95": 11.442673456668853
+          },
+          "split": "open",
+          "threshold_precision": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "threshold_recall": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "trial_false_positive_count": 0,
+          "trial_false_positive_rate": 0.0,
+          "trial_false_positive_wilson95": [
+            0.0,
+            0.012642971224546034
+          ],
+          "trials": 300
+        },
+        "partial": {
+          "accepted_count": {
+            "max": 2.0,
+            "mean": 0.68,
+            "median": 1.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 2.0
+          },
+          "candidate_false_positive_rate": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "exact_source_set_rate": {
+            "max": 1.0,
+            "mean": 1.0,
+            "median": 1.0,
+            "min": 1.0,
+            "p05": 1.0,
+            "p95": 1.0
+          },
+          "mean_average_precision": {
+            "max": 1.0,
+            "mean": 1.0,
+            "median": 1.0,
+            "min": 1.0,
+            "p05": 1.0,
+            "p95": 1.0
+          },
+          "mean_recall_at_source_count": {
+            "max": 1.0,
+            "mean": 1.0,
+            "median": 1.0,
+            "min": 1.0,
+            "p05": 1.0,
+            "p95": 1.0
+          },
+          "peak_rss_bytes": {
+            "max": 5356433408.0,
+            "mean": 5347611852.8,
+            "median": 5348012032.0,
+            "min": 5337821184.0,
+            "p05": 5339028684.8,
+            "p95": 5355282432.0
+          },
+          "scoring_seconds": {
+            "max": 11.49474573135376,
+            "mean": 9.85401355266571,
+            "median": 9.620717287063599,
+            "min": 9.062625885009766,
+            "p05": 9.265493166446685,
+            "p95": 11.41864343881607
+          },
+          "split": "partial",
+          "threshold_precision": {
+            "max": 1.0,
+            "mean": 0.56,
+            "median": 1.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 1.0
+          },
+          "threshold_recall": {
+            "max": 1.0,
+            "mean": 0.34,
+            "median": 0.5,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 1.0
+          },
+          "trial_false_positive_count": 0,
+          "trial_false_positive_rate": 0.0,
+          "trial_false_positive_wilson95": [
+            0.0,
+            0.07134759913335872
+          ],
+          "trials": 50
+        }
+      },
+      "step": 100,
+      "utility": {
+        "calibration_open": {
+          "index_range": [
+            100000,
+            100320
+          ],
+          "loss": 3.88215628862381,
+          "perplexity": 48.52874431252582,
+          "sequences": 320
+        },
+        "evaluation_open": {
+          "index_range": [
+            110000,
+            110320
+          ],
+          "loss": 3.9568588197231294,
+          "perplexity": 52.29280655925786,
+          "sequences": 320
+        },
+        "heldout_candidate": {
+          "index_range": [
+            98000,
+            98320
+          ],
+          "loss": 3.9006179571151733,
+          "perplexity": 49.43298713508645,
+          "sequences": 320
+        }
+      }
+    },
+    {
+      "parameter_drift": {
+        "maximum_absolute_parameter_drift": 0.0022523310035467148,
+        "relative_parameter_l2_drift": 0.0020829123088036833
+      },
+      "representation_drift": {
+        "mean_private_to_public_rowspace_residual": 0.13166499062739845,
+        "mean_public_to_private_rowspace_residual": 0.13029763726535562,
+        "mean_row_cosine": 0.987336743825781,
+        "minimum_row_cosine": 0.7568769360171105,
+        "p05_row_cosine": 0.9712966529587898,
+        "p95_private_to_public_rowspace_residual": 0.21888430712210977,
+        "p95_public_to_private_rowspace_residual": 0.21957228875684787,
+        "probe_rows": 4096,
+        "probe_sequences": 128,
+        "relative_hidden_l2_drift": 0.03647426643722682
+      },
+      "splits": {
+        "closed": {
+          "accepted_count": {
+            "max": 3.0,
+            "mean": 0.95,
+            "median": 1.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 2.0
+          },
+          "candidate_false_positive_rate": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "exact_source_set_rate": {
+            "max": 1.0,
+            "mean": 0.99,
+            "median": 1.0,
+            "min": 0.0,
+            "p05": 1.0,
+            "p95": 1.0
+          },
+          "mean_average_precision": {
+            "max": 1.0,
+            "mean": 0.9995,
+            "median": 1.0,
+            "min": 0.95,
+            "p05": 1.0,
+            "p95": 1.0
+          },
+          "mean_recall_at_source_count": {
+            "max": 1.0,
+            "mean": 0.9975,
+            "median": 1.0,
+            "min": 0.75,
+            "p05": 1.0,
+            "p95": 1.0
+          },
+          "peak_rss_bytes": {
+            "max": 5335162880.0,
+            "mean": 5313964072.96,
+            "median": 5314797568.0,
+            "min": 5273907200.0,
+            "p05": 5287004979.200001,
+            "p95": 5331014041.6
+          },
+          "scoring_seconds": {
+            "max": 14.941250324249268,
+            "mean": 11.075339205265045,
+            "median": 11.391972303390503,
+            "min": 9.076255083084106,
+            "p05": 9.440023493766786,
+            "p95": 11.810171103477478
+          },
+          "split": "closed",
+          "threshold_precision": {
+            "max": 1.0,
+            "mean": 0.69,
+            "median": 1.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 1.0
+          },
+          "threshold_recall": {
+            "max": 0.75,
+            "mean": 0.2375,
+            "median": 0.25,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.5
+          },
+          "trial_false_positive_count": 0,
+          "trial_false_positive_rate": 0.0,
+          "trial_false_positive_wilson95": [
+            0.0,
+            0.03699349820698568
+          ],
+          "trials": 100
+        },
+        "open": {
+          "accepted_count": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "candidate_false_positive_rate": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "exact_source_set_rate": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "mean_average_precision": {
+            "max": null,
+            "mean": null,
+            "median": null,
+            "min": null,
+            "p05": null,
+            "p95": null
+          },
+          "mean_recall_at_source_count": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "peak_rss_bytes": {
+            "max": 5423616000.0,
+            "mean": 5392690271.573334,
+            "median": 5396715520.0,
+            "min": 5345083392.0,
+            "p05": 5354125516.8,
+            "p95": 5420408832.0
+          },
+          "scoring_seconds": {
+            "max": 11.70353627204895,
+            "mean": 9.806213770707448,
+            "median": 9.584359884262085,
+            "min": 9.072046279907227,
+            "p05": 9.185608625411987,
+            "p95": 11.454022526741028
+          },
+          "split": "open",
+          "threshold_precision": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "threshold_recall": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "trial_false_positive_count": 0,
+          "trial_false_positive_rate": 0.0,
+          "trial_false_positive_wilson95": [
+            0.0,
+            0.012642971224546034
+          ],
+          "trials": 300
+        },
+        "partial": {
+          "accepted_count": {
+            "max": 2.0,
+            "mean": 0.58,
+            "median": 0.5,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 2.0
+          },
+          "candidate_false_positive_rate": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "exact_source_set_rate": {
+            "max": 1.0,
+            "mean": 1.0,
+            "median": 1.0,
+            "min": 1.0,
+            "p05": 1.0,
+            "p95": 1.0
+          },
+          "mean_average_precision": {
+            "max": 1.0,
+            "mean": 1.0,
+            "median": 1.0,
+            "min": 1.0,
+            "p05": 1.0,
+            "p95": 1.0
+          },
+          "mean_recall_at_source_count": {
+            "max": 1.0,
+            "mean": 1.0,
+            "median": 1.0,
+            "min": 1.0,
+            "p05": 1.0,
+            "p95": 1.0
+          },
+          "peak_rss_bytes": {
+            "max": 5350121472.0,
+            "mean": 5341469655.04,
+            "median": 5342068736.0,
+            "min": 5310746624.0,
+            "p05": 5334623027.2,
+            "p95": 5349411840.0
+          },
+          "scoring_seconds": {
+            "max": 11.83933424949646,
+            "mean": 10.07125409603119,
+            "median": 9.632148385047913,
+            "min": 9.192674160003662,
+            "p05": 9.304566276073455,
+            "p95": 11.466842663288116
+          },
+          "split": "partial",
+          "threshold_precision": {
+            "max": 1.0,
+            "mean": 0.5,
+            "median": 0.5,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 1.0
+          },
+          "threshold_recall": {
+            "max": 1.0,
+            "mean": 0.29,
+            "median": 0.25,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 1.0
+          },
+          "trial_false_positive_count": 0,
+          "trial_false_positive_rate": 0.0,
+          "trial_false_positive_wilson95": [
+            0.0,
+            0.07134759913335872
+          ],
+          "trials": 50
+        }
+      },
+      "step": 400,
+      "utility": {
+        "calibration_open": {
+          "index_range": [
+            100000,
+            100320
+          ],
+          "loss": 3.8094963908195494,
+          "perplexity": 45.12770641542021,
+          "sequences": 320
+        },
+        "evaluation_open": {
+          "index_range": [
+            110000,
+            110320
+          ],
+          "loss": 3.8656693577766417,
+          "perplexity": 47.73521367793065,
+          "sequences": 320
+        },
+        "heldout_candidate": {
+          "index_range": [
+            98000,
+            98320
+          ],
+          "loss": 3.8228474974632265,
+          "perplexity": 45.73425124894045,
+          "sequences": 320
+        }
+      }
+    },
+    {
+      "parameter_drift": {
+        "maximum_absolute_parameter_drift": 0.006342783570289612,
+        "relative_parameter_l2_drift": 0.004023318721697638
+      },
+      "representation_drift": {
+        "mean_private_to_public_rowspace_residual": 0.16383765622863952,
+        "mean_public_to_private_rowspace_residual": 0.16170957829073435,
+        "mean_row_cosine": 0.9800689453877283,
+        "minimum_row_cosine": 0.6673035680598696,
+        "p05_row_cosine": 0.9508725409859147,
+        "p95_private_to_public_rowspace_residual": 0.28577409175748586,
+        "p95_public_to_private_rowspace_residual": 0.2817192471214064,
+        "probe_rows": 4096,
+        "probe_sequences": 128,
+        "relative_hidden_l2_drift": 0.05132249809738932
+      },
+      "splits": {
+        "closed": {
+          "accepted_count": {
+            "max": 3.0,
+            "mean": 0.75,
+            "median": 1.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 2.0
+          },
+          "candidate_false_positive_rate": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "exact_source_set_rate": {
+            "max": 1.0,
+            "mean": 0.99,
+            "median": 1.0,
+            "min": 0.0,
+            "p05": 1.0,
+            "p95": 1.0
+          },
+          "mean_average_precision": {
+            "max": 1.0,
+            "mean": 0.9995,
+            "median": 1.0,
+            "min": 0.95,
+            "p05": 1.0,
+            "p95": 1.0
+          },
+          "mean_recall_at_source_count": {
+            "max": 1.0,
+            "mean": 0.9975,
+            "median": 1.0,
+            "min": 0.75,
+            "p05": 1.0,
+            "p95": 1.0
+          },
+          "peak_rss_bytes": {
+            "max": 5332672512.0,
+            "mean": 5312985251.84,
+            "median": 5313984512.0,
+            "min": 5266448384.0,
+            "p05": 5294340300.8,
+            "p95": 5330190336.0
+          },
+          "scoring_seconds": {
+            "max": 11.556209802627563,
+            "mean": 10.045948324203492,
+            "median": 9.574540615081787,
+            "min": 9.102776288986206,
+            "p05": 9.202302253246307,
+            "p95": 11.527850246429443
+          },
+          "split": "closed",
+          "threshold_precision": {
+            "max": 1.0,
+            "mean": 0.58,
+            "median": 1.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 1.0
+          },
+          "threshold_recall": {
+            "max": 0.75,
+            "mean": 0.1875,
+            "median": 0.25,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.5
+          },
+          "trial_false_positive_count": 0,
+          "trial_false_positive_rate": 0.0,
+          "trial_false_positive_wilson95": [
+            0.0,
+            0.03699349820698568
+          ],
+          "trials": 100
+        },
+        "open": {
+          "accepted_count": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "candidate_false_positive_rate": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "exact_source_set_rate": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "mean_average_precision": {
+            "max": null,
+            "mean": null,
+            "median": null,
+            "min": null,
+            "p05": null,
+            "p95": null
+          },
+          "mean_recall_at_source_count": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "peak_rss_bytes": {
+            "max": 5410451456.0,
+            "mean": 5385970469.546667,
+            "median": 5388976128.0,
+            "min": 5352013824.0,
+            "p05": 5358061363.2,
+            "p95": 5407392972.799999
+          },
+          "scoring_seconds": {
+            "max": 11.543344497680664,
+            "mean": 9.791091373761494,
+            "median": 9.601692080497742,
+            "min": 9.04292106628418,
+            "p05": 9.238440334796906,
+            "p95": 11.474698901176453
+          },
+          "split": "open",
+          "threshold_precision": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "threshold_recall": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "trial_false_positive_count": 0,
+          "trial_false_positive_rate": 0.0,
+          "trial_false_positive_wilson95": [
+            0.0,
+            0.012642971224546034
+          ],
+          "trials": 300
+        },
+        "partial": {
+          "accepted_count": {
+            "max": 2.0,
+            "mean": 0.44,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 1.0
+          },
+          "candidate_false_positive_rate": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "exact_source_set_rate": {
+            "max": 1.0,
+            "mean": 1.0,
+            "median": 1.0,
+            "min": 1.0,
+            "p05": 1.0,
+            "p95": 1.0
+          },
+          "mean_average_precision": {
+            "max": 1.0,
+            "mean": 1.0,
+            "median": 1.0,
+            "min": 1.0,
+            "p05": 1.0,
+            "p95": 1.0
+          },
+          "mean_recall_at_source_count": {
+            "max": 1.0,
+            "mean": 1.0,
+            "median": 1.0,
+            "min": 1.0,
+            "p05": 1.0,
+            "p95": 1.0
+          },
+          "peak_rss_bytes": {
+            "max": 5351505920.0,
+            "mean": 5342244700.16,
+            "median": 5342345216.0,
+            "min": 5332287488.0,
+            "p05": 5333602304.0,
+            "p95": 5350439321.6
+          },
+          "scoring_seconds": {
+            "max": 11.55928635597229,
+            "mean": 11.003520669937133,
+            "median": 11.386404514312744,
+            "min": 9.078956842422485,
+            "p05": 9.327732658386232,
+            "p95": 11.538962078094482
+          },
+          "split": "partial",
+          "threshold_precision": {
+            "max": 1.0,
+            "mean": 0.4,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 1.0
+          },
+          "threshold_recall": {
+            "max": 1.0,
+            "mean": 0.22,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.5
+          },
+          "trial_false_positive_count": 0,
+          "trial_false_positive_rate": 0.0,
+          "trial_false_positive_wilson95": [
+            0.0,
+            0.07134759913335872
+          ],
+          "trials": 50
+        }
+      },
+      "step": 1600,
+      "utility": {
+        "calibration_open": {
+          "index_range": [
+            100000,
+            100320
+          ],
+          "loss": 3.7542129933834074,
+          "perplexity": 42.70060092768344,
+          "sequences": 320
+        },
+        "evaluation_open": {
+          "index_range": [
+            110000,
+            110320
+          ],
+          "loss": 3.808404642343521,
+          "perplexity": 45.078465195119065,
+          "sequences": 320
+        },
+        "heldout_candidate": {
+          "index_range": [
+            98000,
+            98320
+          ],
+          "loss": 3.753143548965454,
+          "perplexity": 42.65495941825688,
+          "sequences": 320
+        }
+      }
+    },
+    {
+      "parameter_drift": {
+        "maximum_absolute_parameter_drift": 0.010665014386177063,
+        "relative_parameter_l2_drift": 0.005965331701695786
+      },
+      "representation_drift": {
+        "mean_private_to_public_rowspace_residual": 0.17281156716801999,
+        "mean_public_to_private_rowspace_residual": 0.17027172382069702,
+        "mean_row_cosine": 0.9775279287482014,
+        "minimum_row_cosine": 0.6464893947403003,
+        "p05_row_cosine": 0.9412660222092869,
+        "p95_private_to_public_rowspace_residual": 0.308072334476118,
+        "p95_public_to_private_rowspace_residual": 0.30402435773384956,
+        "probe_rows": 4096,
+        "probe_sequences": 128,
+        "relative_hidden_l2_drift": 0.05282903434700821
+      },
+      "splits": {
+        "closed": {
+          "accepted_count": {
+            "max": 3.0,
+            "mean": 0.54,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 2.0
+          },
+          "candidate_false_positive_rate": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "exact_source_set_rate": {
+            "max": 1.0,
+            "mean": 0.99,
+            "median": 1.0,
+            "min": 0.0,
+            "p05": 1.0,
+            "p95": 1.0
+          },
+          "mean_average_precision": {
+            "max": 1.0,
+            "mean": 0.9995,
+            "median": 1.0,
+            "min": 0.95,
+            "p05": 1.0,
+            "p95": 1.0
+          },
+          "mean_recall_at_source_count": {
+            "max": 1.0,
+            "mean": 0.9975,
+            "median": 1.0,
+            "min": 0.75,
+            "p05": 1.0,
+            "p95": 1.0
+          },
+          "peak_rss_bytes": {
+            "max": 5331533824.0,
+            "mean": 5312825180.16,
+            "median": 5313171456.0,
+            "min": 5292638208.0,
+            "p05": 5294858854.400001,
+            "p95": 5329424384.0
+          },
+          "scoring_seconds": {
+            "max": 18.360445976257324,
+            "mean": 9.645282788276672,
+            "median": 9.540666222572327,
+            "min": 9.041490077972412,
+            "p05": 9.125852262973785,
+            "p95": 9.659302687644956
+          },
+          "split": "closed",
+          "threshold_precision": {
+            "max": 1.0,
+            "mean": 0.45,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 1.0
+          },
+          "threshold_recall": {
+            "max": 0.75,
+            "mean": 0.135,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.5
+          },
+          "trial_false_positive_count": 0,
+          "trial_false_positive_rate": 0.0,
+          "trial_false_positive_wilson95": [
+            0.0,
+            0.03699349820698568
+          ],
+          "trials": 100
+        },
+        "open": {
+          "accepted_count": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "candidate_false_positive_rate": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "exact_source_set_rate": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "mean_average_precision": {
+            "max": null,
+            "mean": null,
+            "median": null,
+            "min": null,
+            "p05": null,
+            "p95": null
+          },
+          "mean_recall_at_source_count": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "peak_rss_bytes": {
+            "max": 5422972928.0,
+            "mean": 5395528253.44,
+            "median": 5399314432.0,
+            "min": 5351079936.0,
+            "p05": 5356191744.0,
+            "p95": 5421924352.0
+          },
+          "scoring_seconds": {
+            "max": 22.102965116500854,
+            "mean": 9.65318260749181,
+            "median": 9.538710951805115,
+            "min": 9.037912607192993,
+            "p05": 9.09095470905304,
+            "p95": 9.636308240890504
+          },
+          "split": "open",
+          "threshold_precision": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "threshold_recall": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "trial_false_positive_count": 0,
+          "trial_false_positive_rate": 0.0,
+          "trial_false_positive_wilson95": [
+            0.0,
+            0.012642971224546034
+          ],
+          "trials": 300
+        },
+        "partial": {
+          "accepted_count": {
+            "max": 2.0,
+            "mean": 0.36,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 1.0
+          },
+          "candidate_false_positive_rate": {
+            "max": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.0
+          },
+          "exact_source_set_rate": {
+            "max": 1.0,
+            "mean": 1.0,
+            "median": 1.0,
+            "min": 1.0,
+            "p05": 1.0,
+            "p95": 1.0
+          },
+          "mean_average_precision": {
+            "max": 1.0,
+            "mean": 1.0,
+            "median": 1.0,
+            "min": 1.0,
+            "p05": 1.0,
+            "p95": 1.0
+          },
+          "mean_recall_at_source_count": {
+            "max": 1.0,
+            "mean": 1.0,
+            "median": 1.0,
+            "min": 1.0,
+            "p05": 1.0,
+            "p95": 1.0
+          },
+          "peak_rss_bytes": {
+            "max": 5351079936.0,
+            "mean": 5341398548.48,
+            "median": 5341417472.0,
+            "min": 5331533824.0,
+            "p05": 5333644902.4,
+            "p95": 5348741120.0
+          },
+          "scoring_seconds": {
+            "max": 9.645531415939331,
+            "mean": 9.468150548934936,
+            "median": 9.53556776046753,
+            "min": 9.069506406784058,
+            "p05": 9.143919289112091,
+            "p95": 9.61787382364273
+          },
+          "split": "partial",
+          "threshold_precision": {
+            "max": 1.0,
+            "mean": 0.34,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 1.0
+          },
+          "threshold_recall": {
+            "max": 1.0,
+            "mean": 0.18,
+            "median": 0.0,
+            "min": 0.0,
+            "p05": 0.0,
+            "p95": 0.5
+          },
+          "trial_false_positive_count": 0,
+          "trial_false_positive_rate": 0.0,
+          "trial_false_positive_wilson95": [
+            0.0,
+            0.07134759913335872
+          ],
+          "trials": 50
+        }
+      },
+      "step": 3200,
+      "utility": {
+        "calibration_open": {
+          "index_range": [
+            100000,
+            100320
+          ],
+          "loss": 3.7303043723106386,
+          "perplexity": 41.69179606131089,
+          "sequences": 320
+        },
+        "evaluation_open": {
+          "index_range": [
+            110000,
+            110320
+          ],
+          "loss": 3.7811706721782685,
+          "perplexity": 43.867365992674046,
+          "sequences": 320
+        },
+        "heldout_candidate": {
+          "index_range": [
+            98000,
+            98320
+          ],
+          "loss": 3.725064438581467,
+          "perplexity": 41.4739051783435,
+          "sequences": 320
+        }
+      }
+    }
+  ]
+}

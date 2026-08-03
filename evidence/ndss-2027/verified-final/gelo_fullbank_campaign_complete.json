@@ -1,0 +1,73 @@
+{
+  "all_prespecified_gates_pass": true,
+  "artifact_sha256": {
+    "fullbank_results.json": "725d3deb68f069bff01c71189955a7dc2a47e36d30d185c9ed09c874d4cea2a5"
+  },
+  "bank_size": 100000,
+  "calibration_trials": 100,
+  "git_revision": "85fa2bc8e4ea83e8057129c7c459c534a0605ab8",
+  "input_sha256": {
+    "data/manifest.json": "f34d44f92f47040777d255ad9ea30ab3a3ec4a820ffcfa284b0b367ce58f417b",
+    "evaluation/summary.json": "0b85a7bd4dc7c63365081f899dfa49e3a7ea7a6b6ba8e3b0bb7b93957cd08ba8",
+    "evaluation/trial_records.jsonl": "bd59b1649597a298f8ae0e143266bf5c4f5f0f8e2feb0d869e661da1ab01b2c1"
+  },
+  "nominal_trial_false_positive_alpha": 0.01,
+  "open_trials": 300,
+  "positive_placement": "uniform over candidate indices [0,100000)",
+  "prespecified_gates": [
+    {
+      "closed_ap_at_least_0_95": true,
+      "closed_recall_at_least_0_95": true,
+      "condition": "ideal",
+      "open_trial_fpr_wilson_upper_at_most_0_05": true,
+      "partial_ap_at_least_0_90": true,
+      "partial_recall_at_least_0_90": true,
+      "pass": true,
+      "random_control_recall_at_most_0_05": true
+    },
+    {
+      "closed_ap_at_least_0_95": true,
+      "closed_recall_at_least_0_95": true,
+      "condition": "gelo_nonorth",
+      "open_trial_fpr_wilson_upper_at_most_0_05": true,
+      "partial_ap_at_least_0_90": true,
+      "partial_recall_at_least_0_90": true,
+      "pass": true,
+      "random_control_recall_at_most_0_05": true
+    },
+    {
+      "closed_ap_at_least_0_95": true,
+      "closed_recall_at_least_0_95": true,
+      "condition": "manifold_stress",
+      "open_trial_fpr_wilson_upper_at_most_0_05": true,
+      "partial_ap_at_least_0_90": true,
+      "partial_recall_at_least_0_90": true,
+      "pass": true,
+      "random_control_recall_at_most_0_05": true
+    }
+  ],
+  "status": "complete",
+  "validation": {
+    "conditions": [
+      "ideal",
+      "gelo_nonorth",
+      "manifold_stress"
+    ],
+    "counts": {
+      "gelo_nonorth:calibration": 100,
+      "gelo_nonorth:closed": 100,
+      "gelo_nonorth:open": 300,
+      "gelo_nonorth:partial": 50,
+      "ideal:calibration": 100,
+      "ideal:closed": 100,
+      "ideal:open": 300,
+      "ideal:partial": 50,
+      "manifold_stress:calibration": 100,
+      "manifold_stress:closed": 100,
+      "manifold_stress:open": 300,
+      "manifold_stress:partial": 50
+    },
+    "expected_records": 1650,
+    "records": 1650
+  }
+}

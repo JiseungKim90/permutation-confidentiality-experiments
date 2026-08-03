@@ -1,0 +1,130 @@
+{
+  "artifact_sha256": {
+    "private_drift_boundary.csv": "d7aeabddc3dc0557b619544b55b5a54388cf4493d26f5c74c62142697aa5dba4",
+    "private_drift_results.json": "4cf273251fc3778b52383c44411418ea5074617464caac058e1bf40b15cb9939"
+  },
+  "bank_size": 100000,
+  "calibration_trials": 100,
+  "first_checkpoint_below_prespecified_attack_level": null,
+  "git_revision": "85fa2bc8e4ea83e8057129c7c459c534a0605ab8",
+  "input_sha256": {
+    "checkpoints/step0000/checkpoint_manifest.json": "1522c90f0d63b933fe8a7223800003935c8955e94a6e283da6e422379af5a8a1",
+    "checkpoints/step0100/checkpoint_manifest.json": "4fc7a3b30ab0d8baeeb0628b48d16f9e29164e4c75d919c2203a0ac5bb7586c2",
+    "checkpoints/step0400/checkpoint_manifest.json": "2ccb3ee413bdd86e538deaba136e07f5c03578bc2f280535d8cbaa2e2d653d92",
+    "checkpoints/step1600/checkpoint_manifest.json": "b07d32a83268a355c769cde5c7306547b50e3492a53718aca0dfef60f684c6f1",
+    "checkpoints/step3200/checkpoint_manifest.json": "f0d08a37f3af0836f1004bf2a4bc50f34d025cbab13581d35aaff3e68bcf0759",
+    "evaluation/step0000/summary.json": "f5267c4bbfd9c060aed9820ea85646988e93bfe76f4a360ff8e003bdeaacc3ea",
+    "evaluation/step0000/trial_records.jsonl": "5d891f8f79c4f1c360c3b57b28ce74548e203ad755aaaa2846e5c83abc1b805c",
+    "evaluation/step0100/summary.json": "6a427bb758f7c920466bb70cb811470973948295e93a84afb16d32bb6a6a2fba",
+    "evaluation/step0100/trial_records.jsonl": "af211e8aa2000896bf5f2faf1ee5f34719bc7d3048b444db3a0a916a7dc35bc4",
+    "evaluation/step0400/summary.json": "6e4f4c3b4e998111a99fd835364c355bfa899434c709da792376ba2cd56f042f",
+    "evaluation/step0400/trial_records.jsonl": "c52eb6fa9a253cee988ef96e327e5eafa28a531cd04aaa5945ebf9a896712599",
+    "evaluation/step1600/summary.json": "06a119b2b7a2a89ee3bfe907fe5f3865f1f81ba2f635e25d4c7d14ee794abf6d",
+    "evaluation/step1600/trial_records.jsonl": "95c23eacf81980dbf46cd4416e9e95764afe37f68f34e83267c9dbc91d2e25c0",
+    "evaluation/step3200/summary.json": "7cbeaccb5831b725f90aba4b6bc5d98029aae9fbae222d5846e09c39a15156e8",
+    "evaluation/step3200/trial_records.jsonl": "ee84f80bded80e6d20991dc592a25493a915fd8185a29a512648f9215d8bc641"
+  },
+  "interpretation_guardrail": "The sweep quantifies public-bank mismatch for one fine-tuning trajectory; it is not a universal result for arbitrary proprietary prefixes.",
+  "nominal_trial_false_positive_alpha": 0.01,
+  "open_trials": 300,
+  "paired_checkpoints": [
+    0,
+    100,
+    400,
+    1600,
+    3200
+  ],
+  "status": "complete",
+  "validation": {
+    "step0000": {
+      "complete": true,
+      "counts": {
+        "calibration": 100,
+        "closed": 100,
+        "open": 300,
+        "partial": 50
+      },
+      "duplicates": [],
+      "expected": {
+        "calibration": 100,
+        "closed": 100,
+        "open": 300,
+        "partial": 50
+      },
+      "records": 550,
+      "unexpected": []
+    },
+    "step0100": {
+      "complete": true,
+      "counts": {
+        "calibration": 100,
+        "closed": 100,
+        "open": 300,
+        "partial": 50
+      },
+      "duplicates": [],
+      "expected": {
+        "calibration": 100,
+        "closed": 100,
+        "open": 300,
+        "partial": 50
+      },
+      "records": 550,
+      "unexpected": []
+    },
+    "step0400": {
+      "complete": true,
+      "counts": {
+        "calibration": 100,
+        "closed": 100,
+        "open": 300,
+        "partial": 50
+      },
+      "duplicates": [],
+      "expected": {
+        "calibration": 100,
+        "closed": 100,
+        "open": 300,
+        "partial": 50
+      },
+      "records": 550,
+      "unexpected": []
+    },
+    "step1600": {
+      "complete": true,
+      "counts": {
+        "calibration": 100,
+        "closed": 100,
+        "open": 300,
+        "partial": 50
+      },
+      "duplicates": [],
+      "expected": {
+        "calibration": 100,
+        "closed": 100,
+        "open": 300,
+        "partial": 50
+      },
+      "records": 550,
+      "unexpected": []
+    },
+    "step3200": {
+      "complete": true,
+      "counts": {
+        "calibration": 100,
+        "closed": 100,
+        "open": 300,
+        "partial": 50
+      },
+      "duplicates": [],
+      "expected": {
+        "calibration": 100,
+        "closed": 100,
+        "open": 300,
+        "partial": 50
+      },
+      "records": 550,
+      "unexpected": []
+    }
+  }
+}

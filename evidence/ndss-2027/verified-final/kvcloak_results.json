@@ -1,0 +1,1531 @@
+{
+  "additional": [
+    {
+      "metadata": {
+        "attack": "chosen-prompt protected-block codebook via row-space projector",
+        "bank_sizes": [
+          10000
+        ],
+        "block_size": 16,
+        "cache_manifest": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/cache/gpt2_layer4_heads0_5_11_manifest.json",
+        "calibration_alpha": 0.01,
+        "conditions": [
+          "official_reuse"
+        ],
+        "dimension": 64,
+        "head_position": 0,
+        "hostname": "ubuntu02",
+        "kv_types": [
+          "key",
+          "value"
+        ],
+        "layer": 4,
+        "model_head": 0,
+        "numpy_version": "1.24.4",
+        "official_commit": "6b40f36edb2f337557543e7e60b10022308883d4",
+        "official_repository": "https://github.com/SiO-2/kvcloak",
+        "official_source_sha256": "246a72d5760a3f1b7c61800ad778cc14200d58e85bead89b8e7d4c8d2e86051d",
+        "precision": "bfloat16",
+        "repo_revision": "85fa2bc8e4ea83e8057129c7c459c534a0605ab8",
+        "seed": 20260860,
+        "shortlist": 64,
+        "sketch_pairs": 512,
+        "theta": [
+          54.831756591796875,
+          9.443990707397461
+        ],
+        "threat_model": "attacker can observe protected KV blocks and enroll chosen prompts under a fixed deployed KV-Cloak configuration",
+        "torch_version": "2.4.1+cpu",
+        "trial_records_sha256": "db4c10b426a5e8e4c622970d0ccc9a6df60fa525f13b165f6ce49c18278796d6",
+        "trials": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/data/b16_10k/trials.json"
+      },
+      "path": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer4_headpos0_b16_bf16",
+      "raw_records": 400,
+      "summary": [
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "key",
+          "max_peak_rss_bytes": 1496719360,
+          "mean_search_seconds": 0.003382430076599121,
+          "random_label_top1_recall": 0.0,
+          "split": "closed",
+          "threshold_recall": 1.0,
+          "top1_recall": 1.0,
+          "trials": 50
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "key",
+          "mean_best_exact_chordal": 0.661120730313228,
+          "mean_search_seconds": 0.0038724184036254884,
+          "split": "open",
+          "trial_false_positive_count": 6,
+          "trial_false_positive_rate": 0.06,
+          "trials": 100
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "value",
+          "max_peak_rss_bytes": 1547710464,
+          "mean_search_seconds": 0.0033414316177368163,
+          "random_label_top1_recall": 0.0,
+          "split": "closed",
+          "threshold_recall": 1.0,
+          "top1_recall": 1.0,
+          "trials": 50
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "value",
+          "mean_best_exact_chordal": 0.7050130494746505,
+          "mean_search_seconds": 0.003891432285308838,
+          "split": "open",
+          "trial_false_positive_count": 5,
+          "trial_false_positive_rate": 0.05,
+          "trials": 100
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "attack": "chosen-prompt protected-block codebook via row-space projector",
+        "bank_sizes": [
+          10000
+        ],
+        "block_size": 16,
+        "cache_manifest": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/cache/gpt2_layer4_heads0_5_11_manifest.json",
+        "calibration_alpha": 0.01,
+        "conditions": [
+          "official_reuse"
+        ],
+        "dimension": 64,
+        "head_position": 1,
+        "hostname": "ubuntu02",
+        "kv_types": [
+          "key",
+          "value"
+        ],
+        "layer": 4,
+        "model_head": 5,
+        "numpy_version": "1.24.4",
+        "official_commit": "6b40f36edb2f337557543e7e60b10022308883d4",
+        "official_repository": "https://github.com/SiO-2/kvcloak",
+        "official_source_sha256": "246a72d5760a3f1b7c61800ad778cc14200d58e85bead89b8e7d4c8d2e86051d",
+        "precision": "bfloat16",
+        "repo_revision": "85fa2bc8e4ea83e8057129c7c459c534a0605ab8",
+        "seed": 20260861,
+        "shortlist": 64,
+        "sketch_pairs": 512,
+        "theta": [
+          54.831756591796875,
+          9.443990707397461
+        ],
+        "threat_model": "attacker can observe protected KV blocks and enroll chosen prompts under a fixed deployed KV-Cloak configuration",
+        "torch_version": "2.4.1+cpu",
+        "trial_records_sha256": "df24178946e41ad8b3974fbc4709f3ea31630f5b44ffb29b44e85437eda69446",
+        "trials": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/data/b16_10k/trials.json"
+      },
+      "path": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer4_headpos1_b16_bf16",
+      "raw_records": 400,
+      "summary": [
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "key",
+          "max_peak_rss_bytes": 1499746304,
+          "mean_search_seconds": 0.0037478065490722657,
+          "random_label_top1_recall": 0.0,
+          "split": "closed",
+          "threshold_recall": 1.0,
+          "top1_recall": 1.0,
+          "trials": 50
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "key",
+          "mean_best_exact_chordal": 0.666289840426244,
+          "mean_search_seconds": 0.004078440666198731,
+          "split": "open",
+          "trial_false_positive_count": 6,
+          "trial_false_positive_rate": 0.06,
+          "trials": 100
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "value",
+          "max_peak_rss_bytes": 1551921152,
+          "mean_search_seconds": 0.0038348388671875,
+          "random_label_top1_recall": 0.0,
+          "split": "closed",
+          "threshold_recall": 1.0,
+          "top1_recall": 1.0,
+          "trials": 50
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "value",
+          "mean_best_exact_chordal": 0.6952869591572545,
+          "mean_search_seconds": 0.004021694660186767,
+          "split": "open",
+          "trial_false_positive_count": 7,
+          "trial_false_positive_rate": 0.07,
+          "trials": 100
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "attack": "chosen-prompt protected-block codebook via row-space projector",
+        "bank_sizes": [
+          10000
+        ],
+        "block_size": 16,
+        "cache_manifest": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/cache/gpt2_layer4_heads0_5_11_manifest.json",
+        "calibration_alpha": 0.01,
+        "conditions": [
+          "official_reuse"
+        ],
+        "dimension": 64,
+        "head_position": 2,
+        "hostname": "ubuntu02",
+        "kv_types": [
+          "key",
+          "value"
+        ],
+        "layer": 4,
+        "model_head": 11,
+        "numpy_version": "1.24.4",
+        "official_commit": "6b40f36edb2f337557543e7e60b10022308883d4",
+        "official_repository": "https://github.com/SiO-2/kvcloak",
+        "official_source_sha256": "246a72d5760a3f1b7c61800ad778cc14200d58e85bead89b8e7d4c8d2e86051d",
+        "precision": "bfloat16",
+        "repo_revision": "85fa2bc8e4ea83e8057129c7c459c534a0605ab8",
+        "seed": 20260862,
+        "shortlist": 64,
+        "sketch_pairs": 512,
+        "theta": [
+          54.831756591796875,
+          9.443990707397461
+        ],
+        "threat_model": "attacker can observe protected KV blocks and enroll chosen prompts under a fixed deployed KV-Cloak configuration",
+        "torch_version": "2.4.1+cpu",
+        "trial_records_sha256": "c03a51bfd05302af8304f870c0340d52f0d06a319584e465c9b686ef5b683d00",
+        "trials": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/data/b16_10k/trials.json"
+      },
+      "path": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer4_headpos2_b16_bf16",
+      "raw_records": 400,
+      "summary": [
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "key",
+          "max_peak_rss_bytes": 1485418496,
+          "mean_search_seconds": 0.0032204341888427733,
+          "random_label_top1_recall": 0.0,
+          "split": "closed",
+          "threshold_recall": 1.0,
+          "top1_recall": 1.0,
+          "trials": 50
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "key",
+          "mean_best_exact_chordal": 0.6353785576405507,
+          "mean_search_seconds": 0.0037903714179992674,
+          "split": "open",
+          "trial_false_positive_count": 4,
+          "trial_false_positive_rate": 0.04,
+          "trials": 100
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "value",
+          "max_peak_rss_bytes": 1537064960,
+          "mean_search_seconds": 0.0035907316207885744,
+          "random_label_top1_recall": 0.0,
+          "split": "closed",
+          "threshold_recall": 1.0,
+          "top1_recall": 1.0,
+          "trials": 50
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "value",
+          "mean_best_exact_chordal": 0.6981466867971808,
+          "mean_search_seconds": 0.003898794651031494,
+          "split": "open",
+          "trial_false_positive_count": 7,
+          "trial_false_positive_rate": 0.07,
+          "trials": 100
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "attack": "chosen-prompt protected-block codebook via row-space projector",
+        "bank_sizes": [
+          10000
+        ],
+        "block_size": 16,
+        "cache_manifest": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/cache/gpt2_layer8_heads0_5_11_manifest.json",
+        "calibration_alpha": 0.01,
+        "conditions": [
+          "official_reuse"
+        ],
+        "dimension": 64,
+        "head_position": 1,
+        "hostname": "ubuntu02",
+        "kv_types": [
+          "key",
+          "value"
+        ],
+        "layer": 8,
+        "model_head": 5,
+        "numpy_version": "1.24.4",
+        "official_commit": "6b40f36edb2f337557543e7e60b10022308883d4",
+        "official_repository": "https://github.com/SiO-2/kvcloak",
+        "official_source_sha256": "246a72d5760a3f1b7c61800ad778cc14200d58e85bead89b8e7d4c8d2e86051d",
+        "precision": "bfloat16",
+        "repo_revision": "85fa2bc8e4ea83e8057129c7c459c534a0605ab8",
+        "seed": 20260901,
+        "shortlist": 64,
+        "sketch_pairs": 512,
+        "theta": [
+          31.51470184326172,
+          14.22099494934082
+        ],
+        "threat_model": "attacker can observe protected KV blocks and enroll chosen prompts under a fixed deployed KV-Cloak configuration",
+        "torch_version": "2.4.1+cpu",
+        "trial_records_sha256": "dca2db7629d131762f9644cfcd3ba06a9e525c5fed16033d798564a7cc6c27eb",
+        "trials": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/data/b16_10k/trials.json"
+      },
+      "path": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer8_headpos1_b16_bf16",
+      "raw_records": 400,
+      "summary": [
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "key",
+          "max_peak_rss_bytes": 1502347264,
+          "mean_search_seconds": 0.004251675605773926,
+          "random_label_top1_recall": 0.0,
+          "split": "closed",
+          "threshold_recall": 1.0,
+          "top1_recall": 1.0,
+          "trials": 50
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "key",
+          "mean_best_exact_chordal": 0.667475202081473,
+          "mean_search_seconds": 0.0038988709449768065,
+          "split": "open",
+          "trial_false_positive_count": 4,
+          "trial_false_positive_rate": 0.04,
+          "trials": 100
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "value",
+          "max_peak_rss_bytes": 1553797120,
+          "mean_search_seconds": 0.0029846477508544923,
+          "random_label_top1_recall": 0.0,
+          "split": "closed",
+          "threshold_recall": 1.0,
+          "top1_recall": 1.0,
+          "trials": 50
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "value",
+          "mean_best_exact_chordal": 0.7298684641470701,
+          "mean_search_seconds": 0.0037665772438049317,
+          "split": "open",
+          "trial_false_positive_count": 5,
+          "trial_false_positive_rate": 0.05,
+          "trials": 100
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "attack": "chosen-prompt protected-block codebook via row-space projector",
+        "bank_sizes": [
+          10000
+        ],
+        "block_size": 16,
+        "cache_manifest": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/cache/gpt2_layer8_heads0_5_11_manifest.json",
+        "calibration_alpha": 0.01,
+        "conditions": [
+          "official_reuse"
+        ],
+        "dimension": 64,
+        "head_position": 2,
+        "hostname": "ubuntu02",
+        "kv_types": [
+          "key",
+          "value"
+        ],
+        "layer": 8,
+        "model_head": 11,
+        "numpy_version": "1.24.4",
+        "official_commit": "6b40f36edb2f337557543e7e60b10022308883d4",
+        "official_repository": "https://github.com/SiO-2/kvcloak",
+        "official_source_sha256": "246a72d5760a3f1b7c61800ad778cc14200d58e85bead89b8e7d4c8d2e86051d",
+        "precision": "bfloat16",
+        "repo_revision": "85fa2bc8e4ea83e8057129c7c459c534a0605ab8",
+        "seed": 20260902,
+        "shortlist": 64,
+        "sketch_pairs": 512,
+        "theta": [
+          31.51470184326172,
+          14.22099494934082
+        ],
+        "threat_model": "attacker can observe protected KV blocks and enroll chosen prompts under a fixed deployed KV-Cloak configuration",
+        "torch_version": "2.4.1+cpu",
+        "trial_records_sha256": "d8bcb1905fdd4a124c185f431f3b664978a106e2c666e93b4ac69ab14ec55eaf",
+        "trials": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/data/b16_10k/trials.json"
+      },
+      "path": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer8_headpos2_b16_bf16",
+      "raw_records": 400,
+      "summary": [
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "key",
+          "max_peak_rss_bytes": 1511292928,
+          "mean_search_seconds": 0.0029124879837036134,
+          "random_label_top1_recall": 0.0,
+          "split": "closed",
+          "threshold_recall": 1.0,
+          "top1_recall": 1.0,
+          "trials": 50
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "key",
+          "mean_best_exact_chordal": 0.6774282896501425,
+          "mean_search_seconds": 0.004099781513214111,
+          "split": "open",
+          "trial_false_positive_count": 6,
+          "trial_false_positive_rate": 0.06,
+          "trials": 100
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "value",
+          "max_peak_rss_bytes": 1562038272,
+          "mean_search_seconds": 0.003769588470458984,
+          "random_label_top1_recall": 0.0,
+          "split": "closed",
+          "threshold_recall": 1.0,
+          "top1_recall": 1.0,
+          "trials": 50
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "value",
+          "mean_best_exact_chordal": 0.7247605693368713,
+          "mean_search_seconds": 0.003770298957824707,
+          "split": "open",
+          "trial_false_positive_count": 4,
+          "trial_false_positive_rate": 0.04,
+          "trials": 100
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "attack": "chosen-prompt protected-block codebook via row-space projector",
+        "bank_sizes": [
+          10000
+        ],
+        "block_size": 8,
+        "cache_manifest": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/cache/gpt2_layer8_heads0_5_11_manifest.json",
+        "calibration_alpha": 0.01,
+        "conditions": [
+          "official_reuse"
+        ],
+        "dimension": 64,
+        "head_position": 0,
+        "hostname": "ubuntu02",
+        "kv_types": [
+          "key",
+          "value"
+        ],
+        "layer": 8,
+        "model_head": 0,
+        "numpy_version": "1.24.4",
+        "official_commit": "6b40f36edb2f337557543e7e60b10022308883d4",
+        "official_repository": "https://github.com/SiO-2/kvcloak",
+        "official_source_sha256": "246a72d5760a3f1b7c61800ad778cc14200d58e85bead89b8e7d4c8d2e86051d",
+        "precision": "float32",
+        "repo_revision": "85fa2bc8e4ea83e8057129c7c459c534a0605ab8",
+        "seed": 20260908,
+        "shortlist": 64,
+        "sketch_pairs": 512,
+        "theta": [
+          31.51470184326172,
+          14.22099494934082
+        ],
+        "threat_model": "attacker can observe protected KV blocks and enroll chosen prompts under a fixed deployed KV-Cloak configuration",
+        "torch_version": "2.4.1+cpu",
+        "trial_records_sha256": "18de66eb1b3b2bfb67dc3386c86c62744b21be8507b99f5c757893f72ebb2dda",
+        "trials": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/data/b8_10k/trials.json"
+      },
+      "path": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer8_head0_b8_float32",
+      "raw_records": 400,
+      "summary": [
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "key",
+          "max_peak_rss_bytes": 1464291328,
+          "mean_search_seconds": 0.0024065589904785157,
+          "random_label_top1_recall": 0.0,
+          "split": "closed",
+          "threshold_recall": 1.0,
+          "top1_recall": 1.0,
+          "trials": 50
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "key",
+          "mean_best_exact_chordal": 0.6371969707140132,
+          "mean_search_seconds": 0.002446167469024658,
+          "split": "open",
+          "trial_false_positive_count": 0,
+          "trial_false_positive_rate": 0.0,
+          "trials": 100
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "value",
+          "max_peak_rss_bytes": 1493204992,
+          "mean_search_seconds": 0.0029956960678100587,
+          "random_label_top1_recall": 0.0,
+          "split": "closed",
+          "threshold_recall": 1.0,
+          "top1_recall": 1.0,
+          "trials": 50
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "value",
+          "mean_best_exact_chordal": 0.6679428433907192,
+          "mean_search_seconds": 0.0025609159469604493,
+          "split": "open",
+          "trial_false_positive_count": 0,
+          "trial_false_positive_rate": 0.0,
+          "trials": 100
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "attack": "chosen-prompt protected-block codebook via row-space projector",
+        "bank_sizes": [
+          10000
+        ],
+        "block_size": 8,
+        "cache_manifest": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/cache/gpt2_layer8_heads0_5_11_manifest.json",
+        "calibration_alpha": 0.01,
+        "conditions": [
+          "official_reuse"
+        ],
+        "dimension": 64,
+        "head_position": 0,
+        "hostname": "ubuntu02",
+        "kv_types": [
+          "key",
+          "value"
+        ],
+        "layer": 8,
+        "model_head": 0,
+        "numpy_version": "1.24.4",
+        "official_commit": "6b40f36edb2f337557543e7e60b10022308883d4",
+        "official_repository": "https://github.com/SiO-2/kvcloak",
+        "official_source_sha256": "246a72d5760a3f1b7c61800ad778cc14200d58e85bead89b8e7d4c8d2e86051d",
+        "precision": "float16",
+        "repo_revision": "85fa2bc8e4ea83e8057129c7c459c534a0605ab8",
+        "seed": 20260908,
+        "shortlist": 64,
+        "sketch_pairs": 512,
+        "theta": [
+          31.51470184326172,
+          14.22099494934082
+        ],
+        "threat_model": "attacker can observe protected KV blocks and enroll chosen prompts under a fixed deployed KV-Cloak configuration",
+        "torch_version": "2.4.1+cpu",
+        "trial_records_sha256": "fe6f96a4bc84fa02ebd0d04774fe8b6542d24da15fc18b8523d83a2da1c3cd71",
+        "trials": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/data/b8_10k/trials.json"
+      },
+      "path": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer8_head0_b8_float16",
+      "raw_records": 400,
+      "summary": [
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "key",
+          "max_peak_rss_bytes": 1450483712,
+          "mean_search_seconds": 0.002664365768432617,
+          "random_label_top1_recall": 0.0,
+          "split": "closed",
+          "threshold_recall": 1.0,
+          "top1_recall": 1.0,
+          "trials": 50
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "key",
+          "mean_best_exact_chordal": 0.6373572575013737,
+          "mean_search_seconds": 0.002671339511871338,
+          "split": "open",
+          "trial_false_positive_count": 0,
+          "trial_false_positive_rate": 0.0,
+          "trials": 100
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "value",
+          "max_peak_rss_bytes": 1479593984,
+          "mean_search_seconds": 0.0030960798263549804,
+          "random_label_top1_recall": 0.0,
+          "split": "closed",
+          "threshold_recall": 1.0,
+          "top1_recall": 1.0,
+          "trials": 50
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "value",
+          "mean_best_exact_chordal": 0.6684309034644705,
+          "mean_search_seconds": 0.0028230595588684083,
+          "split": "open",
+          "trial_false_positive_count": 0,
+          "trial_false_positive_rate": 0.0,
+          "trials": 100
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "attack": "chosen-prompt protected-block codebook via row-space projector",
+        "bank_sizes": [
+          10000
+        ],
+        "block_size": 8,
+        "cache_manifest": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/cache/gpt2_layer8_heads0_5_11_manifest.json",
+        "calibration_alpha": 0.01,
+        "conditions": [
+          "official_reuse"
+        ],
+        "dimension": 64,
+        "head_position": 0,
+        "hostname": "ubuntu02",
+        "kv_types": [
+          "key",
+          "value"
+        ],
+        "layer": 8,
+        "model_head": 0,
+        "numpy_version": "1.24.4",
+        "official_commit": "6b40f36edb2f337557543e7e60b10022308883d4",
+        "official_repository": "https://github.com/SiO-2/kvcloak",
+        "official_source_sha256": "246a72d5760a3f1b7c61800ad778cc14200d58e85bead89b8e7d4c8d2e86051d",
+        "precision": "bfloat16",
+        "repo_revision": "85fa2bc8e4ea83e8057129c7c459c534a0605ab8",
+        "seed": 20260908,
+        "shortlist": 64,
+        "sketch_pairs": 512,
+        "theta": [
+          31.51470184326172,
+          14.22099494934082
+        ],
+        "threat_model": "attacker can observe protected KV blocks and enroll chosen prompts under a fixed deployed KV-Cloak configuration",
+        "torch_version": "2.4.1+cpu",
+        "trial_records_sha256": "b772d6c17523dc7c2744bee1dd1a80feb70bf23b05e44bf6a2ca4493899602c7",
+        "trials": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/data/b8_10k/trials.json"
+      },
+      "path": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer8_head0_b8_bfloat16",
+      "raw_records": 400,
+      "summary": [
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "key",
+          "max_peak_rss_bytes": 1453592576,
+          "mean_search_seconds": 0.0030018234252929686,
+          "random_label_top1_recall": 0.0,
+          "split": "closed",
+          "threshold_recall": 1.0,
+          "top1_recall": 1.0,
+          "trials": 50
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "key",
+          "mean_best_exact_chordal": 0.6513180058178911,
+          "mean_search_seconds": 0.0024813580513000488,
+          "split": "open",
+          "trial_false_positive_count": 0,
+          "trial_false_positive_rate": 0.0,
+          "trials": 100
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "value",
+          "max_peak_rss_bytes": 1482526720,
+          "mean_search_seconds": 0.0030428504943847655,
+          "random_label_top1_recall": 0.0,
+          "split": "closed",
+          "threshold_recall": 1.0,
+          "top1_recall": 1.0,
+          "trials": 50
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "value",
+          "mean_best_exact_chordal": 0.6884097837660363,
+          "mean_search_seconds": 0.0027069735527038576,
+          "split": "open",
+          "trial_false_positive_count": 0,
+          "trial_false_positive_rate": 0.0,
+          "trials": 100
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "attack": "chosen-prompt protected-block codebook via row-space projector",
+        "bank_sizes": [
+          10000
+        ],
+        "block_size": 32,
+        "cache_manifest": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/cache/gpt2_layer8_heads0_5_11_manifest.json",
+        "calibration_alpha": 0.01,
+        "conditions": [
+          "official_reuse"
+        ],
+        "dimension": 64,
+        "head_position": 0,
+        "hostname": "ubuntu02",
+        "kv_types": [
+          "key",
+          "value"
+        ],
+        "layer": 8,
+        "model_head": 0,
+        "numpy_version": "1.24.4",
+        "official_commit": "6b40f36edb2f337557543e7e60b10022308883d4",
+        "official_repository": "https://github.com/SiO-2/kvcloak",
+        "official_source_sha256": "246a72d5760a3f1b7c61800ad778cc14200d58e85bead89b8e7d4c8d2e86051d",
+        "precision": "float32",
+        "repo_revision": "85fa2bc8e4ea83e8057129c7c459c534a0605ab8",
+        "seed": 20260932,
+        "shortlist": 64,
+        "sketch_pairs": 512,
+        "theta": [
+          31.51470184326172,
+          14.22099494934082
+        ],
+        "threat_model": "attacker can observe protected KV blocks and enroll chosen prompts under a fixed deployed KV-Cloak configuration",
+        "torch_version": "2.4.1+cpu",
+        "trial_records_sha256": "75b51d36e3bc6b8a4d9cb9768f07dc0ae7eb0bd4fd80509a81c5f487166a2827",
+        "trials": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/data/b32_10k/trials.json"
+      },
+      "path": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer8_head0_b32_float32",
+      "raw_records": 400,
+      "summary": [
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "key",
+          "max_peak_rss_bytes": 1503182848,
+          "mean_search_seconds": 0.0028693819046020507,
+          "random_label_top1_recall": 0.0,
+          "split": "closed",
+          "threshold_recall": 1.0,
+          "top1_recall": 1.0,
+          "trials": 50
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "key",
+          "mean_best_exact_chordal": 0.6176578106191565,
+          "mean_search_seconds": 0.0033379316329956053,
+          "split": "open",
+          "trial_false_positive_count": 4,
+          "trial_false_positive_rate": 0.04,
+          "trials": 100
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "value",
+          "max_peak_rss_bytes": 1596231680,
+          "mean_search_seconds": 0.004071264266967773,
+          "random_label_top1_recall": 0.0,
+          "split": "closed",
+          "threshold_recall": 1.0,
+          "top1_recall": 1.0,
+          "trials": 50
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "value",
+          "mean_best_exact_chordal": 0.6281614416888959,
+          "mean_search_seconds": 0.003518786430358887,
+          "split": "open",
+          "trial_false_positive_count": 3,
+          "trial_false_positive_rate": 0.03,
+          "trials": 100
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "attack": "chosen-prompt protected-block codebook via row-space projector",
+        "bank_sizes": [
+          10000
+        ],
+        "block_size": 32,
+        "cache_manifest": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/cache/gpt2_layer8_heads0_5_11_manifest.json",
+        "calibration_alpha": 0.01,
+        "conditions": [
+          "official_reuse"
+        ],
+        "dimension": 64,
+        "head_position": 0,
+        "hostname": "ubuntu02",
+        "kv_types": [
+          "key",
+          "value"
+        ],
+        "layer": 8,
+        "model_head": 0,
+        "numpy_version": "1.24.4",
+        "official_commit": "6b40f36edb2f337557543e7e60b10022308883d4",
+        "official_repository": "https://github.com/SiO-2/kvcloak",
+        "official_source_sha256": "246a72d5760a3f1b7c61800ad778cc14200d58e85bead89b8e7d4c8d2e86051d",
+        "precision": "float16",
+        "repo_revision": "85fa2bc8e4ea83e8057129c7c459c534a0605ab8",
+        "seed": 20260932,
+        "shortlist": 64,
+        "sketch_pairs": 512,
+        "theta": [
+          31.51470184326172,
+          14.22099494934082
+        ],
+        "threat_model": "attacker can observe protected KV blocks and enroll chosen prompts under a fixed deployed KV-Cloak configuration",
+        "torch_version": "2.4.1+cpu",
+        "trial_records_sha256": "6e8aaffb3bd1ef40dd4dee2aef2c7ee0d5a386e5a050d62efcc26d3783de159d",
+        "trials": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/data/b32_10k/trials.json"
+      },
+      "path": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer8_head0_b32_float16",
+      "raw_records": 400,
+      "summary": [
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "key",
+          "max_peak_rss_bytes": 1525669888,
+          "mean_search_seconds": 0.004246673583984375,
+          "random_label_top1_recall": 0.0,
+          "split": "closed",
+          "threshold_recall": 1.0,
+          "top1_recall": 1.0,
+          "trials": 50
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "key",
+          "mean_best_exact_chordal": 0.6176112369179062,
+          "mean_search_seconds": 0.003134801387786865,
+          "split": "open",
+          "trial_false_positive_count": 4,
+          "trial_false_positive_rate": 0.04,
+          "trials": 100
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "value",
+          "max_peak_rss_bytes": 1616748544,
+          "mean_search_seconds": 0.003995585441589356,
+          "random_label_top1_recall": 0.0,
+          "split": "closed",
+          "threshold_recall": 1.0,
+          "top1_recall": 1.0,
+          "trials": 50
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "value",
+          "mean_best_exact_chordal": 0.6282701516952294,
+          "mean_search_seconds": 0.0036048269271850585,
+          "split": "open",
+          "trial_false_positive_count": 3,
+          "trial_false_positive_rate": 0.03,
+          "trials": 100
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "attack": "chosen-prompt protected-block codebook via row-space projector",
+        "bank_sizes": [
+          10000
+        ],
+        "block_size": 32,
+        "cache_manifest": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/cache/gpt2_layer8_heads0_5_11_manifest.json",
+        "calibration_alpha": 0.01,
+        "conditions": [
+          "official_reuse"
+        ],
+        "dimension": 64,
+        "head_position": 0,
+        "hostname": "ubuntu02",
+        "kv_types": [
+          "key",
+          "value"
+        ],
+        "layer": 8,
+        "model_head": 0,
+        "numpy_version": "1.24.4",
+        "official_commit": "6b40f36edb2f337557543e7e60b10022308883d4",
+        "official_repository": "https://github.com/SiO-2/kvcloak",
+        "official_source_sha256": "246a72d5760a3f1b7c61800ad778cc14200d58e85bead89b8e7d4c8d2e86051d",
+        "precision": "bfloat16",
+        "repo_revision": "85fa2bc8e4ea83e8057129c7c459c534a0605ab8",
+        "seed": 20260932,
+        "shortlist": 64,
+        "sketch_pairs": 512,
+        "theta": [
+          31.51470184326172,
+          14.22099494934082
+        ],
+        "threat_model": "attacker can observe protected KV blocks and enroll chosen prompts under a fixed deployed KV-Cloak configuration",
+        "torch_version": "2.4.1+cpu",
+        "trial_records_sha256": "445b261fd5ea3d68b3db02b5973109be65cd02696caad4f96b62bfb783d199db",
+        "trials": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/data/b32_10k/trials.json"
+      },
+      "path": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer8_head0_b32_bfloat16",
+      "raw_records": 400,
+      "summary": [
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "key",
+          "max_peak_rss_bytes": 1537761280,
+          "mean_search_seconds": 0.0046610689163208005,
+          "random_label_top1_recall": 0.0,
+          "split": "closed",
+          "threshold_recall": 1.0,
+          "top1_recall": 1.0,
+          "trials": 50
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "key",
+          "mean_best_exact_chordal": 0.6186299638898654,
+          "mean_search_seconds": 0.005112643241882324,
+          "split": "open",
+          "trial_false_positive_count": 5,
+          "trial_false_positive_rate": 0.05,
+          "trials": 100
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "value",
+          "max_peak_rss_bytes": 1629167616,
+          "mean_search_seconds": 0.004797015190124512,
+          "random_label_top1_recall": 0.0,
+          "split": "closed",
+          "threshold_recall": 1.0,
+          "top1_recall": 1.0,
+          "trials": 50
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "value",
+          "mean_best_exact_chordal": 0.6291593478274126,
+          "mean_search_seconds": 0.004814209938049316,
+          "split": "open",
+          "trial_false_positive_count": 3,
+          "trial_false_positive_rate": 0.03,
+          "trials": 100
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "attack": "chosen-prompt protected-block codebook via row-space projector",
+        "bank_sizes": [
+          10000
+        ],
+        "block_size": 16,
+        "cache_manifest": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/cache/gpt2_layer8_heads0_5_11_manifest.json",
+        "calibration_alpha": 0.01,
+        "conditions": [
+          "official_reuse",
+          "refresh_left",
+          "refresh_a_row",
+          "refresh_a_vector",
+          "refresh_m",
+          "fresh_all"
+        ],
+        "dimension": 64,
+        "head_position": 0,
+        "hostname": "ubuntu02",
+        "kv_types": [
+          "key",
+          "value"
+        ],
+        "layer": 8,
+        "model_head": 0,
+        "numpy_version": "1.24.4",
+        "official_commit": "6b40f36edb2f337557543e7e60b10022308883d4",
+        "official_repository": "https://github.com/SiO-2/kvcloak",
+        "official_source_sha256": "246a72d5760a3f1b7c61800ad778cc14200d58e85bead89b8e7d4c8d2e86051d",
+        "precision": "bfloat16",
+        "repo_revision": "85fa2bc8e4ea83e8057129c7c459c534a0605ab8",
+        "seed": 20260916,
+        "shortlist": 64,
+        "sketch_pairs": 512,
+        "theta": [
+          31.51470184326172,
+          14.22099494934082
+        ],
+        "threat_model": "attacker can observe protected KV blocks and enroll chosen prompts under a fixed deployed KV-Cloak configuration",
+        "torch_version": "2.4.1+cpu",
+        "trial_records_sha256": "12e50adc58958e5754fb6377dcb4777bcea819bbac183a32b8cfbb00ee2dd9f3",
+        "trials": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/data/b16_10k/trials.json"
+      },
+      "path": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/key_refresh_boundary",
+      "raw_records": 2400,
+      "summary": [
+        {
+          "bank_size": 10000,
+          "condition": "fresh_all",
+          "kv_type": "key",
+          "max_peak_rss_bytes": 1544654848,
+          "mean_search_seconds": 0.004353055953979492,
+          "random_label_top1_recall": 0.0,
+          "split": "closed",
+          "threshold_recall": 0.0,
+          "top1_recall": 0.0,
+          "trials": 50
+        },
+        {
+          "bank_size": 10000,
+          "condition": "fresh_all",
+          "kv_type": "key",
+          "mean_best_exact_chordal": 0.8110919155389109,
+          "mean_search_seconds": 0.004684891700744629,
+          "split": "open",
+          "trial_false_positive_count": 2,
+          "trial_false_positive_rate": 0.02,
+          "trials": 100
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "key",
+          "max_peak_rss_bytes": 1490231296,
+          "mean_search_seconds": 0.003893485069274902,
+          "random_label_top1_recall": 0.0,
+          "split": "closed",
+          "threshold_recall": 1.0,
+          "top1_recall": 1.0,
+          "trials": 50
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "key",
+          "mean_best_exact_chordal": 0.6901664069006016,
+          "mean_search_seconds": 0.0037994837760925294,
+          "split": "open",
+          "trial_false_positive_count": 4,
+          "trial_false_positive_rate": 0.04,
+          "trials": 100
+        },
+        {
+          "bank_size": 10000,
+          "condition": "refresh_a_row",
+          "kv_type": "key",
+          "max_peak_rss_bytes": 1542553600,
+          "mean_search_seconds": 0.004099721908569336,
+          "random_label_top1_recall": 0.0,
+          "split": "closed",
+          "threshold_recall": 1.0,
+          "top1_recall": 1.0,
+          "trials": 50
+        },
+        {
+          "bank_size": 10000,
+          "condition": "refresh_a_row",
+          "kv_type": "key",
+          "mean_best_exact_chordal": 0.6939259046172904,
+          "mean_search_seconds": 0.004029996395111084,
+          "split": "open",
+          "trial_false_positive_count": 3,
+          "trial_false_positive_rate": 0.03,
+          "trials": 100
+        },
+        {
+          "bank_size": 10000,
+          "condition": "refresh_a_vector",
+          "kv_type": "key",
+          "max_peak_rss_bytes": 1543606272,
+          "mean_search_seconds": 0.003225741386413574,
+          "random_label_top1_recall": 0.0,
+          "split": "closed",
+          "threshold_recall": 1.0,
+          "top1_recall": 1.0,
+          "trials": 50
+        },
+        {
+          "bank_size": 10000,
+          "condition": "refresh_a_vector",
+          "kv_type": "key",
+          "mean_best_exact_chordal": 0.6927228262206373,
+          "mean_search_seconds": 0.0038486194610595705,
+          "split": "open",
+          "trial_false_positive_count": 6,
+          "trial_false_positive_rate": 0.06,
+          "trials": 100
+        },
+        {
+          "bank_size": 10000,
+          "condition": "refresh_left",
+          "kv_type": "key",
+          "max_peak_rss_bytes": 1542234112,
+          "mean_search_seconds": 0.004395623207092286,
+          "random_label_top1_recall": 0.0,
+          "split": "closed",
+          "threshold_recall": 1.0,
+          "top1_recall": 1.0,
+          "trials": 50
+        },
+        {
+          "bank_size": 10000,
+          "condition": "refresh_left",
+          "kv_type": "key",
+          "mean_best_exact_chordal": 0.6906078593524207,
+          "mean_search_seconds": 0.0047979593276977536,
+          "split": "open",
+          "trial_false_positive_count": 5,
+          "trial_false_positive_rate": 0.05,
+          "trials": 100
+        },
+        {
+          "bank_size": 10000,
+          "condition": "refresh_m",
+          "kv_type": "key",
+          "max_peak_rss_bytes": 1544130560,
+          "mean_search_seconds": 0.003885650634765625,
+          "random_label_top1_recall": 0.0,
+          "split": "closed",
+          "threshold_recall": 0.0,
+          "top1_recall": 0.0,
+          "trials": 50
+        },
+        {
+          "bank_size": 10000,
+          "condition": "refresh_m",
+          "kv_type": "key",
+          "mean_best_exact_chordal": 0.8101112881334455,
+          "mean_search_seconds": 0.003784782886505127,
+          "split": "open",
+          "trial_false_positive_count": 3,
+          "trial_false_positive_rate": 0.03,
+          "trials": 100
+        },
+        {
+          "bank_size": 10000,
+          "condition": "fresh_all",
+          "kv_type": "value",
+          "max_peak_rss_bytes": 1544921088,
+          "mean_search_seconds": 0.004480099678039551,
+          "random_label_top1_recall": 0.0,
+          "split": "closed",
+          "threshold_recall": 0.0,
+          "top1_recall": 0.0,
+          "trials": 50
+        },
+        {
+          "bank_size": 10000,
+          "condition": "fresh_all",
+          "kv_type": "value",
+          "mean_best_exact_chordal": 0.8119873559226253,
+          "mean_search_seconds": 0.004321413040161133,
+          "split": "open",
+          "trial_false_positive_count": 0,
+          "trial_false_positive_rate": 0.0,
+          "trials": 100
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "value",
+          "max_peak_rss_bytes": 1541750784,
+          "mean_search_seconds": 0.00360410213470459,
+          "random_label_top1_recall": 0.0,
+          "split": "closed",
+          "threshold_recall": 1.0,
+          "top1_recall": 1.0,
+          "trials": 50
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "value",
+          "mean_best_exact_chordal": 0.7197676108286305,
+          "mean_search_seconds": 0.0034930944442749024,
+          "split": "open",
+          "trial_false_positive_count": 5,
+          "trial_false_positive_rate": 0.05,
+          "trials": 100
+        },
+        {
+          "bank_size": 10000,
+          "condition": "refresh_a_row",
+          "kv_type": "value",
+          "max_peak_rss_bytes": 1543344128,
+          "mean_search_seconds": 0.003894314765930176,
+          "random_label_top1_recall": 0.0,
+          "split": "closed",
+          "threshold_recall": 1.0,
+          "top1_recall": 1.0,
+          "trials": 50
+        },
+        {
+          "bank_size": 10000,
+          "condition": "refresh_a_row",
+          "kv_type": "value",
+          "mean_best_exact_chordal": 0.7262469108713958,
+          "mean_search_seconds": 0.0039103031158447266,
+          "split": "open",
+          "trial_false_positive_count": 5,
+          "trial_false_positive_rate": 0.05,
+          "trials": 100
+        },
+        {
+          "bank_size": 10000,
+          "condition": "refresh_a_vector",
+          "kv_type": "value",
+          "max_peak_rss_bytes": 1543868416,
+          "mean_search_seconds": 0.0037612247467041014,
+          "random_label_top1_recall": 0.0,
+          "split": "closed",
+          "threshold_recall": 1.0,
+          "top1_recall": 1.0,
+          "trials": 50
+        },
+        {
+          "bank_size": 10000,
+          "condition": "refresh_a_vector",
+          "kv_type": "value",
+          "mean_best_exact_chordal": 0.725876686391517,
+          "mean_search_seconds": 0.003847167491912842,
+          "split": "open",
+          "trial_false_positive_count": 5,
+          "trial_false_positive_rate": 0.05,
+          "trials": 100
+        },
+        {
+          "bank_size": 10000,
+          "condition": "refresh_left",
+          "kv_type": "value",
+          "max_peak_rss_bytes": 1542234112,
+          "mean_search_seconds": 0.004128952026367188,
+          "random_label_top1_recall": 0.0,
+          "split": "closed",
+          "threshold_recall": 1.0,
+          "top1_recall": 1.0,
+          "trials": 50
+        },
+        {
+          "bank_size": 10000,
+          "condition": "refresh_left",
+          "kv_type": "value",
+          "mean_best_exact_chordal": 0.7198393142722508,
+          "mean_search_seconds": 0.0044560861587524415,
+          "split": "open",
+          "trial_false_positive_count": 5,
+          "trial_false_positive_rate": 0.05,
+          "trials": 100
+        },
+        {
+          "bank_size": 10000,
+          "condition": "refresh_m",
+          "kv_type": "value",
+          "max_peak_rss_bytes": 1544392704,
+          "mean_search_seconds": 0.0038250970840454103,
+          "random_label_top1_recall": 0.0,
+          "split": "closed",
+          "threshold_recall": 0.02,
+          "top1_recall": 0.02,
+          "trials": 50
+        },
+        {
+          "bank_size": 10000,
+          "condition": "refresh_m",
+          "kv_type": "value",
+          "mean_best_exact_chordal": 0.8113036462140292,
+          "mean_search_seconds": 0.003599951267242432,
+          "split": "open",
+          "trial_false_positive_count": 1,
+          "trial_false_positive_rate": 0.01,
+          "trials": 100
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "attack": "chosen-prompt protected-block codebook via row-space projector",
+        "bank_sizes": [
+          10000
+        ],
+        "block_size": 64,
+        "cache_manifest": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/cache/gpt2_layer0_heads0_5_11_s64_manifest.json",
+        "calibration_alpha": 0.01,
+        "conditions": [
+          "official_reuse"
+        ],
+        "dimension": 64,
+        "head_position": 0,
+        "hostname": "ubuntu02",
+        "kv_types": [
+          "key",
+          "value"
+        ],
+        "layer": 0,
+        "model_head": 0,
+        "numpy_version": "1.24.4",
+        "official_commit": "6b40f36edb2f337557543e7e60b10022308883d4",
+        "official_repository": "https://github.com/SiO-2/kvcloak",
+        "official_source_sha256": "246a72d5760a3f1b7c61800ad778cc14200d58e85bead89b8e7d4c8d2e86051d",
+        "precision": "bfloat16",
+        "repo_revision": "85fa2bc8e4ea83e8057129c7c459c534a0605ab8",
+        "seed": 20261064,
+        "shortlist": 64,
+        "sketch_pairs": 512,
+        "theta": [
+          18.46400260925293,
+          4.708607196807861
+        ],
+        "threat_model": "attacker can observe protected KV blocks and enroll chosen prompts under a fixed deployed KV-Cloak configuration",
+        "torch_version": "2.4.1+cpu",
+        "trial_records_sha256": "221338f10216fdcfd69d5f1c46f3ebb2f1f0b624136616f80ce6d305468193a6",
+        "trials": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/data/b64_10k/trials.json"
+      },
+      "path": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_msmarco_100k_20260803/robustness/layer0_head0_b64_bfloat16",
+      "raw_records": 400,
+      "summary": [
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "key",
+          "max_peak_rss_bytes": 1811116032,
+          "mean_search_seconds": 0.006339049339294434,
+          "random_label_top1_recall": 0.0,
+          "split": "closed",
+          "threshold_recall": 0.0,
+          "top1_recall": 0.0,
+          "trials": 50
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "key",
+          "mean_best_exact_chordal": 3.0859762800948224e-05,
+          "mean_search_seconds": 0.006220769882202148,
+          "split": "open",
+          "trial_false_positive_count": 82,
+          "trial_false_positive_rate": 0.82,
+          "trials": 100
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "value",
+          "max_peak_rss_bytes": 1955213312,
+          "mean_search_seconds": 0.006456713676452636,
+          "random_label_top1_recall": 0.0,
+          "split": "closed",
+          "threshold_recall": 0.0,
+          "top1_recall": 0.0,
+          "trials": 50
+        },
+        {
+          "bank_size": 10000,
+          "condition": "official_reuse",
+          "kv_type": "value",
+          "mean_best_exact_chordal": 3.9680391905466385e-05,
+          "mean_search_seconds": 0.006418836116790771,
+          "split": "open",
+          "trial_false_positive_count": 76,
+          "trial_false_positive_rate": 0.76,
+          "trials": 100
+        }
+      ]
+    }
+  ],
+  "headline": [
+    {
+      "bank_size": 10000,
+      "closed_trials": 100,
+      "kv_type": "key",
+      "open_trial_false_positive_count": 10,
+      "open_trial_false_positive_rate": 0.03333333333333333,
+      "open_trial_false_positive_wilson95": [
+        0.01820494733885481,
+        0.06026182580405482
+      ],
+      "open_trials": 300,
+      "peak_rss_bytes": 3999842304,
+      "random_label_top1_recall": 0.0,
+      "search_seconds": {
+        "max": 0.009163379669189453,
+        "mean": 0.003963723182678223
+      },
+      "threshold_recall": 1.0,
+      "top1_recall": 1.0
+    },
+    {
+      "bank_size": 50000,
+      "closed_trials": 100,
+      "kv_type": "key",
+      "open_trial_false_positive_count": 1,
+      "open_trial_false_positive_rate": 0.0033333333333333335,
+      "open_trial_false_positive_wilson95": [
+        0.0005886577218511581,
+        0.018636693694531237
+      ],
+      "open_trials": 300,
+      "peak_rss_bytes": 4023480320,
+      "random_label_top1_recall": 0.0,
+      "search_seconds": {
+        "max": 0.008861780166625977,
+        "mean": 0.005030982494354248
+      },
+      "threshold_recall": 1.0,
+      "top1_recall": 1.0
+    },
+    {
+      "bank_size": 100000,
+      "closed_trials": 100,
+      "kv_type": "key",
+      "open_trial_false_positive_count": 1,
+      "open_trial_false_positive_rate": 0.0033333333333333335,
+      "open_trial_false_positive_wilson95": [
+        0.0005886577218511581,
+        0.018636693694531237
+      ],
+      "open_trials": 300,
+      "peak_rss_bytes": 4065656832,
+      "random_label_top1_recall": 0.0,
+      "search_seconds": {
+        "max": 0.010192155838012695,
+        "mean": 0.006713783740997315
+      },
+      "threshold_recall": 1.0,
+      "top1_recall": 1.0
+    },
+    {
+      "bank_size": 10000,
+      "closed_trials": 100,
+      "kv_type": "value",
+      "open_trial_false_positive_count": 12,
+      "open_trial_false_positive_rate": 0.04,
+      "open_trial_false_positive_wilson95": [
+        0.023027321487942308,
+        0.06860421203864003
+      ],
+      "open_trials": 300,
+      "peak_rss_bytes": 4408524800,
+      "random_label_top1_recall": 0.0,
+      "search_seconds": {
+        "max": 0.008168220520019531,
+        "mean": 0.003717942237854004
+      },
+      "threshold_recall": 1.0,
+      "top1_recall": 1.0
+    },
+    {
+      "bank_size": 50000,
+      "closed_trials": 100,
+      "kv_type": "value",
+      "open_trial_false_positive_count": 1,
+      "open_trial_false_positive_rate": 0.0033333333333333335,
+      "open_trial_false_positive_wilson95": [
+        0.0005886577218511581,
+        0.018636693694531237
+      ],
+      "open_trials": 300,
+      "peak_rss_bytes": 4429598720,
+      "random_label_top1_recall": 0.0,
+      "search_seconds": {
+        "max": 0.010221481323242188,
+        "mean": 0.005227589607238769
+      },
+      "threshold_recall": 1.0,
+      "top1_recall": 1.0
+    },
+    {
+      "bank_size": 100000,
+      "closed_trials": 100,
+      "kv_type": "value",
+      "open_trial_false_positive_count": 1,
+      "open_trial_false_positive_rate": 0.0033333333333333335,
+      "open_trial_false_positive_wilson95": [
+        0.0005886577218511581,
+        0.018636693694531237
+      ],
+      "open_trials": 300,
+      "peak_rss_bytes": 4476547072,
+      "random_label_top1_recall": 0.0,
+      "search_seconds": {
+        "max": 0.00939488410949707,
+        "mean": 0.006788284778594971
+      },
+      "threshold_recall": 1.0,
+      "top1_recall": 1.0
+    }
+  ]
+}

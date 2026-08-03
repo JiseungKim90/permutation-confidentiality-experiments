@@ -1,0 +1,590 @@
+{
+  "bank_size": 100000,
+  "conditions": [
+    {
+      "closed_random_control": {
+        "candidate_false_positive_rate": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0
+        },
+        "exact_source_set_rate": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0
+        },
+        "mean_average_precision": {
+          "max": 0.0004953349329673883,
+          "mean": 9.109681938514201e-05,
+          "min": 3.125481871277144e-05
+        },
+        "mean_recall_at_source_count": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0
+        },
+        "split": "closed_random_control",
+        "threshold_precision": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0
+        },
+        "threshold_recall": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0
+        },
+        "trial_false_positive_count": 0,
+        "trial_false_positive_rate": 0.0,
+        "trial_false_positive_wilson95": [
+          0.0,
+          0.2775327998628892
+        ],
+        "trials": 10
+      },
+      "condition": "ideal",
+      "splits": {
+        "closed": {
+          "candidate_false_positive_rate": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0
+          },
+          "exact_source_set_rate": {
+            "max": 1.0,
+            "mean": 1.0,
+            "min": 1.0
+          },
+          "mean_average_precision": {
+            "max": 1.0,
+            "mean": 1.0,
+            "min": 1.0
+          },
+          "mean_recall_at_source_count": {
+            "max": 1.0,
+            "mean": 1.0,
+            "min": 1.0
+          },
+          "peak_rss_bytes": {
+            "max": 5305466880.0,
+            "mean": 5304974090.24,
+            "min": 5304156160.0
+          },
+          "scoring_seconds": {
+            "max": 9.636353492736816,
+            "mean": 9.475567297935486,
+            "min": 9.062383651733398
+          },
+          "split": "closed",
+          "threshold_precision": {
+            "max": 1.0,
+            "mean": 1.0,
+            "min": 1.0
+          },
+          "threshold_recall": {
+            "max": 1.0,
+            "mean": 1.0,
+            "min": 1.0
+          },
+          "trial_false_positive_count": 0,
+          "trial_false_positive_rate": 0.0,
+          "trial_false_positive_wilson95": [
+            3.469446951953614e-18,
+            0.03699349820698568
+          ],
+          "trials": 100
+        },
+        "open": {
+          "candidate_false_positive_rate": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0
+          },
+          "exact_source_set_rate": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0
+          },
+          "mean_average_precision": {
+            "max": null,
+            "mean": null,
+            "min": null
+          },
+          "mean_recall_at_source_count": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0
+          },
+          "peak_rss_bytes": {
+            "max": 5430992896.0,
+            "mean": 5377588442.453333,
+            "min": 5316276224.0
+          },
+          "scoring_seconds": {
+            "max": 9.64637541770935,
+            "mean": 9.47559774239858,
+            "min": 9.054989099502563
+          },
+          "split": "open",
+          "threshold_precision": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0
+          },
+          "threshold_recall": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0
+          },
+          "trial_false_positive_count": 0,
+          "trial_false_positive_rate": 0.0,
+          "trial_false_positive_wilson95": [
+            8.673617379884035e-19,
+            0.012642971224546034
+          ],
+          "trials": 300
+        },
+        "partial": {
+          "candidate_false_positive_rate": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0
+          },
+          "exact_source_set_rate": {
+            "max": 1.0,
+            "mean": 1.0,
+            "min": 1.0
+          },
+          "mean_average_precision": {
+            "max": 1.0,
+            "mean": 1.0,
+            "min": 1.0
+          },
+          "mean_recall_at_source_count": {
+            "max": 1.0,
+            "mean": 1.0,
+            "min": 1.0
+          },
+          "peak_rss_bytes": {
+            "max": 5316276224.0,
+            "mean": 5310394695.68,
+            "min": 5305466880.0
+          },
+          "scoring_seconds": {
+            "max": 9.631622314453125,
+            "mean": 9.501548867225647,
+            "min": 9.054927587509155
+          },
+          "split": "partial",
+          "threshold_precision": {
+            "max": 1.0,
+            "mean": 1.0,
+            "min": 1.0
+          },
+          "threshold_recall": {
+            "max": 1.0,
+            "mean": 1.0,
+            "min": 1.0
+          },
+          "trial_false_positive_count": 0,
+          "trial_false_positive_rate": 0.0,
+          "trial_false_positive_wilson95": [
+            6.938893903907228e-18,
+            0.07134759913335872
+          ],
+          "trials": 50
+        }
+      }
+    },
+    {
+      "closed_random_control": {
+        "candidate_false_positive_rate": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0
+        },
+        "exact_source_set_rate": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0
+        },
+        "mean_average_precision": {
+          "max": 0.00011125047997842775,
+          "mean": 6.194586015641555e-05,
+          "min": 3.2912396565122624e-05
+        },
+        "mean_recall_at_source_count": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0
+        },
+        "split": "closed_random_control",
+        "threshold_precision": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0
+        },
+        "threshold_recall": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0
+        },
+        "trial_false_positive_count": 0,
+        "trial_false_positive_rate": 0.0,
+        "trial_false_positive_wilson95": [
+          0.0,
+          0.2775327998628892
+        ],
+        "trials": 10
+      },
+      "condition": "gelo_nonorth",
+      "splits": {
+        "closed": {
+          "candidate_false_positive_rate": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0
+          },
+          "exact_source_set_rate": {
+            "max": 1.0,
+            "mean": 1.0,
+            "min": 1.0
+          },
+          "mean_average_precision": {
+            "max": 1.0,
+            "mean": 1.0,
+            "min": 1.0
+          },
+          "mean_recall_at_source_count": {
+            "max": 1.0,
+            "mean": 1.0,
+            "min": 1.0
+          },
+          "peak_rss_bytes": {
+            "max": 5463175168.0,
+            "mean": 5436605808.64,
+            "min": 5435695104.0
+          },
+          "scoring_seconds": {
+            "max": 9.832605123519897,
+            "mean": 9.638732161521911,
+            "min": 9.21542239189148
+          },
+          "split": "closed",
+          "threshold_precision": {
+            "max": 1.0,
+            "mean": 1.0,
+            "min": 1.0
+          },
+          "threshold_recall": {
+            "max": 1.0,
+            "mean": 1.0,
+            "min": 1.0
+          },
+          "trial_false_positive_count": 0,
+          "trial_false_positive_rate": 0.0,
+          "trial_false_positive_wilson95": [
+            3.469446951953614e-18,
+            0.03699349820698568
+          ],
+          "trials": 100
+        },
+        "open": {
+          "candidate_false_positive_rate": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0
+          },
+          "exact_source_set_rate": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0
+          },
+          "mean_average_precision": {
+            "max": null,
+            "mean": null,
+            "min": null
+          },
+          "mean_recall_at_source_count": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0
+          },
+          "peak_rss_bytes": {
+            "max": 5439062016.0,
+            "mean": 5437978719.573334,
+            "min": 5436956672.0
+          },
+          "scoring_seconds": {
+            "max": 76.65807676315308,
+            "mean": 10.147189428806305,
+            "min": 9.191083431243896
+          },
+          "split": "open",
+          "threshold_precision": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0
+          },
+          "threshold_recall": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0
+          },
+          "trial_false_positive_count": 0,
+          "trial_false_positive_rate": 0.0,
+          "trial_false_positive_wilson95": [
+            8.673617379884035e-19,
+            0.012642971224546034
+          ],
+          "trials": 300
+        },
+        "partial": {
+          "candidate_false_positive_rate": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0
+          },
+          "exact_source_set_rate": {
+            "max": 1.0,
+            "mean": 1.0,
+            "min": 1.0
+          },
+          "mean_average_precision": {
+            "max": 1.0,
+            "mean": 1.0,
+            "min": 1.0
+          },
+          "mean_recall_at_source_count": {
+            "max": 1.0,
+            "mean": 1.0,
+            "min": 1.0
+          },
+          "peak_rss_bytes": {
+            "max": 5436702720.0,
+            "mean": 5436613427.2,
+            "min": 5436440576.0
+          },
+          "scoring_seconds": {
+            "max": 9.795316696166992,
+            "mean": 9.594137415885925,
+            "min": 9.230101585388184
+          },
+          "split": "partial",
+          "threshold_precision": {
+            "max": 1.0,
+            "mean": 1.0,
+            "min": 1.0
+          },
+          "threshold_recall": {
+            "max": 1.0,
+            "mean": 1.0,
+            "min": 1.0
+          },
+          "trial_false_positive_count": 0,
+          "trial_false_positive_rate": 0.0,
+          "trial_false_positive_wilson95": [
+            6.938893903907228e-18,
+            0.07134759913335872
+          ],
+          "trials": 50
+        }
+      }
+    },
+    {
+      "closed_random_control": {
+        "candidate_false_positive_rate": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0
+        },
+        "exact_source_set_rate": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0
+        },
+        "mean_average_precision": {
+          "max": 0.00023013782773471226,
+          "mean": 7.92697280623792e-05,
+          "min": 3.824431048190558e-05
+        },
+        "mean_recall_at_source_count": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0
+        },
+        "split": "closed_random_control",
+        "threshold_precision": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0
+        },
+        "threshold_recall": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0
+        },
+        "trial_false_positive_count": 0,
+        "trial_false_positive_rate": 0.0,
+        "trial_false_positive_wilson95": [
+          0.0,
+          0.2775327998628892
+        ],
+        "trials": 10
+      },
+      "condition": "manifold_stress",
+      "splits": {
+        "closed": {
+          "candidate_false_positive_rate": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0
+          },
+          "exact_source_set_rate": {
+            "max": 1.0,
+            "mean": 0.99,
+            "min": 0.0
+          },
+          "mean_average_precision": {
+            "max": 1.0,
+            "mean": 0.9995,
+            "min": 0.95
+          },
+          "mean_recall_at_source_count": {
+            "max": 1.0,
+            "mean": 0.9975,
+            "min": 0.75
+          },
+          "peak_rss_bytes": {
+            "max": 5442162688.0,
+            "mean": 5441794375.68,
+            "min": 5441376256.0
+          },
+          "scoring_seconds": {
+            "max": 9.920836210250854,
+            "mean": 9.558337924480439,
+            "min": 9.104590892791748
+          },
+          "split": "closed",
+          "threshold_precision": {
+            "max": 1.0,
+            "mean": 0.15,
+            "min": 0.0
+          },
+          "threshold_recall": {
+            "max": 1.0,
+            "mean": 0.115,
+            "min": 0.0
+          },
+          "trial_false_positive_count": 0,
+          "trial_false_positive_rate": 0.0,
+          "trial_false_positive_wilson95": [
+            3.469446951953614e-18,
+            0.03699349820698568
+          ],
+          "trials": 100
+        },
+        "open": {
+          "candidate_false_positive_rate": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0
+          },
+          "exact_source_set_rate": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0
+          },
+          "mean_average_precision": {
+            "max": null,
+            "mean": null,
+            "min": null
+          },
+          "mean_recall_at_source_count": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0
+          },
+          "peak_rss_bytes": {
+            "max": 5469859840.0,
+            "mean": 5443863715.84,
+            "min": 5441540096.0
+          },
+          "scoring_seconds": {
+            "max": 11.38612961769104,
+            "mean": 9.54382904847463,
+            "min": 9.101842880249023
+          },
+          "split": "open",
+          "threshold_precision": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0
+          },
+          "threshold_recall": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0
+          },
+          "trial_false_positive_count": 0,
+          "trial_false_positive_rate": 0.0,
+          "trial_false_positive_wilson95": [
+            8.673617379884035e-19,
+            0.012642971224546034
+          ],
+          "trials": 300
+        },
+        "partial": {
+          "candidate_false_positive_rate": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0
+          },
+          "exact_source_set_rate": {
+            "max": 1.0,
+            "mean": 1.0,
+            "min": 1.0
+          },
+          "mean_average_precision": {
+            "max": 1.0,
+            "mean": 1.0,
+            "min": 1.0
+          },
+          "mean_recall_at_source_count": {
+            "max": 1.0,
+            "mean": 1.0,
+            "min": 1.0
+          },
+          "peak_rss_bytes": {
+            "max": 5442686976.0,
+            "mean": 5442392883.2,
+            "min": 5442162688.0
+          },
+          "scoring_seconds": {
+            "max": 9.768846273422241,
+            "mean": 9.562917609214782,
+            "min": 9.144176721572876
+          },
+          "split": "partial",
+          "threshold_precision": {
+            "max": 1.0,
+            "mean": 0.2,
+            "min": 0.0
+          },
+          "threshold_recall": {
+            "max": 1.0,
+            "mean": 0.17,
+            "min": 0.0
+          },
+          "trial_false_positive_count": 0,
+          "trial_false_positive_rate": 0.0,
+          "trial_false_positive_wilson95": [
+            6.938893903907228e-18,
+            0.07134759913335872
+          ],
+          "trials": 50
+        }
+      }
+    }
+  ]
+}

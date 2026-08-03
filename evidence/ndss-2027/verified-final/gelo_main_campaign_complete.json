@@ -1,0 +1,45 @@
+{
+  "artifact_sha256": {
+    "performance_100k.csv": "6bfe00bd438fdb303d208661daf16373670218346df603ef48d41e814a38a524",
+    "performance_100k.json": "c107b8091e7352045eda1a49f73f67ef5b68673a17e42d0f026cbb8fa264e331",
+    "rank_pr_100k.csv": "6da43cfd17223219b3bb8dcd0ff85d465f8f8ba7aaac722eac9d702a98ac7c32",
+    "rank_pr_100k.json": "45823254da586e1310e9a48b35d1cb8f02d8a4a2dc1b5f78991039beb7c38811"
+  },
+  "bank_size": 100000,
+  "git_revision": "93abfd4aab9e51ea653c7898ad02924c13595987",
+  "input_sha256": {
+    "cache/private_full_manifest.json": "c2b86ce8bb9d62bd1164dc7597bd8a11b70ec91ecfb2a6b636f7a5286fb4dc2c",
+    "cache/public_manifest.json": "cf3d2615572b9a35b13ab334e329fbe437d18de0a1b79d2a27dd3b1ad8f47c83",
+    "data/manifest.json": "eed0e7b63edd14332bbf41967ce2ad835ed03fd5cd13bff6624f1b09d42ddec9",
+    "data/trials.json": "23f7cd7f5233d7012553caeeb95c85efc5423b07f1154f102beaa27a4525e52c",
+    "evaluation_core_torch/summary.json": "6f28cfa0ac3dc12c16feee5281929f51e34a80a343d05549d2ef33328fd19f94",
+    "evaluation_core_torch/trial_records.jsonl": "457b3b1f30209fce8e6fe8522f0858c88b8269fe4a5de99b5cf12a8a092fdae5",
+    "evaluation_robustness_torch/summary.json": "acbc54192b9107739d2be203f2cf26b1fb2c2c53605c5efdab7ec7fbaabfa7fc",
+    "evaluation_robustness_torch/trial_records.jsonl": "5aa56be443cc5657a6bb9f04437707620505aeb8152f1a15689429fe8af8e0b0",
+    "private_prefix/private_prefix_manifest.json": "836f5e00962ee12a6f07425af6f8af9a1c4b72ca455bab9449e97940ad2e56c4"
+  },
+  "notes": {
+    "open_set": "Open-set trials have no positive class; report calibrated candidate- and trial-level false-positive rates instead of PR.",
+    "rank_pr": "Exact per-trial precision at every positive-rank recall event, aggregated across trials.",
+    "runtime": "scoring_seconds covers one maximum-bank attack scan; random-control timing was not persisted by the evaluator."
+  },
+  "status": "complete",
+  "validation": {
+    "core": {
+      "actual_records": 3060,
+      "complete": true,
+      "duplicate_keys": [],
+      "expected_records": 3060,
+      "missing_or_extra_groups": [],
+      "unexpected_groups": []
+    },
+    "robustness": {
+      "actual_records": 1360,
+      "complete": true,
+      "duplicate_keys": [],
+      "expected_records": 1360,
+      "missing_or_extra_groups": [],
+      "unexpected_groups": []
+    }
+  }
+}
