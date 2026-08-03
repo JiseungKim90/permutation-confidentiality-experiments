@@ -1,0 +1,1074 @@
+{
+  "gelo": {
+    "fullbank": {
+      "all_prespecified_gates_pass": true,
+      "bank_size": 100000,
+      "path": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/gelo_msmarco_100k_dedup_20260802/fullbank_validation/final/campaign_complete.json",
+      "sha256": "43b90907e394f6d32d07e3f123800c827e641f4aa35730a4c3f408a960b4081e",
+      "validation": {
+        "conditions": [
+          "ideal",
+          "gelo_nonorth",
+          "manifold_stress"
+        ],
+        "counts": {
+          "gelo_nonorth:calibration": 100,
+          "gelo_nonorth:closed": 100,
+          "gelo_nonorth:open": 300,
+          "gelo_nonorth:partial": 50,
+          "ideal:calibration": 100,
+          "ideal:closed": 100,
+          "ideal:open": 300,
+          "ideal:partial": 50,
+          "manifold_stress:calibration": 100,
+          "manifold_stress:closed": 100,
+          "manifold_stress:open": 300,
+          "manifold_stress:partial": 50
+        },
+        "expected_records": 1650,
+        "records": 1650
+      }
+    },
+    "main": {
+      "all_prespecified_gates_pass": null,
+      "bank_size": 100000,
+      "path": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/gelo_msmarco_100k_dedup_20260802/final/campaign_complete.json",
+      "sha256": "46e27f5395cf0126e712bbe6d91ef781ee117a1f8e21aa4776261a4c547a6866",
+      "validation": {
+        "core": {
+          "actual_records": 3060,
+          "complete": true,
+          "duplicate_keys": [],
+          "expected_records": 3060,
+          "missing_or_extra_groups": [],
+          "unexpected_groups": []
+        },
+        "robustness": {
+          "actual_records": 1360,
+          "complete": true,
+          "duplicate_keys": [],
+          "expected_records": 1360,
+          "missing_or_extra_groups": [],
+          "unexpected_groups": []
+        }
+      }
+    },
+    "private_drift": {
+      "all_prespecified_gates_pass": null,
+      "bank_size": 100000,
+      "path": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/gelo_msmarco_100k_dedup_20260802/private_drift_followup/final/campaign_complete.json",
+      "sha256": "6d81dc194d50f997e82ff0ca2a7f232f3978b17579fdbdf4a176ea08ec82e3b0",
+      "validation": {
+        "step0000": {
+          "complete": true,
+          "counts": {
+            "calibration": 100,
+            "closed": 100,
+            "open": 300,
+            "partial": 50
+          },
+          "duplicates": [],
+          "expected": {
+            "calibration": 100,
+            "closed": 100,
+            "open": 300,
+            "partial": 50
+          },
+          "records": 550,
+          "unexpected": []
+        },
+        "step0100": {
+          "complete": true,
+          "counts": {
+            "calibration": 100,
+            "closed": 100,
+            "open": 300,
+            "partial": 50
+          },
+          "duplicates": [],
+          "expected": {
+            "calibration": 100,
+            "closed": 100,
+            "open": 300,
+            "partial": 50
+          },
+          "records": 550,
+          "unexpected": []
+        },
+        "step0400": {
+          "complete": true,
+          "counts": {
+            "calibration": 100,
+            "closed": 100,
+            "open": 300,
+            "partial": 50
+          },
+          "duplicates": [],
+          "expected": {
+            "calibration": 100,
+            "closed": 100,
+            "open": 300,
+            "partial": 50
+          },
+          "records": 550,
+          "unexpected": []
+        },
+        "step1600": {
+          "complete": true,
+          "counts": {
+            "calibration": 100,
+            "closed": 100,
+            "open": 300,
+            "partial": 50
+          },
+          "duplicates": [],
+          "expected": {
+            "calibration": 100,
+            "closed": 100,
+            "open": 300,
+            "partial": 50
+          },
+          "records": 550,
+          "unexpected": []
+        },
+        "step3200": {
+          "complete": true,
+          "counts": {
+            "calibration": 100,
+            "closed": 100,
+            "open": 300,
+            "partial": 50
+          },
+          "duplicates": [],
+          "expected": {
+            "calibration": 100,
+            "closed": 100,
+            "open": 300,
+            "partial": 50
+          },
+          "records": 550,
+          "unexpected": []
+        }
+      }
+    }
+  },
+  "generated_at": "2026-08-03T18:06:42.398636+00:00",
+  "kvcloak_normalized_gram_stable": {
+    "gpt2_b64": {
+      "gates": [
+        {
+          "condition": "official_reuse",
+          "kv_type": "key",
+          "open_wilson_upper_at_most_0_05": true,
+          "pass": true,
+          "random_label_recall_at_most_0_05": true,
+          "threshold_recall_at_least_0_90": true,
+          "top1_recall_at_least_0_95": true
+        },
+        {
+          "condition": "official_reuse",
+          "kv_type": "value",
+          "open_wilson_upper_at_most_0_05": false,
+          "pass": false,
+          "random_label_recall_at_most_0_05": true,
+          "threshold_recall_at_least_0_90": true,
+          "top1_recall_at_least_0_95": true
+        },
+        {
+          "condition": "refresh_left",
+          "kv_type": "key",
+          "open_wilson_upper_at_most_0_05": true,
+          "pass": true,
+          "random_label_recall_at_most_0_05": true,
+          "threshold_recall_at_least_0_90": true,
+          "top1_recall_at_least_0_95": true
+        },
+        {
+          "condition": "refresh_left",
+          "kv_type": "value",
+          "open_wilson_upper_at_most_0_05": false,
+          "pass": false,
+          "random_label_recall_at_most_0_05": true,
+          "threshold_recall_at_least_0_90": true,
+          "top1_recall_at_least_0_95": true
+        }
+      ],
+      "path": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_normgram_stable_20260804/gpt2_b64/campaign_complete.json",
+      "peak_rss_bytes": 1800417280,
+      "record_count": 800,
+      "results": [
+        {
+          "bank_size": 10000,
+          "closed_distance_mean": 0.000699833296552581,
+          "closed_trials": 50,
+          "condition": "official_reuse",
+          "kv_type": "key",
+          "open_distance_mean": 0.005482090037369042,
+          "open_trial_false_positive_count": 0,
+          "open_trial_false_positive_rate": 0.0,
+          "open_trial_false_positive_wilson95": [
+            3.469446951953614e-18,
+            0.03699349820698568
+          ],
+          "open_trials": 100,
+          "random_label_top1_recall": 0.0,
+          "threshold": 0.0014143094102945753,
+          "threshold_recall": 1.0,
+          "top1_recall": 1.0
+        },
+        {
+          "bank_size": 10000,
+          "closed_distance_mean": 0.0007291866208877426,
+          "closed_trials": 50,
+          "condition": "official_reuse",
+          "kv_type": "value",
+          "open_distance_mean": 0.0050955679331462,
+          "open_trial_false_positive_count": 1,
+          "open_trial_false_positive_rate": 0.01,
+          "open_trial_false_positive_wilson95": [
+            0.0017674320641406505,
+            0.054486196178705315
+          ],
+          "open_trials": 100,
+          "random_label_top1_recall": 0.0,
+          "threshold": 0.0010698875483212973,
+          "threshold_recall": 1.0,
+          "top1_recall": 1.0
+        },
+        {
+          "bank_size": 10000,
+          "closed_distance_mean": 0.000702353716761791,
+          "closed_trials": 50,
+          "condition": "refresh_left",
+          "kv_type": "key",
+          "open_distance_mean": 0.005484794641119073,
+          "open_trial_false_positive_count": 0,
+          "open_trial_false_positive_rate": 0.0,
+          "open_trial_false_positive_wilson95": [
+            3.469446951953614e-18,
+            0.03699349820698568
+          ],
+          "open_trials": 100,
+          "random_label_top1_recall": 0.0,
+          "threshold": 0.001447477386425048,
+          "threshold_recall": 1.0,
+          "top1_recall": 1.0
+        },
+        {
+          "bank_size": 10000,
+          "closed_distance_mean": 0.000733123910299518,
+          "closed_trials": 50,
+          "condition": "refresh_left",
+          "kv_type": "value",
+          "open_distance_mean": 0.005081805756300106,
+          "open_trial_false_positive_count": 2,
+          "open_trial_false_positive_rate": 0.02,
+          "open_trial_false_positive_wilson95": [
+            0.00550196755016235,
+            0.07001179072854388
+          ],
+          "open_trials": 100,
+          "random_label_top1_recall": 0.0,
+          "threshold": 0.001079445333057182,
+          "threshold_recall": 1.0,
+          "top1_recall": 1.0
+        }
+      ],
+      "runtime_seconds": 2.017246723175049,
+      "sha256": "e574b40791ee050d40043e0826c3ea31795c59d5403f103819e0742f2f03558f"
+    },
+    "qwen_b128": {
+      "gates": [
+        {
+          "condition": "official_reuse",
+          "kv_type": "key",
+          "open_wilson_upper_at_most_0_05": true,
+          "pass": false,
+          "random_label_recall_at_most_0_05": true,
+          "threshold_recall_at_least_0_90": false,
+          "top1_recall_at_least_0_95": false
+        },
+        {
+          "condition": "official_reuse",
+          "kv_type": "value",
+          "open_wilson_upper_at_most_0_05": true,
+          "pass": true,
+          "random_label_recall_at_most_0_05": true,
+          "threshold_recall_at_least_0_90": true,
+          "top1_recall_at_least_0_95": true
+        },
+        {
+          "condition": "refresh_left",
+          "kv_type": "key",
+          "open_wilson_upper_at_most_0_05": true,
+          "pass": false,
+          "random_label_recall_at_most_0_05": true,
+          "threshold_recall_at_least_0_90": false,
+          "top1_recall_at_least_0_95": false
+        },
+        {
+          "condition": "refresh_left",
+          "kv_type": "value",
+          "open_wilson_upper_at_most_0_05": true,
+          "pass": true,
+          "random_label_recall_at_most_0_05": true,
+          "threshold_recall_at_least_0_90": true,
+          "top1_recall_at_least_0_95": true
+        }
+      ],
+      "path": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_normgram_stable_20260804/qwen_b128/campaign_complete.json",
+      "peak_rss_bytes": 3055370240,
+      "record_count": 2000,
+      "results": [
+        {
+          "bank_size": 10000,
+          "closed_distance_mean": 0.0005293931672024785,
+          "closed_trials": 100,
+          "condition": "official_reuse",
+          "kv_type": "key",
+          "open_distance_mean": 0.0005398273822906335,
+          "open_trial_false_positive_count": 1,
+          "open_trial_false_positive_rate": 0.0033333333333333335,
+          "open_trial_false_positive_wilson95": [
+            0.0005886577218511581,
+            0.018636693694531237
+          ],
+          "open_trials": 300,
+          "random_label_top1_recall": 0.0,
+          "threshold": 0.0004462475084379019,
+          "threshold_recall": 0.0,
+          "top1_recall": 0.44
+        },
+        {
+          "bank_size": 10000,
+          "closed_distance_mean": 0.0005355325105727606,
+          "closed_trials": 100,
+          "condition": "official_reuse",
+          "kv_type": "value",
+          "open_distance_mean": 0.004291711111116887,
+          "open_trial_false_positive_count": 2,
+          "open_trial_false_positive_rate": 0.006666666666666667,
+          "open_trial_false_positive_wilson95": [
+            0.0018301483579117855,
+            0.023977583250306973
+          ],
+          "open_trials": 300,
+          "random_label_top1_recall": 0.0,
+          "threshold": 0.0012796716555572127,
+          "threshold_recall": 1.0,
+          "top1_recall": 1.0
+        },
+        {
+          "bank_size": 10000,
+          "closed_distance_mean": 0.000533611345344415,
+          "closed_trials": 100,
+          "condition": "refresh_left",
+          "kv_type": "key",
+          "open_distance_mean": 0.0005487655561549167,
+          "open_trial_false_positive_count": 5,
+          "open_trial_false_positive_rate": 0.016666666666666666,
+          "open_trial_false_positive_wilson95": [
+            0.00713947735063333,
+            0.0384153948330945
+          ],
+          "open_trials": 300,
+          "random_label_top1_recall": 0.0,
+          "threshold": 0.00046645424574284354,
+          "threshold_recall": 0.02,
+          "top1_recall": 0.42
+        },
+        {
+          "bank_size": 10000,
+          "closed_distance_mean": 0.0005356366088930605,
+          "closed_trials": 100,
+          "condition": "refresh_left",
+          "kv_type": "value",
+          "open_distance_mean": 0.00428794557833013,
+          "open_trial_false_positive_count": 3,
+          "open_trial_false_positive_rate": 0.01,
+          "open_trial_false_positive_wilson95": [
+            0.003406618437715286,
+            0.02898349336233983
+          ],
+          "open_trials": 300,
+          "random_label_top1_recall": 0.0,
+          "threshold": 0.001309622921081655,
+          "threshold_recall": 1.0,
+          "top1_recall": 1.0
+        }
+      ],
+      "runtime_seconds": 4.838468790054321,
+      "sha256": "94b3a69cec86d382cb7af99787d2d0cfbb1869f3514930990c83e94cf89d0ed0"
+    },
+    "qwen_b64": {
+      "gates": [
+        {
+          "condition": "official_reuse",
+          "kv_type": "key",
+          "open_wilson_upper_at_most_0_05": false,
+          "pass": false,
+          "random_label_recall_at_most_0_05": true,
+          "threshold_recall_at_least_0_90": false,
+          "top1_recall_at_least_0_95": false
+        },
+        {
+          "condition": "official_reuse",
+          "kv_type": "value",
+          "open_wilson_upper_at_most_0_05": true,
+          "pass": true,
+          "random_label_recall_at_most_0_05": true,
+          "threshold_recall_at_least_0_90": true,
+          "top1_recall_at_least_0_95": true
+        },
+        {
+          "condition": "refresh_left",
+          "kv_type": "key",
+          "open_wilson_upper_at_most_0_05": true,
+          "pass": false,
+          "random_label_recall_at_most_0_05": true,
+          "threshold_recall_at_least_0_90": false,
+          "top1_recall_at_least_0_95": false
+        },
+        {
+          "condition": "refresh_left",
+          "kv_type": "value",
+          "open_wilson_upper_at_most_0_05": false,
+          "pass": false,
+          "random_label_recall_at_most_0_05": true,
+          "threshold_recall_at_least_0_90": true,
+          "top1_recall_at_least_0_95": true
+        }
+      ],
+      "path": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_normgram_stable_20260804/qwen_b64/campaign_complete.json",
+      "peak_rss_bytes": 1824735232,
+      "record_count": 800,
+      "results": [
+        {
+          "bank_size": 10000,
+          "closed_distance_mean": 0.0006301684422484514,
+          "closed_trials": 50,
+          "condition": "official_reuse",
+          "kv_type": "key",
+          "open_distance_mean": 0.0006229277069798819,
+          "open_trial_false_positive_count": 1,
+          "open_trial_false_positive_rate": 0.01,
+          "open_trial_false_positive_wilson95": [
+            0.0017674320641406505,
+            0.054486196178705315
+          ],
+          "open_trials": 100,
+          "random_label_top1_recall": 0.0,
+          "threshold": 0.0005329764607095917,
+          "threshold_recall": 0.0,
+          "top1_recall": 0.02
+        },
+        {
+          "bank_size": 10000,
+          "closed_distance_mean": 0.0007337032496533765,
+          "closed_trials": 50,
+          "condition": "official_reuse",
+          "kv_type": "value",
+          "open_distance_mean": 0.0034431753139995904,
+          "open_trial_false_positive_count": 0,
+          "open_trial_false_positive_rate": 0.0,
+          "open_trial_false_positive_wilson95": [
+            3.469446951953614e-18,
+            0.03699349820698568
+          ],
+          "open_trials": 100,
+          "random_label_top1_recall": 0.0,
+          "threshold": 0.0010023251703023053,
+          "threshold_recall": 0.98,
+          "top1_recall": 1.0
+        },
+        {
+          "bank_size": 10000,
+          "closed_distance_mean": 0.0006355111228333639,
+          "closed_trials": 50,
+          "condition": "refresh_left",
+          "kv_type": "key",
+          "open_distance_mean": 0.0006401162092818474,
+          "open_trial_false_positive_count": 0,
+          "open_trial_false_positive_rate": 0.0,
+          "open_trial_false_positive_wilson95": [
+            3.469446951953614e-18,
+            0.03699349820698568
+          ],
+          "open_trials": 100,
+          "random_label_top1_recall": 0.0,
+          "threshold": 0.0005198105705011122,
+          "threshold_recall": 0.0,
+          "top1_recall": 0.02
+        },
+        {
+          "bank_size": 10000,
+          "closed_distance_mean": 0.0007408849607407514,
+          "closed_trials": 50,
+          "condition": "refresh_left",
+          "kv_type": "value",
+          "open_distance_mean": 0.003437434500884419,
+          "open_trial_false_positive_count": 1,
+          "open_trial_false_positive_rate": 0.01,
+          "open_trial_false_positive_wilson95": [
+            0.0017674320641406505,
+            0.054486196178705315
+          ],
+          "open_trials": 100,
+          "random_label_top1_recall": 0.0,
+          "threshold": 0.0010541411565230141,
+          "threshold_recall": 1.0,
+          "top1_recall": 1.0
+        }
+      ],
+      "runtime_seconds": 2.5012145042419434,
+      "sha256": "dc4cd89e3b28d6eb62c9ca5d2e32cdd480be7deaec930dea1242485171ca80dc"
+    }
+  },
+  "official_kvcloak": {
+    "commit": "6b40f36edb2f337557543e7e60b10022308883d4",
+    "source_sha256": "246a72d5760a3f1b7c61800ad778cc14200d58e85bead89b8e7d4c8d2e86051d"
+  },
+  "preserved_adaptive_failures": {
+    "kvcloak_fullgram_stable_20260804": {
+      "gpt2_b64": {
+        "all_prespecified_gates_pass": false,
+        "path": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_fullgram_stable_20260804/gpt2_b64/campaign_complete.json",
+        "results": [
+          {
+            "bank_size": 10000,
+            "closed_distance_mean": 616.1875713429944,
+            "closed_gap_mean": 0.6285767235945415,
+            "closed_trials": 50,
+            "condition": "official_reuse",
+            "distance_threshold_diagnostic": 957.7502369380021,
+            "gap_threshold": 0.7795849262470169,
+            "gap_threshold_recall": 0.32,
+            "kv_type": "key",
+            "open_distance_mean": 3051.5511992137995,
+            "open_gap_mean": 0.14724640604092173,
+            "open_trial_false_positive_count": 6,
+            "open_trial_false_positive_rate": 0.06,
+            "open_trial_false_positive_wilson95": [
+              0.027786123963188192,
+              0.1247681544589592
+            ],
+            "open_trials": 100,
+            "random_label_top1_recall": 0.0,
+            "top1_recall": 0.98
+          },
+          {
+            "bank_size": 10000,
+            "closed_distance_mean": 41.06878500486418,
+            "closed_gap_mean": 0.46418266767629524,
+            "closed_trials": 50,
+            "condition": "official_reuse",
+            "distance_threshold_diagnostic": 38.834084734471254,
+            "gap_threshold": 0.899530900044596,
+            "gap_threshold_recall": 0.24,
+            "kv_type": "value",
+            "open_distance_mean": 187.74255967913624,
+            "open_gap_mean": 0.13885803860555046,
+            "open_trial_false_positive_count": 0,
+            "open_trial_false_positive_rate": 0.0,
+            "open_trial_false_positive_wilson95": [
+              3.469446951953614e-18,
+              0.03699349820698568
+            ],
+            "open_trials": 100,
+            "random_label_top1_recall": 0.0,
+            "top1_recall": 0.66
+          },
+          {
+            "bank_size": 10000,
+            "closed_distance_mean": 625.0449624815091,
+            "closed_gap_mean": 0.6362600033465242,
+            "closed_trials": 50,
+            "condition": "refresh_left",
+            "distance_threshold_diagnostic": 802.2349539488689,
+            "gap_threshold": 0.7828588180902617,
+            "gap_threshold_recall": 0.34,
+            "kv_type": "key",
+            "open_distance_mean": 3074.4723865703377,
+            "open_gap_mean": 0.1441884579306336,
+            "open_trial_false_positive_count": 6,
+            "open_trial_false_positive_rate": 0.06,
+            "open_trial_false_positive_wilson95": [
+              0.027786123963188192,
+              0.1247681544589592
+            ],
+            "open_trials": 100,
+            "random_label_top1_recall": 0.0,
+            "top1_recall": 0.96
+          },
+          {
+            "bank_size": 10000,
+            "closed_distance_mean": 38.35185880672344,
+            "closed_gap_mean": 0.4779365806034084,
+            "closed_trials": 50,
+            "condition": "refresh_left",
+            "distance_threshold_diagnostic": 36.44480029085962,
+            "gap_threshold": 0.899923819242212,
+            "gap_threshold_recall": 0.32,
+            "kv_type": "value",
+            "open_distance_mean": 186.90229191696346,
+            "open_gap_mean": 0.12942765649124163,
+            "open_trial_false_positive_count": 0,
+            "open_trial_false_positive_rate": 0.0,
+            "open_trial_false_positive_wilson95": [
+              3.469446951953614e-18,
+              0.03699349820698568
+            ],
+            "open_trials": 100,
+            "random_label_top1_recall": 0.0,
+            "top1_recall": 0.7
+          }
+        ],
+        "sha256": "6d5976058e5039b47da2025a8a1de3d1647798976d6212109cf4d3b549cebd4a"
+      },
+      "qwen_b128": {
+        "all_prespecified_gates_pass": false,
+        "path": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_fullgram_stable_20260804/qwen_b128/campaign_complete.json",
+        "results": [
+          {
+            "bank_size": 10000,
+            "closed_distance_mean": 698728.1633586081,
+            "closed_gap_mean": 0.036447074157133795,
+            "closed_trials": 100,
+            "condition": "official_reuse",
+            "distance_threshold_diagnostic": 580865.359858621,
+            "gap_threshold": 0.17320468985673135,
+            "gap_threshold_recall": 0.02,
+            "kv_type": "key",
+            "open_distance_mean": 700621.16464271,
+            "open_gap_mean": 0.028012074195861592,
+            "open_trial_false_positive_count": 1,
+            "open_trial_false_positive_rate": 0.0033333333333333335,
+            "open_trial_false_positive_wilson95": [
+              0.0005886577218511581,
+              0.018636693694531237
+            ],
+            "open_trials": 300,
+            "random_label_top1_recall": 0.0,
+            "top1_recall": 0.21
+          },
+          {
+            "bank_size": 10000,
+            "closed_distance_mean": 208.11711503704362,
+            "closed_gap_mean": 0.6888712790278931,
+            "closed_trials": 100,
+            "condition": "official_reuse",
+            "distance_threshold_diagnostic": 293.0356871182636,
+            "gap_threshold": 0.8238759487820572,
+            "gap_threshold_recall": 0.25,
+            "kv_type": "value",
+            "open_distance_mean": 1000.8763920578539,
+            "open_gap_mean": 0.13735043614096396,
+            "open_trial_false_positive_count": 3,
+            "open_trial_false_positive_rate": 0.01,
+            "open_trial_false_positive_wilson95": [
+              0.003406618437715286,
+              0.02898349336233983
+            ],
+            "open_trials": 300,
+            "random_label_top1_recall": 0.0,
+            "top1_recall": 1.0
+          },
+          {
+            "bank_size": 10000,
+            "closed_distance_mean": 716897.0413755223,
+            "closed_gap_mean": 0.03158986450410261,
+            "closed_trials": 100,
+            "condition": "refresh_left",
+            "distance_threshold_diagnostic": 600555.4050796458,
+            "gap_threshold": 0.2724774887969602,
+            "gap_threshold_recall": 0.0,
+            "kv_type": "key",
+            "open_distance_mean": 713157.2525883735,
+            "open_gap_mean": 0.028301767348454458,
+            "open_trial_false_positive_count": 1,
+            "open_trial_false_positive_rate": 0.0033333333333333335,
+            "open_trial_false_positive_wilson95": [
+              0.0005886577218511581,
+              0.018636693694531237
+            ],
+            "open_trials": 300,
+            "random_label_top1_recall": 0.0,
+            "top1_recall": 0.13
+          },
+          {
+            "bank_size": 10000,
+            "closed_distance_mean": 189.46407407519385,
+            "closed_gap_mean": 0.7193543925240927,
+            "closed_trials": 100,
+            "condition": "refresh_left",
+            "distance_threshold_diagnostic": 338.95033562940307,
+            "gap_threshold": 0.8230805872626297,
+            "gap_threshold_recall": 0.27,
+            "kv_type": "value",
+            "open_distance_mean": 1000.520576458557,
+            "open_gap_mean": 0.13659115166837524,
+            "open_trial_false_positive_count": 3,
+            "open_trial_false_positive_rate": 0.01,
+            "open_trial_false_positive_wilson95": [
+              0.003406618437715286,
+              0.02898349336233983
+            ],
+            "open_trials": 300,
+            "random_label_top1_recall": 0.0,
+            "top1_recall": 0.99
+          }
+        ],
+        "sha256": "b8779bb4cad56563eb04a44a5daa95462509f6cab3eb4835a926058df7bd262a"
+      },
+      "qwen_b64": {
+        "all_prespecified_gates_pass": false,
+        "path": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_fullgram_stable_20260804/qwen_b64/campaign_complete.json",
+        "results": [
+          {
+            "bank_size": 10000,
+            "closed_distance_mean": 835263.4382656944,
+            "closed_gap_mean": 0.029393393976450008,
+            "closed_trials": 50,
+            "condition": "official_reuse",
+            "distance_threshold_diagnostic": 699631.4864019494,
+            "gap_threshold": 0.07406710110015809,
+            "gap_threshold_recall": 0.02,
+            "kv_type": "key",
+            "open_distance_mean": 809161.6224808379,
+            "open_gap_mean": 0.029731873021715184,
+            "open_trial_false_positive_count": 10,
+            "open_trial_false_positive_rate": 0.1,
+            "open_trial_false_positive_wilson95": [
+              0.0552291370606751,
+              0.17436566150491345
+            ],
+            "open_trials": 100,
+            "random_label_top1_recall": 0.0,
+            "top1_recall": 0.02
+          },
+          {
+            "bank_size": 10000,
+            "closed_distance_mean": 258.8191546395605,
+            "closed_gap_mean": 0.4005056108884396,
+            "closed_trials": 50,
+            "condition": "official_reuse",
+            "distance_threshold_diagnostic": 271.0478149099959,
+            "gap_threshold": 0.8728823463503771,
+            "gap_threshold_recall": 0.12,
+            "kv_type": "value",
+            "open_distance_mean": 838.5645528817728,
+            "open_gap_mean": 0.09935350793569427,
+            "open_trial_false_positive_count": 0,
+            "open_trial_false_positive_rate": 0.0,
+            "open_trial_false_positive_wilson95": [
+              3.469446951953614e-18,
+              0.03699349820698568
+            ],
+            "open_trials": 100,
+            "random_label_top1_recall": 0.0,
+            "top1_recall": 0.78
+          },
+          {
+            "bank_size": 10000,
+            "closed_distance_mean": 863114.2470280628,
+            "closed_gap_mean": 0.02514654360168297,
+            "closed_trials": 50,
+            "condition": "refresh_left",
+            "distance_threshold_diagnostic": 725079.3409334596,
+            "gap_threshold": 0.0946761415576974,
+            "gap_threshold_recall": 0.0,
+            "kv_type": "key",
+            "open_distance_mean": 871177.5374530943,
+            "open_gap_mean": 0.026390963551460086,
+            "open_trial_false_positive_count": 2,
+            "open_trial_false_positive_rate": 0.02,
+            "open_trial_false_positive_wilson95": [
+              0.00550196755016235,
+              0.07001179072854388
+            ],
+            "open_trials": 100,
+            "random_label_top1_recall": 0.0,
+            "top1_recall": 0.0
+          },
+          {
+            "bank_size": 10000,
+            "closed_distance_mean": 272.4305825498958,
+            "closed_gap_mean": 0.39233092720644686,
+            "closed_trials": 50,
+            "condition": "refresh_left",
+            "distance_threshold_diagnostic": 279.7141347828974,
+            "gap_threshold": 0.8663536966915808,
+            "gap_threshold_recall": 0.14,
+            "kv_type": "value",
+            "open_distance_mean": 841.5829318536096,
+            "open_gap_mean": 0.10025709180441641,
+            "open_trial_false_positive_count": 1,
+            "open_trial_false_positive_rate": 0.01,
+            "open_trial_false_positive_wilson95": [
+              0.0017674320641406505,
+              0.054486196178705315
+            ],
+            "open_trials": 100,
+            "random_label_top1_recall": 0.0,
+            "top1_recall": 0.78
+          }
+        ],
+        "sha256": "9337c8b749cc3ceaf4bd4bd7a2dfef10bf2ed3ab20b846c0d731854727333b8a"
+      }
+    },
+    "kvcloak_gram_followup_20260804": {
+      "gpt2_b64": {
+        "all_prespecified_gates_pass": false,
+        "path": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_gram_followup_20260804/gpt2_b64/campaign_complete.json",
+        "results": [
+          {
+            "bank_size": 10000,
+            "closed_distance_mean": 0.0005757124570664018,
+            "closed_trials": 50,
+            "condition": "official_reuse",
+            "kv_type": "key",
+            "open_distance_mean": 0.00547008246765472,
+            "open_trial_false_positive_count": 0,
+            "open_trial_false_positive_rate": 0.0,
+            "open_trial_false_positive_wilson95": [
+              3.469446951953614e-18,
+              0.03699349820698568
+            ],
+            "open_trials": 100,
+            "random_label_top1_recall": 0.0,
+            "threshold": 0.0013372133253142238,
+            "threshold_recall": 1.0,
+            "top1_recall": 1.0
+          },
+          {
+            "bank_size": 10000,
+            "closed_distance_mean": 0.0006540351663716137,
+            "closed_trials": 50,
+            "condition": "official_reuse",
+            "kv_type": "value",
+            "open_distance_mean": 0.005025991824222729,
+            "open_trial_false_positive_count": 0,
+            "open_trial_false_positive_rate": 0.0,
+            "open_trial_false_positive_wilson95": [
+              3.469446951953614e-18,
+              0.03699349820698568
+            ],
+            "open_trials": 100,
+            "random_label_top1_recall": 0.0,
+            "threshold": 0.0006905339541845024,
+            "threshold_recall": 0.66,
+            "top1_recall": 0.98
+          },
+          {
+            "bank_size": 10000,
+            "closed_distance_mean": 0.0007002773944986984,
+            "closed_trials": 50,
+            "condition": "refresh_left",
+            "kv_type": "key",
+            "open_distance_mean": 0.005478039562003687,
+            "open_trial_false_positive_count": 0,
+            "open_trial_false_positive_rate": 0.0,
+            "open_trial_false_positive_wilson95": [
+              3.469446951953614e-18,
+              0.03699349820698568
+            ],
+            "open_trials": 100,
+            "random_label_top1_recall": 0.0,
+            "threshold": 0.0013810679083690047,
+            "threshold_recall": 1.0,
+            "top1_recall": 1.0
+          },
+          {
+            "bank_size": 10000,
+            "closed_distance_mean": 0.0005824433336965739,
+            "closed_trials": 50,
+            "condition": "refresh_left",
+            "kv_type": "value",
+            "open_distance_mean": 0.005033553686807864,
+            "open_trial_false_positive_count": 0,
+            "open_trial_false_positive_rate": 0.0,
+            "open_trial_false_positive_wilson95": [
+              3.469446951953614e-18,
+              0.03699349820698568
+            ],
+            "open_trials": 100,
+            "random_label_top1_recall": 0.0,
+            "threshold": 0.0005980199784971774,
+            "threshold_recall": 0.42,
+            "top1_recall": 0.96
+          }
+        ],
+        "sha256": "556be231ed270112e54105fcc414d3efcc6191ba5520062e66543179b25c6c76"
+      },
+      "qwen_b128": {
+        "all_prespecified_gates_pass": false,
+        "path": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_gram_followup_20260804/qwen_b128/campaign_complete.json",
+        "results": [
+          {
+            "bank_size": 10000,
+            "closed_distance_mean": 4.8828125e-06,
+            "closed_trials": 100,
+            "condition": "official_reuse",
+            "kv_type": "key",
+            "open_distance_mean": 3.929384013948341e-06,
+            "open_trial_false_positive_count": 297,
+            "open_trial_false_positive_rate": 0.99,
+            "open_trial_false_positive_wilson95": [
+              0.9710165066376601,
+              0.9965933815622847
+            ],
+            "open_trials": 300,
+            "random_label_top1_recall": 0.0,
+            "threshold": 0.0,
+            "threshold_recall": 0.02,
+            "top1_recall": 0.03
+          },
+          {
+            "bank_size": 10000,
+            "closed_distance_mean": 0.00048725648608524355,
+            "closed_trials": 100,
+            "condition": "official_reuse",
+            "kv_type": "value",
+            "open_distance_mean": 0.004270772736053914,
+            "open_trial_false_positive_count": 3,
+            "open_trial_false_positive_rate": 0.01,
+            "open_trial_false_positive_wilson95": [
+              0.003406618437715286,
+              0.02898349336233983
+            ],
+            "open_trials": 300,
+            "random_label_top1_recall": 0.0,
+            "threshold": 0.0011960399569943547,
+            "threshold_recall": 1.0,
+            "top1_recall": 1.0
+          },
+          {
+            "bank_size": 10000,
+            "closed_distance_mean": 1.1788152041845024e-05,
+            "closed_trials": 100,
+            "condition": "refresh_left",
+            "kv_type": "key",
+            "open_distance_mean": 2.778494090307504e-06,
+            "open_trial_false_positive_count": 298,
+            "open_trial_false_positive_rate": 0.9933333333333333,
+            "open_trial_false_positive_wilson95": [
+              0.9760224167496928,
+              0.9981698516420882
+            ],
+            "open_trials": 300,
+            "random_label_top1_recall": 0.0,
+            "threshold": 0.0,
+            "threshold_recall": 0.02,
+            "top1_recall": 0.03
+          },
+          {
+            "bank_size": 10000,
+            "closed_distance_mean": 0.00044043547910405323,
+            "closed_trials": 100,
+            "condition": "refresh_left",
+            "kv_type": "value",
+            "open_distance_mean": 0.004272930622779919,
+            "open_trial_false_positive_count": 6,
+            "open_trial_false_positive_rate": 0.02,
+            "open_trial_false_positive_wilson95": [
+              0.009197631557703617,
+              0.042939620817860576
+            ],
+            "open_trials": 300,
+            "random_label_top1_recall": 0.0,
+            "threshold": 0.0013810679083690047,
+            "threshold_recall": 1.0,
+            "top1_recall": 1.0
+          }
+        ],
+        "sha256": "5e110c144353f51e367e5a1f322c04ddc5644225458b25c1650e133a8d5c30d7"
+      },
+      "qwen_b64": {
+        "all_prespecified_gates_pass": false,
+        "path": "/home/ubuntu/research-vault/projects/P050/ndss-2027/artifact/outputs/kvcloak_gram_followup_20260804/qwen_b64/campaign_complete.json",
+        "results": [
+          {
+            "bank_size": 10000,
+            "closed_distance_mean": 0.0,
+            "closed_trials": 50,
+            "condition": "official_reuse",
+            "kv_type": "key",
+            "open_distance_mean": 0.0,
+            "open_trial_false_positive_count": 100,
+            "open_trial_false_positive_rate": 1.0,
+            "open_trial_false_positive_wilson95": [
+              0.9630065017930143,
+              1.0
+            ],
+            "open_trials": 100,
+            "random_label_top1_recall": 0.0,
+            "threshold": 0.0,
+            "threshold_recall": 0.0,
+            "top1_recall": 0.0
+          },
+          {
+            "bank_size": 10000,
+            "closed_distance_mean": 0.0007047435926506296,
+            "closed_trials": 50,
+            "condition": "official_reuse",
+            "kv_type": "value",
+            "open_distance_mean": 0.0033715293661225588,
+            "open_trial_false_positive_count": 0,
+            "open_trial_false_positive_rate": 0.0,
+            "open_trial_false_positive_wilson95": [
+              3.469446951953614e-18,
+              0.03699349820698568
+            ],
+            "open_trials": 100,
+            "random_label_top1_recall": 0.0,
+            "threshold": 0.00048828125,
+            "threshold_recall": 0.34,
+            "top1_recall": 0.94
+          },
+          {
+            "bank_size": 10000,
+            "closed_distance_mean": 6.905339541845024e-06,
+            "closed_trials": 50,
+            "condition": "refresh_left",
+            "kv_type": "key",
+            "open_distance_mean": 3.452669770922512e-06,
+            "open_trial_false_positive_count": 99,
+            "open_trial_false_positive_rate": 0.99,
+            "open_trial_false_positive_wilson95": [
+              0.9455138038212946,
+              0.9982325679358593
+            ],
+            "open_trials": 100,
+            "random_label_top1_recall": 0.0,
+            "threshold": 0.0,
+            "threshold_recall": 0.0,
+            "top1_recall": 0.0
+          },
+          {
+            "bank_size": 10000,
+            "closed_distance_mean": 0.0006365326442755759,
+            "closed_trials": 50,
+            "condition": "refresh_left",
+            "kv_type": "value",
+            "open_distance_mean": 0.0033636113774264233,
+            "open_trial_false_positive_count": 1,
+            "open_trial_false_positive_rate": 0.01,
+            "open_trial_false_positive_wilson95": [
+              0.0017674320641406505,
+              0.054486196178705315
+            ],
+            "open_trials": 100,
+            "random_label_top1_recall": 0.0,
+            "threshold": 0.0005980199784971774,
+            "threshold_recall": 0.34,
+            "top1_recall": 0.96
+          }
+        ],
+        "sha256": "d29e1b05796638b1bba07d7a7e75e25999fa6bd075142972dd84960b848d2432"
+      }
+    }
+  },
+  "repo_revision": "4a060af47eec59f2fc90ff470495f946cd53beb7",
+  "status": "complete",
+  "validator_sha256": "f1703816e506875e5a373325856562cee31097573706018449e7ebc6c592675a"
+}
