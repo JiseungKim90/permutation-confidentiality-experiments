@@ -99,6 +99,41 @@ def stable_seed(manifest_path: Path) -> int:
     return {"qwen_b128": 20261328, "gpt2_b64": 20261064, "qwen_b64": 20261264}[label]
 
 
+def trial_source_set(path: Path) -> set[int]:
+    trials = load_json(path)
+    sources = set(int(value) for value in np.load(trials["candidate_indices"], allow_pickle=False))
+    sources.update(int(row["source_index"]) for row in trials["records"]["calibration"])
+    sources.update(int(row["source_index"]) for rows in trials["records"]["closed"].values() for row in rows)
+    sources.update(int(row["source_index"]) for row in trials["records"]["open"])
+    return sources
+
+
+def verify_holdout_disjoint(holdout_path: Path, development_paths: list[Path]) -> dict:
+    holdout = load_json(holdout_path)
+    require(holdout.get("confirmatory_holdout"), "holdout flag missing")
+    require(holdout.get("metric_frozen_before_holdout"), "metric was not frozen before holdout")
+    require(holdout.get("disjoint_from_metric_development"), "holdout disjointness flag missing")
+    held_sources = trial_source_set(holdout_path)
+    development_sources = set()
+    for path in development_paths:
+        verify_hash(path, holdout["excluded_trial_manifests"][str(path)], "excluded trial manifest")
+        development_sources.update(trial_source_set(path))
+    require(not (held_sources & development_sources), "confirmatory holdout overlaps development records")
+    if holdout.get("allowed_indices"):
+        allowed_path = Path(holdout["allowed_indices"])
+        verify_hash(allowed_path, holdout["allowed_indices_sha256"], "allowed cache indices")
+        allowed = set(int(value) for value in np.load(allowed_path, allow_pickle=False))
+        require(held_sources <= allowed, "holdout contains an uncached source index")
+    return {
+        "path": str(holdout_path),
+        "sha256": sha256(holdout_path),
+        "heldout_source_count": len(held_sources),
+        "excluded_development_source_count": len(development_sources),
+        "intersection_count": 0,
+        "frozen_metric_commit": holdout["frozen_metric_commit"],
+    }
+
+
 def verify_normalized_gram(manifest_path: Path) -> dict:
     manifest = load_json(manifest_path)
     require(manifest.get("status") == "complete", f"incomplete Gram manifest: {manifest_path}")
@@ -222,6 +257,45 @@ def main() -> None:
         label: verify_normalized_gram(gram_root / label / "campaign_complete.json")
         for label in ("qwen_b128", "gpt2_b64", "qwen_b64")
     }
+    holdout_root = repo / "outputs" / "kvcloak_normgram_confirmatory_20260804"
+    holdout = {
+        label: verify_normalized_gram(holdout_root / label / "campaign_complete.json")
+        for label in ("qwen_b128", "gpt2_b64")
+    }
+    multileft_root = repo / "outputs" / "kvcloak_normgram_multileft_20260804"
+    multileft = {
+        label: verify_normalized_gram(multileft_root / label / "campaign_complete.json")
+        for label in ("qwen_b128", "gpt2_b64")
+    }
+    qwen_development = [
+        repo / "outputs" / "kvcloak_qwen_crossmodel_20260804" / "data" / "b128_boundary" / "trials.json",
+        repo / "outputs" / "kvcloak_qwen_crossmodel_20260804" / "data" / "b64_head1" / "trials.json",
+    ]
+    gpt2_development = [
+        repo / "outputs" / "kvcloak_msmarco_100k_20260803" / "data" / "b64_10k" / "trials.json"
+    ]
+    disjointness = {
+        "qwen_b128": verify_holdout_disjoint(
+            holdout_root / "data" / "qwen_b128" / "trials.json", qwen_development
+        ),
+        "gpt2_b64": verify_holdout_disjoint(
+            holdout_root / "data" / "gpt2_b64" / "trials.json", gpt2_development
+        ),
+    }
+    frozen_metric = repo / "scripts" / "98_kvcloak_normgram_stable.py"
+    frozen_metric_sha = sha256(frozen_metric)
+    for label in ("qwen_b128", "gpt2_b64"):
+        development_manifest = load_json(gram_root / label / "campaign_complete.json")
+        holdout_manifest = load_json(holdout_root / label / "campaign_complete.json")
+        multileft_manifest = load_json(multileft_root / label / "campaign_complete.json")
+        require(holdout_manifest["pairs_sha256"] == development_manifest["pairs_sha256"],
+                f"{label} holdout changed Gram coordinates")
+        require(multileft_manifest["pairs_sha256"] == development_manifest["pairs_sha256"],
+                f"{label} multi-left changed Gram coordinates")
+        require(multileft_manifest["frozen_metric_sha256"] == frozen_metric_sha,
+                f"{label} multi-left metric hash mismatch")
+        require(multileft_manifest.get("confirmatory_holdout_multiseed"),
+                f"{label} multi-left confirmation flag missing")
     preserved_failures = {}
     for campaign in ("kvcloak_gram_followup_20260804", "kvcloak_fullgram_stable_20260804"):
         preserved_failures[campaign] = {}
@@ -234,6 +308,13 @@ def main() -> None:
                 "all_prespecified_gates_pass": manifest["all_prespecified_gates_pass"],
                 "results": manifest["results"],
             }
+    cache_miss_log = holdout_root / "logs" / "qwen_b128_cache_miss_failure.log"
+    require(cache_miss_log.is_file(), "missing preserved Qwen cache-miss failure log")
+    preserved_failures["confirmatory_holdout_cache_miss"] = {
+        "path": str(cache_miss_log),
+        "sha256": sha256(cache_miss_log),
+        "interpretation": "The first frozen-holdout launch addressed an uncached source index and terminated before evaluation; the corrected launch restricts every disjoint holdout source to the precomputed cache.",
+    }
 
     result = {
         "status": "complete",
@@ -243,6 +324,10 @@ def main() -> None:
         "official_kvcloak": {"commit": commit, "source_sha256": OFFICIAL_SOURCE_SHA256},
         "gelo": gelo,
         "kvcloak_normalized_gram_stable": gram,
+        "kvcloak_disjoint_confirmatory_holdout": holdout,
+        "kvcloak_multi_left_holdout": multileft,
+        "holdout_disjointness": disjointness,
+        "frozen_metric_sha256": frozen_metric_sha,
         "preserved_adaptive_failures": preserved_failures,
     }
     output = Path(args.output).resolve()
@@ -255,4 +340,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
