@@ -13,7 +13,7 @@ threads="${1:-20}"
 
 mkdir -p "$drift_root/logs" "$drift_root/data" "$drift_root/cache" "$drift_root/evaluation"
 
-while tmux has-session -t p050_gelo_full 2>/dev/null; do
+while tmux has-session -t '=p050_gelo_full' 2>/dev/null; do
   sleep 30
 done
 

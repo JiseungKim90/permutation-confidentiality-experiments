@@ -123,6 +123,7 @@ def main() -> None:
                     chordal(reference, basis(quantize(row[kv_index], precision)))
                     for row in alternatives
                 ]
+                informative = block_size < key.shape[1]
                 tolerance = 2e-5 if precision == "float32" else 1e-2
                 result = {
                     "block_size": block_size,
@@ -134,8 +135,11 @@ def main() -> None:
                     "different_block_median_chordal": float(np.median(different)),
                     "same_invariant_gate": max(same) <= tolerance,
                     "separation_gate": max(same) * 10.0 < min(different),
+                    "full_rowspace_boundary_gate": max(different) <= tolerance,
+                    "expected_regime": "informative_rank_deficient" if informative else "uninformative_full_rowspace",
                 }
-                result["pass"] = result["same_invariant_gate"] and result["separation_gate"]
+                regime_gate = result["separation_gate"] if informative else result["full_rowspace_boundary_gate"]
+                result["pass"] = result["same_invariant_gate"] and regime_gate
                 results.append(result)
         peak_rss = max(peak_rss, process.memory_info().rss)
 
@@ -152,6 +156,8 @@ def main() -> None:
         "repetitions": args.repetitions,
         "different_blocks": args.different_blocks,
         "results": results,
+        "informative_block_sizes": [16, 32],
+        "full_rowspace_boundary_block_sizes": [64],
         "all_gates_pass": all(row["pass"] for row in results),
         "elapsed_seconds": time.time() - started,
         "peak_rss_bytes": int(peak_rss),

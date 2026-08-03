@@ -14,7 +14,7 @@ mkdir -p "$campaign_root/logs" "$campaign_root/data" "$campaign_root/evaluation"
 
 # Keep all heavy experiments sequential: the drift sweep already waits for the
 # core/robustness chain, and this campaign waits for the drift sweep.
-while tmux has-session -t p050_gelo_followup 2>/dev/null; do
+while tmux has-session -t '=p050_gelo_followup' 2>/dev/null; do
   sleep 30
 done
 
