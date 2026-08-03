@@ -33,7 +33,7 @@ collection="$($python_bin -c 'import json; print(json.load(open("'"$gelo_root/da
 "$python_bin" "$repo_root/scripts/69_gelo_msmarco_prepare.py" \
   --collection "$collection" --tokenizer "$model" \
   --output-dir "$run_root/data/msmarco128" --count 120000 \
-  --reservoir-size 600000 --seq-len 128 --seed 20260804 \
+  --reservoir-size 1500000 --seq-len 128 --seed 20260804 \
   --trials 1 --source-count 1 \
   > "$run_root/logs/prepare_msmarco128.log" 2>&1
 tokens="$run_root/data/msmarco128/tokens.npy"
