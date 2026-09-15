@@ -1,0 +1,313 @@
+{
+  "title": "When Do Fresh Permutations Hide a Model? Identifiability of Multi-Round Hybrid-FHE Transcripts",
+  "record_date": "2026-09-15",
+  "status": "Transcribed existing experimental summaries; no new run in this documentation update.",
+  "scope": "Exact finite-model enumeration and one exact-integer ResNet-20 simulator instance; no deployed-backend extraction claim.",
+  "single_layer": {
+    "description": "Each row is an affine coefficient vector including its bias. Inputs are Cartesian products of the listed coordinate values. Orbits identify models differing by a common row permutation.",
+    "cases": [
+      {
+        "m": 2,
+        "d": 1,
+        "coefficients": [
+          -1,
+          0,
+          1
+        ],
+        "input_values": [
+          0,
+          1
+        ],
+        "response": "exact",
+        "orbits": 45,
+        "classes": 43,
+        "ambiguous_orbits": 4,
+        "max_fibre": 2
+      },
+      {
+        "m": 2,
+        "d": 1,
+        "coefficients": [
+          -1,
+          0,
+          1
+        ],
+        "input_values": [
+          -1,
+          0,
+          1
+        ],
+        "response": "exact",
+        "orbits": 45,
+        "classes": 45,
+        "ambiguous_orbits": 0,
+        "max_fibre": 1
+      },
+      {
+        "m": 3,
+        "d": 1,
+        "coefficients": [
+          -1,
+          0,
+          1
+        ],
+        "input_values": [
+          -1,
+          0
+        ],
+        "response": "exact",
+        "orbits": 165,
+        "classes": 147,
+        "ambiguous_orbits": 35,
+        "max_fibre": 3
+      },
+      {
+        "m": 3,
+        "d": 1,
+        "coefficients": [
+          -1,
+          0,
+          1
+        ],
+        "input_values": [
+          -1,
+          0,
+          1,
+          2
+        ],
+        "response": "exact",
+        "orbits": 165,
+        "classes": 165,
+        "ambiguous_orbits": 0,
+        "max_fibre": 1
+      },
+      {
+        "m": 2,
+        "d": 2,
+        "coefficients": [
+          -1,
+          0,
+          1
+        ],
+        "input_values": [
+          0,
+          1
+        ],
+        "response": "exact",
+        "orbits": 378,
+        "classes": 366,
+        "ambiguous_orbits": 22,
+        "max_fibre": 3
+      },
+      {
+        "m": 2,
+        "d": 2,
+        "coefficients": [
+          -1,
+          0,
+          1
+        ],
+        "input_values": [
+          -1,
+          0,
+          1
+        ],
+        "response": "exact",
+        "orbits": 378,
+        "classes": 378,
+        "ambiguous_orbits": 0,
+        "max_fibre": 1
+      },
+      {
+        "m": 2,
+        "d": 2,
+        "coefficients": [
+          -1,
+          0,
+          1
+        ],
+        "input_values": [
+          -1,
+          0,
+          1
+        ],
+        "response": "clipped to [-1,1]",
+        "orbits": 378,
+        "classes": 378,
+        "ambiguous_orbits": 0,
+        "max_fibre": 1
+      },
+      {
+        "m": 2,
+        "d": 1,
+        "coefficients": [
+          -2,
+          -1,
+          0,
+          1,
+          2
+        ],
+        "input_values": [
+          -1,
+          0,
+          1
+        ],
+        "response": "exact",
+        "orbits": 325,
+        "classes": 325,
+        "ambiguous_orbits": 0,
+        "max_fibre": 1
+      },
+      {
+        "m": 2,
+        "d": 1,
+        "coefficients": [
+          -2,
+          -1,
+          0,
+          1,
+          2
+        ],
+        "input_values": [
+          -1,
+          0,
+          1
+        ],
+        "response": "clipped to [-1,1]",
+        "orbits": 325,
+        "classes": 83,
+        "ambiguous_orbits": 312,
+        "max_fibre": 18
+      }
+    ]
+  },
+  "hidden_frame_control": {
+    "widths": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "binary_response_target_pairs": 5460,
+    "condition_disagreements": 0,
+    "controller_checks": 197956,
+    "controller_failures": 0
+  },
+  "two_round": {
+    "dimensions": [
+      1,
+      2,
+      2
+    ],
+    "coefficients": [
+      -1,
+      0,
+      1
+    ],
+    "ordered_chains": 59049,
+    "internal_permutation": "Uniform in each fresh session; final output labels retained.",
+    "second_messages": "All vectors in {-1,0,1}^2.",
+    "cases": [
+      {
+        "first_inputs": [
+          -1,
+          0,
+          1
+        ],
+        "response": "exact",
+        "orbits": 29889,
+        "classes": 29889,
+        "ambiguous_orbits": 0,
+        "separating_orbits": 26244,
+        "separating_classes": 26244,
+        "separating_ambiguous_orbits": 0,
+        "max_fibre": 1
+      },
+      {
+        "first_inputs": [
+          0,
+          1
+        ],
+        "response": "exact",
+        "orbits": 29889,
+        "classes": 29727,
+        "ambiguous_orbits": 324,
+        "separating_orbits": 26244,
+        "separating_classes": 26082,
+        "separating_ambiguous_orbits": 324,
+        "max_fibre": 2
+      },
+      {
+        "first_inputs": [
+          -1,
+          0,
+          1
+        ],
+        "response": "clipped to [-1,1]",
+        "orbits": 29889,
+        "classes": 29889,
+        "ambiguous_orbits": 0,
+        "separating_orbits": 26244,
+        "separating_classes": 26244,
+        "separating_ambiguous_orbits": 0,
+        "max_fibre": 1
+      }
+    ]
+  },
+  "network": {
+    "model": "ResNet-20",
+    "dataset": "CIFAR-10",
+    "weight_precision_bits": 8,
+    "quantizer": "post-training",
+    "checkpoint_count": 1,
+    "first_stage": {
+      "sessions": 3676,
+      "protocol_rounds": 20,
+      "records": 29,
+      "certified_line_tracking_invocations": 34,
+      "line_tracking_passes": 36,
+      "omitted_observable_coefficients": 5
+    },
+    "completion": {
+      "sessions": 93,
+      "affine_evaluations": 222,
+      "changed_coefficients": 5,
+      "matched_observable_affine_maps": 29,
+      "coefficient_residual": 0
+    },
+    "total_extraction_sessions": 3769,
+    "prediction_agreement": {
+      "full_set_count": 10000,
+      "calibration_subset_count": 64,
+      "outside_calibration_count": 9936,
+      "matched_full_set_logits": 10000,
+      "matched_outside_calibration_logits": 9936,
+      "max_absolute_logit_difference": 0,
+      "full_set_accuracy_percent": 92.09,
+      "outside_calibration_accuracy_percent": 92.12,
+      "accuracy_note": "Outside-calibration percentage rounded to two decimals, as in the article."
+    },
+    "arithmetic": {
+      "inputs": [
+        0,
+        255
+      ],
+      "first_stage": {
+        "affine_evaluations": 73520,
+        "output_min": -171319,
+        "output_max": 158161,
+        "evaluations_exceeding_signed_16_bits": 52044
+      },
+      "completion_and_four_checks": {
+        "sessions": 97,
+        "affine_evaluations": 234,
+        "output_min": -190959,
+        "output_max": 175569,
+        "evaluations_exceeding_signed_16_bits": 224
+      },
+      "note": "All recorded completed affine outputs fit signed 19 bits. Internal multiply-accumulate partial sums were not recorded; this is not an accumulator-width guarantee."
+    }
+  }
+}
