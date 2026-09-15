@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+.venv/
+data/*.pt
+data/*.tar.gz
+data/cifar10_extract/
+logs/
+results/

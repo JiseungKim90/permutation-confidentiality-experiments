@@ -1,61 +1,9 @@
 {
-  "schema": "p050-tdsc-identifiability-exhaustive-v2",
-  "success": true,
-  "finite_domain_witness": {
-    "distinguished_at_input_2": true,
-    "inputs": [
-      0,
-      1
-    ],
-    "model_a_rows": [
-      [
-        -1,
-        1
-      ],
-      [
-        1,
-        0
-      ]
-    ],
-    "model_b_rows": [
-      [
-        0,
-        0
-      ],
-      [
-        0,
-        1
-      ]
-    ],
-    "response_at_2_a": [
-      -1,
-      2
-    ],
-    "response_at_2_b": [
-      0,
-      1
-    ],
-    "same_on_admissible_domain": true,
-    "signature_a": [
-      [
-        0,
-        1
-      ],
-      [
-        0,
-        1
-      ]
-    ],
-    "signature_b": [
-      [
-        0,
-        1
-      ],
-      [
-        0,
-        1
-      ]
-    ]
+  "environment": {
+    "hostname": "recorded Linux research host",
+    "pid": null,
+    "platform": "Linux-5.15.0-139-generic-x86_64-with-glibc2.29",
+    "python": "3.8.10 (default, Mar 18 2025, 20:04:55) \n[GCC 9.4.0]"
   },
   "fibre_cases": [
     {
@@ -481,6 +429,69 @@
       }
     }
   ],
+  "finite_domain_witness": {
+    "distinguished_at_input_2": true,
+    "inputs": [
+      0,
+      1
+    ],
+    "model_a_rows": [
+      [
+        -1,
+        1
+      ],
+      [
+        1,
+        0
+      ]
+    ],
+    "model_b_rows": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "response_at_2_a": [
+      -1,
+      2
+    ],
+    "response_at_2_b": [
+      0,
+      1
+    ],
+    "same_on_admissible_domain": true,
+    "signature_a": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "signature_b": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ]
+    ]
+  },
+  "generated_utc": "2026-09-15T13:04:31.931938+00:00",
+  "schema": "p050-tdsc-identifiability-exhaustive-v2",
+  "source": {
+    "git_head": null,
+    "path": "scripts/identifiability_exhaustive.py",
+    "sha256": "d119cfe063be15d422ad3dcf0a8730d645784ca121081e858c11e92436a083a1"
+  },
   "stabilizer_control": {
     "alphabet": [
       0,
@@ -539,6 +550,16 @@
     ],
     "total_condition_mismatches": 0,
     "total_controller_failures": 0
+  },
+  "success": true,
+  "success_criteria": {
+    "all_constructive_controller_checks_zero_failure": true,
+    "all_stabilizer_checks_zero_mismatch": true,
+    "explicit_witness_verified": true,
+    "rich_separating_two_round_kernels_equal_gauge_orbits": true,
+    "two_round_gauge_transform_preserves_kernel": true,
+    "unclipped_m_plus_1_grids_have_only_singleton_fibres": true,
+    "wider_coefficient_clipped_case_has_nontrivial_fibre": true
   },
   "two_round_kernels": [
     {
@@ -808,14 +829,5 @@
       "transcript_classes": 29889,
       "witness": null
     }
-  ],
-  "success_criteria": {
-    "all_constructive_controller_checks_zero_failure": true,
-    "all_stabilizer_checks_zero_mismatch": true,
-    "explicit_witness_verified": true,
-    "rich_separating_two_round_kernels_equal_gauge_orbits": true,
-    "two_round_gauge_transform_preserves_kernel": true,
-    "unclipped_m_plus_1_grids_have_only_singleton_fibres": true,
-    "wider_coefficient_clipped_case_has_nontrivial_fibre": true
-  }
+  ]
 }

@@ -1,0 +1,79 @@
+{
+  "A": 255,
+  "blocks": [
+    {
+      "C_in": 16,
+      "C_out": 16,
+      "eta": 363.0156862745098,
+      "eta1": 147.1607843137255,
+      "name": "layer1.0",
+      "shortcut": "identity"
+    },
+    {
+      "C_in": 16,
+      "C_out": 16,
+      "eta": 635.6274509803922,
+      "eta1": 336.74117647058824,
+      "name": "layer1.1",
+      "shortcut": "identity"
+    },
+    {
+      "C_in": 16,
+      "C_out": 16,
+      "eta": 326.78823529411767,
+      "eta1": 292.3843137254902,
+      "name": "layer1.2",
+      "shortcut": "identity"
+    },
+    {
+      "C_in": 16,
+      "C_out": 32,
+      "eta": 316.49411764705883,
+      "eta1": 266.7450980392157,
+      "name": "layer2.0",
+      "shortcut": "conv"
+    },
+    {
+      "C_in": 32,
+      "C_out": 32,
+      "eta": 481.34901960784316,
+      "eta1": 419.2196078431373,
+      "name": "layer2.1",
+      "shortcut": "identity"
+    },
+    {
+      "C_in": 32,
+      "C_out": 32,
+      "eta": 587.2509803921569,
+      "eta1": 242.16862745098038,
+      "name": "layer2.2",
+      "shortcut": "identity"
+    },
+    {
+      "C_in": 32,
+      "C_out": 64,
+      "eta": 619.0313725490196,
+      "eta1": 427.8666666666667,
+      "name": "layer3.0",
+      "shortcut": "conv"
+    },
+    {
+      "C_in": 64,
+      "C_out": 64,
+      "eta": 470.6392156862745,
+      "eta1": 302.2549019607843,
+      "name": "layer3.1",
+      "shortcut": "identity"
+    },
+    {
+      "C_in": 64,
+      "C_out": 64,
+      "eta": 341.15686274509807,
+      "eta1": 293.07450980392156,
+      "name": "layer3.2",
+      "shortcut": "identity"
+    }
+  ],
+  "schema": "p050-recovered-int-resnet20-v1",
+  "stem_eta": 226.1764705882353
+}

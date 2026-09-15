@@ -1,0 +1,3 @@
+# Versions reported by the canonical Linux result records.
+numpy==1.17.4
+torch==2.4.1+cpu

@@ -1,0 +1,97 @@
+{
+  "schema": "p050-postrun-verification-v1",
+  "run_name": "rpc-class-aware-boundary-closure-repro-20260915-v8",
+  "host_alias": "recorded Linux research host",
+  "success": true,
+  "source_run": "rpc-isolated-boundary-failclosed-repro-20260915-v7",
+  "source_linkage": {
+    "recovered_model_sha256": "b3b291c77186dfbccf406cd3bb361e9dc257788e1886174bc2f3ea6966babcda",
+    "recovered_arrays_sha256": "72a3a5d7f7fe3344f283d29fe65f9d12dabd87accb400b3c03f936d21854b7dd",
+    "recovered_meta_sha256": "d49345c2820771ede65ccce55a8e1935d3bb8fbad996e522903880bf7034cbf6"
+  },
+  "process_exit_codes": {
+    "attacker": 0,
+    "evaluator": 0,
+    "oracle": 0
+  },
+  "attacker_boundary": {
+    "attack_seed": 20260923,
+    "oracle_seed": 20260925,
+    "seed_disclosed_to_attacker": false,
+    "truth_comparison_stage": "independent evaluator after attacker exit",
+    "private_config_keys_present": [],
+    "private_environment_keys_present": [],
+    "private_imported_globals_present": [],
+    "forbidden_open_attempts": 0,
+    "public_secret_nonzero_entries": 0
+  },
+  "completion": {
+    "dead_channels_discovered_from_clone": [4, 5],
+    "anchors_selected": 3,
+    "extraction_sessions": 93,
+    "extraction_affine_evaluations": 222,
+    "closure_sessions": 4,
+    "closure_affine_evaluations": 12,
+    "total_sessions": 97,
+    "total_affine_evaluations": 234,
+    "first_convolution_singleton_slope_checks": 830,
+    "shortcut_singleton_carrier_checks": 2048,
+    "integer_row_certificates": 32,
+    "selected_determinants": [-1, 1],
+    "all_selected_systems_unimodular": true,
+    "all_rounded_solves_verified_by_exact_integer_equations": true,
+    "first_convolution_changed_coefficients": 3,
+    "shortcut_changed_coefficients": 2,
+    "closure_round_1_equal": 4,
+    "closure_round_2_equal": 4,
+    "closure_success": true
+  },
+  "evaluation": {
+    "observable_maps_checked": 29,
+    "observable_maps_successful": 29,
+    "coefficient_max_abs_error": 0,
+    "full_images": 10000,
+    "full_identical_logit_vectors": 10000,
+    "full_accuracy_private": 92.09,
+    "full_accuracy_recovered": 92.09,
+    "calibration_overlap_images": 64,
+    "post_calibration_images": 9936,
+    "post_calibration_identical_logit_vectors": 9936,
+    "post_calibration_accuracy_private": 92.11956521739131,
+    "post_calibration_accuracy_recovered": 92.11956521739131,
+    "max_abs_logit_difference": 0
+  },
+  "arithmetic": {
+    "trace_rows": 234,
+    "input_below_zero": 0,
+    "input_above_activation_max": 0,
+    "global_output_min": -190959,
+    "global_output_max": 175569,
+    "minimum_signed_bits": 19,
+    "signed_16_bit_overflow_evaluations": 224,
+    "deployment_width_mapping": null,
+    "canonical_encoding": "UTF-8 canonical NDJSON; gzip filename empty; mtime=0"
+  },
+  "model_sha256": {
+    "private_content": "08185fccb93a919a4d16a3232dbf3a6339315d6d0b40ea3aa4a72c56cfbacb6d",
+    "first_stage_content": "b3b291c77186dfbccf406cd3bb361e9dc257788e1886174bc2f3ea6966babcda",
+    "completed_content": "c30f2aa072c5a57ab42d6e7e326af109ea8a4e09d99e4de274a38e20d228f075"
+  },
+  "embedded_reports_equal_standalone_files": {
+    "attacker": true,
+    "evaluator": true,
+    "oracle": true
+  },
+  "file_sha256": {
+    "arithmetic.ndjson.gz": "40186244aa7566e08def1b260cb63928ecfc178a4f6e8480d5228e4205259b02",
+    "arithmetic.uncompressed.ndjson": "ae3961421ff6b15f1d77cc6f65e441384e2a782b1118b6dd341e761a0226fd0e",
+    "attacker.json": "21e4ab05262b9e11980b038b55e858ffb5dad9957551a7777f55d22308a15c7a",
+    "completed.json": "d49345c2820771ede65ccce55a8e1935d3bb8fbad996e522903880bf7034cbf6",
+    "completed.npz": "f4fc25cb10a1bbe6d4987c7c008bb871faf220b669130f6017e2edbce15bfe4e",
+    "config.json": "82369796bb9459193cb178607e17583ad85c722ff8dbaf47cbc54ecd9473fdec",
+    "evaluator.json": "d2460c9716138bf58aa30a99f26a1bfabb5cabf9c900f82fa8814d6eb40e2659",
+    "oracle.json": "8d1a4601e549660a20089766d6a386a9099831448b7a4e846cdc4926f1a3d27e",
+    "prelaunch.json": "4284bd4de382667de972b55883d11faee774794b78adc34e592dfa81152770ec",
+    "result.json": "f796073a7819b5e67dc1d36488f2a549e1a4b44b5da6a9b25cbef48bed478d19"
+  }
+}

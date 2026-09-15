@@ -1,3 +1,6 @@
-# Publication-time unit-check dependency; Python 3.12.14 was used.
-# The enumeration and JSON checker themselves require only the standard library.
-numpy==2.3.5
+# The claim-producing historical versions are recorded separately.
+# Select the official CPU wheel so a default Linux installation does not pull
+# CUDA packages that this artifact neither uses nor tests.
+--extra-index-url https://download.pytorch.org/whl/cpu
+numpy==1.24.4
+torch==2.10.0+cpu

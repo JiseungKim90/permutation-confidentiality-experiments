@@ -1,0 +1,5683 @@
+{
+  "attack_summary": {
+    "T": 3,
+    "frame_unavailable_events": 0,
+    "inadmissible_query_entries": 0,
+    "interface": "feature map",
+    "isolation_failures": 0,
+    "layers_attacked": 29,
+    "layers_exact": 0,
+    "layers_total": 29,
+    "memoised_round_evaluations": 67566,
+    "missing_coordinate_events": 0,
+    "missing_coordinates": 0,
+    "mode": "R3",
+    "noise_law": "Gaussian",
+    "oracle_rounding_exact": true,
+    "oracle_rounding_failures": 0,
+    "permutation": "all output coordinates, fresh per group per session",
+    "probe_multiset_failures": 0,
+    "probe_rounds": 43674,
+    "repair_attempts_allowed": 3,
+    "repairs_triggered": 0,
+    "replies_read": 47350,
+    "round_evaluations_total": 73520,
+    "rounds": 20,
+    "sessions_total": 3676,
+    "stopped_reason": "",
+    "wall_time_sec": 491.9
+  },
+  "attacker_view_audit": {
+    "private_config_keys_present": [],
+    "private_environment_keys_present": [],
+    "private_imported_globals_present": [],
+    "public_config_keys": [
+      "T",
+      "attack_seed",
+      "attacker_report",
+      "budget",
+      "diagnostics",
+      "forbidden_data_root",
+      "public_manifest_sha256",
+      "recovered_arrays",
+      "recovered_meta"
+    ]
+  },
+  "client_certified_records": 29,
+  "diagnostics": false,
+  "environment": {
+    "cores": 28,
+    "cpu": "Intel(R) Core(TM) i9-10940X CPU @ 3.30GHz",
+    "host": "recorded Linux research host",
+    "kernel": "Linux-5.15.0-139-generic-x86_64-with-glibc2.29",
+    "longdouble_mantissa_bits": 64,
+    "numpy": "1.17.4",
+    "omp_num_threads": "1",
+    "python": "3.8.10",
+    "torch": "2.4.1+cpu"
+  },
+  "forbidden_open_attempts": 0,
+  "forbidden_open_sample": [],
+  "lta_certificate_summary": {
+    "failed_lta_runs": [],
+    "lta_invocations_certified": 34,
+    "lta_invocations_total": 34,
+    "lta_passes_total": 36,
+    "records_certified": 29,
+    "records_total": 29,
+    "success": true
+  },
+  "pid": 2932564,
+  "public_manifest_sha256": "f40a0cac34b2ff3fd702816c72bcbc78219b5d5a492ec8fdc4a11cc01663f8d6",
+  "public_secret_nonzero_entries": 0,
+  "records": [
+    {
+      "C_in": 3,
+      "C_out": 16,
+      "H_in": 32,
+      "H_out": 32,
+      "addressable_placements": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          31
+        ],
+        [
+          31,
+          0
+        ],
+        [
+          31,
+          31
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "assembly": {
+        "channel_ambiguous_rows": 0,
+        "channels_resolved": 14,
+        "channels_seen": 16,
+        "matching_failures": 2,
+        "rows": 144,
+        "rows_with_no_candidate": 0,
+        "rows_with_unique_candidate": 144
+      },
+      "bias_collisions": 0,
+      "bias_groups": 16,
+      "bias_groups_oversized": 0,
+      "bias_multiset_recovered": true,
+      "channels_after_linkage": 16,
+      "channels_from_bias": 16,
+      "coordinates_nominal": 16384,
+      "coverage_placements": [
+        [
+          1,
+          1
+        ]
+      ],
+      "d_lta": 3,
+      "dead_output_channel_constant_activation": [
+        0,
+        0
+      ],
+      "dead_output_channels": [
+        4,
+        5
+      ],
+      "dead_output_channels_feed_zero": true,
+      "distinct_bias_values": 16,
+      "exact_up_to_row_perm": false,
+      "frame_check_exact": false,
+      "frame_check_max_abs_error": 14969,
+      "group": 0,
+      "informative_entries_per_query": 144,
+      "input_channels_dead": 0,
+      "input_channels_live": 3,
+      "isolation_failures": 0,
+      "kernel": 3,
+      "kind": "conv",
+      "layer": "conv1",
+      "linkage_failures": 0,
+      "linkage_queries": 0,
+      "lta_runs": [
+        {
+          "A": 255,
+          "T": 3,
+          "anchor_queries": 5,
+          "anchor_range": [
+            0,
+            249
+          ],
+          "anchor_tie_attempts": [
+            17,
+            16,
+            16,
+            16,
+            17
+          ],
+          "certified_complete": true,
+          "channel_rounding_exact": true,
+          "channel_rounding_failures": 0,
+          "columns_backtracked": 0,
+          "columns_failed": 0,
+          "columns_forced_fraction": 1.0,
+          "d": 3,
+          "error": "",
+          "exact_up_to_row_perm": false,
+          "false_line_events": 0,
+          "inadmissible_query_entries": 0,
+          "inconsistent_pass2_matches": 0,
+          "informative_entries": 144,
+          "isolation_failures": 0,
+          "jstar": 0,
+          "jstar_groups_all_distinct": 0,
+          "m": 144,
+          "max_abs_error_up_to_row_perm": 14969,
+          "n_passes": 2,
+          "n_queries": 24,
+          "n_queries_formula": "6 anchor queries + 2 pass(es) x T d = 6 + 2*3*3 = 24",
+          "n_ties_anchor1": 16,
+          "n_ties_anchor2": 16,
+          "pass1": {
+            "backtrack_nodes_max": 0,
+            "cand_after_total": 384,
+            "cand_before_total": 49152,
+            "column_failures": [],
+            "columns_backtracked": 0,
+            "columns_failed": 0,
+            "columns_forced": 3,
+            "columns_total": 3,
+            "error": "",
+            "false_line_events": 0,
+            "max_multiplicity": 9,
+            "multiplicity_profile": {
+              "1": 126,
+              "9": 2
+            },
+            "n_distinct_intercepts": 128,
+            "n_tied_groups": 2,
+            "n_tied_rows": 18,
+            "n_ties": 16,
+            "status": "ok"
+          },
+          "pass2": {
+            "backtrack_nodes_max": 1,
+            "cand_after_total": 385,
+            "cand_before_total": 48896,
+            "column_failures": [],
+            "columns_backtracked": 0,
+            "columns_failed": 0,
+            "columns_forced": 3,
+            "columns_total": 3,
+            "error": "",
+            "false_line_events": 0,
+            "max_multiplicity": 9,
+            "multiplicity_profile": {
+              "1": 126,
+              "9": 2
+            },
+            "n_distinct_intercepts": 128,
+            "n_tied_groups": 2,
+            "n_tied_rows": 18,
+            "n_ties": 16,
+            "status": "ok"
+          },
+          "pass2_anchor_prediction_exact": true,
+          "pass2_overlap_checked": 126,
+          "pass2_overlap_mismatches": 0,
+          "pass2_used": true,
+          "placement": [
+            1,
+            1
+          ],
+          "queries_over_d": 8.0,
+          "redundant_true_row_copies_in_unresolved_groups": 0,
+          "rows_forced_as_group_residual": 0,
+          "rows_from_pass1": 126,
+          "rows_from_pass2": 0,
+          "rows_in_provably_identical_residuals": 18,
+          "rows_recovered_exactly": 0,
+          "status": "ok",
+          "taps": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "unresolved_groups": 0,
+          "unresolved_groups_all_rows_identical": 0,
+          "unresolved_rows": 0,
+          "unresolved_rows_in_all_identical_groups": 0,
+          "unresolved_rows_in_mixed_groups": 0,
+          "wall_time_sec": 1.305
+        }
+      ],
+      "max_abs_error_up_to_row_perm": 14969,
+      "membership_anchor_collisions": 96,
+      "membership_attempts": 4,
+      "membership_queries": 48,
+      "output_channels_dead": 2,
+      "probe_hill_climb_steps": 0,
+      "probe_informative_coordinates": 294,
+      "probe_locatable_coordinates": 294,
+      "probe_locatable_fraction": 0.017944,
+      "probe_located_needed": 98,
+      "probe_needed_all_located": true,
+      "probe_needed_coordinates": 98,
+      "probe_needed_placements": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          31
+        ],
+        [
+          31,
+          0
+        ],
+        [
+          31,
+          31
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "probe_pixel_positions": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          31
+        ],
+        [
+          31,
+          0
+        ],
+        [
+          31,
+          31
+        ]
+      ],
+      "probe_pixels": 4,
+      "probe_verified": true,
+      "repair_attempts_used": 0,
+      "round": 0,
+      "rows_matched_to_true_rows": 0,
+      "rows_recovered_exactly": 0,
+      "rows_still_ambiguous": 0,
+      "sessions_used": 74,
+      "stride": 1,
+      "taps_not_covered_by_coverage_set": []
+    },
+    {
+      "C_in": 16,
+      "C_out": 16,
+      "H_in": 32,
+      "H_out": 32,
+      "addressable_placements": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          31
+        ],
+        [
+          31,
+          0
+        ],
+        [
+          31,
+          31
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "assembly": {
+        "channel_ambiguous_rows": 0,
+        "channels_resolved": 16,
+        "channels_seen": 16,
+        "matching_failures": 0,
+        "rows": 144,
+        "rows_with_no_candidate": 0,
+        "rows_with_unique_candidate": 144
+      },
+      "bias_collisions": 0,
+      "bias_groups": 16,
+      "bias_groups_oversized": 0,
+      "bias_multiset_recovered": true,
+      "channels_after_linkage": 16,
+      "channels_from_bias": 16,
+      "coordinates_nominal": 16384,
+      "coverage_placements": [
+        [
+          1,
+          1
+        ]
+      ],
+      "d_lta": 14,
+      "distinct_bias_values": 16,
+      "exact_up_to_row_perm": false,
+      "frame_check_exact": false,
+      "frame_check_max_abs_error": 22562,
+      "group": 1,
+      "informative_entries_per_query": 144,
+      "input_channels_dead": 2,
+      "input_channels_live": 14,
+      "isolation_failures": 0,
+      "kernel": 3,
+      "kind": "conv",
+      "layer": "layer1.0.conv1",
+      "linkage_failures": 0,
+      "linkage_queries": 0,
+      "lta_runs": [
+        {
+          "A": 255,
+          "T": 3,
+          "anchor_queries": 1,
+          "anchor_range": [
+            0,
+            249
+          ],
+          "anchor_tie_attempts": [
+            0
+          ],
+          "certified_complete": true,
+          "channel_rounding_exact": true,
+          "channel_rounding_failures": 0,
+          "columns_backtracked": 0,
+          "columns_failed": 0,
+          "columns_forced_fraction": 1.0,
+          "d": 14,
+          "error": "",
+          "exact_up_to_row_perm": false,
+          "false_line_events": 0,
+          "inadmissible_query_entries": 0,
+          "inconsistent_pass2_matches": 0,
+          "informative_entries": 144,
+          "isolation_failures": 0,
+          "jstar": null,
+          "m": 144,
+          "max_abs_error_up_to_row_perm": 22562,
+          "n_passes": 1,
+          "n_queries": 43,
+          "n_queries_formula": "1 anchor queries + 1 pass(es) x T d = 1 + 1*3*14 = 43",
+          "n_ties_anchor1": 0,
+          "pass1": {
+            "backtrack_nodes_max": 1,
+            "cand_after_total": 2020,
+            "cand_before_total": 289872,
+            "column_failures": [],
+            "columns_backtracked": 0,
+            "columns_failed": 0,
+            "columns_forced": 14,
+            "columns_total": 14,
+            "error": "",
+            "false_line_events": 0,
+            "max_multiplicity": 1,
+            "multiplicity_profile": {
+              "1": 144
+            },
+            "n_distinct_intercepts": 144,
+            "n_tied_groups": 0,
+            "n_tied_rows": 0,
+            "n_ties": 0,
+            "status": "ok"
+          },
+          "pass2_anchor_prediction_exact": null,
+          "pass2_overlap_checked": 0,
+          "pass2_overlap_mismatches": 0,
+          "pass2_used": false,
+          "placement": [
+            1,
+            1
+          ],
+          "queries_over_d": 3.071,
+          "redundant_true_row_copies_in_unresolved_groups": 0,
+          "rows_forced_as_group_residual": 0,
+          "rows_from_pass1": 144,
+          "rows_from_pass2": 0,
+          "rows_in_provably_identical_residuals": 0,
+          "rows_recovered_exactly": 0,
+          "status": "ok",
+          "taps": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "unresolved_groups": 0,
+          "unresolved_groups_all_rows_identical": 0,
+          "unresolved_rows": 0,
+          "unresolved_rows_in_all_identical_groups": 0,
+          "unresolved_rows_in_mixed_groups": 0,
+          "wall_time_sec": 3.025
+        }
+      ],
+      "max_abs_error_up_to_row_perm": 22562,
+      "membership_anchor_collisions": 0,
+      "membership_attempts": 1,
+      "membership_queries": 4,
+      "output_channels_dead": 0,
+      "probe_hill_climb_steps": 0,
+      "probe_informative_coordinates": 336,
+      "probe_locatable_coordinates": 336,
+      "probe_locatable_fraction": 0.020508,
+      "probe_located_needed": 112,
+      "probe_needed_all_located": true,
+      "probe_needed_coordinates": 112,
+      "probe_needed_placements": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          31
+        ],
+        [
+          31,
+          0
+        ],
+        [
+          31,
+          31
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "probe_pixel_positions": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          31
+        ],
+        [
+          31,
+          0
+        ],
+        [
+          31,
+          31
+        ]
+      ],
+      "probe_pixels": 4,
+      "probe_verified": true,
+      "repair_attempts_used": 0,
+      "round": 1,
+      "rows_matched_to_true_rows": 0,
+      "rows_recovered_exactly": 0,
+      "rows_still_ambiguous": 0,
+      "sessions_used": 49,
+      "stride": 1,
+      "taps_not_covered_by_coverage_set": []
+    },
+    {
+      "C_in": 16,
+      "C_out": 16,
+      "bias_collisions": 0,
+      "bias_multiset_recovered": true,
+      "coordinates_nominal": 16384,
+      "d_lta": 14,
+      "distinct_bias_values": 16,
+      "exact_up_to_row_perm": false,
+      "frame_check_exact": false,
+      "frame_check_max_abs_error": 12470,
+      "group": 2,
+      "informative_entries_per_query": 16,
+      "input_channels_dead": 2,
+      "input_channels_live": 14,
+      "isolation_failures": 0,
+      "kind": "shortcut",
+      "layer": "layer1.0.shortcut",
+      "lta": {
+        "A": 255,
+        "T": 3,
+        "anchor_queries": 1,
+        "anchor_range": [
+          0,
+          249
+        ],
+        "anchor_tie_attempts": [
+          0
+        ],
+        "certified_complete": true,
+        "channel_rounding_exact": true,
+        "channel_rounding_failures": 0,
+        "columns_backtracked": 0,
+        "columns_failed": 0,
+        "columns_forced_fraction": 1.0,
+        "d": 14,
+        "error": "",
+        "exact_up_to_row_perm": false,
+        "false_line_events": 0,
+        "inadmissible_query_entries": 0,
+        "inconsistent_pass2_matches": 0,
+        "jstar": null,
+        "m": 16,
+        "max_abs_error_up_to_row_perm": 12470,
+        "n_passes": 1,
+        "n_queries": 43,
+        "n_queries_formula": "1 anchor queries + 1 pass(es) x T d = 1 + 1*3*14 = 43",
+        "n_ties_anchor1": 0,
+        "pass1": {
+          "backtrack_nodes_max": 0,
+          "cand_after_total": 224,
+          "cand_before_total": 3584,
+          "column_failures": [],
+          "columns_backtracked": 0,
+          "columns_failed": 0,
+          "columns_forced": 14,
+          "columns_total": 14,
+          "error": "",
+          "false_line_events": 0,
+          "max_multiplicity": 1,
+          "multiplicity_profile": {
+            "1": 16
+          },
+          "n_distinct_intercepts": 16,
+          "n_tied_groups": 0,
+          "n_tied_rows": 0,
+          "n_ties": 0,
+          "status": "ok"
+        },
+        "pass2_anchor_prediction_exact": null,
+        "pass2_overlap_checked": 0,
+        "pass2_overlap_mismatches": 0,
+        "pass2_used": false,
+        "queries_over_d": 3.071,
+        "redundant_true_row_copies_in_unresolved_groups": 0,
+        "rows_forced_as_group_residual": 0,
+        "rows_from_pass1": 16,
+        "rows_from_pass2": 0,
+        "rows_in_provably_identical_residuals": 0,
+        "rows_recovered_exactly": 0,
+        "status": "ok",
+        "unresolved_groups": 0,
+        "unresolved_groups_all_rows_identical": 0,
+        "unresolved_rows": 0,
+        "unresolved_rows_in_all_identical_groups": 0,
+        "unresolved_rows_in_mixed_groups": 0,
+        "wall_time_sec": 2.962
+      },
+      "max_abs_error_up_to_row_perm": 12470,
+      "repair_attempts_used": 0,
+      "round": 2,
+      "rows_matched_to_true_rows": 0,
+      "rows_recovered_exactly": 0,
+      "sessions_used": 44,
+      "stride": 1
+    },
+    {
+      "C_in": 16,
+      "C_out": 16,
+      "H_out": 32,
+      "addressable_placements": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          31
+        ],
+        [
+          31,
+          0
+        ],
+        [
+          31,
+          31
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "assembly": {
+        "channel_ambiguous_rows": 0,
+        "channels_resolved": 16,
+        "channels_seen": 16,
+        "matching_failures": 0,
+        "rows": 144,
+        "rows_with_no_candidate": 0,
+        "rows_with_unique_candidate": 144
+      },
+      "background_matches_truth": false,
+      "coordinates_nominal": 16384,
+      "d_lta": 16,
+      "exact_up_to_row_perm": false,
+      "frame_check_exact": false,
+      "frame_check_max_abs_error": 127,
+      "group": 2,
+      "informative_entries_per_query": 144,
+      "input_channels_dead": 0,
+      "input_channels_live": 16,
+      "isolation_failures": 0,
+      "kind": "conv2",
+      "layer": "layer1.0.conv2",
+      "lta": {
+        "A": 255,
+        "T": 3,
+        "anchor_queries": 3,
+        "anchor_range": [
+          0,
+          249
+        ],
+        "anchor_tie_attempts": [
+          1,
+          1,
+          0
+        ],
+        "certified_complete": true,
+        "channel_rounding_exact": true,
+        "channel_rounding_failures": 0,
+        "columns_backtracked": 0,
+        "columns_failed": 0,
+        "columns_forced_fraction": 1.0,
+        "d": 16,
+        "error": "",
+        "exact_up_to_row_perm": false,
+        "false_line_events": 0,
+        "inadmissible_query_entries": 0,
+        "inconsistent_pass2_matches": 0,
+        "jstar": null,
+        "m": 144,
+        "max_abs_error_up_to_row_perm": 75810,
+        "n_passes": 1,
+        "n_queries": 51,
+        "n_queries_formula": "3 anchor queries + 1 pass(es) x T d = 3 + 1*3*16 = 51",
+        "n_ties_anchor1": 0,
+        "pass1": {
+          "backtrack_nodes_max": 1,
+          "cand_after_total": 2306,
+          "cand_before_total": 331344,
+          "column_failures": [],
+          "columns_backtracked": 0,
+          "columns_failed": 0,
+          "columns_forced": 16,
+          "columns_total": 16,
+          "error": "",
+          "false_line_events": 0,
+          "max_multiplicity": 1,
+          "multiplicity_profile": {
+            "1": 144
+          },
+          "n_distinct_intercepts": 144,
+          "n_tied_groups": 0,
+          "n_tied_rows": 0,
+          "n_ties": 0,
+          "status": "ok"
+        },
+        "pass2_anchor_prediction_exact": null,
+        "pass2_overlap_checked": 0,
+        "pass2_overlap_mismatches": 0,
+        "pass2_used": false,
+        "queries_over_d": 3.188,
+        "redundant_true_row_copies_in_unresolved_groups": 0,
+        "rows_forced_as_group_residual": 0,
+        "rows_from_pass1": 144,
+        "rows_from_pass2": 0,
+        "rows_in_provably_identical_residuals": 0,
+        "rows_recovered_exactly": 0,
+        "status": "ok",
+        "unresolved_groups": 0,
+        "unresolved_groups_all_rows_identical": 0,
+        "unresolved_rows": 0,
+        "unresolved_rows_in_all_identical_groups": 0,
+        "unresolved_rows_in_mixed_groups": 0,
+        "wall_time_sec": 3.941
+      },
+      "max_abs_error_up_to_row_perm": 12470,
+      "membership_anchor_collisions": 0,
+      "membership_attempts": 1,
+      "membership_queries": 4,
+      "output_channels_dead": 0,
+      "probe_hill_climb_steps": 0,
+      "probe_informative_coordinates": 336,
+      "probe_locatable_coordinates": 336,
+      "probe_locatable_fraction": 0.020508,
+      "probe_located_needed": 112,
+      "probe_needed_all_located": true,
+      "probe_needed_coordinates": 112,
+      "probe_needed_placements": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          31
+        ],
+        [
+          31,
+          0
+        ],
+        [
+          31,
+          31
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "probe_pixel_positions": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          31
+        ],
+        [
+          31,
+          0
+        ],
+        [
+          31,
+          31
+        ]
+      ],
+      "probe_pixels": 4,
+      "probe_verified": true,
+      "repair_attempts_used": 0,
+      "round": 2,
+      "rows_fixed_by_intercept": 14,
+      "rows_recovered_exactly": 0,
+      "rows_still_ambiguous": 0,
+      "rows_without_intercept_match": 0,
+      "sessions_used": 56
+    },
+    {
+      "C_in": 16,
+      "C_out": 16,
+      "H_in": 32,
+      "H_out": 32,
+      "addressable_placements": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          31
+        ],
+        [
+          31,
+          0
+        ],
+        [
+          31,
+          31
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "assembly": {
+        "channel_ambiguous_rows": 0,
+        "channels_resolved": 16,
+        "channels_seen": 16,
+        "matching_failures": 0,
+        "rows": 144,
+        "rows_with_no_candidate": 0,
+        "rows_with_unique_candidate": 144
+      },
+      "bias_collisions": 0,
+      "bias_groups": 16,
+      "bias_groups_oversized": 0,
+      "bias_multiset_recovered": true,
+      "channels_after_linkage": 16,
+      "channels_from_bias": 16,
+      "coordinates_nominal": 16384,
+      "coverage_placements": [
+        [
+          1,
+          1
+        ]
+      ],
+      "d_lta": 16,
+      "distinct_bias_values": 16,
+      "exact_up_to_row_perm": false,
+      "frame_check_exact": false,
+      "frame_check_max_abs_error": 25479,
+      "group": 3,
+      "informative_entries_per_query": 144,
+      "input_channels_dead": 0,
+      "input_channels_live": 16,
+      "isolation_failures": 0,
+      "kernel": 3,
+      "kind": "conv",
+      "layer": "layer1.1.conv1",
+      "linkage_failures": 0,
+      "linkage_queries": 0,
+      "lta_runs": [
+        {
+          "A": 255,
+          "T": 3,
+          "anchor_queries": 2,
+          "anchor_range": [
+            0,
+            249
+          ],
+          "anchor_tie_attempts": [
+            1,
+            0
+          ],
+          "certified_complete": true,
+          "channel_rounding_exact": true,
+          "channel_rounding_failures": 0,
+          "columns_backtracked": 0,
+          "columns_failed": 0,
+          "columns_forced_fraction": 1.0,
+          "d": 16,
+          "error": "",
+          "exact_up_to_row_perm": false,
+          "false_line_events": 0,
+          "inadmissible_query_entries": 0,
+          "inconsistent_pass2_matches": 0,
+          "informative_entries": 144,
+          "isolation_failures": 0,
+          "jstar": null,
+          "m": 144,
+          "max_abs_error_up_to_row_perm": 25479,
+          "n_passes": 1,
+          "n_queries": 50,
+          "n_queries_formula": "2 anchor queries + 1 pass(es) x T d = 2 + 1*3*16 = 50",
+          "n_ties_anchor1": 0,
+          "pass1": {
+            "backtrack_nodes_max": 1,
+            "cand_after_total": 2306,
+            "cand_before_total": 331056,
+            "column_failures": [],
+            "columns_backtracked": 0,
+            "columns_failed": 0,
+            "columns_forced": 16,
+            "columns_total": 16,
+            "error": "",
+            "false_line_events": 0,
+            "max_multiplicity": 1,
+            "multiplicity_profile": {
+              "1": 144
+            },
+            "n_distinct_intercepts": 144,
+            "n_tied_groups": 0,
+            "n_tied_rows": 0,
+            "n_ties": 0,
+            "status": "ok"
+          },
+          "pass2_anchor_prediction_exact": null,
+          "pass2_overlap_checked": 0,
+          "pass2_overlap_mismatches": 0,
+          "pass2_used": false,
+          "placement": [
+            1,
+            1
+          ],
+          "queries_over_d": 3.125,
+          "redundant_true_row_copies_in_unresolved_groups": 0,
+          "rows_forced_as_group_residual": 0,
+          "rows_from_pass1": 144,
+          "rows_from_pass2": 0,
+          "rows_in_provably_identical_residuals": 0,
+          "rows_recovered_exactly": 0,
+          "status": "ok",
+          "taps": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "unresolved_groups": 0,
+          "unresolved_groups_all_rows_identical": 0,
+          "unresolved_rows": 0,
+          "unresolved_rows_in_all_identical_groups": 0,
+          "unresolved_rows_in_mixed_groups": 0,
+          "wall_time_sec": 4.252
+        }
+      ],
+      "max_abs_error_up_to_row_perm": 25479,
+      "membership_anchor_collisions": 0,
+      "membership_attempts": 1,
+      "membership_queries": 4,
+      "output_channels_dead": 0,
+      "probe_hill_climb_steps": 0,
+      "probe_informative_coordinates": 336,
+      "probe_locatable_coordinates": 336,
+      "probe_locatable_fraction": 0.020508,
+      "probe_located_needed": 112,
+      "probe_needed_all_located": true,
+      "probe_needed_coordinates": 112,
+      "probe_needed_placements": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          31
+        ],
+        [
+          31,
+          0
+        ],
+        [
+          31,
+          31
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "probe_pixel_positions": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          31
+        ],
+        [
+          31,
+          0
+        ],
+        [
+          31,
+          31
+        ]
+      ],
+      "probe_pixels": 4,
+      "probe_verified": true,
+      "repair_attempts_used": 0,
+      "round": 3,
+      "rows_matched_to_true_rows": 0,
+      "rows_recovered_exactly": 0,
+      "rows_still_ambiguous": 0,
+      "sessions_used": 56,
+      "stride": 1,
+      "taps_not_covered_by_coverage_set": []
+    },
+    {
+      "C_in": 16,
+      "C_out": 16,
+      "bias_collisions": 0,
+      "bias_multiset_recovered": true,
+      "coordinates_nominal": 16384,
+      "d_lta": 16,
+      "distinct_bias_values": 16,
+      "exact_up_to_row_perm": false,
+      "frame_check_exact": false,
+      "frame_check_max_abs_error": 14729,
+      "group": 4,
+      "informative_entries_per_query": 16,
+      "input_channels_dead": 0,
+      "input_channels_live": 16,
+      "isolation_failures": 0,
+      "kind": "shortcut",
+      "layer": "layer1.1.shortcut",
+      "lta": {
+        "A": 255,
+        "T": 3,
+        "anchor_queries": 1,
+        "anchor_range": [
+          0,
+          249
+        ],
+        "anchor_tie_attempts": [
+          0
+        ],
+        "certified_complete": true,
+        "channel_rounding_exact": true,
+        "channel_rounding_failures": 0,
+        "columns_backtracked": 0,
+        "columns_failed": 0,
+        "columns_forced_fraction": 1.0,
+        "d": 16,
+        "error": "",
+        "exact_up_to_row_perm": false,
+        "false_line_events": 0,
+        "inadmissible_query_entries": 0,
+        "inconsistent_pass2_matches": 0,
+        "jstar": null,
+        "m": 16,
+        "max_abs_error_up_to_row_perm": 14729,
+        "n_passes": 1,
+        "n_queries": 49,
+        "n_queries_formula": "1 anchor queries + 1 pass(es) x T d = 1 + 1*3*16 = 49",
+        "n_ties_anchor1": 0,
+        "pass1": {
+          "backtrack_nodes_max": 0,
+          "cand_after_total": 256,
+          "cand_before_total": 4096,
+          "column_failures": [],
+          "columns_backtracked": 0,
+          "columns_failed": 0,
+          "columns_forced": 16,
+          "columns_total": 16,
+          "error": "",
+          "false_line_events": 0,
+          "max_multiplicity": 1,
+          "multiplicity_profile": {
+            "1": 16
+          },
+          "n_distinct_intercepts": 16,
+          "n_tied_groups": 0,
+          "n_tied_rows": 0,
+          "n_ties": 0,
+          "status": "ok"
+        },
+        "pass2_anchor_prediction_exact": null,
+        "pass2_overlap_checked": 0,
+        "pass2_overlap_mismatches": 0,
+        "pass2_used": false,
+        "queries_over_d": 3.062,
+        "redundant_true_row_copies_in_unresolved_groups": 0,
+        "rows_forced_as_group_residual": 0,
+        "rows_from_pass1": 16,
+        "rows_from_pass2": 0,
+        "rows_in_provably_identical_residuals": 0,
+        "rows_recovered_exactly": 0,
+        "status": "ok",
+        "unresolved_groups": 0,
+        "unresolved_groups_all_rows_identical": 0,
+        "unresolved_rows": 0,
+        "unresolved_rows_in_all_identical_groups": 0,
+        "unresolved_rows_in_mixed_groups": 0,
+        "wall_time_sec": 4.076
+      },
+      "max_abs_error_up_to_row_perm": 14729,
+      "repair_attempts_used": 0,
+      "round": 4,
+      "rows_matched_to_true_rows": 0,
+      "rows_recovered_exactly": 0,
+      "sessions_used": 50,
+      "stride": 1
+    },
+    {
+      "C_in": 16,
+      "C_out": 16,
+      "H_out": 32,
+      "addressable_placements": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          31
+        ],
+        [
+          31,
+          0
+        ],
+        [
+          31,
+          31
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "assembly": {
+        "channel_ambiguous_rows": 0,
+        "channels_resolved": 16,
+        "channels_seen": 16,
+        "matching_failures": 0,
+        "rows": 144,
+        "rows_with_no_candidate": 0,
+        "rows_with_unique_candidate": 144
+      },
+      "background_matches_truth": false,
+      "coordinates_nominal": 16384,
+      "d_lta": 16,
+      "exact_up_to_row_perm": false,
+      "frame_check_exact": false,
+      "frame_check_max_abs_error": 127,
+      "group": 4,
+      "informative_entries_per_query": 144,
+      "input_channels_dead": 0,
+      "input_channels_live": 16,
+      "isolation_failures": 0,
+      "kind": "conv2",
+      "layer": "layer1.1.conv2",
+      "lta": {
+        "A": 255,
+        "T": 3,
+        "anchor_queries": 2,
+        "anchor_range": [
+          0,
+          249
+        ],
+        "anchor_tie_attempts": [
+          1,
+          0
+        ],
+        "certified_complete": true,
+        "channel_rounding_exact": true,
+        "channel_rounding_failures": 0,
+        "columns_backtracked": 0,
+        "columns_failed": 0,
+        "columns_forced_fraction": 1.0,
+        "d": 16,
+        "error": "",
+        "exact_up_to_row_perm": false,
+        "false_line_events": 0,
+        "inadmissible_query_entries": 0,
+        "inconsistent_pass2_matches": 0,
+        "jstar": null,
+        "m": 144,
+        "max_abs_error_up_to_row_perm": 113729,
+        "n_passes": 1,
+        "n_queries": 50,
+        "n_queries_formula": "2 anchor queries + 1 pass(es) x T d = 2 + 1*3*16 = 50",
+        "n_ties_anchor1": 0,
+        "pass1": {
+          "backtrack_nodes_max": 1,
+          "cand_after_total": 2305,
+          "cand_before_total": 331344,
+          "column_failures": [],
+          "columns_backtracked": 0,
+          "columns_failed": 0,
+          "columns_forced": 16,
+          "columns_total": 16,
+          "error": "",
+          "false_line_events": 0,
+          "max_multiplicity": 1,
+          "multiplicity_profile": {
+            "1": 144
+          },
+          "n_distinct_intercepts": 144,
+          "n_tied_groups": 0,
+          "n_tied_rows": 0,
+          "n_ties": 0,
+          "status": "ok"
+        },
+        "pass2_anchor_prediction_exact": null,
+        "pass2_overlap_checked": 0,
+        "pass2_overlap_mismatches": 0,
+        "pass2_used": false,
+        "queries_over_d": 3.125,
+        "redundant_true_row_copies_in_unresolved_groups": 0,
+        "rows_forced_as_group_residual": 0,
+        "rows_from_pass1": 144,
+        "rows_from_pass2": 0,
+        "rows_in_provably_identical_residuals": 0,
+        "rows_recovered_exactly": 0,
+        "status": "ok",
+        "unresolved_groups": 0,
+        "unresolved_groups_all_rows_identical": 0,
+        "unresolved_rows": 0,
+        "unresolved_rows_in_all_identical_groups": 0,
+        "unresolved_rows_in_mixed_groups": 0,
+        "wall_time_sec": 4.634
+      },
+      "max_abs_error_up_to_row_perm": 14729,
+      "membership_anchor_collisions": 0,
+      "membership_attempts": 1,
+      "membership_queries": 4,
+      "output_channels_dead": 0,
+      "probe_hill_climb_steps": 0,
+      "probe_informative_coordinates": 336,
+      "probe_locatable_coordinates": 336,
+      "probe_locatable_fraction": 0.020508,
+      "probe_located_needed": 112,
+      "probe_needed_all_located": true,
+      "probe_needed_coordinates": 112,
+      "probe_needed_placements": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          31
+        ],
+        [
+          31,
+          0
+        ],
+        [
+          31,
+          31
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "probe_pixel_positions": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          31
+        ],
+        [
+          31,
+          0
+        ],
+        [
+          31,
+          31
+        ]
+      ],
+      "probe_pixels": 4,
+      "probe_verified": true,
+      "repair_attempts_used": 0,
+      "round": 4,
+      "rows_fixed_by_intercept": 16,
+      "rows_recovered_exactly": 0,
+      "rows_still_ambiguous": 0,
+      "rows_without_intercept_match": 0,
+      "sessions_used": 55
+    },
+    {
+      "C_in": 16,
+      "C_out": 16,
+      "H_in": 32,
+      "H_out": 32,
+      "addressable_placements": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          31
+        ],
+        [
+          31,
+          0
+        ],
+        [
+          31,
+          31
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "assembly": {
+        "channel_ambiguous_rows": 0,
+        "channels_resolved": 16,
+        "channels_seen": 16,
+        "matching_failures": 0,
+        "rows": 144,
+        "rows_with_no_candidate": 0,
+        "rows_with_unique_candidate": 144
+      },
+      "bias_collisions": 0,
+      "bias_groups": 16,
+      "bias_groups_oversized": 0,
+      "bias_multiset_recovered": true,
+      "channels_after_linkage": 16,
+      "channels_from_bias": 16,
+      "coordinates_nominal": 16384,
+      "coverage_placements": [
+        [
+          1,
+          1
+        ]
+      ],
+      "d_lta": 16,
+      "distinct_bias_values": 16,
+      "exact_up_to_row_perm": false,
+      "frame_check_exact": false,
+      "frame_check_max_abs_error": 14261,
+      "group": 5,
+      "informative_entries_per_query": 144,
+      "input_channels_dead": 0,
+      "input_channels_live": 16,
+      "isolation_failures": 0,
+      "kernel": 3,
+      "kind": "conv",
+      "layer": "layer1.2.conv1",
+      "linkage_failures": 0,
+      "linkage_queries": 0,
+      "lta_runs": [
+        {
+          "A": 255,
+          "T": 3,
+          "anchor_queries": 1,
+          "anchor_range": [
+            0,
+            249
+          ],
+          "anchor_tie_attempts": [
+            0
+          ],
+          "certified_complete": true,
+          "channel_rounding_exact": true,
+          "channel_rounding_failures": 0,
+          "columns_backtracked": 0,
+          "columns_failed": 0,
+          "columns_forced_fraction": 1.0,
+          "d": 16,
+          "error": "",
+          "exact_up_to_row_perm": false,
+          "false_line_events": 0,
+          "inadmissible_query_entries": 0,
+          "inconsistent_pass2_matches": 0,
+          "informative_entries": 144,
+          "isolation_failures": 0,
+          "jstar": null,
+          "m": 144,
+          "max_abs_error_up_to_row_perm": 14261,
+          "n_passes": 1,
+          "n_queries": 49,
+          "n_queries_formula": "1 anchor queries + 1 pass(es) x T d = 1 + 1*3*16 = 49",
+          "n_ties_anchor1": 0,
+          "pass1": {
+            "backtrack_nodes_max": 1,
+            "cand_after_total": 2305,
+            "cand_before_total": 331344,
+            "column_failures": [],
+            "columns_backtracked": 0,
+            "columns_failed": 0,
+            "columns_forced": 16,
+            "columns_total": 16,
+            "error": "",
+            "false_line_events": 0,
+            "max_multiplicity": 1,
+            "multiplicity_profile": {
+              "1": 144
+            },
+            "n_distinct_intercepts": 144,
+            "n_tied_groups": 0,
+            "n_tied_rows": 0,
+            "n_ties": 0,
+            "status": "ok"
+          },
+          "pass2_anchor_prediction_exact": null,
+          "pass2_overlap_checked": 0,
+          "pass2_overlap_mismatches": 0,
+          "pass2_used": false,
+          "placement": [
+            1,
+            1
+          ],
+          "queries_over_d": 3.062,
+          "redundant_true_row_copies_in_unresolved_groups": 0,
+          "rows_forced_as_group_residual": 0,
+          "rows_from_pass1": 144,
+          "rows_from_pass2": 0,
+          "rows_in_provably_identical_residuals": 0,
+          "rows_recovered_exactly": 0,
+          "status": "ok",
+          "taps": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "unresolved_groups": 0,
+          "unresolved_groups_all_rows_identical": 0,
+          "unresolved_rows": 0,
+          "unresolved_rows_in_all_identical_groups": 0,
+          "unresolved_rows_in_mixed_groups": 0,
+          "wall_time_sec": 4.95
+        }
+      ],
+      "max_abs_error_up_to_row_perm": 14261,
+      "membership_anchor_collisions": 0,
+      "membership_attempts": 1,
+      "membership_queries": 4,
+      "output_channels_dead": 0,
+      "probe_hill_climb_steps": 0,
+      "probe_informative_coordinates": 336,
+      "probe_locatable_coordinates": 336,
+      "probe_locatable_fraction": 0.020508,
+      "probe_located_needed": 112,
+      "probe_needed_all_located": true,
+      "probe_needed_coordinates": 112,
+      "probe_needed_placements": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          31
+        ],
+        [
+          31,
+          0
+        ],
+        [
+          31,
+          31
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "probe_pixel_positions": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          31
+        ],
+        [
+          31,
+          0
+        ],
+        [
+          31,
+          31
+        ]
+      ],
+      "probe_pixels": 4,
+      "probe_verified": true,
+      "repair_attempts_used": 0,
+      "round": 5,
+      "rows_matched_to_true_rows": 0,
+      "rows_recovered_exactly": 0,
+      "rows_still_ambiguous": 0,
+      "sessions_used": 55,
+      "stride": 1,
+      "taps_not_covered_by_coverage_set": []
+    },
+    {
+      "C_in": 16,
+      "C_out": 16,
+      "bias_collisions": 0,
+      "bias_multiset_recovered": true,
+      "coordinates_nominal": 16384,
+      "d_lta": 16,
+      "distinct_bias_values": 16,
+      "exact_up_to_row_perm": false,
+      "frame_check_exact": false,
+      "frame_check_max_abs_error": 8379,
+      "group": 6,
+      "informative_entries_per_query": 16,
+      "input_channels_dead": 0,
+      "input_channels_live": 16,
+      "isolation_failures": 0,
+      "kind": "shortcut",
+      "layer": "layer1.2.shortcut",
+      "lta": {
+        "A": 255,
+        "T": 3,
+        "anchor_queries": 1,
+        "anchor_range": [
+          0,
+          249
+        ],
+        "anchor_tie_attempts": [
+          0
+        ],
+        "certified_complete": true,
+        "channel_rounding_exact": true,
+        "channel_rounding_failures": 0,
+        "columns_backtracked": 0,
+        "columns_failed": 0,
+        "columns_forced_fraction": 1.0,
+        "d": 16,
+        "error": "",
+        "exact_up_to_row_perm": false,
+        "false_line_events": 0,
+        "inadmissible_query_entries": 0,
+        "inconsistent_pass2_matches": 0,
+        "jstar": null,
+        "m": 16,
+        "max_abs_error_up_to_row_perm": 8379,
+        "n_passes": 1,
+        "n_queries": 49,
+        "n_queries_formula": "1 anchor queries + 1 pass(es) x T d = 1 + 1*3*16 = 49",
+        "n_ties_anchor1": 0,
+        "pass1": {
+          "backtrack_nodes_max": 0,
+          "cand_after_total": 256,
+          "cand_before_total": 4096,
+          "column_failures": [],
+          "columns_backtracked": 0,
+          "columns_failed": 0,
+          "columns_forced": 16,
+          "columns_total": 16,
+          "error": "",
+          "false_line_events": 0,
+          "max_multiplicity": 1,
+          "multiplicity_profile": {
+            "1": 16
+          },
+          "n_distinct_intercepts": 16,
+          "n_tied_groups": 0,
+          "n_tied_rows": 0,
+          "n_ties": 0,
+          "status": "ok"
+        },
+        "pass2_anchor_prediction_exact": null,
+        "pass2_overlap_checked": 0,
+        "pass2_overlap_mismatches": 0,
+        "pass2_used": false,
+        "queries_over_d": 3.062,
+        "redundant_true_row_copies_in_unresolved_groups": 0,
+        "rows_forced_as_group_residual": 0,
+        "rows_from_pass1": 16,
+        "rows_from_pass2": 0,
+        "rows_in_provably_identical_residuals": 0,
+        "rows_recovered_exactly": 0,
+        "status": "ok",
+        "unresolved_groups": 0,
+        "unresolved_groups_all_rows_identical": 0,
+        "unresolved_rows": 0,
+        "unresolved_rows_in_all_identical_groups": 0,
+        "unresolved_rows_in_mixed_groups": 0,
+        "wall_time_sec": 4.864
+      },
+      "max_abs_error_up_to_row_perm": 8379,
+      "repair_attempts_used": 0,
+      "round": 6,
+      "rows_matched_to_true_rows": 0,
+      "rows_recovered_exactly": 0,
+      "sessions_used": 50,
+      "stride": 1
+    },
+    {
+      "C_in": 16,
+      "C_out": 16,
+      "H_out": 32,
+      "addressable_placements": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          31
+        ],
+        [
+          31,
+          0
+        ],
+        [
+          31,
+          31
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "assembly": {
+        "channel_ambiguous_rows": 0,
+        "channels_resolved": 16,
+        "channels_seen": 16,
+        "matching_failures": 0,
+        "rows": 144,
+        "rows_with_no_candidate": 0,
+        "rows_with_unique_candidate": 144
+      },
+      "background_matches_truth": false,
+      "coordinates_nominal": 16384,
+      "d_lta": 16,
+      "exact_up_to_row_perm": false,
+      "frame_check_exact": false,
+      "frame_check_max_abs_error": 127,
+      "group": 6,
+      "informative_entries_per_query": 144,
+      "input_channels_dead": 0,
+      "input_channels_live": 16,
+      "isolation_failures": 0,
+      "kind": "conv2",
+      "layer": "layer1.2.conv2",
+      "lta": {
+        "A": 255,
+        "T": 3,
+        "anchor_queries": 2,
+        "anchor_range": [
+          0,
+          249
+        ],
+        "anchor_tie_attempts": [
+          1,
+          0
+        ],
+        "certified_complete": true,
+        "channel_rounding_exact": true,
+        "channel_rounding_failures": 0,
+        "columns_backtracked": 0,
+        "columns_failed": 0,
+        "columns_forced_fraction": 1.0,
+        "d": 16,
+        "error": "",
+        "exact_up_to_row_perm": false,
+        "false_line_events": 0,
+        "inadmissible_query_entries": 0,
+        "inconsistent_pass2_matches": 0,
+        "jstar": null,
+        "m": 144,
+        "max_abs_error_up_to_row_perm": 99707,
+        "n_passes": 1,
+        "n_queries": 50,
+        "n_queries_formula": "2 anchor queries + 1 pass(es) x T d = 2 + 1*3*16 = 50",
+        "n_ties_anchor1": 0,
+        "pass1": {
+          "backtrack_nodes_max": 1,
+          "cand_after_total": 2305,
+          "cand_before_total": 331056,
+          "column_failures": [],
+          "columns_backtracked": 0,
+          "columns_failed": 0,
+          "columns_forced": 16,
+          "columns_total": 16,
+          "error": "",
+          "false_line_events": 0,
+          "max_multiplicity": 1,
+          "multiplicity_profile": {
+            "1": 144
+          },
+          "n_distinct_intercepts": 144,
+          "n_tied_groups": 0,
+          "n_tied_rows": 0,
+          "n_ties": 0,
+          "status": "ok"
+        },
+        "pass2_anchor_prediction_exact": null,
+        "pass2_overlap_checked": 0,
+        "pass2_overlap_mismatches": 0,
+        "pass2_used": false,
+        "queries_over_d": 3.125,
+        "redundant_true_row_copies_in_unresolved_groups": 0,
+        "rows_forced_as_group_residual": 0,
+        "rows_from_pass1": 144,
+        "rows_from_pass2": 0,
+        "rows_in_provably_identical_residuals": 0,
+        "rows_recovered_exactly": 0,
+        "status": "ok",
+        "unresolved_groups": 0,
+        "unresolved_groups_all_rows_identical": 0,
+        "unresolved_rows": 0,
+        "unresolved_rows_in_all_identical_groups": 0,
+        "unresolved_rows_in_mixed_groups": 0,
+        "wall_time_sec": 5.416
+      },
+      "max_abs_error_up_to_row_perm": 8379,
+      "membership_anchor_collisions": 0,
+      "membership_attempts": 1,
+      "membership_queries": 4,
+      "output_channels_dead": 0,
+      "probe_hill_climb_steps": 0,
+      "probe_informative_coordinates": 336,
+      "probe_locatable_coordinates": 336,
+      "probe_locatable_fraction": 0.020508,
+      "probe_located_needed": 144,
+      "probe_needed_all_located": true,
+      "probe_needed_coordinates": 144,
+      "probe_needed_placements": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          31
+        ],
+        [
+          1,
+          31
+        ],
+        [
+          31,
+          0
+        ],
+        [
+          31,
+          1
+        ],
+        [
+          31,
+          31
+        ]
+      ],
+      "probe_pixel_positions": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          31
+        ],
+        [
+          31,
+          0
+        ],
+        [
+          31,
+          31
+        ]
+      ],
+      "probe_pixels": 4,
+      "probe_verified": true,
+      "repair_attempts_used": 0,
+      "round": 6,
+      "rows_fixed_by_intercept": 16,
+      "rows_recovered_exactly": 0,
+      "rows_still_ambiguous": 0,
+      "rows_without_intercept_match": 0,
+      "sessions_used": 55
+    },
+    {
+      "C_in": 16,
+      "C_out": 32,
+      "H_in": 32,
+      "H_out": 16,
+      "addressable_placements": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          31
+        ],
+        [
+          1,
+          31
+        ],
+        [
+          31,
+          0
+        ],
+        [
+          31,
+          1
+        ],
+        [
+          31,
+          31
+        ]
+      ],
+      "assembly": {
+        "channel_ambiguous_rows": 0,
+        "channels_resolved": 32,
+        "channels_seen": 32,
+        "matching_failures": 0,
+        "rows": 288,
+        "rows_with_no_candidate": 0,
+        "rows_with_unique_candidate": 288
+      },
+      "bias_collisions": 0,
+      "bias_groups": 32,
+      "bias_groups_oversized": 0,
+      "bias_multiset_recovered": true,
+      "channels_after_linkage": 32,
+      "channels_from_bias": 32,
+      "coordinates_nominal": 8192,
+      "coverage_placements": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "d_lta": 16,
+      "distinct_bias_values": 32,
+      "exact_up_to_row_perm": false,
+      "frame_check_exact": false,
+      "frame_check_max_abs_error": 29888,
+      "group": 7,
+      "informative_entries_per_query": 128,
+      "input_channels_dead": 0,
+      "input_channels_live": 16,
+      "isolation_failures": 0,
+      "kernel": 3,
+      "kind": "conv",
+      "layer": "layer2.0.conv1",
+      "linkage_failures": 0,
+      "linkage_queries": 0,
+      "lta_runs": [
+        {
+          "A": 255,
+          "T": 3,
+          "anchor_queries": 3,
+          "anchor_range": [
+            0,
+            249
+          ],
+          "anchor_tie_attempts": [
+            1,
+            1,
+            0
+          ],
+          "certified_complete": true,
+          "channel_rounding_exact": true,
+          "channel_rounding_failures": 0,
+          "columns_backtracked": 0,
+          "columns_failed": 0,
+          "columns_forced_fraction": 1.0,
+          "d": 16,
+          "error": "",
+          "exact_up_to_row_perm": false,
+          "false_line_events": 0,
+          "inadmissible_query_entries": 0,
+          "inconsistent_pass2_matches": 0,
+          "informative_entries": 128,
+          "isolation_failures": 0,
+          "jstar": null,
+          "m": 128,
+          "max_abs_error_up_to_row_perm": 29888,
+          "n_passes": 1,
+          "n_queries": 51,
+          "n_queries_formula": "3 anchor queries + 1 pass(es) x T d = 3 + 1*3*16 = 51",
+          "n_ties_anchor1": 0,
+          "pass1": {
+            "backtrack_nodes_max": 1,
+            "cand_after_total": 2049,
+            "cand_before_total": 261760,
+            "column_failures": [],
+            "columns_backtracked": 0,
+            "columns_failed": 0,
+            "columns_forced": 16,
+            "columns_total": 16,
+            "error": "",
+            "false_line_events": 0,
+            "max_multiplicity": 1,
+            "multiplicity_profile": {
+              "1": 128
+            },
+            "n_distinct_intercepts": 128,
+            "n_tied_groups": 0,
+            "n_tied_rows": 0,
+            "n_ties": 0,
+            "status": "ok"
+          },
+          "pass2_anchor_prediction_exact": null,
+          "pass2_overlap_checked": 0,
+          "pass2_overlap_mismatches": 0,
+          "pass2_used": false,
+          "placement": [
+            1,
+            1
+          ],
+          "queries_over_d": 3.188,
+          "redundant_true_row_copies_in_unresolved_groups": 0,
+          "rows_forced_as_group_residual": 0,
+          "rows_from_pass1": 128,
+          "rows_from_pass2": 0,
+          "rows_in_provably_identical_residuals": 0,
+          "rows_recovered_exactly": 0,
+          "status": "ok",
+          "taps": [
+            0,
+            2,
+            6,
+            8
+          ],
+          "unresolved_groups": 0,
+          "unresolved_groups_all_rows_identical": 0,
+          "unresolved_rows": 0,
+          "unresolved_rows_in_all_identical_groups": 0,
+          "unresolved_rows_in_mixed_groups": 0,
+          "wall_time_sec": 5.551
+        },
+        {
+          "A": 255,
+          "T": 3,
+          "anchor_queries": 1,
+          "anchor_range": [
+            0,
+            249
+          ],
+          "anchor_tie_attempts": [
+            0
+          ],
+          "certified_complete": true,
+          "channel_rounding_exact": true,
+          "channel_rounding_failures": 0,
+          "columns_backtracked": 0,
+          "columns_failed": 0,
+          "columns_forced_fraction": 1.0,
+          "d": 16,
+          "error": "",
+          "exact_up_to_row_perm": false,
+          "false_line_events": 0,
+          "inadmissible_query_entries": 0,
+          "inconsistent_pass2_matches": 0,
+          "informative_entries": 64,
+          "isolation_failures": 0,
+          "jstar": null,
+          "m": 64,
+          "max_abs_error_up_to_row_perm": 29888,
+          "n_passes": 1,
+          "n_queries": 49,
+          "n_queries_formula": "1 anchor queries + 1 pass(es) x T d = 1 + 1*3*16 = 49",
+          "n_ties_anchor1": 0,
+          "pass1": {
+            "backtrack_nodes_max": 0,
+            "cand_after_total": 1024,
+            "cand_before_total": 65472,
+            "column_failures": [],
+            "columns_backtracked": 0,
+            "columns_failed": 0,
+            "columns_forced": 16,
+            "columns_total": 16,
+            "error": "",
+            "false_line_events": 0,
+            "max_multiplicity": 1,
+            "multiplicity_profile": {
+              "1": 64
+            },
+            "n_distinct_intercepts": 64,
+            "n_tied_groups": 0,
+            "n_tied_rows": 0,
+            "n_ties": 0,
+            "status": "ok"
+          },
+          "pass2_anchor_prediction_exact": null,
+          "pass2_overlap_checked": 0,
+          "pass2_overlap_mismatches": 0,
+          "pass2_used": false,
+          "placement": [
+            0,
+            1
+          ],
+          "queries_over_d": 3.062,
+          "redundant_true_row_copies_in_unresolved_groups": 0,
+          "rows_forced_as_group_residual": 0,
+          "rows_from_pass1": 64,
+          "rows_from_pass2": 0,
+          "rows_in_provably_identical_residuals": 0,
+          "rows_recovered_exactly": 0,
+          "status": "ok",
+          "taps": [
+            3,
+            5
+          ],
+          "unresolved_groups": 0,
+          "unresolved_groups_all_rows_identical": 0,
+          "unresolved_rows": 0,
+          "unresolved_rows_in_all_identical_groups": 0,
+          "unresolved_rows_in_mixed_groups": 0,
+          "wall_time_sec": 5.286
+        },
+        {
+          "A": 255,
+          "T": 3,
+          "anchor_queries": 1,
+          "anchor_range": [
+            0,
+            249
+          ],
+          "anchor_tie_attempts": [
+            0
+          ],
+          "certified_complete": true,
+          "channel_rounding_exact": true,
+          "channel_rounding_failures": 0,
+          "columns_backtracked": 0,
+          "columns_failed": 0,
+          "columns_forced_fraction": 1.0,
+          "d": 16,
+          "error": "",
+          "exact_up_to_row_perm": false,
+          "false_line_events": 0,
+          "inadmissible_query_entries": 0,
+          "inconsistent_pass2_matches": 0,
+          "informative_entries": 64,
+          "isolation_failures": 0,
+          "jstar": null,
+          "m": 64,
+          "max_abs_error_up_to_row_perm": 29888,
+          "n_passes": 1,
+          "n_queries": 49,
+          "n_queries_formula": "1 anchor queries + 1 pass(es) x T d = 1 + 1*3*16 = 49",
+          "n_ties_anchor1": 0,
+          "pass1": {
+            "backtrack_nodes_max": 0,
+            "cand_after_total": 1024,
+            "cand_before_total": 65408,
+            "column_failures": [],
+            "columns_backtracked": 0,
+            "columns_failed": 0,
+            "columns_forced": 16,
+            "columns_total": 16,
+            "error": "",
+            "false_line_events": 0,
+            "max_multiplicity": 1,
+            "multiplicity_profile": {
+              "1": 64
+            },
+            "n_distinct_intercepts": 64,
+            "n_tied_groups": 0,
+            "n_tied_rows": 0,
+            "n_ties": 0,
+            "status": "ok"
+          },
+          "pass2_anchor_prediction_exact": null,
+          "pass2_overlap_checked": 0,
+          "pass2_overlap_mismatches": 0,
+          "pass2_used": false,
+          "placement": [
+            1,
+            0
+          ],
+          "queries_over_d": 3.062,
+          "redundant_true_row_copies_in_unresolved_groups": 0,
+          "rows_forced_as_group_residual": 0,
+          "rows_from_pass1": 64,
+          "rows_from_pass2": 0,
+          "rows_in_provably_identical_residuals": 0,
+          "rows_recovered_exactly": 0,
+          "status": "ok",
+          "taps": [
+            1,
+            7
+          ],
+          "unresolved_groups": 0,
+          "unresolved_groups_all_rows_identical": 0,
+          "unresolved_rows": 0,
+          "unresolved_rows_in_all_identical_groups": 0,
+          "unresolved_rows_in_mixed_groups": 0,
+          "wall_time_sec": 5.289
+        },
+        {
+          "A": 255,
+          "T": 3,
+          "anchor_queries": 1,
+          "anchor_range": [
+            0,
+            249
+          ],
+          "anchor_tie_attempts": [
+            0
+          ],
+          "certified_complete": true,
+          "channel_rounding_exact": true,
+          "channel_rounding_failures": 0,
+          "columns_backtracked": 0,
+          "columns_failed": 0,
+          "columns_forced_fraction": 1.0,
+          "d": 16,
+          "error": "",
+          "exact_up_to_row_perm": false,
+          "false_line_events": 0,
+          "inadmissible_query_entries": 0,
+          "inconsistent_pass2_matches": 0,
+          "informative_entries": 32,
+          "isolation_failures": 0,
+          "jstar": null,
+          "m": 32,
+          "max_abs_error_up_to_row_perm": 29888,
+          "n_passes": 1,
+          "n_queries": 49,
+          "n_queries_formula": "1 anchor queries + 1 pass(es) x T d = 1 + 1*3*16 = 49",
+          "n_ties_anchor1": 0,
+          "pass1": {
+            "backtrack_nodes_max": 0,
+            "cand_after_total": 512,
+            "cand_before_total": 16384,
+            "column_failures": [],
+            "columns_backtracked": 0,
+            "columns_failed": 0,
+            "columns_forced": 16,
+            "columns_total": 16,
+            "error": "",
+            "false_line_events": 0,
+            "max_multiplicity": 1,
+            "multiplicity_profile": {
+              "1": 32
+            },
+            "n_distinct_intercepts": 32,
+            "n_tied_groups": 0,
+            "n_tied_rows": 0,
+            "n_ties": 0,
+            "status": "ok"
+          },
+          "pass2_anchor_prediction_exact": null,
+          "pass2_overlap_checked": 0,
+          "pass2_overlap_mismatches": 0,
+          "pass2_used": false,
+          "placement": [
+            0,
+            0
+          ],
+          "queries_over_d": 3.062,
+          "redundant_true_row_copies_in_unresolved_groups": 0,
+          "rows_forced_as_group_residual": 0,
+          "rows_from_pass1": 32,
+          "rows_from_pass2": 0,
+          "rows_in_provably_identical_residuals": 0,
+          "rows_recovered_exactly": 0,
+          "status": "ok",
+          "taps": [
+            4
+          ],
+          "unresolved_groups": 0,
+          "unresolved_groups_all_rows_identical": 0,
+          "unresolved_rows": 0,
+          "unresolved_rows_in_all_identical_groups": 0,
+          "unresolved_rows_in_mixed_groups": 0,
+          "wall_time_sec": 5.274
+        }
+      ],
+      "max_abs_error_up_to_row_perm": 29888,
+      "membership_anchor_collisions": 0,
+      "membership_attempts": 1,
+      "membership_queries": 8,
+      "output_channels_dead": 0,
+      "probe_hill_climb_steps": 0,
+      "probe_informative_coordinates": 224,
+      "probe_locatable_coordinates": 224,
+      "probe_locatable_fraction": 0.027344,
+      "probe_located_needed": 224,
+      "probe_needed_all_located": true,
+      "probe_needed_coordinates": 224,
+      "probe_needed_placements": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          15
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          15
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "probe_pixel_positions": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          31
+        ],
+        [
+          31,
+          0
+        ],
+        [
+          31,
+          31
+        ]
+      ],
+      "probe_pixels": 4,
+      "probe_verified": true,
+      "repair_attempts_used": 0,
+      "round": 7,
+      "rows_matched_to_true_rows": 0,
+      "rows_recovered_exactly": 0,
+      "rows_still_ambiguous": 0,
+      "sessions_used": 208,
+      "stride": 2,
+      "taps_not_covered_by_coverage_set": []
+    },
+    {
+      "C_in": 16,
+      "C_out": 32,
+      "bias_collisions": 0,
+      "bias_multiset_recovered": true,
+      "coordinates_nominal": 8192,
+      "d_lta": 16,
+      "distinct_bias_values": 32,
+      "exact_up_to_row_perm": false,
+      "frame_check_exact": false,
+      "frame_check_max_abs_error": 26922,
+      "group": 8,
+      "informative_entries_per_query": 32,
+      "input_channels_dead": 0,
+      "input_channels_live": 16,
+      "isolation_failures": 0,
+      "kind": "shortcut",
+      "layer": "layer2.0.shortcut",
+      "lta": {
+        "A": 255,
+        "T": 3,
+        "anchor_queries": 1,
+        "anchor_range": [
+          0,
+          249
+        ],
+        "anchor_tie_attempts": [
+          0
+        ],
+        "certified_complete": true,
+        "channel_rounding_exact": true,
+        "channel_rounding_failures": 0,
+        "columns_backtracked": 0,
+        "columns_failed": 0,
+        "columns_forced_fraction": 1.0,
+        "d": 16,
+        "error": "",
+        "exact_up_to_row_perm": false,
+        "false_line_events": 0,
+        "inadmissible_query_entries": 0,
+        "inconsistent_pass2_matches": 0,
+        "jstar": null,
+        "m": 32,
+        "max_abs_error_up_to_row_perm": 26922,
+        "n_passes": 1,
+        "n_queries": 49,
+        "n_queries_formula": "1 anchor queries + 1 pass(es) x T d = 1 + 1*3*16 = 49",
+        "n_ties_anchor1": 0,
+        "pass1": {
+          "backtrack_nodes_max": 0,
+          "cand_after_total": 512,
+          "cand_before_total": 16384,
+          "column_failures": [],
+          "columns_backtracked": 0,
+          "columns_failed": 0,
+          "columns_forced": 16,
+          "columns_total": 16,
+          "error": "",
+          "false_line_events": 0,
+          "max_multiplicity": 1,
+          "multiplicity_profile": {
+            "1": 32
+          },
+          "n_distinct_intercepts": 32,
+          "n_tied_groups": 0,
+          "n_tied_rows": 0,
+          "n_ties": 0,
+          "status": "ok"
+        },
+        "pass2_anchor_prediction_exact": null,
+        "pass2_overlap_checked": 0,
+        "pass2_overlap_mismatches": 0,
+        "pass2_used": false,
+        "queries_over_d": 3.062,
+        "redundant_true_row_copies_in_unresolved_groups": 0,
+        "rows_forced_as_group_residual": 0,
+        "rows_from_pass1": 32,
+        "rows_from_pass2": 0,
+        "rows_in_provably_identical_residuals": 0,
+        "rows_recovered_exactly": 0,
+        "status": "ok",
+        "unresolved_groups": 0,
+        "unresolved_groups_all_rows_identical": 0,
+        "unresolved_rows": 0,
+        "unresolved_rows_in_all_identical_groups": 0,
+        "unresolved_rows_in_mixed_groups": 0,
+        "wall_time_sec": 5.271
+      },
+      "max_abs_error_up_to_row_perm": 26922,
+      "repair_attempts_used": 0,
+      "round": 8,
+      "rows_matched_to_true_rows": 0,
+      "rows_recovered_exactly": 0,
+      "sessions_used": 50,
+      "stride": 2
+    },
+    {
+      "C_in": 32,
+      "C_out": 32,
+      "H_out": 16,
+      "addressable_placements": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          15
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          15
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "assembly": {
+        "channel_ambiguous_rows": 0,
+        "channels_resolved": 32,
+        "channels_seen": 32,
+        "matching_failures": 0,
+        "rows": 288,
+        "rows_with_no_candidate": 0,
+        "rows_with_unique_candidate": 288
+      },
+      "background_matches_truth": false,
+      "coordinates_nominal": 8192,
+      "d_lta": 32,
+      "exact_up_to_row_perm": false,
+      "frame_check_exact": false,
+      "frame_check_max_abs_error": 127,
+      "group": 8,
+      "informative_entries_per_query": 288,
+      "input_channels_dead": 0,
+      "input_channels_live": 32,
+      "isolation_failures": 0,
+      "kind": "conv2",
+      "layer": "layer2.0.conv2",
+      "lta": {
+        "A": 255,
+        "T": 3,
+        "anchor_queries": 1,
+        "anchor_range": [
+          0,
+          249
+        ],
+        "anchor_tie_attempts": [
+          0
+        ],
+        "certified_complete": true,
+        "channel_rounding_exact": true,
+        "channel_rounding_failures": 0,
+        "columns_backtracked": 0,
+        "columns_failed": 0,
+        "columns_forced_fraction": 1.0,
+        "d": 32,
+        "error": "",
+        "exact_up_to_row_perm": false,
+        "false_line_events": 0,
+        "inadmissible_query_entries": 0,
+        "inconsistent_pass2_matches": 0,
+        "jstar": null,
+        "m": 288,
+        "max_abs_error_up_to_row_perm": 26922,
+        "n_passes": 1,
+        "n_queries": 97,
+        "n_queries_formula": "1 anchor queries + 1 pass(es) x T d = 1 + 1*3*32 = 97",
+        "n_ties_anchor1": 0,
+        "pass1": {
+          "backtrack_nodes_max": 1,
+          "cand_after_total": 9258,
+          "cand_before_total": 2646432,
+          "column_failures": [],
+          "columns_backtracked": 0,
+          "columns_failed": 0,
+          "columns_forced": 32,
+          "columns_total": 32,
+          "error": "",
+          "false_line_events": 0,
+          "max_multiplicity": 1,
+          "multiplicity_profile": {
+            "1": 288
+          },
+          "n_distinct_intercepts": 288,
+          "n_tied_groups": 0,
+          "n_tied_rows": 0,
+          "n_ties": 0,
+          "status": "ok"
+        },
+        "pass2_anchor_prediction_exact": null,
+        "pass2_overlap_checked": 0,
+        "pass2_overlap_mismatches": 0,
+        "pass2_used": false,
+        "queries_over_d": 3.031,
+        "redundant_true_row_copies_in_unresolved_groups": 0,
+        "rows_forced_as_group_residual": 0,
+        "rows_from_pass1": 288,
+        "rows_from_pass2": 0,
+        "rows_in_provably_identical_residuals": 0,
+        "rows_recovered_exactly": 0,
+        "status": "ok",
+        "unresolved_groups": 0,
+        "unresolved_groups_all_rows_identical": 0,
+        "unresolved_rows": 0,
+        "unresolved_rows_in_all_identical_groups": 0,
+        "unresolved_rows_in_mixed_groups": 0,
+        "wall_time_sec": 11.347
+      },
+      "max_abs_error_up_to_row_perm": 26922,
+      "membership_anchor_collisions": 0,
+      "membership_attempts": 1,
+      "membership_queries": 4,
+      "output_channels_dead": 0,
+      "probe_hill_climb_steps": 0,
+      "probe_informative_coordinates": 672,
+      "probe_locatable_coordinates": 667,
+      "probe_locatable_fraction": 0.081421,
+      "probe_located_needed": 224,
+      "probe_needed_all_located": true,
+      "probe_needed_coordinates": 224,
+      "probe_needed_placements": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          15
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          15
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "probe_pixel_positions": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          15
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          15
+        ]
+      ],
+      "probe_pixels": 4,
+      "probe_verified": true,
+      "repair_attempts_used": 0,
+      "round": 8,
+      "rows_fixed_by_intercept": 0,
+      "rows_recovered_exactly": 0,
+      "rows_still_ambiguous": 0,
+      "rows_without_intercept_match": 0,
+      "sessions_used": 102
+    },
+    {
+      "C_in": 32,
+      "C_out": 32,
+      "H_in": 16,
+      "H_out": 16,
+      "addressable_placements": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          15
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          15
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "assembly": {
+        "channel_ambiguous_rows": 0,
+        "channels_resolved": 32,
+        "channels_seen": 32,
+        "matching_failures": 0,
+        "rows": 288,
+        "rows_with_no_candidate": 0,
+        "rows_with_unique_candidate": 288
+      },
+      "bias_collisions": 0,
+      "bias_groups": 32,
+      "bias_groups_oversized": 0,
+      "bias_multiset_recovered": true,
+      "channels_after_linkage": 32,
+      "channels_from_bias": 32,
+      "coordinates_nominal": 8192,
+      "coverage_placements": [
+        [
+          1,
+          1
+        ]
+      ],
+      "d_lta": 32,
+      "distinct_bias_values": 32,
+      "exact_up_to_row_perm": false,
+      "frame_check_exact": false,
+      "frame_check_max_abs_error": 38636,
+      "group": 9,
+      "informative_entries_per_query": 288,
+      "input_channels_dead": 0,
+      "input_channels_live": 32,
+      "isolation_failures": 0,
+      "kernel": 3,
+      "kind": "conv",
+      "layer": "layer2.1.conv1",
+      "linkage_failures": 0,
+      "linkage_queries": 0,
+      "lta_runs": [
+        {
+          "A": 255,
+          "T": 3,
+          "anchor_queries": 3,
+          "anchor_range": [
+            0,
+            249
+          ],
+          "anchor_tie_attempts": [
+            1,
+            1,
+            0
+          ],
+          "certified_complete": true,
+          "channel_rounding_exact": true,
+          "channel_rounding_failures": 0,
+          "columns_backtracked": 0,
+          "columns_failed": 0,
+          "columns_forced_fraction": 1.0,
+          "d": 32,
+          "error": "",
+          "exact_up_to_row_perm": false,
+          "false_line_events": 0,
+          "inadmissible_query_entries": 0,
+          "inconsistent_pass2_matches": 0,
+          "informative_entries": 288,
+          "isolation_failures": 0,
+          "jstar": null,
+          "m": 288,
+          "max_abs_error_up_to_row_perm": 38636,
+          "n_passes": 1,
+          "n_queries": 99,
+          "n_queries_formula": "3 anchor queries + 1 pass(es) x T d = 3 + 1*3*32 = 99",
+          "n_ties_anchor1": 0,
+          "pass1": {
+            "backtrack_nodes_max": 1,
+            "cand_after_total": 9242,
+            "cand_before_total": 2647872,
+            "column_failures": [],
+            "columns_backtracked": 0,
+            "columns_failed": 0,
+            "columns_forced": 32,
+            "columns_total": 32,
+            "error": "",
+            "false_line_events": 0,
+            "max_multiplicity": 1,
+            "multiplicity_profile": {
+              "1": 288
+            },
+            "n_distinct_intercepts": 288,
+            "n_tied_groups": 0,
+            "n_tied_rows": 0,
+            "n_ties": 0,
+            "status": "ok"
+          },
+          "pass2_anchor_prediction_exact": null,
+          "pass2_overlap_checked": 0,
+          "pass2_overlap_mismatches": 0,
+          "pass2_used": false,
+          "placement": [
+            1,
+            1
+          ],
+          "queries_over_d": 3.094,
+          "redundant_true_row_copies_in_unresolved_groups": 0,
+          "rows_forced_as_group_residual": 0,
+          "rows_from_pass1": 288,
+          "rows_from_pass2": 0,
+          "rows_in_provably_identical_residuals": 0,
+          "rows_recovered_exactly": 0,
+          "status": "ok",
+          "taps": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "unresolved_groups": 0,
+          "unresolved_groups_all_rows_identical": 0,
+          "unresolved_rows": 0,
+          "unresolved_rows_in_all_identical_groups": 0,
+          "unresolved_rows_in_mixed_groups": 0,
+          "wall_time_sec": 12.139
+        }
+      ],
+      "max_abs_error_up_to_row_perm": 38636,
+      "membership_anchor_collisions": 0,
+      "membership_attempts": 1,
+      "membership_queries": 4,
+      "output_channels_dead": 0,
+      "probe_hill_climb_steps": 0,
+      "probe_informative_coordinates": 672,
+      "probe_locatable_coordinates": 670,
+      "probe_locatable_fraction": 0.081787,
+      "probe_located_needed": 224,
+      "probe_needed_all_located": true,
+      "probe_needed_coordinates": 224,
+      "probe_needed_placements": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          15
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          15
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "probe_pixel_positions": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          15
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          15
+        ]
+      ],
+      "probe_pixels": 4,
+      "probe_verified": true,
+      "repair_attempts_used": 0,
+      "round": 9,
+      "rows_matched_to_true_rows": 0,
+      "rows_recovered_exactly": 0,
+      "rows_still_ambiguous": 0,
+      "sessions_used": 105,
+      "stride": 1,
+      "taps_not_covered_by_coverage_set": []
+    },
+    {
+      "C_in": 32,
+      "C_out": 32,
+      "bias_collisions": 0,
+      "bias_multiset_recovered": true,
+      "coordinates_nominal": 8192,
+      "d_lta": 32,
+      "distinct_bias_values": 32,
+      "exact_up_to_row_perm": false,
+      "frame_check_exact": false,
+      "frame_check_max_abs_error": 14568,
+      "group": 10,
+      "informative_entries_per_query": 32,
+      "input_channels_dead": 0,
+      "input_channels_live": 32,
+      "isolation_failures": 0,
+      "kind": "shortcut",
+      "layer": "layer2.1.shortcut",
+      "lta": {
+        "A": 255,
+        "T": 3,
+        "anchor_queries": 1,
+        "anchor_range": [
+          0,
+          249
+        ],
+        "anchor_tie_attempts": [
+          0
+        ],
+        "certified_complete": true,
+        "channel_rounding_exact": true,
+        "channel_rounding_failures": 0,
+        "columns_backtracked": 0,
+        "columns_failed": 0,
+        "columns_forced_fraction": 1.0,
+        "d": 32,
+        "error": "",
+        "exact_up_to_row_perm": false,
+        "false_line_events": 0,
+        "inadmissible_query_entries": 0,
+        "inconsistent_pass2_matches": 0,
+        "jstar": null,
+        "m": 32,
+        "max_abs_error_up_to_row_perm": 14568,
+        "n_passes": 1,
+        "n_queries": 97,
+        "n_queries_formula": "1 anchor queries + 1 pass(es) x T d = 1 + 1*3*32 = 97",
+        "n_ties_anchor1": 0,
+        "pass1": {
+          "backtrack_nodes_max": 0,
+          "cand_after_total": 1024,
+          "cand_before_total": 32768,
+          "column_failures": [],
+          "columns_backtracked": 0,
+          "columns_failed": 0,
+          "columns_forced": 32,
+          "columns_total": 32,
+          "error": "",
+          "false_line_events": 0,
+          "max_multiplicity": 1,
+          "multiplicity_profile": {
+            "1": 32
+          },
+          "n_distinct_intercepts": 32,
+          "n_tied_groups": 0,
+          "n_tied_rows": 0,
+          "n_ties": 0,
+          "status": "ok"
+        },
+        "pass2_anchor_prediction_exact": null,
+        "pass2_overlap_checked": 0,
+        "pass2_overlap_mismatches": 0,
+        "pass2_used": false,
+        "queries_over_d": 3.031,
+        "redundant_true_row_copies_in_unresolved_groups": 0,
+        "rows_forced_as_group_residual": 0,
+        "rows_from_pass1": 32,
+        "rows_from_pass2": 0,
+        "rows_in_provably_identical_residuals": 0,
+        "rows_recovered_exactly": 0,
+        "status": "ok",
+        "unresolved_groups": 0,
+        "unresolved_groups_all_rows_identical": 0,
+        "unresolved_rows": 0,
+        "unresolved_rows_in_all_identical_groups": 0,
+        "unresolved_rows_in_mixed_groups": 0,
+        "wall_time_sec": 11.585
+      },
+      "max_abs_error_up_to_row_perm": 14568,
+      "repair_attempts_used": 0,
+      "round": 10,
+      "rows_matched_to_true_rows": 0,
+      "rows_recovered_exactly": 0,
+      "sessions_used": 98,
+      "stride": 1
+    },
+    {
+      "C_in": 32,
+      "C_out": 32,
+      "H_out": 16,
+      "addressable_placements": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          15
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          15
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "assembly": {
+        "channel_ambiguous_rows": 0,
+        "channels_resolved": 32,
+        "channels_seen": 32,
+        "matching_failures": 0,
+        "rows": 288,
+        "rows_with_no_candidate": 0,
+        "rows_with_unique_candidate": 288
+      },
+      "background_matches_truth": false,
+      "coordinates_nominal": 8192,
+      "d_lta": 32,
+      "exact_up_to_row_perm": false,
+      "frame_check_exact": false,
+      "frame_check_max_abs_error": 127,
+      "group": 10,
+      "informative_entries_per_query": 288,
+      "input_channels_dead": 0,
+      "input_channels_live": 32,
+      "isolation_failures": 0,
+      "kind": "conv2",
+      "layer": "layer2.1.conv2",
+      "lta": {
+        "A": 255,
+        "T": 3,
+        "anchor_queries": 1,
+        "anchor_range": [
+          0,
+          249
+        ],
+        "anchor_tie_attempts": [
+          0
+        ],
+        "certified_complete": true,
+        "channel_rounding_exact": true,
+        "channel_rounding_failures": 0,
+        "columns_backtracked": 0,
+        "columns_failed": 0,
+        "columns_forced_fraction": 1.0,
+        "d": 32,
+        "error": "",
+        "exact_up_to_row_perm": false,
+        "false_line_events": 0,
+        "inadmissible_query_entries": 0,
+        "inconsistent_pass2_matches": 0,
+        "jstar": null,
+        "m": 288,
+        "max_abs_error_up_to_row_perm": 102016,
+        "n_passes": 1,
+        "n_queries": 97,
+        "n_queries_formula": "1 anchor queries + 1 pass(es) x T d = 1 + 1*3*32 = 97",
+        "n_ties_anchor1": 0,
+        "pass1": {
+          "backtrack_nodes_max": 1,
+          "cand_after_total": 9233,
+          "cand_before_total": 2650752,
+          "column_failures": [],
+          "columns_backtracked": 0,
+          "columns_failed": 0,
+          "columns_forced": 32,
+          "columns_total": 32,
+          "error": "",
+          "false_line_events": 0,
+          "max_multiplicity": 1,
+          "multiplicity_profile": {
+            "1": 288
+          },
+          "n_distinct_intercepts": 288,
+          "n_tied_groups": 0,
+          "n_tied_rows": 0,
+          "n_ties": 0,
+          "status": "ok"
+        },
+        "pass2_anchor_prediction_exact": null,
+        "pass2_overlap_checked": 0,
+        "pass2_overlap_mismatches": 0,
+        "pass2_used": false,
+        "queries_over_d": 3.031,
+        "redundant_true_row_copies_in_unresolved_groups": 0,
+        "rows_forced_as_group_residual": 0,
+        "rows_from_pass1": 288,
+        "rows_from_pass2": 0,
+        "rows_in_provably_identical_residuals": 0,
+        "rows_recovered_exactly": 0,
+        "status": "ok",
+        "unresolved_groups": 0,
+        "unresolved_groups_all_rows_identical": 0,
+        "unresolved_rows": 0,
+        "unresolved_rows_in_all_identical_groups": 0,
+        "unresolved_rows_in_mixed_groups": 0,
+        "wall_time_sec": 12.336
+      },
+      "max_abs_error_up_to_row_perm": 14568,
+      "membership_anchor_collisions": 0,
+      "membership_attempts": 1,
+      "membership_queries": 4,
+      "output_channels_dead": 0,
+      "probe_hill_climb_steps": 0,
+      "probe_informative_coordinates": 672,
+      "probe_locatable_coordinates": 672,
+      "probe_locatable_fraction": 0.082031,
+      "probe_located_needed": 224,
+      "probe_needed_all_located": true,
+      "probe_needed_coordinates": 224,
+      "probe_needed_placements": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          15
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          15
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "probe_pixel_positions": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          15
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          15
+        ]
+      ],
+      "probe_pixels": 4,
+      "probe_verified": true,
+      "repair_attempts_used": 0,
+      "round": 10,
+      "rows_fixed_by_intercept": 32,
+      "rows_recovered_exactly": 0,
+      "rows_still_ambiguous": 0,
+      "rows_without_intercept_match": 0,
+      "sessions_used": 102
+    },
+    {
+      "C_in": 32,
+      "C_out": 32,
+      "H_in": 16,
+      "H_out": 16,
+      "addressable_placements": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          15
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          15
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "assembly": {
+        "channel_ambiguous_rows": 0,
+        "channels_resolved": 32,
+        "channels_seen": 32,
+        "matching_failures": 0,
+        "rows": 288,
+        "rows_with_no_candidate": 0,
+        "rows_with_unique_candidate": 288
+      },
+      "bias_collisions": 0,
+      "bias_groups": 32,
+      "bias_groups_oversized": 0,
+      "bias_multiset_recovered": true,
+      "channels_after_linkage": 32,
+      "channels_from_bias": 32,
+      "coordinates_nominal": 8192,
+      "coverage_placements": [
+        [
+          1,
+          1
+        ]
+      ],
+      "d_lta": 32,
+      "distinct_bias_values": 32,
+      "exact_up_to_row_perm": false,
+      "frame_check_exact": false,
+      "frame_check_max_abs_error": 35799,
+      "group": 11,
+      "informative_entries_per_query": 288,
+      "input_channels_dead": 0,
+      "input_channels_live": 32,
+      "isolation_failures": 0,
+      "kernel": 3,
+      "kind": "conv",
+      "layer": "layer2.2.conv1",
+      "linkage_failures": 0,
+      "linkage_queries": 0,
+      "lta_runs": [
+        {
+          "A": 255,
+          "T": 3,
+          "anchor_queries": 1,
+          "anchor_range": [
+            0,
+            249
+          ],
+          "anchor_tie_attempts": [
+            0
+          ],
+          "certified_complete": true,
+          "channel_rounding_exact": true,
+          "channel_rounding_failures": 0,
+          "columns_backtracked": 0,
+          "columns_failed": 0,
+          "columns_forced_fraction": 1.0,
+          "d": 32,
+          "error": "",
+          "exact_up_to_row_perm": false,
+          "false_line_events": 0,
+          "inadmissible_query_entries": 0,
+          "inconsistent_pass2_matches": 0,
+          "informative_entries": 288,
+          "isolation_failures": 0,
+          "jstar": null,
+          "m": 288,
+          "max_abs_error_up_to_row_perm": 35799,
+          "n_passes": 1,
+          "n_queries": 97,
+          "n_queries_formula": "1 anchor queries + 1 pass(es) x T d = 1 + 1*3*32 = 97",
+          "n_ties_anchor1": 0,
+          "pass1": {
+            "backtrack_nodes_max": 1,
+            "cand_after_total": 9278,
+            "cand_before_total": 2645856,
+            "column_failures": [],
+            "columns_backtracked": 0,
+            "columns_failed": 0,
+            "columns_forced": 32,
+            "columns_total": 32,
+            "error": "",
+            "false_line_events": 0,
+            "max_multiplicity": 1,
+            "multiplicity_profile": {
+              "1": 288
+            },
+            "n_distinct_intercepts": 288,
+            "n_tied_groups": 0,
+            "n_tied_rows": 0,
+            "n_ties": 0,
+            "status": "ok"
+          },
+          "pass2_anchor_prediction_exact": null,
+          "pass2_overlap_checked": 0,
+          "pass2_overlap_mismatches": 0,
+          "pass2_used": false,
+          "placement": [
+            1,
+            1
+          ],
+          "queries_over_d": 3.031,
+          "redundant_true_row_copies_in_unresolved_groups": 0,
+          "rows_forced_as_group_residual": 0,
+          "rows_from_pass1": 288,
+          "rows_from_pass2": 0,
+          "rows_in_provably_identical_residuals": 0,
+          "rows_recovered_exactly": 0,
+          "status": "ok",
+          "taps": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "unresolved_groups": 0,
+          "unresolved_groups_all_rows_identical": 0,
+          "unresolved_rows": 0,
+          "unresolved_rows_in_all_identical_groups": 0,
+          "unresolved_rows_in_mixed_groups": 0,
+          "wall_time_sec": 12.871
+        }
+      ],
+      "max_abs_error_up_to_row_perm": 35799,
+      "membership_anchor_collisions": 0,
+      "membership_attempts": 1,
+      "membership_queries": 4,
+      "output_channels_dead": 0,
+      "probe_hill_climb_steps": 0,
+      "probe_informative_coordinates": 672,
+      "probe_locatable_coordinates": 668,
+      "probe_locatable_fraction": 0.081543,
+      "probe_located_needed": 224,
+      "probe_needed_all_located": true,
+      "probe_needed_coordinates": 224,
+      "probe_needed_placements": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          15
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          15
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "probe_pixel_positions": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          15
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          15
+        ]
+      ],
+      "probe_pixels": 4,
+      "probe_verified": true,
+      "repair_attempts_used": 0,
+      "round": 11,
+      "rows_matched_to_true_rows": 0,
+      "rows_recovered_exactly": 0,
+      "rows_still_ambiguous": 0,
+      "sessions_used": 103,
+      "stride": 1,
+      "taps_not_covered_by_coverage_set": []
+    },
+    {
+      "C_in": 32,
+      "C_out": 32,
+      "bias_collisions": 0,
+      "bias_multiset_recovered": true,
+      "coordinates_nominal": 8192,
+      "d_lta": 32,
+      "distinct_bias_values": 32,
+      "exact_up_to_row_perm": false,
+      "frame_check_exact": false,
+      "frame_check_max_abs_error": 10042,
+      "group": 12,
+      "informative_entries_per_query": 32,
+      "input_channels_dead": 0,
+      "input_channels_live": 32,
+      "isolation_failures": 0,
+      "kind": "shortcut",
+      "layer": "layer2.2.shortcut",
+      "lta": {
+        "A": 255,
+        "T": 3,
+        "anchor_queries": 1,
+        "anchor_range": [
+          0,
+          249
+        ],
+        "anchor_tie_attempts": [
+          0
+        ],
+        "certified_complete": true,
+        "channel_rounding_exact": true,
+        "channel_rounding_failures": 0,
+        "columns_backtracked": 0,
+        "columns_failed": 0,
+        "columns_forced_fraction": 1.0,
+        "d": 32,
+        "error": "",
+        "exact_up_to_row_perm": false,
+        "false_line_events": 0,
+        "inadmissible_query_entries": 0,
+        "inconsistent_pass2_matches": 0,
+        "jstar": null,
+        "m": 32,
+        "max_abs_error_up_to_row_perm": 10042,
+        "n_passes": 1,
+        "n_queries": 97,
+        "n_queries_formula": "1 anchor queries + 1 pass(es) x T d = 1 + 1*3*32 = 97",
+        "n_ties_anchor1": 0,
+        "pass1": {
+          "backtrack_nodes_max": 0,
+          "cand_after_total": 1024,
+          "cand_before_total": 32768,
+          "column_failures": [],
+          "columns_backtracked": 0,
+          "columns_failed": 0,
+          "columns_forced": 32,
+          "columns_total": 32,
+          "error": "",
+          "false_line_events": 0,
+          "max_multiplicity": 1,
+          "multiplicity_profile": {
+            "1": 32
+          },
+          "n_distinct_intercepts": 32,
+          "n_tied_groups": 0,
+          "n_tied_rows": 0,
+          "n_ties": 0,
+          "status": "ok"
+        },
+        "pass2_anchor_prediction_exact": null,
+        "pass2_overlap_checked": 0,
+        "pass2_overlap_mismatches": 0,
+        "pass2_used": false,
+        "queries_over_d": 3.031,
+        "redundant_true_row_copies_in_unresolved_groups": 0,
+        "rows_forced_as_group_residual": 0,
+        "rows_from_pass1": 32,
+        "rows_from_pass2": 0,
+        "rows_in_provably_identical_residuals": 0,
+        "rows_recovered_exactly": 0,
+        "status": "ok",
+        "unresolved_groups": 0,
+        "unresolved_groups_all_rows_identical": 0,
+        "unresolved_rows": 0,
+        "unresolved_rows_in_all_identical_groups": 0,
+        "unresolved_rows_in_mixed_groups": 0,
+        "wall_time_sec": 12.521
+      },
+      "max_abs_error_up_to_row_perm": 10042,
+      "repair_attempts_used": 0,
+      "round": 12,
+      "rows_matched_to_true_rows": 0,
+      "rows_recovered_exactly": 0,
+      "sessions_used": 98,
+      "stride": 1
+    },
+    {
+      "C_in": 32,
+      "C_out": 32,
+      "H_out": 16,
+      "addressable_placements": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          15
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          15
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "assembly": {
+        "channel_ambiguous_rows": 0,
+        "channels_resolved": 32,
+        "channels_seen": 32,
+        "matching_failures": 0,
+        "rows": 288,
+        "rows_with_no_candidate": 0,
+        "rows_with_unique_candidate": 288
+      },
+      "background_matches_truth": false,
+      "coordinates_nominal": 8192,
+      "d_lta": 32,
+      "exact_up_to_row_perm": false,
+      "frame_check_exact": false,
+      "frame_check_max_abs_error": 127,
+      "group": 12,
+      "informative_entries_per_query": 288,
+      "input_channels_dead": 0,
+      "input_channels_live": 32,
+      "isolation_failures": 0,
+      "kind": "conv2",
+      "layer": "layer2.2.conv2",
+      "lta": {
+        "A": 255,
+        "T": 3,
+        "anchor_queries": 1,
+        "anchor_range": [
+          0,
+          249
+        ],
+        "anchor_tie_attempts": [
+          0
+        ],
+        "certified_complete": true,
+        "channel_rounding_exact": true,
+        "channel_rounding_failures": 0,
+        "columns_backtracked": 0,
+        "columns_failed": 0,
+        "columns_forced_fraction": 1.0,
+        "d": 32,
+        "error": "",
+        "exact_up_to_row_perm": false,
+        "false_line_events": 0,
+        "inadmissible_query_entries": 0,
+        "inconsistent_pass2_matches": 0,
+        "jstar": null,
+        "m": 288,
+        "max_abs_error_up_to_row_perm": 115372,
+        "n_passes": 1,
+        "n_queries": 97,
+        "n_queries_formula": "1 anchor queries + 1 pass(es) x T d = 1 + 1*3*32 = 97",
+        "n_ties_anchor1": 0,
+        "pass1": {
+          "backtrack_nodes_max": 1,
+          "cand_after_total": 9245,
+          "cand_before_total": 2643552,
+          "column_failures": [],
+          "columns_backtracked": 0,
+          "columns_failed": 0,
+          "columns_forced": 32,
+          "columns_total": 32,
+          "error": "",
+          "false_line_events": 0,
+          "max_multiplicity": 1,
+          "multiplicity_profile": {
+            "1": 288
+          },
+          "n_distinct_intercepts": 288,
+          "n_tied_groups": 0,
+          "n_tied_rows": 0,
+          "n_ties": 0,
+          "status": "ok"
+        },
+        "pass2_anchor_prediction_exact": null,
+        "pass2_overlap_checked": 0,
+        "pass2_overlap_mismatches": 0,
+        "pass2_used": false,
+        "queries_over_d": 3.031,
+        "redundant_true_row_copies_in_unresolved_groups": 0,
+        "rows_forced_as_group_residual": 0,
+        "rows_from_pass1": 288,
+        "rows_from_pass2": 0,
+        "rows_in_provably_identical_residuals": 0,
+        "rows_recovered_exactly": 0,
+        "status": "ok",
+        "unresolved_groups": 0,
+        "unresolved_groups_all_rows_identical": 0,
+        "unresolved_rows": 0,
+        "unresolved_rows_in_all_identical_groups": 0,
+        "unresolved_rows_in_mixed_groups": 0,
+        "wall_time_sec": 13.381
+      },
+      "max_abs_error_up_to_row_perm": 10042,
+      "membership_anchor_collisions": 0,
+      "membership_attempts": 1,
+      "membership_queries": 4,
+      "output_channels_dead": 0,
+      "probe_hill_climb_steps": 0,
+      "probe_informative_coordinates": 672,
+      "probe_locatable_coordinates": 670,
+      "probe_locatable_fraction": 0.081787,
+      "probe_located_needed": 288,
+      "probe_needed_all_located": true,
+      "probe_needed_coordinates": 288,
+      "probe_needed_placements": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          15
+        ],
+        [
+          1,
+          15
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          1
+        ],
+        [
+          15,
+          15
+        ]
+      ],
+      "probe_pixel_positions": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          15
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          15
+        ]
+      ],
+      "probe_pixels": 4,
+      "probe_verified": true,
+      "repair_attempts_used": 0,
+      "round": 12,
+      "rows_fixed_by_intercept": 32,
+      "rows_recovered_exactly": 0,
+      "rows_still_ambiguous": 0,
+      "rows_without_intercept_match": 0,
+      "sessions_used": 102
+    },
+    {
+      "C_in": 32,
+      "C_out": 64,
+      "H_in": 16,
+      "H_out": 8,
+      "addressable_placements": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          15
+        ],
+        [
+          1,
+          15
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          1
+        ],
+        [
+          15,
+          15
+        ]
+      ],
+      "assembly": {
+        "channel_ambiguous_rows": 0,
+        "channels_resolved": 64,
+        "channels_seen": 64,
+        "matching_failures": 0,
+        "rows": 576,
+        "rows_with_no_candidate": 0,
+        "rows_with_unique_candidate": 576
+      },
+      "bias_collisions": 0,
+      "bias_groups": 64,
+      "bias_groups_oversized": 0,
+      "bias_multiset_recovered": true,
+      "channels_after_linkage": 64,
+      "channels_from_bias": 64,
+      "coordinates_nominal": 4096,
+      "coverage_placements": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "d_lta": 32,
+      "distinct_bias_values": 64,
+      "exact_up_to_row_perm": false,
+      "frame_check_exact": false,
+      "frame_check_max_abs_error": 53042,
+      "group": 13,
+      "informative_entries_per_query": 256,
+      "input_channels_dead": 0,
+      "input_channels_live": 32,
+      "isolation_failures": 0,
+      "kernel": 3,
+      "kind": "conv",
+      "layer": "layer3.0.conv1",
+      "linkage_failures": 0,
+      "linkage_queries": 0,
+      "lta_runs": [
+        {
+          "A": 255,
+          "T": 3,
+          "anchor_queries": 2,
+          "anchor_range": [
+            0,
+            249
+          ],
+          "anchor_tie_attempts": [
+            1,
+            0
+          ],
+          "certified_complete": true,
+          "channel_rounding_exact": true,
+          "channel_rounding_failures": 0,
+          "columns_backtracked": 0,
+          "columns_failed": 0,
+          "columns_forced_fraction": 1.0,
+          "d": 32,
+          "error": "",
+          "exact_up_to_row_perm": false,
+          "false_line_events": 0,
+          "inadmissible_query_entries": 0,
+          "inconsistent_pass2_matches": 0,
+          "informative_entries": 256,
+          "isolation_failures": 0,
+          "jstar": null,
+          "m": 256,
+          "max_abs_error_up_to_row_perm": 53042,
+          "n_passes": 1,
+          "n_queries": 98,
+          "n_queries_formula": "2 anchor queries + 1 pass(es) x T d = 2 + 1*3*32 = 98",
+          "n_ties_anchor1": 0,
+          "pass1": {
+            "backtrack_nodes_max": 1,
+            "cand_after_total": 8198,
+            "cand_before_total": 2093056,
+            "column_failures": [],
+            "columns_backtracked": 0,
+            "columns_failed": 0,
+            "columns_forced": 32,
+            "columns_total": 32,
+            "error": "",
+            "false_line_events": 0,
+            "max_multiplicity": 1,
+            "multiplicity_profile": {
+              "1": 256
+            },
+            "n_distinct_intercepts": 256,
+            "n_tied_groups": 0,
+            "n_tied_rows": 0,
+            "n_ties": 0,
+            "status": "ok"
+          },
+          "pass2_anchor_prediction_exact": null,
+          "pass2_overlap_checked": 0,
+          "pass2_overlap_mismatches": 0,
+          "pass2_used": false,
+          "placement": [
+            1,
+            1
+          ],
+          "queries_over_d": 3.062,
+          "redundant_true_row_copies_in_unresolved_groups": 0,
+          "rows_forced_as_group_residual": 0,
+          "rows_from_pass1": 256,
+          "rows_from_pass2": 0,
+          "rows_in_provably_identical_residuals": 0,
+          "rows_recovered_exactly": 0,
+          "status": "ok",
+          "taps": [
+            0,
+            2,
+            6,
+            8
+          ],
+          "unresolved_groups": 0,
+          "unresolved_groups_all_rows_identical": 0,
+          "unresolved_rows": 0,
+          "unresolved_rows_in_all_identical_groups": 0,
+          "unresolved_rows_in_mixed_groups": 0,
+          "wall_time_sec": 13.416
+        },
+        {
+          "A": 255,
+          "T": 3,
+          "anchor_queries": 1,
+          "anchor_range": [
+            0,
+            249
+          ],
+          "anchor_tie_attempts": [
+            0
+          ],
+          "certified_complete": true,
+          "channel_rounding_exact": true,
+          "channel_rounding_failures": 0,
+          "columns_backtracked": 0,
+          "columns_failed": 0,
+          "columns_forced_fraction": 1.0,
+          "d": 32,
+          "error": "",
+          "exact_up_to_row_perm": false,
+          "false_line_events": 0,
+          "inadmissible_query_entries": 0,
+          "inconsistent_pass2_matches": 0,
+          "informative_entries": 128,
+          "isolation_failures": 0,
+          "jstar": null,
+          "m": 128,
+          "max_abs_error_up_to_row_perm": 53042,
+          "n_passes": 1,
+          "n_queries": 97,
+          "n_queries_formula": "1 anchor queries + 1 pass(es) x T d = 1 + 1*3*32 = 97",
+          "n_ties_anchor1": 0,
+          "pass1": {
+            "backtrack_nodes_max": 0,
+            "cand_after_total": 4096,
+            "cand_before_total": 523776,
+            "column_failures": [],
+            "columns_backtracked": 0,
+            "columns_failed": 0,
+            "columns_forced": 32,
+            "columns_total": 32,
+            "error": "",
+            "false_line_events": 0,
+            "max_multiplicity": 1,
+            "multiplicity_profile": {
+              "1": 128
+            },
+            "n_distinct_intercepts": 128,
+            "n_tied_groups": 0,
+            "n_tied_rows": 0,
+            "n_ties": 0,
+            "status": "ok"
+          },
+          "pass2_anchor_prediction_exact": null,
+          "pass2_overlap_checked": 0,
+          "pass2_overlap_mismatches": 0,
+          "pass2_used": false,
+          "placement": [
+            0,
+            1
+          ],
+          "queries_over_d": 3.031,
+          "redundant_true_row_copies_in_unresolved_groups": 0,
+          "rows_forced_as_group_residual": 0,
+          "rows_from_pass1": 128,
+          "rows_from_pass2": 0,
+          "rows_in_provably_identical_residuals": 0,
+          "rows_recovered_exactly": 0,
+          "status": "ok",
+          "taps": [
+            3,
+            5
+          ],
+          "unresolved_groups": 0,
+          "unresolved_groups_all_rows_identical": 0,
+          "unresolved_rows": 0,
+          "unresolved_rows_in_all_identical_groups": 0,
+          "unresolved_rows_in_mixed_groups": 0,
+          "wall_time_sec": 13.135
+        },
+        {
+          "A": 255,
+          "T": 3,
+          "anchor_queries": 1,
+          "anchor_range": [
+            0,
+            249
+          ],
+          "anchor_tie_attempts": [
+            0
+          ],
+          "certified_complete": true,
+          "channel_rounding_exact": true,
+          "channel_rounding_failures": 0,
+          "columns_backtracked": 0,
+          "columns_failed": 0,
+          "columns_forced_fraction": 1.0,
+          "d": 32,
+          "error": "",
+          "exact_up_to_row_perm": false,
+          "false_line_events": 0,
+          "inadmissible_query_entries": 0,
+          "inconsistent_pass2_matches": 0,
+          "informative_entries": 128,
+          "isolation_failures": 0,
+          "jstar": null,
+          "m": 128,
+          "max_abs_error_up_to_row_perm": 53042,
+          "n_passes": 1,
+          "n_queries": 97,
+          "n_queries_formula": "1 anchor queries + 1 pass(es) x T d = 1 + 1*3*32 = 97",
+          "n_ties_anchor1": 0,
+          "pass1": {
+            "backtrack_nodes_max": 1,
+            "cand_after_total": 4097,
+            "cand_before_total": 523392,
+            "column_failures": [],
+            "columns_backtracked": 0,
+            "columns_failed": 0,
+            "columns_forced": 32,
+            "columns_total": 32,
+            "error": "",
+            "false_line_events": 0,
+            "max_multiplicity": 1,
+            "multiplicity_profile": {
+              "1": 128
+            },
+            "n_distinct_intercepts": 128,
+            "n_tied_groups": 0,
+            "n_tied_rows": 0,
+            "n_ties": 0,
+            "status": "ok"
+          },
+          "pass2_anchor_prediction_exact": null,
+          "pass2_overlap_checked": 0,
+          "pass2_overlap_mismatches": 0,
+          "pass2_used": false,
+          "placement": [
+            1,
+            0
+          ],
+          "queries_over_d": 3.031,
+          "redundant_true_row_copies_in_unresolved_groups": 0,
+          "rows_forced_as_group_residual": 0,
+          "rows_from_pass1": 128,
+          "rows_from_pass2": 0,
+          "rows_in_provably_identical_residuals": 0,
+          "rows_recovered_exactly": 0,
+          "status": "ok",
+          "taps": [
+            1,
+            7
+          ],
+          "unresolved_groups": 0,
+          "unresolved_groups_all_rows_identical": 0,
+          "unresolved_rows": 0,
+          "unresolved_rows_in_all_identical_groups": 0,
+          "unresolved_rows_in_mixed_groups": 0,
+          "wall_time_sec": 13.089
+        },
+        {
+          "A": 255,
+          "T": 3,
+          "anchor_queries": 1,
+          "anchor_range": [
+            0,
+            249
+          ],
+          "anchor_tie_attempts": [
+            0
+          ],
+          "certified_complete": true,
+          "channel_rounding_exact": true,
+          "channel_rounding_failures": 0,
+          "columns_backtracked": 0,
+          "columns_failed": 0,
+          "columns_forced_fraction": 1.0,
+          "d": 32,
+          "error": "",
+          "exact_up_to_row_perm": false,
+          "false_line_events": 0,
+          "inadmissible_query_entries": 0,
+          "inconsistent_pass2_matches": 0,
+          "informative_entries": 64,
+          "isolation_failures": 0,
+          "jstar": null,
+          "m": 64,
+          "max_abs_error_up_to_row_perm": 53042,
+          "n_passes": 1,
+          "n_queries": 97,
+          "n_queries_formula": "1 anchor queries + 1 pass(es) x T d = 1 + 1*3*32 = 97",
+          "n_ties_anchor1": 0,
+          "pass1": {
+            "backtrack_nodes_max": 1,
+            "cand_after_total": 2050,
+            "cand_before_total": 131072,
+            "column_failures": [],
+            "columns_backtracked": 0,
+            "columns_failed": 0,
+            "columns_forced": 32,
+            "columns_total": 32,
+            "error": "",
+            "false_line_events": 0,
+            "max_multiplicity": 1,
+            "multiplicity_profile": {
+              "1": 64
+            },
+            "n_distinct_intercepts": 64,
+            "n_tied_groups": 0,
+            "n_tied_rows": 0,
+            "n_ties": 0,
+            "status": "ok"
+          },
+          "pass2_anchor_prediction_exact": null,
+          "pass2_overlap_checked": 0,
+          "pass2_overlap_mismatches": 0,
+          "pass2_used": false,
+          "placement": [
+            0,
+            0
+          ],
+          "queries_over_d": 3.031,
+          "redundant_true_row_copies_in_unresolved_groups": 0,
+          "rows_forced_as_group_residual": 0,
+          "rows_from_pass1": 64,
+          "rows_from_pass2": 0,
+          "rows_in_provably_identical_residuals": 0,
+          "rows_recovered_exactly": 0,
+          "status": "ok",
+          "taps": [
+            4
+          ],
+          "unresolved_groups": 0,
+          "unresolved_groups_all_rows_identical": 0,
+          "unresolved_rows": 0,
+          "unresolved_rows_in_all_identical_groups": 0,
+          "unresolved_rows_in_mixed_groups": 0,
+          "wall_time_sec": 13.057
+        }
+      ],
+      "max_abs_error_up_to_row_perm": 53042,
+      "membership_anchor_collisions": 0,
+      "membership_attempts": 1,
+      "membership_queries": 8,
+      "output_channels_dead": 0,
+      "probe_hill_climb_steps": 0,
+      "probe_informative_coordinates": 448,
+      "probe_locatable_coordinates": 448,
+      "probe_locatable_fraction": 0.109375,
+      "probe_located_needed": 448,
+      "probe_needed_all_located": true,
+      "probe_needed_coordinates": 448,
+      "probe_needed_placements": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "probe_pixel_positions": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          15
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          15
+        ]
+      ],
+      "probe_pixels": 4,
+      "probe_verified": true,
+      "repair_attempts_used": 0,
+      "round": 13,
+      "rows_matched_to_true_rows": 0,
+      "rows_recovered_exactly": 0,
+      "rows_still_ambiguous": 0,
+      "sessions_used": 399,
+      "stride": 2,
+      "taps_not_covered_by_coverage_set": []
+    },
+    {
+      "C_in": 32,
+      "C_out": 64,
+      "bias_collisions": 0,
+      "bias_multiset_recovered": true,
+      "coordinates_nominal": 4096,
+      "d_lta": 32,
+      "distinct_bias_values": 64,
+      "exact_up_to_row_perm": false,
+      "frame_check_exact": false,
+      "frame_check_max_abs_error": 29211,
+      "group": 14,
+      "informative_entries_per_query": 64,
+      "input_channels_dead": 0,
+      "input_channels_live": 32,
+      "isolation_failures": 0,
+      "kind": "shortcut",
+      "layer": "layer3.0.shortcut",
+      "lta": {
+        "A": 255,
+        "T": 3,
+        "anchor_queries": 1,
+        "anchor_range": [
+          0,
+          249
+        ],
+        "anchor_tie_attempts": [
+          0
+        ],
+        "certified_complete": true,
+        "channel_rounding_exact": true,
+        "channel_rounding_failures": 0,
+        "columns_backtracked": 0,
+        "columns_failed": 0,
+        "columns_forced_fraction": 1.0,
+        "d": 32,
+        "error": "",
+        "exact_up_to_row_perm": false,
+        "false_line_events": 0,
+        "inadmissible_query_entries": 0,
+        "inconsistent_pass2_matches": 0,
+        "jstar": null,
+        "m": 64,
+        "max_abs_error_up_to_row_perm": 29211,
+        "n_passes": 1,
+        "n_queries": 97,
+        "n_queries_formula": "1 anchor queries + 1 pass(es) x T d = 1 + 1*3*32 = 97",
+        "n_ties_anchor1": 0,
+        "pass1": {
+          "backtrack_nodes_max": 0,
+          "cand_after_total": 2048,
+          "cand_before_total": 131072,
+          "column_failures": [],
+          "columns_backtracked": 0,
+          "columns_failed": 0,
+          "columns_forced": 32,
+          "columns_total": 32,
+          "error": "",
+          "false_line_events": 0,
+          "max_multiplicity": 1,
+          "multiplicity_profile": {
+            "1": 64
+          },
+          "n_distinct_intercepts": 64,
+          "n_tied_groups": 0,
+          "n_tied_rows": 0,
+          "n_ties": 0,
+          "status": "ok"
+        },
+        "pass2_anchor_prediction_exact": null,
+        "pass2_overlap_checked": 0,
+        "pass2_overlap_mismatches": 0,
+        "pass2_used": false,
+        "queries_over_d": 3.031,
+        "redundant_true_row_copies_in_unresolved_groups": 0,
+        "rows_forced_as_group_residual": 0,
+        "rows_from_pass1": 64,
+        "rows_from_pass2": 0,
+        "rows_in_provably_identical_residuals": 0,
+        "rows_recovered_exactly": 0,
+        "status": "ok",
+        "unresolved_groups": 0,
+        "unresolved_groups_all_rows_identical": 0,
+        "unresolved_rows": 0,
+        "unresolved_rows_in_all_identical_groups": 0,
+        "unresolved_rows_in_mixed_groups": 0,
+        "wall_time_sec": 13.074
+      },
+      "max_abs_error_up_to_row_perm": 29211,
+      "repair_attempts_used": 0,
+      "round": 14,
+      "rows_matched_to_true_rows": 0,
+      "rows_recovered_exactly": 0,
+      "sessions_used": 98,
+      "stride": 2
+    },
+    {
+      "C_in": 64,
+      "C_out": 64,
+      "H_out": 8,
+      "addressable_placements": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "assembly": {
+        "channel_ambiguous_rows": 0,
+        "channels_resolved": 64,
+        "channels_seen": 64,
+        "matching_failures": 0,
+        "rows": 576,
+        "rows_with_no_candidate": 0,
+        "rows_with_unique_candidate": 576
+      },
+      "background_matches_truth": false,
+      "coordinates_nominal": 4096,
+      "d_lta": 64,
+      "exact_up_to_row_perm": false,
+      "frame_check_exact": false,
+      "frame_check_max_abs_error": 127,
+      "group": 14,
+      "informative_entries_per_query": 576,
+      "input_channels_dead": 0,
+      "input_channels_live": 64,
+      "isolation_failures": 0,
+      "kind": "conv2",
+      "layer": "layer3.0.conv2",
+      "lta": {
+        "A": 255,
+        "T": 3,
+        "anchor_queries": 4,
+        "anchor_range": [
+          0,
+          249
+        ],
+        "anchor_tie_attempts": [
+          1,
+          2,
+          1,
+          0
+        ],
+        "certified_complete": true,
+        "channel_rounding_exact": true,
+        "channel_rounding_failures": 0,
+        "columns_backtracked": 0,
+        "columns_failed": 0,
+        "columns_forced_fraction": 1.0,
+        "d": 64,
+        "error": "",
+        "exact_up_to_row_perm": false,
+        "false_line_events": 0,
+        "inadmissible_query_entries": 0,
+        "inconsistent_pass2_matches": 0,
+        "jstar": null,
+        "m": 576,
+        "max_abs_error_up_to_row_perm": 29211,
+        "n_passes": 1,
+        "n_queries": 196,
+        "n_queries_formula": "4 anchor queries + 1 pass(es) x T d = 4 + 1*3*64 = 196",
+        "n_ties_anchor1": 0,
+        "pass1": {
+          "backtrack_nodes_max": 1,
+          "cand_after_total": 37179,
+          "cand_before_total": 21185280,
+          "column_failures": [],
+          "columns_backtracked": 0,
+          "columns_failed": 0,
+          "columns_forced": 64,
+          "columns_total": 64,
+          "error": "",
+          "false_line_events": 0,
+          "max_multiplicity": 1,
+          "multiplicity_profile": {
+            "1": 576
+          },
+          "n_distinct_intercepts": 576,
+          "n_tied_groups": 0,
+          "n_tied_rows": 0,
+          "n_ties": 0,
+          "status": "ok"
+        },
+        "pass2_anchor_prediction_exact": null,
+        "pass2_overlap_checked": 0,
+        "pass2_overlap_mismatches": 0,
+        "pass2_used": false,
+        "queries_over_d": 3.062,
+        "redundant_true_row_copies_in_unresolved_groups": 0,
+        "rows_forced_as_group_residual": 0,
+        "rows_from_pass1": 576,
+        "rows_from_pass2": 0,
+        "rows_in_provably_identical_residuals": 0,
+        "rows_recovered_exactly": 0,
+        "status": "ok",
+        "unresolved_groups": 0,
+        "unresolved_groups_all_rows_identical": 0,
+        "unresolved_rows": 0,
+        "unresolved_rows_in_all_identical_groups": 0,
+        "unresolved_rows_in_mixed_groups": 0,
+        "wall_time_sec": 29.21
+      },
+      "max_abs_error_up_to_row_perm": 29211,
+      "membership_anchor_collisions": 0,
+      "membership_attempts": 1,
+      "membership_queries": 4,
+      "output_channels_dead": 0,
+      "probe_hill_climb_steps": 0,
+      "probe_informative_coordinates": 1344,
+      "probe_locatable_coordinates": 1339,
+      "probe_locatable_fraction": 0.326904,
+      "probe_located_needed": 448,
+      "probe_needed_all_located": true,
+      "probe_needed_coordinates": 448,
+      "probe_needed_placements": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "probe_pixel_positions": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          7,
+          7
+        ]
+      ],
+      "probe_pixels": 4,
+      "probe_verified": true,
+      "repair_attempts_used": 0,
+      "round": 14,
+      "rows_fixed_by_intercept": 0,
+      "rows_recovered_exactly": 0,
+      "rows_still_ambiguous": 0,
+      "rows_without_intercept_match": 0,
+      "sessions_used": 201
+    },
+    {
+      "C_in": 64,
+      "C_out": 64,
+      "H_in": 8,
+      "H_out": 8,
+      "addressable_placements": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "assembly": {
+        "channel_ambiguous_rows": 0,
+        "channels_resolved": 64,
+        "channels_seen": 64,
+        "matching_failures": 0,
+        "rows": 576,
+        "rows_with_no_candidate": 0,
+        "rows_with_unique_candidate": 576
+      },
+      "bias_collisions": 1,
+      "bias_groups": 63,
+      "bias_groups_oversized": 1,
+      "bias_multiset_recovered": true,
+      "channels_after_linkage": 64,
+      "channels_from_bias": 63,
+      "coordinates_nominal": 4096,
+      "coverage_placements": [
+        [
+          1,
+          1
+        ]
+      ],
+      "d_lta": 64,
+      "distinct_bias_values": 63,
+      "exact_up_to_row_perm": false,
+      "frame_check_exact": false,
+      "frame_check_max_abs_error": 18860,
+      "group": 15,
+      "informative_entries_per_query": 576,
+      "input_channels_dead": 0,
+      "input_channels_live": 64,
+      "isolation_failures": 0,
+      "kernel": 3,
+      "kind": "conv",
+      "layer": "layer3.1.conv1",
+      "linkage_failures": 0,
+      "linkage_partners": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "linkage_queries": 6,
+      "linkage_tap_graph_connected": true,
+      "lta_runs": [
+        {
+          "A": 255,
+          "T": 3,
+          "anchor_queries": 3,
+          "anchor_range": [
+            0,
+            249
+          ],
+          "anchor_tie_attempts": [
+            2,
+            1,
+            0
+          ],
+          "certified_complete": true,
+          "channel_rounding_exact": true,
+          "channel_rounding_failures": 0,
+          "columns_backtracked": 0,
+          "columns_failed": 0,
+          "columns_forced_fraction": 1.0,
+          "d": 64,
+          "error": "",
+          "exact_up_to_row_perm": false,
+          "false_line_events": 0,
+          "inadmissible_query_entries": 0,
+          "inconsistent_pass2_matches": 0,
+          "informative_entries": 576,
+          "isolation_failures": 0,
+          "jstar": null,
+          "m": 576,
+          "max_abs_error_up_to_row_perm": 18860,
+          "n_passes": 1,
+          "n_queries": 195,
+          "n_queries_formula": "3 anchor queries + 1 pass(es) x T d = 3 + 1*3*64 = 195",
+          "n_ties_anchor1": 0,
+          "pass1": {
+            "backtrack_nodes_max": 1,
+            "cand_after_total": 37228,
+            "cand_before_total": 21157056,
+            "column_failures": [],
+            "columns_backtracked": 0,
+            "columns_failed": 0,
+            "columns_forced": 64,
+            "columns_total": 64,
+            "error": "",
+            "false_line_events": 0,
+            "max_multiplicity": 1,
+            "multiplicity_profile": {
+              "1": 576
+            },
+            "n_distinct_intercepts": 576,
+            "n_tied_groups": 0,
+            "n_tied_rows": 0,
+            "n_ties": 0,
+            "status": "ok"
+          },
+          "pass2_anchor_prediction_exact": null,
+          "pass2_overlap_checked": 0,
+          "pass2_overlap_mismatches": 0,
+          "pass2_used": false,
+          "placement": [
+            1,
+            1
+          ],
+          "queries_over_d": 3.047,
+          "redundant_true_row_copies_in_unresolved_groups": 0,
+          "rows_forced_as_group_residual": 0,
+          "rows_from_pass1": 576,
+          "rows_from_pass2": 0,
+          "rows_in_provably_identical_residuals": 0,
+          "rows_recovered_exactly": 0,
+          "status": "ok",
+          "taps": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "unresolved_groups": 0,
+          "unresolved_groups_all_rows_identical": 0,
+          "unresolved_rows": 0,
+          "unresolved_rows_in_all_identical_groups": 0,
+          "unresolved_rows_in_mixed_groups": 0,
+          "wall_time_sec": 29.742
+        }
+      ],
+      "max_abs_error_up_to_row_perm": 18860,
+      "membership_anchor_collisions": 0,
+      "membership_attempts": 1,
+      "membership_queries": 4,
+      "output_channels_dead": 0,
+      "probe_hill_climb_steps": 0,
+      "probe_informative_coordinates": 1344,
+      "probe_locatable_coordinates": 1330,
+      "probe_locatable_fraction": 0.324707,
+      "probe_located_needed": 448,
+      "probe_needed_all_located": true,
+      "probe_needed_coordinates": 448,
+      "probe_needed_placements": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "probe_pixel_positions": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          7,
+          7
+        ]
+      ],
+      "probe_pixels": 4,
+      "probe_verified": true,
+      "repair_attempts_used": 0,
+      "round": 15,
+      "rows_matched_to_true_rows": 0,
+      "rows_recovered_exactly": 0,
+      "rows_still_ambiguous": 0,
+      "sessions_used": 207,
+      "stride": 1,
+      "taps_not_covered_by_coverage_set": []
+    },
+    {
+      "C_in": 64,
+      "C_out": 64,
+      "bias_collisions": 0,
+      "bias_multiset_recovered": true,
+      "coordinates_nominal": 4096,
+      "d_lta": 64,
+      "distinct_bias_values": 64,
+      "exact_up_to_row_perm": false,
+      "frame_check_exact": false,
+      "frame_check_max_abs_error": 14948,
+      "group": 16,
+      "informative_entries_per_query": 64,
+      "input_channels_dead": 0,
+      "input_channels_live": 64,
+      "isolation_failures": 0,
+      "kind": "shortcut",
+      "layer": "layer3.1.shortcut",
+      "lta": {
+        "A": 255,
+        "T": 3,
+        "anchor_queries": 1,
+        "anchor_range": [
+          0,
+          249
+        ],
+        "anchor_tie_attempts": [
+          0
+        ],
+        "certified_complete": true,
+        "channel_rounding_exact": true,
+        "channel_rounding_failures": 0,
+        "columns_backtracked": 0,
+        "columns_failed": 0,
+        "columns_forced_fraction": 1.0,
+        "d": 64,
+        "error": "",
+        "exact_up_to_row_perm": false,
+        "false_line_events": 0,
+        "inadmissible_query_entries": 0,
+        "inconsistent_pass2_matches": 0,
+        "jstar": null,
+        "m": 64,
+        "max_abs_error_up_to_row_perm": 14948,
+        "n_passes": 1,
+        "n_queries": 193,
+        "n_queries_formula": "1 anchor queries + 1 pass(es) x T d = 1 + 1*3*64 = 193",
+        "n_ties_anchor1": 0,
+        "pass1": {
+          "backtrack_nodes_max": 0,
+          "cand_after_total": 4096,
+          "cand_before_total": 262144,
+          "column_failures": [],
+          "columns_backtracked": 0,
+          "columns_failed": 0,
+          "columns_forced": 64,
+          "columns_total": 64,
+          "error": "",
+          "false_line_events": 0,
+          "max_multiplicity": 1,
+          "multiplicity_profile": {
+            "1": 64
+          },
+          "n_distinct_intercepts": 64,
+          "n_tied_groups": 0,
+          "n_tied_rows": 0,
+          "n_ties": 0,
+          "status": "ok"
+        },
+        "pass2_anchor_prediction_exact": null,
+        "pass2_overlap_checked": 0,
+        "pass2_overlap_mismatches": 0,
+        "pass2_used": false,
+        "queries_over_d": 3.016,
+        "redundant_true_row_copies_in_unresolved_groups": 0,
+        "rows_forced_as_group_residual": 0,
+        "rows_from_pass1": 64,
+        "rows_from_pass2": 0,
+        "rows_in_provably_identical_residuals": 0,
+        "rows_recovered_exactly": 0,
+        "status": "ok",
+        "unresolved_groups": 0,
+        "unresolved_groups_all_rows_identical": 0,
+        "unresolved_rows": 0,
+        "unresolved_rows_in_all_identical_groups": 0,
+        "unresolved_rows_in_mixed_groups": 0,
+        "wall_time_sec": 27.767
+      },
+      "max_abs_error_up_to_row_perm": 14948,
+      "repair_attempts_used": 0,
+      "round": 16,
+      "rows_matched_to_true_rows": 0,
+      "rows_recovered_exactly": 0,
+      "sessions_used": 194,
+      "stride": 1
+    },
+    {
+      "C_in": 64,
+      "C_out": 64,
+      "H_out": 8,
+      "addressable_placements": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "assembly": {
+        "channel_ambiguous_rows": 0,
+        "channels_resolved": 64,
+        "channels_seen": 64,
+        "matching_failures": 0,
+        "rows": 576,
+        "rows_with_no_candidate": 0,
+        "rows_with_unique_candidate": 576
+      },
+      "background_matches_truth": false,
+      "coordinates_nominal": 4096,
+      "d_lta": 64,
+      "exact_up_to_row_perm": false,
+      "frame_check_exact": false,
+      "frame_check_max_abs_error": 127,
+      "group": 16,
+      "informative_entries_per_query": 576,
+      "input_channels_dead": 0,
+      "input_channels_live": 64,
+      "isolation_failures": 0,
+      "kind": "conv2",
+      "layer": "layer3.1.conv2",
+      "lta": {
+        "A": 255,
+        "T": 3,
+        "anchor_queries": 5,
+        "anchor_range": [
+          0,
+          249
+        ],
+        "anchor_tie_attempts": [
+          1,
+          4,
+          1,
+          1,
+          3
+        ],
+        "certified_complete": true,
+        "channel_rounding_exact": true,
+        "channel_rounding_failures": 0,
+        "columns_backtracked": 0,
+        "columns_failed": 0,
+        "columns_forced_fraction": 1.0,
+        "d": 64,
+        "error": "",
+        "exact_up_to_row_perm": false,
+        "false_line_events": 0,
+        "inadmissible_query_entries": 0,
+        "inconsistent_pass2_matches": 0,
+        "jstar": 0,
+        "jstar_groups_all_distinct": 1,
+        "m": 576,
+        "max_abs_error_up_to_row_perm": 82451,
+        "n_passes": 2,
+        "n_queries": 390,
+        "n_queries_formula": "6 anchor queries + 2 pass(es) x T d = 6 + 2*3*64 = 390",
+        "n_ties_anchor1": 1,
+        "n_ties_anchor2": 3,
+        "pass1": {
+          "backtrack_nodes_max": 1,
+          "cand_after_total": 37196,
+          "cand_before_total": 21135850,
+          "column_failures": [],
+          "columns_backtracked": 0,
+          "columns_failed": 0,
+          "columns_forced": 64,
+          "columns_total": 64,
+          "error": "",
+          "false_line_events": 0,
+          "max_multiplicity": 2,
+          "multiplicity_profile": {
+            "1": 574,
+            "2": 1
+          },
+          "n_distinct_intercepts": 575,
+          "n_tied_groups": 1,
+          "n_tied_rows": 2,
+          "n_ties": 1,
+          "status": "ok"
+        },
+        "pass2": {
+          "backtrack_nodes_max": 1,
+          "cand_after_total": 37220,
+          "cand_before_total": 21061761,
+          "column_failures": [],
+          "columns_backtracked": 0,
+          "columns_failed": 0,
+          "columns_forced": 64,
+          "columns_total": 64,
+          "error": "",
+          "false_line_events": 0,
+          "max_multiplicity": 2,
+          "multiplicity_profile": {
+            "1": 570,
+            "2": 3
+          },
+          "n_distinct_intercepts": 573,
+          "n_tied_groups": 3,
+          "n_tied_rows": 6,
+          "n_ties": 3,
+          "status": "ok"
+        },
+        "pass2_anchor_prediction_exact": true,
+        "pass2_overlap_checked": 568,
+        "pass2_overlap_mismatches": 0,
+        "pass2_used": true,
+        "queries_over_d": 6.094,
+        "redundant_true_row_copies_in_unresolved_groups": 0,
+        "rows_forced_as_group_residual": 0,
+        "rows_from_pass1": 574,
+        "rows_from_pass2": 2,
+        "rows_in_provably_identical_residuals": 0,
+        "rows_recovered_exactly": 0,
+        "status": "ok",
+        "unresolved_groups": 0,
+        "unresolved_groups_all_rows_identical": 0,
+        "unresolved_rows": 0,
+        "unresolved_rows_in_all_identical_groups": 0,
+        "unresolved_rows_in_mixed_groups": 0,
+        "wall_time_sec": 60.844
+      },
+      "max_abs_error_up_to_row_perm": 14948,
+      "membership_anchor_collisions": 3,
+      "membership_attempts": 1,
+      "membership_queries": 8,
+      "output_channels_dead": 0,
+      "probe_hill_climb_steps": 0,
+      "probe_informative_coordinates": 1344,
+      "probe_locatable_coordinates": 1336,
+      "probe_locatable_fraction": 0.326172,
+      "probe_located_needed": 448,
+      "probe_needed_all_located": true,
+      "probe_needed_coordinates": 448,
+      "probe_needed_placements": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "probe_pixel_positions": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          7,
+          7
+        ]
+      ],
+      "probe_pixels": 4,
+      "probe_verified": true,
+      "repair_attempts_used": 0,
+      "round": 16,
+      "rows_fixed_by_intercept": 63,
+      "rows_recovered_exactly": 0,
+      "rows_still_ambiguous": 0,
+      "rows_without_intercept_match": 0,
+      "sessions_used": 399
+    },
+    {
+      "C_in": 64,
+      "C_out": 64,
+      "H_in": 8,
+      "H_out": 8,
+      "addressable_placements": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "assembly": {
+        "channel_ambiguous_rows": 0,
+        "channels_resolved": 64,
+        "channels_seen": 64,
+        "matching_failures": 0,
+        "rows": 576,
+        "rows_with_no_candidate": 0,
+        "rows_with_unique_candidate": 576
+      },
+      "bias_collisions": 0,
+      "bias_groups": 64,
+      "bias_groups_oversized": 0,
+      "bias_multiset_recovered": true,
+      "channels_after_linkage": 64,
+      "channels_from_bias": 64,
+      "coordinates_nominal": 4096,
+      "coverage_placements": [
+        [
+          1,
+          1
+        ]
+      ],
+      "d_lta": 64,
+      "distinct_bias_values": 64,
+      "exact_up_to_row_perm": false,
+      "frame_check_exact": false,
+      "frame_check_max_abs_error": 15267,
+      "group": 17,
+      "informative_entries_per_query": 576,
+      "input_channels_dead": 0,
+      "input_channels_live": 64,
+      "isolation_failures": 0,
+      "kernel": 3,
+      "kind": "conv",
+      "layer": "layer3.2.conv1",
+      "linkage_failures": 0,
+      "linkage_queries": 0,
+      "lta_runs": [
+        {
+          "A": 255,
+          "T": 3,
+          "anchor_queries": 1,
+          "anchor_range": [
+            0,
+            249
+          ],
+          "anchor_tie_attempts": [
+            0
+          ],
+          "certified_complete": true,
+          "channel_rounding_exact": true,
+          "channel_rounding_failures": 0,
+          "columns_backtracked": 0,
+          "columns_failed": 0,
+          "columns_forced_fraction": 1.0,
+          "d": 64,
+          "error": "",
+          "exact_up_to_row_perm": false,
+          "false_line_events": 0,
+          "inadmissible_query_entries": 0,
+          "inconsistent_pass2_matches": 0,
+          "informative_entries": 576,
+          "isolation_failures": 0,
+          "jstar": null,
+          "m": 576,
+          "max_abs_error_up_to_row_perm": 15267,
+          "n_passes": 1,
+          "n_queries": 193,
+          "n_queries_formula": "1 anchor queries + 1 pass(es) x T d = 1 + 1*3*64 = 193",
+          "n_ties_anchor1": 0,
+          "pass1": {
+            "backtrack_nodes_max": 1,
+            "cand_after_total": 37455,
+            "cand_before_total": 21142080,
+            "column_failures": [],
+            "columns_backtracked": 0,
+            "columns_failed": 0,
+            "columns_forced": 64,
+            "columns_total": 64,
+            "error": "",
+            "false_line_events": 0,
+            "max_multiplicity": 1,
+            "multiplicity_profile": {
+              "1": 576
+            },
+            "n_distinct_intercepts": 576,
+            "n_tied_groups": 0,
+            "n_tied_rows": 0,
+            "n_ties": 0,
+            "status": "ok"
+          },
+          "pass2_anchor_prediction_exact": null,
+          "pass2_overlap_checked": 0,
+          "pass2_overlap_mismatches": 0,
+          "pass2_used": false,
+          "placement": [
+            1,
+            1
+          ],
+          "queries_over_d": 3.016,
+          "redundant_true_row_copies_in_unresolved_groups": 0,
+          "rows_forced_as_group_residual": 0,
+          "rows_from_pass1": 576,
+          "rows_from_pass2": 0,
+          "rows_in_provably_identical_residuals": 0,
+          "rows_recovered_exactly": 0,
+          "status": "ok",
+          "taps": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "unresolved_groups": 0,
+          "unresolved_groups_all_rows_identical": 0,
+          "unresolved_rows": 0,
+          "unresolved_rows_in_all_identical_groups": 0,
+          "unresolved_rows_in_mixed_groups": 0,
+          "wall_time_sec": 30.877
+        }
+      ],
+      "max_abs_error_up_to_row_perm": 15267,
+      "membership_anchor_collisions": 0,
+      "membership_attempts": 1,
+      "membership_queries": 4,
+      "output_channels_dead": 0,
+      "probe_hill_climb_steps": 1,
+      "probe_informative_coordinates": 1344,
+      "probe_locatable_coordinates": 1338,
+      "probe_locatable_fraction": 0.32666,
+      "probe_located_needed": 448,
+      "probe_needed_all_located": true,
+      "probe_needed_coordinates": 448,
+      "probe_needed_placements": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "probe_pixel_positions": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          7,
+          7
+        ]
+      ],
+      "probe_pixels": 4,
+      "probe_verified": true,
+      "repair_attempts_used": 0,
+      "round": 17,
+      "rows_matched_to_true_rows": 0,
+      "rows_recovered_exactly": 0,
+      "rows_still_ambiguous": 0,
+      "sessions_used": 199,
+      "stride": 1,
+      "taps_not_covered_by_coverage_set": []
+    },
+    {
+      "C_in": 64,
+      "C_out": 64,
+      "bias_collisions": 0,
+      "bias_multiset_recovered": true,
+      "coordinates_nominal": 4096,
+      "d_lta": 64,
+      "distinct_bias_values": 64,
+      "exact_up_to_row_perm": false,
+      "frame_check_exact": false,
+      "frame_check_max_abs_error": 5933,
+      "group": 18,
+      "informative_entries_per_query": 64,
+      "input_channels_dead": 0,
+      "input_channels_live": 64,
+      "isolation_failures": 0,
+      "kind": "shortcut",
+      "layer": "layer3.2.shortcut",
+      "lta": {
+        "A": 255,
+        "T": 3,
+        "anchor_queries": 1,
+        "anchor_range": [
+          0,
+          249
+        ],
+        "anchor_tie_attempts": [
+          0
+        ],
+        "certified_complete": true,
+        "channel_rounding_exact": true,
+        "channel_rounding_failures": 0,
+        "columns_backtracked": 0,
+        "columns_failed": 0,
+        "columns_forced_fraction": 1.0,
+        "d": 64,
+        "error": "",
+        "exact_up_to_row_perm": false,
+        "false_line_events": 0,
+        "inadmissible_query_entries": 0,
+        "inconsistent_pass2_matches": 0,
+        "jstar": null,
+        "m": 64,
+        "max_abs_error_up_to_row_perm": 5933,
+        "n_passes": 1,
+        "n_queries": 193,
+        "n_queries_formula": "1 anchor queries + 1 pass(es) x T d = 1 + 1*3*64 = 193",
+        "n_ties_anchor1": 0,
+        "pass1": {
+          "backtrack_nodes_max": 0,
+          "cand_after_total": 4096,
+          "cand_before_total": 262144,
+          "column_failures": [],
+          "columns_backtracked": 0,
+          "columns_failed": 0,
+          "columns_forced": 64,
+          "columns_total": 64,
+          "error": "",
+          "false_line_events": 0,
+          "max_multiplicity": 1,
+          "multiplicity_profile": {
+            "1": 64
+          },
+          "n_distinct_intercepts": 64,
+          "n_tied_groups": 0,
+          "n_tied_rows": 0,
+          "n_ties": 0,
+          "status": "ok"
+        },
+        "pass2_anchor_prediction_exact": null,
+        "pass2_overlap_checked": 0,
+        "pass2_overlap_mismatches": 0,
+        "pass2_used": false,
+        "queries_over_d": 3.016,
+        "redundant_true_row_copies_in_unresolved_groups": 0,
+        "rows_forced_as_group_residual": 0,
+        "rows_from_pass1": 64,
+        "rows_from_pass2": 0,
+        "rows_in_provably_identical_residuals": 0,
+        "rows_recovered_exactly": 0,
+        "status": "ok",
+        "unresolved_groups": 0,
+        "unresolved_groups_all_rows_identical": 0,
+        "unresolved_rows": 0,
+        "unresolved_rows_in_all_identical_groups": 0,
+        "unresolved_rows_in_mixed_groups": 0,
+        "wall_time_sec": 29.174
+      },
+      "max_abs_error_up_to_row_perm": 5933,
+      "repair_attempts_used": 0,
+      "round": 18,
+      "rows_matched_to_true_rows": 0,
+      "rows_recovered_exactly": 0,
+      "sessions_used": 194,
+      "stride": 1
+    },
+    {
+      "C_in": 64,
+      "C_out": 64,
+      "H_out": 8,
+      "addressable_placements": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "assembly": {
+        "channel_ambiguous_rows": 0,
+        "channels_resolved": 64,
+        "channels_seen": 64,
+        "matching_failures": 0,
+        "rows": 576,
+        "rows_with_no_candidate": 0,
+        "rows_with_unique_candidate": 576
+      },
+      "background_matches_truth": false,
+      "coordinates_nominal": 4096,
+      "d_lta": 64,
+      "exact_up_to_row_perm": false,
+      "frame_check_exact": false,
+      "frame_check_max_abs_error": 127,
+      "group": 18,
+      "informative_entries_per_query": 576,
+      "input_channels_dead": 0,
+      "input_channels_live": 64,
+      "isolation_failures": 0,
+      "kind": "conv2",
+      "layer": "layer3.2.conv2",
+      "lta": {
+        "A": 255,
+        "T": 3,
+        "anchor_queries": 3,
+        "anchor_range": [
+          0,
+          249
+        ],
+        "anchor_tie_attempts": [
+          2,
+          1,
+          0
+        ],
+        "certified_complete": true,
+        "channel_rounding_exact": true,
+        "channel_rounding_failures": 0,
+        "columns_backtracked": 0,
+        "columns_failed": 0,
+        "columns_forced_fraction": 1.0,
+        "d": 64,
+        "error": "",
+        "exact_up_to_row_perm": false,
+        "false_line_events": 0,
+        "inadmissible_query_entries": 0,
+        "inconsistent_pass2_matches": 0,
+        "jstar": null,
+        "m": 576,
+        "max_abs_error_up_to_row_perm": 29568,
+        "n_passes": 1,
+        "n_queries": 195,
+        "n_queries_formula": "3 anchor queries + 1 pass(es) x T d = 3 + 1*3*64 = 195",
+        "n_ties_anchor1": 0,
+        "pass1": {
+          "backtrack_nodes_max": 1,
+          "cand_after_total": 38422,
+          "cand_before_total": 21098880,
+          "column_failures": [],
+          "columns_backtracked": 0,
+          "columns_failed": 0,
+          "columns_forced": 64,
+          "columns_total": 64,
+          "error": "",
+          "false_line_events": 0,
+          "max_multiplicity": 1,
+          "multiplicity_profile": {
+            "1": 576
+          },
+          "n_distinct_intercepts": 576,
+          "n_tied_groups": 0,
+          "n_tied_rows": 0,
+          "n_ties": 0,
+          "status": "ok"
+        },
+        "pass2_anchor_prediction_exact": null,
+        "pass2_overlap_checked": 0,
+        "pass2_overlap_mismatches": 0,
+        "pass2_used": false,
+        "queries_over_d": 3.047,
+        "redundant_true_row_copies_in_unresolved_groups": 0,
+        "rows_forced_as_group_residual": 0,
+        "rows_from_pass1": 576,
+        "rows_from_pass2": 0,
+        "rows_in_provably_identical_residuals": 0,
+        "rows_recovered_exactly": 0,
+        "status": "ok",
+        "unresolved_groups": 0,
+        "unresolved_groups_all_rows_identical": 0,
+        "unresolved_rows": 0,
+        "unresolved_rows_in_all_identical_groups": 0,
+        "unresolved_rows_in_mixed_groups": 0,
+        "wall_time_sec": 31.728
+      },
+      "max_abs_error_up_to_row_perm": 5933,
+      "membership_anchor_collisions": 16,
+      "membership_attempts": 1,
+      "membership_queries": 12,
+      "output_channels_dead": 0,
+      "probe_hill_climb_steps": 80,
+      "probe_informative_coordinates": 1344,
+      "probe_locatable_coordinates": 1336,
+      "probe_locatable_fraction": 0.326172,
+      "probe_located_needed": 446,
+      "probe_needed_all_located": false,
+      "probe_needed_coordinates": 448,
+      "probe_needed_placements": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "probe_pixel_positions": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          7,
+          7
+        ]
+      ],
+      "probe_pixels": 4,
+      "probe_verified": true,
+      "repair_attempts_used": 0,
+      "round": 18,
+      "rows_fixed_by_intercept": 63,
+      "rows_recovered_exactly": 0,
+      "rows_still_ambiguous": 0,
+      "rows_without_intercept_match": 0,
+      "sessions_used": 208
+    },
+    {
+      "C_in": 64,
+      "H_in": 8,
+      "exact_up_to_row_perm": false,
+      "frame_check_exact": false,
+      "frame_check_max_abs_error": 127,
+      "group": 19,
+      "input_channels_dead": 0,
+      "input_channels_live": 64,
+      "kind": "fc",
+      "layer": "fc",
+      "m": 10,
+      "max_abs_error_up_to_row_perm": 127,
+      "pooled_alphabet_max": 59,
+      "pooling_positions_located": 15,
+      "pooling_positions_total": 64,
+      "readout": "unshuffled final round, labelled read, live channels + 1 sessions",
+      "repair_attempts_used": 0,
+      "round": 19,
+      "rows_recovered_exactly": 0,
+      "sessions_used": 65
+    }
+  ],
+  "records_total": 29,
+  "recovered_arrays_sha256": "72a3a5d7f7fe3344f283d29fe65f9d12dabd87accb400b3c03f936d21854b7dd",
+  "recovered_meta_sha256": "d49345c2820771ede65ccce55a8e1935d3bb8fbad996e522903880bf7034cbf6",
+  "recovered_model_sha256": "b3b291c77186dfbccf406cd3bb361e9dc257788e1886174bc2f3ea6966babcda",
+  "schema": "p050-rpc-attacker-v1",
+  "server_close": {
+    "attacker_transcript_sha256": "2bfba1e152a723c4e9a5403abdcab7ef59177feaf241102a4953154f02c98105",
+    "request_bytes": 5632165020,
+    "request_messages": 77196,
+    "response_bytes": 4430989708,
+    "response_messages": 77196,
+    "status": "closed",
+    "transcript_hash_match": true,
+    "transcript_sha256": "2bfba1e152a723c4e9a5403abdcab7ef59177feaf241102a4953154f02c98105"
+  },
+  "start_method": "spawn",
+  "status": "complete",
+  "success": true,
+  "wall_time_sec": 492.946
+}

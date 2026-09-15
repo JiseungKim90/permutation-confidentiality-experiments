@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the associated article."
+title: "TDSC identifiability and recovery experiments"
+type: software
+authors:
+  - family-names: Kim
+    given-names: Jiseung
+  - family-names: Lee
+    given-names: Hyung Tae
+repository-code: "https://github.com/JiseungKim90/permutation-confidentiality-experiments"
+preferred-citation:
+  type: article
+  title: "When Do Fresh Permutations Hide a Model? Identifiability of Multi-Round Hybrid-FHE Transcripts"
+  authors:
+    - family-names: Kim
+      given-names: Jiseung
+    - family-names: Lee
+      given-names: Hyung Tae
+  journal: "IEEE Transactions on Dependable and Secure Computing"
+  year: 2026

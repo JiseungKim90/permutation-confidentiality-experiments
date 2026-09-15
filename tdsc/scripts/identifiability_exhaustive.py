@@ -3,8 +3,8 @@
 
 The script uses only the Python standard library.  A model is represented by a
 multiset of affine rows, so distinct enumerated models are already quotiented by
-the unavoidable common row permutation.  It is intended to run on ubuntu02;
-local execution is only a syntax/smoke check.
+the unavoidable common row permutation. Run the exhaustive configuration on a
+Linux research host; a local run can be used for syntax and smoke checks.
 """
 
 import argparse

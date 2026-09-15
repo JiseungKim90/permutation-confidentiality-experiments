@@ -1,0 +1,73 @@
+{
+  "schema": "p050-postrun-verification-v1",
+  "run_name": "rpc-isolated-boundary-failclosed-repro-20260915-v7",
+  "verified_at": "2026-09-15T04:33:58.0851953+09:00",
+  "host_alias": "recorded Linux research host",
+  "success": true,
+  "process_exit_codes": {
+    "attacker": 0,
+    "evaluator": 0,
+    "oracle": 0
+  },
+  "attacker_boundary": {
+    "private_config_keys_present": [],
+    "private_environment_keys_present": [],
+    "private_imported_globals_present": [],
+    "seed_disclosed_to_attacker": false,
+    "truth_digest_disclosed_to_attacker": false,
+    "truth_digest_comparison_stage": "parent after attacker exit",
+    "forbidden_open_attempts": 0,
+    "public_secret_nonzero_entries": 0
+  },
+  "extraction": {
+    "sessions_total": 3676,
+    "records_total": 29,
+    "records_certified": 29,
+    "lta_invocations_total": 34,
+    "lta_invocations_certified": 34,
+    "lta_passes_total": 36,
+    "failed_lta_runs": [],
+    "inadmissible_query_entries": 0,
+    "rounding_failures": 0,
+    "transcript_hash_match": true
+  },
+  "evaluation": {
+    "full_images": 10000,
+    "full_identical_logit_vectors": 10000,
+    "full_accuracy_private": 92.09,
+    "full_accuracy_recovered": 92.09,
+    "calibration_overlap_images": 64,
+    "post_calibration_images": 9936,
+    "post_calibration_identical_logit_vectors": 9936,
+    "post_calibration_accuracy_private": 92.11956521739131,
+    "post_calibration_accuracy_recovered": 92.11956521739131,
+    "max_abs_logit_difference": 0
+  },
+  "arithmetic": {
+    "trace_rows": 73520,
+    "input_below_zero": 0,
+    "input_above_activation_max": 0,
+    "global_output_min": -171319,
+    "global_output_max": 158161,
+    "minimum_signed_bits": 19,
+    "signed_16_bit_overflow_evaluations": 52044,
+    "deployment_width_mapping": null,
+    "canonical_encoding": "UTF-8 canonical NDJSON; gzip filename empty; mtime=0"
+  },
+  "model_sha256": {
+    "private": "08185fccb93a919a4d16a3232dbf3a6339315d6d0b40ea3aa4a72c56cfbacb6d",
+    "recovered": "b3b291c77186dfbccf406cd3bb361e9dc257788e1886174bc2f3ea6966babcda"
+  },
+  "file_sha256": {
+    "arithmetic.ndjson.gz": "c5f2aba5affea371a4d50e82c98558c594368ca5d87ae9b1298ed3486f7d3cdb",
+    "arithmetic.uncompressed.ndjson": "1ff92bff62e9a5dccabb640b097664e68124b08e2b02380af4d9a63d187b9951",
+    "attacker.json": "708b07394263774fb2c3824bb746c11d8de8a810ad3017624b0164dcae827825",
+    "evaluator.json": "2acb012d0fbc6165436353056719cc0434a26bbf44c5c8b3260749dfd78b9c3f",
+    "launch.json": "04e300627460d4eff7d9f550f499d06ca8b7c3e350b045c7c4c83895263cb644",
+    "oracle.json": "7c849838418b6da2886df89d18fd26f4e227bd7e130efd19a6d7aee81eaceace",
+    "recovered.json": "d49345c2820771ede65ccce55a8e1935d3bb8fbad996e522903880bf7034cbf6",
+    "recovered.npz": "72a3a5d7f7fe3344f283d29fe65f9d12dabd87accb400b3c03f936d21854b7dd",
+    "result.json": "8c3b28dfb476ac5c1b3069da48ef1edd59070e6f9bfc17f012db6e8080dec556",
+    "run.log": "932d0e1d539189ed48add76a6b60f5183fae214baf8868b1563438a9071c1f6d"
+  }
+}
