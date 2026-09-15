@@ -1,16 +1,17 @@
 # Submission Artifact Manifest
 
 This manifest describes the **canonical submission artifact** for
-“Shuffling is Not Enough: An Impossibility Result for Permutation-Based
-Model Confidentiality”.
+“Shuffling is Not Enough: Breaking Permutation-Based Model Confidentiality
+in Hybrid FHE Inference”.
 
 ## Canonical entrypoints
 
 - `run_all.sh`
   Reproduces the core theorem-supporting experiments and appendix checks.
 - `run_kd_submission.sh`
-  Reproduces the main-text KD table under the canonical submission setting
-  (quantized teacher logits, fixed random subset, 10 epochs, 10 seeds).
+  Reproduces the reviewer-time KD regression setting (quantized teacher
+  logits, fixed random subset, 10 epochs, 10 seeds). These runs are distinct
+  from the 100-epoch ESORICS table records listed below.
 - `run_submission_artifact.sh`
   Runs the two scripts above in sequence.
 - `prepare_submission_artifact.sh`
@@ -65,6 +66,26 @@ Model Confidentiality”.
 - `outputs/logs/r50_imagenette_per_layer_diag_intermediate_mults_lab614.log` (R50 Imagenette intermediate sweep mult∈{1,10,30,50,70,100}, N=3 trials; supports §5.4 phase-transition claim)
 - `outputs/r50_imagenette_per_layer_diag_intermediate_mults.json` (full results: collapse confirmed 30×→70×, pred_agreement 85.9%→0.67%)
 
+## Published ESORICS KD records carried into the journal article
+
+The journal article reproduces the accepted ESORICS distillation table as
+explicitly labelled prior evidence. Its source is the following 100-epoch,
+10-seed records, not the 10-epoch reviewer-time regression above:
+
+- `outputs/kd_r20_q1000_e100_s10.json`
+- `outputs/kd_r20_q2000_e100_s10.json`
+- `outputs/kd_r20_q5000_e100_s10.json`
+- `outputs/kd_r56_q2000_e100_s10.json`
+- `outputs/kd_r56_q5000_e100_s10.json`
+- `outputs/kd_scrambled_r20_q5000_e100_s10.json`
+
+The five main records reproduce, after rounding to two decimals, the rows
+`47.21/48.60/50.09/51.11`, `56.16/58.84/59.87/60.07`,
+`71.58/72.71/74.66/74.12`, `53.28/53.60/55.38/54.53`, and
+`70.99/72.46/73.50/72.53`. The separate control record gives scrambled
+column-norm accuracy `74.02`. Every JSON embeds its teacher, query budget,
+training length, seed count, optimizer parameters, and per-seed histories.
+
 ## Canonical included scripts
 
 - `scripts/00_train_cifar.py`
@@ -88,7 +109,10 @@ Model Confidentiality”.
 - `scripts/21_multi_query_averaging.py`
 - `scripts/22b_property_inference.py`
 
-## Canonical KD setting
+## Reviewer-time KD regression setting
+
+This shorter setting supports an artifact regression and is not the source of
+the 100-epoch ESORICS table reproduced in the journal article.
 
 - Teacher checkpoint: `models/resnet20_seed0.pt`
 - Teacher logits: quantized checkpoint forward pass (`p = 256`)
@@ -109,6 +133,9 @@ Model Confidentiality”.
   output files included in the submission artifact.
 - This manifest describes only the reviewer-facing bundle produced by
   `prepare_submission_artifact.sh`.
+- The immutable journal release tag retains the 100-epoch ESORICS records
+  listed above even though the staging script selects the smaller regression
+  bundle. Do not compare its 10-epoch means with the published table.
 - The reviewer-facing bundle intentionally excludes exploratory material such as
   `outputs/legacy/`, `scripts/17_kd_spectral_priors_mnist.py`, and the negative
   CKKS transcript prototype `scripts/26_ckks_resnet_transcript.py`.

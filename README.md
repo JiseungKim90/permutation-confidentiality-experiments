@@ -12,6 +12,18 @@ journal extension asks when complete multi-round transcripts determine one
 observable affine model, develops the corresponding frame-consistent recovery,
 and separates transcript agreement from prediction agreement.
 
+## ESORICS carryover provenance
+
+The journal article labels its single-layer recovery, fingerprinting,
+distillation, and noise/utility results as prior ESORICS evidence. The exact
+100-epoch JSON records behind the reproduced distillation table are frozen in
+this release at `outputs/kd_r20_q{1000,2000,5000}_e100_s10.json`,
+`outputs/kd_r56_q{2000,5000}_e100_s10.json`, and
+`outputs/kd_scrambled_r20_q5000_e100_s10.json`. See
+[`ARTIFACT_MANIFEST.md`](ARTIFACT_MANIFEST.md) for the numerical mapping and
+for the explicit distinction from the separate 10-epoch reviewer-time
+regression.
+
 ## Journal reproduction package
 
 Start with [tdsc/README.md](tdsc/README.md). The `tdsc/` directory includes:

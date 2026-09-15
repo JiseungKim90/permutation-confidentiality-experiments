@@ -2,9 +2,12 @@
 
 This directory is the public reproduction package for **When Do Fresh
 Permutations Hide a Model? Identifiability of Multi-Round Hybrid-FHE
-Transcripts**. It supplements the ESORICS artifact with the journal extension's
-multi-round identifiability checks, process-isolated ResNet-20 extraction, and
-class-aware completion experiment.
+Transcripts**. It adds the journal extension's code to the ESORICS artifact,
+including multi-round identifiability checks, process-isolated ResNet-20
+extraction, and the class-aware completion experiment.
+
+This GitHub package is the public artifact referenced by URL. The article does
+not depend on a separate supplementary-material submission.
 
 The package contains the complete source required to reproduce every
 code-backed result retained in the journal article. Obsolete exploratory
