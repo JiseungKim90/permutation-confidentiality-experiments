@@ -1,0 +1,821 @@
+{
+  "schema": "p050-tdsc-identifiability-exhaustive-v2",
+  "success": true,
+  "finite_domain_witness": {
+    "distinguished_at_input_2": true,
+    "inputs": [
+      0,
+      1
+    ],
+    "model_a_rows": [
+      [
+        -1,
+        1
+      ],
+      [
+        1,
+        0
+      ]
+    ],
+    "model_b_rows": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "response_at_2_a": [
+      -1,
+      2
+    ],
+    "response_at_2_b": [
+      0,
+      1
+    ],
+    "same_on_admissible_domain": true,
+    "signature_a": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "signature_b": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ]
+    ]
+  },
+  "fibre_cases": [
+    {
+      "clip_bounds": null,
+      "coefficient_alphabet": [
+        -1,
+        0,
+        1
+      ],
+      "dimension": 1,
+      "input_count": 2,
+      "input_grid_values": [
+        0,
+        1
+      ],
+      "largest_fibre": 2,
+      "name": "m2_d1_signed_two_inputs",
+      "nontrivial_classes": 2,
+      "orbits_in_nontrivial_classes": 4,
+      "row_permutation_orbits": 45,
+      "singleton_classes": 41,
+      "transcript_classes": 43,
+      "width": 2,
+      "witness": {
+        "fibre_size": 2,
+        "models": [
+          [
+            [
+              -1,
+              0
+            ],
+            [
+              1,
+              -1
+            ]
+          ],
+          [
+            [
+              0,
+              -1
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        ],
+        "signature": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "clip_bounds": null,
+      "coefficient_alphabet": [
+        -1,
+        0,
+        1
+      ],
+      "dimension": 1,
+      "input_count": 3,
+      "input_grid_values": [
+        -1,
+        0,
+        1
+      ],
+      "largest_fibre": 1,
+      "name": "m2_d1_signed_grid_m_plus_1",
+      "nontrivial_classes": 0,
+      "orbits_in_nontrivial_classes": 0,
+      "row_permutation_orbits": 45,
+      "singleton_classes": 45,
+      "transcript_classes": 45,
+      "width": 2,
+      "witness": null
+    },
+    {
+      "clip_bounds": null,
+      "coefficient_alphabet": [
+        -1,
+        0,
+        1
+      ],
+      "dimension": 1,
+      "input_count": 2,
+      "input_grid_values": [
+        -1,
+        0
+      ],
+      "largest_fibre": 3,
+      "name": "m3_d1_signed_two_inputs",
+      "nontrivial_classes": 17,
+      "orbits_in_nontrivial_classes": 35,
+      "row_permutation_orbits": 165,
+      "singleton_classes": 130,
+      "transcript_classes": 147,
+      "width": 3,
+      "witness": {
+        "fibre_size": 3,
+        "models": [
+          [
+            [
+              -1,
+              -1
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              -1,
+              0
+            ],
+            [
+              0,
+              -1
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          [
+            [
+              0,
+              -1
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ]
+        ],
+        "signature": [
+          [
+            -1,
+            0,
+            1
+          ],
+          [
+            -1,
+            0,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "clip_bounds": null,
+      "coefficient_alphabet": [
+        -1,
+        0,
+        1
+      ],
+      "dimension": 1,
+      "input_count": 4,
+      "input_grid_values": [
+        -1,
+        0,
+        1,
+        2
+      ],
+      "largest_fibre": 1,
+      "name": "m3_d1_signed_grid_m_plus_1",
+      "nontrivial_classes": 0,
+      "orbits_in_nontrivial_classes": 0,
+      "row_permutation_orbits": 165,
+      "singleton_classes": 165,
+      "transcript_classes": 165,
+      "width": 3,
+      "witness": null
+    },
+    {
+      "clip_bounds": null,
+      "coefficient_alphabet": [
+        -1,
+        0,
+        1
+      ],
+      "dimension": 2,
+      "input_count": 4,
+      "input_grid_values": [
+        0,
+        1
+      ],
+      "largest_fibre": 3,
+      "name": "m2_d2_signed_boolean_grid",
+      "nontrivial_classes": 10,
+      "orbits_in_nontrivial_classes": 22,
+      "row_permutation_orbits": 378,
+      "singleton_classes": 356,
+      "transcript_classes": 366,
+      "width": 2,
+      "witness": {
+        "fibre_size": 3,
+        "models": [
+          [
+            [
+              -1,
+              0,
+              0
+            ],
+            [
+              1,
+              0,
+              -1
+            ]
+          ],
+          [
+            [
+              0,
+              -1,
+              0
+            ],
+            [
+              0,
+              1,
+              -1
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              -1
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "signature": [
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            0
+          ],
+          [
+            -1,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "clip_bounds": null,
+      "coefficient_alphabet": [
+        -1,
+        0,
+        1
+      ],
+      "dimension": 2,
+      "input_count": 9,
+      "input_grid_values": [
+        -1,
+        0,
+        1
+      ],
+      "largest_fibre": 1,
+      "name": "m2_d2_signed_grid_m_plus_1",
+      "nontrivial_classes": 0,
+      "orbits_in_nontrivial_classes": 0,
+      "row_permutation_orbits": 378,
+      "singleton_classes": 378,
+      "transcript_classes": 378,
+      "width": 2,
+      "witness": null
+    },
+    {
+      "clip_bounds": [
+        -1,
+        1
+      ],
+      "coefficient_alphabet": [
+        -1,
+        0,
+        1
+      ],
+      "dimension": 2,
+      "input_count": 9,
+      "input_grid_values": [
+        -1,
+        0,
+        1
+      ],
+      "largest_fibre": 1,
+      "name": "m2_d2_signed_grid_with_clipping",
+      "nontrivial_classes": 0,
+      "orbits_in_nontrivial_classes": 0,
+      "row_permutation_orbits": 378,
+      "singleton_classes": 378,
+      "transcript_classes": 378,
+      "width": 2,
+      "witness": null
+    },
+    {
+      "clip_bounds": null,
+      "coefficient_alphabet": [
+        -2,
+        -1,
+        0,
+        1,
+        2
+      ],
+      "dimension": 1,
+      "input_count": 3,
+      "input_grid_values": [
+        -1,
+        0,
+        1
+      ],
+      "largest_fibre": 1,
+      "name": "m2_d1_wide_grid_m_plus_1",
+      "nontrivial_classes": 0,
+      "orbits_in_nontrivial_classes": 0,
+      "row_permutation_orbits": 325,
+      "singleton_classes": 325,
+      "transcript_classes": 325,
+      "width": 2,
+      "witness": null
+    },
+    {
+      "clip_bounds": [
+        -1,
+        1
+      ],
+      "coefficient_alphabet": [
+        -2,
+        -1,
+        0,
+        1,
+        2
+      ],
+      "dimension": 1,
+      "input_count": 3,
+      "input_grid_values": [
+        -1,
+        0,
+        1
+      ],
+      "largest_fibre": 18,
+      "name": "m2_d1_wide_grid_with_clipping",
+      "nontrivial_classes": 70,
+      "orbits_in_nontrivial_classes": 312,
+      "row_permutation_orbits": 325,
+      "singleton_classes": 13,
+      "transcript_classes": 83,
+      "width": 2,
+      "witness": {
+        "fibre_size": 18,
+        "models": [
+          [
+            [
+              -2,
+              -1
+            ],
+            [
+              2,
+              1
+            ]
+          ],
+          [
+            [
+              -2,
+              1
+            ],
+            [
+              2,
+              -1
+            ]
+          ],
+          [
+            [
+              -1,
+              -2
+            ],
+            [
+              -1,
+              2
+            ]
+          ]
+        ],
+        "signature": [
+          [
+            -1,
+            1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            -1,
+            1
+          ]
+        ]
+      }
+    }
+  ],
+  "stabilizer_control": {
+    "alphabet": [
+      0,
+      1
+    ],
+    "max_width": 6,
+    "records": [
+      {
+        "condition_mismatches": 0,
+        "controllable_pairs": 4,
+        "controller_failures": 0,
+        "permutations_per_pair": 1,
+        "response_target_pairs": 4,
+        "width": 1
+      },
+      {
+        "condition_mismatches": 0,
+        "controllable_pairs": 12,
+        "controller_failures": 0,
+        "permutations_per_pair": 2,
+        "response_target_pairs": 16,
+        "width": 2
+      },
+      {
+        "condition_mismatches": 0,
+        "controllable_pairs": 28,
+        "controller_failures": 0,
+        "permutations_per_pair": 6,
+        "response_target_pairs": 64,
+        "width": 3
+      },
+      {
+        "condition_mismatches": 0,
+        "controllable_pairs": 60,
+        "controller_failures": 0,
+        "permutations_per_pair": 24,
+        "response_target_pairs": 256,
+        "width": 4
+      },
+      {
+        "condition_mismatches": 0,
+        "controllable_pairs": 124,
+        "controller_failures": 0,
+        "permutations_per_pair": 120,
+        "response_target_pairs": 1024,
+        "width": 5
+      },
+      {
+        "condition_mismatches": 0,
+        "controllable_pairs": 252,
+        "controller_failures": 0,
+        "permutations_per_pair": 720,
+        "response_target_pairs": 4096,
+        "width": 6
+      }
+    ],
+    "total_condition_mismatches": 0,
+    "total_controller_failures": 0
+  },
+  "two_round_kernels": [
+    {
+      "clip_first": null,
+      "clip_second": null,
+      "coefficient_alphabet": [
+        -1,
+        0,
+        1
+      ],
+      "dimensions": [
+        1,
+        2,
+        2
+      ],
+      "first_inputs": [
+        -1,
+        0,
+        1
+      ],
+      "gauge_invariance_failures": 0,
+      "gauge_orbits": 29889,
+      "largest_fibre": 1,
+      "name": "two_round_rich_exact",
+      "nontrivial_classes": 0,
+      "orbits_in_nontrivial_classes": 0,
+      "second_inputs": [
+        [
+          -1,
+          -1
+        ],
+        [
+          -1,
+          0
+        ],
+        [
+          -1,
+          1
+        ],
+        [
+          0,
+          -1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          -1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "separating_gauge_orbits": 26244,
+      "separating_largest_fibre": 1,
+      "separating_nontrivial_classes": 0,
+      "separating_orbits_in_nontrivial_classes": 0,
+      "separating_transcript_classes": 26244,
+      "transcript_classes": 29889,
+      "witness": null
+    },
+    {
+      "clip_first": null,
+      "clip_second": null,
+      "coefficient_alphabet": [
+        -1,
+        0,
+        1
+      ],
+      "dimensions": [
+        1,
+        2,
+        2
+      ],
+      "first_inputs": [
+        0,
+        1
+      ],
+      "gauge_invariance_failures": 0,
+      "gauge_orbits": 29889,
+      "largest_fibre": 2,
+      "name": "two_round_restricted_first_domain",
+      "nontrivial_classes": 162,
+      "orbits_in_nontrivial_classes": 324,
+      "second_inputs": [
+        [
+          -1,
+          -1
+        ],
+        [
+          -1,
+          0
+        ],
+        [
+          -1,
+          1
+        ],
+        [
+          0,
+          -1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          -1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "separating_gauge_orbits": 26244,
+      "separating_largest_fibre": 2,
+      "separating_nontrivial_classes": 162,
+      "separating_orbits_in_nontrivial_classes": 324,
+      "separating_transcript_classes": 26082,
+      "transcript_classes": 29727,
+      "witness": {
+        "chains": [
+          {
+            "first_layer_rows": [
+              [
+                -1,
+                0
+              ],
+              [
+                1,
+                -1
+              ]
+            ],
+            "second_layer_rows": [
+              [
+                -1,
+                -1,
+                -1
+              ],
+              [
+                -1,
+                -1,
+                -1
+              ]
+            ]
+          },
+          {
+            "first_layer_rows": [
+              [
+                0,
+                -1
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "second_layer_rows": [
+              [
+                -1,
+                -1,
+                -1
+              ],
+              [
+                -1,
+                -1,
+                -1
+              ]
+            ]
+          }
+        ],
+        "fibre_size": 2
+      }
+    },
+    {
+      "clip_first": [
+        -1,
+        1
+      ],
+      "clip_second": [
+        -1,
+        1
+      ],
+      "coefficient_alphabet": [
+        -1,
+        0,
+        1
+      ],
+      "dimensions": [
+        1,
+        2,
+        2
+      ],
+      "first_inputs": [
+        -1,
+        0,
+        1
+      ],
+      "gauge_invariance_failures": 0,
+      "gauge_orbits": 29889,
+      "largest_fibre": 1,
+      "name": "two_round_rich_clipped",
+      "nontrivial_classes": 0,
+      "orbits_in_nontrivial_classes": 0,
+      "second_inputs": [
+        [
+          -1,
+          -1
+        ],
+        [
+          -1,
+          0
+        ],
+        [
+          -1,
+          1
+        ],
+        [
+          0,
+          -1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          -1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "separating_gauge_orbits": 26244,
+      "separating_largest_fibre": 1,
+      "separating_nontrivial_classes": 0,
+      "separating_orbits_in_nontrivial_classes": 0,
+      "separating_transcript_classes": 26244,
+      "transcript_classes": 29889,
+      "witness": null
+    }
+  ],
+  "success_criteria": {
+    "all_constructive_controller_checks_zero_failure": true,
+    "all_stabilizer_checks_zero_mismatch": true,
+    "explicit_witness_verified": true,
+    "rich_separating_two_round_kernels_equal_gauge_orbits": true,
+    "two_round_gauge_transform_preserves_kernel": true,
+    "unclipped_m_plus_1_grids_have_only_singleton_fibres": true,
+    "wider_coefficient_clipped_case_has_nontrivial_fibre": true
+  }
+}

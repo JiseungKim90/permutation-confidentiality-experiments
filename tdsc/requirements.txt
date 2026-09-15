@@ -1,0 +1,3 @@
+# Publication-time unit-check dependency; Python 3.12.14 was used.
+# The enumeration and JSON checker themselves require only the standard library.
+numpy==2.3.5
