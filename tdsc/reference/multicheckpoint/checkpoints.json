@@ -23,9 +23,57 @@
       "sha256": "c248a9ad7d830158611cd8d328bb4384d7789f5003f20fa969bfdb306bd65674",
       "training_precision": 8,
       "training_seed": 1
+    },
+    {
+      "name": "qat-w5-s0",
+      "path": "data/checkpoints/qat_qatf_r20_w5_s0.pt",
+      "provenance": "LSQ-style QAT fine-tune initialized from the official float checkpoint",
+      "sha256": "5fd2c9579d36a9cdf4d8c2379bb3ee9ea4ad3ce9b129790d831174c0f09ee73d",
+      "training_precision": 5,
+      "training_seed": 0
+    },
+    {
+      "name": "qat-w5-s1",
+      "path": "data/checkpoints/qat_qatf_r20_w5_s1.pt",
+      "provenance": "LSQ-style QAT fine-tune initialized from the official float checkpoint",
+      "sha256": "b71207b9e356d1119f4606c62e666adde786408cb61ed15d18ed1b1ef0c1de60",
+      "training_precision": 5,
+      "training_seed": 1
+    },
+    {
+      "name": "qat-w6-s0",
+      "path": "data/checkpoints/qat_qatf_r20_w6_s0.pt",
+      "provenance": "LSQ-style QAT fine-tune initialized from the official float checkpoint",
+      "sha256": "03a9e7ddba13622e4365d86e4708602fb8f22a71f442c8a852b40f6235c8cbe4",
+      "training_precision": 6,
+      "training_seed": 0
+    },
+    {
+      "name": "qat-w6-s1",
+      "path": "data/checkpoints/qat_qatf_r20_w6_s1.pt",
+      "provenance": "LSQ-style QAT fine-tune initialized from the official float checkpoint",
+      "sha256": "3df54f03c9cb5585748d7095f31c1018023c7e6ecf2f050248db0a28840cbccb",
+      "training_precision": 6,
+      "training_seed": 1
+    },
+    {
+      "name": "qat-w7-s0",
+      "path": "data/checkpoints/qat_qatf_r20_w7_s0.pt",
+      "provenance": "LSQ-style QAT fine-tune initialized from the official float checkpoint",
+      "sha256": "0ad163a2fac9ec8d64d492c626f67ca65077966018bcaa7bcc1ee928106d0a4b",
+      "training_precision": 7,
+      "training_seed": 0
+    },
+    {
+      "name": "qat-w7-s1",
+      "path": "data/checkpoints/qat_qatf_r20_w7_s1.pt",
+      "provenance": "LSQ-style QAT fine-tune initialized from the official float checkpoint",
+      "sha256": "70bf03b4d653399ae59aa62d951c44e4afbbdc834507de1be9b143e5e5c83651",
+      "training_precision": 7,
+      "training_seed": 1
     }
   ],
-  "inputs_distributed_in_repository": false,
+  "inputs_distributed_in_repository": true,
   "purpose": "Fixed-configuration fail-closed audit; not a paper success-rate experiment.",
   "schema": "p050-multicheckpoint-inputs-v1"
 }
