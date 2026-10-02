@@ -7,7 +7,9 @@ from pathlib import Path
 
 import numpy as np
 
-from verify_inference_evidence import ROOT, check_raw_arrays, check_report, digest
+from verify_inference_evidence import (
+    ROOT, SOURCE_FILES, check_raw_arrays, check_report, check_sources, digest,
+)
 
 
 def main():
@@ -25,6 +27,8 @@ def main():
         ("duplicate checkpoint", lambda r: r["records"].append(copy.deepcopy(r["records"][0]))),
         ("short schedule", lambda r: r["launch"]["checkpoint_schedule"].pop()),
         ("short evaluation", lambda r: r["records"][0].update(n_test=9999)),
+        ("noninteger planned count", lambda r: r["launch"].update(n_test=10000.0)),
+        ("noninteger completed count", lambda r: r["records"][0].update(n_test=10000.0)),
         ("wrong checkpoint", lambda r: r["records"][0].update(checkpoint_sha256="0" * 64)),
         ("loader mismatch", lambda r: r["records"][0]["loader"].update(missing_keys=["conv1.weight"])),
         ("NaN error", lambda r: r["records"][0]["comparisons"]["repaired"].update(maximum_logit_absolute_difference=float("nan"))),
@@ -40,6 +44,36 @@ def main():
         mutate(record)
         try:
             check_report(record, manifest, schedule)
+        except ValueError:
+            rejected.append(name)
+        else:
+            raise AssertionError("invalid evidence accepted: " + name)
+    for name, expected in (("empty expected schedule", []),
+                           ("duplicate expected schedule", schedule + schedule[:1])):
+        record = copy.deepcopy(original)
+        if not expected:
+            record["records"] = []
+            record["launch"]["checkpoint_schedule"] = []
+        try:
+            check_report(record, manifest, expected)
+        except ValueError:
+            rejected.append(name)
+        else:
+            raise AssertionError("invalid evidence accepted: " + name)
+    launch = {"source_sha256": {name: digest(ROOT / name) for name in SOURCE_FILES}}
+    assert check_sources(launch) == 9
+    source_mutations = [
+        ("empty source manifest", lambda s: s.clear()),
+        ("incomplete source manifest", lambda s: s.pop("lib/models.py")),
+        ("unexpected source dependency", lambda s: s.update({"README.md": digest(ROOT / "README.md")})),
+        ("malformed source digest", lambda s: s.update({"lib/models.py": "invalid"})),
+        ("changed source digest", lambda s: s.update({"lib/models.py": "0" * 64})),
+    ]
+    for name, mutate in source_mutations:
+        candidate = copy.deepcopy(launch)
+        mutate(candidate["source_sha256"])
+        try:
+            check_sources(candidate)
         except ValueError:
             rejected.append(name)
         else:

@@ -9,10 +9,17 @@ import argparse
 import hashlib
 import json
 import math
+import re
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
+SOURCE_FILES = frozenset({
+    "lib/input_normalization.py", "scripts/verify_normal_inference.py",
+    "scripts/test_input_normalization.py", "lib/resnet20.py", "lib/models.py",
+    "lib/cifar10.py", "lib/checkpoint.py", "lib/trusted_io.py",
+    "reference/multicheckpoint/checkpoints.json",
+})
 
 
 def require(condition, message):
@@ -25,13 +32,18 @@ def digest(path):
 
 
 def check_report(report, manifest, expected_names, expected_count=10000):
+    require(bool(expected_names) and len(expected_names) == len(set(expected_names)),
+            "expected checkpoint schedule must be nonempty and unique")
+    require(type(expected_count) is int and 0 < expected_count <= 10000,
+            "invalid expected sample count")
     require(report.get("schema") == "p050-normal-inference-validation-v1", "wrong experiment schema")
     require(report.get("status") == "complete" and report.get("success") is True, "incomplete or failed run")
     require(report.get("new_extraction_experiments") == 0, "ordinary inference cannot certify extraction")
     require(report.get("dataset_sha256") == "6d958be074577803d12ecdefd02955f39262c83c16fe9348329d7fe0b5c001ce", "dataset digest mismatch")
     launch = report["launch"]
     require(launch.get("dtype") == "float64", "unexpected numerical model")
-    require(launch.get("n_test") == expected_count, "wrong planned sample count")
+    require(type(launch.get("n_test")) is int and launch["n_test"] == expected_count,
+            "wrong planned sample count")
     schedule = launch.get("checkpoint_schedule", [])
     require(len(schedule) == len(set(schedule)), "duplicate planned checkpoint")
     require(set(schedule) == set(expected_names), "incomplete checkpoint schedule")
@@ -44,7 +56,8 @@ def check_report(report, manifest, expected_names, expected_count=10000):
     for record in records:
         name = record["checkpoint"]
         require(record.get("success") is True, "failed checkpoint: " + name)
-        require(record.get("n_test") == expected_count, "wrong completed sample count: " + name)
+        require(type(record.get("n_test")) is int and record["n_test"] == expected_count,
+                "wrong completed sample count: " + name)
         require(record.get("checkpoint_sha256") == known[name]["sha256"], "checkpoint digest mismatch: " + name)
         loader = record["loader"]
         require(loader.get("checkpoint_sha256") == known[name]["sha256"], "loader digest mismatch: " + name)
@@ -64,6 +77,22 @@ def check_report(report, manifest, expected_names, expected_count=10000):
                 count = comparison.get(field)
                 require(type(count) is int and 0 <= count <= expected_count, "invalid comparison count: " + field)
     return records
+
+
+def check_sources(launch, root=ROOT):
+    """Require the complete ordinary-forward dependency manifest, not a subset."""
+    sources = launch.get("source_sha256")
+    require(isinstance(sources, dict) and set(sources) == SOURCE_FILES,
+            "source manifest must contain exactly the nine required dependencies")
+    root = root.resolve()
+    for relative, expected in sources.items():
+        require(isinstance(expected, str) and re.fullmatch(r"[0-9a-f]{64}", expected),
+                "invalid source digest: " + relative)
+        path = (root / relative).resolve()
+        require(root in path.parents, "source path escapes the code root")
+        require(path.is_file(), "required source is missing: " + relative)
+        require(digest(path) == expected, "source changed since the recorded run: " + relative)
+    return len(sources)
 
 
 def check_raw_arrays(records, directory):
@@ -107,12 +136,7 @@ def main():
     records = check_report(report, manifest, args.checkpoints)
     sources_checked = 0
     if args.check_source:
-        for relative, expected in report["launch"]["source_sha256"].items():
-            path = (ROOT / relative).resolve()
-            require(ROOT in path.parents, "source path escapes the code root")
-            require(digest(path) == expected, "source changed since the recorded run: " + relative)
-            sources_checked += 1
-        require(sources_checked > 0, "source manifest is empty")
+        sources_checked = check_sources(report["launch"])
     if args.raw_dir:
         check_raw_arrays(records, args.raw_dir)
     print(json.dumps({

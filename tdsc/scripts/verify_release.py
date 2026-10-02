@@ -41,6 +41,7 @@ REQUIRED = (
     "scripts/verify_inference_evidence.py",
     "scripts/verify_normal_inference.py",
     "scripts/run_validation.py",
+    "scripts/reproduce_public_inference.py",
     "lib/input_normalization.py",
     "lib/checkpoint.py",
     "lib/cifar10.py",

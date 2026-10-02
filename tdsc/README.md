@@ -33,6 +33,8 @@ The limitations below are part of the evidence record.
   for zero-padded convolutions, separate from the legacy integer simulator.
 - `scripts/verify_normal_inference.py`: full-test-set comparison of the original
   normal forward, the corrected rewrite, and the uniform-bias control.
+- `scripts/reproduce_public_inference.py`: logged, public-input-only workflow
+  for ordinary inference, with no oracle or model-recovery invocation.
 - `scripts/test_finite_affine_laws.py`: exact finite checks for biased and
   correlated distributions of affine response maps.
 
@@ -289,6 +291,20 @@ cover scalar-reference normalization, finite affine distributions, nonabelian
 and correlated graph actions, and rejection of incomplete or inconsistent
 ordinary-inference evidence. These suites also run under `run_checks.py`.
 
+To reproduce the public-checkpoint normal-inference result from a fresh clone,
+install `requirements.txt` as above and run one command:
+
+```bash
+python3 scripts/reproduce_public_inference.py --out results/public-inference-new
+```
+
+This runs the dependency and release checks, all four benign validation suites,
+the public-input downloader, all 10,000 ordinary-forward comparisons, and the
+independent raw-array/source verifier. Every stage has separate stdout/stderr
+logs and a recorded exit status. The output directory must not already exist;
+failed and incomplete runs are retained. Neither private QAT inputs nor a
+recovery experiment is part of this workflow.
+
 `lib/input_normalization.py` scales each input-channel kernel by its standard
 deviation and subtracts the mean contribution only at valid image locations.
 It computes a spatial bias from an all-one support mask. This preserves
@@ -343,7 +359,7 @@ raw-array hashes. A clean environment built from the public `requirements.txt`
 suites and the full 10,000-image public-checkpoint comparison, with the same
 logit-array hash. Its compact record, actual captured console output and full
 dependency freeze are included alongside the three-checkpoint result. The
-PyTorch 2.10.0 run covers the public checkpoint, not the two historical QAT
+first PyTorch 2.10.0 run covers the public checkpoint, not the two historical QAT
 weight sets.
 
 The additional public-environment run in `reference/validation-20261002/`
@@ -363,9 +379,12 @@ Replace the result directory with the fresh directory used for your run.
 The two historical QAT inputs are still required to repeat this three-weight
 comparison and are not distributed. The verifier certifies ordinary float64
 inference only; it cannot promote that evidence to trained-network extraction,
-native QAT execution, or an encrypted backend result. Eighteen negative
-controls reject incomplete runs, missing checkpoints, wrong source inputs,
-nonfinite or inconsistent errors, and a summary that disagrees with raw logits.
+native QAT execution, or an encrypted backend result. Twenty-seven negative
+controls reject incomplete or empty runs, duplicate schedules, noninteger
+sample counts, missing checkpoints, wrong source inputs, nonfinite or
+inconsistent errors, and a summary that disagrees with raw logits. Source
+verification requires exactly all nine ordinary-forward dependencies; an
+empty, partial, or expanded source manifest is rejected.
 
 The independent affine-graph regression uses 14 synthetic integer models.
 It passes 2,856 direct response checks, 714 uniform-distribution checks, and
