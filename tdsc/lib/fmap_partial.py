@@ -690,6 +690,26 @@ def homogeneous_group_channel_choices(idxs, slopes, kk, channel_offset):
     return {i: list(channels) for i in idxs}, channels
 
 
+def unresolved_group_channel_choices(idxs, kk, channel_offset):
+    """Expose every channel label for a bias group not split by linkage.
+
+    A group with ``q * kk`` recovered rows represents ``q`` channels sharing
+    one bias.  Failure of the local linkage heuristic does not justify an
+    arbitrary partition: that partition can exclude the true tensor before the
+    exact assignment certifier sees the transcript.  Instead, give every row
+    every one of the ``q`` channel labels and retain its already certified tap
+    candidates.  The global perfect-matching/evidence search must then prove a
+    unique tensor (or fail closed).
+    """
+    idxs = [int(i) for i in idxs]
+    kk = int(kk)
+    if not idxs or kk <= 0 or len(idxs) % kk:
+        return None
+    channels = list(range(int(channel_offset),
+                          int(channel_offset) + len(idxs) // kk))
+    return {i: list(channels) for i in idxs}, channels
+
+
 def pullback_pixels(need, H, Win, stride, k, Ho, Wo, pls=None):
     """A smallest greedy set of input pixels of PL(H, Win) whose output reaches
     cover every needed output position."""
@@ -1506,6 +1526,7 @@ def extract_chain_partial(net, T=3, seed=0, noise_law="Gaussian", H0=32,
 
         chan_choices, chan_bias = {}, []
         rec["homogeneous_bias_groups_relaxed"] = 0
+        rec["bias_groups_deferred_to_global_assignment"] = 0
         for bb in sorted(groups):
             idxs = groups[bb]
             if len(idxs) == kk:
@@ -1525,7 +1546,19 @@ def extract_chain_partial(net, T=3, seed=0, noise_law="Gaussian", H0=32,
                     rec["homogeneous_bias_groups_relaxed"] += 1
                     continue
                 link_fail += 1
-                comps = [idxs[z:z + kk] for z in range(0, len(idxs), kk)]
+                deferred = unresolved_group_channel_choices(
+                    idxs, kk, len(chan_bias))
+                if deferred is None:
+                    # An incomplete channel multiplicity cannot be repaired by
+                    # assignment; leave the record uncertified.
+                    comps = [idxs[z:z + kk]
+                             for z in range(0, len(idxs), kk)]
+                else:
+                    choices, channels = deferred
+                    chan_choices.update(choices)
+                    chan_bias.extend([bb] * len(channels))
+                    rec["bias_groups_deferred_to_global_assignment"] += 1
+                    continue
             for c in comps:
                 ci = len(chan_bias)
                 chan_choices.update({i: [ci] for i in c})

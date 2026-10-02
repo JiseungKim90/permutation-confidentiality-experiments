@@ -17,7 +17,8 @@ from lib.fmap_partial import (assignment_query_counter,
                               certify_with_separating_queries,
                               homogeneous_group_channel_choices,
                               retained_shortcut_positions,
-                              separating_multiplacement_query)  # noqa: E402
+                              separating_multiplacement_query,
+                              unresolved_group_channel_choices)  # noqa: E402
 
 
 def main() -> None:
@@ -166,6 +167,12 @@ def main() -> None:
     relaxed = homogeneous_group_channel_choices(
         list(range(18)), slopes, 9, 0)
     assert relaxed is not None
+    assert homogeneous_group_channel_choices(
+        list(range(17)), slopes, 9, 0) is None
+    mixed_slopes = list(slopes)
+    mixed_slopes[-1] = np.array([1], dtype=np.int64)
+    assert homogeneous_group_channel_choices(
+        list(range(18)), mixed_slopes, 9, 0) is None
     choices, channels = relaxed
     assert channels == [0, 1]
     candidates = [[(ci, tap) for ci in choices[i] for tap in range(9)]
@@ -177,6 +184,22 @@ def main() -> None:
     assert info["assignment_harmless_components"] == 1
     assert np.array_equal(W, np.zeros((2, 9), dtype=np.int64))
     assert np.array_equal(b, np.array([-7, -7]))
+
+    # If equal-bias channels are not tensor-identical, a failed local linkage
+    # attempt must not invent a row partition.  Expose both channel labels and
+    # let exact transcript evidence select the tensor.
+    choices, channels = unresolved_group_channel_choices([0, 1], 1, 0)
+    assert channels == [0, 1]
+    candidates = [[(ci, 0) for ci in choices[i]] for i in range(2)]
+    W, _, info = assemble_from_candidates(
+        candidates, [np.array([11]), np.array([22])], [5, 5], 2, 1, 1,
+        evidence=[{"posof": {0: (0, 0)}, "u": np.array([1]),
+                   "observed": {16: 1, 122: 1}}],
+        bgmap=np.array([[[5]], [[100]]], dtype=np.int64),
+    )
+    assert info["assignment_certified"]
+    assert info["evidence_certified"]
+    assert np.array_equal(W[:, 0], np.array([11, 22]))
 
 
 if __name__ == "__main__":
