@@ -32,6 +32,7 @@ REQUIRED = (
     "scripts/verify_finite_reference.py",
     "scripts/test_lta_cover_soundness.py",
     "scripts/test_fmap_assignment.py",
+    "scripts/test_fmap_batch.py",
     "scripts/test_attacker_boundary.py",
     "scripts/test_graph_gauge_bias_scope.py",
     "scripts/test_trusted_inputs.py",

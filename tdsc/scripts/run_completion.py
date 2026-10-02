@@ -861,7 +861,8 @@ def evaluator_worker(config):
     }
     try:
         from lib import cifar10
-        from lib.fmap import forward_fmap, quantise_resnet20_fmap
+        from lib.fmap import (forward_fmap, forward_fmap_batched,
+                              quantise_resnet20_fmap)
         from lib.models import env_info
         from lib.resnet20 import load_resnet20_cifar10
 
@@ -878,8 +879,16 @@ def evaluator_worker(config):
         recovered = load_network(
             config["completed_arrays"], config["completed_meta"])
         certificate = strict_structural_certificate(private, recovered)
-        truth = forward_fmap(private, images[:config["n_test"]])
-        candidate = forward_fmap(recovered, images[:config["n_test"]])
+        evaluated = images[:config["n_test"]]
+        truth = forward_fmap_batched(private, evaluated)
+        candidate = forward_fmap_batched(recovered, evaluated)
+        crosscheck_n = min(4, int(config["n_test"]))
+        reference_truth = forward_fmap(private, evaluated[:crosscheck_n])
+        reference_candidate = forward_fmap(
+            recovered, evaluated[:crosscheck_n])
+        batched_reference_exact = bool(
+            np.array_equal(truth[:crosscheck_n], reference_truth)
+            and np.array_equal(candidate[:crosscheck_n], reference_candidate))
         equal = np.all(truth == candidate, axis=1)
         calibration_count = min(64, int(config["n_test"]))
         post_truth = truth[calibration_count:]
@@ -900,6 +909,9 @@ def evaluator_worker(config):
                 truth.argmax(1) == labels[:config["n_test"]])),
             "accuracy_recovered": 100.0 * float(np.mean(
                 candidate.argmax(1) == labels[:config["n_test"]])),
+            "forward_implementation": "exact-integer batched im2col v1",
+            "sequential_crosscheck_images": int(crosscheck_n),
+            "batched_reference_exact": batched_reference_exact,
             "accuracy_scope": (
                 "descriptive score on all n_images; the first 64 images were "
                 "also used only to calibrate the public integer range"),
@@ -935,7 +947,8 @@ def evaluator_worker(config):
             and report["identical_logit_vectors"] == config["n_test"]
             and report["post_calibration_identical_logit_vectors"]
                 == report["post_calibration_images"]
-            and report["max_abs_logit_difference"] == 0)
+            and report["max_abs_logit_difference"] == 0
+            and report["batched_reference_exact"])
     except Exception as exc:
         report.update({
             "status": "error", "success": False,

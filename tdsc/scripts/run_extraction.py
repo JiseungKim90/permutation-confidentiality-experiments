@@ -954,7 +954,8 @@ def evaluator_worker(config):
     }
     try:
         from lib import cifar10
-        from lib.fmap import forward_fmap, quantise_resnet20_fmap
+        from lib.fmap import (forward_fmap, forward_fmap_batched,
+                              quantise_resnet20_fmap)
         from lib.models import env_info
         from lib.resnet20 import load_resnet20_cifar10
 
@@ -974,8 +975,16 @@ def evaluator_worker(config):
         )
         recovered = load_network(
             config["recovered_arrays"], config["recovered_meta"])
-        truth = forward_fmap(private_net, X[:config["n_test"]])
-        candidate = forward_fmap(recovered, X[:config["n_test"]])
+        evaluated = X[:config["n_test"]]
+        truth = forward_fmap_batched(private_net, evaluated)
+        candidate = forward_fmap_batched(recovered, evaluated)
+        crosscheck_n = min(4, int(config["n_test"]))
+        reference_truth = forward_fmap(private_net, evaluated[:crosscheck_n])
+        reference_candidate = forward_fmap(
+            recovered, evaluated[:crosscheck_n])
+        batched_reference_exact = bool(
+            np.array_equal(truth[:crosscheck_n], reference_truth)
+            and np.array_equal(candidate[:crosscheck_n], reference_candidate))
         equal = np.all(truth == candidate, axis=1)
         calibration_count = min(64, int(config["n_test"]))
         post_truth = truth[calibration_count:]
@@ -1015,6 +1024,9 @@ def evaluator_worker(config):
                 100.0 * float(np.mean(
                     post_candidate.argmax(1) == post_labels))
                 if post_candidate.shape[0] else None),
+            "forward_implementation": "exact-integer batched im2col v1",
+            "sequential_crosscheck_images": int(crosscheck_n),
+            "batched_reference_exact": batched_reference_exact,
             "private_model_sha256": model_digest(private_net),
             "recovered_model_sha256": model_digest(recovered),
             "quantisation": {
@@ -1029,6 +1041,7 @@ def evaluator_worker(config):
             and report["post_calibration_identical_logit_vectors"]
                 == report["post_calibration_images"]
             and report["max_abs_logit_difference"] == 0
+            and report["batched_reference_exact"]
         )
     except Exception as exc:
         report.update({

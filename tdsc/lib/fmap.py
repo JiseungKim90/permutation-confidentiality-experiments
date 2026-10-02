@@ -89,6 +89,39 @@ def conv_int(xmap, Wflat, b, stride, k=3):
     return out.reshape(C_out, Ho, Wo)
 
 
+def conv_int_batch(xmaps, Wflat, b, stride, k=3):
+    """Exact integer convolution for a batch of NCHW feature maps.
+
+    This is the batched counterpart of :func:`conv_int`. It constructs the
+    same channel-major im2col matrix for each image and performs integer matrix
+    multiplication without changing the arithmetic model.
+    """
+    xmaps = np.asarray(xmaps, dtype=np.int64)
+    if xmaps.ndim != 4:
+        raise ValueError("xmaps must have shape (N, C, H, W)")
+    N, C_in, H, W = xmaps.shape
+    Wflat = np.asarray(Wflat, dtype=np.int64)
+    C_out = Wflat.shape[0]
+    if Wflat.shape[1] != C_in * k * k:
+        raise ValueError("weight/input shape mismatch")
+    Ho, Wo = out_size(H, stride), out_size(W, stride)
+    r = k // 2
+    pad = np.zeros((N, C_in, H + 2 * r, W + 2 * r), dtype=np.int64)
+    pad[:, :, r:r + H, r:r + W] = xmaps
+    cols = np.empty((N, C_in * k * k, Ho * Wo), dtype=np.int64)
+    ys = np.arange(Ho) * stride
+    xs = np.arange(Wo) * stride
+    channels = np.arange(C_in) * (k * k)
+    for kh in range(k):
+        for kw in range(k):
+            block = pad[:, :, ys + kh, :][:, :, :, xs + kw]
+            cols[:, channels + (kh * k + kw), :] = block.reshape(
+                N, C_in, -1)
+    out = np.matmul(Wflat[None, :, :], cols)
+    out += np.asarray(b, dtype=np.int64)[None, :, None]
+    return out.reshape(N, C_out, Ho, Wo)
+
+
 def equivalence_error(C_in, H_in, W_in, stride, k, Wflat, b, patches, positions,
                       rng=None):
     """Max |real convolution on the packed map at the probe positions
@@ -330,4 +363,36 @@ def forward_fmap(net, X, batch=200):
             acts.append(a.mean(axis=(1, 2)))
         pooled = np.rint(np.stack(acts))
         outs.append(pooled @ net.fc["W"].T + net.fc["b"])
+    return np.concatenate(outs).astype(np.int64)
+
+
+def forward_fmap_batched(net, X, batch=16):
+    """Vectorised exact-integer forward pass, equivalent to ``forward_fmap``."""
+    A = net.A
+    outs = []
+    X = np.asarray(X)
+    for s in range(0, len(X), int(batch)):
+        chunk = np.clip(
+            np.rint(np.asarray(X[s:s + batch], dtype=np.float64) * A),
+            0, A).astype(np.int64)
+        a = conv_int_batch(
+            chunk, net.stem["W"], net.stem["b"], 1, 3)
+        a = np.clip(
+            np.rint(np.maximum(a, 0) / net.stem["eta"]),
+            0, A).astype(np.int64)
+        for blk in net.blocks:
+            st = blk.get("stride", block_stride(blk["name"]))
+            u1 = conv_int_batch(a, blk["W1"], blk["b1"], st, 3)
+            a1 = np.clip(
+                np.rint(np.maximum(u1, 0) / blk["eta1"]),
+                0, A).astype(np.int64)
+            v = (conv_int_batch(a1, blk["W2"], blk["b2"], 1, 3)
+                 + conv_int_batch(a, blk["S"], blk["bs"], st, 1))
+            a = np.clip(
+                np.rint(np.maximum(v, 0) / blk["eta"]),
+                0, A).astype(np.int64)
+        pooled = np.rint(a.mean(axis=(2, 3))).astype(np.int64)
+        outs.append(pooled @ net.fc["W"].T + net.fc["b"])
+    if not outs:
+        return np.empty((0, net.fc["W"].shape[0]), dtype=np.int64)
     return np.concatenate(outs).astype(np.int64)
