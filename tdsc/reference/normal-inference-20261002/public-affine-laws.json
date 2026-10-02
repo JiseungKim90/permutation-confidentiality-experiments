@@ -1,0 +1,17 @@
+{
+  "arithmetic": "exact integers and fractions",
+  "biased_sampler_checks": 3,
+  "coefficient_law_classes": 772,
+  "coefficient_models": 256,
+  "frame_priors": 6,
+  "joint_frames": 4,
+  "partition_disagreements": 0,
+  "python": "3.10.20",
+  "schema": "p050-finite-affine-law-check-v1",
+  "scope": "Finite regression of the proof argument, not a proof of the open-domain proposition.",
+  "separating_response_law_classes": 772,
+  "source_sha256": "70ca1274f4797128ab25e5744140430383b4bf87cc0438d42ff271289bdfe51e",
+  "success": true,
+  "systems": 1536,
+  "zero_message_response_law_classes": 37
+}

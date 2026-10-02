@@ -1,0 +1,34 @@
+{"checkpoint": "official", "completed": 128, "planned": 10000}
+{"checkpoint": "official", "completed": 1152, "planned": 10000}
+{"checkpoint": "official", "completed": 2176, "planned": 10000}
+{"checkpoint": "official", "completed": 3200, "planned": 10000}
+{"checkpoint": "official", "completed": 4224, "planned": 10000}
+{"checkpoint": "official", "completed": 5248, "planned": 10000}
+{"checkpoint": "official", "completed": 6272, "planned": 10000}
+{"checkpoint": "official", "completed": 7296, "planned": 10000}
+{"checkpoint": "official", "completed": 8320, "planned": 10000}
+{"checkpoint": "official", "completed": 9344, "planned": 10000}
+{"checkpoint_complete": {"checkpoint": "official", "checkpoint_sha256": "4118986f0df73003d572b0e397f0ac7b3f60af1f31aff3d2da164536e36f6ec8", "loader": {"checkpoint_format": "standard-state-dict", "checkpoint_sha256": "4118986f0df73003d572b0e397f0ac7b3f60af1f31aff3d2da164536e36f6ec8", "missing_keys": [], "unexpected_keys": [], "normalise_mean": null, "normalise_std": null, "conv_bias_absmax": null}, "n_test": 10000, "reference_correct": 9212, "comparisons": {"repaired": {"maximum_logit_absolute_difference": 3.197442310920451e-14, "logit_vectors_within_1e-9": 10000, "identical_predictions": 10000, "correct_predictions": 9212}, "uniform_bias_control": {"maximum_logit_absolute_difference": 2.9281247371811827, "logit_vectors_within_1e-9": 0, "identical_predictions": 9887, "correct_predictions": 9211}}, "success": true, "raw_array_sha256": "b8568b81191d9f8f6034ce0737860ba05cfd24091d6c9026398bb925f8aeddfc"}}
+{"checkpoint": "qat-w8-s0", "completed": 128, "planned": 10000}
+{"checkpoint": "qat-w8-s0", "completed": 1152, "planned": 10000}
+{"checkpoint": "qat-w8-s0", "completed": 2176, "planned": 10000}
+{"checkpoint": "qat-w8-s0", "completed": 3200, "planned": 10000}
+{"checkpoint": "qat-w8-s0", "completed": 4224, "planned": 10000}
+{"checkpoint": "qat-w8-s0", "completed": 5248, "planned": 10000}
+{"checkpoint": "qat-w8-s0", "completed": 6272, "planned": 10000}
+{"checkpoint": "qat-w8-s0", "completed": 7296, "planned": 10000}
+{"checkpoint": "qat-w8-s0", "completed": 8320, "planned": 10000}
+{"checkpoint": "qat-w8-s0", "completed": 9344, "planned": 10000}
+{"checkpoint_complete": {"checkpoint": "qat-w8-s0", "checkpoint_sha256": "130ea708199e65ade6c221c573a795495348fcb97dcbf779f8ac2f11a87956d1", "loader": {"checkpoint_format": "public-qat-wrapper", "checkpoint_sha256": "130ea708199e65ade6c221c573a795495348fcb97dcbf779f8ac2f11a87956d1", "missing_keys": [], "unexpected_keys": [], "normalise_mean": [0.49140000343322754, 0.4821999967098236, 0.4465000033378601], "normalise_std": [0.20229999721050262, 0.19939999282360077, 0.20100000500679016], "conv_bias_absmax": 0.0}, "n_test": 10000, "reference_correct": 9197, "comparisons": {"repaired": {"maximum_logit_absolute_difference": 2.842170943040401e-14, "logit_vectors_within_1e-9": 10000, "identical_predictions": 10000, "correct_predictions": 9197}, "uniform_bias_control": {"maximum_logit_absolute_difference": 5.526840213574033, "logit_vectors_within_1e-9": 0, "identical_predictions": 9855, "correct_predictions": 9189}}, "success": true, "raw_array_sha256": "c28a4bbbaf5344fb5d20275f68205f61c240fb3a29c8026849ec16072427785e"}}
+{"checkpoint": "qat-w8-s1", "completed": 128, "planned": 10000}
+{"checkpoint": "qat-w8-s1", "completed": 1152, "planned": 10000}
+{"checkpoint": "qat-w8-s1", "completed": 2176, "planned": 10000}
+{"checkpoint": "qat-w8-s1", "completed": 3200, "planned": 10000}
+{"checkpoint": "qat-w8-s1", "completed": 4224, "planned": 10000}
+{"checkpoint": "qat-w8-s1", "completed": 5248, "planned": 10000}
+{"checkpoint": "qat-w8-s1", "completed": 6272, "planned": 10000}
+{"checkpoint": "qat-w8-s1", "completed": 7296, "planned": 10000}
+{"checkpoint": "qat-w8-s1", "completed": 8320, "planned": 10000}
+{"checkpoint": "qat-w8-s1", "completed": 9344, "planned": 10000}
+{"checkpoint_complete": {"checkpoint": "qat-w8-s1", "checkpoint_sha256": "c248a9ad7d830158611cd8d328bb4384d7789f5003f20fa969bfdb306bd65674", "loader": {"checkpoint_format": "public-qat-wrapper", "checkpoint_sha256": "c248a9ad7d830158611cd8d328bb4384d7789f5003f20fa969bfdb306bd65674", "missing_keys": [], "unexpected_keys": [], "normalise_mean": [0.49140000343322754, 0.4821999967098236, 0.4465000033378601], "normalise_std": [0.20229999721050262, 0.19939999282360077, 0.20100000500679016], "conv_bias_absmax": 0.0}, "n_test": 10000, "reference_correct": 9152, "comparisons": {"repaired": {"maximum_logit_absolute_difference": 2.842170943040401e-14, "logit_vectors_within_1e-9": 10000, "identical_predictions": 10000, "correct_predictions": 9152}, "uniform_bias_control": {"maximum_logit_absolute_difference": 5.195516502676632, "logit_vectors_within_1e-9": 0, "identical_predictions": 9870, "correct_predictions": 9135}}, "success": true, "raw_array_sha256": "932f9bcac1a42b1b8c60febb83f2711a7e85de1d22fe881fae66d1c51b00b872"}}
+{"status": "complete", "success": true, "checkpoints": 3}

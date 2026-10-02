@@ -29,6 +29,12 @@ The limitations below are part of the evidence record.
 - `reference/`: compact canonical outputs, the full finite-enumeration report,
   and recovered arrays.
 - `scripts/download_inputs.py`: authenticated-by-digest input downloader.
+- `lib/input_normalization.py`: exact ordinary-inference normalization rewrite
+  for zero-padded convolutions, separate from the legacy integer simulator.
+- `scripts/verify_normal_inference.py`: full-test-set comparison of the original
+  normal forward, the corrected rewrite, and the uniform-bias control.
+- `scripts/test_finite_affine_laws.py`: exact finite checks for biased and
+  correlated distributions of affine response maps.
 
 ## Environment
 
@@ -226,9 +232,10 @@ normalization followed by zero-padded convolution. At an image boundary it
 subtracts contributions for kernel positions outside the image. This is a
 confirmed preprocessing discrepancy, not evidence that the original trained
 network was faithfully reproduced. Equality between the simulator and a clone
-of that same simulator does not resolve the discrepancy. The code is left
-unchanged to preserve the meaning of the recorded experiment; a corrected
-model would need a new, separately validated evidence record.
+of that same simulator does not resolve the discrepancy. The legacy integer
+constructor is left unchanged to preserve the meaning of the recorded
+experiment. The separate normal-inference correction below has its own
+full-test-set validation; it does not change the extraction evidence.
 
 The theorems concern decoded transcripts with the specified frame law, not
 raw ciphertexts or decryption residuals. The open-domain characterization
@@ -262,9 +269,69 @@ this directory:
 python3 scripts/audit_preprocessing.py .
 ```
 
-The review did not change the model constructor or recovery implementation.
-The boundary discrepancy, failed additional checkpoints, and missing
-deployment correspondence remain unresolved scientific limitations.
+The review did not change the legacy integer constructor or recovery
+implementation. The normal-forward discrepancy is corrected and tested below.
+The failed additional recovery checkpoints and missing deployment
+correspondence are not resolved by that correction.
+
+## Corrected ordinary inference and finite frame laws
+
+`lib/input_normalization.py` scales each input-channel kernel by its standard
+deviation and subtracts the mean contribution only at valid image locations.
+It computes a spatial bias from an all-one support mask. This preserves
+normalize-then-zero-pad convolution at both interior and boundary positions.
+The inference-only module rejects a different input geometry; it is not
+connected to an oracle or a recovery entry point.
+
+From this directory, run the independent scalar tests and exact finite-law
+checks, then use a fresh output directory for ordinary inference:
+
+```bash
+python3 scripts/test_input_normalization.py
+python3 scripts/test_finite_affine_laws.py
+env OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 MKL_NUM_THREADS=4 \
+  python3 scripts/verify_normal_inference.py \
+  --root . --out results/normal-inference-public \
+  --checkpoints official --n-test 10000 --batch-size 128 --threads 4
+```
+
+The public checkpoint and CIFAR-10 inputs are supplied by the downloader above.
+Omit `--checkpoints official` to evaluate all three recorded weight sets when
+the two historical QAT checkpoint files are available at their manifest paths.
+Those weight sets are loaded as floating-point networks; this is not native
+QAT evaluation. The launch record fixes the source hashes, input schedule,
+environment, command and acceptance criteria before inference begins. Each
+complete run retains full reference/control/corrected logits in its output
+directory; only compact results are published.
+
+The scalar reference passes all 12 geometry/bias cases, with maximum absolute
+error 7.105427357601002e-15, and four invalid-input checks. The full float64
+comparison accepts a logit vector only if its maximum absolute error is at
+most 1e-9 and also requires all predictions to match. All 30,000 vectors across
+the three weight sets pass. The largest error is 3.197442310920451e-14. The
+uniform-bias control changes 113, 145 and 130 predictions respectively; the
+corrected path changes none. These are ordinary-inference comparisons, not
+new extraction or encrypted-backend measurements.
+
+The exact finite-law test covers 256 binary two-port coefficient models under
+six joint frame priors, including biased and correlated priors. All 1,536
+systems give the same partition by coefficient law and by a separating
+response, with 772 classes and zero disagreements. A zero message yields only
+37 classes, and three additional checks distinguish uniform and biased
+sampling. These are finite regressions of the proof argument, not a proof
+of the open-domain proposition.
+
+The compact reports and source hashes are in
+`reference/normal-inference-20261002/`. The recorded full-set run used Python
+3.8.10, NumPy 1.24.4 and PyTorch 2.4.1+cpu, with authenticated existing inputs.
+A second full three-checkpoint run produced identical numerical records and
+raw-array hashes. A clean environment built from the public `requirements.txt`
+(Python 3.10.20, NumPy 1.24.4, PyTorch 2.10.0+cpu) also passed the two test
+suites and the full 10,000-image public-checkpoint comparison, with the same
+logit-array hash. Its compact record, actual captured console output and full
+dependency freeze are included alongside the three-checkpoint result. The
+PyTorch 2.10.0 run covers the public checkpoint, not the two historical QAT
+weight sets.
 
 ## Upstream inputs and citation
 

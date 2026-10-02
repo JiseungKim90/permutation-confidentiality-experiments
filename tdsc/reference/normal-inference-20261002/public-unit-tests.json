@@ -1,0 +1,300 @@
+{
+  "success": true,
+  "seed": 20261002,
+  "scalar_oracle_cases": [
+    {
+      "input_hw": [
+        3,
+        3
+      ],
+      "kernel": [
+        3,
+        3
+      ],
+      "stride": [
+        1,
+        1
+      ],
+      "padding": [
+        1,
+        1
+      ],
+      "dilation": [
+        1,
+        1
+      ],
+      "bias": false,
+      "max_abs_error": 7.105427357601002e-15
+    },
+    {
+      "input_hw": [
+        3,
+        3
+      ],
+      "kernel": [
+        3,
+        3
+      ],
+      "stride": [
+        1,
+        1
+      ],
+      "padding": [
+        1,
+        1
+      ],
+      "dilation": [
+        1,
+        1
+      ],
+      "bias": true,
+      "max_abs_error": 7.105427357601002e-15
+    },
+    {
+      "input_hw": [
+        5,
+        7
+      ],
+      "kernel": [
+        3,
+        3
+      ],
+      "stride": [
+        2,
+        2
+      ],
+      "padding": [
+        1,
+        1
+      ],
+      "dilation": [
+        1,
+        1
+      ],
+      "bias": false,
+      "max_abs_error": 5.329070518200751e-15
+    },
+    {
+      "input_hw": [
+        5,
+        7
+      ],
+      "kernel": [
+        3,
+        3
+      ],
+      "stride": [
+        2,
+        2
+      ],
+      "padding": [
+        1,
+        1
+      ],
+      "dilation": [
+        1,
+        1
+      ],
+      "bias": true,
+      "max_abs_error": 3.552713678800501e-15
+    },
+    {
+      "input_hw": [
+        7,
+        6
+      ],
+      "kernel": [
+        3,
+        2
+      ],
+      "stride": [
+        1,
+        2
+      ],
+      "padding": [
+        2,
+        1
+      ],
+      "dilation": [
+        2,
+        1
+      ],
+      "bias": false,
+      "max_abs_error": 5.329070518200751e-15
+    },
+    {
+      "input_hw": [
+        7,
+        6
+      ],
+      "kernel": [
+        3,
+        2
+      ],
+      "stride": [
+        1,
+        2
+      ],
+      "padding": [
+        2,
+        1
+      ],
+      "dilation": [
+        2,
+        1
+      ],
+      "bias": true,
+      "max_abs_error": 1.7763568394002505e-15
+    },
+    {
+      "input_hw": [
+        5,
+        5
+      ],
+      "kernel": [
+        1,
+        1
+      ],
+      "stride": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "dilation": [
+        1,
+        1
+      ],
+      "bias": false,
+      "max_abs_error": 1.7763568394002505e-15
+    },
+    {
+      "input_hw": [
+        5,
+        5
+      ],
+      "kernel": [
+        1,
+        1
+      ],
+      "stride": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "dilation": [
+        1,
+        1
+      ],
+      "bias": true,
+      "max_abs_error": 1.7763568394002505e-15
+    },
+    {
+      "input_hw": [
+        1,
+        1
+      ],
+      "kernel": [
+        3,
+        3
+      ],
+      "stride": [
+        1,
+        1
+      ],
+      "padding": [
+        1,
+        1
+      ],
+      "dilation": [
+        1,
+        1
+      ],
+      "bias": false,
+      "max_abs_error": 4.440892098500626e-16
+    },
+    {
+      "input_hw": [
+        1,
+        1
+      ],
+      "kernel": [
+        3,
+        3
+      ],
+      "stride": [
+        1,
+        1
+      ],
+      "padding": [
+        1,
+        1
+      ],
+      "dilation": [
+        1,
+        1
+      ],
+      "bias": true,
+      "max_abs_error": 5.551115123125783e-17
+    },
+    {
+      "input_hw": [
+        6,
+        7
+      ],
+      "kernel": [
+        3,
+        3
+      ],
+      "stride": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "dilation": [
+        1,
+        1
+      ],
+      "bias": false,
+      "max_abs_error": 2.220446049250313e-15
+    },
+    {
+      "input_hw": [
+        6,
+        7
+      ],
+      "kernel": [
+        3,
+        3
+      ],
+      "stride": [
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "dilation": [
+        1,
+        1
+      ],
+      "bias": true,
+      "max_abs_error": 3.552713678800501e-15
+    }
+  ],
+  "invalid_inputs_rejected": [
+    "zero_std",
+    "nonfinite_mean",
+    "wrong_channels",
+    "wrong_geometry"
+  ]
+}
