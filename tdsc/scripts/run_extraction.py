@@ -847,6 +847,29 @@ def attacker_worker(connection, manifest, config):
 
         proxy = holder.get("proxy")
         if extracted is None:
+            # Preserve the public-transcript-side evidence that led to a
+            # fail-closed stop.  Without it, an unsuccessful run reports only a
+            # layer count and forces another multi-minute execution merely to
+            # identify the first uncertified record.  These records contain no
+            # checkpoint bytes or oracle-side arrays: the attacker was built
+            # from the zero-valued public manifest above.
+            partial_certificate = summarize_recovery_records(records)
+            report.update({
+                "status": "partial",
+                "environment": env_info(),
+                "public_manifest_sha256": config["public_manifest_sha256"],
+                "public_secret_nonzero_entries": secret_nonzero_count(public_net),
+                "forbidden_open_attempts": int(guard["forbidden_open_attempts"]),
+                "forbidden_open_sample": guard["sample"],
+                "attacker_view_audit": view_audit,
+                "records_total": len(records),
+                "client_certified_records": partial_certificate[
+                    "records_certified"],
+                "lta_certificate_summary": partial_certificate,
+                "diagnostics": bool(config["diagnostics"]),
+                "attack_summary": jsonable(attack_summary),
+                "records": jsonable(records),
+            })
             raise RuntimeError(
                 "attack did not produce a recovered network: records=%d/%d, "
                 "stopped_reason=%r"
