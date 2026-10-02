@@ -15,6 +15,7 @@ sys.path.insert(0, str(REPRO_ROOT))
 from lib.fmap_partial import (assignment_query_counter,
                               assemble_from_candidates,
                               certify_with_separating_queries,
+                              homogeneous_group_channel_choices,
                               retained_shortcut_positions,
                               separating_multiplacement_query)  # noqa: E402
 
@@ -156,6 +157,26 @@ def main() -> None:
     assert info["assignment_certified"]
     assert info["homogeneous_channels_relaxed"] == 1
     assert np.array_equal(W, np.zeros((1, 4), dtype=np.int64))
+
+    # Two channels can share both their bias and an all-zero 3x3 tensor.  A
+    # linkage query then has no informative value by construction.  Expose all
+    # 18 exchangeable slots to the global matcher; arbitrary row partitions are
+    # harmless because every feasible assignment induces the same two tensors.
+    slopes = [np.array([0], dtype=np.int64)] * 18
+    relaxed = homogeneous_group_channel_choices(
+        list(range(18)), slopes, 9, 0)
+    assert relaxed is not None
+    choices, channels = relaxed
+    assert channels == [0, 1]
+    candidates = [[(ci, tap) for ci in choices[i] for tap in range(9)]
+                  for i in range(18)]
+    W, b, info = assemble_from_candidates(
+        candidates, slopes, [-7] * 18, 2, 1, 3)
+    assert info["assignment_certified"]
+    assert info["matching_failures"] == 0
+    assert info["assignment_harmless_components"] == 1
+    assert np.array_equal(W, np.zeros((2, 9), dtype=np.int64))
+    assert np.array_equal(b, np.array([-7, -7]))
 
 
 if __name__ == "__main__":

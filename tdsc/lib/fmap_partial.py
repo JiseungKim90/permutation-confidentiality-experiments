@@ -666,6 +666,30 @@ def linkage_plan(p, pls, stride, k, Ho, Wo):
     return chosen, connected
 
 
+def homogeneous_group_channel_choices(idxs, slopes, kk, channel_offset):
+    """Return exchangeable channel choices for a tensor-identical bias group.
+
+    A shared-bias group can contain several channels.  If every recovered row
+    in that group has the same slope and the row count is a multiple of the
+    kernel area, every affected channel has the same value at every tap.
+    Partitioning the rows into channels is then unobservable but harmless: all
+    partitions induce the same tensor.  Return all corresponding channel labels
+    for every row so the global matcher certifies that tensor identity.  Return
+    ``None`` when this argument does not apply.
+    """
+    idxs = [int(i) for i in idxs]
+    kk = int(kk)
+    if not idxs or kk <= 0 or len(idxs) % kk:
+        return None
+    first = np.asarray(slopes[idxs[0]], dtype=np.int64)
+    if not all(np.array_equal(first, np.asarray(slopes[i], dtype=np.int64))
+               for i in idxs[1:]):
+        return None
+    channels = list(range(int(channel_offset),
+                          int(channel_offset) + len(idxs) // kk))
+    return {i: list(channels) for i in idxs}, channels
+
+
 def pullback_pixels(need, H, Win, stride, k, Ho, Wo, pls=None):
     """A smallest greedy set of input pixels of PL(H, Win) whose output reaches
     cover every needed output position."""
@@ -1409,8 +1433,8 @@ def extract_chain_partial(net, T=3, seed=0, noise_law="Gaussian", H0=32,
             len(reach(cov[0], st, k, Ho, Wo)) * C_out) if cov else 0
         # Channels from the shared intercept.  Every one of a channel's kk rows
         # has intercept b[c], so a group of kk rows is one channel; a group of
-        # 2 kk rows means two channels share a bias, and then the only way to
-        # split them is to observe two of their taps ADDING at one output
+        # 2 kk rows means two channels share a bias.  Tensor-identical channels
+        # need no split; otherwise observe two taps ADDING at one output
         # coordinate, which is what the linkage query does.
         groups = {}
         for i, bb in enumerate(intercepts):
@@ -1480,25 +1504,37 @@ def extract_chain_partial(net, T=3, seed=0, noise_law="Gaussian", H0=32,
                     return comps, nq
             return None, nq
 
-        chan_of, chan_bias = {}, []
+        chan_choices, chan_bias = {}, []
+        rec["homogeneous_bias_groups_relaxed"] = 0
         for bb in sorted(groups):
             idxs = groups[bb]
             if len(idxs) == kk:
-                chan_of.update({i: len(chan_bias) for i in idxs})
+                ci = len(chan_bias)
+                chan_choices.update({i: [ci] for i in idxs})
                 chan_bias.append(bb)
                 continue
             comps, nq = split_group(idxs, bb)
             link_q += nq
             if comps is None:
+                relaxed = homogeneous_group_channel_choices(
+                    idxs, slopes, kk, len(chan_bias))
+                if relaxed is not None:
+                    choices, channels = relaxed
+                    chan_choices.update(choices)
+                    chan_bias.extend([bb] * len(channels))
+                    rec["homogeneous_bias_groups_relaxed"] += 1
+                    continue
                 link_fail += 1
                 comps = [idxs[z:z + kk] for z in range(0, len(idxs), kk)]
             for c in comps:
-                chan_of.update({i: len(chan_bias) for i in c})
+                ci = len(chan_bias)
+                chan_choices.update({i: [ci] for i in c})
                 chan_bias.append(bb)
         rec["linkage_queries"] = link_q
         rec["linkage_failures"] = link_fail
         rec["channels_after_linkage"] = len(chan_bias)
-        cand2 = [[(chan_of[i], t) for t in sorted(cands[i])]
+        cand2 = [[(ci, t) for ci in chan_choices[i]
+                  for t in sorted(cands[i])]
                  for i in range(len(cands))]
         bgmap = np.zeros((max(C_out, len(chan_bias)), Ho, Wo), dtype=np.int64)
         for i, v in enumerate(chan_bias):
