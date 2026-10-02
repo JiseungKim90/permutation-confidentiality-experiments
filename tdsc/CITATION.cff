@@ -12,11 +12,10 @@ authors:
 repository-code: "https://github.com/JiseungKim90/permutation-confidentiality-experiments"
 preferred-citation:
   type: article
-  title: "When Do Fresh Permutations Hide a Model? Identifiability of Multi-Round Hybrid-FHE Transcripts"
+  title: "Model Identifiability in Permutation-Based Hybrid FHE Inference"
   authors:
     - family-names: Kim
       given-names: Jiseung
     - family-names: Lee
       given-names: Hyung Tae
-  journal: "IEEE Transactions on Dependable and Secure Computing"
   year: 2026

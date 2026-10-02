@@ -1,8 +1,8 @@
 # TDSC identifiability and recovery experiments
 
-This directory is the public reproduction package for **When Do Fresh
-Permutations Hide a Model? Identifiability of Multi-Round Hybrid-FHE
-Transcripts**. It adds the journal extension's code to the ESORICS artifact,
+This directory is the public reproduction package for **Model Identifiability
+in Permutation-Based Hybrid FHE Inference**. It adds the journal extension's
+code to the ESORICS artifact,
 including multi-round identifiability checks, process-isolated ResNet-20
 extraction, and the class-aware completion experiment.
 
@@ -96,7 +96,7 @@ python3 scripts/run_checks.py
 ```
 
 This compiles all Python files, audits the release tree and reference hashes,
-runs the four regressions, and performs a reduced finite-enumeration smoke
+runs the regression suites, and performs a reduced finite-enumeration smoke
 test. It does not download inputs or run the whole-network attack.
 
 For the complete finite enumeration used by the paper:
@@ -276,6 +276,19 @@ correspondence are not resolved by that correction.
 
 ## Corrected ordinary inference and finite frame laws
 
+For normal-inference and mathematical validation without invoking any oracle
+or recovery experiment, use the logged entry point:
+
+```bash
+python3 scripts/run_validation.py --out results/validation-new
+```
+
+The output directory must be new. The launch record fixes source hashes,
+commands, environment and seeds, and preserves failed runs. The four suites
+cover scalar-reference normalization, finite affine distributions, nonabelian
+and correlated graph actions, and rejection of incomplete or inconsistent
+ordinary-inference evidence. These suites also run under `run_checks.py`.
+
 `lib/input_normalization.py` scales each input-channel kernel by its standard
 deviation and subtracts the mean contribution only at valid image locations.
 It computes a spatial bias from an all-one support mask. This preserves
@@ -332,6 +345,34 @@ logit-array hash. Its compact record, actual captured console output and full
 dependency freeze are included alongside the three-checkpoint result. The
 PyTorch 2.10.0 run covers the public checkpoint, not the two historical QAT
 weight sets.
+
+The additional public-environment run in `reference/validation-20261002/`
+covers all three weight sets on all 10,000 images. Numerical records and
+raw-array digests agree with the earlier three-checkpoint run. An independent
+verifier recomputes every count and maximum error from the stored arrays and
+checks the nine recorded source hashes:
+
+```bash
+python3 scripts/verify_inference_evidence.py \
+  --report results/normal-inference-public-all/result.json \
+  --raw-dir results/normal-inference-public-all \
+  --check-source --checkpoints official qat-w8-s0 qat-w8-s1
+```
+
+Replace the result directory with the fresh directory used for your run.
+The two historical QAT inputs are still required to repeat this three-weight
+comparison and are not distributed. The verifier certifies ordinary float64
+inference only; it cannot promote that evidence to trained-network extraction,
+native QAT execution, or an encrypted backend result. Eighteen negative
+controls reject incomplete runs, missing checkpoints, wrong source inputs,
+nonfinite or inconsistent errors, and a summary that disagrees with raw logits.
+
+The independent affine-graph regression uses 14 synthetic integer models.
+It passes 2,856 direct response checks, 714 uniform-distribution checks, and
+19,278 frame-coupling checks, including non-self-inverse 3-cycles, shared
+frames, zero incoming maps, and a labeled final output. Three negative
+controls detect inverse-direction, frame-correlation, and constant-bias errors.
+No recovery procedure or trained checkpoint is used in this algebra test.
 
 ## Upstream inputs and citation
 

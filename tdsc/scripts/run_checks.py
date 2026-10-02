@@ -33,6 +33,10 @@ def main():
         run("scripts/test_lta_cover_soundness.py"),
         run("scripts/test_attacker_boundary.py"),
         run("scripts/test_graph_gauge_bias_scope.py"),
+        run("scripts/test_input_normalization.py"),
+        run("scripts/test_finite_affine_laws.py"),
+        run("scripts/test_affine_graph_semantics.py"),
+        run("scripts/test_inference_evidence.py"),
     ]
     with tempfile.TemporaryDirectory(prefix="p050-finite-smoke-") as directory:
         output = Path(directory) / "result.json"

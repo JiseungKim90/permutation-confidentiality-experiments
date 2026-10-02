@@ -1,0 +1,12 @@
+{
+  "certifies_encrypted_backend": false,
+  "certifies_native_qat": false,
+  "certifies_trained_network_extraction": false,
+  "checkpoints": 3,
+  "ordinary_logit_vectors_checked": 30000,
+  "raw_arrays_recomputed": true,
+  "report_sha256": "85daadbba626d3256fc98f46271a833e197af9481c2849635d6335d4ecf3de61",
+  "source_files_checked": 9,
+  "success": true,
+  "supports": "ordinary float64 inference after normalization"
+}

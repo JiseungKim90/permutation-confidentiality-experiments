@@ -4,8 +4,7 @@ This release branch contains the complete public code and compact reference
 evidence for the journal extension of the
 [ESORICS artifact](https://github.com/JiseungKim90/permutation-confidentiality-experiments/tree/main).
 
-**Article:** *When Do Fresh Permutations Hide a Model? Identifiability of
-Multi-Round Hybrid-FHE Transcripts*
+**Article:** *Model Identifiability in Permutation-Based Hybrid FHE Inference*
 
 The conference result recovered independently sorted column spectra. The
 journal extension asks when complete multi-round transcripts determine one
@@ -29,7 +28,7 @@ regression.
 Start with [tdsc/README.md](tdsc/README.md). The `tdsc/` directory includes:
 
 - the complete current extraction and class-aware completion implementations;
-- the full library dependency tree and four fail-closed/security regressions;
+- the full library dependency tree and fail-closed/security regressions;
 - the finite-domain transcript-fibre and controller enumeration;
 - verified reference arrays and compact paper-facing result records;
 - input download and digest verification;

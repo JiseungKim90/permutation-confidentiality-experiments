@@ -1,0 +1,422 @@
+{
+  "ended_utc": "2026-10-02T19:27:42.872+09:00",
+  "launch": {
+    "command": [
+      "python3",
+      "scripts/run_validation.py",
+      "--out",
+      "results/semantic-validation-20261002-r3"
+    ],
+    "failure_criteria": "Any failed assertion, nonzero exit, invalid JSON, or missing test output.",
+    "python": "3.10.20",
+    "schema": "p050-benign-validation-v1",
+    "scope": "Normal inference and finite mathematical regressions only.",
+    "seed_schedule": {
+      "numpy": 20261002,
+      "python_random": 20261002
+    },
+    "source_commit": "0a8d5c17a121032a45155a91f3681e7ffec78707",
+    "source_sha256": {
+      "lib/input_normalization.py": "7028675d3c951a236ea199ba81b72ff69a25f2362f5c6b63b2c2196f4ddc954a",
+      "reference/multicheckpoint/checkpoints.json": "48e5ff33e69ae53d5f893ef84759e05ec1881ca0f7a7e7ca1d42f3d03e43e3eb",
+      "reference/normal-inference-20261002/result.json": "a0f28c907116a7c5ea0018065897637bf4b049306749be750ef08e07e79f45aa",
+      "scripts/run_validation.py": "08486b8178411bdd841555b88b9f15abcb0f61a63f2da78a6e5ad48930edeaa9",
+      "scripts/test_affine_graph_semantics.py": "acfbeb89f9f19be4641fcb02c0ef0d434694b23c7ce3f2e6392b210a86981aed",
+      "scripts/test_finite_affine_laws.py": "70ca1274f4797128ab25e5744140430383b4bf87cc0438d42ff271289bdfe51e",
+      "scripts/test_inference_evidence.py": "66905c3ea12cf8454d5635b59015d321db0dae47ac2ee5b27301a9f25ed69db4",
+      "scripts/test_input_normalization.py": "5ea2f6099e957bb7e465aecc9983a6069991888d14a01182fc2d438a5ff18ff7",
+      "scripts/verify_inference_evidence.py": "8914d26260bbaa777ada339d23fcab6f5058a6d52114606ef3ee64b374b92275"
+    },
+    "success_criteria": "All four tests exit zero and report success=true.",
+    "tests": [
+      "test_input_normalization.py",
+      "test_finite_affine_laws.py",
+      "test_affine_graph_semantics.py",
+      "test_inference_evidence.py"
+    ],
+    "utc": "2026-10-02T19:27:40.520441+09:00",
+    "working_directory": "tdsc",
+    "source_commit_is_parent": true
+  },
+  "results": [
+    {
+      "result": {
+        "invalid_inputs_rejected": [
+          "zero_std",
+          "nonfinite_mean",
+          "wrong_channels",
+          "wrong_geometry"
+        ],
+        "scalar_oracle_cases": [
+          {
+            "bias": false,
+            "dilation": [
+              1,
+              1
+            ],
+            "input_hw": [
+              3,
+              3
+            ],
+            "kernel": [
+              3,
+              3
+            ],
+            "max_abs_error": 7.105427357601002e-15,
+            "padding": [
+              1,
+              1
+            ],
+            "stride": [
+              1,
+              1
+            ]
+          },
+          {
+            "bias": true,
+            "dilation": [
+              1,
+              1
+            ],
+            "input_hw": [
+              3,
+              3
+            ],
+            "kernel": [
+              3,
+              3
+            ],
+            "max_abs_error": 7.105427357601002e-15,
+            "padding": [
+              1,
+              1
+            ],
+            "stride": [
+              1,
+              1
+            ]
+          },
+          {
+            "bias": false,
+            "dilation": [
+              1,
+              1
+            ],
+            "input_hw": [
+              5,
+              7
+            ],
+            "kernel": [
+              3,
+              3
+            ],
+            "max_abs_error": 5.329070518200751e-15,
+            "padding": [
+              1,
+              1
+            ],
+            "stride": [
+              2,
+              2
+            ]
+          },
+          {
+            "bias": true,
+            "dilation": [
+              1,
+              1
+            ],
+            "input_hw": [
+              5,
+              7
+            ],
+            "kernel": [
+              3,
+              3
+            ],
+            "max_abs_error": 3.552713678800501e-15,
+            "padding": [
+              1,
+              1
+            ],
+            "stride": [
+              2,
+              2
+            ]
+          },
+          {
+            "bias": false,
+            "dilation": [
+              2,
+              1
+            ],
+            "input_hw": [
+              7,
+              6
+            ],
+            "kernel": [
+              3,
+              2
+            ],
+            "max_abs_error": 5.329070518200751e-15,
+            "padding": [
+              2,
+              1
+            ],
+            "stride": [
+              1,
+              2
+            ]
+          },
+          {
+            "bias": true,
+            "dilation": [
+              2,
+              1
+            ],
+            "input_hw": [
+              7,
+              6
+            ],
+            "kernel": [
+              3,
+              2
+            ],
+            "max_abs_error": 1.7763568394002505e-15,
+            "padding": [
+              2,
+              1
+            ],
+            "stride": [
+              1,
+              2
+            ]
+          },
+          {
+            "bias": false,
+            "dilation": [
+              1,
+              1
+            ],
+            "input_hw": [
+              5,
+              5
+            ],
+            "kernel": [
+              1,
+              1
+            ],
+            "max_abs_error": 1.7763568394002505e-15,
+            "padding": [
+              0,
+              0
+            ],
+            "stride": [
+              1,
+              1
+            ]
+          },
+          {
+            "bias": true,
+            "dilation": [
+              1,
+              1
+            ],
+            "input_hw": [
+              5,
+              5
+            ],
+            "kernel": [
+              1,
+              1
+            ],
+            "max_abs_error": 1.7763568394002505e-15,
+            "padding": [
+              0,
+              0
+            ],
+            "stride": [
+              1,
+              1
+            ]
+          },
+          {
+            "bias": false,
+            "dilation": [
+              1,
+              1
+            ],
+            "input_hw": [
+              1,
+              1
+            ],
+            "kernel": [
+              3,
+              3
+            ],
+            "max_abs_error": 4.440892098500626e-16,
+            "padding": [
+              1,
+              1
+            ],
+            "stride": [
+              1,
+              1
+            ]
+          },
+          {
+            "bias": true,
+            "dilation": [
+              1,
+              1
+            ],
+            "input_hw": [
+              1,
+              1
+            ],
+            "kernel": [
+              3,
+              3
+            ],
+            "max_abs_error": 5.551115123125783e-17,
+            "padding": [
+              1,
+              1
+            ],
+            "stride": [
+              1,
+              1
+            ]
+          },
+          {
+            "bias": false,
+            "dilation": [
+              1,
+              1
+            ],
+            "input_hw": [
+              6,
+              7
+            ],
+            "kernel": [
+              3,
+              3
+            ],
+            "max_abs_error": 2.220446049250313e-15,
+            "padding": [
+              0,
+              0
+            ],
+            "stride": [
+              1,
+              1
+            ]
+          },
+          {
+            "bias": true,
+            "dilation": [
+              1,
+              1
+            ],
+            "input_hw": [
+              6,
+              7
+            ],
+            "kernel": [
+              3,
+              3
+            ],
+            "max_abs_error": 3.552713678800501e-15,
+            "padding": [
+              0,
+              0
+            ],
+            "stride": [
+              1,
+              1
+            ]
+          }
+        ],
+        "seed": 20261002,
+        "success": true
+      },
+      "test": "test_input_normalization.py"
+    },
+    {
+      "result": {
+        "arithmetic": "exact integers and fractions",
+        "biased_sampler_checks": 3,
+        "coefficient_law_classes": 772,
+        "coefficient_models": 256,
+        "frame_priors": 6,
+        "joint_frames": 4,
+        "partition_disagreements": 0,
+        "python": "3.10.20",
+        "schema": "p050-finite-affine-law-check-v1",
+        "scope": "Finite regression of the proof argument, not a proof of the open-domain proposition.",
+        "separating_response_law_classes": 772,
+        "source_sha256": "70ca1274f4797128ab25e5744140430383b4bf87cc0438d42ff271289bdfe51e",
+        "success": true,
+        "systems": 1536,
+        "zero_message_response_law_classes": 37
+      },
+      "test": "test_finite_affine_laws.py"
+    },
+    {
+      "result": {
+        "arithmetic": "exact integers",
+        "coupling_checks": 19278,
+        "direct_response_checks": 2856,
+        "joint_groups": [
+          "independent_S3",
+          "shared_S3",
+          "shared_C3",
+          "labeled_output"
+        ],
+        "models": 14,
+        "negative_controls": 3,
+        "scope": "Finite algebra regressions, not a proof or a recovery experiment.",
+        "seed": 20261002,
+        "source_sha256": "acfbeb89f9f19be4641fcb02c0ef0d434694b23c7ce3f2e6392b210a86981aed",
+        "success": true,
+        "uniform_law_checks": 714
+      },
+      "test": "test_affine_graph_semantics.py"
+    },
+    {
+      "result": {
+        "negative_control_count": 18,
+        "negative_controls_rejected": [
+          "incomplete run",
+          "false success",
+          "promoted extraction claim",
+          "wrong dtype",
+          "wrong dataset",
+          "missing checkpoint",
+          "duplicate checkpoint",
+          "short schedule",
+          "short evaluation",
+          "wrong checkpoint",
+          "loader mismatch",
+          "NaN error",
+          "negative error",
+          "excess error",
+          "missing vector",
+          "prediction mismatch",
+          "inconsistent accuracy",
+          "summary disagrees with raw logits"
+        ],
+        "success": true
+      },
+      "test": "test_inference_evidence.py"
+    }
+  ],
+  "schema": "p050-benign-validation-v1",
+  "status": "complete",
+  "success": true,
+  "provenance": {
+    "raw_result_sha256": "3ea0ca56f357e4f98ec80f86ac3f31a7672c03b78b0c0956d4c8089d4e65de64",
+    "publication_changes": "Only execution-host paths are normalized. Numerical results and all failures are preserved.",
+    "raw_arrays_retained_on_execution_host": false
+  }
+}
