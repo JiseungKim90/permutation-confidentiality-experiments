@@ -988,14 +988,16 @@ def assignment_query_counter(candidate, slopes, bgmap, k, terms):
 
 def separating_multiplacement_query(assign_a, assign_b, slopes, bgmap, pls,
                                     stride, k, Ho, Wo, C, A, rng,
-                                    tries=320):
+                                    tries=320, channel_masks=None):
     """Find a public sparse query whose predicted multisets separate two tensors.
 
     The search is entirely client-side.  It first uses the overlapping top-left
     placements, where several kernel taps add at common output coordinates, and
-    then the full addressable placement set.  A returned query is only a
-    discriminator proposal; the oracle response is still checked exactly by the
-    assignment certifier before either tensor can be accepted.
+    then the full addressable placement set.  ``channel_masks[p]`` may restrict
+    a placement to coordinates already located by the preceding probe; all
+    other channel entries stay zero.  A returned query is only a discriminator
+    proposal; the oracle response is still checked exactly by the assignment
+    certifier before either tensor can be accepted.
     """
     pls = [tuple(int(z) for z in p) for p in pls]
     overlap = [p for p in pls if p[0] <= 1 and p[1] <= 1]
@@ -1008,7 +1010,17 @@ def separating_multiplacement_query(assign_a, assign_b, slopes, bgmap, pls,
         for _ in range(int(tries)):
             terms, pixel_values = [], {}
             for pm in family:
-                u = rng.integers(0, A + 1, size=C).astype(np.int64)
+                mask = (None if channel_masks is None
+                        else channel_masks.get(tuple(pm)))
+                if mask is None:
+                    u = rng.integers(0, A + 1, size=C).astype(np.int64)
+                else:
+                    mask = np.asarray(mask, dtype=bool)
+                    if mask.shape != (int(C),):
+                        raise ValueError("channel mask has wrong shape")
+                    u = np.zeros(C, dtype=np.int64)
+                    u[mask] = rng.integers(
+                        0, A + 1, size=int(mask.sum())).astype(np.int64)
                 pixel_values[pm] = u
                 terms.append({
                     "posof": {int(t): (int(y), int(x))
@@ -1250,7 +1262,8 @@ def certify_with_separating_queries(cands, slopes, intercepts, C_out, C_in,
                                     evidence, initial, do_query, rng,
                                     include_intercepts=True,
                                     max_queries=16, search_tries=320,
-                                    alternative_query=None):
+                                    alternative_query=None,
+                                    query_channel_masks=None):
     """Eliminate exact-matching counterexamples with adaptive linkage queries.
 
     ``assemble_from_candidates`` returns two public witness assignments whenever
@@ -1271,7 +1284,8 @@ def certify_with_separating_queries(cands, slopes, intercepts, C_out, C_in,
             break
         sep = separating_multiplacement_query(
             witnesses[0], witnesses[1], slopes, bgmap, pls, stride, k,
-            Ho, Wo, C, A, rng, tries=search_tries)
+            Ho, Wo, C, A, rng, tries=search_tries,
+            channel_masks=query_channel_masks)
         if sep is not None:
             pixel_values, terms, pred_a, pred_b = sep
             kept = do_query(pixel_values, terms)
@@ -1474,6 +1488,34 @@ def extract_chain_partial(net, T=3, seed=0, noise_law="Gaussian", H0=32,
         rec["channels_from_bias"] = len(groups)
         rec["bias_groups_oversized"] = int(
             sum(1 for v in groups.values() if len(v) != kk))
+        assignment_pls = list(pls_avail)
+        assignment_masks = None
+        if rec["bias_groups_oversized"] and gfr >= 0:
+            sources = [q for q in attack.probes
+                       if rounds[q].group == gfr]
+            if sources:
+                source = max(sources)
+                located = np.asarray(
+                    attack.probes[source]["locatable"], dtype=bool
+                ).reshape(C_in, H, Win)
+                assignment_masks = {}
+                for y in range(H):
+                    for x in range(Win):
+                        available = np.asarray(
+                            located[live_idx, y, x], dtype=bool)
+                        if not available.any():
+                            continue
+                        p = (int(y), int(x))
+                        assignment_masks[p] = available
+                        if p not in assignment_pls:
+                            assignment_pls.append(p)
+                rec["assignment_locatable_placements"] = len(
+                    assignment_pls)
+                rec["assignment_extra_placements"] = int(
+                    len(assignment_pls) - len(pls_avail))
+                rec["assignment_extra_locatable_coordinates"] = int(sum(
+                    int(mask.sum()) for p, mask in assignment_masks.items()
+                    if p not in set(pls_avail)))
         link_q, link_fail, partners, conn = 0, 0, [], None
         if rec["bias_groups_oversized"]:
             partners, conn = linkage_plan(cov[0], pls_avail, st, k, Ho, Wo)
@@ -1630,10 +1672,11 @@ def extract_chain_partial(net, T=3, seed=0, noise_law="Gaussian", H0=32,
             return kept
 
         W_live, b_can, ainfo, nq_sep = certify_with_separating_queries(
-            cand2, slopes, intercepts, C_out, C_live, bgmap, pls_avail,
+            cand2, slopes, intercepts, C_out, C_live, bgmap, assignment_pls,
             st, k, Ho, Wo, C_live, A, all_membership_evidence,
             (W_live, b_can, ainfo), do_multi, rng_a,
-            include_intercepts=True)
+            include_intercepts=True,
+            query_channel_masks=assignment_masks)
         nmq += nq_sep
         rec["membership_anchor_collisions"] = ubad
         rec["membership_queries"] = nmq

@@ -97,6 +97,23 @@ def main() -> None:
     assert sep is not None
     assert sep[2] != sep[3]
 
+    # Extra coordinates from a preceding partial frame may expose only some
+    # input channels.  The separating query must keep every unlocated channel
+    # at zero while still using the located coordinate as evidence.
+    masked_slopes = [np.array([0, 1]), np.array([0, 2])]
+    masked_slopes.extend(np.array([0, 0]) for _ in range(7))
+    sep = separating_multiplacement_query(
+        assign_a, assign_b, masked_slopes,
+        np.zeros((1, 3, 3), dtype=np.int64),
+        [(0, 0), (0, 1)], 1, 3, 3, 3, 2, 255,
+        np.random.default_rng(17), tries=10,
+        channel_masks={(0, 0): np.array([False, True]),
+                       (0, 1): np.array([False, True])},
+    )
+    assert sep is not None
+    assert sep[2] != sep[3]
+    assert all(int(value[0]) == 0 for value in sep[0].values())
+
     # A whole-channel swap is invisible while both channels have the same
     # retained-input background.  An alternative retained input can separate
     # those backgrounds; evidence must be checked against the background that
