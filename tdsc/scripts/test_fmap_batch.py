@@ -14,7 +14,8 @@ REPRO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPRO_ROOT))
 
 from lib.fmap import (conv_int, conv_int_batch, forward_fmap,
-                      forward_fmap_batched)  # noqa: E402
+                      forward_fmap_batched,
+                      forward_fmap_parallel)  # noqa: E402
 
 
 def main() -> None:
@@ -63,9 +64,13 @@ def main() -> None:
     for batch in (1, 2, 4, 16):
         assert np.array_equal(
             reference, forward_fmap_batched(net, images, batch=batch))
+    for workers in (1, 2, 4, 16):
+        assert np.array_equal(
+            reference, forward_fmap_parallel(net, images, workers=workers))
 
     print({"convolution_cases": 3, "forward_images": len(images),
-           "batch_sizes": [1, 2, 4, 16], "success": True})
+           "batch_sizes": [1, 2, 4, 16],
+           "parallel_workers": [1, 2, 4, 16], "success": True})
 
 
 if __name__ == "__main__":

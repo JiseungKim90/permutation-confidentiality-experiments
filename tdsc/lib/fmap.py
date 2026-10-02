@@ -396,3 +396,20 @@ def forward_fmap_batched(net, X, batch=16):
     if not outs:
         return np.empty((0, net.fc["W"].shape[0]), dtype=np.int64)
     return np.concatenate(outs).astype(np.int64)
+
+
+def forward_fmap_parallel(net, X, workers=4):
+    """Evaluate disjoint image chunks concurrently with ``forward_fmap``."""
+    import concurrent.futures
+
+    X = np.asarray(X)
+    n_workers = max(1, min(int(workers), len(X))) if len(X) else 1
+    if n_workers == 1:
+        return forward_fmap(net, X)
+    chunks = [chunk for chunk in np.array_split(X, n_workers) if len(chunk)]
+    with concurrent.futures.ThreadPoolExecutor(
+            max_workers=n_workers) as executor:
+        futures = [executor.submit(forward_fmap, net, chunk)
+                   for chunk in chunks]
+        outputs = [future.result() for future in futures]
+    return np.concatenate(outputs).astype(np.int64)

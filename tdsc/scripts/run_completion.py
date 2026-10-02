@@ -861,7 +861,7 @@ def evaluator_worker(config):
     }
     try:
         from lib import cifar10
-        from lib.fmap import (forward_fmap, forward_fmap_batched,
+        from lib.fmap import (forward_fmap_batched, forward_fmap_parallel,
                               quantise_resnet20_fmap)
         from lib.models import env_info
         from lib.resnet20 import load_resnet20_cifar10
@@ -880,15 +880,16 @@ def evaluator_worker(config):
             config["completed_arrays"], config["completed_meta"])
         certificate = strict_structural_certificate(private, recovered)
         evaluated = images[:config["n_test"]]
-        truth = forward_fmap_batched(private, evaluated)
-        candidate = forward_fmap_batched(recovered, evaluated)
+        truth = forward_fmap_parallel(private, evaluated, workers=4)
+        candidate = forward_fmap_parallel(recovered, evaluated, workers=4)
         crosscheck_n = min(4, int(config["n_test"]))
-        reference_truth = forward_fmap(private, evaluated[:crosscheck_n])
-        reference_candidate = forward_fmap(
+        batched_truth = forward_fmap_batched(
+            private, evaluated[:crosscheck_n])
+        batched_candidate = forward_fmap_batched(
             recovered, evaluated[:crosscheck_n])
-        batched_reference_exact = bool(
-            np.array_equal(truth[:crosscheck_n], reference_truth)
-            and np.array_equal(candidate[:crosscheck_n], reference_candidate))
+        parallel_batched_exact = bool(
+            np.array_equal(truth[:crosscheck_n], batched_truth)
+            and np.array_equal(candidate[:crosscheck_n], batched_candidate))
         equal = np.all(truth == candidate, axis=1)
         calibration_count = min(64, int(config["n_test"]))
         post_truth = truth[calibration_count:]
@@ -909,9 +910,10 @@ def evaluator_worker(config):
                 truth.argmax(1) == labels[:config["n_test"]])),
             "accuracy_recovered": 100.0 * float(np.mean(
                 candidate.argmax(1) == labels[:config["n_test"]])),
-            "forward_implementation": "exact-integer batched im2col v1",
-            "sequential_crosscheck_images": int(crosscheck_n),
-            "batched_reference_exact": batched_reference_exact,
+            "forward_implementation": "exact-integer threaded reference v1",
+            "forward_workers": 4,
+            "batched_crosscheck_images": int(crosscheck_n),
+            "parallel_batched_exact": parallel_batched_exact,
             "accuracy_scope": (
                 "descriptive score on all n_images; the first 64 images were "
                 "also used only to calibrate the public integer range"),
@@ -948,7 +950,7 @@ def evaluator_worker(config):
             and report["post_calibration_identical_logit_vectors"]
                 == report["post_calibration_images"]
             and report["max_abs_logit_difference"] == 0
-            and report["batched_reference_exact"])
+            and report["parallel_batched_exact"])
     except Exception as exc:
         report.update({
             "status": "error", "success": False,
