@@ -15,6 +15,7 @@ sys.path.insert(0, str(REPRO_ROOT))
 from lib.fmap_partial import (assignment_query_counter,
                               assemble_from_candidates,
                               certify_with_separating_queries,
+                              retained_shortcut_positions,
                               separating_multiplacement_query)  # noqa: E402
 
 
@@ -134,6 +135,16 @@ def main() -> None:
     assert context_queries == 1
     assert context_info["assignment_certified"]
     assert context_info["separating_query_sources"] == ["retained-input"]
+
+    # A stride-2 conv1 probe may use only odd pixels, which the 1x1 shortcut
+    # never samples.  The retained-context search must add the controllable
+    # even coordinate instead of merely redrawing the old probe values.
+    old_probe_positions = [(1, 1), (0, 15), (15, 0), (15, 15)]
+    shortcut_positions = retained_shortcut_positions(
+        [(0, 0), (0, 1), (1, 0), (1, 1)], 2, 16, 16,
+        [(0, 0), (0, 1), (1, 0), (1, 1)])
+    assert shortcut_positions == [(0, 0)]
+    assert not set(shortcut_positions).intersection(old_probe_positions)
 
     # A dead 2x2 kernel can collapse every recovered row onto the same apparent
     # tap.  Since all four slopes are zero, assigning them to the four taps is

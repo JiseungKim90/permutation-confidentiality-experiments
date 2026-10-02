@@ -612,6 +612,18 @@ def required_placements(Ho, Wo, stride, k, pool=False):
     return pl
 
 
+def retained_shortcut_positions(output_positions, stride, H, W, addressable):
+    """Controllable retained-input pixels sampled by a 1x1 shortcut."""
+    allowed = {tuple(int(z) for z in p) for p in addressable}
+    out = []
+    for y, x in output_positions:
+        pm = (int(y) * int(stride), int(x) * int(stride))
+        if (0 <= pm[0] < int(H) and 0 <= pm[1] < int(W)
+                and pm in allowed and pm not in out):
+            out.append(pm)
+    return out
+
+
 def linkage_pairs(p, p2, stride, k, Ho, Wo):
     """Output positions that BOTH input pixels feed, with the pair of kernel taps
     that meets there.  A reply value at such a position is
@@ -1872,31 +1884,50 @@ def extract_chain_partial(net, T=3, seed=0, noise_law="Gaussian", H0=32,
             W1_car = recovered[nm + ".conv1"]["W"]
             b_car = recovered[nm + ".conv1"]["b"]
             old_cmap = probe_canon[ra]
-            carrier_positions = [
+            old_carrier_positions = [
                 (int(y), int(x))
                 for y, x in zip(*np.nonzero(np.any(old_cmap != 0, axis=0)))
             ]
-            if not carrier_positions:
-                return None
             carrier_live = live_map.get(carrier_spec["frame"])
             carrier_live = (
                 np.arange(C_car, dtype=np.int64) if carrier_live is None
                 else np.asarray(carrier_live, dtype=np.int64))
+            if carrier_spec["frame"] < 0:
+                addressable = {(y, x) for y in range(H_car)
+                               for x in range(Win_car)}
+            else:
+                addressable = set(
+                    group_need.get(carrier_spec["frame"],
+                                   placements(H_car, Win_car)))
+
+            # The old conv1 probe need not touch a coordinate sampled by the
+            # shortcut.  In particular, the stride-2 corner probe can be
+            # nonzero only on odd coordinates, making every shortcut channel's
+            # background equal to its bias.  Add controllable coordinates that
+            # the 1x1 shortcut actually samples.  This changes the retained
+            # branch, which is the signal needed to separate equal-bias output
+            # channels; redrawing only the old positions cannot do so.
+            shortcut_positions = retained_shortcut_positions(
+                pls_avail, st, H_car, Win_car, addressable)
+            if not shortcut_positions:
+                return None
+            carrier_positions = list(old_carrier_positions)
+            for pm in shortcut_positions:
+                if pm not in carrier_positions:
+                    carrier_positions.append(pm)
             need_idx = np.array([
                 c * (Ho * Wo) + y * Wo + x
                 for c in live_idx for (y, x) in pls_avail
             ], dtype=np.int64)
 
             for _ in range(max(32, 4 * int(probe_tries))):
-                values = []
-                for _p in carrier_positions:
-                    value = np.zeros(C_car, dtype=np.int64)
+                carrier_map = np.array(old_cmap, dtype=np.int64, copy=True)
+                for py, px in shortcut_positions:
+                    value = np.array(carrier_map[:, py, px],
+                                     dtype=np.int64, copy=True)
                     value[carrier_live] = rng_a.integers(
                         0, A + 1, size=carrier_live.size).astype(np.int64)
-                    values.append(value)
-                carrier_map = sparse_map(
-                    C_car, H_car, Win_car,
-                    dict(zip(carrier_positions, values)))
+                    carrier_map[:, py, px] = value
                 carrier_pred = conv_int(
                     carrier_map, W1_car, b_car, st_car, k_car).reshape(-1)
                 _uv, inv, counts = np.unique(
@@ -1925,7 +1956,12 @@ def extract_chain_partial(net, T=3, seed=0, noise_law="Gaussian", H0=32,
 
                 old_probe = attack.probes.get(ra)
                 old_probe_canon = probe_canon.get(ra)
-                plans = [("pixels", dict(zip(carrier_positions, values)))]
+                carrier_values = {
+                    pm: np.array(carrier_map[:, pm[0], pm[1]],
+                                 dtype=np.int64, copy=True)
+                    for pm in carrier_positions
+                }
+                plans = [("pixels", carrier_values)]
                 failures_before = attack.probe_multiset_failures
                 attack.install_probe(ra, plans, carrier_pred)
                 probe_canon[ra] = carrier_map
