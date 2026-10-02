@@ -44,6 +44,17 @@ def main() -> None:
     assert info["assignment_harmless_components"] == 1
     assert np.array_equal(W[:, 0], np.array([7, 7]))
 
+    # A dead 2x2 kernel can collapse every recovered row onto the same apparent
+    # tap.  Since all four slopes are zero, assigning them to the four taps is
+    # tensor-identical and must not collapse the following network frame.
+    W, _, info = assemble_from_candidates(
+        [[(0, 0)]] * 4,
+        [np.array([0])] * 4, [3] * 4, 1, 1, 2,
+    )
+    assert info["assignment_certified"]
+    assert info["homogeneous_channels_relaxed"] == 1
+    assert np.array_equal(W, np.zeros((1, 4), dtype=np.int64))
+
 
 if __name__ == "__main__":
     main()

@@ -907,7 +907,8 @@ def assemble_from_candidates(cands, slopes, intercepts, C_out, C_in, k):
             "rows_with_no_candidate": 0, "channel_ambiguous_rows": 0,
             "assignment_certified": False,
             "assignment_ambiguous_components": 0,
-            "assignment_harmless_components": 0}
+            "assignment_harmless_components": 0,
+            "homogeneous_channels_relaxed": 0}
     slot_cands = []
     for cd in cands:
         valid = sorted(set(int(ci) * kk + int(t) for ci, t in cd
@@ -919,6 +920,24 @@ def assemble_from_candidates(cands, slopes, intercepts, C_out, C_in, k):
             info["rows_with_unique_candidate"] += 1
         if len(set(slot // kk for slot in valid)) > 1:
             info["channel_ambiguous_rows"] += 1
+
+    # If all kk rows already confined to one channel carry the same slope, the
+    # tap labels are immaterial: every kernel tap receives the same vector.
+    # Membership values can collapse those rows onto one apparent tap (notably
+    # for dead all-zero QAT channels), so expose the whole channel to the global
+    # matcher.  This changes no possible assembled tensor.
+    for ci in range(C_out):
+        idxs = [i for i, slots in enumerate(slot_cands)
+                if slots and set(slot // kk for slot in slots) == {ci}]
+        if len(idxs) != kk:
+            continue
+        first = np.asarray(slopes[idxs[0]], dtype=np.int64)
+        if all(np.array_equal(first, np.asarray(slopes[i], dtype=np.int64))
+               for i in idxs[1:]):
+            full = list(range(ci * kk, (ci + 1) * kk))
+            for i in idxs:
+                slot_cands[i] = full
+            info["homogeneous_channels_relaxed"] += 1
 
     assign, owner = _match_rows_to_slots(slot_cands, C_out * kk)
     if assign is None or len(assign) != C_out * kk:
