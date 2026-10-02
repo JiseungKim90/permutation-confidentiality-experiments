@@ -36,6 +36,7 @@ against the reply gives `i = sigma_g^{-1}(Pchan[c], q)`, which is precisely the
 reply position the client must write to put a value at canonical `(c, q)`.
 """
 import time
+from collections import Counter
 import numpy as np
 
 from .fmap import conv_int, out_size, block_stride
@@ -847,14 +848,16 @@ def refine_candidates(cands, slopes, bgmap, pls, stride, k, Ho, Wo, us,
     among the surviving candidates; if no in-set candidate survives, the row does
     not respond and its tap lies outside.
 
-    Several probe values are used because the test is only sound when a present
-    value belongs to the row that predicted it.  At the widest layers the value
-    sets are large enough that a single probe value leaves a handful of
-    cross-row coincidences (measured), and a coincidence that survives all of
-    several independent probe values is vanishingly unlikely.
+    Per-row set membership is used only for sound negative pruning: an in-set
+    candidate is removed when one of its exact predicted values is absent.  An
+    out-of-set candidate is retained whenever another row could account for the
+    observed value.  The complete reply multisets are returned as evidence for
+    the exact assignment certifier below; no probabilistic collision argument is
+    used to accept an assignment.
     """
     allt = set(range(k * k))
     nq = 0
+    evidence = []
     us = [np.asarray(u, dtype=np.int64) for u in
           (us if isinstance(us, (list, tuple)) else [us])]
     for pm in pls:
@@ -869,6 +872,13 @@ def refine_candidates(cands, slopes, bgmap, pls, stride, k, Ho, Wo, us,
         for u in us:
             kept = do_query(pm, sorted(taps_m), posof, u)
             nq += 1
+            evidence.append({
+                "posof": {int(t): (int(y), int(x))
+                          for t, (y, x) in posof.items()},
+                "u": np.asarray(u, dtype=np.int64).copy(),
+                "observed": Counter(int(v) for v in
+                                    np.asarray(kept).ravel()),
+            })
             obs.append((u, set(int(v) for v in np.asarray(kept).ravel()),
                         [int(np.dot(sl, u)) for sl in slopes]))
         for i in range(len(cands)):
@@ -876,28 +886,30 @@ def refine_candidates(cands, slopes, bgmap, pls, stride, k, Ho, Wo, us,
                 continue
             inset = [(ci, t) for (ci, t) in cands[i] if t in taps_m]
             hit = []
-            thr = max(1, len(obs) - 1)
             for (ci, t) in inset:
                 y, x = posof[t]
-                votes = sum(1 for (_u, pres, su) in obs
-                            if su[i] + int(bgmap[ci, y, x]) in pres)
-                if votes >= thr:
+                if all(su[i] + int(bgmap[ci, y, x]) in pres
+                       for (_u, pres, su) in obs):
                     hit.append((ci, t))
-            if hit:
-                cands[i] = hit
-            else:
-                rest = [(ci, t) for (ci, t) in cands[i] if t not in taps_m]
-                if rest:
-                    cands[i] = rest
-    return cands, nq
+            rest = [(ci, t) for (ci, t) in cands[i] if t not in taps_m]
+            survive = rest + hit
+            if survive:
+                cands[i] = survive
+    return cands, nq, evidence
 
 
-def assemble_from_candidates(cands, slopes, intercepts, C_out, C_in, k):
+def assemble_from_candidates(cands, slopes, intercepts, C_out, C_in, k,
+                             evidence=None, bgmap=None,
+                             include_intercepts=True,
+                             assignment_node_budget=200000):
     """Assign (channel, tap) to every recovered row and build the layer.
 
     A global bipartite matching assigns rows to ``(channel, tap)`` slots.  The
-    alternating graph then certifies that every other perfect matching induces
-    the same tensor; exchanges among identical slope rows are harmless.
+    alternating graph first identifies every component that can change a perfect
+    matching.  If distinct recovered rows can exchange slots, all matchings in
+    those components are enumerated and checked against the exact multisets of
+    the membership queries.  Certification succeeds only after the search is
+    complete and every feasible matching induces the same tensor.
     """
     kk = k * k
     W = np.zeros((C_out, C_in * kk), dtype=np.int64)
@@ -908,7 +920,13 @@ def assemble_from_candidates(cands, slopes, intercepts, C_out, C_in, k):
             "assignment_certified": False,
             "assignment_ambiguous_components": 0,
             "assignment_harmless_components": 0,
-            "homogeneous_channels_relaxed": 0}
+            "homogeneous_channels_relaxed": 0,
+            "evidence_queries": int(len(evidence or [])),
+            "evidence_search_nodes": 0,
+            "evidence_feasible_assignments": 0,
+            "evidence_distinct_tensors": 0,
+            "evidence_search_exhausted": False,
+            "evidence_certified": False}
     slot_cands = []
     for cd in cands:
         valid = sorted(set(int(ci) * kk + int(t) for ci, t in cd
@@ -933,6 +951,8 @@ def assemble_from_candidates(cands, slopes, intercepts, C_out, C_in, k):
             continue
         first = np.asarray(slopes[idxs[0]], dtype=np.int64)
         if all(np.array_equal(first, np.asarray(slopes[i], dtype=np.int64))
+               and (not include_intercepts or
+                    int(intercepts[i]) == int(intercepts[idxs[0]]))
                for i in idxs[1:]):
             full = list(range(ci * kk, (ci + 1) * kk))
             for i in idxs:
@@ -945,19 +965,137 @@ def assemble_from_candidates(cands, slopes, intercepts, C_out, C_in, k):
         info["channels_seen"] = 0
         return W, b, info
 
-    ambiguous = 0
+    ambiguous_comps = []
     for comp in _alternating_sccs(slot_cands, assign, owner):
         if len(comp) <= 1:
             continue
         first = np.asarray(slopes[comp[0]], dtype=np.int64)
         if all(np.array_equal(first, np.asarray(slopes[i], dtype=np.int64))
+               and (not include_intercepts or
+                    int(intercepts[i]) == int(intercepts[comp[0]]))
                for i in comp[1:]):
             info["assignment_harmless_components"] += 1
         else:
-            ambiguous += 1
-    info["assignment_ambiguous_components"] = int(ambiguous)
-    if ambiguous:
-        info["matching_failures"] = int(ambiguous)
+            ambiguous_comps.append(sorted(comp))
+    info["assignment_ambiguous_components"] = len(ambiguous_comps)
+
+    if ambiguous_comps and evidence and bgmap is not None:
+        # Every alternative perfect matching is confined to an alternating SCC.
+        # Enumerating these SCC-local matchings and their Cartesian product is
+        # therefore a complete uniqueness check, subject to the explicit budget.
+        nodes = [0]
+        exhausted = [False]
+        component_options = []
+
+        for comp in ambiguous_comps:
+            slots = set(assign[i] for i in comp)
+            order = sorted(comp,
+                           key=lambda i: len(set(slot_cands[i]) & slots))
+            options = []
+
+            def enumerate_component(q, used, chosen):
+                nodes[0] += 1
+                if nodes[0] > int(assignment_node_budget):
+                    exhausted[0] = True
+                    return
+                if q == len(order):
+                    options.append(dict(chosen))
+                    return
+                i = order[q]
+                for slot in sorted(set(slot_cands[i]) & slots):
+                    if slot in used:
+                        continue
+                    used.add(slot)
+                    chosen[i] = slot
+                    enumerate_component(q + 1, used, chosen)
+                    chosen.pop(i, None)
+                    used.remove(slot)
+                    if exhausted[0]:
+                        return
+
+            enumerate_component(0, set(), {})
+            component_options.append(options)
+            if exhausted[0] or not options:
+                break
+
+        feasible = 0
+        tensor_keys = {}
+        representative = [None]
+
+        def evidence_matches(candidate):
+            for ev in evidence:
+                pred = Counter()
+                u = np.asarray(ev["u"], dtype=np.int64)
+                posof = ev["posof"]
+                for i, slot in enumerate(candidate):
+                    ci, t = divmod(int(slot), kk)
+                    if t not in posof:
+                        continue
+                    y, x = posof[t]
+                    value = (int(np.dot(np.asarray(slopes[i], dtype=np.int64), u))
+                             + int(bgmap[ci, y, x]))
+                    pred[value] += 1
+                if pred != Counter(ev["observed"]):
+                    return False
+            return True
+
+        def tensor_key(candidate):
+            rows_by_slot = [-1] * (C_out * kk)
+            for i, slot in enumerate(candidate):
+                rows_by_slot[int(slot)] = i
+            wkey = tuple(np.asarray(slopes[i], dtype=np.int64).tobytes()
+                         for i in rows_by_slot)
+            if not include_intercepts:
+                return (wkey,)
+            bkey = []
+            for ci in range(C_out):
+                vals = {int(intercepts[rows_by_slot[ci * kk + t]])
+                        for t in range(kk)}
+                bkey.append(tuple(sorted(vals)))
+            return wkey, tuple(bkey)
+
+        candidate = list(assign)
+
+        def combine(q):
+            nonlocal feasible
+            nodes[0] += 1
+            if nodes[0] > int(assignment_node_budget):
+                exhausted[0] = True
+                return
+            if q == len(component_options):
+                if evidence_matches(candidate):
+                    feasible += 1
+                    key = tensor_key(candidate)
+                    if key not in tensor_keys:
+                        tensor_keys[key] = True
+                        if representative[0] is None:
+                            representative[0] = list(candidate)
+                return
+            for option in component_options[q]:
+                old = {i: candidate[i] for i in option}
+                for i, slot in option.items():
+                    candidate[i] = slot
+                combine(q + 1)
+                for i, slot in old.items():
+                    candidate[i] = slot
+                if exhausted[0] or len(tensor_keys) > 1:
+                    return
+
+        if (not exhausted[0] and component_options and
+                all(component_options)):
+            combine(0)
+        info["evidence_search_nodes"] = int(nodes[0])
+        info["evidence_feasible_assignments"] = int(feasible)
+        info["evidence_distinct_tensors"] = int(len(tensor_keys))
+        info["evidence_search_exhausted"] = bool(exhausted[0])
+        if not exhausted[0] and len(tensor_keys) == 1:
+            assign = representative[0]
+            ambiguous_comps = []
+            info["assignment_ambiguous_components"] = 0
+            info["evidence_certified"] = True
+
+    if ambiguous_comps:
+        info["matching_failures"] = len(ambiguous_comps)
         info["channels_seen"] = len(set(slot // kk for slot in assign))
         return W, b, info
 
@@ -1222,6 +1360,7 @@ def extract_chain_partial(net, T=3, seed=0, noise_law="Gaussian", H0=32,
         Rb = np.asarray(intercepts, dtype=np.int64)
         cand0 = [list(c) for c in cand2]
         nmq, attempt, ainfo = 0, 0, None
+        all_membership_evidence = []
         while attempt < 4:
             attempt += 1
             us, ubad = [], 0
@@ -1242,12 +1381,13 @@ def extract_chain_partial(net, T=3, seed=0, noise_law="Gaussian", H0=32,
                 return kept
 
             cand2 = [list(c) for c in cand0]
-            cand2, nq2 = refine_candidates(cand2, slopes, bgmap,
-                                           pls_avail, st, k, Ho, Wo, us,
-                                           do_q)
+            cand2, nq2, ev2 = refine_candidates(
+                cand2, slopes, bgmap, pls_avail, st, k, Ho, Wo, us, do_q)
             nmq += nq2
+            all_membership_evidence.extend(ev2)
             W_live, b_can, ainfo = assemble_from_candidates(
-                cand2, slopes, intercepts, C_out, C_live, k)
+                cand2, slopes, intercepts, C_out, C_live, k,
+                evidence=all_membership_evidence, bgmap=bgmap)
             if not ainfo["matching_failures"]:
                 break
         rec["membership_anchor_collisions"] = ubad
@@ -1515,6 +1655,7 @@ def extract_chain_partial(net, T=3, seed=0, noise_law="Gaussian", H0=32,
         rec["rows_fixed_by_intercept"] = int(sum(1 for c in cands if len(c) == 1))
         cands0 = [list(c) for c in cands]
         nmq, attempt, ainfo = 0, 0, None
+        all_membership_evidence = []
         while attempt < 4:
             attempt += 1
             us, ubad = [], 0
@@ -1535,12 +1676,14 @@ def extract_chain_partial(net, T=3, seed=0, noise_law="Gaussian", H0=32,
                 return kept
 
             cands = [list(c) for c in cands0]
-            cands, nq2 = refine_candidates(cands, slopes, bgmap,
-                                           pls_avail, 1, 3, Ho, Wo, us,
-                                           do_q)
+            cands, nq2, ev2 = refine_candidates(
+                cands, slopes, bgmap, pls_avail, 1, 3, Ho, Wo, us, do_q)
             nmq += nq2
+            all_membership_evidence.extend(ev2)
             W_live, b_unused, ainfo = assemble_from_candidates(
-                cands, slopes, [int(v) for v in br], C_out, C_live, 3)
+                cands, slopes, [int(v) for v in br], C_out, C_live, 3,
+                evidence=all_membership_evidence, bgmap=bgmap,
+                include_intercepts=False)
             if not ainfo["matching_failures"]:
                 break
         rec["membership_anchor_collisions"] = ubad

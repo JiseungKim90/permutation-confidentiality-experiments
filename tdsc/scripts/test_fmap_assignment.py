@@ -44,6 +44,33 @@ def main() -> None:
     assert info["assignment_harmless_components"] == 1
     assert np.array_equal(W[:, 0], np.array([7, 7]))
 
+    # Exact reply multisets distinguish the two otherwise exchangeable rows.
+    # The observed values are 11+0 and 22+100, which only the identity matching
+    # reproduces; set-membership alone cannot certify that global assignment.
+    W, _, info = assemble_from_candidates(
+        [[(0, 0), (1, 0)], [(0, 0), (1, 0)]],
+        [np.array([11]), np.array([22])], [0, 0], 2, 1, 1,
+        evidence=[{"posof": {0: (0, 0)}, "u": np.array([1]),
+                   "observed": {11: 1, 122: 1}}],
+        bgmap=np.array([[[0]], [[100]]], dtype=np.int64),
+    )
+    assert info["assignment_certified"]
+    assert info["evidence_certified"]
+    assert info["evidence_distinct_tensors"] == 1
+    assert np.array_equal(W[:, 0], np.array([11, 22]))
+
+    # With equal backgrounds the same multiset is compatible with both tensors,
+    # so the certifier must retain the ambiguity.
+    _, _, info = assemble_from_candidates(
+        [[(0, 0), (1, 0)], [(0, 0), (1, 0)]],
+        [np.array([11]), np.array([22])], [0, 0], 2, 1, 1,
+        evidence=[{"posof": {0: (0, 0)}, "u": np.array([1]),
+                   "observed": {11: 1, 22: 1}}],
+        bgmap=np.zeros((2, 1, 1), dtype=np.int64),
+    )
+    assert not info["assignment_certified"]
+    assert info["evidence_distinct_tensors"] == 2
+
     # A dead 2x2 kernel can collapse every recovered row onto the same apparent
     # tap.  Since all four slopes are zero, assigning them to the four taps is
     # tensor-identical and must not collapse the following network frame.
