@@ -28,8 +28,11 @@ import _bootstrap
 ROOT = Path(_bootstrap.ROOT)
 DATA = Path(_bootstrap.DATA)
 RESULTS = Path(_bootstrap.RESULTS)
-SOURCE_FILES = (
-    ROOT / "lib" / "resnet20.py",
+# Hash the complete library surface used by the spawned extraction/completion
+# processes, not only their two entry points.  The former four-file list missed
+# changes to the LTA certificate and feature-map assembler, precisely the code
+# whose effect this audit is intended to measure.
+SOURCE_FILES = tuple(sorted((ROOT / "lib").glob("*.py"))) + (
     ROOT / "scripts" / "run_extraction.py",
     ROOT / "scripts" / "run_completion.py",
     Path(__file__).resolve(),
