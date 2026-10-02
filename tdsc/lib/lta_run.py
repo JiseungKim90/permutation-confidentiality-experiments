@@ -127,10 +127,20 @@ def recovery_record_is_certified(record):
     probe_ok = bool(
         isinstance(probe_value, (bool, np.bool_)) and probe_value
     )
+    assembly = record.get("assembly")
+    assembly_ok = True
+    if isinstance(assembly, dict) and "assignment_certified" in assembly:
+        assembly_ok = bool(
+            isinstance(assembly.get("assignment_certified"),
+                       (bool, np.bool_))
+            and assembly["assignment_certified"]
+            and _is_explicit_zero(assembly, "matching_failures")
+        )
     return bool(
         all(lta_run_is_certified(run) for _, _, run in nested)
         and isolation_ok
         and probe_ok
+        and assembly_ok
     )
 
 
@@ -216,6 +226,108 @@ def _pick_jstar(p, d):
     return best_j, best_c
 
 
+def _assemble_from_anchor_passes(base, base_x, anchor_passes, d):
+    """Assemble the row multiset using singleton rows from several anchors.
+
+    Each certified pass exposes every row whose affine value is unique at that
+    pass's anchor.  Such a row carries its complete slope vector and bias, so it
+    can be removed soundly from the slope multisets of its group at ``base_x``.
+    A residual group is accepted only when one row remains or every remaining
+    row is provably identical in every column.
+    """
+    known = {}
+    for source, p, x in anchor_passes:
+        if p is None or p.get("status") != "ok":
+            continue
+        _, _, W, b = _singles(p, x, d)
+        for r in range(W.shape[0]):
+            wr = np.ascontiguousarray(W[r], dtype=np.int64)
+            br = int(b[r])
+            key = wr.tobytes() + np.asarray([br], dtype=np.int64).tobytes()
+            known.setdefault(key, (wr.copy(), br, source))
+
+    rows_W, rows_b = [], []
+    unresolved_group_ids = []
+    inconsistent = 0
+    source_counts = Counter()
+    residual_singletons = 0
+    residual_identical = 0
+    a_vals, mu = base["a_vals"], base["mu"]
+    xb = np.asarray(base_x, dtype=np.int64)
+    for i in range(a_vals.size):
+        n = int(mu[i])
+        alpha = int(a_vals[i])
+        G = _group_matrix(base, i, d)
+        matched = [(w, b, source) for w, b, source in known.values()
+                   if int(w @ xb) + int(b) == alpha]
+        if len(matched) > n:
+            inconsistent += 1
+            matched = matched[:n]
+
+        residual = []
+        bad = False
+        for j in range(d):
+            vals = list(int(v) for v in G[:, j])
+            for w, _b, _source in matched:
+                try:
+                    vals.remove(int(w[j]))
+                except ValueError:
+                    bad = True
+                    break
+            residual.append(vals)
+            if bad:
+                break
+        if bad:
+            inconsistent += 1
+            unresolved_group_ids.append((int(i), n, n))
+            continue
+
+        for w, b, source in matched:
+            rows_W.append(w[None, :])
+            rows_b.append(np.asarray([b], dtype=np.int64))
+            source_counts[source] += 1
+        left = n - len(matched)
+        if left == 0:
+            continue
+        if left == 1:
+            w = np.asarray([vals[0] for vals in residual], dtype=np.int64)
+            b = alpha - int(w @ xb)
+            rows_W.append(w[None, :])
+            rows_b.append(np.asarray([b], dtype=np.int64))
+            residual_singletons += 1
+            continue
+        if all(len(vals) == left and len(set(vals)) == 1 for vals in residual):
+            w = np.asarray([vals[0] for vals in residual], dtype=np.int64)
+            b = alpha - int(w @ xb)
+            rows_W.append(np.repeat(w[None, :], left, axis=0))
+            rows_b.append(np.full(left, b, dtype=np.int64))
+            residual_identical += left
+            continue
+        unresolved_group_ids.append((int(i), int(left), n))
+        # Materialise a deterministic placeholder for diagnostics only.  The
+        # caller marks the invocation unresolved and cannot consume this array.
+        Wl = np.zeros((left, d), dtype=np.int64)
+        for j in range(d):
+            Wl[:, j] = np.asarray(residual[j], dtype=np.int64)
+        rows_W.append(Wl)
+        rows_b.append(np.full(left, alpha, dtype=np.int64) - Wl @ xb)
+
+    W_rec = (np.concatenate(rows_W, axis=0)
+             if rows_W else np.zeros((0, d), dtype=np.int64))
+    b_rec = (np.concatenate(rows_b, axis=0)
+             if rows_b else np.zeros((0,), dtype=np.int64))
+    return {
+        "W": W_rec,
+        "b": b_rec,
+        "unresolved_group_ids": unresolved_group_ids,
+        "unresolved_rows": int(sum(g[1] for g in unresolved_group_ids)),
+        "inconsistent_matches": int(inconsistent),
+        "source_counts": dict(source_counts),
+        "residual_singletons": int(residual_singletons),
+        "residual_identical_rows": int(residual_identical),
+    }
+
+
 def _verify(W_rec, b_rec, W_int, b_int):
     M_rec = np.concatenate([W_rec, b_rec[:, None]], axis=1)
     M_true = np.concatenate([W_int, b_int[:, None]], axis=1)
@@ -231,7 +343,8 @@ def _verify(W_rec, b_rec, W_int, b_int):
 
 def run_lta(W_int, b_int, A, T, rng, noise_fn, backend=None, deadline=None,
             node_budget=4000, max_anchor_tries=5, diagnostics=True,
-            allow_pass2=True, x0_fixed=None, channel=None):
+            allow_pass2=True, x0_fixed=None, channel=None,
+            max_linkage_passes=4):
     """Full LTA on one quantised layer.  Returns a JSON-ready record.
 
     If `channel` is given it is used instead of a fresh lib.lta.Channel; it must
@@ -288,18 +401,17 @@ def run_lta(W_int, b_int, A, T, rng, noise_fn, backend=None, deadline=None,
     groups1 = np.nonzero(mu1 > 1)[0]
     sing_idx, sing_alpha, W1, b1 = _singles(p1, x0, d)
 
-    rows_W = [W1]
-    rows_b = [b1]
-    unresolved = 0
     rec["pass2_used"] = False
     rec["pass2_anchor_prediction_exact"] = None
     rec["pass2_overlap_checked"] = 0
     rec["pass2_overlap_mismatches"] = 0
     rec["rows_from_pass1"] = int(W1.shape[0])
     rec["rows_from_pass2"] = 0
+    rec["rows_from_additional_passes"] = 0
     rec["jstar"] = None
 
     p2 = None
+    x0p = None
     dict2 = {}
     if groups1.size and allow_pass2 and p1["status"] == "ok" and hi >= 0:
         jstar, ndist = _pick_jstar(p1, d)
@@ -322,69 +434,87 @@ def run_lta(W_int, b_int, A, T, rng, noise_fn, backend=None, deadline=None,
                             if k not in ("slopes", "a_vals", "mu", "off", "S0")}
             rec["pass2_used"] = True
             rec["n_ties_anchor2"] = p2["n_ties"]
-            if p2["status"] != "ok" and rec["status"] == "ok":
-                rec["status"] = p2["status"]
-                rec["error"] = p2["error"]
-            s2_idx, s2_alpha, W2, b2 = _singles(p2, x0p, d)
-            for r in range(W2.shape[0]):
-                dict2[int(s2_alpha[r])] = (W2[r], int(b2[r]))
-            for r in range(W1.shape[0]):
-                ap = int(sing_alpha[r] + T * W1[r, jstar])
-                if ap in dict2:
-                    rec["pass2_overlap_checked"] += 1
-                    if not np.array_equal(dict2[ap][0], W1[r]):
-                        rec["pass2_overlap_mismatches"] += 1
+            if p2["status"] == "ok":
+                s2_idx, s2_alpha, W2, b2 = _singles(p2, x0p, d)
+                for r in range(W2.shape[0]):
+                    dict2[int(s2_alpha[r])] = (W2[r], int(b2[r]))
+                for r in range(W1.shape[0]):
+                    ap = int(sing_alpha[r] + T * W1[r, jstar])
+                    if ap in dict2:
+                        rec["pass2_overlap_checked"] += 1
+                        if not np.array_equal(dict2[ap][0], W1[r]):
+                            rec["pass2_overlap_mismatches"] += 1
 
-    # ---------------- fill tied groups
-    inconsistent_matches = 0
-    unresolved_group_ids = []
-    rec["rows_forced_as_group_residual"] = 0
-    rec["rows_in_provably_identical_residuals"] = 0
-    for i in groups1:
-        n = int(mu1[i])
-        G = _group_matrix(p1, i, d)
-        alive = np.ones((n, d), dtype=bool)
-        taken = []
-        if p2 is not None and rec["jstar"] is not None:
-            js = rec["jstar"]
-            used = set()
-            for g in G[:, js]:
-                ap = int(p1["a_vals"][i] + T * g)
-                if ap in dict2 and ap not in used:
-                    w2, bb2 = dict2[ap]
-                    if int(w2[js]) != int(g):
-                        continue
-                    eq = (G == w2[None, :]) & alive
-                    has = eq.any(axis=0)
-                    if not bool(has.all()):
-                        inconsistent_matches += 1
-                        continue
-                    alive[eq.argmax(axis=0), np.arange(d)] = False
-                    used.add(ap)
-                    taken.append((w2, bb2))
-        for w2, bb2 in taken:
-            rows_W.append(w2[None, :])
-            rows_b.append(np.array([bb2], dtype=np.int64))
-        rec["rows_from_pass2"] += len(taken)
-        left = n - len(taken)
-        if left > 0:
-            Wl = np.zeros((left, d), dtype=np.int64)
-            for j in range(d):
-                Wl[:, j] = G[alive[:, j], j]
-            bl = p1["a_vals"][i] - Wl @ x0
-            rows_W.append(Wl)
-            rows_b.append(bl)
-            if left == 1:
-                rec["rows_forced_as_group_residual"] += 1
-            elif bool(np.all(Wl == Wl[0])):
-                rec["rows_in_provably_identical_residuals"] += int(left)
-            else:
-                unresolved += left
-                unresolved_group_ids.append((i, int(left), int(n)))
+    # ---------------- combine singleton rows from independent anchors
+    anchor_passes = [("pass1", p1, x0)]
+    if p2 is not None and p2.get("status") == "ok":
+        anchor_passes.append(("pass2", p2, x0p))
+    assembled = _assemble_from_anchor_passes(p1, x0, anchor_passes, d)
+    extra_records, extra_passes = [], []
+    extra_anchor_queries = 0
+    seen_anchors = {np.asarray(x0, dtype=np.int64).tobytes()}
+    if x0p is not None:
+        seen_anchors.add(np.asarray(x0p, dtype=np.int64).tobytes())
+    while (allow_pass2 and p1.get("status") == "ok"
+           and assembled["unresolved_rows"] > 0
+           and len(extra_records) < max_linkage_passes
+           and (deadline is None or time.time() <= deadline)):
+        best_extra = None
+        tie_trials = []
+        for _ in range(max_anchor_tries):
+            xa = rng.integers(0, hi + 1, size=d).astype(np.int64)
+            if xa.tobytes() in seen_anchors:
+                continue
+            Sa = ch.set_anchor(xa)
+            extra_anchor_queries += 1
+            ties = int(m - np.unique(Sa).size)
+            tie_trials.append(ties)
+            if best_extra is None or ties < best_extra[2]:
+                best_extra = (xa, Sa, ties)
+            if ties == 0:
+                break
+        if best_extra is None:
+            break
+        xa, Sa, ties = best_extra
+        seen_anchors.add(xa.tobytes())
+        pa = lta_pass(ch, xa, T, S0=Sa, deadline=deadline,
+                      node_budget=node_budget, true_W=tW, key_mul=key_mul)
+        extra_records.append({
+            "anchor_tie_attempts": tie_trials,
+            "selected_anchor_ties": int(ties),
+            "pass": {k: v for k, v in pa.items()
+                     if k not in ("slopes", "a_vals", "mu", "off", "S0")},
+        })
+        if pa.get("status") == "ok":
+            source = "linkage%d" % (len(extra_passes) + 1)
+            extra_passes.append(pa)
+            anchor_passes.append((source, pa, xa))
+            assembled = _assemble_from_anchor_passes(
+                p1, x0, anchor_passes, d)
 
-    rec["inconsistent_pass2_matches"] = inconsistent_matches
-    W_rec = np.concatenate(rows_W, axis=0) if rows_W else np.zeros((0, d), np.int64)
-    b_rec = np.concatenate(rows_b, axis=0) if rows_b else np.zeros((0,), np.int64)
+    rec["additional_linkage_passes"] = extra_records
+    rec["additional_linkage_passes_used"] = len(extra_passes)
+    rec["additional_anchor_queries"] = int(extra_anchor_queries)
+    rec["discarded_linkage_passes"] = int(
+        sum(1 for item in extra_records if item["pass"].get("status") != "ok")
+        + (1 if p2 is not None and p2.get("status") != "ok" else 0)
+    )
+    rec["rows_from_pass1"] = int(
+        assembled["source_counts"].get("pass1", 0))
+    rec["rows_from_pass2"] = int(
+        assembled["source_counts"].get("pass2", 0))
+    rec["rows_from_additional_passes"] = int(sum(
+        count for source, count in assembled["source_counts"].items()
+        if source.startswith("linkage")))
+    rec["rows_forced_as_group_residual"] = int(
+        assembled["residual_singletons"])
+    rec["rows_in_provably_identical_residuals"] = int(
+        assembled["residual_identical_rows"])
+    rec["inconsistent_pass2_matches"] = int(
+        assembled["inconsistent_matches"])
+    unresolved = int(assembled["unresolved_rows"])
+    unresolved_group_ids = assembled["unresolved_group_ids"]
+    W_rec, b_rec = assembled["W"], assembled["b"]
     if W_rec.shape[0] != m:
         rec["status"] = "assembly_row_count_mismatch"
         rec["error"] = "assembled %d rows, expected %d" % (W_rec.shape[0], m)
@@ -419,23 +549,40 @@ def run_lta(W_int, b_int, A, T, rng, noise_fn, backend=None, deadline=None,
     rec["rows_recovered_exactly"] = n_exact_rows
     rec["n_queries"] = int(ch.n_queries)
     rec["queries_over_d"] = round(ch.n_queries / d, 3)
-    npass = 2 if rec["pass2_used"] else 1
-    n_anchor = rec["anchor_queries"] + (1 if rec["pass2_used"] else 0)
-    rec["n_passes"] = npass
+    executed = [p1] + ([p2] if p2 is not None else []) + [
+        item for item in extra_passes]
+    certified = [p for p in executed if p.get("status") == "ok"]
+    n_anchor = (rec["anchor_queries"]
+                + (1 if rec["pass2_used"] else 0)
+                + rec["additional_anchor_queries"])
+    rec["anchor_queries_total"] = int(n_anchor)
+    rec["n_passes"] = int(len(certified))
+    rec["n_passes_attempted"] = int(len(executed))
     rec["n_queries_formula"] = (
-        "%d anchor queries + %d pass(es) x T d = %d + %d*%d*%d = %d"
-        % (n_anchor, npass, n_anchor, npass, T, d, n_anchor + npass * T * d))
+        "%d anchor queries and %d attempted line pass(es); actual total %d"
+        % (n_anchor, len(executed), ch.n_queries))
     rec["channel_rounding_exact"] = bool(ch.rounding_exact)
     rec["channel_rounding_failures"] = int(ch.n_rounding_failures)
     rec["inadmissible_query_entries"] = int(ch.inadmissible_query_entries)
-    cf = p1["columns_forced"] + (p2["columns_forced"] if p2 else 0)
-    ct = p1["columns_total"] + (p2["columns_total"] if p2 else 0)
+    cf = sum(p["columns_forced"] for p in certified)
+    cs = sum(p.get("columns_unique_searched", 0) for p in certified)
+    ct = sum(p["columns_total"] for p in certified)
     rec["columns_forced_fraction"] = round(cf / ct, 4) if ct else None
-    rec["columns_failed"] = int(p1["columns_failed"] + (p2["columns_failed"] if p2 else 0))
-    rec["false_line_events"] = int(p1["false_line_events"]
-                                   + (p2["false_line_events"] if p2 else 0))
-    rec["columns_backtracked"] = int(p1["columns_backtracked"]
-                                     + (p2["columns_backtracked"] if p2 else 0))
+    rec["columns_unique_searched"] = int(cs)
+    rec["columns_certified_fraction"] = round(
+        sum(p.get("columns_certified", 0) for p in certified) / ct, 4
+    ) if ct else None
+    # The base pass is mandatory.  Supplemental passes are exploratory and are
+    # consumed only when certified; failed supplemental passes are recorded but
+    # cannot poison or contribute to the assembled model.
+    rec["columns_failed"] = int(p1["columns_failed"])
+    rec["discarded_columns_failed"] = int(sum(
+        p.get("columns_failed", 0) for p in executed[1:]
+        if p.get("status") != "ok"))
+    rec["false_line_events"] = int(sum(
+        p.get("false_line_events", 0) for p in executed))
+    rec["columns_backtracked"] = int(sum(
+        p.get("columns_backtracked", 0) for p in certified))
     if rec["status"] == "ok" and rec["columns_failed"]:
         rec["status"] = "uncertified_columns"
         rec["error"] = "%d LTA column(s) are uncertified" % rec["columns_failed"]

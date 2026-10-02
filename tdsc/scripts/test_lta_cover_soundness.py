@@ -15,6 +15,7 @@ sys.path.insert(0, str(REPRO_ROOT))
 
 from lib.lta import track_column  # noqa: E402
 from lib.lta_run import (  # noqa: E402
+    _assemble_from_anchor_passes,
     lta_run_is_certified,
     recovery_record_is_certified,
     require_lta_run_certified,
@@ -64,6 +65,35 @@ def main() -> None:
     assert unique["ok"]
     assert unique["forced"]
     assert np.array_equal(unique["slopes"], unique_slopes)
+
+    # Two rows tied at the base anchor have column-wise slope multisets that do
+    # not reveal correspondence.  A second certified anchor exposes both rows
+    # as singletons and the multi-anchor assembler links them exactly.
+    base = {
+        "status": "ok",
+        "a_vals": np.array([0], dtype=np.int64),
+        "mu": np.array([2], dtype=np.int64),
+        "off": np.array([0, 2], dtype=np.int64),
+        "slopes": [np.array([0, 1], dtype=np.int64),
+                   np.array([0, 1], dtype=np.int64)],
+    }
+    second = {
+        "status": "ok",
+        "a_vals": np.array([0, 1], dtype=np.int64),
+        "mu": np.array([1, 1], dtype=np.int64),
+        "off": np.array([0, 1, 2], dtype=np.int64),
+        "slopes": [np.array([0, 1], dtype=np.int64),
+                   np.array([1, 0], dtype=np.int64)],
+    }
+    linked = _assemble_from_anchor_passes(
+        base, np.array([0, 0], dtype=np.int64),
+        [("pass1", base, np.array([0, 0], dtype=np.int64)),
+         ("pass2", second, np.array([1, 0], dtype=np.int64))],
+        2,
+    )
+    assert linked["unresolved_rows"] == 0
+    assert {tuple(row) for row in linked["W"]} == {(1, 0), (0, 1)}
+    assert np.array_equal(linked["b"], np.zeros(2, dtype=np.int64))
 
     # The same ambiguous transcript must remain rejected through the complete
     # wrapper; zero-filled rows must never become a successful recovery.
@@ -141,6 +171,14 @@ def main() -> None:
     assert not recovery_record_is_certified(bad_single)
     assert not recovery_record_is_certified(bad_list)
     assert recovery_record_is_certified(good_single)
+    good_with_assembly = dict(good_single)
+    good_with_assembly["assembly"] = {
+        "assignment_certified": True, "matching_failures": 0}
+    assert recovery_record_is_certified(good_with_assembly)
+    bad_with_assembly = dict(good_single)
+    bad_with_assembly["assembly"] = {
+        "assignment_certified": False, "matching_failures": 1}
+    assert not recovery_record_is_certified(bad_with_assembly)
     summary = summarize_recovery_records([good_single, bad_list])
     assert summary["lta_invocations_total"] == 3
     assert summary["lta_invocations_certified"] == 2
