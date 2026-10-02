@@ -17,9 +17,11 @@ from-scratch models.
 The source was copied from the historical experiment repository at commit
 `4d8f7765e5474f9da890931084c4bea42e7a23d5`.  That code identifies `lib_qat`
 as a snapshot of its earlier commit `22b2843`.  For anonymous publication,
-only the literal host name in `lib_qat/models.py` and the host/absolute-path
-metadata in the JSON records were replaced; the training algorithm, options,
-measurements, and checkpoint bytes were not changed.
+the literal host name in `lib_qat/models.py` and the host/absolute-path metadata
+in the JSON records were replaced.  The published copy also authenticates every
+loaded checkpoint by SHA-256 and enables PyTorch's data-only loader.  These
+changes do not alter the training arithmetic, recorded measurements, or
+checkpoint bytes.
 
 ## Recorded runs
 
@@ -57,6 +59,10 @@ Change the seed and the three bit widths according to the table.  A run writes
 `data/qat_<tag>.pt` and `results/qat_train_<tag>.json`.  Verify the checkpoint
 against `../../reference/multicheckpoint/checkpoints.json`; the public audit
 rejects any byte sequence with a different SHA-256 digest.
+
+All eight QAT checkpoint files are included in `../../data/checkpoints/` and
+authenticated by that manifest.  The official floating-point initialization is
+not redistributed; `scripts/download_inputs.py` retrieves and authenticates it.
 
 The journal robustness audit deliberately converts every checkpoint through
 the same post-training 8-bit simulator.  Thus the 5--7-bit entries test weight

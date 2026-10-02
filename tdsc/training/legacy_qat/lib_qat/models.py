@@ -8,6 +8,8 @@ import numpy as np
 import torch
 import torch.nn as nn
 
+from .checkpoint import load_verified_checkpoint
+
 
 # ---------------- copied from lib/models.py of the artifact ----------------
 class MNISTNet(nn.Module):
@@ -91,9 +93,9 @@ def get_conv_layers(model):
 
 
 # ---------------- helpers ----------------
-def load_resnet56(path):
+def load_resnet56(path, expected_sha256):
     model = ResNet56()
-    ckpt = torch.load(path, map_location="cpu", weights_only=False)
+    ckpt = load_verified_checkpoint(path, expected_sha256)
     if isinstance(ckpt, dict) and "model_state_dict" in ckpt:
         model.load_state_dict(ckpt["model_state_dict"])
     else:

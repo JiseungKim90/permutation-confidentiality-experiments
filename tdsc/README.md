@@ -10,9 +10,11 @@ This GitHub package is the public artifact referenced by URL. The article does
 not depend on a separate supplementary-material submission.
 
 The package contains the source and compact records for the journal's
-simulator case study and finite enumeration. The historical QAT inputs are
-not distributed, and the conference measurements are archived evidence, not
-new journal replications. Bulky raw traces are not in this publication tree.
+simulator case study and finite enumeration. All eight historical QAT
+checkpoints are distributed and digest-locked; the official floating-point
+checkpoint is fetched and authenticated by the downloader. The conference
+measurements are archived evidence, not new journal replications. Bulky raw
+traces are not in this publication tree.
 The limitations below are part of the evidence record.
 
 ## Contents
@@ -208,12 +210,12 @@ explanation that two more probe steps solve the failure.
 The compact, path-sanitized record is
 `reference/multicheckpoint/audit.json`. The QAT checkpoints share the same
 official float initialization and are not independent-from-scratch models.
-Their bytes are not distributed in this repository; their digests and expected
-relative paths are listed in `reference/multicheckpoint/checkpoints.json`.
-Consequently, this branch publishes all audit code and the complete compact
-outcome record, but it is not a self-contained distribution of those
-historical QAT inputs. The paper therefore retains the original experiment as
-a one-checkpoint case study and makes no cross-checkpoint success-rate claim.
+All eight checkpoint files are distributed under `data/checkpoints/`; their
+digests and expected paths are fixed in
+`reference/multicheckpoint/checkpoints.json`. The official floating-point
+checkpoint remains a public, authenticated download. Because the QAT files are
+fine-tunes of one initialization, the audit tests fixed-configuration weight-set
+variation and does not estimate a population success rate.
 
 ## Scope of the evidence
 
@@ -327,11 +329,12 @@ env OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 MKL_NUM_THREADS=4 \
   --checkpoints official --n-test 10000 --batch-size 128 --threads 4
 ```
 
-The public checkpoint and CIFAR-10 inputs are supplied by the downloader above.
-Omit `--checkpoints official` to evaluate all three recorded weight sets when
-the two historical QAT checkpoint files are available at their manifest paths.
-Those weight sets are loaded as floating-point networks; this is not native
-QAT evaluation. The launch record fixes the source hashes, input schedule,
+The public checkpoint and CIFAR-10 inputs are supplied by the downloader above;
+all eight QAT files are included under `data/checkpoints/`. Omit
+`--checkpoints official` to evaluate all nine current manifest entries, or pass
+`--checkpoints official qat-w8-s0 qat-w8-s1` to reproduce the retained
+three-weight record below. The QAT-derived weights are loaded as floating-point
+networks; this is not native QAT evaluation. The launch record fixes the source hashes, input schedule,
 environment, command and acceptance criteria before inference begins. Each
 complete run retains full reference/control/corrected logits in its output
 directory; only compact results are published.
@@ -379,8 +382,7 @@ python3 scripts/verify_inference_evidence.py \
 ```
 
 Replace the result directory with the fresh directory used for your run.
-The two historical QAT inputs are still required to repeat this three-weight
-comparison and are not distributed. The verifier certifies ordinary float64
+The eight QAT checkpoint files are distributed and digest-locked. The verifier certifies ordinary float64
 inference only; it cannot promote that evidence to trained-network extraction,
 native QAT execution, or an encrypted backend result. Twenty-seven negative
 controls reject incomplete or empty runs, duplicate schedules, noninteger

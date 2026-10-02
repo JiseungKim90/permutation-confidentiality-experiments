@@ -291,13 +291,13 @@ def _embed_centre(S, C_in):
     return out
 
 
-def load_resnet20_cifar10(path):
+def load_resnet20_cifar10(path, expected_sha256):
     """Load a chenyaofo/pytorch-cifar-models ResNet-20 checkpoint into
     lib.models._ResNetCIFAR(n=3).  The only naming difference is
     `downsample` versus `shortcut`."""
-    import torch
     from .models import _ResNetCIFAR
-    sd = torch.load(path, map_location="cpu", weights_only=False)
+    from .checkpoint import load_verified_checkpoint
+    sd = load_verified_checkpoint(path, expected_sha256)
     if isinstance(sd, dict) and "state_dict" in sd:
         sd = sd["state_dict"]
     remap = {k.replace(".downsample.", ".shortcut."): v for k, v in sd.items()}

@@ -27,7 +27,9 @@ parser.add_argument("--out", required=True)
 parser.add_argument("--n-test", type=int, default=10000)
 parser.add_argument("--batch-size", type=int, default=128)
 parser.add_argument("--threads", type=int, default=4)
-parser.add_argument("--checkpoints", nargs="+", help="Manifest names; omit to evaluate all three recorded inputs.")
+parser.add_argument(
+    "--checkpoints", nargs="+",
+    help="Manifest names; omit to evaluate all nine current checkpoints.")
 args = parser.parse_args()
 root = Path(args.root).resolve()
 out = Path(args.out).resolve()

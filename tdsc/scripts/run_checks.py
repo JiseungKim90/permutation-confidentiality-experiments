@@ -31,6 +31,7 @@ def main():
         run("scripts/verify_finite_reference.py"),
         run("scripts/test_trusted_inputs.py"),
         run("scripts/test_lta_cover_soundness.py"),
+        run("scripts/test_fmap_assignment.py"),
         run("scripts/test_attacker_boundary.py"),
         run("scripts/test_graph_gauge_bias_scope.py"),
         run("scripts/test_input_normalization.py"),

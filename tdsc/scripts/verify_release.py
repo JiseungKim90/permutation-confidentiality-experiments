@@ -31,6 +31,7 @@ REQUIRED = (
     "scripts/verify_runs.py",
     "scripts/verify_finite_reference.py",
     "scripts/test_lta_cover_soundness.py",
+    "scripts/test_fmap_assignment.py",
     "scripts/test_attacker_boundary.py",
     "scripts/test_graph_gauge_bias_scope.py",
     "scripts/test_trusted_inputs.py",
@@ -60,6 +61,19 @@ REQUIRED = (
     "reference/public-reproduction-20261002/validation.json",
     "reference/public-reproduction-20261002/requirements-frozen.txt",
     "reference/public-reproduction-20261002/inference.stdout.log",
+    "training/legacy_qat/README.md",
+    "training/legacy_qat/lib_qat/checkpoint.py",
+    "training/legacy_qat/scripts/qat_common.py",
+    "training/legacy_qat/scripts/qat_data.py",
+    "training/legacy_qat/scripts/qat_train.py",
+    "training/legacy_qat/results/qat_train_qatf_r20_w5_s0.json",
+    "training/legacy_qat/results/qat_train_qatf_r20_w5_s1.json",
+    "training/legacy_qat/results/qat_train_qatf_r20_w6_s0.json",
+    "training/legacy_qat/results/qat_train_qatf_r20_w6_s1.json",
+    "training/legacy_qat/results/qat_train_qatf_r20_w7_s0.json",
+    "training/legacy_qat/results/qat_train_qatf_r20_w7_s1.json",
+    "training/legacy_qat/results/qat_train_qatf_r20_w8_s0.json",
+    "training/legacy_qat/results/qat_train_qatf_r20_w8_s1.json",
 )
 TEXT_SUFFIXES = {".py", ".md", ".txt", ".json", ".cff", ".yml", ".yaml"}
 FORBIDDEN_TEXT = {
@@ -73,6 +87,10 @@ FORBIDDEN_HOST_LABELS = ("ubuntu" + "02", "lab" + "614")
 FORBIDDEN_SUFFIXES = {".zip", ".pt", ".pth", ".pem", ".key"}
 RUNTIME_PREFIXES = ("logs/", "results/", ".venv/")
 TORCH_LOAD_CALL = "torch" + ".load("
+TRUSTED_CHECKPOINT_LOADERS = {
+    "lib/checkpoint.py",
+    "training/legacy_qat/lib_qat/checkpoint.py",
+}
 
 
 def sha256_file(path):
@@ -127,7 +145,7 @@ def main():
             if (
                 path.suffix.lower() == ".py"
                 and TORCH_LOAD_CALL in text
-                and relative != "lib/checkpoint.py"
+                and relative not in TRUSTED_CHECKPOINT_LOADERS
             ):
                 failures.append("direct PyTorch checkpoint load outside trusted loader: %s" % relative)
 
@@ -164,6 +182,31 @@ def main():
 
     extraction = read_json("reference/extraction/verification.json")
     completion = read_json("reference/completion/verification.json")
+    checkpoint_manifest = read_json(
+        "reference/multicheckpoint/checkpoints.json")
+    distributed_checkpoints = 0
+    for item in checkpoint_manifest.get("checkpoints", []):
+        distributed = item.get("distributed")
+        if not isinstance(distributed, bool):
+            failures.append("checkpoint distribution flag is missing: %s" %
+                            item.get("name"))
+            continue
+        if not distributed:
+            continue
+        distributed_checkpoints += 1
+        checkpoint_path = ROOT / item.get("path", "")
+        if not checkpoint_path.is_file():
+            failures.append("distributed checkpoint is missing: %s" %
+                            item.get("name"))
+        elif sha256_file(checkpoint_path) != item.get("sha256"):
+            failures.append("distributed checkpoint digest mismatch: %s" %
+                            item.get("name"))
+    if distributed_checkpoints != 8:
+        failures.append("expected eight distributed QAT checkpoints, found %d" %
+                        distributed_checkpoints)
+    if checkpoint_manifest.get(
+            "all_qat_checkpoints_distributed_in_repository") is not True:
+        failures.append("QAT checkpoint distribution is not asserted")
     if not extraction.get("success"):
         failures.append("reference extraction is not successful")
     if extraction.get("extraction", {}).get("records_certified") != 29:
@@ -183,6 +226,7 @@ def main():
         "reference_hashes_checked": len(EXPECTED_HASHES),
         "manifest_files_checked": len(manifest),
         "required_files_checked": len(REQUIRED),
+        "distributed_checkpoints_checked": distributed_checkpoints,
     }
     print(json.dumps(report, indent=2, sort_keys=True))
     return 0 if report["success"] else 1

@@ -46,6 +46,7 @@ from lib_qat.lta import Channel, noise_fns_bounded            # noqa: E402
 from lib_qat.lta_run import run_lta                           # noqa: E402
 from lib_qat.quant import QuantChain                          # noqa: E402
 from lib_qat.quant import accumulator_absmax_for_queries      # noqa: E402
+from lib_qat.checkpoint import load_verified_checkpoint       # noqa: E402
 
 LIB_SNAPSHOT = "lib_qat (git archive of lib/ at commit 22b2843)"
 N_WORKERS = int(os.environ.get("QAT_WORKERS", "9"))
@@ -389,9 +390,9 @@ class QResNetTV(nn.Module):
         return self.fc(out)
 
 
-def load_tv_resnet(path, layers, n_classes=1000):
+def load_tv_resnet(path, expected_sha256, layers, n_classes=1000):
     net = TVResNet(layers, n_classes)
-    sd = torch.load(path, map_location="cpu", weights_only=False)
+    sd = load_verified_checkpoint(path, expected_sha256)
     if isinstance(sd, dict) and "state_dict" in sd:
         sd = sd["state_dict"]
     missing, unexpected = net.load_state_dict(sd, strict=False)
@@ -399,10 +400,10 @@ def load_tv_resnet(path, layers, n_classes=1000):
     return net, {"missing_keys": list(missing), "unexpected_keys": list(unexpected)}
 
 
-def load_cifar_float(path, n):
+def load_cifar_float(path, expected_sha256, n):
     """lib_qat.models._ResNetCIFAR(n) from either checkpoint layout."""
     from lib_qat.models import _ResNetCIFAR
-    ck = torch.load(path, map_location="cpu", weights_only=False)
+    ck = load_verified_checkpoint(path, expected_sha256)
     sd = ck["model_state_dict"] if (isinstance(ck, dict)
                                     and "model_state_dict" in ck) else ck
     if isinstance(sd, dict) and "state_dict" in sd:

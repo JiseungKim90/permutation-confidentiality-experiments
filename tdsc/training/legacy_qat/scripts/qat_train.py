@@ -23,8 +23,12 @@ import torch.nn as nn
 from qat_common import (DATA, RESULTS, QResNetCIFAR, QResNetTV, load_cifar_float,
                         load_tv_resnet, q_layers, accumulator_penalty,
                         export_model, occupancy_stats, posthoc_quantise,
-                        env_info, budget_absmax)
+                        env_info, budget_absmax, load_verified_checkpoint)
 import qat_data
+
+
+CIFAR10_RESNET20_SHA256 = (
+    "4118986f0df73003d572b0e397f0ac7b3f60af1f31aff3d2da164536e36f6ec8")
 
 
 def evaluate(model, X, y, bs, max_n=None, threads=1):
@@ -50,8 +54,15 @@ def build(args):
         n = 3 if args.arch == "resnet20" else 9
         path = os.path.join(DATA, "cifar10_resnet20.pt" if args.arch == "resnet20"
                             else "resnet56_seed0.pt")
-        fm, meta = load_cifar_float(path, n)
+        checkpoint_sha256 = (args.float_checkpoint_sha256 or
+                             (CIFAR10_RESNET20_SHA256
+                              if args.arch == "resnet20" else ""))
+        if not checkpoint_sha256:
+            raise ValueError("--float-checkpoint-sha256 is required for %s" %
+                             args.arch)
+        fm, meta = load_cifar_float(path, checkpoint_sha256, n)
         info["float_checkpoint"] = path
+        info["float_checkpoint_sha256"] = checkpoint_sha256
         info["float_checkpoint_meta"] = meta
         model = QResNetCIFAR(fm, n, w_bits, a_bits, n_classes=10)
         Xtr, ytr, Xte, yte = qat_data.load_cifar10()
@@ -63,8 +74,13 @@ def build(args):
         fn = ("resnet18-f37072fd.pth" if args.arch == "resnet18"
               else "resnet34-b627a593.pth")
         path = os.path.join(DATA, fn)
-        fm, meta = load_tv_resnet(path, layers, 1000)
+        if not args.float_checkpoint_sha256:
+            raise ValueError("--float-checkpoint-sha256 is required for %s" %
+                             args.arch)
+        fm, meta = load_tv_resnet(
+            path, args.float_checkpoint_sha256, layers, 1000)
         info["float_checkpoint"] = path
+        info["float_checkpoint_sha256"] = args.float_checkpoint_sha256
         info["float_checkpoint_meta"] = meta
         Xtr, ytr, Xte, yte = qat_data.load_tin()
         if args.bn_recalib > 0:
@@ -85,7 +101,9 @@ def build(args):
         info["dataset"] += "only the classifier replaced by 512->200)"
         info["pad"] = 8
     if args.init_from:
-        sd = torch.load(args.init_from, map_location="cpu", weights_only=False)
+        if not args.init_from_sha256:
+            raise ValueError("--init-from-sha256 is required with --init-from")
+        sd = load_verified_checkpoint(args.init_from, args.init_from_sha256)
         model.load_state_dict(sd["model"] if "model" in sd else sd, strict=True)
         info["initialised_from"] = args.init_from
     return model, data, info
@@ -112,6 +130,8 @@ def main():
                          "target data before QAT (0 = keep the checkpoint's "
                          "statistics)")
     ap.add_argument("--init-from", default="")
+    ap.add_argument("--init-from-sha256", default="")
+    ap.add_argument("--float-checkpoint-sha256", default="")
     ap.add_argument("--tag", required=True)
     args = ap.parse_args()
 

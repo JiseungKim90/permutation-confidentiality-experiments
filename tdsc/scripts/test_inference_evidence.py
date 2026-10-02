@@ -15,7 +15,11 @@ from verify_inference_evidence import (
 def main():
     manifest = json.loads((ROOT / "reference/multicheckpoint/checkpoints.json").read_text())
     original = json.loads((ROOT / "reference/normal-inference-20261002/result.json").read_text())
-    schedule = [item["name"] for item in manifest["checkpoints"]]
+    # This retained evidence predates the six additional public QAT inputs.
+    # Authenticate exactly the schedule committed by that run rather than
+    # silently widening a three-checkpoint result to the current manifest.
+    schedule = list(original["launch"]["checkpoint_schedule"])
+    assert schedule == ["official", "qat-w8-s0", "qat-w8-s1"]
     check_report(original, manifest, schedule)
     mutations = [
         ("incomplete run", lambda r: r.update(status="running")),
