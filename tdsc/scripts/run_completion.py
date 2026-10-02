@@ -865,13 +865,16 @@ def evaluator_worker(config):
         from lib.models import env_info
         from lib.resnet20 import load_resnet20_cifar10
 
-        model, _ = load_resnet20_cifar10(config["checkpoint"])
+        model, checkpoint_info = load_resnet20_cifar10(
+            config["checkpoint"], config["checkpoint_sha256"])
         data = cifar10.load(
             config["cifar"], extract_dir=os.path.join(DATA, "cifar10_extract"))
         images, labels = data["test_batch"]
+        mean = checkpoint_info.get("normalise_mean") or cifar10.MEAN
+        std = checkpoint_info.get("normalise_std") or cifar10.STD
         private, qinfo = quantise_resnet20_fmap(
             model, config["w_bits"], config["w_bits"], images[:64],
-            normalise=(cifar10.MEAN, cifar10.STD))
+            normalise=(mean, std))
         recovered = load_network(
             config["completed_arrays"], config["completed_meta"])
         certificate = strict_structural_certificate(private, recovered)
@@ -886,6 +889,7 @@ def evaluator_worker(config):
         report.update({
             "status": "complete",
             "environment": env_info(),
+            "checkpoint_loader": checkpoint_info,
             "n_images": int(config["n_test"]),
             "identical_logit_vectors": int(np.sum(equal)),
             "identical_logit_fraction": float(np.mean(equal)),
@@ -954,7 +958,15 @@ def main():
         "TDSC_CLASS_ATTACK_SEED", legacy_seed or "20260923"))
     oracle_seed = int(os.environ.get(
         "TDSC_CLASS_ORACLE_SEED", legacy_seed or "20260925"))
-    checkpoint = os.path.join(DATA, "cifar10_resnet20.pt")
+    default_checkpoint = os.path.join(DATA, "cifar10_resnet20.pt")
+    checkpoint = os.path.abspath(os.environ.get(
+        "TDSC_MODEL_CHECKPOINT", default_checkpoint))
+    checkpoint_sha256 = os.environ.get(
+        "TDSC_MODEL_CHECKPOINT_SHA256",
+        "4118986f0df73003d572b0e397f0ac7b3f60af1f31aff3d2da164536e36f6ec8"
+        if checkpoint == os.path.abspath(default_checkpoint) else "")
+    if not checkpoint_sha256:
+        raise ValueError("TDSC_MODEL_CHECKPOINT_SHA256 is required for an override")
     cifar = os.path.join(DATA, "cifar-10-python.tar.gz")
     paths = {
         "oracle_report": os.path.join(OUT_DIR, "oracle.json"),
@@ -969,6 +981,7 @@ def main():
     }
     oracle_config = {
         "checkpoint": checkpoint,
+        "checkpoint_sha256": checkpoint_sha256,
         "cifar": cifar,
         "oracle_seed": oracle_seed,
         "w_bits": W_BITS,
@@ -991,6 +1004,7 @@ def main():
     }
     evaluator_config = {
         "checkpoint": checkpoint,
+        "checkpoint_sha256": checkpoint_sha256,
         "cifar": cifar,
         "w_bits": W_BITS,
         "n_test": N_TEST,
@@ -1110,6 +1124,8 @@ def main():
         "oracle_seed": oracle_seed,
         "seed_disclosed_to_attacker": False,
         "truth_comparison_stage": "independent evaluator after attacker exit",
+        "checkpoint_name": os.path.basename(checkpoint),
+        "checkpoint_sha256": checkpoint_sha256.lower(),
         "w_bits": W_BITS,
         "n_test": N_TEST,
         "control_values": list(CONTROL_VALUES),

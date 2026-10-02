@@ -25,6 +25,7 @@ REQUIRED = (
     "requirements-recorded.txt",
     "scripts/run_extraction.py",
     "scripts/run_completion.py",
+    "scripts/run_multicheckpoint.py",
     "scripts/identifiability_exhaustive.py",
     "scripts/download_inputs.py",
     "scripts/verify_runs.py",
@@ -42,6 +43,8 @@ REQUIRED = (
     "reference/extraction/verification.json",
     "reference/completion/verification.json",
     "reference/finite_reference.json",
+    "reference/multicheckpoint/audit.json",
+    "reference/multicheckpoint/checkpoints.json",
 )
 TEXT_SUFFIXES = {".py", ".md", ".txt", ".json", ".cff", ".yml", ".yaml"}
 FORBIDDEN_TEXT = {

@@ -1,0 +1,31 @@
+{
+  "checkpoints": [
+    {
+      "name": "official",
+      "path": "data/cifar10_resnet20.pt",
+      "provenance": "chenyaofo/pytorch-cifar-models CIFAR-10 ResNet-20 release checkpoint",
+      "sha256": "4118986f0df73003d572b0e397f0ac7b3f60af1f31aff3d2da164536e36f6ec8",
+      "training_precision": null,
+      "training_seed": null
+    },
+    {
+      "name": "qat-w8-s0",
+      "path": "data/checkpoints/qat_qatf_r20_w8_s0.pt",
+      "provenance": "historical QAT fine-tune initialized from the official float checkpoint",
+      "sha256": "130ea708199e65ade6c221c573a795495348fcb97dcbf779f8ac2f11a87956d1",
+      "training_precision": 8,
+      "training_seed": 0
+    },
+    {
+      "name": "qat-w8-s1",
+      "path": "data/checkpoints/qat_qatf_r20_w8_s1.pt",
+      "provenance": "historical QAT fine-tune initialized from the official float checkpoint",
+      "sha256": "c248a9ad7d830158611cd8d328bb4384d7789f5003f20fa969bfdb306bd65674",
+      "training_precision": 8,
+      "training_seed": 1
+    }
+  ],
+  "inputs_distributed_in_repository": false,
+  "purpose": "Fixed-configuration fail-closed audit; not a paper success-rate experiment.",
+  "schema": "p050-multicheckpoint-inputs-v1"
+}

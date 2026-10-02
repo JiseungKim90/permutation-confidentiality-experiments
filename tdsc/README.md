@@ -157,6 +157,52 @@ python3 scripts/verify_runs.py \
   --completion-dir results/provenance/tdsc-completion
 ```
 
+## Optional fail-closed multi-checkpoint audit
+
+The `tdsc-multicheckpoint-audit-20261002` branch also contains an exploratory
+robustness audit that is not evidence for an additional paper claim. The
+driver authenticates each checkpoint by SHA-256 and runs the same attack
+seed, oracle seeds, quantization, probe count, search limit, control values,
+and completion settings for every selected checkpoint. It never retries or
+tunes parameters after seeing an outcome:
+
+```bash
+python3 scripts/run_multicheckpoint.py \
+  --manifest reference/multicheckpoint/checkpoints.json \
+  --run-name audit-run \
+  --workers 1 \
+  --n-test 10000 \
+  --budget-sec 1800 \
+  --eval-timeout-sec 2400
+```
+
+The original release checkpoint passed the full certificate: 29/29 extraction
+records, 34/34 line-tracking invocations, 29/29 observable maps after
+completion, and 10,000/10,000 identical logit vectors. Two eight-bit QAT
+fine-tunes failed closed under the same configuration. Seed 0 stopped at
+`layer3.1.conv2` with 36 uncertified columns and six unresolved rows. Seed 1
+certified all 34 line-tracking invocations but produced only 28/29 accepted
+records: at `layer3.2.conv2`, 63/64 channels were resolved, ten rows remained
+ambiguous, and the placement probe was still unverified after three repair
+attempts. Completion and evaluation were therefore not run for either QAT
+checkpoint.
+
+A development-only follow-up changed only the probe count from `T=3` to
+`T=5` for QAT seed 0. It again failed closed at `layer3.1.conv2`, with 53
+uncertified columns and four unresolved rows. This follow-up does not satisfy
+the fixed-configuration gate and is reported only to rule out the simple
+explanation that two more probe steps solve the failure.
+
+The compact, path-sanitized record is
+`reference/multicheckpoint/audit.json`. The QAT checkpoints share the same
+official float initialization and are not independent-from-scratch models.
+Their bytes are not distributed in this repository; their digests and expected
+relative paths are listed in `reference/multicheckpoint/checkpoints.json`.
+Consequently, this branch publishes all audit code and the complete compact
+outcome record, but it is not a self-contained distribution of those
+historical QAT inputs. The paper therefore retains the original experiment as
+a one-checkpoint case study and makes no cross-checkpoint success-rate claim.
+
 ## Scope of the evidence
 
 The finite enumeration checks small instances; it does not replace the proofs.

@@ -50,6 +50,7 @@ PRIVATE_ATTACKER_CONFIG_KEYS = frozenset((
     "private_model_sha256", "seed",
 ))
 PRIVATE_ATTACKER_ENV_KEYS = (
+    "TDSC_MODEL_CHECKPOINT", "TDSC_MODEL_CHECKPOINT_SHA256",
     "TDSC_RPC_SEED", "TDSC_RPC_ORACLE_SEED",
     "TDSC_RPC_EXPECT_MODEL_SHA256",
     "TDSC_CLASS_SEED", "TDSC_CLASS_ORACLE_SEED",
@@ -492,16 +493,19 @@ def oracle_worker(connection, ready_connection, config):
         from lib.models import env_info
         from lib.resnet20 import load_resnet20_cifar10
 
-        model, _ = load_resnet20_cifar10(config["checkpoint"])
+        model, checkpoint_info = load_resnet20_cifar10(
+            config["checkpoint"], config["checkpoint_sha256"])
         data = cifar10.load(
             config["cifar"], extract_dir=os.path.join(DATA, "cifar10_extract"))
         X, _ = data["test_batch"]
+        mean = checkpoint_info.get("normalise_mean") or cifar10.MEAN
+        std = checkpoint_info.get("normalise_std") or cifar10.STD
         private_net, qinfo = quantise_resnet20_fmap(
             model,
             config["w_bits"],
             config["w_bits"],
             X[:64],
-            normalise=(cifar10.MEAN, cifar10.STD),
+            normalise=(mean, std),
         )
         rounds, _ = build_r3_rounds(private_net, 32)
         rng = np.random.default_rng([config["oracle_seed"], 1])
@@ -550,6 +554,7 @@ def oracle_worker(connection, ready_connection, config):
             "environment": env_info(),
             "private_model_sha256": model_digest(private_net),
             "public_manifest_sha256": manifest_hash,
+            "checkpoint_loader": checkpoint_info,
             "quantisation": {
                 "accumulator_bits_calibration": qinfo[
                     "accumulator_bits_calibration"],
@@ -925,16 +930,19 @@ def evaluator_worker(config):
         from lib.models import env_info
         from lib.resnet20 import load_resnet20_cifar10
 
-        model, _ = load_resnet20_cifar10(config["checkpoint"])
+        model, checkpoint_info = load_resnet20_cifar10(
+            config["checkpoint"], config["checkpoint_sha256"])
         data = cifar10.load(
             config["cifar"], extract_dir=os.path.join(DATA, "cifar10_extract"))
         X, labels = data["test_batch"]
+        mean = checkpoint_info.get("normalise_mean") or cifar10.MEAN
+        std = checkpoint_info.get("normalise_std") or cifar10.STD
         private_net, qinfo = quantise_resnet20_fmap(
             model,
             config["w_bits"],
             config["w_bits"],
             X[:64],
-            normalise=(cifar10.MEAN, cifar10.STD),
+            normalise=(mean, std),
         )
         recovered = load_network(
             config["recovered_arrays"], config["recovered_meta"])
@@ -949,6 +957,7 @@ def evaluator_worker(config):
         report.update({
             "status": "complete",
             "environment": env_info(),
+            "checkpoint_loader": checkpoint_info,
             "n_images": int(config["n_test"]),
             "identical_logit_vectors": int(np.sum(equal)),
             "identical_logit_fraction": float(np.mean(equal)),
@@ -1023,7 +1032,15 @@ def main():
         "TDSC_RPC_ORACLE_SEED", legacy_seed or "20260924"))
     expected_model_sha256 = os.environ.get(
         "TDSC_RPC_EXPECT_MODEL_SHA256", "")
-    checkpoint = os.path.join(DATA, "cifar10_resnet20.pt")
+    default_checkpoint = os.path.join(DATA, "cifar10_resnet20.pt")
+    checkpoint = os.path.abspath(os.environ.get(
+        "TDSC_MODEL_CHECKPOINT", default_checkpoint))
+    checkpoint_sha256 = os.environ.get(
+        "TDSC_MODEL_CHECKPOINT_SHA256",
+        "4118986f0df73003d572b0e397f0ac7b3f60af1f31aff3d2da164536e36f6ec8"
+        if checkpoint == os.path.abspath(default_checkpoint) else "")
+    if not checkpoint_sha256:
+        raise ValueError("TDSC_MODEL_CHECKPOINT_SHA256 is required for an override")
     cifar = os.path.join(DATA, "cifar-10-python.tar.gz")
     paths = {
         "oracle_report": os.path.join(OUT_DIR, "oracle.json"),
@@ -1036,6 +1053,7 @@ def main():
     }
     oracle_config = {
         "checkpoint": checkpoint,
+        "checkpoint_sha256": checkpoint_sha256,
         "cifar": cifar,
         "oracle_seed": oracle_seed,
         "w_bits": W_BITS,
@@ -1055,6 +1073,7 @@ def main():
     }
     evaluator_config = {
         "checkpoint": checkpoint,
+        "checkpoint_sha256": checkpoint_sha256,
         "cifar": cifar,
         "w_bits": W_BITS,
         "n_test": N_TEST,
@@ -1168,6 +1187,8 @@ def main():
         "arithmetic_trace_success": arithmetic_success,
         "expected_model_sha256": expected_model_sha256 or None,
         "post_attack_expected_digest_match": post_attack_expected_digest_match,
+        "checkpoint_name": os.path.basename(checkpoint),
+        "checkpoint_sha256": checkpoint_sha256.lower(),
         "truth_digest_comparison_stage": "parent after attacker exit",
         "truth_digest_disclosed_to_attacker": False,
         "transport": (

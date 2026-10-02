@@ -295,19 +295,98 @@ def _embed_centre(S, C_in):
     return out
 
 
+def _standard_state_from_qat(sd):
+    """Map the public QAT wrapper layout onto the standard CIFAR ResNet-20."""
+    out = {
+        "conv1.weight": sd["conv1.weight"],
+        "bn1.weight": sd["conv1.gamma"],
+        "bn1.bias": sd["conv1.beta"],
+        "bn1.running_mean": sd["conv1.run_mean"],
+        "bn1.running_var": sd["conv1.run_var"],
+    }
+    conv_bias_absmax = 0.0
+    for key, value in sd.items():
+        if key.endswith("conv_bias"):
+            conv_bias_absmax = max(conv_bias_absmax, float(value.abs().max()))
+    for stage in (1, 2, 3):
+        for index in range(3):
+            prefix = "layer%d.%d" % (stage, index)
+            for conv, bn in (("conv1", "bn1"), ("conv2", "bn2")):
+                source = "%s.%s" % (prefix, conv)
+                out[source + ".weight"] = sd[source + ".weight"]
+                out["%s.%s.weight" % (prefix, bn)] = sd[source + ".gamma"]
+                out["%s.%s.bias" % (prefix, bn)] = sd[source + ".beta"]
+                out["%s.%s.running_mean" % (prefix, bn)] = sd[
+                    source + ".run_mean"]
+                out["%s.%s.running_var" % (prefix, bn)] = sd[
+                    source + ".run_var"]
+            shortcut = prefix + ".short"
+            if shortcut + ".weight" in sd:
+                out[prefix + ".shortcut.0.weight"] = sd[
+                    shortcut + ".weight"]
+                out[prefix + ".shortcut.1.weight"] = sd[
+                    shortcut + ".gamma"]
+                out[prefix + ".shortcut.1.bias"] = sd[
+                    shortcut + ".beta"]
+                out[prefix + ".shortcut.1.running_mean"] = sd[
+                    shortcut + ".run_mean"]
+                out[prefix + ".shortcut.1.running_var"] = sd[
+                    shortcut + ".run_var"]
+    out["fc.weight"] = sd["fc.weight"]
+    out["fc.bias"] = sd["fc.beta"]
+    return out, conv_bias_absmax
+
+
 def load_resnet20_cifar10(path, expected_sha256=CIFAR10_RESNET20_SHA256):
-    """Load a chenyaofo/pytorch-cifar-models ResNet-20 checkpoint into
-    lib.models._ResNetCIFAR(n=3).  The only naming difference is
-    `downsample` versus `shortcut`."""
+    """Load a digest-authenticated standard or public-QAT ResNet-20.
+
+    The QAT wrapper stores fused convolution/BatchNorm parameters.  They are
+    mapped losslessly back to ``_ResNetCIFAR`` before the journal simulator's
+    unchanged post-training quantiser is applied.  The checkpoint's recorded
+    input normalisation is returned as public metadata.
+    """
     from .models import _ResNetCIFAR
-    sd = load_verified_checkpoint(path, expected_sha256)
-    if isinstance(sd, dict) and "state_dict" in sd:
-        sd = sd["state_dict"]
+    checkpoint = load_verified_checkpoint(path, expected_sha256)
+    sd = checkpoint
+    if isinstance(checkpoint, dict) and "model" in checkpoint:
+        candidate = checkpoint["model"]
+        if isinstance(candidate, dict) and "conv1.gamma" in candidate:
+            sd, conv_bias_absmax = _standard_state_from_qat(candidate)
+            checkpoint_format = "public-qat-wrapper"
+            normalise_mean = np.asarray(
+                candidate["mean"], dtype=np.float64).reshape(-1).tolist()
+            normalise_std = np.asarray(
+                candidate["std"], dtype=np.float64).reshape(-1).tolist()
+        else:
+            sd = candidate
+            conv_bias_absmax = None
+            checkpoint_format = "model-state-dict"
+            normalise_mean = normalise_std = None
+    else:
+        if isinstance(sd, dict) and "model_state_dict" in sd:
+            sd = sd["model_state_dict"]
+        if isinstance(sd, dict) and "state_dict" in sd:
+            sd = sd["state_dict"]
+        conv_bias_absmax = None
+        checkpoint_format = "standard-state-dict"
+        normalise_mean = normalise_std = None
+    if not isinstance(sd, dict):
+        raise ValueError("checkpoint does not contain a state dictionary")
     remap = {k.replace(".downsample.", ".shortcut."): v for k, v in sd.items()}
     model = _ResNetCIFAR(n=3)
     missing, unexpected = model.load_state_dict(remap, strict=False)
+    if checkpoint_format == "public-qat-wrapper" and conv_bias_absmax != 0.0:
+        raise ValueError("QAT checkpoint has nonzero convolution bias")
     model.eval()
-    return model, {"missing_keys": list(missing), "unexpected_keys": list(unexpected)}
+    return model, {
+        "checkpoint_format": checkpoint_format,
+        "checkpoint_sha256": str(expected_sha256).lower(),
+        "missing_keys": list(missing),
+        "unexpected_keys": list(unexpected),
+        "normalise_mean": normalise_mean,
+        "normalise_std": normalise_std,
+        "conv_bias_absmax": conv_bias_absmax,
+    }
 
 
 def fold_input_normalisation(fp, mean, std):
