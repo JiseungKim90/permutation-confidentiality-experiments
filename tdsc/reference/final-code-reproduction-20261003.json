@@ -1,0 +1,79 @@
+{
+  "schema": "p050-final-code-clean-reproduction-v1",
+  "date": "2026-10-03",
+  "public_release_tag": "tdsc-artifact-v1.1.2",
+  "computational_code_commit": "a1e891e95b3bd100207ba2abc3006fecd2c9146a",
+  "release_delta": "The v1.1.2 release changes documentation, the manifest, and the claim verifier; the attack, evaluator, and experiment entry points are identical to the recorded computational commit.",
+  "environment": {
+    "python": "3.10.21",
+    "numpy": "1.24.4",
+    "torch": "2.10.0+cpu"
+  },
+  "inputs": {
+    "cifar10_resnet20_pt_sha256": "4118986f0df73003d572b0e397f0ac7b3f60af1f31aff3d2da164536e36f6ec8",
+    "cifar10_archive_sha256": "6d958be074577803d12ecdefd02955f39262c83c16fe9348329d7fe0b5c001ce"
+  },
+  "extraction": {
+    "run_name": "fresh-v110-extraction-20261003",
+    "success": true,
+    "process_exit_codes": {
+      "attacker": 0,
+      "evaluator": 0,
+      "oracle": 0
+    },
+    "certified_records": 29,
+    "lta_invocations": 34,
+    "lta_passes": 38,
+    "sessions": 4074,
+    "affine_evaluations": 81480,
+    "identical_logit_vectors": 10000,
+    "post_calibration_identical_logit_vectors": 9936,
+    "recovered_model_sha256": "b3b291c77186dfbccf406cd3bb361e9dc257788e1886174bc2f3ea6966babcda",
+    "result_json_sha256": "626cdb35068a5f185ff1ddcfde0fed212fcca8a8a5c9c7eb3f17caa9b6eb2d4f",
+    "arithmetic_trace_file_sha256": "f25a6e90ec7151513787855c0f34277b7dffc5a3482b8415eb709714219193dd",
+    "arithmetic_trace_content_sha256": "e59679704f0f68e1946c6a4abe8fbc2efb52b34ae7df727ba866e2ef15009cb6",
+    "arithmetic_trace_rows": 81480,
+    "global_output_min": -209850,
+    "global_output_max": 161111,
+    "minimum_signed_bits": 19,
+    "signed_16_bit_overflow_evaluations": 56013
+  },
+  "completion": {
+    "run_name": "fresh-v110-completion-20261003",
+    "success": true,
+    "process_exit_codes": {
+      "attacker": 0,
+      "evaluator": 0,
+      "oracle": 0
+    },
+    "first_convolution_changed_coefficients": 3,
+    "shortcut_changed_coefficients": 2,
+    "recovery_sessions": 93,
+    "closure_sessions": 4,
+    "total_sessions": 97,
+    "total_affine_evaluations": 234,
+    "closure_probes": 4,
+    "observable_maps_verified": 29,
+    "identical_logit_vectors": 10000,
+    "post_calibration_identical_logit_vectors": 9936,
+    "completed_model_sha256": "c30f2aa072c5a57ab42d6e7e326af109ea8a4e09d99e4de274a38e20d228f075",
+    "result_json_sha256": "56d02d5e85b7298d04af82d9251f919ff6d9805e16a2b25466b7e7241b7cf49d",
+    "arithmetic_trace_file_sha256": "40186244aa7566e08def1b260cb63928ecfc178a4f6e8480d5228e4205259b02",
+    "arithmetic_trace_content_sha256": "ae3961421ff6b15f1d77cc6f65e441384e2a782b1118b6dd341e761a0226fd0e",
+    "arithmetic_trace_rows": 234,
+    "global_output_min": -190959,
+    "global_output_max": 175569,
+    "minimum_signed_bits": 19,
+    "signed_16_bit_overflow_evaluations": 224
+  },
+  "verifier_reconciliation": {
+    "detected_issue": "The previous verifier expected the archived 3676-session, 73520-evaluation trace while the documented final-code command deterministically produced 4074 sessions and 81480 evaluations.",
+    "recovered_model_or_completion_output_changed": false,
+    "recovered_arrays_match_archived_sha256": true,
+    "completion_outputs_match_archived_sha256": true,
+    "corrected_verifier_failures": 0,
+    "corrected_verifier_success": true
+  },
+  "external_run_log_sha256": "c89dc1f2a4f5258edc86aa530d375dbae87be3e04096a44541e5517592bb490e",
+  "success": true
+}

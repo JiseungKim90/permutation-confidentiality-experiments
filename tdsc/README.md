@@ -33,7 +33,7 @@ The limitations below are part of the evidence record.
 - `lib/`: the complete dependency tree for the public entry points, plus the
   earlier single-layer and graph experiment modules used to reach them.
 - `reference/`: compact canonical outputs, the full finite-enumeration report,
-  and recovered arrays.
+  recovered arrays, and the clean final-code reproduction record.
 - `scripts/download_inputs.py`: authenticated-by-digest input downloader.
 - `lib/input_normalization.py`: exact ordinary-inference normalization rewrite
   for zero-padded convolutions, separate from the legacy integer simulator.
@@ -107,7 +107,7 @@ sections below.
 
 | Paper evidence | Reproduction entry point | Acceptance evidence |
 | --- | --- | --- |
-| Release-checkpoint extraction and prediction-equivalent first-stage clone | `run_extraction.py` under **Whole-network extraction** | `verify_runs.py --extraction-dir ...` requires 29/29 records, 34/34 LTA invocations, 3,676 sessions, 73,520 affine evaluations, and 10,000/10,000 identical logits. |
+| Release-checkpoint extraction and prediction-equivalent first-stage clone | `run_extraction.py` under **Whole-network extraction** | `verify_runs.py --extraction-dir ...` requires 29/29 records, 34/34 LTA invocations, 4,074 sessions, 81,480 affine evaluations, and 10,000/10,000 identical logits. |
 | Recovery of the five missing coefficients and four-probe closure | `run_completion.py` under **Class-aware completion** | `verify_runs.py --completion-dir ...` requires 93 recovery sessions plus four closure sessions, 29/29 observable maps, and 10,000/10,000 identical logits. |
 | One fixed configuration on the release checkpoint and eight QAT-derived weight sets | `run_multicheckpoint.py` under **Fixed-configuration multi-checkpoint audit** | `promote_multicheckpoint_audit.py` accepts exactly nine authenticated records and rejects any incomplete, retuned, or failed checkpoint. |
 | Finite-domain fibres, two-round kernels, and hidden-frame control | `identifiability_exhaustive.py --max-control-width 6` under **Fast validation** | `verify_finite_reference.py` checks the complete reference record; success additionally requires zero controller disagreements and zero constructive failures. |
@@ -160,7 +160,12 @@ The run is successful only if all three processes exit zero; every attacker
 boundary, transcript-integrity, admissibility, rounding, and LTA uniqueness
 check passes; 29/29 records and 34/34 LTA invocations are certified; and an
 independent evaluator obtains 10,000/10,000 identical logit vectors. A clean
-canonical run used 3,676 sessions and 73,520 affine evaluations.
+current release run uses 4,074 sessions and 81,480 affine evaluations. The
+compact trace-bearing record predating the final extractor repairs used 3,676
+sessions and 73,520 evaluations; `run_checks.py` authenticates that archived
+record separately. `reference/final-code-reproduction-20261003.json` records
+the clean current-code environment, result hashes, arithmetic bounds, and the
+verifier reconciliation.
 
 ## Class-aware completion
 

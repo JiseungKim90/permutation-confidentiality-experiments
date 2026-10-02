@@ -10,8 +10,8 @@ from pathlib import Path
 EXPECTED = {
     "recovered.npz": "72a3a5d7f7fe3344f283d29fe65f9d12dabd87accb400b3c03f936d21854b7dd",
     "recovered.json": "d49345c2820771ede65ccce55a8e1935d3bb8fbad996e522903880bf7034cbf6",
-    "extraction_trace": "c5f2aba5affea371a4d50e82c98558c594368ca5d87ae9b1298ed3486f7d3cdb",
-    "extraction_trace_content": "1ff92bff62e9a5dccabb640b097664e68124b08e2b02380af4d9a63d187b9951",
+    "extraction_trace": "f25a6e90ec7151513787855c0f34277b7dffc5a3482b8415eb709714219193dd",
+    "extraction_trace_content": "e59679704f0f68e1946c6a4abe8fbc2efb52b34ae7df727ba866e2ef15009cb6",
     "completed.npz": "f4fc25cb10a1bbe6d4987c7c008bb871faf220b669130f6017e2edbce15bfe4e",
     "completed.json": "d49345c2820771ede65ccce55a8e1935d3bb8fbad996e522903880bf7034cbf6",
     "completion_trace": "40186244aa7566e08def1b260cb63928ecfc178a4f6e8480d5228e4205259b02",
@@ -104,10 +104,12 @@ def verify_extraction(directory):
            "LTA certificate summary is not successful")
     expect(failures, certificate.get("lta_invocations_certified") == 34,
            "LTA certificate count is not 34")
-    expect(failures, summary.get("sessions_total") == 3676,
-           "extraction session count is not 3,676")
-    expect(failures, summary.get("round_evaluations_total") == 73520,
-           "extraction affine-evaluation count is not 73,520")
+    expect(failures, certificate.get("lta_passes_total") == 38,
+           "LTA pass count is not 38")
+    expect(failures, summary.get("sessions_total") == 4074,
+           "extraction session count is not 4,074")
+    expect(failures, summary.get("round_evaluations_total") == 81480,
+           "extraction affine-evaluation count is not 81,480")
     for key in ("isolation_failures", "inadmissible_query_entries",
                 "oracle_rounding_failures", "probe_multiset_failures"):
         expect(failures, summary.get(key) == 0, "%s is not zero" % key)
@@ -129,17 +131,17 @@ def verify_extraction(directory):
            "extraction trace file digest differs")
     expect(failures, oracle.get("arithmetic_trace_content_sha256") == EXPECTED["extraction_trace_content"],
            "extraction trace content digest differs")
-    expect(failures, arithmetic.get("trace_rows") == 73520,
-           "extraction arithmetic trace does not contain 73,520 rows")
-    expect(failures, arithmetic.get("global_output_min") == -171319,
+    expect(failures, arithmetic.get("trace_rows") == 81480,
+           "extraction arithmetic trace does not contain 81,480 rows")
+    expect(failures, arithmetic.get("global_output_min") == -209850,
            "extraction global output minimum differs")
-    expect(failures, arithmetic.get("global_output_max") == 158161,
+    expect(failures, arithmetic.get("global_output_max") == 161111,
            "extraction global output maximum differs")
     expect(failures, arithmetic.get("minimum_signed_bits") == 19,
            "extraction minimum signed width is not 19 bits")
     expect(failures, arithmetic.get("candidate_signed_widths", {}).get("16", {}).get(
-        "overflow_evaluations") == 52044,
-        "extraction signed-16 overflow count is not 52,044")
+        "overflow_evaluations") == 56013,
+        "extraction signed-16 overflow count is not 56,013")
 
     check_file_hash(directory, "recovered.npz", "recovered.npz", failures)
     check_file_hash(directory, "recovered.json", "recovered.json", failures)
