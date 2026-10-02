@@ -1,0 +1,240 @@
+{
+  "fresh_finite_enumeration": {
+    "command": "python3 scripts/identifiability_exhaustive.py --max-control-width 6 --output results/identifiability/result.json",
+    "condition_mismatches": 0,
+    "constructive_permutation_checks": 197956,
+    "controller_failures": 0,
+    "fibre_cases": 9,
+    "generated_utc": "2026-10-02T08:07:22.055913+00:00",
+    "numerical_content_matches_reference": {
+      "fibre_cases": true,
+      "finite_domain_witness": true,
+      "stabilizer_control": true,
+      "success": true,
+      "success_criteria": true,
+      "two_round_kernels": true
+    },
+    "response_target_pairs": 5460,
+    "source_sha256": "d119cfe063be15d422ad3dcf0a8730d645784ca121081e858c11e92436a083a1",
+    "success": true,
+    "two_round_cases": 3
+  },
+  "new_extraction_experiments": 0,
+  "ordinary_forward_preprocessing": {
+    "boundary_mismatch_confirmed": true,
+    "checkpoint_sha256": "4118986f0df73003d572b0e397f0ac7b3f60af1f31aff3d2da164536e36f6ec8",
+    "checks": [
+      {
+        "boundary_max_absolute_difference": 0.7554369869411877,
+        "boundary_values_checked": 1984,
+        "boundary_values_different_at_1e-10": 1984,
+        "input": "zero",
+        "interior_max_absolute_difference": 2.220446049250313e-16,
+        "output_channels_with_boundary_difference": 16
+      },
+      {
+        "boundary_max_absolute_difference": 0.7554369869411879,
+        "boundary_values_checked": 1984,
+        "boundary_values_different_at_1e-10": 1984,
+        "input": "half",
+        "interior_max_absolute_difference": 2.220446049250313e-16,
+        "output_channels_with_boundary_difference": 16
+      },
+      {
+        "boundary_max_absolute_difference": 0.7554369869411874,
+        "boundary_values_checked": 1984,
+        "boundary_values_different_at_1e-10": 1984,
+        "input": "ramp",
+        "interior_max_absolute_difference": 1.0685896612017132e-15,
+        "output_channels_with_boundary_difference": 16
+      }
+    ],
+    "new_extraction_experiments": 0,
+    "normalise_mean": [
+      0.4914,
+      0.4822,
+      0.4465
+    ],
+    "normalise_std": [
+      0.247,
+      0.2435,
+      0.2616
+    ],
+    "normalization_source_sha256": "8a87a46abb02dd1273c04d56cd10126b78c5626de4c012009cfeb42e819cd528",
+    "numpy": "1.24.4",
+    "python": "3.8.10",
+    "schema": "p050-ordinary-forward-preprocessing-audit-v1",
+    "scope": "Float64 stem outputs before activation and quantization; this does not measure prediction changes.",
+    "script_sha256": "6a4019ebfe14453ca194aa0a18a235043164e780a35e54b18d78e4b515bddf12",
+    "seed_schedule": "None; three deterministic synthetic ordinary inputs.",
+    "torch": "2.4.1+cpu",
+    "utc": "2026-10-02T08:30:01.387311+00:00"
+  },
+  "original_record_sha256": {
+    "results/p050-forward-semantics-20261002-r1/result.json": "c6e9b00a62241ef2e01edd25435ce2b6fdea12f0db227eafe3e069f79f8bd852",
+    "results/p050-readonly-review-20261002-r1/finite.json": "6ae18a8be59f1731b10ff2580b2ae4624a2f51e8420b4f4e8e75abf7034e17a3",
+    "results/p050-readonly-review-20261002-r1/result.json": "70ca767560cc19a6f2c9f472bce7f3265392fec313c5c27a3346f897a776622c"
+  },
+  "record_and_scope_audit": {
+    "audit_script_sha256": "81748b7f0788feb69ac96be32f247d866bd4e104b54aa1ef0e8abd57c8e9c141",
+    "mathematical_scope_witnesses": {
+      "correlated_frame_membership_is_essential": true,
+      "labeled_output_requires_identity_final_frame": true,
+      "nonuniform_frame_prior_can_break_gauge_sufficiency": true,
+      "these_checks_replace_no_symbolic_proof": true
+    },
+    "new_extraction_experiments": 0,
+    "normalization_source_sha256": "8a87a46abb02dd1273c04d56cd10126b78c5626de4c012009cfeb42e819cd528",
+    "normalization_witness": {
+      "boundary_equal": false,
+      "current_uniform_bias_fold": [
+        [
+          -9,
+          -9,
+          -9
+        ],
+        [
+          -9,
+          -9,
+          -9
+        ],
+        [
+          -9,
+          -9,
+          -9
+        ]
+      ],
+      "interior_equal": true,
+      "interpretation": "The current uniform-bias fold defines a different boundary map; it is not an exact rewrite of conventional normalized zero-padded convolution.",
+      "max_absolute_difference": 5.0,
+      "ordinary_center_then_zero_pad": [
+        [
+          -4,
+          -6,
+          -4
+        ],
+        [
+          -6,
+          -9,
+          -6
+        ],
+        [
+          -4,
+          -6,
+          -4
+        ]
+      ]
+    },
+    "numpy": "1.24.4",
+    "python": "3.8.10",
+    "record_hashes": [
+      {
+        "file": "results/multicheckpoint/p050-tdsc-baseline-regression-20261002-r1/result.json",
+        "matches_public_record": true,
+        "sha256": "5a7cee97a231c0bbff54d3e9f02fe67893545fb9f6e13c90f21ae0621508d7c9"
+      },
+      {
+        "file": "results/multicheckpoint/p050-tdsc-baseline-regression-20261002-r1/launch.json",
+        "matches_public_record": true,
+        "sha256": "785e080460bb620bd6641af9414c99cd5a2b80ceeb1bc9267326c14614d1c106"
+      },
+      {
+        "file": "results/multicheckpoint/p050-tdsc-qat-screen-w8-20261002-r1/result.json",
+        "matches_public_record": true,
+        "sha256": "758704abdeaa6ee1a1b5d4b3871578789afe03a22315df4ddcb2d8a60431f786"
+      },
+      {
+        "file": "results/multicheckpoint/p050-tdsc-qat-screen-w8-20261002-r1/launch.json",
+        "matches_public_record": true,
+        "sha256": "831201eb05702743db8bb93a180743b7705a0bba72ed95eec01ad34f16451335"
+      }
+    ],
+    "record_integrity_passed": true,
+    "records": [
+      {
+        "accepted_records": 29,
+        "affine_evaluations": 73520,
+        "arithmetic_trace_enabled": false,
+        "checkpoint": "official",
+        "checkpoint_digest_matches": true,
+        "completion_run": true,
+        "error": null,
+        "loader_missing_keys": [],
+        "loader_unexpected_keys": [],
+        "outcome": "certified",
+        "process_exit_codes": {
+          "attacker": 0,
+          "evaluator": 0,
+          "oracle": 0
+        },
+        "sessions": 3676,
+        "source_files_match_launch": {
+          "lib/resnet20.py": true,
+          "scripts/run_completion.py": true,
+          "scripts/run_extraction.py": true,
+          "scripts/run_multicheckpoint.py": true
+        }
+      },
+      {
+        "accepted_records": null,
+        "affine_evaluations": 90300,
+        "arithmetic_trace_enabled": false,
+        "checkpoint": "qat-w8-s0",
+        "checkpoint_digest_matches": true,
+        "completion_run": false,
+        "error": "RuntimeError: layer3.1.conv2 is uncertified: status='uncertified_columns', columns_failed=36, columns_backtracked=0, unresolved_rows=6",
+        "loader_missing_keys": [],
+        "loader_unexpected_keys": [],
+        "outcome": "fail_closed",
+        "process_exit_codes": {
+          "attacker": 1,
+          "evaluator": null,
+          "oracle": 0
+        },
+        "sessions": 4515,
+        "source_files_match_launch": {
+          "lib/resnet20.py": true,
+          "scripts/run_completion.py": true,
+          "scripts/run_extraction.py": true,
+          "scripts/run_multicheckpoint.py": true
+        }
+      },
+      {
+        "accepted_records": 28,
+        "affine_evaluations": 116180,
+        "arithmetic_trace_enabled": false,
+        "checkpoint": "qat-w8-s1",
+        "checkpoint_digest_matches": true,
+        "completion_run": false,
+        "error": null,
+        "loader_missing_keys": [],
+        "loader_unexpected_keys": [],
+        "outcome": "fail_closed",
+        "process_exit_codes": {
+          "attacker": 1,
+          "evaluator": null,
+          "oracle": 0
+        },
+        "sessions": 5809,
+        "source_files_match_launch": {
+          "lib/resnet20.py": true,
+          "scripts/run_completion.py": true,
+          "scripts/run_extraction.py": true,
+          "scripts/run_multicheckpoint.py": true
+        }
+      }
+    ],
+    "schema": "p050-readonly-evidence-audit-v1",
+    "seed_schedule": "None; deterministic record and algebra checks only.",
+    "utc": "2026-10-02T08:03:54.780499+00:00"
+  },
+  "schema": "p050-public-critical-review-v1",
+  "source_commit": "c562a413e7b7d43867582b010ccf3ed42842015d",
+  "unresolved": [
+    "The current input-normalization fold is not an exact rewrite at padded boundaries.",
+    "Both additional QAT-derived, post-training-quantized cases lack a complete recovery certificate.",
+    "A faithful native-QAT or deployed Safhire residual protocol is not validated.",
+    "The checkpoint regression disabled arithmetic tracing; archived range claims were not retraced.",
+    "Historical QAT input bytes are not distributed in the publication tree."
+  ]
+}

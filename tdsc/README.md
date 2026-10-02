@@ -9,11 +9,11 @@ extraction, and the class-aware completion experiment.
 This GitHub package is the public artifact referenced by URL. The article does
 not depend on a separate supplementary-material submission.
 
-The package contains the complete source required to reproduce every
-code-backed result retained in the journal article. Obsolete exploratory
-entry points and bulky raw traces are not part of the publication tree.
-Compact reference outputs retain the checks needed to audit every numerical
-statement reported by the paper.
+The package contains the source and compact records for the journal's
+simulator case study and finite enumeration. The historical QAT inputs are
+not distributed, and the conference measurements are archived evidence, not
+new journal replications. Bulky raw traces are not in this publication tree.
+The limitations below are part of the evidence record.
 
 ## Contents
 
@@ -32,8 +32,10 @@ statement reported by the paper.
 
 ## Environment
 
-The claim-producing runs used Python 3.8.10, NumPy 1.17.4, and PyTorch
-2.4.1+cpu. `requirements-recorded.txt` preserves that record. PyTorch releases
+The original reference runs recorded Python 3.8.10, NumPy 1.17.4, and PyTorch
+2.4.1+cpu. `requirements-recorded.txt` preserves that record. The October 2
+checkpoint audit used NumPy 1.24.4; it is a separate environment record.
+PyTorch releases
 through 2.9.1 have published `weights_only=True` deserialization
 vulnerabilities, so the installable public environment is tested on Python
 3.10 and pins NumPy 1.24.4 and PyTorch 2.10.0:
@@ -157,10 +159,10 @@ python3 scripts/verify_runs.py \
   --completion-dir results/provenance/tdsc-completion
 ```
 
-## Optional fail-closed multi-checkpoint audit
+## Fixed-configuration multi-checkpoint audit
 
-The `tdsc-multicheckpoint-audit-20261002` branch also contains an exploratory
-robustness audit that is not evidence for an additional paper claim. The
+The `tdsc-multicheckpoint-audit-20261002` branch contains a robustness audit
+whose failures are reported in the revised article. The
 driver authenticates each checkpoint by SHA-256 and runs the same attack
 seed, oracle seeds, quantization, probe count, search limit, control values,
 and completion settings for every selected checkpoint. It never retries or
@@ -179,7 +181,9 @@ python3 scripts/run_multicheckpoint.py \
 The original release checkpoint passed the full certificate: 29/29 extraction
 records, 34/34 line-tracking invocations, 29/29 observable maps after
 completion, and 10,000/10,000 identical logit vectors. Two eight-bit QAT
-fine-tunes failed closed under the same configuration. Seed 0 stopped at
+fine-tunes, converted through the simulator's post-training quantizer rather
+than executed with their native QAT operators, failed closed under the same
+configuration. Seed 0 stopped at
 `layer3.1.conv2` with 36 uncertified columns and six unresolved rows. Seed 1
 certified all 34 line-tracking invocations but produced only 28/29 accepted
 records: at `layer3.2.conv2`, 63/64 channels were resolved, ten rows remained
@@ -211,6 +215,56 @@ Safhire/A2Q+ exploit. The four completion probes close four known
 distinguishers; the 29-map certificate is the structural check for this
 simulator. Arithmetic traces report completed affine outputs, not internal
 multiply-accumulate widths.
+
+The October 2 checkpoint regression disabled arithmetic tracing. It reproduces
+the recorded recovery outcomes but does not independently recheck the older
+trace-derived range bounds. The range numbers in the article come from the
+archived verification records, not from new traces in that regression.
+
+The simulator's uniform stem-bias fold is not an exact rewrite of input
+normalization followed by zero-padded convolution. At an image boundary it
+subtracts contributions for kernel positions outside the image. This is a
+confirmed preprocessing discrepancy, not evidence that the original trained
+network was faithfully reproduced. Equality between the simulator and a clone
+of that same simulator does not resolve the discrepancy. The code is left
+unchanged to preserve the meaning of the recorded experiment; a corrected
+model would need a new, separately validated evidence record.
+
+The theorems concern decoded transcripts with the specified frame law, not
+raw ciphertexts or decryption residuals. The open-domain characterization
+does not guarantee efficient recovery on a finite eight-bit message domain.
+The published Safhire description supports the chosen-message threat model,
+but a complete residual session implementation, native A2Q+ response map,
+sampling law, and full abort behavior have not been matched to this simulator.
+No deployed-system extraction is established by this package.
+
+## October 2 evidence and preprocessing review
+
+`reference/review-20261002/evidence.json` records the read-only provenance
+audit, the freshly repeated finite enumeration, and the ordinary-forward
+preprocessing check. Record hashes and the current source hashes match the
+published checkpoint audit. This is an integrity check of existing runs,
+not a new execution of the extraction experiment.
+
+The finite enumeration again has zero condition disagreements and zero
+controller failures, with 5,460 response/target pairs and 197,956 constructive
+permutation checks. These finite checks supplement, rather than prove, the
+symbolic theorems.
+
+The ordinary-forward check uses the authenticated baseline checkpoint and
+three deterministic inputs (zero, constant one-half, and a ramp). All 16 stem
+channels have boundary differences; interior differences are below 1e-10.
+It checks float64 outputs before activation and quantization and does not
+measure any change in prediction accuracy. To repeat this benign check from
+this directory:
+
+```bash
+python3 scripts/audit_preprocessing.py .
+```
+
+The review did not change the model constructor or recovery implementation.
+The boundary discrepancy, failed additional checkpoints, and missing
+deployment correspondence remain unresolved scientific limitations.
 
 ## Upstream inputs and citation
 
