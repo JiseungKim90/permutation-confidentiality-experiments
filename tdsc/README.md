@@ -99,6 +99,24 @@ The checkpoint then uses `weights_only=True`; the CIFAR loader reads only the
 named batch directly from the authenticated archive and does not extract it.
 Do not change the fixed digests to load an untrusted file. See `SECURITY.md`.
 
+## Paper claim map
+
+The following map ties every journal experiment to its public entry point and
+fail-closed acceptance check. The detailed commands appear in the named
+sections below.
+
+| Paper evidence | Reproduction entry point | Acceptance evidence |
+| --- | --- | --- |
+| Release-checkpoint extraction and prediction-equivalent first-stage clone | `run_extraction.py` under **Whole-network extraction** | `verify_runs.py --extraction-dir ...` requires 29/29 records, 34/34 LTA invocations, 3,676 sessions, 73,520 affine evaluations, and 10,000/10,000 identical logits. |
+| Recovery of the five missing coefficients and four-probe closure | `run_completion.py` under **Class-aware completion** | `verify_runs.py --completion-dir ...` requires 93 recovery sessions plus four closure sessions, 29/29 observable maps, and 10,000/10,000 identical logits. |
+| One fixed configuration on the release checkpoint and eight QAT-derived weight sets | `run_multicheckpoint.py` under **Fixed-configuration multi-checkpoint audit** | `promote_multicheckpoint_audit.py` accepts exactly nine authenticated records and rejects any incomplete, retuned, or failed checkpoint. |
+| Finite-domain fibres, two-round kernels, and hidden-frame control | `identifiability_exhaustive.py --max-control-width 6` under **Fast validation** | `verify_finite_reference.py` checks the complete reference record; success additionally requires zero controller disagreements and zero constructive failures. |
+| Corrected ordinary inference and preprocessing controls | `reproduce_public_inference.py` under **Corrected ordinary inference and finite frame laws** | The independent verifier recomputes all counts and errors from stored arrays and checks the complete source manifest. |
+
+`python3 scripts/run_checks.py` verifies the release tree, this claim map's
+underlying reference records, all published hashes, and the offline regression
+suites before any long run is started.
+
 ## Fast validation
 
 From this directory, run:
@@ -164,9 +182,11 @@ env OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 \
 Success requires 830 singleton first-convolution slope checks, 2,048 singleton
 shortcut-carrier checks, exact verification of all rounded solves, closure of
 all four known distinguishers, 29/29 observable affine maps in one coherent
-gauge, and 10,000/10,000 identical logit vectors. The completion changes three
-first-convolution and two shortcut coefficients in 97 sessions and 234 affine
-evaluations.
+gauge, and 10,000/10,000 identical logit vectors. Recovery changes three
+first-convolution and two shortcut coefficients in 93 sessions and 222 affine
+evaluations. Four additional sessions and 12 evaluations replay the known
+distinguishers, so the full completion workflow uses 97 sessions and 234
+affine evaluations.
 
 After both runs complete, verify every paper-facing condition and canonical
 output digest with one command:
