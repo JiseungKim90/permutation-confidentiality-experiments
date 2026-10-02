@@ -847,7 +847,12 @@ def attacker_worker(connection, manifest, config):
 
         proxy = holder.get("proxy")
         if extracted is None:
-            raise RuntimeError("attack did not produce a recovered network")
+            raise RuntimeError(
+                "attack did not produce a recovered network: records=%d/%d, "
+                "stopped_reason=%r"
+                % (len(records), attack_summary.get("layers_total", 0),
+                   attack_summary.get("stopped_reason"))
+            )
         save_network(extracted, config["recovered_arrays"],
                      config["recovered_meta"])
         recovered_model_sha256 = model_digest(extracted)
