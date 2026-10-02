@@ -1097,7 +1097,7 @@ def assemble_from_candidates(cands, slopes, intercepts, C_out, C_in, k,
                 if terms is None:  # backward-compatible unit-test evidence
                     terms = [{"posof": ev["posof"], "u": ev["u"]}]
                 pred = assignment_query_counter(
-                    candidate, slopes, bgmap, k, terms)
+                    candidate, slopes, ev.get("bgmap", bgmap), k, terms)
                 if pred != Counter(ev["observed"]):
                     return False
             return True
@@ -1182,7 +1182,8 @@ def certify_with_separating_queries(cands, slopes, intercepts, C_out, C_in,
                                     bgmap, pls, stride, k, Ho, Wo, C, A,
                                     evidence, initial, do_query, rng,
                                     include_intercepts=True,
-                                    max_queries=16, search_tries=320):
+                                    max_queries=16, search_tries=320,
+                                    alternative_query=None):
     """Eliminate exact-matching counterexamples with adaptive linkage queries.
 
     ``assemble_from_candidates`` returns two public witness assignments whenever
@@ -1195,6 +1196,7 @@ def certify_with_separating_queries(cands, slopes, intercepts, C_out, C_in,
     W, b, info = initial
     nqueries = 0
     prediction_matches = []
+    query_sources = []
     search_failures = 0
     while info.get("matching_failures") and nqueries < int(max_queries):
         witnesses = info.pop("_evidence_witness_assignments", None)
@@ -1203,15 +1205,31 @@ def certify_with_separating_queries(cands, slopes, intercepts, C_out, C_in,
         sep = separating_multiplacement_query(
             witnesses[0], witnesses[1], slopes, bgmap, pls, stride, k,
             Ho, Wo, C, A, rng, tries=search_tries)
-        if sep is None:
+        if sep is not None:
+            pixel_values, terms, pred_a, pred_b = sep
+            kept = do_query(pixel_values, terms)
+            observed = Counter(int(v) for v in np.asarray(kept).ravel())
+            query_bgmap = bgmap
+            source = "primary-input"
+        elif alternative_query is not None:
+            alternative = alternative_query(witnesses[0], witnesses[1])
+            if alternative is None:
+                search_failures += 1
+                break
+            terms = alternative["terms"]
+            observed = Counter(alternative["observed"])
+            query_bgmap = alternative["bgmap"]
+            pred_a = Counter(alternative["pred_a"])
+            pred_b = Counter(alternative["pred_b"])
+            source = str(alternative.get("source", "alternative-context"))
+        else:
             search_failures += 1
             break
-        pixel_values, terms, pred_a, pred_b = sep
-        kept = do_query(pixel_values, terms)
-        observed = Counter(int(v) for v in np.asarray(kept).ravel())
         prediction_matches.append(int(observed == pred_a)
                                   + int(observed == pred_b))
-        evidence.append({"terms": terms, "observed": observed})
+        query_sources.append(source)
+        evidence.append({"terms": terms, "observed": observed,
+                         "bgmap": query_bgmap})
         nqueries += 1
         W, b, info = assemble_from_candidates(
             cands, slopes, intercepts, C_out, C_in, k,
@@ -1220,6 +1238,7 @@ def certify_with_separating_queries(cands, slopes, intercepts, C_out, C_in,
     info.pop("_evidence_witness_assignments", None)
     info["separating_queries"] = int(nqueries)
     info["separating_prediction_matches"] = prediction_matches
+    info["separating_query_sources"] = query_sources
     info["separating_query_search_failures"] = int(search_failures)
     return W, b, info, nqueries
 
@@ -1834,11 +1853,114 @@ def extract_chain_partial(net, T=3, seed=0, noise_law="Gaussian", H0=32,
             kept, _lo = subtract_multiset(y, bv2, bc2)
             return kept
 
+        def do_retained_context_query(assign_a, assign_b):
+            """Separate conv2 assignments by varying the retained shortcut input.
+
+            A fixed retained-input probe can give two shortcut channels the same
+            background at every addressed position.  Swapping all nine conv2 taps
+            between those channels is then invisible to any query that varies only
+            the primary conv2 input.  Search for another already-controllable input
+            to the block's first convolution that (i) locates every conv2 coordinate
+            needed below and (ii) makes a primary-input query separate the two full
+            residual maps.  The oracle reply, not the prediction, decides which
+            assignment survives.
+            """
+            carrier_spec = next(
+                sp for sp in rounds[ra].inputs if sp["kind"] == "new")
+            C_car, H_car, W_car = carrier_spec["in_shape"]
+            st_car, k_car = carrier_spec["stride"], carrier_spec["k"]
+            W_car = recovered[nm + ".conv1"]["W"]
+            b_car = recovered[nm + ".conv1"]["b"]
+            old_cmap = probe_canon[ra]
+            carrier_positions = [
+                (int(y), int(x))
+                for y, x in zip(*np.nonzero(np.any(old_cmap != 0, axis=0)))
+            ]
+            if not carrier_positions:
+                return None
+            carrier_live = live_map.get(carrier_spec["frame"])
+            carrier_live = (
+                np.arange(C_car, dtype=np.int64) if carrier_live is None
+                else np.asarray(carrier_live, dtype=np.int64))
+            need_idx = np.array([
+                c * (Ho * Wo) + y * Wo + x
+                for c in live_idx for (y, x) in pls_avail
+            ], dtype=np.int64)
+
+            for _ in range(max(32, 4 * int(probe_tries))):
+                values = []
+                for _p in carrier_positions:
+                    value = np.zeros(C_car, dtype=np.int64)
+                    value[carrier_live] = rng_a.integers(
+                        0, A + 1, size=carrier_live.size).astype(np.int64)
+                    values.append(value)
+                carrier_map = sparse_map(
+                    C_car, H_car, W_car,
+                    dict(zip(carrier_positions, values)))
+                carrier_pred = conv_int(
+                    carrier_map, W_car, b_car, st_car, k_car).reshape(-1)
+                _uv, inv, counts = np.unique(
+                    carrier_pred, return_inverse=True, return_counts=True)
+                locatable = counts[inv] == 1
+                if need_idx.size and not bool(np.all(locatable[need_idx])):
+                    continue
+
+                retained = conv_int(carrier_map, S_can, zc, st, 1)
+                alternative_bg = b_block_can[:, None, None] + retained
+                sep = separating_multiplacement_query(
+                    assign_a, assign_b, slopes, alternative_bg, pls_avail,
+                    1, 3, Ho, Wo, C_live, A, rng_a, tries=32)
+                if sep is None:
+                    continue
+                pixel_values, terms, pred_a, pred_b = sep
+                pixels = {pm: _emb(u, pm)[1][pm]
+                          for pm, u in pixel_values.items()}
+                affected = set()
+                for term in terms:
+                    affected.update(term["posof"].values())
+                mask = np.ones((C_out, Ho, Wo), dtype=bool)
+                for y, x in affected:
+                    mask[:, int(y), int(x)] = False
+                bv_alt, bc_alt = multiset_counts(alternative_bg[mask])
+
+                old_probe = attack.probes.get(ra)
+                old_probe_canon = probe_canon.get(ra)
+                plans = [("pixels", dict(zip(carrier_positions, values)))]
+                failures_before = attack.probe_multiset_failures
+                attack.install_probe(ra, plans, carrier_pred)
+                probe_canon[ra] = carrier_map
+                try:
+                    reply = attack.run_session(
+                        {rb: [("pixels", pixels)]}, rb)
+                finally:
+                    if old_probe is None:
+                        attack.probes.pop(ra, None)
+                    else:
+                        attack.probes[ra] = old_probe
+                    if old_probe_canon is None:
+                        probe_canon.pop(ra, None)
+                    else:
+                        probe_canon[ra] = old_probe_canon
+                if attack.probe_multiset_failures != failures_before:
+                    return None
+                kept, _lo = subtract_multiset(reply, bv_alt, bc_alt)
+                return {
+                    "terms": terms,
+                    "observed": Counter(int(v) for v in
+                                        np.asarray(kept).ravel()),
+                    "bgmap": alternative_bg,
+                    "pred_a": pred_a,
+                    "pred_b": pred_b,
+                    "source": "retained-input",
+                }
+            return None
+
         W_live, b_unused, ainfo, nq_sep = certify_with_separating_queries(
             cands, slopes, [int(v) for v in br], C_out, C_live,
             bgmap, pls_avail, 1, 3, Ho, Wo, C_live, A,
             all_membership_evidence, (W_live, b_unused, ainfo),
-            do_multi, rng_a, include_intercepts=False)
+            do_multi, rng_a, include_intercepts=False,
+            alternative_query=do_retained_context_query)
         nmq += nq_sep
         rec["membership_anchor_collisions"] = ubad
         rec["membership_queries"] = nmq

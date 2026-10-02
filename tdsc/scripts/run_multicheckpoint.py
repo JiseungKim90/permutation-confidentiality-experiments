@@ -353,8 +353,8 @@ def main():
         "success_criteria": (
             "Each certified checkpoint must pass extraction, 29/29 observable-map "
             "completion, and exact logits on n_test images without a per-checkpoint "
-            "seed or parameter change.  The paper-inclusion gate requires at least "
-            "five certified checkpoints."
+            "seed or parameter change.  The audit passes only if every checkpoint "
+            "named in this launch record is certified."
         ),
         "failure_criteria": (
             "Any nonzero process, missing output, failed internal check, fewer than "
@@ -391,6 +391,8 @@ def main():
                 handle.write("\n")
 
     certified = sum(bool(record.get("full_certificate")) for record in records)
+    all_selected_certified = bool(
+        len(records) == len(checkpoints) and certified == len(checkpoints))
     result = {
         "schema": "p050-multicheckpoint-result-v1",
         "completed_utc": utc_now(),
@@ -402,7 +404,7 @@ def main():
         "driver_error_checkpoints": sum(
             record.get("outcome") == "driver_error" for record in records),
         "per_checkpoint_manual_tuning": False,
-        "paper_inclusion_gate_passed": certified >= 5,
+        "all_selected_checkpoints_certified": all_selected_certified,
         "records": records,
     }
     with (audit_dir / "result.json").open("w", encoding="utf-8") as handle:
@@ -412,7 +414,7 @@ def main():
         "result": str(audit_dir / "result.json"),
         "attempted": len(records),
         "certified": certified,
-        "paper_inclusion_gate_passed": certified >= 5,
+        "all_selected_checkpoints_certified": all_selected_certified,
     }, sort_keys=True))
     return 0 if certified == len(records) else 1
 

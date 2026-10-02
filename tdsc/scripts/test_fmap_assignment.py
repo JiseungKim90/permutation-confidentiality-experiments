@@ -12,7 +12,9 @@ import numpy as np
 REPRO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPRO_ROOT))
 
-from lib.fmap_partial import (assemble_from_candidates,
+from lib.fmap_partial import (assignment_query_counter,
+                              assemble_from_candidates,
+                              certify_with_separating_queries,
                               separating_multiplacement_query)  # noqa: E402
 
 
@@ -88,6 +90,50 @@ def main() -> None:
     )
     assert sep is not None
     assert sep[2] != sep[3]
+
+    # A whole-channel swap is invisible while both channels have the same
+    # retained-input background.  An alternative retained input can separate
+    # those backgrounds; evidence must be checked against the background that
+    # was active for that query, not the original fixed one.
+    channel_cands = [[(0, 0), (1, 0)], [(0, 0), (1, 0)]]
+    channel_slopes = [np.array([11]), np.array([22])]
+    fixed_bg = np.zeros((2, 1, 2), dtype=np.int64)
+    initial = assemble_from_candidates(
+        channel_cands, channel_slopes, [0, 0], 2, 1, 1,
+        evidence=[{"terms": [{"posof": {0: (0, 0)},
+                                "u": np.array([1])}],
+                   "observed": {11: 1, 22: 1}}],
+        bgmap=fixed_bg, include_intercepts=False,
+    )
+    assert not initial[2]["assignment_certified"]
+    alternative_bg = np.array([[[0, 0]], [[100, 100]]], dtype=np.int64)
+    alt_terms = [{"posof": {0: (0, 0)}, "u": np.array([1])}]
+
+    def alternative_query(a, b):
+        pa = assignment_query_counter(
+            a, channel_slopes, alternative_bg, 1, alt_terms)
+        pb = assignment_query_counter(
+            b, channel_slopes, alternative_bg, 1, alt_terms)
+        assert pa != pb
+        identity = [0, 1]
+        return {"terms": alt_terms,
+                "observed": assignment_query_counter(
+                    identity, channel_slopes, alternative_bg, 1, alt_terms),
+                "bgmap": alternative_bg, "pred_a": pa, "pred_b": pb,
+                "source": "retained-input"}
+
+    _, _, context_info, context_queries = certify_with_separating_queries(
+        channel_cands, channel_slopes, [0, 0], 2, 1, fixed_bg,
+        [(0, 0), (0, 1)], 1, 1, 1, 2, 1, 255,
+        [{"terms": [{"posof": {0: (0, 0)}, "u": np.array([1])}],
+          "observed": {11: 1, 22: 1}}],
+        initial, lambda _pixels, _terms: np.array([11, 22]),
+        np.random.default_rng(8), include_intercepts=False,
+        search_tries=2, alternative_query=alternative_query,
+    )
+    assert context_queries == 1
+    assert context_info["assignment_certified"]
+    assert context_info["separating_query_sources"] == ["retained-input"]
 
     # A dead 2x2 kernel can collapse every recovered row onto the same apparent
     # tap.  Since all four slopes are zero, assigning them to the four taps is
