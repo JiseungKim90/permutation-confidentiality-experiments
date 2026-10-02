@@ -116,10 +116,17 @@ def extraction_summary(record, returncode):
         "process_exit_codes": record.get("process_exit_codes"),
         "client_certified_records": attacker.get("client_certified_records"),
         "lta_invocations_certified": certificate.get("lta_invocations_certified"),
+        "lta_passes_total": certificate.get("lta_passes_total"),
         "sessions": attack_summary.get("sessions_total"),
         "affine_evaluations": attack_summary.get("round_evaluations_total"),
+        "repairs_triggered": attack_summary.get("repairs_triggered"),
         "identical_logit_vectors": evaluator.get("identical_logit_vectors"),
+        "post_calibration_identical_logit_vectors": evaluator.get(
+            "post_calibration_identical_logit_vectors"),
         "max_abs_logit_difference": evaluator.get("max_abs_logit_difference"),
+        "parallel_batched_exact": evaluator.get("parallel_batched_exact"),
+        "forward_implementation": evaluator.get("forward_implementation"),
+        "accuracy_private": evaluator.get("accuracy_private"),
         "attacker_status": attacker.get("status"),
         "attacker_error": attacker.get("error"),
         "oracle_status": nested(record, "oracle", "status"),
@@ -140,7 +147,12 @@ def completion_summary(record, returncode):
         "observable_maps_successful": structural.get(
             "parameter_records_successful"),
         "identical_logit_vectors": evaluator.get("identical_logit_vectors"),
+        "post_calibration_identical_logit_vectors": evaluator.get(
+            "post_calibration_identical_logit_vectors"),
         "max_abs_logit_difference": evaluator.get("max_abs_logit_difference"),
+        "parallel_batched_exact": evaluator.get("parallel_batched_exact"),
+        "forward_implementation": evaluator.get("forward_implementation"),
+        "accuracy_private": evaluator.get("accuracy_private"),
         "first_conv_singleton_checks": sum(
             int(value) for value in
             (recovery.get("line_candidate_count_histogram") or {}).values()),
@@ -161,12 +173,18 @@ def full_certificate(extraction, completion, n_test):
         and extraction.get("client_certified_records") == 29
         and extraction.get("lta_invocations_certified") == 34
         and extraction.get("identical_logit_vectors") == n_test
+        and extraction.get("post_calibration_identical_logit_vectors")
+            == max(0, n_test - min(64, n_test))
         and extraction.get("max_abs_logit_difference") == 0
+        and extraction.get("parallel_batched_exact") is True
         and completion.get("success")
         and completion.get("observable_maps_checked") == 29
         and completion.get("observable_maps_successful") == 29
         and completion.get("identical_logit_vectors") == n_test
+        and completion.get("post_calibration_identical_logit_vectors")
+            == max(0, n_test - min(64, n_test))
         and completion.get("max_abs_logit_difference") == 0
+        and completion.get("parallel_batched_exact") is True
     )
 
 
@@ -352,7 +370,9 @@ def main():
         "checkpoint_names": [item["name"] for item in checkpoints],
         "success_criteria": (
             "Each certified checkpoint must pass extraction, 29/29 observable-map "
-            "completion, and exact logits on n_test images without a per-checkpoint "
+            "completion, exact logits on n_test images (including the held-out "
+            "post-calibration subset), and an exact cross-check between the "
+            "threaded reference and vectorised evaluator without a per-checkpoint "
             "seed or parameter change.  The audit passes only if every checkpoint "
             "named in this launch record is certified."
         ),
