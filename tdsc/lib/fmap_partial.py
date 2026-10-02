@@ -1867,9 +1867,9 @@ def extract_chain_partial(net, T=3, seed=0, noise_law="Gaussian", H0=32,
             """
             carrier_spec = next(
                 sp for sp in rounds[ra].inputs if sp["kind"] == "new")
-            C_car, H_car, W_car = carrier_spec["in_shape"]
+            C_car, H_car, Win_car = carrier_spec["in_shape"]
             st_car, k_car = carrier_spec["stride"], carrier_spec["k"]
-            W_car = recovered[nm + ".conv1"]["W"]
+            W1_car = recovered[nm + ".conv1"]["W"]
             b_car = recovered[nm + ".conv1"]["b"]
             old_cmap = probe_canon[ra]
             carrier_positions = [
@@ -1895,10 +1895,10 @@ def extract_chain_partial(net, T=3, seed=0, noise_law="Gaussian", H0=32,
                         0, A + 1, size=carrier_live.size).astype(np.int64)
                     values.append(value)
                 carrier_map = sparse_map(
-                    C_car, H_car, W_car,
+                    C_car, H_car, Win_car,
                     dict(zip(carrier_positions, values)))
                 carrier_pred = conv_int(
-                    carrier_map, W_car, b_car, st_car, k_car).reshape(-1)
+                    carrier_map, W1_car, b_car, st_car, k_car).reshape(-1)
                 _uv, inv, counts = np.unique(
                     carrier_pred, return_inverse=True, return_counts=True)
                 locatable = counts[inv] == 1
