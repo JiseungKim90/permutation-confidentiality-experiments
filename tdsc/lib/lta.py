@@ -124,14 +124,13 @@ class CoverBudget(Exception):
 
 
 def solve_cover(a_vals, mu, cand, uniq, cnt, T, off, m, node_budget=4000):
-    """Exact multiset cover with a conservative uniqueness certificate.
+    """Exact multiset cover with an exhaustive uniqueness certificate.
 
-    A cover is returned only when multiplicity propagation completes the cover
-    at the root search node.  A feasible cover first reached after branching is
-    deliberately reported as unresolved: the first feasible branch need not be
-    the unique cover.  This fail-closed rule is stricter than testing uniqueness
-    by exhaustive enumeration, but keeps every accepted column sound within a
-    fixed node budget.
+    Propagation is only an optimisation.  When it leaves a choice, depth-first
+    search enumerates feasible multiplicity vectors until either two distinct
+    covers are found or the whole search tree has been exhausted.  A branched
+    cover is accepted only in the latter case.  Exhausting ``node_budget`` is a
+    fail-closed outcome, never evidence of uniqueness.
     """
     K = a_vals.size
     res_mu = np.array(mu, dtype=np.int64)
@@ -218,21 +217,28 @@ def solve_cover(a_vals, mu, cand, uniq, cnt, T, off, m, node_budget=4000):
     def complete(res_mu, cc):
         return bool(np.all(res_mu == 0)) and all(bool(np.all(c == 0)) for c in cc)
 
+    solutions = []
+
+    def remember(comm):
+        if not any(np.array_equal(comm, old) for old in solutions):
+            solutions.append(comm.copy())
+        return len(solutions) >= 2
+
     def search(res_mu, cc, active, comm):
         nodes[0] += 1
         if nodes[0] > node_budget:
             raise CoverBudget("node budget %d exhausted" % node_budget)
         if not propagate(res_mu, cc, active, comm):
-            return None
+            return False
         if complete(res_mu, cc):
-            return comm
+            return remember(comm)
         live = np.nonzero(active)[0]
         if live.size == 0:
-            return None
+            return False
         counts = np.bincount(pair_row[live], minlength=K)
         rows_hot = np.nonzero((counts > 0) & (res_mu > 0))[0]
         if rows_hot.size == 0:
-            return None
+            return False
         i = int(rows_hot[np.argmin(counts[rows_hot])])
         p = int(live[pair_row[live] == i][0])
         for branch in (1, 0):
@@ -252,27 +258,28 @@ def solve_cover(a_vals, mu, cand, uniq, cnt, T, off, m, node_budget=4000):
                     continue
             else:
                 act[p] = False
-            got = search(rm, c2, act, cm)
-            if got is not None:
-                return got
-        return None
+            if search(rm, c2, act, cm):
+                return True
+        return False
 
     try:
-        sol = search(res_mu, cc, np.ones(P, dtype=bool), np.zeros(P, dtype=np.int64))
+        search(res_mu, cc, np.ones(P, dtype=bool), np.zeros(P, dtype=np.int64))
     except CoverBudget as exc:
         return {"ok": False, "slopes": None, "forced": False, "nodes": nodes[0],
                 "reason": str(exc)}
-    if sol is None:
+    if not solutions:
         return {"ok": False, "slopes": None, "forced": False, "nodes": nodes[0],
                 "reason": "no feasible exact cover"}
-    if nodes[0] > 1:
+    if len(solutions) > 1:
         return {"ok": False, "slopes": None, "forced": False, "nodes": nodes[0],
-                "reason": "uniqueness not certified: exact-cover branching was required"}
+                "reason": "uniqueness not certified: multiple feasible exact covers"}
+    sol = solutions[0]
     for i in gen_rows:
         sel = (pair_row == i)
         out_flat[off[i]:off[i] + mu[i]] = np.sort(np.repeat(pair_g[sel], sol[sel]))
-    return {"ok": True, "slopes": out_flat, "forced": True,
-            "nodes": nodes[0], "reason": ""}
+    branched = bool(nodes[0] > 1)
+    return {"ok": True, "slopes": out_flat, "forced": not branched,
+            "unique_search": branched, "nodes": nodes[0], "reason": ""}
 
 
 def track_column(a_vals, mu, off, m, S_list, T, node_budget=4000,
@@ -339,6 +346,8 @@ def lta_pass(channel, x0, T, S0=None, deadline=None, node_budget=4000,
         "multiplicity_profile": prof,
         "columns_total": int(d),
         "columns_forced": 0,
+        "columns_unique_searched": 0,
+        "columns_certified": 0,
         "columns_backtracked": 0,
         "columns_failed": 0,
         "column_failures": [],
@@ -375,19 +384,14 @@ def lta_pass(channel, x0, T, S0=None, deadline=None, node_budget=4000,
             if out["forced"]:
                 res["columns_forced"] += 1
             else:
-                res["columns_backtracked"] += 1
+                res["columns_unique_searched"] += 1
+            res["columns_certified"] += 1
             slopes[j] = out["slopes"]
     if res["status"] == "ok" and res["columns_failed"]:
         res["status"] = "uncertified_columns"
         res["error"] = (
             "%d/%d column(s) lack a unique exact-cover certificate"
             % (res["columns_failed"], res["columns_total"])
-        )
-    if res["status"] == "ok" and res["columns_backtracked"]:
-        res["status"] = "uncertified_backtracking"
-        res["error"] = (
-            "%d/%d column(s) were accepted without root propagation"
-            % (res["columns_backtracked"], res["columns_total"])
         )
     res["slopes"] = slopes
     res["a_vals"] = a_vals

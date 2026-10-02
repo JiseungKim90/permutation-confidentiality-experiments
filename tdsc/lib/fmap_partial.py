@@ -759,6 +759,83 @@ def _match_rows_to_taps(cand, n_taps):
     return out
 
 
+def _match_rows_to_slots(cands, n_slots):
+    """Return a perfect row-to-slot matching, its inverse, or ``(None, None)``.
+
+    The previous assembler selected the smallest candidate channel before doing
+    per-channel tap matching.  That can manufacture an overload in one channel
+    even when the full bipartite graph has a unique perfect matching.  Matching
+    all ``(channel, tap)`` slots at once removes that order-dependent failure.
+    """
+    assign = [-1] * len(cands)
+    owner = [-1] * n_slots
+
+    def augment(i, seen):
+        for slot in cands[i]:
+            if slot in seen:
+                continue
+            seen.add(slot)
+            prev = owner[slot]
+            if prev < 0 or augment(prev, seen):
+                owner[slot] = i
+                assign[i] = slot
+                return True
+        return False
+
+    for i in sorted(range(len(cands)), key=lambda r: len(cands[r])):
+        if not cands[i] or not augment(i, set()):
+            return None, None
+    return assign, owner
+
+
+def _alternating_sccs(cands, assign, owner):
+    """SCCs of the alternating graph induced by one perfect matching.
+
+    Every other perfect matching differs on alternating cycles.  Consequently,
+    an SCC containing rows with different recovered slope vectors witnesses a
+    different assembled tensor; an SCC whose rows all carry the same vector is
+    a harmless exchange of indistinguishable rows.
+    """
+    n = len(cands)
+    graph = [[] for _ in range(n)]
+    rev = [[] for _ in range(n)]
+    for i, slots in enumerate(cands):
+        for slot in slots:
+            j = owner[slot]
+            if j >= 0 and j != i:
+                graph[i].append(j)
+                rev[j].append(i)
+
+    seen, order = set(), []
+
+    def visit(i):
+        seen.add(i)
+        for j in graph[i]:
+            if j not in seen:
+                visit(j)
+        order.append(i)
+
+    for i in range(n):
+        if i not in seen:
+            visit(i)
+    seen.clear()
+    comps = []
+
+    def collect(i, out):
+        seen.add(i)
+        out.append(i)
+        for j in rev[i]:
+            if j not in seen:
+                collect(j, out)
+
+    for i in reversed(order):
+        if i not in seen:
+            comp = []
+            collect(i, comp)
+            comps.append(comp)
+    return comps
+
+
 def refine_candidates(cands, slopes, bgmap, pls, stride, k, Ho, Wo, us,
                       do_query):
     """Narrow (channel, tap) candidates by membership queries.
@@ -818,52 +895,63 @@ def refine_candidates(cands, slopes, bgmap, pls, stride, k, Ho, Wo, us,
 def assemble_from_candidates(cands, slopes, intercepts, C_out, C_in, k):
     """Assign (channel, tap) to every recovered row and build the layer.
 
-    Rows are grouped by their candidate channel; inside a channel the rows are
-    matched to taps by augmenting paths.  Rows whose slope vectors are equal can
-    be exchanged without changing the matrix, so an arbitrary choice among them
-    is harmless and is counted separately from a genuine failure.
+    A global bipartite matching assigns rows to ``(channel, tap)`` slots.  The
+    alternating graph then certifies that every other perfect matching induces
+    the same tensor; exchanges among identical slope rows are harmless.
     """
     kk = k * k
     W = np.zeros((C_out, C_in * kk), dtype=np.int64)
     b = np.zeros(C_out, dtype=np.int64)
     info = {"rows": len(cands), "rows_with_unique_candidate": 0,
             "channels_resolved": 0, "matching_failures": 0,
-            "rows_with_no_candidate": 0, "channel_ambiguous_rows": 0}
-    bychan = {}
-    for i, cd in enumerate(cands):
-        if not cd:
+            "rows_with_no_candidate": 0, "channel_ambiguous_rows": 0,
+            "assignment_certified": False,
+            "assignment_ambiguous_components": 0,
+            "assignment_harmless_components": 0}
+    slot_cands = []
+    for cd in cands:
+        valid = sorted(set(int(ci) * kk + int(t) for ci, t in cd
+                           if 0 <= int(ci) < C_out and 0 <= int(t) < kk))
+        slot_cands.append(valid)
+        if not valid:
             info["rows_with_no_candidate"] += 1
-            continue
-        if len(cd) == 1:
+        if len(valid) == 1:
             info["rows_with_unique_candidate"] += 1
-        chs = set(ci for (ci, _) in cd)
-        if len(chs) > 1:
+        if len(set(slot // kk for slot in valid)) > 1:
             info["channel_ambiguous_rows"] += 1
-        ci = sorted(chs)[0]
+
+    assign, owner = _match_rows_to_slots(slot_cands, C_out * kk)
+    if assign is None or len(assign) != C_out * kk:
+        info["matching_failures"] = 1
+        info["channels_seen"] = 0
+        return W, b, info
+
+    ambiguous = 0
+    for comp in _alternating_sccs(slot_cands, assign, owner):
+        if len(comp) <= 1:
+            continue
+        first = np.asarray(slopes[comp[0]], dtype=np.int64)
+        if all(np.array_equal(first, np.asarray(slopes[i], dtype=np.int64))
+               for i in comp[1:]):
+            info["assignment_harmless_components"] += 1
+        else:
+            ambiguous += 1
+    info["assignment_ambiguous_components"] = int(ambiguous)
+    if ambiguous:
+        info["matching_failures"] = int(ambiguous)
+        info["channels_seen"] = len(set(slot // kk for slot in assign))
+        return W, b, info
+
+    bychan = {}
+    for i, slot in enumerate(assign):
+        ci, t = divmod(slot, kk)
+        W[ci, np.arange(C_in) * kk + t] = slopes[i]
         bychan.setdefault(ci, []).append(i)
     for ci, idxs in bychan.items():
-        if ci >= C_out:
-            info["matching_failures"] += 1
-            continue
-        cand_t = [sorted(set(t for (c2, t) in cands[i] if c2 == ci))
-                  or list(range(kk)) for i in idxs]
-        assign = _match_rows_to_taps(cand_t, kk)
-        if assign is None:
-            info["matching_failures"] += 1
-            assign, used = [], set()
-            for ct in cand_t:
-                pick = next((t for t in ct if t not in used), None)
-                if pick is None:
-                    pick = next((t for t in range(kk) if t not in used), 0)
-                used.add(pick)
-                assign.append(pick)
-        else:
-            info["channels_resolved"] += 1
-        for j, i in enumerate(idxs):
-            t = assign[j]
-            W[ci, np.arange(C_in) * kk + t] = slopes[i]
         b[ci] = intercepts[idxs[0]] if idxs else 0
     info["channels_seen"] = len(bychan)
+    info["channels_resolved"] = len(bychan)
+    info["assignment_certified"] = True
     return W, b, info
 
 

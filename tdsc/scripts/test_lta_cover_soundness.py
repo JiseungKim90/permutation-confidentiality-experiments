@@ -55,7 +55,7 @@ def main() -> None:
     ambiguous = _track(anchors, slopes_a)
     assert not ambiguous["ok"]
     assert not ambiguous["forced"]
-    assert "uniqueness not certified" in ambiguous["reason"]
+    assert "multiple feasible exact covers" in ambiguous["reason"]
 
     # A root-propagated singleton cover remains accepted and exact.
     unique_anchors = np.array([0, 100], dtype=np.int64)
