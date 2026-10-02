@@ -12,7 +12,8 @@ import numpy as np
 REPRO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPRO_ROOT))
 
-from lib.fmap_partial import assemble_from_candidates  # noqa: E402
+from lib.fmap_partial import (assemble_from_candidates,
+                              separating_multiplacement_query)  # noqa: E402
 
 
 def main() -> None:
@@ -70,6 +71,23 @@ def main() -> None:
     )
     assert not info["assignment_certified"]
     assert info["evidence_distinct_tensors"] == 2
+
+    # When every independent single-pixel multiset is compatible with two
+    # assignments, overlapping pixels expose which recovered taps add at a
+    # common output coordinate.  The client can find such a query without any
+    # private model access.
+    slopes = [np.array([i + 1]) for i in range(9)]
+    assign_a = list(range(9))
+    assign_b = list(range(9))
+    assign_b[0], assign_b[1] = assign_b[1], assign_b[0]
+    sep = separating_multiplacement_query(
+        assign_a, assign_b, slopes,
+        np.zeros((1, 3, 3), dtype=np.int64),
+        [(0, 0), (0, 1), (1, 0), (1, 1)],
+        1, 3, 3, 3, 1, 255, np.random.default_rng(7), tries=10,
+    )
+    assert sep is not None
+    assert sep[2] != sep[3]
 
     # A dead 2x2 kernel can collapse every recovered row onto the same apparent
     # tap.  Since all four slopes are zero, assigning them to the four taps is

@@ -175,6 +175,18 @@ def main() -> None:
     good_with_assembly["assembly"] = {
         "assignment_certified": True, "matching_failures": 0}
     assert recovery_record_is_certified(good_with_assembly)
+    missing_required_probe = dict(good_with_assembly)
+    missing_required_probe.update({
+        "probe_complete_frame_required": True,
+        "probe_needed_all_located": False,
+    })
+    assert not recovery_record_is_certified(missing_required_probe)
+    missing_pool_only_probe = dict(good_with_assembly)
+    missing_pool_only_probe.update({
+        "probe_complete_frame_required": False,
+        "probe_needed_all_located": False,
+    })
+    assert recovery_record_is_certified(missing_pool_only_probe)
     bad_with_assembly = dict(good_single)
     bad_with_assembly["assembly"] = {
         "assignment_certified": False, "matching_failures": 1}

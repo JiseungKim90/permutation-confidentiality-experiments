@@ -127,6 +127,12 @@ def recovery_record_is_certified(record):
     probe_ok = bool(
         isinstance(probe_value, (bool, np.bool_)) and probe_value
     )
+    needed_ok = True
+    if record.get("probe_complete_frame_required") is True:
+        needed_value = record.get("probe_needed_all_located")
+        needed_ok = bool(
+            isinstance(needed_value, (bool, np.bool_)) and needed_value
+        )
     assembly = record.get("assembly")
     assembly_ok = True
     if isinstance(assembly, dict) and "assignment_certified" in assembly:
@@ -140,6 +146,7 @@ def recovery_record_is_certified(record):
         all(lta_run_is_certified(run) for _, _, run in nested)
         and isolation_ok
         and probe_ok
+        and needed_ok
         and assembly_ok
     )
 

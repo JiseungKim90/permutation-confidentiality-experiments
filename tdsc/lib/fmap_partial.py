@@ -873,9 +873,11 @@ def refine_candidates(cands, slopes, bgmap, pls, stride, k, Ho, Wo, us,
             kept = do_query(pm, sorted(taps_m), posof, u)
             nq += 1
             evidence.append({
-                "posof": {int(t): (int(y), int(x))
-                          for t, (y, x) in posof.items()},
-                "u": np.asarray(u, dtype=np.int64).copy(),
+                "terms": [{
+                    "posof": {int(t): (int(y), int(x))
+                              for t, (y, x) in posof.items()},
+                    "u": np.asarray(u, dtype=np.int64).copy(),
+                }],
                 "observed": Counter(int(v) for v in
                                     np.asarray(kept).ravel()),
             })
@@ -896,6 +898,72 @@ def refine_candidates(cands, slopes, bgmap, pls, stride, k, Ho, Wo, us,
             if survive:
                 cands[i] = survive
     return cands, nq, evidence
+
+
+def assignment_query_counter(candidate, slopes, bgmap, k, terms):
+    """Predict the isolated reply multiset for a sparse multi-pixel query.
+
+    ``candidate[i]`` is the ``(channel,tap)`` slot occupied by recovered row
+    ``i``.  A term contains one input pixel's tap-to-output-position map and its
+    channel vector.  Contributions from different pixels are added when they
+    meet at the same output coordinate, which is precisely the linkage signal
+    unavailable to independent single-pixel membership tests.
+    """
+    kk = int(k) * int(k)
+    norm_terms = []
+    affected = set()
+    for term in terms:
+        posof = {int(t): (int(q[0]), int(q[1]))
+                 for t, q in term["posof"].items()}
+        u = np.asarray(term["u"], dtype=np.int64)
+        norm_terms.append((posof, u))
+        affected.update(posof.values())
+    values = {(ci, y, x): int(bgmap[ci, y, x])
+              for ci in range(bgmap.shape[0]) for (y, x) in affected}
+    for i, slot in enumerate(candidate):
+        ci, tap = divmod(int(slot), kk)
+        slope = np.asarray(slopes[i], dtype=np.int64)
+        for posof, u in norm_terms:
+            if tap in posof:
+                y, x = posof[tap]
+                values[(ci, y, x)] += int(np.dot(slope, u))
+    return Counter(values.values())
+
+
+def separating_multiplacement_query(assign_a, assign_b, slopes, bgmap, pls,
+                                    stride, k, Ho, Wo, C, A, rng,
+                                    tries=320):
+    """Find a public sparse query whose predicted multisets separate two tensors.
+
+    The search is entirely client-side.  It first uses the overlapping top-left
+    placements, where several kernel taps add at common output coordinates, and
+    then the full addressable placement set.  A returned query is only a
+    discriminator proposal; the oracle response is still checked exactly by the
+    assignment certifier before either tensor can be accepted.
+    """
+    pls = [tuple(int(z) for z in p) for p in pls]
+    overlap = [p for p in pls if p[0] <= 1 and p[1] <= 1]
+    families = []
+    if len(overlap) >= 2:
+        families.append(overlap)
+    if len(pls) >= 2 and pls != overlap:
+        families.append(pls)
+    for family in families:
+        for _ in range(int(tries)):
+            terms, pixel_values = [], {}
+            for pm in family:
+                u = rng.integers(0, A + 1, size=C).astype(np.int64)
+                pixel_values[pm] = u
+                terms.append({
+                    "posof": {int(t): (int(y), int(x))
+                              for y, x, t in reach(pm, stride, k, Ho, Wo)},
+                    "u": u,
+                })
+            ca = assignment_query_counter(assign_a, slopes, bgmap, k, terms)
+            cb = assignment_query_counter(assign_b, slopes, bgmap, k, terms)
+            if ca != cb:
+                return pixel_values, terms, ca, cb
+    return None
 
 
 def assemble_from_candidates(cands, slopes, intercepts, C_out, C_in, k,
@@ -1021,20 +1089,15 @@ def assemble_from_candidates(cands, slopes, intercepts, C_out, C_in, k,
         feasible = 0
         tensor_keys = {}
         representative = [None]
+        witnesses = []
 
         def evidence_matches(candidate):
             for ev in evidence:
-                pred = Counter()
-                u = np.asarray(ev["u"], dtype=np.int64)
-                posof = ev["posof"]
-                for i, slot in enumerate(candidate):
-                    ci, t = divmod(int(slot), kk)
-                    if t not in posof:
-                        continue
-                    y, x = posof[t]
-                    value = (int(np.dot(np.asarray(slopes[i], dtype=np.int64), u))
-                             + int(bgmap[ci, y, x]))
-                    pred[value] += 1
+                terms = ev.get("terms")
+                if terms is None:  # backward-compatible unit-test evidence
+                    terms = [{"posof": ev["posof"], "u": ev["u"]}]
+                pred = assignment_query_counter(
+                    candidate, slopes, bgmap, k, terms)
                 if pred != Counter(ev["observed"]):
                     return False
             return True
@@ -1068,6 +1131,7 @@ def assemble_from_candidates(cands, slopes, intercepts, C_out, C_in, k,
                     key = tensor_key(candidate)
                     if key not in tensor_keys:
                         tensor_keys[key] = True
+                        witnesses.append(list(candidate))
                         if representative[0] is None:
                             representative[0] = list(candidate)
                 return
@@ -1088,6 +1152,8 @@ def assemble_from_candidates(cands, slopes, intercepts, C_out, C_in, k,
         info["evidence_feasible_assignments"] = int(feasible)
         info["evidence_distinct_tensors"] = int(len(tensor_keys))
         info["evidence_search_exhausted"] = bool(exhausted[0])
+        if len(witnesses) > 1:
+            info["_evidence_witness_assignments"] = witnesses[:2]
         if not exhausted[0] and len(tensor_keys) == 1:
             assign = representative[0]
             ambiguous_comps = []
@@ -1110,6 +1176,52 @@ def assemble_from_candidates(cands, slopes, intercepts, C_out, C_in, k,
     info["channels_resolved"] = len(bychan)
     info["assignment_certified"] = True
     return W, b, info
+
+
+def certify_with_separating_queries(cands, slopes, intercepts, C_out, C_in,
+                                    bgmap, pls, stride, k, Ho, Wo, C, A,
+                                    evidence, initial, do_query, rng,
+                                    include_intercepts=True,
+                                    max_queries=16, search_tries=320):
+    """Eliminate exact-matching counterexamples with adaptive linkage queries.
+
+    ``assemble_from_candidates`` returns two public witness assignments whenever
+    the accumulated transcript admits two different tensors.  This routine
+    searches for a sparse multi-pixel query on which their predicted reply
+    multisets differ, obtains that reply, and reruns the exhaustive certifier.
+    Each iteration removes at least one current witness; no assignment is
+    accepted from a prediction alone.
+    """
+    W, b, info = initial
+    nqueries = 0
+    prediction_matches = []
+    search_failures = 0
+    while info.get("matching_failures") and nqueries < int(max_queries):
+        witnesses = info.pop("_evidence_witness_assignments", None)
+        if not witnesses or len(witnesses) < 2:
+            break
+        sep = separating_multiplacement_query(
+            witnesses[0], witnesses[1], slopes, bgmap, pls, stride, k,
+            Ho, Wo, C, A, rng, tries=search_tries)
+        if sep is None:
+            search_failures += 1
+            break
+        pixel_values, terms, pred_a, pred_b = sep
+        kept = do_query(pixel_values, terms)
+        observed = Counter(int(v) for v in np.asarray(kept).ravel())
+        prediction_matches.append(int(observed == pred_a)
+                                  + int(observed == pred_b))
+        evidence.append({"terms": terms, "observed": observed})
+        nqueries += 1
+        W, b, info = assemble_from_candidates(
+            cands, slopes, intercepts, C_out, C_in, k,
+            evidence=evidence, bgmap=bgmap,
+            include_intercepts=include_intercepts)
+    info.pop("_evidence_witness_assignments", None)
+    info["separating_queries"] = int(nqueries)
+    info["separating_prediction_matches"] = prediction_matches
+    info["separating_query_search_failures"] = int(search_failures)
+    return W, b, info, nqueries
 
 
 # --------------------------------------------------------------- the chain
@@ -1135,7 +1247,8 @@ def extract_chain_partial(net, T=3, seed=0, noise_law="Gaussian", H0=32,
     input and only the preceding group's frame for the retained one.
     """
     from .lta import noise_fns_bounded
-    from .lta_run import run_lta, require_lta_run_certified
+    from .lta_run import (run_lta, require_lta_run_certified,
+                          recovery_record_is_certified)
     from .verify import (canonicalise, row_exactness, row_permutation,
                          frame_check, canonical_column_matrix)
     from .resnet20 import IntResNet20
@@ -1150,10 +1263,13 @@ def extract_chain_partial(net, T=3, seed=0, noise_law="Gaussian", H0=32,
     Pchan = {-1: None}
     live_map = {-1: None}
     group_need = {}
+    group_requires_complete_probe = {}
     for _q, _rr in enumerate(rounds):
         for _sp in _rr.inputs:
             if _sp["kind"] != "new" or _sp["frame"] < 0:
                 continue
+            if not _sp.get("pool"):
+                group_requires_complete_probe[_sp["frame"]] = True
             _C, _Hi, _Wi = _sp["in_shape"]
             _cur = group_need.setdefault(_sp["frame"], [])
             for _p in required_placements(_Hi, _Wi, _sp["stride"], _sp["k"],
@@ -1390,6 +1506,24 @@ def extract_chain_partial(net, T=3, seed=0, noise_law="Gaussian", H0=32,
                 evidence=all_membership_evidence, bgmap=bgmap)
             if not ainfo["matching_failures"]:
                 break
+
+        def do_multi(pixel_values, terms):
+            pixels = {pm: _emb(u, pm)[1][pm]
+                      for pm, u in pixel_values.items()}
+            affected = set()
+            for term in terms:
+                affected.update(term["posof"].values())
+            y = attack.run_session({r: [("pixels", pixels)]}, r)
+            kept, _lo = subtract_multiset(
+                y, bv, bc * (Ho * Wo - len(affected)))
+            return kept
+
+        W_live, b_can, ainfo, nq_sep = certify_with_separating_queries(
+            cand2, slopes, intercepts, C_out, C_live, bgmap, pls_avail,
+            st, k, Ho, Wo, C_live, A, all_membership_evidence,
+            (W_live, b_can, ainfo), do_multi, rng_a,
+            include_intercepts=True)
+        nmq += nq_sep
         rec["membership_anchor_collisions"] = ubad
         rec["membership_queries"] = nmq
         rec["membership_attempts"] = attempt
@@ -1497,6 +1631,8 @@ def extract_chain_partial(net, T=3, seed=0, noise_law="Gaussian", H0=32,
                 "probe_needed_coordinates": int(need_idx.size),
                 "probe_located_needed": int(score),
                 "probe_needed_all_located": bool(score == need_idx.size),
+                "probe_complete_frame_required": bool(
+                    group_requires_complete_probe.get(rounds[r].group, False)),
                 "probe_locatable_coordinates": int(mask.sum()),
                 "probe_locatable_fraction": round(
                     float(mask.sum()) / max(1, pred.size), 6),
@@ -1686,6 +1822,24 @@ def extract_chain_partial(net, T=3, seed=0, noise_law="Gaussian", H0=32,
                 include_intercepts=False)
             if not ainfo["matching_failures"]:
                 break
+
+        def do_multi(pixel_values, terms):
+            pixels = {pm: _emb(u, pm)[1][pm]
+                      for pm, u in pixel_values.items()}
+            affected = set()
+            for term in terms:
+                affected.update(term["posof"].values())
+            bv2, bc2 = bg_for(affected)
+            y = attack.run_session({rb: [("pixels", pixels)]}, rb)
+            kept, _lo = subtract_multiset(y, bv2, bc2)
+            return kept
+
+        W_live, b_unused, ainfo, nq_sep = certify_with_separating_queries(
+            cands, slopes, [int(v) for v in br], C_out, C_live,
+            bgmap, pls_avail, 1, 3, Ho, Wo, C_live, A,
+            all_membership_evidence, (W_live, b_unused, ainfo),
+            do_multi, rng_a, include_intercepts=False)
+        nmq += nq_sep
         rec["membership_anchor_collisions"] = ubad
         rec["membership_queries"] = nmq
         rec["membership_attempts"] = attempt
@@ -1817,7 +1971,10 @@ def extract_chain_partial(net, T=3, seed=0, noise_law="Gaussian", H0=32,
         # anchor, so its verification is a genuine prediction about the recovered
         # matrix and a failure is the client's own signal to redo the layer.
         tries = 0
-        while (repair_attempts and rec.get("probe_verified") is False
+        while (repair_attempts
+               and (rec.get("probe_verified") is False
+                    or (rec.get("probe_complete_frame_required") is True
+                        and rec.get("probe_needed_all_located") is False))
                and tries < repair_attempts
                and (deadline is None or time.time() < deadline)):
             tries += 1
@@ -1833,6 +1990,9 @@ def extract_chain_partial(net, T=3, seed=0, noise_law="Gaussian", H0=32,
                rec.get("probe_located_needed", "-"),
                rec.get("probe_needed_coordinates", "-"),
                rec.get("probe_verified", "-")))
+        if not recovery_record_is_certified(rec):
+            stopped = "uncertified recovery record at %s" % rec["layer"]
+            break
 
     ext = None
     if not stopped:
