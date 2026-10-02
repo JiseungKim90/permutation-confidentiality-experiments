@@ -1162,16 +1162,27 @@ def assemble_from_candidates(cands, slopes, intercepts, C_out, C_in, k,
             rows_by_slot = [-1] * (C_out * kk)
             for i, slot in enumerate(candidate):
                 rows_by_slot[int(slot)] = i
-            wkey = tuple(np.asarray(slopes[i], dtype=np.int64).tobytes()
-                         for i in rows_by_slot)
             if not include_intercepts:
-                return (wkey,)
-            bkey = []
+                # The residual background can anchor output-channel labels, so
+                # keep their order in the key for the conv2 path.
+                return (tuple(np.asarray(slopes[i], dtype=np.int64).tobytes()
+                              for i in rows_by_slot),)
+            # A plain affine reply is observable only up to an output-row
+            # permutation.  Compare the multiset of complete [W | b] rows,
+            # rather than treating a whole-channel swap inside an equal-bias
+            # group as a different tensor.  Partial tap swaps still alter a
+            # row signature and therefore remain distinct.
+            channel_keys = []
             for ci in range(C_out):
-                vals = {int(intercepts[rows_by_slot[ci * kk + t]])
-                        for t in range(kk)}
-                bkey.append(tuple(sorted(vals)))
-            return wkey, tuple(bkey)
+                wrow = np.zeros(C_in * kk, dtype=np.int64)
+                bvals = set()
+                for t in range(kk):
+                    row = rows_by_slot[ci * kk + t]
+                    wrow[np.arange(C_in) * kk + t] = np.asarray(
+                        slopes[row], dtype=np.int64)
+                    bvals.add(int(intercepts[row]))
+                channel_keys.append((tuple(sorted(bvals)), wrow.tobytes()))
+            return tuple(sorted(channel_keys))
 
         candidate = list(assign)
 

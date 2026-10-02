@@ -32,11 +32,12 @@ def main() -> None:
     assert info["matching_failures"] == 0
     assert np.array_equal(W[:, 0], np.array([22, 11]))
 
-    # Two different slopes that can exchange slots induce different tensors and
-    # must remain uncertified.
+    # With externally anchored output-channel labels, two different slopes that
+    # can exchange slots induce different tensors and must remain uncertified.
     _, _, info = assemble_from_candidates(
         [[(0, 0), (1, 0)], [(0, 0), (1, 0)]],
         [np.array([11]), np.array([22])], [0, 0], 2, 1, 1,
+        include_intercepts=False,
     )
     assert not info["assignment_certified"]
     assert info["assignment_ambiguous_components"] == 1
@@ -59,6 +60,7 @@ def main() -> None:
         evidence=[{"posof": {0: (0, 0)}, "u": np.array([1]),
                    "observed": {11: 1, 122: 1}}],
         bgmap=np.array([[[0]], [[100]]], dtype=np.int64),
+        include_intercepts=False,
     )
     assert info["assignment_certified"]
     assert info["evidence_certified"]
@@ -73,6 +75,7 @@ def main() -> None:
         evidence=[{"posof": {0: (0, 0)}, "u": np.array([1]),
                    "observed": {11: 1, 22: 1}}],
         bgmap=np.zeros((2, 1, 1), dtype=np.int64),
+        include_intercepts=False,
     )
     assert not info["assignment_certified"]
     assert info["evidence_distinct_tensors"] == 2
@@ -196,10 +199,37 @@ def main() -> None:
         evidence=[{"posof": {0: (0, 0)}, "u": np.array([1]),
                    "observed": {16: 1, 122: 1}}],
         bgmap=np.array([[[5]], [[100]]], dtype=np.int64),
+        include_intercepts=False,
     )
     assert info["assignment_certified"]
     assert info["evidence_certified"]
     assert np.array_equal(W[:, 0], np.array([11, 22]))
+
+    # With no external channel-anchored background, swapping two complete
+    # equal-bias output rows is exactly the hidden output permutation symmetry
+    # and must be accepted as one canonical tensor class.
+    W, _, info = assemble_from_candidates(
+        [[(0, 0), (1, 0)], [(0, 0), (1, 0)]],
+        [np.array([11]), np.array([22])], [5, 5], 2, 1, 1,
+        evidence=[{"posof": {0: (0, 0)}, "u": np.array([1]),
+                   "observed": {16: 1, 27: 1}}],
+        bgmap=np.full((2, 1, 1), 5, dtype=np.int64),
+    )
+    assert info["assignment_certified"]
+    assert info["evidence_distinct_tensors"] == 1
+    assert sorted(W[:, 0].tolist()) == [11, 22]
+
+    # Row-permutation invariance must not collapse a partial tap exchange.  The
+    # two matchings below produce different multisets of complete 2x2 kernels.
+    tap_candidates = [[(0, 0), (1, 0)], [(0, 1)], [(0, 2)], [(0, 3)],
+                      [(0, 0), (1, 0)], [(1, 1)], [(1, 2)], [(1, 3)]]
+    _, _, info = assemble_from_candidates(
+        tap_candidates,
+        [np.array([v]) for v in [11, 1, 2, 3, 22, 4, 5, 6]],
+        [5] * 8, 2, 1, 2,
+    )
+    assert not info["assignment_certified"]
+    assert info["assignment_ambiguous_components"] == 1
 
 
 if __name__ == "__main__":
