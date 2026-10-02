@@ -1,0 +1,96 @@
+{
+  "dataset_sha256": "6d958be074577803d12ecdefd02955f39262c83c16fe9348329d7fe0b5c001ce",
+  "elapsed_seconds": 162.3372125979513,
+  "ended_utc": "2026-10-02T11:12:32.237732+00:00",
+  "launch": {
+    "batch_size": 128,
+    "checkpoint_schedule": [
+      "official"
+    ],
+    "command": [
+      "<artifact-root>/.venv/bin/python",
+      "scripts/verify_normal_inference.py",
+      "--root",
+      "<artifact-root>",
+      "--out",
+      "<artifact-root>/results/public-only-20261002/normal-inference",
+      "--checkpoints",
+      "official",
+      "--n-test",
+      "10000",
+      "--batch-size",
+      "128",
+      "--threads",
+      "2"
+    ],
+    "dtype": "float64",
+    "failure_criteria": "Any criterion violation, missing input, loader mismatch, or incomplete run.",
+    "n_test": 10000,
+    "numpy": "1.24.4",
+    "python": "3.10.20",
+    "schema": "p050-normal-inference-validation-v1",
+    "scope": "Ordinary floating-point inference only; no new extraction, native-QAT, or encrypted-backend result.",
+    "seeds": "None; existing authenticated checkpoints and fixed test-set order.",
+    "source_commit": "21465733af0f55ac565f0d093f87e736e6601a8e",
+    "source_sha256": {
+      "lib/checkpoint.py": "483019bf3eb7988316db86df3b2ba3121e202a537f2c845abbbfbb7a9cdc9cf0",
+      "lib/cifar10.py": "89bacaeaf73f19699298461b024ce97d597e68dfeeb84e43b91a91bf75e323b9",
+      "lib/input_normalization.py": "7028675d3c951a236ea199ba81b72ff69a25f2362f5c6b63b2c2196f4ddc954a",
+      "lib/models.py": "083daf89a5d355094a1a1a5ea289e4e50c240e05eb87e28fdc5ae9d5eba073df",
+      "lib/resnet20.py": "8a87a46abb02dd1273c04d56cd10126b78c5626de4c012009cfeb42e819cd528",
+      "lib/trusted_io.py": "891df7265177297752ac15da642b5095ffa70cb9da7f94874d9cc8ce50225894",
+      "reference/multicheckpoint/checkpoints.json": "48e5ff33e69ae53d5f893ef84759e05ec1881ca0f7a7e7ca1d42f3d03e43e3eb",
+      "scripts/test_input_normalization.py": "5ea2f6099e957bb7e465aecc9983a6069991888d14a01182fc2d438a5ff18ff7",
+      "scripts/verify_normal_inference.py": "bde3a0693afa544acff9d01ecc2d6ac35babf4298f801ffc047ba5601fbf8ea8"
+    },
+    "stderr_log": "stderr.log",
+    "stdout_log": "stdout.log",
+    "success_criteria": "Every input logit differs by at most 1e-9; every prediction matches; all planned checkpoints and samples are evaluated.",
+    "summary": "result.json",
+    "threads": 2,
+    "torch": "2.10.0+cpu",
+    "utc": "2026-10-02T11:09:49.897477+00:00",
+    "working_directory": "<artifact-root>"
+  },
+  "new_extraction_experiments": 0,
+  "records": [
+    {
+      "checkpoint": "official",
+      "checkpoint_sha256": "4118986f0df73003d572b0e397f0ac7b3f60af1f31aff3d2da164536e36f6ec8",
+      "comparisons": {
+        "repaired": {
+          "correct_predictions": 9212,
+          "identical_predictions": 10000,
+          "logit_vectors_within_1e-9": 10000,
+          "maximum_logit_absolute_difference": 3.197442310920451e-14
+        },
+        "uniform_bias_control": {
+          "correct_predictions": 9211,
+          "identical_predictions": 9887,
+          "logit_vectors_within_1e-9": 0,
+          "maximum_logit_absolute_difference": 2.9281247371811827
+        }
+      },
+      "loader": {
+        "checkpoint_format": "standard-state-dict",
+        "checkpoint_sha256": "4118986f0df73003d572b0e397f0ac7b3f60af1f31aff3d2da164536e36f6ec8",
+        "conv_bias_absmax": null,
+        "missing_keys": [],
+        "normalise_mean": null,
+        "normalise_std": null,
+        "unexpected_keys": []
+      },
+      "n_test": 10000,
+      "raw_array_sha256": "b8568b81191d9f8f6034ce0737860ba05cfd24091d6c9026398bb925f8aeddfc",
+      "reference_correct": 9212,
+      "success": true
+    }
+  ],
+  "schema": "p050-normal-inference-validation-v1",
+  "status": "complete",
+  "success": true,
+  "publication": {
+    "path_sanitization": "Only the execution root is replaced by <artifact-root>; numerical results and code/input hashes are unchanged.",
+    "original_report_sha256": "85206f782ccdaa3809a655d046e7d4922111d46611e544eb3f3a69c462cc0ace"
+  }
+}

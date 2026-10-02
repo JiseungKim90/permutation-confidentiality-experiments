@@ -1,0 +1,177 @@
+{
+  "ended_utc": "2026-10-02T11:12:32.979803+00:00",
+  "launch": {
+    "batch_size": 128,
+    "checkpoint_schedule": [
+      "official"
+    ],
+    "command": [
+      "<artifact-root>/.venv/bin/python",
+      "scripts/reproduce_public_inference.py",
+      "--out",
+      "results/public-only-20261002",
+      "--threads",
+      "2"
+    ],
+    "failure_criteria": "A failed or missing stage, input, sample, source, or acceptance condition.",
+    "n_test": 10000,
+    "python": "3.10.20",
+    "schema": "p050-public-ordinary-inference-v1",
+    "scope": "Ordinary float64 inference only; no extraction, native QAT, or encrypted backend.",
+    "seeds": "None; authenticated release weights and fixed CIFAR-10 test order.",
+    "source_commit": "21465733af0f55ac565f0d093f87e736e6601a8e",
+    "source_sha256": {
+      "requirements.txt": "ca67213e16b1935f76a6fa6ae9d5b9864f78873cc5beabd646545592ea343fc0",
+      "scripts/download_inputs.py": "906eb27fe7fa685fd714b96e257a5335e9aa87099488a661217ac616acc195c1",
+      "scripts/reproduce_public_inference.py": "bbe4ff6e8f56c21d4bf948f9d00b0781270549a4520d3344d7e6b807d8ceb7ee",
+      "scripts/run_validation.py": "08486b8178411bdd841555b88b9f15abcb0f61a63f2da78a6e5ad48930edeaa9",
+      "scripts/verify_inference_evidence.py": "2aaf77b2fbe0fd5088f06631d36eccb4d891b2f6b4c1c1c6d91e65b4f659df04",
+      "scripts/verify_normal_inference.py": "bde3a0693afa544acff9d01ecc2d6ac35babf4298f801ffc047ba5601fbf8ea8",
+      "scripts/verify_release.py": "8af2988b1566f44d08523b52ae065df36621fc8c48bcfb8b96482388f5d57f8c"
+    },
+    "source_status": "",
+    "success_criteria": "All stages exit zero; all four benign suites pass; both public inputs pass fixed digests; all 10000 corrected logit vectors and predictions agree; independent raw-array and complete-source checks pass.",
+    "threads": 2,
+    "utc": "2026-10-02T11:09:14.337107+00:00",
+    "working_directory": "<artifact-root>"
+  },
+  "schema": "p050-public-ordinary-inference-v1",
+  "stages": [
+    {
+      "command": [
+        "<artifact-root>/.venv/bin/python",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "name": "dependencies",
+      "returncode": 0,
+      "status": "complete",
+      "stderr": "dependencies.stderr.log",
+      "stdout": "dependencies.stdout.log"
+    },
+    {
+      "command": [
+        "<artifact-root>/.venv/bin/python",
+        "scripts/verify_release.py"
+      ],
+      "name": "release",
+      "result": {
+        "failures": [],
+        "manifest_files_checked": 78,
+        "reference_hashes_checked": 4,
+        "required_files_checked": 39,
+        "success": true
+      },
+      "returncode": 0,
+      "status": "complete",
+      "stderr": "release.stderr.log",
+      "stdout": "release.stdout.log"
+    },
+    {
+      "command": [
+        "<artifact-root>/.venv/bin/python",
+        "scripts/run_validation.py",
+        "--out",
+        "<artifact-root>/results/public-only-20261002/validation"
+      ],
+      "name": "validation",
+      "result": {
+        "output": "<artifact-root>/results/public-only-20261002/validation",
+        "success": true,
+        "tests_passed": 4
+      },
+      "returncode": 0,
+      "status": "complete",
+      "stderr": "validation.stderr.log",
+      "stdout": "validation.stdout.log"
+    },
+    {
+      "command": [
+        "<artifact-root>/.venv/bin/python",
+        "scripts/download_inputs.py"
+      ],
+      "name": "download",
+      "result": {
+        "inputs": [
+          {
+            "name": "model",
+            "path": "<artifact-root>/data/cifar10_resnet20.pt",
+            "sha256": "4118986f0df73003d572b0e397f0ac7b3f60af1f31aff3d2da164536e36f6ec8",
+            "status": "downloaded"
+          },
+          {
+            "name": "cifar",
+            "path": "<artifact-root>/data/cifar-10-python.tar.gz",
+            "sha256": "6d958be074577803d12ecdefd02955f39262c83c16fe9348329d7fe0b5c001ce",
+            "status": "downloaded"
+          }
+        ],
+        "success": true
+      },
+      "returncode": 0,
+      "status": "complete",
+      "stderr": "download.stderr.log",
+      "stdout": "download.stdout.log"
+    },
+    {
+      "command": [
+        "<artifact-root>/.venv/bin/python",
+        "scripts/verify_normal_inference.py",
+        "--root",
+        "<artifact-root>",
+        "--out",
+        "<artifact-root>/results/public-only-20261002/normal-inference",
+        "--checkpoints",
+        "official",
+        "--n-test",
+        "10000",
+        "--batch-size",
+        "128",
+        "--threads",
+        "2"
+      ],
+      "name": "inference",
+      "returncode": 0,
+      "status": "complete",
+      "stderr": "inference.stderr.log",
+      "stdout": "inference.stdout.log"
+    },
+    {
+      "command": [
+        "<artifact-root>/.venv/bin/python",
+        "scripts/verify_inference_evidence.py",
+        "--report",
+        "<artifact-root>/results/public-only-20261002/normal-inference/result.json",
+        "--raw-dir",
+        "<artifact-root>/results/public-only-20261002/normal-inference",
+        "--check-source",
+        "--checkpoints",
+        "official"
+      ],
+      "name": "independent-verification",
+      "result": {
+        "certifies_encrypted_backend": false,
+        "certifies_native_qat": false,
+        "certifies_trained_network_extraction": false,
+        "checkpoints": 1,
+        "ordinary_logit_vectors_checked": 10000,
+        "raw_arrays_recomputed": true,
+        "report_sha256": "85206f782ccdaa3809a655d046e7d4922111d46611e544eb3f3a69c462cc0ace",
+        "source_files_checked": 9,
+        "success": true,
+        "supports": "ordinary float64 inference after normalization"
+      },
+      "returncode": 0,
+      "status": "complete",
+      "stderr": "independent-verification.stderr.log",
+      "stdout": "independent-verification.stdout.log"
+    }
+  ],
+  "status": "complete",
+  "success": true,
+  "publication": {
+    "path_sanitization": "Only the execution root is replaced by <artifact-root>; numerical results and code/input hashes are unchanged.",
+    "original_report_sha256": "2ed851005d7e656beb624e4a36da552479df01f29fe691d7dda1f9d5acf3ef37"
+  }
+}

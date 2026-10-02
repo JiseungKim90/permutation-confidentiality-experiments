@@ -1,0 +1,12 @@
+{"checkpoint": "official", "completed": 128, "planned": 10000}
+{"checkpoint": "official", "completed": 1152, "planned": 10000}
+{"checkpoint": "official", "completed": 2176, "planned": 10000}
+{"checkpoint": "official", "completed": 3200, "planned": 10000}
+{"checkpoint": "official", "completed": 4224, "planned": 10000}
+{"checkpoint": "official", "completed": 5248, "planned": 10000}
+{"checkpoint": "official", "completed": 6272, "planned": 10000}
+{"checkpoint": "official", "completed": 7296, "planned": 10000}
+{"checkpoint": "official", "completed": 8320, "planned": 10000}
+{"checkpoint": "official", "completed": 9344, "planned": 10000}
+{"checkpoint_complete": {"checkpoint": "official", "checkpoint_sha256": "4118986f0df73003d572b0e397f0ac7b3f60af1f31aff3d2da164536e36f6ec8", "loader": {"checkpoint_format": "standard-state-dict", "checkpoint_sha256": "4118986f0df73003d572b0e397f0ac7b3f60af1f31aff3d2da164536e36f6ec8", "missing_keys": [], "unexpected_keys": [], "normalise_mean": null, "normalise_std": null, "conv_bias_absmax": null}, "n_test": 10000, "reference_correct": 9212, "comparisons": {"repaired": {"maximum_logit_absolute_difference": 3.197442310920451e-14, "logit_vectors_within_1e-9": 10000, "identical_predictions": 10000, "correct_predictions": 9212}, "uniform_bias_control": {"maximum_logit_absolute_difference": 2.9281247371811827, "logit_vectors_within_1e-9": 0, "identical_predictions": 9887, "correct_predictions": 9211}}, "success": true, "raw_array_sha256": "b8568b81191d9f8f6034ce0737860ba05cfd24091d6c9026398bb925f8aeddfc"}}
+{"status": "complete", "success": true, "checkpoints": 1}

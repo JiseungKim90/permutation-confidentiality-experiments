@@ -304,6 +304,9 @@ independent raw-array/source verifier. Every stage has separate stdout/stderr
 logs and a recorded exit status. The output directory must not already exist;
 failed and incomplete runs are retained. Neither private QAT inputs nor a
 recovery experiment is part of this workflow.
+The fresh-clone, fresh-environment run in
+`reference/public-reproduction-20261002/` completed all six stages, downloaded
+both public inputs, and reproduced the 10,000-image result and raw-array digest.
 
 `lib/input_normalization.py` scales each input-channel kernel by its standard
 deviation and subtracts the mean contribution only at valid image locations.

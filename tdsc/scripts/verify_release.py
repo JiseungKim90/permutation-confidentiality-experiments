@@ -54,6 +54,12 @@ REQUIRED = (
     "reference/finite_reference.json",
     "reference/multicheckpoint/audit.json",
     "reference/multicheckpoint/checkpoints.json",
+    "reference/public-reproduction-20261002/README.md",
+    "reference/public-reproduction-20261002/workflow.json",
+    "reference/public-reproduction-20261002/normal-inference.json",
+    "reference/public-reproduction-20261002/validation.json",
+    "reference/public-reproduction-20261002/requirements-frozen.txt",
+    "reference/public-reproduction-20261002/inference.stdout.log",
 )
 TEXT_SUFFIXES = {".py", ".md", ".txt", ".json", ".cff", ".yml", ".yaml"}
 FORBIDDEN_TEXT = {
