@@ -1,5 +1,9 @@
 # Public-input ordinary-inference reproduction
 
+This is a historical snapshot of the source commit named below. Its statements
+about absent QAT files describe that checkout; release v1.1.0 later publishes
+and authenticates all eight QAT checkpoints.
+
 This run started from a fresh HTTPS clone of the public repository at
 `21465733af0f55ac565f0d093f87e736e6601a8e`, with a clean working tree and a
 new Python 3.10.20 environment installed from `tdsc/requirements.txt`.
@@ -41,5 +45,5 @@ server run tree. The original inference stdout SHA-256 is
 
 This record supports ordinary float64 inference for the public checkpoint.
 It does not run or certify extraction, native QAT, or an encrypted backend.
-The historical failed recovery attempts and missing QAT distribution remain
-separate evidence; this successful run does not supersede them.
+The historical recovery attempts are separate evidence; this ordinary-forward
+run does not supersede them.

@@ -1,8 +1,9 @@
 # Security notes
 
 Do not load an arbitrary model checkpoint or CIFAR pickle with this artifact.
-The public entry points accept only the two upstream files whose SHA-256
-digests are fixed in the source and README.
+The public entry points accept only the official checkpoint, the CIFAR-10
+archive, and the eight published QAT checkpoints whose SHA-256 digests are
+fixed in the source and checkpoint manifest.
 
 The loaders read each input once, compare the complete in-memory byte string
 with the trusted digest, and pass only those same authenticated bytes to the
@@ -17,7 +18,8 @@ deserialization vulnerabilities:
 - <https://github.com/pytorch/pytorch/security/advisories/GHSA-53q9-r3pm-6pq6>
 - <https://github.com/pytorch/pytorch/security/advisories/GHSA-63cw-57p8-fm3p>
 
-Downloaded checkpoints and datasets are ignored by Git. The release audit also
-rejects private keys, token-like strings, personal absolute paths, direct
-`torch.load` calls outside the digest-locked loader, and unexpected checkpoint
-files in the publication tree.
+The downloaded official checkpoint and dataset are ignored by Git. The eight
+QAT checkpoints under `data/checkpoints/` are intentional release files and are
+authenticated before parsing. The release audit rejects undeclared files in the
+guarded data directory, private keys, token-like strings, personal absolute
+paths, and direct `torch.load` calls outside the digest-locked loaders.

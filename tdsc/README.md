@@ -22,6 +22,10 @@ The limitations below are part of the evidence record.
 - `scripts/run_extraction.py`: three-process, fail-closed whole-network attack.
 - `scripts/run_completion.py`: recovery of the five observable coefficients
   omitted by the initial clone, followed by independent evaluation.
+- `scripts/run_multicheckpoint.py`: one-configuration, fail-closed audit
+  across the authenticated checkpoint manifest.
+- `scripts/promote_multicheckpoint_audit.py`: validation and path sanitising
+  of a complete raw audit into the compact public record.
 - `scripts/identifiability_exhaustive.py`: finite-domain transcript-fibre and
   frame-control enumeration.
 - `scripts/test_*.py`: regressions for line-tracking attack (LTA) uniqueness,
@@ -39,6 +43,8 @@ The limitations below are part of the evidence record.
   for ordinary inference, with no oracle or model-recovery invocation.
 - `scripts/test_finite_affine_laws.py`: exact finite checks for biased and
   correlated distributions of affine response maps.
+- `training/legacy_qat/`: the complete historical QAT training entry point,
+  dependency snapshot, environment record, and eight run records.
 
 ## Environment
 
@@ -71,9 +77,11 @@ export MKL_NUM_THREADS=1
 
 ## Inputs
 
-No model checkpoint or dataset archive is committed. Fetch both files from the
-upstream release and the official CIFAR-10 site, then verify their full SHA-256
-digests automatically:
+The official floating-point checkpoint and CIFAR-10 archive are not committed.
+Fetch those two files from their upstream sources and verify their full SHA-256
+digests automatically. The eight author-produced QAT checkpoints used by the
+fixed-configuration audit are already present under `data/checkpoints/` and are
+independently authenticated against the checkpoint manifest:
 
 ```bash
 python3 scripts/download_inputs.py
@@ -171,9 +179,8 @@ python3 scripts/verify_runs.py \
 
 ## Fixed-configuration multi-checkpoint audit
 
-The `tdsc-multicheckpoint-audit-20261002` branch contains a robustness audit
-whose failures are reported in the revised article. The
-driver authenticates each checkpoint by SHA-256 and runs the same attack
+The `tdsc-multicheckpoint-audit-20261002` branch contains the final
+weight-set audit. The driver authenticates each checkpoint by SHA-256 and runs the same attack
 seed, oracle seeds, quantization, probe count, search limit, control values,
 and completion settings for every selected checkpoint. It never retries or
 tunes parameters after seeing an outcome:
@@ -182,30 +189,29 @@ tunes parameters after seeing an outcome:
 python3 scripts/run_multicheckpoint.py \
   --manifest reference/multicheckpoint/checkpoints.json \
   --run-name audit-run \
-  --workers 1 \
+  --workers 5 \
   --n-test 10000 \
   --budget-sec 1800 \
-  --eval-timeout-sec 2400
+  --eval-timeout-sec 3600
 ```
 
-The original release checkpoint passed the full certificate: 29/29 extraction
-records, 34/34 line-tracking invocations, 29/29 observable maps after
-completion, and 10,000/10,000 identical logit vectors. Two eight-bit QAT
-fine-tunes, converted through the simulator's post-training quantizer rather
-than executed with their native QAT operators, failed closed under the same
-configuration. Seed 0 stopped at
-`layer3.1.conv2` with 36 uncertified columns and six unresolved rows. Seed 1
-certified all 34 line-tracking invocations but produced only 28/29 accepted
-records: at `layer3.2.conv2`, 63/64 channels were resolved, ten rows remained
-ambiguous, and the placement probe was still unverified after three repair
-attempts. Completion and evaluation were therefore not run for either QAT
-checkpoint.
+The final clean-tree run at commit
+`d3910df81a16c2a69bef299f24c30fcd0fe341fd` audited the official release
+checkpoint and eight author-produced QAT fine-tunes: source weight precisions
+5, 6, 7 and 8 with training seeds 0 and 1. All nine passed the full certificate:
+29/29 extraction records, 34/34 line-tracking invocations, 29/29 observable
+maps after completion, 10,000/10,000 identical logit vectors, and
+9,936/9,936 identical post-calibration vectors, with maximum absolute
+difference zero. The independent threaded and vectorized exact evaluators
+also agree for every checkpoint. There was no checkpoint-specific
+configuration change or automatic retry.
 
-A development-only follow-up changed only the probe count from `T=3` to
-`T=5` for QAT seed 0. It again failed closed at `layer3.1.conv2`, with 53
-uncertified columns and four unresolved rows. This follow-up does not satisfy
-the fixed-configuration gate and is reported only to rule out the simple
-explanation that two more probe steps solve the failure.
+The QAT checkpoints are converted through the simulator's eight-bit
+post-training quantizer rather than executed with their native QAT operators.
+Earlier code versions failed closed on several of these inputs. Those failed
+runs, exact hashes, and the general ambiguity-resolution changes are preserved
+in `reference/multicheckpoint/development_failures.json`; they are development
+evidence, not results of the final configuration.
 
 The compact, path-sanitized record is
 `reference/multicheckpoint/audit.json`. The QAT checkpoints share the same
@@ -215,7 +221,9 @@ digests and expected paths are fixed in
 `reference/multicheckpoint/checkpoints.json`. The official floating-point
 checkpoint remains a public, authenticated download. Because the QAT files are
 fine-tunes of one initialization, the audit tests fixed-configuration weight-set
-variation and does not estimate a population success rate.
+variation. The same weight sets also informed extractor repairs, so 9/9 is a
+regression certificate rather than held-out evidence or a population success
+rate.
 
 ## Scope of the evidence
 
@@ -226,8 +234,8 @@ distinguishers; the 29-map certificate is the structural check for this
 simulator. Arithmetic traces report completed affine outputs, not internal
 multiply-accumulate widths.
 
-The October 2 checkpoint regression disabled arithmetic tracing. It reproduces
-the recorded recovery outcomes but does not independently recheck the older
+The final multi-checkpoint audit disabled arithmetic tracing. It certifies the
+current recovery outcomes but does not independently recheck the older
 trace-derived range bounds. The range numbers in the article come from the
 archived verification records, not from new traces in that regression.
 
@@ -273,10 +281,10 @@ this directory:
 python3 scripts/audit_preprocessing.py .
 ```
 
-The review did not change the legacy integer constructor or recovery
-implementation. The normal-forward discrepancy is corrected and tested below.
-The failed additional recovery checkpoints and missing deployment
-correspondence are not resolved by that correction.
+The preprocessing review did not change the legacy integer constructor. The
+normal-forward discrepancy is corrected and tested below. Later extractor
+changes and their restarted multi-checkpoint audit are documented separately;
+the missing deployment correspondence remains outside this correction.
 
 ## Corrected ordinary inference and finite frame laws
 
@@ -304,8 +312,8 @@ This runs the dependency and release checks, all four benign validation suites,
 the public-input downloader, all 10,000 ordinary-forward comparisons, and the
 independent raw-array/source verifier. Every stage has separate stdout/stderr
 logs and a recorded exit status. The output directory must not already exist;
-failed and incomplete runs are retained. Neither private QAT inputs nor a
-recovery experiment is part of this workflow.
+failed and incomplete runs are retained. This workflow does not use the
+published QAT files and does not run a recovery experiment.
 The fresh-clone, fresh-environment run in
 `reference/public-reproduction-20261002/` completed all six stages, downloaded
 both public inputs, and reproduced the 10,000-image result and raw-array digest.

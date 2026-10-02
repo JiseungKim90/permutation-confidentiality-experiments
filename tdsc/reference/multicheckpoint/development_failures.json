@@ -1,0 +1,174 @@
+{
+  "schema": "p050-multicheckpoint-development-failures-v2",
+  "recorded_utc_date": "2026-10-02",
+  "status": "superseded development evidence; not a final experimental result",
+  "purpose": "Preserve every failed or incomplete claim-producing run that exposed a certificate gap before the final fixed-configuration audit was restarted from a clean checkout.",
+  "initial_source_base_commit": "17aa3c17751e621013c7a67d62f039dc01230cb1",
+  "initial_source_audit_sha256": "b580765321788ee6d2b0b3cf3da22080377c1f89d251129dd23dea71acb6eec8",
+  "initial_run_provenance": {
+    "baseline_launch_sha256": "785e080460bb620bd6641af9414c99cd5a2b80ceeb1bc9267326c14614d1c106",
+    "baseline_result_sha256": "5a7cee97a231c0bbff54d3e9f02fe67893545fb9f6e13c90f21ae0621508d7c9",
+    "qat_launch_sha256": "831201eb05702743db8bb93a180743b7705a0bba72ed95eec01ad34f16451335",
+    "qat_result_sha256": "758704abdeaa6ee1a1b5d4b3871578789afe03a22315df4ddcb2d8a60431f786"
+  },
+  "initial_fixed_configuration_failures": [
+    {
+      "checkpoint": "qat-w8-s0",
+      "checkpoint_sha256": "130ea708199e65ade6c221c573a795495348fcb97dcbf779f8ac2f11a87956d1",
+      "t_steps": 3,
+      "outcome": "fail_closed",
+      "failure": {
+        "layer": "layer3.1.conv2",
+        "status": "uncertified_columns",
+        "columns_failed": 36,
+        "unresolved_rows": 6
+      },
+      "oracle_sessions": 4515,
+      "oracle_affine_evaluations": 90300,
+      "completion_and_evaluation_run": false
+    },
+    {
+      "checkpoint": "qat-w8-s1",
+      "checkpoint_sha256": "c248a9ad7d830158611cd8d328bb4384d7789f5003f20fa969bfdb306bd65674",
+      "t_steps": 3,
+      "outcome": "fail_closed",
+      "failure": {
+        "layer": "layer3.2.conv2",
+        "channels_resolved": 63,
+        "channels_total": 64,
+        "rows_still_ambiguous": 10,
+        "repair_attempts_used": 3,
+        "placement_probe_verified": false
+      },
+      "client_certified_records": 28,
+      "lta_invocations_certified": 34,
+      "oracle_sessions": 5809,
+      "oracle_affine_evaluations": 116180,
+      "completion_and_evaluation_run": false
+    }
+  ],
+  "probe_count_followup": {
+    "checkpoint": "qat-w8-s0",
+    "checkpoint_sha256": "130ea708199e65ade6c221c573a795495348fcb97dcbf779f8ac2f11a87956d1",
+    "configuration_change": {
+      "t_steps": 5,
+      "evaluation_skipped": true
+    },
+    "outcome": "fail_closed",
+    "failure": {
+      "layer": "layer3.1.conv2",
+      "status": "uncertified_columns",
+      "columns_failed": 53,
+      "unresolved_rows": 4
+    },
+    "oracle_sessions": 7917,
+    "oracle_affine_evaluations": 158340,
+    "raw_result_sha256": "e2bb9fcff6157f0b0668242389752c3c991105025e32c3492b50a960d91acd01"
+  },
+  "final_configuration_debug_sequence": [
+    {
+      "run": "p050-tdsc-all9-f8600ad-20261002-r2",
+      "code_commit": "f8600ad1a29fafc2002fb7edf6a53e4b28d455c3",
+      "raw_result_sha256": "22cf1cade3eea1d2a9caeaf1081d2cefa2a80a71e00b12281bf763eb86a7459b",
+      "attempted_checkpoints": 9,
+      "certified_checkpoints": 8,
+      "checkpoint": "qat-w6-s1",
+      "outcome": "fail_closed",
+      "failure": {
+        "layer": "layer3.0.conv1",
+        "client_certified_records": 19,
+        "records_total": 29,
+        "lta_invocations_certified": 26,
+        "lta_passes_total": 27,
+        "repair_attempts_used": 3
+      },
+      "oracle_sessions": 3353,
+      "oracle_affine_evaluations": 67060,
+      "completion_and_evaluation_run": false
+    },
+    {
+      "run": "p050-w6s1-homogeneous-smoke-6322bd8",
+      "code_commit": "6322bd83705c5734213b15bea170ed68fd9ee104",
+      "raw_result_sha256": "80e76ae18e33baba9d09d38650758939571a3c305c7a2a3070eb239306a37e5f",
+      "checkpoint": "qat-w6-s1",
+      "outcome": "fail_closed",
+      "failure": {
+        "layer": "layer3.0.conv1",
+        "reason": "The ambiguous equal-bias rows were not tensor-identical."
+      },
+      "completion_and_evaluation_run": false
+    },
+    {
+      "run": "p050-w6s1-exact-assignment-c639422",
+      "code_commit": "c639422e1c0cb1c6695c9d5b4477938347216109",
+      "raw_result_sha256": "03c0310d611a07a7ef59cb58436132270c809aeff9cd53fb78eb3026eef8573c",
+      "checkpoint": "qat-w6-s1",
+      "outcome": "fail_closed",
+      "failure": {
+        "layer": "layer3.0.conv1",
+        "ambiguous_components": 9,
+        "feasible_assignments": 2,
+        "tensor_distinct_assignments": 2,
+        "search_nodes": 56,
+        "reason": "The restricted placement set did not separate two tensor-distinct assignments."
+      },
+      "oracle_sessions": 3356,
+      "oracle_affine_evaluations": 67120,
+      "completion_and_evaluation_run": false
+    },
+    {
+      "run": "p050-w6s1-row-canonical-e2ebff4",
+      "code_commit": "e2ebff41fd80ee6e65e3ba2c1e9e51f77dfc1ba1",
+      "raw_result_sha256": "c67dec44d6359d08a48c3e2a5eb59672dc5c68b6d458cf9f6b1b84c5b2116ec3",
+      "checkpoint": "qat-w6-s1",
+      "outcome": "fail_closed",
+      "failure": {
+        "layer": "layer3.0.conv1",
+        "ambiguous_components": 9,
+        "feasible_assignments": 2,
+        "tensor_distinct_assignments": 2,
+        "search_nodes": 56,
+        "reason": "Quotienting complete affine-row permutations correctly left a genuine tap-assignment ambiguity."
+      },
+      "oracle_sessions": 3356,
+      "oracle_affine_evaluations": 67120,
+      "completion_and_evaluation_run": false
+    }
+  ],
+  "resolution_smoke": {
+    "run": "p050-w6s1-partial-frame-d3910df",
+    "final_code_commit": "d3910df81a16c2a69bef299f24c30fcd0fe341fd",
+    "checkpoint": "qat-w6-s1",
+    "n_test": 64,
+    "outcome": "certified",
+    "launch_sha256": "5c99971c761e2e9391aaff3c38128dee199d15e1268e161a8d4527d1d4321a60",
+    "raw_result_sha256": "b4f960e09b46e8252938c880a4da661fcdb1b6a3e2851881a475d95db25d9098",
+    "certificate": {
+      "client_certified_records": 29,
+      "lta_invocations_certified": 34,
+      "lta_passes_total": 36,
+      "extraction_sessions": 3789,
+      "completion_sessions": 116,
+      "observable_maps_checked": 29,
+      "identical_logit_vectors": 64,
+      "max_abs_logit_difference": 0,
+      "threaded_vectorized_exact_crosscheck": true
+    },
+    "ambiguity_resolution": {
+      "already_locatable_coordinates": 379,
+      "additional_placements": 12,
+      "configuration_changed_for_checkpoint": false
+    }
+  },
+  "resolution": {
+    "final_code_commit": "d3910df81a16c2a69bef299f24c30fcd0fe341fd",
+    "changes": [
+      "Enumerate the remaining finite exact-cover search and accept only a unique complete cover or tensor-identical alternatives.",
+      "Check tensor assignments against exact reply multisets and use oracle-checked linkage probes for tensor-distinct alternatives.",
+      "Canonicalize plain affine layers only modulo complete output-row permutations; retain shortcut-anchored row labels in residual layers.",
+      "Construct assignment probes from coordinates that the earlier certified frame probe already locates, leaving every unavailable coordinate zero.",
+      "Require exact held-out logits and agreement between independent threaded and vectorized evaluators before certification."
+    ],
+    "retest_policy": "The final nine-checkpoint audit is a fresh run at the final commit with one predeclared configuration, no per-checkpoint parameter change, and no automatic retry; its compact result is stored separately in audit.json."
+  }
+}

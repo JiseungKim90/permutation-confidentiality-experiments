@@ -26,6 +26,7 @@ REQUIRED = (
     "scripts/run_extraction.py",
     "scripts/run_completion.py",
     "scripts/run_multicheckpoint.py",
+    "scripts/promote_multicheckpoint_audit.py",
     "scripts/identifiability_exhaustive.py",
     "scripts/download_inputs.py",
     "scripts/verify_runs.py",
@@ -56,6 +57,7 @@ REQUIRED = (
     "reference/finite_reference.json",
     "reference/multicheckpoint/audit.json",
     "reference/multicheckpoint/checkpoints.json",
+    "reference/multicheckpoint/development_failures.json",
     "reference/public-reproduction-20261002/README.md",
     "reference/public-reproduction-20261002/workflow.json",
     "reference/public-reproduction-20261002/normal-inference.json",
@@ -63,6 +65,7 @@ REQUIRED = (
     "reference/public-reproduction-20261002/requirements-frozen.txt",
     "reference/public-reproduction-20261002/inference.stdout.log",
     "training/legacy_qat/README.md",
+    "training/legacy_qat/requirements-recorded.txt",
     "training/legacy_qat/lib_qat/checkpoint.py",
     "training/legacy_qat/scripts/qat_common.py",
     "training/legacy_qat/scripts/qat_data.py",
@@ -92,6 +95,23 @@ TRUSTED_CHECKPOINT_LOADERS = {
     "lib/checkpoint.py",
     "training/legacy_qat/lib_qat/checkpoint.py",
 }
+EXPECTED_QAT_NAMES = {
+    "qat-w%d-s%d" % (width, seed)
+    for width in range(5, 9) for seed in range(2)
+}
+EXPECTED_QAT_PATHS = {
+    "data/checkpoints/qat_qatf_r20_w%d_s%d.pt" % (width, seed)
+    for width in range(5, 9) for seed in range(2)
+}
+OFFICIAL_CHECKPOINT = {
+    "name": "official",
+    "path": "data/cifar10_resnet20.pt",
+    "sha256": "4118986f0df73003d572b0e397f0ac7b3f60af1f31aff3d2da164536e36f6ec8",
+}
+FINAL_AUDIT_COMMIT = "d3910df81a16c2a69bef299f24c30fcd0fe341fd"
+EMPTY_GIT_DIFF_SHA256 = (
+    "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+)
 
 
 def sha256_file(path):
@@ -118,9 +138,141 @@ def is_runtime_file(relative):
     )
 
 
+def is_sha256(value):
+    return isinstance(value, str) and re.fullmatch(r"[0-9a-f]{64}", value)
+
+
+def validate_multicheckpoint_audit(audit, checkpoint_items):
+    failures = []
+    expected = {
+        item.get("name"): item
+        for item in checkpoint_items
+        if isinstance(item, dict)
+    }
+    if audit.get("schema") != "p050-public-multicheckpoint-audit-v2":
+        failures.append("multi-checkpoint audit has the wrong schema")
+    if audit.get("base_commit") != FINAL_AUDIT_COMMIT:
+        failures.append("multi-checkpoint audit does not use the final code commit")
+
+    summary = audit.get("result_summary", {})
+    if (
+        summary.get("attempted_checkpoints") != 9
+        or summary.get("certified_checkpoints") != 9
+        or summary.get("all_checkpoints_certified") is not True
+        or summary.get("per_checkpoint_manual_tuning") is not False
+    ):
+        failures.append("multi-checkpoint audit summary is not a 9/9 fixed-configuration certificate")
+
+    records = audit.get("records", [])
+    if not isinstance(records, list) or len(records) != 9:
+        failures.append("multi-checkpoint audit must contain exactly nine records")
+        records = []
+    names = [record.get("name") for record in records
+             if isinstance(record, dict)]
+    if len(names) != len(set(names)) or set(names) != set(expected):
+        failures.append("multi-checkpoint audit record names do not match the input manifest")
+
+    for record in records:
+        if not isinstance(record, dict):
+            failures.append("multi-checkpoint audit contains a non-object record")
+            continue
+        name = record.get("name")
+        manifest_item = expected.get(name, {})
+        if record.get("checkpoint_sha256") != manifest_item.get("sha256"):
+            failures.append("multi-checkpoint digest mismatch for %s" % name)
+        if (
+            record.get("configuration_changed_for_checkpoint") is not False
+            or record.get("full_certificate") is not True
+            or record.get("outcome") != "certified"
+        ):
+            failures.append("multi-checkpoint record is not certified: %s" % name)
+
+        extraction = record.get("extraction", {})
+        if (
+            extraction.get("success") is not True
+            or extraction.get("returncode") != 0
+            or extraction.get("client_certified_records") != 29
+            or extraction.get("lta_invocations_certified") != 34
+            or not isinstance(extraction.get("lta_passes_total"), int)
+            or extraction.get("lta_passes_total") < 34
+            or not isinstance(extraction.get("sessions"), int)
+            or extraction.get("sessions") <= 0
+            or not isinstance(extraction.get("affine_evaluations"), int)
+            or extraction.get("affine_evaluations") <= 0
+            or extraction.get("identical_logit_vectors") != 10000
+            or extraction.get("post_calibration_identical_logit_vectors") != 9936
+            or extraction.get("max_abs_logit_difference") != 0
+            or extraction.get("parallel_batched_exact") is not True
+        ):
+            failures.append("incomplete extraction certificate for %s" % name)
+
+        completion = record.get("completion", {})
+        if (
+            completion.get("success") is not True
+            or completion.get("returncode") != 0
+            or completion.get("observable_maps_checked") != 29
+            or completion.get("observable_maps_successful") != 29
+            or not isinstance(completion.get("sessions"), int)
+            or completion.get("sessions") <= 0
+            or not isinstance(completion.get("affine_evaluations"), int)
+            or completion.get("affine_evaluations") <= 0
+            or completion.get("identical_logit_vectors") != 10000
+            or completion.get("post_calibration_identical_logit_vectors") != 9936
+            or completion.get("max_abs_logit_difference") != 0
+            or completion.get("parallel_batched_exact") is not True
+        ):
+            failures.append("incomplete completion certificate for %s" % name)
+
+    provenance = audit.get("run_provenance", {})
+    if provenance.get("git_commit") != FINAL_AUDIT_COMMIT:
+        failures.append("multi-checkpoint provenance commit is inconsistent")
+    if provenance.get("git_diff_sha256") != EMPTY_GIT_DIFF_SHA256:
+        failures.append("multi-checkpoint audit was not launched from a clean tree")
+    for field in ("source_set_sha256", "launch_sha256", "result_sha256"):
+        if not is_sha256(provenance.get(field)):
+            failures.append("missing or malformed multi-checkpoint %s" % field)
+    environment = provenance.get("environment", {})
+    if (
+        environment.get("python") != "3.10.20"
+        or environment.get("numpy") != "1.24.4"
+        or environment.get("torch") != "2.10.0+cpu"
+    ):
+        failures.append("multi-checkpoint dependency environment is inconsistent")
+
+    fixed = audit.get("fixed_configuration", {})
+    expected_fixed = {
+        "attack_seed": 20260923,
+        "extraction_oracle_seed": 20260924,
+        "completion_oracle_seed": 20260925,
+        "weight_bits": 8,
+        "t_steps": 3,
+        "evaluation_images": 10000,
+        "budget_sec": 1800,
+        "evaluation_timeout_sec": 3600,
+        "search_limit": 256,
+        "minimum_marker_cover": 2,
+        "shortcut_carrier_repeats": 2,
+        "trace_arithmetic": False,
+        "per_checkpoint_manual_tuning": False,
+    }
+    for field, value in expected_fixed.items():
+        if fixed.get(field) != value:
+            failures.append("unexpected fixed audit setting %s" % field)
+    if fixed.get("control_values") != [1, 2, 4, 8, 16, 32, 64, 128, 255]:
+        failures.append("unexpected fixed audit control values")
+    return failures
+
+
 def main():
     failures = []
     publish_files = {}
+    checkpoint_manifest = read_json(
+        "reference/multicheckpoint/checkpoints.json")
+    allowed_data_files = {
+        "data/README.md",
+        OFFICIAL_CHECKPOINT["path"],
+        "data/cifar-10-python.tar.gz",
+    }.union(EXPECTED_QAT_PATHS)
     for relative in REQUIRED:
         if not (ROOT / relative).is_file():
             failures.append("missing required file: %s" % relative)
@@ -129,6 +281,9 @@ def main():
         if not path.is_file():
             continue
         relative = path.relative_to(ROOT).as_posix()
+        if relative.startswith("data/") and relative not in allowed_data_files:
+            failures.append("unexpected file in guarded data directory: %s" %
+                            relative)
         if is_runtime_file(relative):
             continue
         if relative != "MANIFEST.sha256":
@@ -183,10 +338,41 @@ def main():
 
     extraction = read_json("reference/extraction/verification.json")
     completion = read_json("reference/completion/verification.json")
-    checkpoint_manifest = read_json(
-        "reference/multicheckpoint/checkpoints.json")
+    multicheckpoint_audit = read_json("reference/multicheckpoint/audit.json")
+    development_failures = read_json(
+        "reference/multicheckpoint/development_failures.json")
+    checkpoint_items = checkpoint_manifest.get("checkpoints", [])
+    if not isinstance(checkpoint_items, list):
+        failures.append("checkpoint manifest does not contain a list")
+        checkpoint_items = []
+    names = [item.get("name") for item in checkpoint_items
+             if isinstance(item, dict)]
+    paths = [item.get("path") for item in checkpoint_items
+             if isinstance(item, dict)]
+    if len(names) != len(set(names)):
+        failures.append("checkpoint manifest contains duplicate names")
+    if len(paths) != len(set(paths)):
+        failures.append("checkpoint manifest contains duplicate paths")
+
+    official = [item for item in checkpoint_items
+                if isinstance(item, dict) and item.get("name") == "official"]
+    if len(official) != 1:
+        failures.append("checkpoint manifest must contain one official input")
+    elif (
+        official[0].get("distributed") is not False
+        or official[0].get("path") != OFFICIAL_CHECKPOINT["path"]
+        or official[0].get("sha256") != OFFICIAL_CHECKPOINT["sha256"]
+    ):
+        failures.append("official checkpoint manifest record is inconsistent")
+
     distributed_checkpoints = 0
-    for item in checkpoint_manifest.get("checkpoints", []):
+    distributed_names = set()
+    distributed_paths = set()
+    checkpoint_root = (ROOT / "data" / "checkpoints").resolve()
+    for item in checkpoint_items:
+        if not isinstance(item, dict):
+            failures.append("checkpoint manifest contains a non-object entry")
+            continue
         distributed = item.get("distributed")
         if not isinstance(distributed, bool):
             failures.append("checkpoint distribution flag is missing: %s" %
@@ -195,19 +381,47 @@ def main():
         if not distributed:
             continue
         distributed_checkpoints += 1
-        checkpoint_path = ROOT / item.get("path", "")
+        name = item.get("name")
+        relative = item.get("path")
+        if name not in EXPECTED_QAT_NAMES:
+            failures.append("unexpected distributed checkpoint name: %s" % name)
+        else:
+            distributed_names.add(name)
+        if relative not in EXPECTED_QAT_PATHS:
+            failures.append("unexpected distributed checkpoint path: %s" %
+                            relative)
+            continue
+        distributed_paths.add(relative)
+        checkpoint_path = (ROOT / relative).resolve()
+        if checkpoint_root not in checkpoint_path.parents:
+            failures.append("distributed checkpoint escapes guarded directory: %s" %
+                            relative)
+            continue
         if not checkpoint_path.is_file():
             failures.append("distributed checkpoint is missing: %s" %
-                            item.get("name"))
+                            name)
         elif sha256_file(checkpoint_path) != item.get("sha256"):
             failures.append("distributed checkpoint digest mismatch: %s" %
-                            item.get("name"))
-    if distributed_checkpoints != 8:
+                            name)
+    if (distributed_checkpoints != 8
+            or distributed_names != EXPECTED_QAT_NAMES
+            or distributed_paths != EXPECTED_QAT_PATHS):
         failures.append("expected eight distributed QAT checkpoints, found %d" %
                         distributed_checkpoints)
     if checkpoint_manifest.get(
             "all_qat_checkpoints_distributed_in_repository") is not True:
         failures.append("QAT checkpoint distribution is not asserted")
+    failures.extend(validate_multicheckpoint_audit(
+        multicheckpoint_audit, checkpoint_items))
+    if (
+        development_failures.get("schema")
+            != "p050-multicheckpoint-development-failures-v2"
+        or development_failures.get("resolution", {}).get(
+            "final_code_commit") != FINAL_AUDIT_COMMIT
+        or development_failures.get("resolution_smoke", {}).get(
+            "outcome") != "certified"
+    ):
+        failures.append("development failure record is incomplete or stale")
     if not extraction.get("success"):
         failures.append("reference extraction is not successful")
     if extraction.get("extraction", {}).get("records_certified") != 29:

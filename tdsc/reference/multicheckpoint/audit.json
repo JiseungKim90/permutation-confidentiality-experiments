@@ -1,133 +1,569 @@
 {
   "audit_date_utc": "2026-10-02",
-  "base_commit": "17aa3c17751e621013c7a67d62f039dc01230cb1",
-  "claim_scope": "Exploratory robustness audit; not evidence for an additional paper claim.",
-  "development_followup": {
-    "checkpoint": "qat-w8-s0",
-    "checkpoint_sha256": "130ea708199e65ade6c221c573a795495348fcb97dcbf779f8ac2f11a87956d1",
-    "configuration_change": {
-      "evaluation_skipped": true,
-      "t_steps": 5
-    },
-    "failure": {
-      "columns_backtracked": 0,
-      "columns_failed": 53,
-      "layer": "layer3.1.conv2",
-      "status": "uncertified_columns",
-      "unresolved_rows": 4
-    },
-    "oracle_affine_evaluations": 158340,
-    "oracle_sessions": 7917,
-    "outcome": "fail_closed",
-    "raw_result_sha256": "e2bb9fcff6157f0b0668242389752c3c991105025e32c3492b50a960d91acd01"
-  },
+  "base_commit": "d3910df81a16c2a69bef299f24c30fcd0fe341fd",
+  "claim_scope": "Fixed-configuration weight-set audit of one exact-integer ResNet-20 simulator architecture; not a population success-rate estimate or a deployed encrypted-backend exploit.",
   "fixed_configuration": {
     "attack_seed": 20260923,
+    "budget_sec": 1800,
     "completion_oracle_seed": 20260925,
-    "control_values": [1, 2, 4, 8, 16, 32, 64, 128, 255],
+    "control_values": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32,
+      64,
+      128,
+      255
+    ],
     "evaluation_images": 10000,
+    "evaluation_timeout_sec": 3600,
     "extraction_oracle_seed": 20260924,
     "minimum_marker_cover": 2,
     "per_checkpoint_manual_tuning": false,
     "search_limit": 256,
     "shortcut_carrier_repeats": 2,
     "t_steps": 3,
+    "trace_arithmetic": false,
     "weight_bits": 8
-  },
-  "paper_inclusion_gate": {
-    "certified_checkpoints_required": 5,
-    "certified_checkpoints_total_screened": 1,
-    "passed": false,
-    "reason": "Only the original release checkpoint passed; both additional QAT checkpoints failed closed."
   },
   "records": [
     {
-      "checkpoint": "official",
       "checkpoint_sha256": "4118986f0df73003d572b0e397f0ac7b3f60af1f31aff3d2da164536e36f6ec8",
       "completion": {
+        "accuracy_private": 92.09,
         "affine_evaluations": 234,
+        "attacker_status": "complete",
+        "first_conv_singleton_checks": 830,
+        "forward_implementation": "exact-integer threaded reference v1",
         "identical_logit_vectors": 10000,
         "max_abs_logit_difference": 0,
         "observable_maps_checked": 29,
         "observable_maps_successful": 29,
+        "oracle_status": "closed",
+        "parallel_batched_exact": true,
+        "post_calibration_identical_logit_vectors": 9936,
+        "process_exit_codes": {
+          "attacker": 0,
+          "evaluator": 0,
+          "oracle": 0
+        },
+        "returncode": 0,
         "sessions": 97,
+        "shortcut_singleton_checks": 2048,
         "success": true
       },
+      "configuration_changed_for_checkpoint": false,
       "extraction": {
-        "affine_evaluations": 73520,
+        "accuracy_private": 92.09,
+        "affine_evaluations": 81480,
+        "attacker_status": "complete",
         "client_certified_records": 29,
+        "forward_implementation": "exact-integer threaded reference v1",
         "identical_logit_vectors": 10000,
         "lta_invocations_certified": 34,
+        "lta_passes_total": 38,
         "max_abs_logit_difference": 0,
-        "sessions": 3676,
+        "oracle_status": "closed",
+        "parallel_batched_exact": true,
+        "post_calibration_identical_logit_vectors": 9936,
+        "process_exit_codes": {
+          "attacker": 0,
+          "evaluator": 0,
+          "oracle": 0
+        },
+        "repairs_triggered": 0,
+        "returncode": 0,
+        "sessions": 4074,
         "success": true
       },
-      "outcome": "certified"
+      "full_certificate": true,
+      "name": "official",
+      "outcome": "certified",
+      "provenance": "chenyaofo/pytorch-cifar-models CIFAR-10 ResNet-20 release checkpoint",
+      "training_precision": null,
+      "training_seed": null
     },
     {
-      "checkpoint": "qat-w8-s0",
+      "checkpoint_sha256": "5fd2c9579d36a9cdf4d8c2379bb3ee9ea4ad3ce9b129790d831174c0f09ee73d",
+      "completion": {
+        "accuracy_private": 88.34,
+        "affine_evaluations": 272,
+        "attacker_status": "complete",
+        "first_conv_singleton_checks": 1094,
+        "forward_implementation": "exact-integer threaded reference v1",
+        "identical_logit_vectors": 10000,
+        "max_abs_logit_difference": 0,
+        "observable_maps_checked": 29,
+        "observable_maps_successful": 29,
+        "oracle_status": "closed",
+        "parallel_batched_exact": true,
+        "post_calibration_identical_logit_vectors": 9936,
+        "process_exit_codes": {
+          "attacker": 0,
+          "evaluator": 0,
+          "oracle": 0
+        },
+        "returncode": 0,
+        "sessions": 116,
+        "shortcut_singleton_checks": 2048,
+        "success": true
+      },
+      "configuration_changed_for_checkpoint": false,
+      "extraction": {
+        "accuracy_private": 88.34,
+        "affine_evaluations": 82340,
+        "attacker_status": "complete",
+        "client_certified_records": 29,
+        "forward_implementation": "exact-integer threaded reference v1",
+        "identical_logit_vectors": 10000,
+        "lta_invocations_certified": 34,
+        "lta_passes_total": 37,
+        "max_abs_logit_difference": 0,
+        "oracle_status": "closed",
+        "parallel_batched_exact": true,
+        "post_calibration_identical_logit_vectors": 9936,
+        "process_exit_codes": {
+          "attacker": 0,
+          "evaluator": 0,
+          "oracle": 0
+        },
+        "repairs_triggered": 1,
+        "returncode": 0,
+        "sessions": 4117,
+        "success": true
+      },
+      "full_certificate": true,
+      "name": "qat-w5-s0",
+      "outcome": "certified",
+      "provenance": "LSQ-style QAT fine-tune initialized from the official float checkpoint",
+      "training_precision": 5,
+      "training_seed": 0
+    },
+    {
+      "checkpoint_sha256": "b71207b9e356d1119f4606c62e666adde786408cb61ed15d18ed1b1ef0c1de60",
+      "completion": {
+        "accuracy_private": 88.38,
+        "affine_evaluations": 272,
+        "attacker_status": "complete",
+        "first_conv_singleton_checks": 1086,
+        "forward_implementation": "exact-integer threaded reference v1",
+        "identical_logit_vectors": 10000,
+        "max_abs_logit_difference": 0,
+        "observable_maps_checked": 29,
+        "observable_maps_successful": 29,
+        "oracle_status": "closed",
+        "parallel_batched_exact": true,
+        "post_calibration_identical_logit_vectors": 9936,
+        "process_exit_codes": {
+          "attacker": 0,
+          "evaluator": 0,
+          "oracle": 0
+        },
+        "returncode": 0,
+        "sessions": 116,
+        "shortcut_singleton_checks": 2048,
+        "success": true
+      },
+      "configuration_changed_for_checkpoint": false,
+      "extraction": {
+        "accuracy_private": 88.38,
+        "affine_evaluations": 85300,
+        "attacker_status": "complete",
+        "client_certified_records": 29,
+        "forward_implementation": "exact-integer threaded reference v1",
+        "identical_logit_vectors": 10000,
+        "lta_invocations_certified": 34,
+        "lta_passes_total": 39,
+        "max_abs_logit_difference": 0,
+        "oracle_status": "closed",
+        "parallel_batched_exact": true,
+        "post_calibration_identical_logit_vectors": 9936,
+        "process_exit_codes": {
+          "attacker": 0,
+          "evaluator": 0,
+          "oracle": 0
+        },
+        "repairs_triggered": 0,
+        "returncode": 0,
+        "sessions": 4265,
+        "success": true
+      },
+      "full_certificate": true,
+      "name": "qat-w5-s1",
+      "outcome": "certified",
+      "provenance": "LSQ-style QAT fine-tune initialized from the official float checkpoint",
+      "training_precision": 5,
+      "training_seed": 1
+    },
+    {
+      "checkpoint_sha256": "03a9e7ddba13622e4365d86e4708602fb8f22a71f442c8a852b40f6235c8cbe4",
+      "completion": {
+        "accuracy_private": 90.97,
+        "affine_evaluations": 272,
+        "attacker_status": "complete",
+        "first_conv_singleton_checks": 1100,
+        "forward_implementation": "exact-integer threaded reference v1",
+        "identical_logit_vectors": 10000,
+        "max_abs_logit_difference": 0,
+        "observable_maps_checked": 29,
+        "observable_maps_successful": 29,
+        "oracle_status": "closed",
+        "parallel_batched_exact": true,
+        "post_calibration_identical_logit_vectors": 9936,
+        "process_exit_codes": {
+          "attacker": 0,
+          "evaluator": 0,
+          "oracle": 0
+        },
+        "returncode": 0,
+        "sessions": 116,
+        "shortcut_singleton_checks": 2048,
+        "success": true
+      },
+      "configuration_changed_for_checkpoint": false,
+      "extraction": {
+        "accuracy_private": 90.97,
+        "affine_evaluations": 74500,
+        "attacker_status": "complete",
+        "client_certified_records": 29,
+        "forward_implementation": "exact-integer threaded reference v1",
+        "identical_logit_vectors": 10000,
+        "lta_invocations_certified": 34,
+        "lta_passes_total": 36,
+        "max_abs_logit_difference": 0,
+        "oracle_status": "closed",
+        "parallel_batched_exact": true,
+        "post_calibration_identical_logit_vectors": 9936,
+        "process_exit_codes": {
+          "attacker": 0,
+          "evaluator": 0,
+          "oracle": 0
+        },
+        "repairs_triggered": 0,
+        "returncode": 0,
+        "sessions": 3725,
+        "success": true
+      },
+      "full_certificate": true,
+      "name": "qat-w6-s0",
+      "outcome": "certified",
+      "provenance": "LSQ-style QAT fine-tune initialized from the official float checkpoint",
+      "training_precision": 6,
+      "training_seed": 0
+    },
+    {
+      "checkpoint_sha256": "3df54f03c9cb5585748d7095f31c1018023c7e6ecf2f050248db0a28840cbccb",
+      "completion": {
+        "accuracy_private": 90.39,
+        "affine_evaluations": 272,
+        "attacker_status": "complete",
+        "first_conv_singleton_checks": 1074,
+        "forward_implementation": "exact-integer threaded reference v1",
+        "identical_logit_vectors": 10000,
+        "max_abs_logit_difference": 0,
+        "observable_maps_checked": 29,
+        "observable_maps_successful": 29,
+        "oracle_status": "closed",
+        "parallel_batched_exact": true,
+        "post_calibration_identical_logit_vectors": 9936,
+        "process_exit_codes": {
+          "attacker": 0,
+          "evaluator": 0,
+          "oracle": 0
+        },
+        "returncode": 0,
+        "sessions": 116,
+        "shortcut_singleton_checks": 2048,
+        "success": true
+      },
+      "configuration_changed_for_checkpoint": false,
+      "extraction": {
+        "accuracy_private": 90.39,
+        "affine_evaluations": 75780,
+        "attacker_status": "complete",
+        "client_certified_records": 29,
+        "forward_implementation": "exact-integer threaded reference v1",
+        "identical_logit_vectors": 10000,
+        "lta_invocations_certified": 34,
+        "lta_passes_total": 36,
+        "max_abs_logit_difference": 0,
+        "oracle_status": "closed",
+        "parallel_batched_exact": true,
+        "post_calibration_identical_logit_vectors": 9936,
+        "process_exit_codes": {
+          "attacker": 0,
+          "evaluator": 0,
+          "oracle": 0
+        },
+        "repairs_triggered": 0,
+        "returncode": 0,
+        "sessions": 3789,
+        "success": true
+      },
+      "full_certificate": true,
+      "name": "qat-w6-s1",
+      "outcome": "certified",
+      "provenance": "LSQ-style QAT fine-tune initialized from the official float checkpoint",
+      "training_precision": 6,
+      "training_seed": 1
+    },
+    {
+      "checkpoint_sha256": "0ad163a2fac9ec8d64d492c626f67ca65077966018bcaa7bcc1ee928106d0a4b",
+      "completion": {
+        "accuracy_private": 91.57,
+        "affine_evaluations": 310,
+        "attacker_status": "complete",
+        "first_conv_singleton_checks": 1360,
+        "forward_implementation": "exact-integer threaded reference v1",
+        "identical_logit_vectors": 10000,
+        "max_abs_logit_difference": 0,
+        "observable_maps_checked": 29,
+        "observable_maps_successful": 29,
+        "oracle_status": "closed",
+        "parallel_batched_exact": true,
+        "post_calibration_identical_logit_vectors": 9936,
+        "process_exit_codes": {
+          "attacker": 0,
+          "evaluator": 0,
+          "oracle": 0
+        },
+        "returncode": 0,
+        "sessions": 135,
+        "shortcut_singleton_checks": 2048,
+        "success": true
+      },
+      "configuration_changed_for_checkpoint": false,
+      "extraction": {
+        "accuracy_private": 91.57,
+        "affine_evaluations": 86320,
+        "attacker_status": "complete",
+        "client_certified_records": 29,
+        "forward_implementation": "exact-integer threaded reference v1",
+        "identical_logit_vectors": 10000,
+        "lta_invocations_certified": 34,
+        "lta_passes_total": 39,
+        "max_abs_logit_difference": 0,
+        "oracle_status": "closed",
+        "parallel_batched_exact": true,
+        "post_calibration_identical_logit_vectors": 9936,
+        "process_exit_codes": {
+          "attacker": 0,
+          "evaluator": 0,
+          "oracle": 0
+        },
+        "repairs_triggered": 0,
+        "returncode": 0,
+        "sessions": 4316,
+        "success": true
+      },
+      "full_certificate": true,
+      "name": "qat-w7-s0",
+      "outcome": "certified",
+      "provenance": "LSQ-style QAT fine-tune initialized from the official float checkpoint",
+      "training_precision": 7,
+      "training_seed": 0
+    },
+    {
+      "checkpoint_sha256": "70bf03b4d653399ae59aa62d951c44e4afbbdc834507de1be9b143e5e5c83651",
+      "completion": {
+        "accuracy_private": 91.48,
+        "affine_evaluations": 272,
+        "attacker_status": "complete",
+        "first_conv_singleton_checks": 1096,
+        "forward_implementation": "exact-integer threaded reference v1",
+        "identical_logit_vectors": 10000,
+        "max_abs_logit_difference": 0,
+        "observable_maps_checked": 29,
+        "observable_maps_successful": 29,
+        "oracle_status": "closed",
+        "parallel_batched_exact": true,
+        "post_calibration_identical_logit_vectors": 9936,
+        "process_exit_codes": {
+          "attacker": 0,
+          "evaluator": 0,
+          "oracle": 0
+        },
+        "returncode": 0,
+        "sessions": 116,
+        "shortcut_singleton_checks": 2048,
+        "success": true
+      },
+      "configuration_changed_for_checkpoint": false,
+      "extraction": {
+        "accuracy_private": 91.48,
+        "affine_evaluations": 86260,
+        "attacker_status": "complete",
+        "client_certified_records": 29,
+        "forward_implementation": "exact-integer threaded reference v1",
+        "identical_logit_vectors": 10000,
+        "lta_invocations_certified": 34,
+        "lta_passes_total": 39,
+        "max_abs_logit_difference": 0,
+        "oracle_status": "closed",
+        "parallel_batched_exact": true,
+        "post_calibration_identical_logit_vectors": 9936,
+        "process_exit_codes": {
+          "attacker": 0,
+          "evaluator": 0,
+          "oracle": 0
+        },
+        "repairs_triggered": 0,
+        "returncode": 0,
+        "sessions": 4313,
+        "success": true
+      },
+      "full_certificate": true,
+      "name": "qat-w7-s1",
+      "outcome": "certified",
+      "provenance": "LSQ-style QAT fine-tune initialized from the official float checkpoint",
+      "training_precision": 7,
+      "training_seed": 1
+    },
+    {
       "checkpoint_sha256": "130ea708199e65ade6c221c573a795495348fcb97dcbf779f8ac2f11a87956d1",
       "completion": {
-        "not_run_reason": "Extraction failed closed."
-      },
-      "extraction": {
-        "failure": {
-          "columns_backtracked": 0,
-          "columns_failed": 36,
-          "layer": "layer3.1.conv2",
-          "status": "uncertified_columns",
-          "unresolved_rows": 6
+        "accuracy_private": 91.79,
+        "affine_evaluations": 272,
+        "attacker_status": "complete",
+        "first_conv_singleton_checks": 1080,
+        "forward_implementation": "exact-integer threaded reference v1",
+        "identical_logit_vectors": 10000,
+        "max_abs_logit_difference": 0,
+        "observable_maps_checked": 29,
+        "observable_maps_successful": 29,
+        "oracle_status": "closed",
+        "parallel_batched_exact": true,
+        "post_calibration_identical_logit_vectors": 9936,
+        "process_exit_codes": {
+          "attacker": 0,
+          "evaluator": 0,
+          "oracle": 0
         },
-        "oracle_affine_evaluations": 90300,
-        "oracle_sessions": 4515,
-        "success": false
+        "returncode": 0,
+        "sessions": 116,
+        "shortcut_singleton_checks": 2048,
+        "success": true
       },
-      "outcome": "fail_closed",
+      "configuration_changed_for_checkpoint": false,
+      "extraction": {
+        "accuracy_private": 91.79,
+        "affine_evaluations": 85780,
+        "attacker_status": "complete",
+        "client_certified_records": 29,
+        "forward_implementation": "exact-integer threaded reference v1",
+        "identical_logit_vectors": 10000,
+        "lta_invocations_certified": 34,
+        "lta_passes_total": 38,
+        "max_abs_logit_difference": 0,
+        "oracle_status": "closed",
+        "parallel_batched_exact": true,
+        "post_calibration_identical_logit_vectors": 9936,
+        "process_exit_codes": {
+          "attacker": 0,
+          "evaluator": 0,
+          "oracle": 0
+        },
+        "repairs_triggered": 1,
+        "returncode": 0,
+        "sessions": 4289,
+        "success": true
+      },
+      "full_certificate": true,
+      "name": "qat-w8-s0",
+      "outcome": "certified",
+      "provenance": "historical QAT fine-tune initialized from the official float checkpoint",
       "training_precision": 8,
       "training_seed": 0
     },
     {
-      "checkpoint": "qat-w8-s1",
       "checkpoint_sha256": "c248a9ad7d830158611cd8d328bb4384d7789f5003f20fa969bfdb306bd65674",
       "completion": {
-        "not_run_reason": "Extraction failed the complete-record gate."
-      },
-      "extraction": {
-        "client_certified_records": 28,
-        "failure": {
-          "channels_resolved": 63,
-          "channels_total": 64,
-          "layer": "layer3.2.conv2",
-          "matching_failures": 1,
-          "probe_verified": false,
-          "repair_attempts_used": 3,
-          "rows_still_ambiguous": 10,
-          "rows_with_unique_candidate": 566,
-          "rows_total": 576
+        "accuracy_private": 91.43,
+        "affine_evaluations": 272,
+        "attacker_status": "complete",
+        "first_conv_singleton_checks": 1080,
+        "forward_implementation": "exact-integer threaded reference v1",
+        "identical_logit_vectors": 10000,
+        "max_abs_logit_difference": 0,
+        "observable_maps_checked": 29,
+        "observable_maps_successful": 29,
+        "oracle_status": "closed",
+        "parallel_batched_exact": true,
+        "post_calibration_identical_logit_vectors": 9936,
+        "process_exit_codes": {
+          "attacker": 0,
+          "evaluator": 0,
+          "oracle": 0
         },
-        "lta_invocations_certified": 34,
-        "oracle_affine_evaluations": 116180,
-        "oracle_sessions": 5809,
-        "success": false
+        "returncode": 0,
+        "sessions": 116,
+        "shortcut_singleton_checks": 2048,
+        "success": true
       },
-      "outcome": "fail_closed",
+      "configuration_changed_for_checkpoint": false,
+      "extraction": {
+        "accuracy_private": 91.43,
+        "affine_evaluations": 82740,
+        "attacker_status": "complete",
+        "client_certified_records": 29,
+        "forward_implementation": "exact-integer threaded reference v1",
+        "identical_logit_vectors": 10000,
+        "lta_invocations_certified": 34,
+        "lta_passes_total": 37,
+        "max_abs_logit_difference": 0,
+        "oracle_status": "closed",
+        "parallel_batched_exact": true,
+        "post_calibration_identical_logit_vectors": 9936,
+        "process_exit_codes": {
+          "attacker": 0,
+          "evaluator": 0,
+          "oracle": 0
+        },
+        "repairs_triggered": 1,
+        "returncode": 0,
+        "sessions": 4137,
+        "success": true
+      },
+      "full_certificate": true,
+      "name": "qat-w8-s1",
+      "outcome": "certified",
+      "provenance": "historical QAT fine-tune initialized from the official float checkpoint",
       "training_precision": 8,
       "training_seed": 1
     }
   ],
   "reproducibility": {
-    "checkpoint_bytes_in_repository": false,
+    "all_qat_checkpoint_bytes_distributed": true,
     "checkpoint_manifest": "reference/multicheckpoint/checkpoints.json",
     "driver": "scripts/run_multicheckpoint.py",
+    "official_checkpoint_and_cifar_downloaded_by_digest": true,
+    "promotion_script": "scripts/promote_multicheckpoint_audit.py",
     "qat_models_independent_from_scratch": false
   },
-  "run_provenance": {
-    "baseline_launch_sha256": "785e080460bb620bd6641af9414c99cd5a2b80ceeb1bc9267326c14614d1c106",
-    "baseline_result_sha256": "5a7cee97a231c0bbff54d3e9f02fe67893545fb9f6e13c90f21ae0621508d7c9",
-    "git_diff_sha256_at_launch": "0dc93c3bd0cd2dd7740ac74e9f73339962192c14f10895e502e09fd3d796bddd",
-    "qat_launch_sha256": "831201eb05702743db8bb93a180743b7705a0bba72ed95eec01ad34f16451335",
-    "qat_result_sha256": "758704abdeaa6ee1a1b5d4b3871578789afe03a22315df4ddcb2d8a60431f786",
-    "source_set_sha256": "f7c5f85f577d412f3c40381d072723eb06ac6d88238f6b9c019cb5e573c7aab9"
+  "result_summary": {
+    "all_checkpoints_certified": true,
+    "attempted_checkpoints": 9,
+    "certified_checkpoints": 9,
+    "driver_error_checkpoints": 0,
+    "fail_closed_checkpoints": 0,
+    "per_checkpoint_manual_tuning": false
   },
-  "schema": "p050-public-multicheckpoint-audit-v1"
+  "run_provenance": {
+    "environment": {
+      "numpy": "1.24.4",
+      "platform": "Linux-5.15.0-139-generic-x86_64-with-glibc2.31",
+      "python": "3.10.20",
+      "torch": "2.10.0+cpu"
+    },
+    "git_commit": "d3910df81a16c2a69bef299f24c30fcd0fe341fd",
+    "git_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "launch_sha256": "cb89f1697307aa58458430b6257c2bf0842289db4d2b5dbb25e3e388b8ebcf62",
+    "result_sha256": "51195c0d44884efd72e3d3d1d2905d4d1c6ad0119a95de2382f860052af208d2",
+    "run_name": "p050-tdsc-all9-d3910df-20261003-r10",
+    "source_set_sha256": "0aa046040fb8321d0e83084ac9c7e434bdc7e2a7e64b03027bfa146a6ac45197",
+    "workers": 5
+  },
+  "schema": "p050-public-multicheckpoint-audit-v2"
 }

@@ -13,6 +13,8 @@ from-scratch models.
 - `lib_qat/` is the fixed dependency snapshot used by those scripts.
 - `results/` contains the complete JSON record emitted by each of the eight
   training runs.
+- `requirements-recorded.txt` pins the NumPy and PyTorch builds recorded by
+  those runs; Python 3.10.20 is recorded here and in every result file.
 
 The source was copied from the historical experiment repository at commit
 `4d8f7765e5474f9da890931084c4bea42e7a23d5`.  That code identifies `lib_qat`

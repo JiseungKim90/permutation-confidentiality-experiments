@@ -1,0 +1,4 @@
+# Historical environment recorded by all eight QAT training-result files.
+# Python 3.10.20; the CUDA build tag is part of the provenance.
+numpy==1.26.4
+torch==2.12.0+cu130
